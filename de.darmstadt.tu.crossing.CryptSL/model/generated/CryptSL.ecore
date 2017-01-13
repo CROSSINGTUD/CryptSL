@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cryptSL" nsURI="http://www.darmstadt.de/tu/crossing/CryptSL"
+    nsPrefix="cryptSL">
+  <eClassifiers xsi:type="ecore:EClass" name="Domainmodel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javaType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" upperBound="-1"
+        eType="#//ObjectDecl" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="method" upperBound="-1"
+        eType="#//ForbMethod" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
+        eType="#//Event" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="order" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req" upperBound="-1" eType="#//ObjectDecl"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="method" upperBound="-1"
+        eType="#//Method" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agg" upperBound="-1" eType="#//Label"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
+        eType="#//Label"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderEv" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methx" eType="#//Label"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Method">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" upperBound="-1"
+        eType="#//Label" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
+        upperBound="-1" eType="#//Object"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForbMethod">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
+        upperBound="-1" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Label"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectDecl">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectName" eType="#//Object"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleOrder" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

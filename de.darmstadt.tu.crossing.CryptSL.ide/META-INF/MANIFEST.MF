@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.darmstadt.tu.crossing.CryptSL.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.darmstadt.tu.crossing.CryptSL.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: de.darmstadt.tu.crossing.CryptSL,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.darmstadt.tu.crossing.ide.contentassist.antlr.internal,
+ de.darmstadt.tu.crossing.ide.contentassist.antlr
+
