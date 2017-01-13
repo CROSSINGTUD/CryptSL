@@ -10,56 +10,79 @@
         eType="#//ForbMethod" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
         eType="#//Event" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="order" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="req" upperBound="-1" eType="#//ObjectDecl"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="order" eType="#//Expression"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="method" upperBound="-1"
-        eType="#//Method" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="agg" upperBound="-1" eType="#//Label"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req" upperBound="-1" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
-        eType="#//Label"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderEv" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="methx" eType="#//Label"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Method">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="label" upperBound="-1"
-        eType="#//Label" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
-        upperBound="-1" eType="#//Object"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ForbMethod">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
-        upperBound="-1" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Label"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ens" upperBound="-1" eType="#//Constraint"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectDecl">
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectName" eType="#//Object"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Label">
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForbMethod">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Event"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelMethodCall" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="meth" eType="#//Method"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Method">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="methName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//ParList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Par" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Par">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//Object"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
+        eType="#//Event"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderEv" unique="false"
+        upperBound="-1" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" upperBound="-1" eType="#//Constraint"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algl" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algr" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="litsright" eType="#//LitList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//ParList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Object"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LitList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Object">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SimpleOrder" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleOrder" eSuperTypes="#//Expression"/>
 </ecore:EPackage>

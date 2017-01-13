@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Forb Method</b></em>'.
@@ -28,7 +30,7 @@ public interface ForbMethod extends EObject
 {
   /**
    * Returns the value of the '<em><b>Parameters</b></em>' reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Object}.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
@@ -40,7 +42,7 @@ public interface ForbMethod extends EObject
    * @model
    * @generated
    */
-  EList<de.darmstadt.tu.crossing.cryptSL.Object> getParameters();
+  EList<JvmType> getParameters();
 
   /**
    * Returns the value of the '<em><b>Rep</b></em>' reference.
@@ -51,12 +53,12 @@ public interface ForbMethod extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rep</em>' reference.
-   * @see #setRep(Label)
+   * @see #setRep(Event)
    * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getForbMethod_Rep()
    * @model
    * @generated
    */
-  Label getRep();
+  Event getRep();
 
   /**
    * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getRep <em>Rep</em>}' reference.
@@ -66,6 +68,6 @@ public interface ForbMethod extends EObject
    * @see #getRep()
    * @generated
    */
-  void setRep(Label value);
+  void setRep(Event value);
 
 } // ForbMethod

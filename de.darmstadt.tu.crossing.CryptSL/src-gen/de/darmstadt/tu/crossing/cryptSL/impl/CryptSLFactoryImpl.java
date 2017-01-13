@@ -3,17 +3,21 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
+import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.Label;
+import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Method;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
-import de.darmstadt.tu.crossing.cryptSL.OrderEv;
+import de.darmstadt.tu.crossing.cryptSL.Par;
+import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 
 import org.eclipse.emf.ecore.EClass;
@@ -77,13 +81,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
     switch (eClass.getClassifierID())
     {
       case CryptSLPackage.DOMAINMODEL: return createDomainmodel();
-      case CryptSLPackage.EVENT: return createEvent();
-      case CryptSLPackage.EXPRESSION: return createExpression();
-      case CryptSLPackage.ORDER_EV: return createOrderEv();
-      case CryptSLPackage.METHOD: return createMethod();
-      case CryptSLPackage.FORB_METHOD: return createForbMethod();
       case CryptSLPackage.OBJECT_DECL: return createObjectDecl();
-      case CryptSLPackage.LABEL: return createLabel();
+      case CryptSLPackage.EVENT: return createEvent();
+      case CryptSLPackage.FORB_METHOD: return createForbMethod();
+      case CryptSLPackage.LABEL_METHOD_CALL: return createLabelMethodCall();
+      case CryptSLPackage.METHOD: return createMethod();
+      case CryptSLPackage.PAR_LIST: return createParList();
+      case CryptSLPackage.PAR: return createPar();
+      case CryptSLPackage.AGGREGATE: return createAggregate();
+      case CryptSLPackage.EXPRESSION: return createExpression();
+      case CryptSLPackage.CONSTRAINT: return createConstraint();
+      case CryptSLPackage.LIT_LIST: return createLitList();
       case CryptSLPackage.OBJECT: return createObject();
       case CryptSLPackage.ORDER: return createOrder();
       case CryptSLPackage.SIMPLE_ORDER: return createSimpleOrder();
@@ -108,43 +116,21 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ObjectDecl createObjectDecl()
+  {
+    ObjectDeclImpl objectDecl = new ObjectDeclImpl();
+    return objectDecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Event createEvent()
   {
     EventImpl event = new EventImpl();
     return event;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Expression createExpression()
-  {
-    ExpressionImpl expression = new ExpressionImpl();
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public OrderEv createOrderEv()
-  {
-    OrderEvImpl orderEv = new OrderEvImpl();
-    return orderEv;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Method createMethod()
-  {
-    MethodImpl method = new MethodImpl();
-    return method;
   }
 
   /**
@@ -163,10 +149,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ObjectDecl createObjectDecl()
+  public LabelMethodCall createLabelMethodCall()
   {
-    ObjectDeclImpl objectDecl = new ObjectDeclImpl();
-    return objectDecl;
+    LabelMethodCallImpl labelMethodCall = new LabelMethodCallImpl();
+    return labelMethodCall;
   }
 
   /**
@@ -174,10 +160,76 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Label createLabel()
+  public Method createMethod()
   {
-    LabelImpl label = new LabelImpl();
-    return label;
+    MethodImpl method = new MethodImpl();
+    return method;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParList createParList()
+  {
+    ParListImpl parList = new ParListImpl();
+    return parList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Par createPar()
+  {
+    ParImpl par = new ParImpl();
+    return par;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Aggregate createAggregate()
+  {
+    AggregateImpl aggregate = new AggregateImpl();
+    return aggregate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Constraint createConstraint()
+  {
+    ConstraintImpl constraint = new ConstraintImpl();
+    return constraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LitList createLitList()
+  {
+    LitListImpl litList = new LitListImpl();
+    return litList;
   }
 
   /**

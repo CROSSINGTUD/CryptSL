@@ -5,23 +5,13 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Event;
-import de.darmstadt.tu.crossing.cryptSL.Label;
-import de.darmstadt.tu.crossing.cryptSL.Method;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.EventImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.EventImpl#getAgg <em>Agg</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.EventImpl#getLab <em>Lab</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.EventImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,34 +29,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class EventImpl extends MinimalEObjectImpl.Container implements Event
 {
   /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<Method> method;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAgg() <em>Agg</em>}' containment reference list.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAgg()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<Label> agg;
-
-  /**
-   * The cached value of the '{@link #getLab() <em>Lab</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLab()
-   * @generated
-   * @ordered
-   */
-  protected EList<Label> lab;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,13 +74,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Method> getMethod()
+  public String getName()
   {
-    if (method == null)
-    {
-      method = new EObjectContainmentEList<Method>(Method.class, this, CryptSLPackage.EVENT__METHOD);
-    }
-    return method;
+    return name;
   }
 
   /**
@@ -110,45 +84,12 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Label> getAgg()
+  public void setName(String newName)
   {
-    if (agg == null)
-    {
-      agg = new EObjectContainmentEList<Label>(Label.class, this, CryptSLPackage.EVENT__AGG);
-    }
-    return agg;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Label> getLab()
-  {
-    if (lab == null)
-    {
-      lab = new EObjectResolvingEList<Label>(Label.class, this, CryptSLPackage.EVENT__LAB);
-    }
-    return lab;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case CryptSLPackage.EVENT__METHOD:
-        return ((InternalEList<?>)getMethod()).basicRemove(otherEnd, msgs);
-      case CryptSLPackage.EVENT__AGG:
-        return ((InternalEList<?>)getAgg()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.EVENT__NAME, oldName, name));
   }
 
   /**
@@ -161,12 +102,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   {
     switch (featureID)
     {
-      case CryptSLPackage.EVENT__METHOD:
-        return getMethod();
-      case CryptSLPackage.EVENT__AGG:
-        return getAgg();
-      case CryptSLPackage.EVENT__LAB:
-        return getLab();
+      case CryptSLPackage.EVENT__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -176,23 +113,13 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CryptSLPackage.EVENT__METHOD:
-        getMethod().clear();
-        getMethod().addAll((Collection<? extends Method>)newValue);
-        return;
-      case CryptSLPackage.EVENT__AGG:
-        getAgg().clear();
-        getAgg().addAll((Collection<? extends Label>)newValue);
-        return;
-      case CryptSLPackage.EVENT__LAB:
-        getLab().clear();
-        getLab().addAll((Collection<? extends Label>)newValue);
+      case CryptSLPackage.EVENT__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -208,14 +135,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   {
     switch (featureID)
     {
-      case CryptSLPackage.EVENT__METHOD:
-        getMethod().clear();
-        return;
-      case CryptSLPackage.EVENT__AGG:
-        getAgg().clear();
-        return;
-      case CryptSLPackage.EVENT__LAB:
-        getLab().clear();
+      case CryptSLPackage.EVENT__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -231,14 +152,27 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   {
     switch (featureID)
     {
-      case CryptSLPackage.EVENT__METHOD:
-        return method != null && !method.isEmpty();
-      case CryptSLPackage.EVENT__AGG:
-        return agg != null && !agg.isEmpty();
-      case CryptSLPackage.EVENT__LAB:
-        return lab != null && !lab.isEmpty();
+      case CryptSLPackage.EVENT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //EventImpl

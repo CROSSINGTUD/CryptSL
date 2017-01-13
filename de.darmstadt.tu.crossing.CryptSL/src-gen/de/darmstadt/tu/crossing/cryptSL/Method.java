@@ -3,8 +3,6 @@
  */
 package de.darmstadt.tu.crossing.cryptSL;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Method#getLabel <em>Label</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Method#getLeftSide <em>Left Side</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Method#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Method#getParList <em>Par List</em>}</li>
  * </ul>
  *
  * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod()
@@ -27,22 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Method extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Label</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Label}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Label</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Label</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod_Label()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Label> getLabel();
-
   /**
    * Returns the value of the '<em><b>Left Side</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -70,19 +52,55 @@ public interface Method extends EObject
   void setLeftSide(de.darmstadt.tu.crossing.cryptSL.Object value);
 
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Object}.
+   * Returns the value of the '<em><b>Meth Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
+   * If the meaning of the '<em>Meth Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod_Parameters()
+   * @return the value of the '<em>Meth Name</em>' attribute.
+   * @see #setMethName(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod_MethName()
    * @model
    * @generated
    */
-  EList<de.darmstadt.tu.crossing.cryptSL.Object> getParameters();
+  String getMethName();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Meth Name</em>' attribute.
+   * @see #getMethName()
+   * @generated
+   */
+  void setMethName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Par List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Par List</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Par List</em>' containment reference.
+   * @see #setParList(ParList)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod_ParList()
+   * @model containment="true"
+   * @generated
+   */
+  ParList getParList();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Method#getParList <em>Par List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Par List</em>' containment reference.
+   * @see #getParList()
+   * @generated
+   */
+  void setParList(ParList value);
 
 } // Method

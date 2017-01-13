@@ -4,25 +4,17 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.Label;
 import de.darmstadt.tu.crossing.cryptSL.Method;
-
-import java.util.Collection;
+import de.darmstadt.tu.crossing.cryptSL.ParList;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,25 +24,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl#getLeftSide <em>Left Side</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl#getMethName <em>Meth Name</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl#getParList <em>Par List</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class MethodImpl extends MinimalEObjectImpl.Container implements Method
 {
-  /**
-   * The cached value of the '{@link #getLabel() <em>Label</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLabel()
-   * @generated
-   * @ordered
-   */
-  protected EList<Label> label;
-
   /**
    * The cached value of the '{@link #getLeftSide() <em>Left Side</em>}' reference.
    * <!-- begin-user-doc -->
@@ -62,14 +44,34 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   protected de.darmstadt.tu.crossing.cryptSL.Object leftSide;
 
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
+   * The default value of the '{@link #getMethName() <em>Meth Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameters()
+   * @see #getMethName()
    * @generated
    * @ordered
    */
-  protected EList<de.darmstadt.tu.crossing.cryptSL.Object> parameters;
+  protected static final String METH_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMethName() <em>Meth Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethName()
+   * @generated
+   * @ordered
+   */
+  protected String methName = METH_NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getParList() <em>Par List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParList()
+   * @generated
+   * @ordered
+   */
+  protected ParList parList;
 
   /**
    * <!-- begin-user-doc -->
@@ -90,20 +92,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   protected EClass eStaticClass()
   {
     return CryptSLPackage.Literals.METHOD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Label> getLabel()
-  {
-    if (label == null)
-    {
-      label = new EObjectContainmentEList<Label>(Label.class, this, CryptSLPackage.METHOD__LABEL);
-    }
-    return label;
   }
 
   /**
@@ -154,13 +142,70 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<de.darmstadt.tu.crossing.cryptSL.Object> getParameters()
+  public String getMethName()
   {
-    if (parameters == null)
+    return methName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMethName(String newMethName)
+  {
+    String oldMethName = methName;
+    methName = newMethName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.METHOD__METH_NAME, oldMethName, methName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParList getParList()
+  {
+    return parList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParList(ParList newParList, NotificationChain msgs)
+  {
+    ParList oldParList = parList;
+    parList = newParList;
+    if (eNotificationRequired())
     {
-      parameters = new EObjectResolvingEList<de.darmstadt.tu.crossing.cryptSL.Object>(de.darmstadt.tu.crossing.cryptSL.Object.class, this, CryptSLPackage.METHOD__PARAMETERS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.METHOD__PAR_LIST, oldParList, newParList);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return parameters;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParList(ParList newParList)
+  {
+    if (newParList != parList)
+    {
+      NotificationChain msgs = null;
+      if (parList != null)
+        msgs = ((InternalEObject)parList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.METHOD__PAR_LIST, null, msgs);
+      if (newParList != null)
+        msgs = ((InternalEObject)newParList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.METHOD__PAR_LIST, null, msgs);
+      msgs = basicSetParList(newParList, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.METHOD__PAR_LIST, newParList, newParList));
   }
 
   /**
@@ -173,8 +218,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case CryptSLPackage.METHOD__LABEL:
-        return ((InternalEList<?>)getLabel()).basicRemove(otherEnd, msgs);
+      case CryptSLPackage.METHOD__PAR_LIST:
+        return basicSetParList(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -189,13 +234,13 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case CryptSLPackage.METHOD__LABEL:
-        return getLabel();
       case CryptSLPackage.METHOD__LEFT_SIDE:
         if (resolve) return getLeftSide();
         return basicGetLeftSide();
-      case CryptSLPackage.METHOD__PARAMETERS:
-        return getParameters();
+      case CryptSLPackage.METHOD__METH_NAME:
+        return getMethName();
+      case CryptSLPackage.METHOD__PAR_LIST:
+        return getParList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -205,22 +250,19 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CryptSLPackage.METHOD__LABEL:
-        getLabel().clear();
-        getLabel().addAll((Collection<? extends Label>)newValue);
-        return;
       case CryptSLPackage.METHOD__LEFT_SIDE:
         setLeftSide((de.darmstadt.tu.crossing.cryptSL.Object)newValue);
         return;
-      case CryptSLPackage.METHOD__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends de.darmstadt.tu.crossing.cryptSL.Object>)newValue);
+      case CryptSLPackage.METHOD__METH_NAME:
+        setMethName((String)newValue);
+        return;
+      case CryptSLPackage.METHOD__PAR_LIST:
+        setParList((ParList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,14 +278,14 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case CryptSLPackage.METHOD__LABEL:
-        getLabel().clear();
-        return;
       case CryptSLPackage.METHOD__LEFT_SIDE:
         setLeftSide((de.darmstadt.tu.crossing.cryptSL.Object)null);
         return;
-      case CryptSLPackage.METHOD__PARAMETERS:
-        getParameters().clear();
+      case CryptSLPackage.METHOD__METH_NAME:
+        setMethName(METH_NAME_EDEFAULT);
+        return;
+      case CryptSLPackage.METHOD__PAR_LIST:
+        setParList((ParList)null);
         return;
     }
     super.eUnset(featureID);
@@ -259,14 +301,31 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case CryptSLPackage.METHOD__LABEL:
-        return label != null && !label.isEmpty();
       case CryptSLPackage.METHOD__LEFT_SIDE:
         return leftSide != null;
-      case CryptSLPackage.METHOD__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
+      case CryptSLPackage.METHOD__METH_NAME:
+        return METH_NAME_EDEFAULT == null ? methName != null : !METH_NAME_EDEFAULT.equals(methName);
+      case CryptSLPackage.METHOD__PAR_LIST:
+        return parList != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (methName: ");
+    result.append(methName);
+    result.append(')');
+    return result.toString();
   }
 
 } //MethodImpl

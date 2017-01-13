@@ -3,6 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
+import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.Event;
@@ -42,6 +43,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReq <em>Req</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEns <em>Ens</em>}</li>
  * </ul>
  *
  * @generated
@@ -89,14 +91,14 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   protected EList<Event> event;
 
   /**
-   * The cached value of the '{@link #getOrder() <em>Order</em>}' containment reference list.
+   * The cached value of the '{@link #getOrder() <em>Order</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOrder()
    * @generated
    * @ordered
    */
-  protected EList<Expression> order;
+  protected Expression order;
 
   /**
    * The cached value of the '{@link #getReq() <em>Req</em>}' containment reference list.
@@ -106,7 +108,17 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * @generated
    * @ordered
    */
-  protected EList<ObjectDecl> req;
+  protected EList<Constraint> req;
+
+  /**
+   * The cached value of the '{@link #getEns() <em>Ens</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEns()
+   * @generated
+   * @ordered
+   */
+  protected EList<Constraint> ens;
 
   /**
    * <!-- begin-user-doc -->
@@ -219,12 +231,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getOrder()
+  public Expression getOrder()
   {
-    if (order == null)
-    {
-      order = new EObjectContainmentEList<Expression>(Expression.class, this, CryptSLPackage.DOMAINMODEL__ORDER);
-    }
     return order;
   }
 
@@ -233,13 +241,65 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ObjectDecl> getReq()
+  public NotificationChain basicSetOrder(Expression newOrder, NotificationChain msgs)
+  {
+    Expression oldOrder = order;
+    order = newOrder;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__ORDER, oldOrder, newOrder);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOrder(Expression newOrder)
+  {
+    if (newOrder != order)
+    {
+      NotificationChain msgs = null;
+      if (order != null)
+        msgs = ((InternalEObject)order).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__ORDER, null, msgs);
+      if (newOrder != null)
+        msgs = ((InternalEObject)newOrder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__ORDER, null, msgs);
+      msgs = basicSetOrder(newOrder, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__ORDER, newOrder, newOrder));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Constraint> getReq()
   {
     if (req == null)
     {
-      req = new EObjectContainmentEList<ObjectDecl>(ObjectDecl.class, this, CryptSLPackage.DOMAINMODEL__REQ);
+      req = new EObjectContainmentEList<Constraint>(Constraint.class, this, CryptSLPackage.DOMAINMODEL__REQ);
     }
     return req;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Constraint> getEns()
+  {
+    if (ens == null)
+    {
+      ens = new EObjectContainmentEList<Constraint>(Constraint.class, this, CryptSLPackage.DOMAINMODEL__ENS);
+    }
+    return ens;
   }
 
   /**
@@ -259,9 +319,11 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__EVENT:
         return ((InternalEList<?>)getEvent()).basicRemove(otherEnd, msgs);
       case CryptSLPackage.DOMAINMODEL__ORDER:
-        return ((InternalEList<?>)getOrder()).basicRemove(otherEnd, msgs);
+        return basicSetOrder(null, msgs);
       case CryptSLPackage.DOMAINMODEL__REQ:
         return ((InternalEList<?>)getReq()).basicRemove(otherEnd, msgs);
+      case CryptSLPackage.DOMAINMODEL__ENS:
+        return ((InternalEList<?>)getEns()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -289,6 +351,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return getOrder();
       case CryptSLPackage.DOMAINMODEL__REQ:
         return getReq();
+      case CryptSLPackage.DOMAINMODEL__ENS:
+        return getEns();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -320,12 +384,15 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         getEvent().addAll((Collection<? extends Event>)newValue);
         return;
       case CryptSLPackage.DOMAINMODEL__ORDER:
-        getOrder().clear();
-        getOrder().addAll((Collection<? extends Expression>)newValue);
+        setOrder((Expression)newValue);
         return;
       case CryptSLPackage.DOMAINMODEL__REQ:
         getReq().clear();
-        getReq().addAll((Collection<? extends ObjectDecl>)newValue);
+        getReq().addAll((Collection<? extends Constraint>)newValue);
+        return;
+      case CryptSLPackage.DOMAINMODEL__ENS:
+        getEns().clear();
+        getEns().addAll((Collection<? extends Constraint>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -354,10 +421,13 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         getEvent().clear();
         return;
       case CryptSLPackage.DOMAINMODEL__ORDER:
-        getOrder().clear();
+        setOrder((Expression)null);
         return;
       case CryptSLPackage.DOMAINMODEL__REQ:
         getReq().clear();
+        return;
+      case CryptSLPackage.DOMAINMODEL__ENS:
+        getEns().clear();
         return;
     }
     super.eUnset(featureID);
@@ -382,9 +452,11 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__EVENT:
         return event != null && !event.isEmpty();
       case CryptSLPackage.DOMAINMODEL__ORDER:
-        return order != null && !order.isEmpty();
+        return order != null;
       case CryptSLPackage.DOMAINMODEL__REQ:
         return req != null && !req.isEmpty();
+      case CryptSLPackage.DOMAINMODEL__ENS:
+        return ens != null && !ens.isEmpty();
     }
     return super.eIsSet(featureID);
   }

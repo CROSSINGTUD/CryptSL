@@ -24,6 +24,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEvent <em>Event</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getOrder <em>Order</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq <em>Req</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEns <em>Ens</em>}</li>
  * </ul>
  *
  * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel()
@@ -107,24 +108,34 @@ public interface Domainmodel extends EObject
   EList<Event> getEvent();
 
   /**
-   * Returns the value of the '<em><b>Order</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Expression}.
+   * Returns the value of the '<em><b>Order</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Order</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Order</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Order</em>' containment reference list.
+   * @return the value of the '<em>Order</em>' containment reference.
+   * @see #setOrder(Expression)
    * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Order()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getOrder();
+  Expression getOrder();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getOrder <em>Order</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Order</em>' containment reference.
+   * @see #getOrder()
+   * @generated
+   */
+  void setOrder(Expression value);
 
   /**
    * Returns the value of the '<em><b>Req</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl}.
+   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Constraint}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Req</em>' containment reference list isn't clear,
@@ -136,6 +147,22 @@ public interface Domainmodel extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ObjectDecl> getReq();
+  EList<Constraint> getReq();
+
+  /**
+   * Returns the value of the '<em><b>Ens</b></em>' containment reference list.
+   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Constraint}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ens</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ens</em>' containment reference list.
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Ens()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Constraint> getEns();
 
 } // Domainmodel

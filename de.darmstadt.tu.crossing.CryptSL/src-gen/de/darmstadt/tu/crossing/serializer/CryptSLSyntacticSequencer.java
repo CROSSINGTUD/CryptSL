@@ -22,6 +22,13 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CryptSLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0;
+	protected AbstractElementAlias match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0;
+	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q;
+	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q;
+	protected AbstractElementAlias match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a;
+	protected AbstractElementAlias match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a;
+	protected AbstractElementAlias match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_a;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_p;
 	protected AbstractElementAlias match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q;
@@ -36,6 +43,13 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CryptSLGrammarAccess) access;
+		match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCompAccess().getINTTerminalRuleCall_0_1_2_1()), new TokenAlias(false, false, grammarAccess.getCompAccess().getSTRINGTerminalRuleCall_0_1_2_0()));
+		match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCompAccess().getINTTerminalRuleCall_0_2_0_1()), new TokenAlias(false, false, grammarAccess.getCompAccess().getSTRINGTerminalRuleCall_0_2_0_0()));
+		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_1());
+		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_2_2());
+		match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()));
+		match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()));
+		match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q = new TokenAlias(false, true, grammarAccess.getObjectDeclAccess().getLeftSquareBracketRightSquareBracketKeyword_1());
 		match_Primary_LeftParenthesisKeyword_1_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()));
@@ -54,8 +68,14 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getArrayBracketsToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getIDRule())
 			return getIDToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getINTRule())
+			return getINTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getOpCompareRule())
+			return getOpCompareToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
+			return getSTRINGToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -81,6 +101,26 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
+	 * terminal INT returns ecore::EInt:
+	 * 	'0'..'9' ('0'..'9'|'_')*;
+	 */
+	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "";
+	}
+	
+	/**
+	 * OpCompare:
+	 * 	'>=' | '<' '=' | '>' | '<' ;
+	 */
+	protected String getOpCompareToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return ">=";
+	}
+	
+	/**
 	 * OpSingleAssign:
 	 * 	'='
 	 * ;
@@ -91,13 +131,38 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "=";
 	}
 	
+	/**
+	 * terminal STRING: 
+	 * 			'"' ( '\\' .  | !('\\'|'"') )* '"'? |
+	 * 			"'" ( '\\' .  | !('\\'|"'") )* "'"?;
+	 */
+	protected String getSTRINGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "\"";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Primary_LeftParenthesisKeyword_1_0_a.equals(syntax))
+			if (match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0.equals(syntax))
+				emit_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0.equals(syntax))
+				emit_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q.equals(syntax))
+				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q.equals(syntax))
+				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a.equals(syntax))
+				emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a.equals(syntax))
+				emit_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q.equals(syntax))
+				emit_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Primary_LeftParenthesisKeyword_1_0_a.equals(syntax))
 				emit_Primary_LeftParenthesisKeyword_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Primary_LeftParenthesisKeyword_1_0_p.equals(syntax))
 				emit_Primary_LeftParenthesisKeyword_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -123,10 +188,91 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Ambiguous syntax:
+	 *     STRING | INT
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     left=[Object|ID] OpCompare (ambiguity) ';' (rule end)
+	 */
+	protected void emit_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     STRING | INT
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) OpCompare right=[Object|ID]
+	 */
+	protected void emit_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '[]'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' '=>' rep=[Event|ID]
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' (rule end)
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ',' parameters+=[JvmType|QualifiedName]
+	 */
+	protected void emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '[]'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' '=>' rep=[Event|ID]
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' (rule end)
+	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ',' parameters+=[JvmType|QualifiedName]
+	 */
+	protected void emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (',' '...')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     parameters+=XLiteral (ambiguity) (rule end)
+	 */
+	protected void emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('...' ',')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     parameters+=XLiteral ',' (ambiguity) parameters+=XLiteral
+	 */
+	protected void emit_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '[]'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     objectType=[JvmType|QualifiedName] (ambiguity) objectName=Object
+	 */
+	protected void emit_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) methx=[Label|ID]
+	 *     (rule start) (ambiguity) orderEv+=[Event|ID]
 	 *     (rule start) (ambiguity) {Order.left=}
 	 *     (rule start) (ambiguity) {SimpleOrder.left=}
 	 */
@@ -151,7 +297,7 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('+' | '?' | '*')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     methx=[Label|ID] (ambiguity) (rule end)
+	 *     orderEv+=[Event|ID] (ambiguity) (rule end)
 	 */
 	protected void emit_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

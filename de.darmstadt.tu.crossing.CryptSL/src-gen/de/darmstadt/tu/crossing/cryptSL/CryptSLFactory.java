@@ -33,6 +33,15 @@ public interface CryptSLFactory extends EFactory
   Domainmodel createDomainmodel();
 
   /**
+   * Returns a new object of class '<em>Object Decl</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object Decl</em>'.
+   * @generated
+   */
+  ObjectDecl createObjectDecl();
+
+  /**
    * Returns a new object of class '<em>Event</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -40,33 +49,6 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   Event createEvent();
-
-  /**
-   * Returns a new object of class '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression</em>'.
-   * @generated
-   */
-  Expression createExpression();
-
-  /**
-   * Returns a new object of class '<em>Order Ev</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Order Ev</em>'.
-   * @generated
-   */
-  OrderEv createOrderEv();
-
-  /**
-   * Returns a new object of class '<em>Method</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Method</em>'.
-   * @generated
-   */
-  Method createMethod();
 
   /**
    * Returns a new object of class '<em>Forb Method</em>'.
@@ -78,22 +60,76 @@ public interface CryptSLFactory extends EFactory
   ForbMethod createForbMethod();
 
   /**
-   * Returns a new object of class '<em>Object Decl</em>'.
+   * Returns a new object of class '<em>Label Method Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Object Decl</em>'.
+   * @return a new object of class '<em>Label Method Call</em>'.
    * @generated
    */
-  ObjectDecl createObjectDecl();
+  LabelMethodCall createLabelMethodCall();
 
   /**
-   * Returns a new object of class '<em>Label</em>'.
+   * Returns a new object of class '<em>Method</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Label</em>'.
+   * @return a new object of class '<em>Method</em>'.
    * @generated
    */
-  Label createLabel();
+  Method createMethod();
+
+  /**
+   * Returns a new object of class '<em>Par List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Par List</em>'.
+   * @generated
+   */
+  ParList createParList();
+
+  /**
+   * Returns a new object of class '<em>Par</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Par</em>'.
+   * @generated
+   */
+  Par createPar();
+
+  /**
+   * Returns a new object of class '<em>Aggregate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Aggregate</em>'.
+   * @generated
+   */
+  Aggregate createAggregate();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constraint</em>'.
+   * @generated
+   */
+  Constraint createConstraint();
+
+  /**
+   * Returns a new object of class '<em>Lit List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lit List</em>'.
+   * @generated
+   */
+  LitList createLitList();
 
   /**
    * Returns a new object of class '<em>Object</em>'.

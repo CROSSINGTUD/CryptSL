@@ -4,8 +4,8 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.Label;
 
 import java.util.Collection;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,7 +47,7 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * @generated
    * @ordered
    */
-  protected EList<de.darmstadt.tu.crossing.cryptSL.Object> parameters;
+  protected EList<JvmType> parameters;
 
   /**
    * The cached value of the '{@link #getRep() <em>Rep</em>}' reference.
@@ -55,7 +57,7 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * @generated
    * @ordered
    */
-  protected Label rep;
+  protected Event rep;
 
   /**
    * <!-- begin-user-doc -->
@@ -83,11 +85,11 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<de.darmstadt.tu.crossing.cryptSL.Object> getParameters()
+  public EList<JvmType> getParameters()
   {
     if (parameters == null)
     {
-      parameters = new EObjectResolvingEList<de.darmstadt.tu.crossing.cryptSL.Object>(de.darmstadt.tu.crossing.cryptSL.Object.class, this, CryptSLPackage.FORB_METHOD__PARAMETERS);
+      parameters = new EObjectResolvingEList<JvmType>(JvmType.class, this, CryptSLPackage.FORB_METHOD__PARAMETERS);
     }
     return parameters;
   }
@@ -97,12 +99,12 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  public Label getRep()
+  public Event getRep()
   {
     if (rep != null && rep.eIsProxy())
     {
       InternalEObject oldRep = (InternalEObject)rep;
-      rep = (Label)eResolveProxy(oldRep);
+      rep = (Event)eResolveProxy(oldRep);
       if (rep != oldRep)
       {
         if (eNotificationRequired())
@@ -117,7 +119,7 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  public Label basicGetRep()
+  public Event basicGetRep()
   {
     return rep;
   }
@@ -127,9 +129,9 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRep(Label newRep)
+  public void setRep(Event newRep)
   {
-    Label oldRep = rep;
+    Event oldRep = rep;
     rep = newRep;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.FORB_METHOD__REP, oldRep, rep));
@@ -167,10 +169,10 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
     {
       case CryptSLPackage.FORB_METHOD__PARAMETERS:
         getParameters().clear();
-        getParameters().addAll((Collection<? extends de.darmstadt.tu.crossing.cryptSL.Object>)newValue);
+        getParameters().addAll((Collection<? extends JvmType>)newValue);
         return;
       case CryptSLPackage.FORB_METHOD__REP:
-        setRep((Label)newValue);
+        setRep((Event)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -190,7 +192,7 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
         getParameters().clear();
         return;
       case CryptSLPackage.FORB_METHOD__REP:
-        setRep((Label)null);
+        setRep((Event)null);
         return;
     }
     super.eUnset(featureID);

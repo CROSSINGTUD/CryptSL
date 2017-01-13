@@ -1,56 +1,65 @@
-grammar de.darmstadt.tu.crossing.CryptSL with
-                                      org.eclipse.xtext.xbase.Xbase
+grammar de.darmstadt.tu.crossing.CryptSL with org.eclipse.xtext.xbase.Xbase
 
 generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
-
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
- 
 Domainmodel:
-    'SPEC' javaType = [jvmTypes::JvmType|QualifiedName]
+	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
 	'USES_OBJECTS' (object+=ObjectDecl)+
 	('FORBIDDEN_EVENTS' (method+=ForbMethod)+)?
 	'REQUIRED_EVENTS' (event+=Event)+
-	'ENFORCE_ORDER' (order+=Order)+
-	'ENFORCES_CONSTRAINTS' (req+=ObjectDecl)*
-	'ENSURES' (req+=ObjectDecl);
-
-Event:
-	method+=Method | agg+=Label ':=' (lab+=[Label] (',' lab+=[Label])*) ";"
-;
-
-Order returns Expression:
-  SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*;
-
-SimpleOrder returns Expression:
-  Primary ({SimpleOrder.left=current} '|' right=Primary)*;
-
-Primary returns Expression:
-  OrderEv ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?
-;
-
-OrderEv:
-	methx=[Label] 
-;
-
-Method returns Method: 
-	 label+=Label ":" (leftSide=[Object] "=")? ID "(" (parameters+=[Object] (',' parameters+=[Object])*)?");"
-;
-
-ForbMethod:
-	ID "(" (parameters+=[Object] (',' parameters+=[Object])*)")" ("=>" rep=[Label])?
-;
+	'ENFORCE_ORDER' order=Order
+	'ENFORCES_CONSTRAINTS' (req+=Constraint)*
+	('ENSURES' (ens+=Pred)+)?;
 
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName]  objectName=Object ";"	
-;
+	objectType=[jvmTypes::JvmType|QualifiedName] ("[]")? objectName=Object ";";
 
-Label:
-	{Label}name=ID
-;
+Event:
+	LabelMethodCall | Aggregate;
+
+ForbMethod:
+	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")? 
+		(',' parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")?)*)? ")" ("=>" rep=[Event])?);
+
+LabelMethodCall:
+	name=ID ":" meth=Method;
+
+Method:
+	(leftSide=[Object] "=")? methName=ID "(" parList=ParList? ");";
+
+ParList:
+	(parameters+=Par (',' parameters+=Par)*);
+
+Par:
+	{Par} (val=[Object] | '_');
+
+Aggregate:
+	name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";";
+
+Order returns Expression:
+	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*;
+
+SimpleOrder returns Expression:
+	Primary ({SimpleOrder.left=current} '|' right=Primary)*;
+
+Primary returns Expression:
+	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?;
+
+Constraint:
+	(cons+=Comp | cons+=Incl | cons+=Pred);
+
+Incl returns Constraint:
+	algl=[Object] "in" "{" litsleft=LitList "}" "=>" algr=[Object] "in" "{" litsright=LitList "}";
+
+LitList:
+	(parameters+=XLiteral (',' (parameters+=XLiteral | '...'))*);
+
+Pred returns Constraint:
+	(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");";
+
+Comp returns Constraint:
+	(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare right=[Object]) ";";
 
 Object:
-	{Object}name=ID
-;
-
-	
+	{Object} name=ID;

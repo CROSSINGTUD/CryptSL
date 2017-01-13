@@ -3,16 +3,20 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.util;
 
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
+import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.Label;
+import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Method;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
-import de.darmstadt.tu.crossing.cryptSL.OrderEv;
+import de.darmstadt.tu.crossing.cryptSL.Par;
+import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 
 import org.eclipse.emf.ecore.EObject;
@@ -90,32 +94,17 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CryptSLPackage.OBJECT_DECL:
+      {
+        ObjectDecl objectDecl = (ObjectDecl)theEObject;
+        T result = caseObjectDecl(objectDecl);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CryptSLPackage.EVENT:
       {
         Event event = (Event)theEObject;
         T result = caseEvent(event);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CryptSLPackage.EXPRESSION:
-      {
-        Expression expression = (Expression)theEObject;
-        T result = caseExpression(expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CryptSLPackage.ORDER_EV:
-      {
-        OrderEv orderEv = (OrderEv)theEObject;
-        T result = caseOrderEv(orderEv);
-        if (result == null) result = caseExpression(orderEv);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CryptSLPackage.METHOD:
-      {
-        Method method = (Method)theEObject;
-        T result = caseMethod(method);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -126,17 +115,61 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.OBJECT_DECL:
+      case CryptSLPackage.LABEL_METHOD_CALL:
       {
-        ObjectDecl objectDecl = (ObjectDecl)theEObject;
-        T result = caseObjectDecl(objectDecl);
+        LabelMethodCall labelMethodCall = (LabelMethodCall)theEObject;
+        T result = caseLabelMethodCall(labelMethodCall);
+        if (result == null) result = caseEvent(labelMethodCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.LABEL:
+      case CryptSLPackage.METHOD:
       {
-        Label label = (Label)theEObject;
-        T result = caseLabel(label);
+        Method method = (Method)theEObject;
+        T result = caseMethod(method);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.PAR_LIST:
+      {
+        ParList parList = (ParList)theEObject;
+        T result = caseParList(parList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.PAR:
+      {
+        Par par = (Par)theEObject;
+        T result = casePar(par);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.AGGREGATE:
+      {
+        Aggregate aggregate = (Aggregate)theEObject;
+        T result = caseAggregate(aggregate);
+        if (result == null) result = caseEvent(aggregate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.CONSTRAINT:
+      {
+        Constraint constraint = (Constraint)theEObject;
+        T result = caseConstraint(constraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.LIT_LIST:
+      {
+        LitList litList = (LitList)theEObject;
+        T result = caseLitList(litList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -184,6 +217,22 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Object Decl</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Object Decl</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObjectDecl(ObjectDecl object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -195,54 +244,6 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEvent(Event object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpression(Expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Order Ev</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Order Ev</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOrderEv(OrderEv object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Method</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Method</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMethod(Method object)
   {
     return null;
   }
@@ -264,33 +265,129 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Object Decl</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Label Method Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Object Decl</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Label Method Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObjectDecl(ObjectDecl object)
+  public T caseLabelMethodCall(LabelMethodCall object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Label</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Method</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Label</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Method</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLabel(Label object)
+  public T caseMethod(Method object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Par List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Par List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParList(ParList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Par</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Par</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePar(Par object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Aggregate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Aggregate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAggregate(Aggregate object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstraint(Constraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Lit List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Lit List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLitList(LitList object)
   {
     return null;
   }
