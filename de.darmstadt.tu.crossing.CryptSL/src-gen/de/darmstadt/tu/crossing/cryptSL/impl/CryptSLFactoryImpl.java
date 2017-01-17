@@ -4,6 +4,9 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
+import de.darmstadt.tu.crossing.cryptSL.Cons;
+import de.darmstadt.tu.crossing.cryptSL.ConsList;
+import de.darmstadt.tu.crossing.cryptSL.ConsPred;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
@@ -14,6 +17,8 @@ import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Method;
+import de.darmstadt.tu.crossing.cryptSL.NoEq;
+import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
@@ -91,7 +96,12 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.AGGREGATE: return createAggregate();
       case CryptSLPackage.EXPRESSION: return createExpression();
       case CryptSLPackage.CONSTRAINT: return createConstraint();
+      case CryptSLPackage.CONS_LIST: return createConsList();
+      case CryptSLPackage.CONS: return createCons();
+      case CryptSLPackage.NO_EQ: return createNoEq();
+      case CryptSLPackage.CONS_PRED: return createConsPred();
       case CryptSLPackage.LIT_LIST: return createLitList();
+      case CryptSLPackage.OB_AC: return createObAc();
       case CryptSLPackage.OBJECT: return createObject();
       case CryptSLPackage.ORDER: return createOrder();
       case CryptSLPackage.SIMPLE_ORDER: return createSimpleOrder();
@@ -226,10 +236,65 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ConsList createConsList()
+  {
+    ConsListImpl consList = new ConsListImpl();
+    return consList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Cons createCons()
+  {
+    ConsImpl cons = new ConsImpl();
+    return cons;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NoEq createNoEq()
+  {
+    NoEqImpl noEq = new NoEqImpl();
+    return noEq;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConsPred createConsPred()
+  {
+    ConsPredImpl consPred = new ConsPredImpl();
+    return consPred;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LitList createLitList()
   {
     LitListImpl litList = new LitListImpl();
     return litList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ObAc createObAc()
+  {
+    ObAcImpl obAc = new ObAcImpl();
+    return obAc;
   }
 
   /**

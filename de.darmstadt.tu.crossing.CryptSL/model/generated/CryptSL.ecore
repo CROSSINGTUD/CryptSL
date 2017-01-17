@@ -62,23 +62,43 @@
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" upperBound="-1" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algl" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algl" eType="#//ConsList"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algr" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="litsright" eType="#//LitList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algr" eType="#//ConsList"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//ParList"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ObAc" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ObAc"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConsList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" upperBound="-1" eType="#//Cons"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cons">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//ConsPred"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NoEq" eSuperTypes="#//Cons">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ObAc" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ObAc"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConsPred">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Object"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LitList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObAc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Object"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Object">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

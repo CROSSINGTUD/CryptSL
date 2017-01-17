@@ -4,6 +4,9 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
+import de.darmstadt.tu.crossing.cryptSL.Cons;
+import de.darmstadt.tu.crossing.cryptSL.ConsList;
+import de.darmstadt.tu.crossing.cryptSL.ConsPred;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
@@ -14,6 +17,8 @@ import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Method;
+import de.darmstadt.tu.crossing.cryptSL.NoEq;
+import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
@@ -121,7 +126,42 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass consListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass consEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass noEqEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass consPredEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass litListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass obAcEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -565,7 +605,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstraint_Litsleft()
+  public EReference getConstraint_Algr()
   {
     return (EReference)constraintEClass.getEStructuralFeatures().get(2);
   }
@@ -575,7 +615,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstraint_Algr()
+  public EReference getConstraint_LeftSide()
   {
     return (EReference)constraintEClass.getEStructuralFeatures().get(3);
   }
@@ -585,29 +625,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstraint_Litsright()
-  {
-    return (EReference)constraintEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConstraint_LeftSide()
-  {
-    return (EReference)constraintEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getConstraint_PredName()
   {
-    return (EAttribute)constraintEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)constraintEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -617,7 +637,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getConstraint_ParList()
   {
-    return (EReference)constraintEClass.getEStructuralFeatures().get(7);
+    return (EReference)constraintEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -627,7 +647,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getConstraint_Left()
   {
-    return (EReference)constraintEClass.getEStructuralFeatures().get(8);
+    return (EReference)constraintEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -637,7 +657,107 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getConstraint_Right()
   {
-    return (EReference)constraintEClass.getEStructuralFeatures().get(9);
+    return (EReference)constraintEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConsList()
+  {
+    return consListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConsList_List()
+  {
+    return (EReference)consListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCons()
+  {
+    return consEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCons_Cons()
+  {
+    return (EReference)consEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCons_Litsleft()
+  {
+    return (EReference)consEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNoEq()
+  {
+    return noEqEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNoEq_Left()
+  {
+    return (EReference)noEqEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNoEq_Right()
+  {
+    return (EReference)noEqEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConsPred()
+  {
+    return consPredEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConsPred_Name()
+  {
+    return (EReference)consPredEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -658,6 +778,26 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
   public EReference getLitList_Parameters()
   {
     return (EReference)litListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getObAc()
+  {
+    return obAcEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getObAc_Name()
+  {
+    return (EReference)obAcEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -775,17 +915,32 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     constraintEClass = createEClass(CONSTRAINT);
     createEReference(constraintEClass, CONSTRAINT__CONS);
     createEReference(constraintEClass, CONSTRAINT__ALGL);
-    createEReference(constraintEClass, CONSTRAINT__LITSLEFT);
     createEReference(constraintEClass, CONSTRAINT__ALGR);
-    createEReference(constraintEClass, CONSTRAINT__LITSRIGHT);
     createEReference(constraintEClass, CONSTRAINT__LEFT_SIDE);
     createEAttribute(constraintEClass, CONSTRAINT__PRED_NAME);
     createEReference(constraintEClass, CONSTRAINT__PAR_LIST);
     createEReference(constraintEClass, CONSTRAINT__LEFT);
     createEReference(constraintEClass, CONSTRAINT__RIGHT);
 
+    consListEClass = createEClass(CONS_LIST);
+    createEReference(consListEClass, CONS_LIST__LIST);
+
+    consEClass = createEClass(CONS);
+    createEReference(consEClass, CONS__CONS);
+    createEReference(consEClass, CONS__LITSLEFT);
+
+    noEqEClass = createEClass(NO_EQ);
+    createEReference(noEqEClass, NO_EQ__LEFT);
+    createEReference(noEqEClass, NO_EQ__RIGHT);
+
+    consPredEClass = createEClass(CONS_PRED);
+    createEReference(consPredEClass, CONS_PRED__NAME);
+
     litListEClass = createEClass(LIT_LIST);
     createEReference(litListEClass, LIT_LIST__PARAMETERS);
+
+    obAcEClass = createEClass(OB_AC);
+    createEReference(obAcEClass, OB_AC__NAME);
 
     objectEClass = createEClass(OBJECT);
     createEAttribute(objectEClass, OBJECT__NAME);
@@ -830,6 +985,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Add supertypes to classes
     labelMethodCallEClass.getESuperTypes().add(this.getEvent());
     aggregateEClass.getESuperTypes().add(this.getEvent());
+    noEqEClass.getESuperTypes().add(this.getCons());
     orderEClass.getESuperTypes().add(this.getExpression());
     simpleOrderEClass.getESuperTypes().add(this.getExpression());
 
@@ -878,18 +1034,33 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConstraint_Cons(), this.getConstraint(), null, "cons", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Algl(), this.getObject(), null, "algl", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Algr(), this.getObject(), null, "algr", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Litsright(), this.getLitList(), null, "litsright", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Algl(), this.getConsList(), null, "algl", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Algr(), this.getConsList(), null, "algr", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstraint_LeftSide(), this.getObject(), null, "leftSide", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraint_PredName(), ecorePackage.getEString(), "predName", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstraint_ParList(), this.getParList(), null, "parList", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Left(), this.getObject(), null, "left", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraint_Right(), this.getObject(), null, "right", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Left(), this.getObAc(), null, "left", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Right(), this.getObAc(), null, "right", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(consListEClass, ConsList.class, "ConsList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConsList_List(), this.getCons(), null, "list", null, 0, -1, ConsList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(consEClass, Cons.class, "Cons", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCons_Cons(), this.getConsPred(), null, "cons", null, 0, 1, Cons.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCons_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, Cons.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(noEqEClass, NoEq.class, "NoEq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNoEq_Left(), this.getObAc(), null, "left", null, 0, 1, NoEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNoEq_Right(), this.getObAc(), null, "right", null, 0, 1, NoEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(consPredEClass, ConsPred.class, "ConsPred", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConsPred_Name(), this.getObject(), null, "name", null, 0, 1, ConsPred.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(litListEClass, LitList.class, "LitList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLitList_Parameters(), theXbasePackage.getXExpression(), null, "parameters", null, 0, -1, LitList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(obAcEClass, ObAc.class, "ObAc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getObAc_Name(), this.getObject(), null, "name", null, 0, 1, ObAc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectEClass, de.darmstadt.tu.crossing.cryptSL.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, de.darmstadt.tu.crossing.cryptSL.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

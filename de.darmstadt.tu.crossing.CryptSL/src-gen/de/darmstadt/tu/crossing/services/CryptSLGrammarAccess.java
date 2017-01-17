@@ -144,16 +144,16 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cObjectTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cObjectTypeJvmTypeCrossReference_0_0 = (CrossReference)cObjectTypeAssignment_0.eContents().get(0);
 		private final RuleCall cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cObjectTypeJvmTypeCrossReference_0_0.eContents().get(1);
-		private final Keyword cLeftSquareBracketRightSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cArrayBracketsParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Assignment cObjectNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cObjectNameObjectParserRuleCall_2_0 = (RuleCall)cObjectNameAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ObjectDecl:
-		//	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
+		//	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";"
+		//objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";"
 		public Group getGroup() { return cGroup; }
 		
 		//objectType=[jvmTypes::JvmType|QualifiedName]
@@ -165,8 +165,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1() { return cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1; }
 		
-		//"[]"?
-		public Keyword getLeftSquareBracketRightSquareBracketKeyword_1() { return cLeftSquareBracketRightSquareBracketKeyword_1; }
+		//ArrayBrackets?
+		public RuleCall getArrayBracketsParserRuleCall_1() { return cArrayBracketsParserRuleCall_1; }
 		
 		//objectName=Object
 		public Assignment getObjectNameAssignment_2() { return cObjectNameAssignment_2; }
@@ -207,7 +207,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cParametersAssignment_1_2_0 = (Assignment)cGroup_1_2.eContents().get(0);
 		private final CrossReference cParametersJvmTypeCrossReference_1_2_0_0 = (CrossReference)cParametersAssignment_1_2_0.eContents().get(0);
 		private final RuleCall cParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1 = (RuleCall)cParametersJvmTypeCrossReference_1_2_0_0.eContents().get(1);
-		private final Keyword cLeftSquareBracketRightSquareBracketKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final RuleCall cArrayBracketsParserRuleCall_1_2_1 = (RuleCall)cGroup_1_2.eContents().get(1);
 		private final Group cGroup_1_2_2 = (Group)cGroup_1_2.eContents().get(2);
 		private final Keyword cCommaKeyword_1_2_2_0 = (Keyword)cGroup_1_2_2.eContents().get(0);
 		private final Assignment cParametersAssignment_1_2_2_1 = (Assignment)cGroup_1_2_2.eContents().get(1);
@@ -222,18 +222,18 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRepEventIDTerminalRuleCall_1_4_1_0_1 = (RuleCall)cRepEventCrossReference_1_4_1_0.eContents().get(1);
 		
 		//ForbMethod:
-		//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
+		//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
 		//	parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
+		//{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
 		//parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?)
 		public Group getGroup() { return cGroup; }
 		
 		//{ForbMethod}
 		public Action getForbMethodAction_0() { return cForbMethodAction_0; }
 		
-		//(ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
+		//(ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
 		//"[]"?)*)? ")" ("=>" rep=[Event])?)
 		public Group getGroup_1() { return cGroup_1; }
 		
@@ -243,7 +243,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 		
-		//(parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (',' parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)?
+		//(parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
+		//"[]"?)*)?
 		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//parameters+=[jvmTypes::JvmType|QualifiedName]
@@ -255,8 +256,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1() { return cParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1; }
 		
-		//"[]"?
-		public Keyword getLeftSquareBracketRightSquareBracketKeyword_1_2_1() { return cLeftSquareBracketRightSquareBracketKeyword_1_2_1; }
+		//ArrayBrackets?
+		public RuleCall getArrayBracketsParserRuleCall_1_2_1() { return cArrayBracketsParserRuleCall_1_2_1; }
 		
 		//(',' parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*
 		public Group getGroup_1_2_2() { return cGroup_1_2_2; }
@@ -665,14 +666,16 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConsCompParserRuleCall_0_0 = (RuleCall)cConsAssignment_0.eContents().get(0);
 		private final Assignment cConsAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cConsInclParserRuleCall_1_0 = (RuleCall)cConsAssignment_1.eContents().get(0);
-		private final Assignment cConsAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cConsPredParserRuleCall_2_0 = (RuleCall)cConsAssignment_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cExclamationMarkKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cConsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cConsPredParserRuleCall_2_1_0 = (RuleCall)cConsAssignment_2_1.eContents().get(0);
 		
 		//Constraint:
-		//	cons+=Comp | cons+=Incl | cons+=Pred;
+		//	cons+=Comp | cons+=Incl | '!'? cons+=Pred;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//cons+=Comp | cons+=Incl | cons+=Pred
+		//cons+=Comp | cons+=Incl | '!'? cons+=Pred
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//cons+=Comp
@@ -687,90 +690,306 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Incl
 		public RuleCall getConsInclParserRuleCall_1_0() { return cConsInclParserRuleCall_1_0; }
 		
+		//'!'? cons+=Pred
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'!'?
+		public Keyword getExclamationMarkKeyword_2_0() { return cExclamationMarkKeyword_2_0; }
+		
 		//cons+=Pred
-		public Assignment getConsAssignment_2() { return cConsAssignment_2; }
+		public Assignment getConsAssignment_2_1() { return cConsAssignment_2_1; }
 		
 		//Pred
-		public RuleCall getConsPredParserRuleCall_2_0() { return cConsPredParserRuleCall_2_0; }
+		public RuleCall getConsPredParserRuleCall_2_1_0() { return cConsPredParserRuleCall_2_1_0; }
 	}
 	public class InclElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Incl");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAlglAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cAlglObjectCrossReference_0_0 = (CrossReference)cAlglAssignment_0.eContents().get(0);
-		private final RuleCall cAlglObjectIDTerminalRuleCall_0_0_1 = (RuleCall)cAlglObjectCrossReference_0_0.eContents().get(1);
-		private final Keyword cInKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cLitsleftAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLitsleftLitListParserRuleCall_3_0 = (RuleCall)cLitsleftAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cAlgrAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final CrossReference cAlgrObjectCrossReference_6_0 = (CrossReference)cAlgrAssignment_6.eContents().get(0);
-		private final RuleCall cAlgrObjectIDTerminalRuleCall_6_0_1 = (RuleCall)cAlgrObjectCrossReference_6_0.eContents().get(1);
-		private final Keyword cInKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cLitsrightAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cLitsrightLitListParserRuleCall_9_0 = (RuleCall)cLitsrightAssignment_9.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final RuleCall cAlglConsListParserRuleCall_0_0 = (RuleCall)cAlglAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cAlgrAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cAlgrConsListParserRuleCall_1_1_0 = (RuleCall)cAlgrAssignment_1_1.eContents().get(0);
 		
 		//Incl Constraint:
-		//	algl=[Object] "in" "{" litsleft=LitList "}" "=>" algr=[Object] "in" "{" litsright=LitList "}"
+		//	algl=ConsList ("=>" algr=ConsList)?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//algl=[Object] "in" "{" litsleft=LitList "}" "=>" algr=[Object] "in" "{" litsright=LitList "}"
+		//algl=ConsList ("=>" algr=ConsList)?
 		public Group getGroup() { return cGroup; }
 		
-		//algl=[Object]
+		//algl=ConsList
 		public Assignment getAlglAssignment_0() { return cAlglAssignment_0; }
 		
-		//[Object]
-		public CrossReference getAlglObjectCrossReference_0_0() { return cAlglObjectCrossReference_0_0; }
+		//ConsList
+		public RuleCall getAlglConsListParserRuleCall_0_0() { return cAlglConsListParserRuleCall_0_0; }
 		
-		//ID
-		public RuleCall getAlglObjectIDTerminalRuleCall_0_0_1() { return cAlglObjectIDTerminalRuleCall_0_0_1; }
-		
-		//"in"
-		public Keyword getInKeyword_1() { return cInKeyword_1; }
-		
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//litsleft=LitList
-		public Assignment getLitsleftAssignment_3() { return cLitsleftAssignment_3; }
-		
-		//LitList
-		public RuleCall getLitsleftLitListParserRuleCall_3_0() { return cLitsleftLitListParserRuleCall_3_0; }
-		
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		//("=>" algr=ConsList)?
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//"=>"
-		public Keyword getEqualsSignGreaterThanSignKeyword_5() { return cEqualsSignGreaterThanSignKeyword_5; }
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_0() { return cEqualsSignGreaterThanSignKeyword_1_0; }
 		
-		//algr=[Object]
-		public Assignment getAlgrAssignment_6() { return cAlgrAssignment_6; }
+		//algr=ConsList
+		public Assignment getAlgrAssignment_1_1() { return cAlgrAssignment_1_1; }
 		
-		//[Object]
-		public CrossReference getAlgrObjectCrossReference_6_0() { return cAlgrObjectCrossReference_6_0; }
+		//ConsList
+		public RuleCall getAlgrConsListParserRuleCall_1_1_0() { return cAlgrConsListParserRuleCall_1_1_0; }
+	}
+	public class ConsListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ConsList");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cListAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cListConsParserRuleCall_0_0 = (RuleCall)cListAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final RuleCall cLogConParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Assignment cListAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cListConsParserRuleCall_1_1_0 = (RuleCall)cListAssignment_1_1.eContents().get(0);
 		
-		//ID
-		public RuleCall getAlgrObjectIDTerminalRuleCall_6_0_1() { return cAlgrObjectIDTerminalRuleCall_6_0_1; }
+		//ConsList:
+		//	list+=Cons (LogCon list+=Cons)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//list+=Cons (LogCon list+=Cons)*
+		public Group getGroup() { return cGroup; }
+		
+		//list+=Cons
+		public Assignment getListAssignment_0() { return cListAssignment_0; }
+		
+		//Cons
+		public RuleCall getListConsParserRuleCall_0_0() { return cListConsParserRuleCall_0_0; }
+		
+		//(LogCon list+=Cons)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//LogCon
+		public RuleCall getLogConParserRuleCall_1_0() { return cLogConParserRuleCall_1_0; }
+		
+		//list+=Cons
+		public Assignment getListAssignment_1_1() { return cListAssignment_1_1; }
+		
+		//Cons
+		public RuleCall getListConsParserRuleCall_1_1_0() { return cListConsParserRuleCall_1_1_0; }
+	}
+	public class LogConElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogCon");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cOpAndParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cOpOrParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//LogCon:
+		//	OpAnd | OpOr;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OpAnd | OpOr
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//OpAnd
+		public RuleCall getOpAndParserRuleCall_0() { return cOpAndParserRuleCall_0; }
+		
+		//OpOr
+		public RuleCall getOpOrParserRuleCall_1() { return cOpOrParserRuleCall_1; }
+	}
+	public class ConsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Cons");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cConsAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cConsConsPredParserRuleCall_0_0_0 = (RuleCall)cConsAssignment_0_0.eContents().get(0);
+		private final Keyword cInKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cLitsleftAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cLitsleftLitListParserRuleCall_0_3_0 = (RuleCall)cLitsleftAssignment_0_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final RuleCall cNoEqParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Cons:
+		//	cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//cons=ConsPred "in" "{" litsleft=LitList "}"
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//cons=ConsPred
+		public Assignment getConsAssignment_0_0() { return cConsAssignment_0_0; }
+		
+		//ConsPred
+		public RuleCall getConsConsPredParserRuleCall_0_0_0() { return cConsConsPredParserRuleCall_0_0_0; }
 		
 		//"in"
-		public Keyword getInKeyword_7() { return cInKeyword_7; }
+		public Keyword getInKeyword_0_1() { return cInKeyword_0_1; }
 		
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
 		
-		//litsright=LitList
-		public Assignment getLitsrightAssignment_9() { return cLitsrightAssignment_9; }
+		//litsleft=LitList
+		public Assignment getLitsleftAssignment_0_3() { return cLitsleftAssignment_0_3; }
 		
 		//LitList
-		public RuleCall getLitsrightLitListParserRuleCall_9_0() { return cLitsrightLitListParserRuleCall_9_0; }
+		public RuleCall getLitsleftLitListParserRuleCall_0_3_0() { return cLitsleftLitListParserRuleCall_0_3_0; }
 		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+		public Keyword getRightCurlyBracketKeyword_0_4() { return cRightCurlyBracketKeyword_0_4; }
+		
+		//NoEq
+		public RuleCall getNoEqParserRuleCall_1() { return cNoEqParserRuleCall_1; }
+	}
+	public class NoEqElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.NoEq");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cLeftAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cLeftObAcParserRuleCall_0_0_0 = (RuleCall)cLeftAssignment_0_0.eContents().get(0);
+		private final RuleCall cNoEqOpParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Assignment cRightAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cRightObAcParserRuleCall_0_2_0 = (RuleCall)cRightAssignment_0_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cLeftAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cLeftObAcParserRuleCall_1_0_0 = (RuleCall)cLeftAssignment_1_0.eContents().get(0);
+		private final RuleCall cNoEqOpParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Alternatives cAlternatives_1_2 = (Alternatives)cGroup_1.eContents().get(2);
+		private final RuleCall cSTRINGTerminalRuleCall_1_2_0 = (RuleCall)cAlternatives_1_2.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1_2_1 = (RuleCall)cAlternatives_1_2.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_2_0_0 = (RuleCall)cAlternatives_2_0.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_2_0_1 = (RuleCall)cAlternatives_2_0.eContents().get(1);
+		private final RuleCall cNoEqOpParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Assignment cRightAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cRightObAcParserRuleCall_2_2_0 = (RuleCall)cRightAssignment_2_2.eContents().get(0);
+		
+		//NoEq:
+		//	left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//left=ObAc NoEqOp right=ObAc
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//left=ObAc
+		public Assignment getLeftAssignment_0_0() { return cLeftAssignment_0_0; }
+		
+		//ObAc
+		public RuleCall getLeftObAcParserRuleCall_0_0_0() { return cLeftObAcParserRuleCall_0_0_0; }
+		
+		//NoEqOp
+		public RuleCall getNoEqOpParserRuleCall_0_1() { return cNoEqOpParserRuleCall_0_1; }
+		
+		//right=ObAc
+		public Assignment getRightAssignment_0_2() { return cRightAssignment_0_2; }
+		
+		//ObAc
+		public RuleCall getRightObAcParserRuleCall_0_2_0() { return cRightObAcParserRuleCall_0_2_0; }
+		
+		//left=ObAc NoEqOp (STRING | INT)
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//left=ObAc
+		public Assignment getLeftAssignment_1_0() { return cLeftAssignment_1_0; }
+		
+		//ObAc
+		public RuleCall getLeftObAcParserRuleCall_1_0_0() { return cLeftObAcParserRuleCall_1_0_0; }
+		
+		//NoEqOp
+		public RuleCall getNoEqOpParserRuleCall_1_1() { return cNoEqOpParserRuleCall_1_1; }
+		
+		//(STRING | INT)
+		public Alternatives getAlternatives_1_2() { return cAlternatives_1_2; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1_2_0() { return cSTRINGTerminalRuleCall_1_2_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_2_1() { return cINTTerminalRuleCall_1_2_1; }
+		
+		//(STRING | INT) NoEqOp right=ObAc
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//(STRING | INT)
+		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_2_0_0() { return cSTRINGTerminalRuleCall_2_0_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_2_0_1() { return cINTTerminalRuleCall_2_0_1; }
+		
+		//NoEqOp
+		public RuleCall getNoEqOpParserRuleCall_2_1() { return cNoEqOpParserRuleCall_2_1; }
+		
+		//right=ObAc
+		public Assignment getRightAssignment_2_2() { return cRightAssignment_2_2; }
+		
+		//ObAc
+		public RuleCall getRightObAcParserRuleCall_2_2_0() { return cRightObAcParserRuleCall_2_2_0; }
+	}
+	public class NoEqOpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.NoEqOp");
+		private final Keyword cExclamationMarkEqualsSignKeyword = (Keyword)rule.eContents().get(1);
+		
+		//NoEqOp:
+		//	'!=';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'!='
+		public Keyword getExclamationMarkEqualsSignKeyword() { return cExclamationMarkEqualsSignKeyword; }
+	}
+	public class ConsPredElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ConsPred");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cPartKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cCommaKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cSTRINGTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
+		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final Keyword cOfKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cNameObjectCrossReference_1_0 = (CrossReference)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameObjectIDTerminalRuleCall_1_0_1 = (RuleCall)cNameObjectCrossReference_1_0.eContents().get(1);
+		
+		//ConsPred:
+		//	("part(" INT "," STRING ")" "of")? name=[Object];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//("part(" INT "," STRING ")" "of")? name=[Object]
+		public Group getGroup() { return cGroup; }
+		
+		//("part(" INT "," STRING ")" "of")?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//"part("
+		public Keyword getPartKeyword_0_0() { return cPartKeyword_0_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_0_1() { return cINTTerminalRuleCall_0_1; }
+		
+		//","
+		public Keyword getCommaKeyword_0_2() { return cCommaKeyword_0_2; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0_3() { return cSTRINGTerminalRuleCall_0_3; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
+		
+		//"of"
+		public Keyword getOfKeyword_0_5() { return cOfKeyword_0_5; }
+		
+		//name=[Object]
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//[Object]
+		public CrossReference getNameObjectCrossReference_1_0() { return cNameObjectCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getNameObjectIDTerminalRuleCall_1_0_1() { return cNameObjectIDTerminalRuleCall_1_0_1; }
 	}
 	public class LitListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LitList");
@@ -876,16 +1095,13 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
 		private final Assignment cLeftAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
-		private final CrossReference cLeftObjectCrossReference_0_0_0_0 = (CrossReference)cLeftAssignment_0_0_0.eContents().get(0);
-		private final RuleCall cLeftObjectIDTerminalRuleCall_0_0_0_0_1 = (RuleCall)cLeftObjectCrossReference_0_0_0_0.eContents().get(1);
+		private final RuleCall cLeftObAcParserRuleCall_0_0_0_0 = (RuleCall)cLeftAssignment_0_0_0.eContents().get(0);
 		private final RuleCall cOpCompareParserRuleCall_0_0_1 = (RuleCall)cGroup_0_0.eContents().get(1);
 		private final Assignment cRightAssignment_0_0_2 = (Assignment)cGroup_0_0.eContents().get(2);
-		private final CrossReference cRightObjectCrossReference_0_0_2_0 = (CrossReference)cRightAssignment_0_0_2.eContents().get(0);
-		private final RuleCall cRightObjectIDTerminalRuleCall_0_0_2_0_1 = (RuleCall)cRightObjectCrossReference_0_0_2_0.eContents().get(1);
+		private final RuleCall cRightObAcParserRuleCall_0_0_2_0 = (RuleCall)cRightAssignment_0_0_2.eContents().get(0);
 		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
 		private final Assignment cLeftAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
-		private final CrossReference cLeftObjectCrossReference_0_1_0_0 = (CrossReference)cLeftAssignment_0_1_0.eContents().get(0);
-		private final RuleCall cLeftObjectIDTerminalRuleCall_0_1_0_0_1 = (RuleCall)cLeftObjectCrossReference_0_1_0_0.eContents().get(1);
+		private final RuleCall cLeftObAcParserRuleCall_0_1_0_0 = (RuleCall)cLeftAssignment_0_1_0.eContents().get(0);
 		private final RuleCall cOpCompareParserRuleCall_0_1_1 = (RuleCall)cGroup_0_1.eContents().get(1);
 		private final Alternatives cAlternatives_0_1_2 = (Alternatives)cGroup_0_1.eContents().get(2);
 		private final RuleCall cSTRINGTerminalRuleCall_0_1_2_0 = (RuleCall)cAlternatives_0_1_2.eContents().get(0);
@@ -896,58 +1112,45 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_0_2_0_1 = (RuleCall)cAlternatives_0_2_0.eContents().get(1);
 		private final RuleCall cOpCompareParserRuleCall_0_2_1 = (RuleCall)cGroup_0_2.eContents().get(1);
 		private final Assignment cRightAssignment_0_2_2 = (Assignment)cGroup_0_2.eContents().get(2);
-		private final CrossReference cRightObjectCrossReference_0_2_2_0 = (CrossReference)cRightAssignment_0_2_2.eContents().get(0);
-		private final RuleCall cRightObjectIDTerminalRuleCall_0_2_2_0_1 = (RuleCall)cRightObjectCrossReference_0_2_2_0.eContents().get(1);
+		private final RuleCall cRightObAcParserRuleCall_0_2_2_0 = (RuleCall)cRightAssignment_0_2_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//Comp Constraint:
-		//	(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare
-		//	right=[Object]) ";"
+		//	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare
-		//right=[Object]) ";"
+		//(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
 		public Group getGroup() { return cGroup; }
 		
-		//(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare
-		//right=[Object])
+		//(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
-		//left=[Object] OpCompare right=[Object]
+		//left=ObAc OpCompare right=ObAc
 		public Group getGroup_0_0() { return cGroup_0_0; }
 		
-		//left=[Object]
+		//left=ObAc
 		public Assignment getLeftAssignment_0_0_0() { return cLeftAssignment_0_0_0; }
 		
-		//[Object]
-		public CrossReference getLeftObjectCrossReference_0_0_0_0() { return cLeftObjectCrossReference_0_0_0_0; }
-		
-		//ID
-		public RuleCall getLeftObjectIDTerminalRuleCall_0_0_0_0_1() { return cLeftObjectIDTerminalRuleCall_0_0_0_0_1; }
+		//ObAc
+		public RuleCall getLeftObAcParserRuleCall_0_0_0_0() { return cLeftObAcParserRuleCall_0_0_0_0; }
 		
 		//OpCompare
 		public RuleCall getOpCompareParserRuleCall_0_0_1() { return cOpCompareParserRuleCall_0_0_1; }
 		
-		//right=[Object]
+		//right=ObAc
 		public Assignment getRightAssignment_0_0_2() { return cRightAssignment_0_0_2; }
 		
-		//[Object]
-		public CrossReference getRightObjectCrossReference_0_0_2_0() { return cRightObjectCrossReference_0_0_2_0; }
+		//ObAc
+		public RuleCall getRightObAcParserRuleCall_0_0_2_0() { return cRightObAcParserRuleCall_0_0_2_0; }
 		
-		//ID
-		public RuleCall getRightObjectIDTerminalRuleCall_0_0_2_0_1() { return cRightObjectIDTerminalRuleCall_0_0_2_0_1; }
-		
-		//left=[Object] OpCompare (STRING | INT)
+		//left=ObAc OpCompare (STRING | INT)
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
-		//left=[Object]
+		//left=ObAc
 		public Assignment getLeftAssignment_0_1_0() { return cLeftAssignment_0_1_0; }
 		
-		//[Object]
-		public CrossReference getLeftObjectCrossReference_0_1_0_0() { return cLeftObjectCrossReference_0_1_0_0; }
-		
-		//ID
-		public RuleCall getLeftObjectIDTerminalRuleCall_0_1_0_0_1() { return cLeftObjectIDTerminalRuleCall_0_1_0_0_1; }
+		//ObAc
+		public RuleCall getLeftObAcParserRuleCall_0_1_0_0() { return cLeftObAcParserRuleCall_0_1_0_0; }
 		
 		//OpCompare
 		public RuleCall getOpCompareParserRuleCall_0_1_1() { return cOpCompareParserRuleCall_0_1_1; }
@@ -961,7 +1164,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_0_1_2_1() { return cINTTerminalRuleCall_0_1_2_1; }
 		
-		//(STRING | INT) OpCompare right=[Object]
+		//(STRING | INT) OpCompare right=ObAc
 		public Group getGroup_0_2() { return cGroup_0_2; }
 		
 		//(STRING | INT)
@@ -976,17 +1179,49 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//OpCompare
 		public RuleCall getOpCompareParserRuleCall_0_2_1() { return cOpCompareParserRuleCall_0_2_1; }
 		
-		//right=[Object]
+		//right=ObAc
 		public Assignment getRightAssignment_0_2_2() { return cRightAssignment_0_2_2; }
 		
-		//[Object]
-		public CrossReference getRightObjectCrossReference_0_2_2_0() { return cRightObjectCrossReference_0_2_2_0; }
-		
-		//ID
-		public RuleCall getRightObjectIDTerminalRuleCall_0_2_2_0_1() { return cRightObjectIDTerminalRuleCall_0_2_2_0_1; }
+		//ObAc
+		public RuleCall getRightObAcParserRuleCall_0_2_2_0() { return cRightObAcParserRuleCall_0_2_2_0; }
 		
 		//";"
 		public Keyword getSemicolonKeyword_1() { return cSemicolonKeyword_1; }
+	}
+	public class ObAcElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ObAc");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cNameObjectCrossReference_0_0 = (CrossReference)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameObjectIDTerminalRuleCall_0_0_1 = (RuleCall)cNameObjectCrossReference_0_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//ObAc:
+		//	name=[Object] ("." ID)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=[Object] ("." ID)?
+		public Group getGroup() { return cGroup; }
+		
+		//name=[Object]
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//[Object]
+		public CrossReference getNameObjectCrossReference_0_0() { return cNameObjectCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getNameObjectIDTerminalRuleCall_0_0_1() { return cNameObjectIDTerminalRuleCall_0_0_1; }
+		
+		//("." ID)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 	public class ObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Object");
@@ -1027,9 +1262,16 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final PrimaryElements pPrimary;
 	private final ConstraintElements pConstraint;
 	private final InclElements pIncl;
+	private final ConsListElements pConsList;
+	private final LogConElements pLogCon;
+	private final ConsElements pCons;
+	private final NoEqElements pNoEq;
+	private final NoEqOpElements pNoEqOp;
+	private final ConsPredElements pConsPred;
 	private final LitListElements pLitList;
 	private final PredElements pPred;
 	private final CompElements pComp;
+	private final ObAcElements pObAc;
 	private final ObjectElements pObject;
 	
 	private final Grammar grammar;
@@ -1059,9 +1301,16 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPrimary = new PrimaryElements();
 		this.pConstraint = new ConstraintElements();
 		this.pIncl = new InclElements();
+		this.pConsList = new ConsListElements();
+		this.pLogCon = new LogConElements();
+		this.pCons = new ConsElements();
+		this.pNoEq = new NoEqElements();
+		this.pNoEqOp = new NoEqOpElements();
+		this.pConsPred = new ConsPredElements();
 		this.pLitList = new LitListElements();
 		this.pPred = new PredElements();
 		this.pComp = new CompElements();
+		this.pObAc = new ObAcElements();
 		this.pObject = new ObjectElements();
 	}
 	
@@ -1111,7 +1360,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ObjectDecl:
-	//	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
+	//	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
 	public ObjectDeclElements getObjectDeclAccess() {
 		return pObjectDecl;
 	}
@@ -1131,7 +1380,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ForbMethod:
-	//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
+	//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
 	//	parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?);
 	public ForbMethodElements getForbMethodAccess() {
 		return pForbMethod;
@@ -1222,7 +1471,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Constraint:
-	//	cons+=Comp | cons+=Incl | cons+=Pred;
+	//	cons+=Comp | cons+=Incl | '!'? cons+=Pred;
 	public ConstraintElements getConstraintAccess() {
 		return pConstraint;
 	}
@@ -1232,13 +1481,73 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Incl Constraint:
-	//	algl=[Object] "in" "{" litsleft=LitList "}" "=>" algr=[Object] "in" "{" litsright=LitList "}"
+	//	algl=ConsList ("=>" algr=ConsList)?
 	public InclElements getInclAccess() {
 		return pIncl;
 	}
 	
 	public ParserRule getInclRule() {
 		return getInclAccess().getRule();
+	}
+	
+	//ConsList:
+	//	list+=Cons (LogCon list+=Cons)*;
+	public ConsListElements getConsListAccess() {
+		return pConsList;
+	}
+	
+	public ParserRule getConsListRule() {
+		return getConsListAccess().getRule();
+	}
+	
+	//LogCon:
+	//	OpAnd | OpOr;
+	public LogConElements getLogConAccess() {
+		return pLogCon;
+	}
+	
+	public ParserRule getLogConRule() {
+		return getLogConAccess().getRule();
+	}
+	
+	//Cons:
+	//	cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq;
+	public ConsElements getConsAccess() {
+		return pCons;
+	}
+	
+	public ParserRule getConsRule() {
+		return getConsAccess().getRule();
+	}
+	
+	//NoEq:
+	//	left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc;
+	public NoEqElements getNoEqAccess() {
+		return pNoEq;
+	}
+	
+	public ParserRule getNoEqRule() {
+		return getNoEqAccess().getRule();
+	}
+	
+	//NoEqOp:
+	//	'!=';
+	public NoEqOpElements getNoEqOpAccess() {
+		return pNoEqOp;
+	}
+	
+	public ParserRule getNoEqOpRule() {
+		return getNoEqOpAccess().getRule();
+	}
+	
+	//ConsPred:
+	//	("part(" INT "," STRING ")" "of")? name=[Object];
+	public ConsPredElements getConsPredAccess() {
+		return pConsPred;
+	}
+	
+	public ParserRule getConsPredRule() {
+		return getConsPredAccess().getRule();
 	}
 	
 	//LitList:
@@ -1262,14 +1571,23 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Comp Constraint:
-	//	(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare
-	//	right=[Object]) ";"
+	//	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
 	public CompElements getCompAccess() {
 		return pComp;
 	}
 	
 	public ParserRule getCompRule() {
 		return getCompAccess().getRule();
+	}
+	
+	//ObAc:
+	//	name=[Object] ("." ID)?;
+	public ObAcElements getObAcAccess() {
+		return pObAc;
+	}
+	
+	public ParserRule getObAcRule() {
+		return getObAcAccess().getRule();
 	}
 	
 	//Object:

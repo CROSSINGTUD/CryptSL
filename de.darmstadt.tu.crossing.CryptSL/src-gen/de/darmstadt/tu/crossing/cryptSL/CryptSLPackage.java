@@ -483,7 +483,7 @@ public interface CryptSLPackage extends EPackage
   int CONSTRAINT__CONS = 0;
 
   /**
-   * The feature id for the '<em><b>Algl</b></em>' reference.
+   * The feature id for the '<em><b>Algl</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -492,31 +492,13 @@ public interface CryptSLPackage extends EPackage
   int CONSTRAINT__ALGL = 1;
 
   /**
-   * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
+   * The feature id for the '<em><b>Algr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRAINT__LITSLEFT = 2;
-
-  /**
-   * The feature id for the '<em><b>Algr</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRAINT__ALGR = 3;
-
-  /**
-   * The feature id for the '<em><b>Litsright</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRAINT__LITSRIGHT = 4;
+  int CONSTRAINT__ALGR = 2;
 
   /**
    * The feature id for the '<em><b>Left Side</b></em>' reference.
@@ -525,7 +507,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__LEFT_SIDE = 5;
+  int CONSTRAINT__LEFT_SIDE = 3;
 
   /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
@@ -534,7 +516,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__PRED_NAME = 6;
+  int CONSTRAINT__PRED_NAME = 4;
 
   /**
    * The feature id for the '<em><b>Par List</b></em>' containment reference.
@@ -543,25 +525,25 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__PAR_LIST = 7;
+  int CONSTRAINT__PAR_LIST = 5;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' reference.
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRAINT__LEFT = 8;
+  int CONSTRAINT__LEFT = 6;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' reference.
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRAINT__RIGHT = 9;
+  int CONSTRAINT__RIGHT = 7;
 
   /**
    * The number of structural features of the '<em>Constraint</em>' class.
@@ -570,7 +552,155 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_FEATURE_COUNT = 10;
+  int CONSTRAINT_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsListImpl <em>Cons List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsListImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConsList()
+   * @generated
+   */
+  int CONS_LIST = 11;
+
+  /**
+   * The feature id for the '<em><b>List</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_LIST__LIST = 0;
+
+  /**
+   * The number of structural features of the '<em>Cons List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_LIST_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsImpl <em>Cons</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getCons()
+   * @generated
+   */
+  int CONS = 12;
+
+  /**
+   * The feature id for the '<em><b>Cons</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS__CONS = 0;
+
+  /**
+   * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS__LITSLEFT = 1;
+
+  /**
+   * The number of structural features of the '<em>Cons</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.NoEqImpl <em>No Eq</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.NoEqImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getNoEq()
+   * @generated
+   */
+  int NO_EQ = 13;
+
+  /**
+   * The feature id for the '<em><b>Cons</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_EQ__CONS = CONS__CONS;
+
+  /**
+   * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_EQ__LITSLEFT = CONS__LITSLEFT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_EQ__LEFT = CONS_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_EQ__RIGHT = CONS_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>No Eq</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NO_EQ_FEATURE_COUNT = CONS_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsPredImpl <em>Cons Pred</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsPredImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConsPred()
+   * @generated
+   */
+  int CONS_PRED = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_PRED__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Cons Pred</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_PRED_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LitListImpl <em>Lit List</em>}' class.
@@ -580,7 +710,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 11;
+  int LIT_LIST = 15;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -601,6 +731,34 @@ public interface CryptSLPackage extends EPackage
   int LIT_LIST_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObAcImpl <em>Ob Ac</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ObAcImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObAc()
+   * @generated
+   */
+  int OB_AC = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OB_AC__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Ob Ac</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OB_AC_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectImpl <em>Object</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -608,7 +766,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 12;
+  int OBJECT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -636,7 +794,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 13;
+  int ORDER = 18;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -682,7 +840,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 14;
+  int SIMPLE_ORDER = 19;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1085,10 +1243,10 @@ public interface CryptSLPackage extends EPackage
   EReference getConstraint_Cons();
 
   /**
-   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgl <em>Algl</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgl <em>Algl</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Algl</em>'.
+   * @return the meta object for the containment reference '<em>Algl</em>'.
    * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgl()
    * @see #getConstraint()
    * @generated
@@ -1096,37 +1254,15 @@ public interface CryptSLPackage extends EPackage
   EReference getConstraint_Algl();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLitsleft <em>Litsleft</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgr <em>Algr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Litsleft</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getLitsleft()
-   * @see #getConstraint()
-   * @generated
-   */
-  EReference getConstraint_Litsleft();
-
-  /**
-   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgr <em>Algr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Algr</em>'.
+   * @return the meta object for the containment reference '<em>Algr</em>'.
    * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getAlgr()
    * @see #getConstraint()
    * @generated
    */
   EReference getConstraint_Algr();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLitsright <em>Litsright</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Litsright</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getLitsright()
-   * @see #getConstraint()
-   * @generated
-   */
-  EReference getConstraint_Litsright();
 
   /**
    * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLeftSide <em>Left Side</em>}'.
@@ -1162,10 +1298,10 @@ public interface CryptSLPackage extends EPackage
   EReference getConstraint_ParList();
 
   /**
-   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Left</em>'.
+   * @return the meta object for the containment reference '<em>Left</em>'.
    * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getLeft()
    * @see #getConstraint()
    * @generated
@@ -1173,15 +1309,121 @@ public interface CryptSLPackage extends EPackage
   EReference getConstraint_Left();
 
   /**
-   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Right</em>'.
+   * @return the meta object for the containment reference '<em>Right</em>'.
    * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getRight()
    * @see #getConstraint()
    * @generated
    */
   EReference getConstraint_Right();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ConsList <em>Cons List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cons List</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ConsList
+   * @generated
+   */
+  EClass getConsList();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.ConsList#getList <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>List</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ConsList#getList()
+   * @see #getConsList()
+   * @generated
+   */
+  EReference getConsList_List();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Cons <em>Cons</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cons</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Cons
+   * @generated
+   */
+  EClass getCons();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Cons#getCons <em>Cons</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cons</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Cons#getCons()
+   * @see #getCons()
+   * @generated
+   */
+  EReference getCons_Cons();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Cons#getLitsleft <em>Litsleft</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Litsleft</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Cons#getLitsleft()
+   * @see #getCons()
+   * @generated
+   */
+  EReference getCons_Litsleft();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.NoEq <em>No Eq</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>No Eq</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.NoEq
+   * @generated
+   */
+  EClass getNoEq();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.NoEq#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.NoEq#getLeft()
+   * @see #getNoEq()
+   * @generated
+   */
+  EReference getNoEq_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.NoEq#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.NoEq#getRight()
+   * @see #getNoEq()
+   * @generated
+   */
+  EReference getNoEq_Right();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ConsPred <em>Cons Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cons Pred</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ConsPred
+   * @generated
+   */
+  EClass getConsPred();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.ConsPred#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Name</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ConsPred#getName()
+   * @see #getConsPred()
+   * @generated
+   */
+  EReference getConsPred_Name();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.LitList <em>Lit List</em>}'.
@@ -1203,6 +1445,27 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getLitList_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ObAc <em>Ob Ac</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Ob Ac</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ObAc
+   * @generated
+   */
+  EClass getObAc();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.ObAc#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Name</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ObAc#getName()
+   * @see #getObAc()
+   * @generated
+   */
+  EReference getObAc_Name();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Object <em>Object</em>}'.
@@ -1563,7 +1826,7 @@ public interface CryptSLPackage extends EPackage
     EReference CONSTRAINT__CONS = eINSTANCE.getConstraint_Cons();
 
     /**
-     * The meta object literal for the '<em><b>Algl</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Algl</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1571,28 +1834,12 @@ public interface CryptSLPackage extends EPackage
     EReference CONSTRAINT__ALGL = eINSTANCE.getConstraint_Algl();
 
     /**
-     * The meta object literal for the '<em><b>Litsleft</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONSTRAINT__LITSLEFT = eINSTANCE.getConstraint_Litsleft();
-
-    /**
-     * The meta object literal for the '<em><b>Algr</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Algr</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference CONSTRAINT__ALGR = eINSTANCE.getConstraint_Algr();
-
-    /**
-     * The meta object literal for the '<em><b>Litsright</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONSTRAINT__LITSRIGHT = eINSTANCE.getConstraint_Litsright();
 
     /**
      * The meta object literal for the '<em><b>Left Side</b></em>' reference feature.
@@ -1619,7 +1866,7 @@ public interface CryptSLPackage extends EPackage
     EReference CONSTRAINT__PAR_LIST = eINSTANCE.getConstraint_ParList();
 
     /**
-     * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1627,12 +1874,100 @@ public interface CryptSLPackage extends EPackage
     EReference CONSTRAINT__LEFT = eINSTANCE.getConstraint_Left();
 
     /**
-     * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference CONSTRAINT__RIGHT = eINSTANCE.getConstraint_Right();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsListImpl <em>Cons List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsListImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConsList()
+     * @generated
+     */
+    EClass CONS_LIST = eINSTANCE.getConsList();
+
+    /**
+     * The meta object literal for the '<em><b>List</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONS_LIST__LIST = eINSTANCE.getConsList_List();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsImpl <em>Cons</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getCons()
+     * @generated
+     */
+    EClass CONS = eINSTANCE.getCons();
+
+    /**
+     * The meta object literal for the '<em><b>Cons</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONS__CONS = eINSTANCE.getCons_Cons();
+
+    /**
+     * The meta object literal for the '<em><b>Litsleft</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONS__LITSLEFT = eINSTANCE.getCons_Litsleft();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.NoEqImpl <em>No Eq</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.NoEqImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getNoEq()
+     * @generated
+     */
+    EClass NO_EQ = eINSTANCE.getNoEq();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NO_EQ__LEFT = eINSTANCE.getNoEq_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NO_EQ__RIGHT = eINSTANCE.getNoEq_Right();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConsPredImpl <em>Cons Pred</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ConsPredImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConsPred()
+     * @generated
+     */
+    EClass CONS_PRED = eINSTANCE.getConsPred();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONS_PRED__NAME = eINSTANCE.getConsPred_Name();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LitListImpl <em>Lit List</em>}' class.
@@ -1651,6 +1986,24 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference LIT_LIST__PARAMETERS = eINSTANCE.getLitList_Parameters();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObAcImpl <em>Ob Ac</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ObAcImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObAc()
+     * @generated
+     */
+    EClass OB_AC = eINSTANCE.getObAc();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OB_AC__NAME = eINSTANCE.getObAc_Name();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectImpl <em>Object</em>}' class.

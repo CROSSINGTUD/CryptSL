@@ -13,13 +13,13 @@ Domainmodel:
 	('ENSURES' (ens+=Pred)+)?;
 
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] ("[]")? objectName=Object ";";
+	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
 
 Event:
 	LabelMethodCall | Aggregate;
 
 ForbMethod:
-	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")? 
+	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? 
 		(',' parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")?)*)? ")" ("=>" rep=[Event])?);
 
 LabelMethodCall:
@@ -47,10 +47,35 @@ Primary returns Expression:
 	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?;
 
 Constraint:
-	(cons+=Comp | cons+=Incl | cons+=Pred);
+	(cons+=Comp | cons+=Incl | ('!')? cons+=Pred);
 
 Incl returns Constraint:
-	algl=[Object] "in" "{" litsleft=LitList "}" "=>" algr=[Object] "in" "{" litsright=LitList "}";
+	algl=ConsList ("=>" algr=ConsList)?
+;
+
+ConsList:
+	list+=Cons (LogCon list+=Cons)*
+;
+
+LogCon:
+	OpAnd | OpOr
+;
+
+Cons:
+	cons= ConsPred "in" "{" litsleft=LitList "}"| NoEq
+;
+
+NoEq:
+	(left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc)
+;
+
+NoEqOp:
+ '!='	
+;
+
+ConsPred:
+	("part(" INT "," STRING ")" "of")? name=[Object] 
+;
 
 LitList:
 	(parameters+=XLiteral (',' (parameters+=XLiteral | '...'))*);
@@ -59,7 +84,11 @@ Pred returns Constraint:
 	(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");";
 
 Comp returns Constraint:
-	(left=[Object] OpCompare right=[Object] | left=[Object] OpCompare (STRING | INT) | (STRING | INT) OpCompare right=[Object]) ";";
+	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";";
+
+ObAc:
+	name=[Object] ("." ID)?
+;
 
 Object:
 	{Object} name=ID;

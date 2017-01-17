@@ -123,6 +123,42 @@ public interface CryptSLFactory extends EFactory
   Constraint createConstraint();
 
   /**
+   * Returns a new object of class '<em>Cons List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cons List</em>'.
+   * @generated
+   */
+  ConsList createConsList();
+
+  /**
+   * Returns a new object of class '<em>Cons</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cons</em>'.
+   * @generated
+   */
+  Cons createCons();
+
+  /**
+   * Returns a new object of class '<em>No Eq</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>No Eq</em>'.
+   * @generated
+   */
+  NoEq createNoEq();
+
+  /**
+   * Returns a new object of class '<em>Cons Pred</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cons Pred</em>'.
+   * @generated
+   */
+  ConsPred createConsPred();
+
+  /**
    * Returns a new object of class '<em>Lit List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +166,15 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   LitList createLitList();
+
+  /**
+   * Returns a new object of class '<em>Ob Ac</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ob Ac</em>'.
+   * @generated
+   */
+  ObAc createObAc();
 
   /**
    * Returns a new object of class '<em>Object</em>'.
