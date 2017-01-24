@@ -3,10 +3,11 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.util;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggregate;
-import de.darmstadt.tu.crossing.cryptSL.Cons;
-import de.darmstadt.tu.crossing.cryptSL.ConsList;
-import de.darmstadt.tu.crossing.cryptSL.ConsPred;
+import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
@@ -15,14 +16,21 @@ import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
+import de.darmstadt.tu.crossing.cryptSL.Literal;
+import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
+import de.darmstadt.tu.crossing.cryptSL.LogicalImply;
+import de.darmstadt.tu.crossing.cryptSL.LogicalOperator;
 import de.darmstadt.tu.crossing.cryptSL.Method;
-import de.darmstadt.tu.crossing.cryptSL.NoEq;
-import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
+import de.darmstadt.tu.crossing.cryptSL.SuPar;
+import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
+import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
+import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -106,17 +114,17 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.EVENT:
-      {
-        Event event = (Event)theEObject;
-        T result = caseEvent(event);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CryptSLPackage.FORB_METHOD:
       {
         ForbMethod forbMethod = (ForbMethod)theEObject;
         T result = caseForbMethod(forbMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.EVENT:
+      {
+        Event event = (Event)theEObject;
+        T result = caseEvent(event);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -149,11 +157,11 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.AGGREGATE:
+      case CryptSLPackage.SUPER_TYPE:
       {
-        Aggregate aggregate = (Aggregate)theEObject;
-        T result = caseAggregate(aggregate);
-        if (result == null) result = caseEvent(aggregate);
+        SuperType superType = (SuperType)theEObject;
+        T result = caseSuperType(superType);
+        if (result == null) result = caseEvent(superType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,32 +179,46 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.CONS_LIST:
+      case CryptSLPackage.LOGICAL_IMPLY:
       {
-        ConsList consList = (ConsList)theEObject;
-        T result = caseConsList(consList);
+        LogicalImply logicalImply = (LogicalImply)theEObject;
+        T result = caseLogicalImply(logicalImply);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.CONS:
+      case CryptSLPackage.LOGICAL_OPERATOR:
       {
-        Cons cons = (Cons)theEObject;
-        T result = caseCons(cons);
+        LogicalOperator logicalOperator = (LogicalOperator)theEObject;
+        T result = caseLogicalOperator(logicalOperator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.NO_EQ:
+      case CryptSLPackage.COMPARING_OPERATOR:
       {
-        NoEq noEq = (NoEq)theEObject;
-        T result = caseNoEq(noEq);
-        if (result == null) result = caseCons(noEq);
+        ComparingOperator comparingOperator = (ComparingOperator)theEObject;
+        T result = caseComparingOperator(comparingOperator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.CONS_PRED:
+      case CryptSLPackage.ARITHMETIC_OPERATOR:
       {
-        ConsPred consPred = (ConsPred)theEObject;
-        T result = caseConsPred(consPred);
+        ArithmeticOperator arithmeticOperator = (ArithmeticOperator)theEObject;
+        T result = caseArithmeticOperator(arithmeticOperator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.LITERAL_EXPRESSION:
+      {
+        LiteralExpression literalExpression = (LiteralExpression)theEObject;
+        T result = caseLiteralExpression(literalExpression);
+        if (result == null) result = caseConstraint(literalExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.UNARY_OPERATOR:
+      {
+        UnaryOperator unaryOperator = (UnaryOperator)theEObject;
+        T result = caseUnaryOperator(unaryOperator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -207,17 +229,26 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.OB_AC:
+      case CryptSLPackage.SU_PAR_LIST:
       {
-        ObAc obAc = (ObAc)theEObject;
-        T result = caseObAc(obAc);
+        SuParList suParList = (SuParList)theEObject;
+        T result = caseSuParList(suParList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.OBJECT:
+      case CryptSLPackage.SU_PAR:
       {
-        de.darmstadt.tu.crossing.cryptSL.Object object = (de.darmstadt.tu.crossing.cryptSL.Object)theEObject;
-        T result = caseObject(object);
+        SuPar suPar = (SuPar)theEObject;
+        T result = caseSuPar(suPar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.AGGEGATE:
+      {
+        Aggegate aggegate = (Aggegate)theEObject;
+        T result = caseAggegate(aggegate);
+        if (result == null) result = caseSuperType(aggegate);
+        if (result == null) result = caseEvent(aggegate);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -234,6 +265,48 @@ public class CryptSLSwitch<T> extends Switch<T>
         SimpleOrder simpleOrder = (SimpleOrder)theEObject;
         T result = caseSimpleOrder(simpleOrder);
         if (result == null) result = caseExpression(simpleOrder);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.COMPARISON_EXPRESSION:
+      {
+        ComparisonExpression comparisonExpression = (ComparisonExpression)theEObject;
+        T result = caseComparisonExpression(comparisonExpression);
+        if (result == null) result = caseConstraint(comparisonExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.ARITHMETIC_EXPRESSION:
+      {
+        ArithmeticExpression arithmeticExpression = (ArithmeticExpression)theEObject;
+        T result = caseArithmeticExpression(arithmeticExpression);
+        if (result == null) result = caseConstraint(arithmeticExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.UNARY_PRE_EXPRESSION:
+      {
+        UnaryPreExpression unaryPreExpression = (UnaryPreExpression)theEObject;
+        T result = caseUnaryPreExpression(unaryPreExpression);
+        if (result == null) result = caseConstraint(unaryPreExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.LITERAL:
+      {
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = caseLiteralExpression(literal);
+        if (result == null) result = caseConstraint(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.OBJECT:
+      {
+        de.darmstadt.tu.crossing.cryptSL.Object object = (de.darmstadt.tu.crossing.cryptSL.Object)theEObject;
+        T result = caseObject(object);
+        if (result == null) result = caseSuperType(object);
+        if (result == null) result = caseEvent(object);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -274,22 +347,6 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEvent(Event object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Forb Method</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -301,6 +358,22 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseForbMethod(ForbMethod object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvent(Event object)
   {
     return null;
   }
@@ -370,17 +443,17 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Aggregate</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Super Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Aggregate</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Super Type</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAggregate(Aggregate object)
+  public T caseSuperType(SuperType object)
   {
     return null;
   }
@@ -418,65 +491,97 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Cons List</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Logical Imply</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cons List</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Logical Imply</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseConsList(ConsList object)
+  public T caseLogicalImply(LogicalImply object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Cons</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Logical Operator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cons</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Logical Operator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCons(Cons object)
+  public T caseLogicalOperator(LogicalOperator object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>No Eq</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Comparing Operator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>No Eq</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Comparing Operator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNoEq(NoEq object)
+  public T caseComparingOperator(ComparingOperator object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Cons Pred</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Arithmetic Operator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cons Pred</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Arithmetic Operator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseConsPred(ConsPred object)
+  public T caseArithmeticOperator(ArithmeticOperator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteralExpression(LiteralExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unary Operator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unary Operator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUnaryOperator(UnaryOperator object)
   {
     return null;
   }
@@ -498,33 +603,49 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Ob Ac</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Su Par List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Ob Ac</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Su Par List</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObAc(ObAc object)
+  public T caseSuParList(SuParList object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Su Par</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Object</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Su Par</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObject(de.darmstadt.tu.crossing.cryptSL.Object object)
+  public T caseSuPar(SuPar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Aggegate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Aggegate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAggegate(Aggegate object)
   {
     return null;
   }
@@ -557,6 +678,86 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSimpleOrder(SimpleOrder object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparison Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparison Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparisonExpression(ComparisonExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Arithmetic Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Arithmetic Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArithmeticExpression(ArithmeticExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unary Pre Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unary Pre Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUnaryPreExpression(UnaryPreExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObject(de.darmstadt.tu.crossing.cryptSL.Object object)
   {
     return null;
   }

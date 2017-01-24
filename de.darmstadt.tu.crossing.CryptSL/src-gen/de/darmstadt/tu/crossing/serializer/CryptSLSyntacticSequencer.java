@@ -22,18 +22,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CryptSLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0;
-	protected AbstractElementAlias match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0;
-	protected AbstractElementAlias match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_RightParenthesisKeyword_0_4_OfKeyword_0_5__q;
-	protected AbstractElementAlias match_Constraint_ExclamationMarkKeyword_2_0_q;
-	protected AbstractElementAlias match_ForbMethod_ArrayBracketsParserRuleCall_1_2_1_q;
+	protected AbstractElementAlias match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q;
+	protected AbstractElementAlias match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q;
+	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q;
 	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q;
 	protected AbstractElementAlias match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a;
 	protected AbstractElementAlias match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a;
-	protected AbstractElementAlias match_NoEq_INTTerminalRuleCall_1_2_1_or_STRINGTerminalRuleCall_1_2_0;
-	protected AbstractElementAlias match_NoEq_INTTerminalRuleCall_2_0_1_or_STRINGTerminalRuleCall_2_0_0;
-	protected AbstractElementAlias match_ObAc___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q;
-	protected AbstractElementAlias match_ObjectDecl_ArrayBracketsParserRuleCall_1_q;
+	protected AbstractElementAlias match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1;
+	protected AbstractElementAlias match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q;
+	protected AbstractElementAlias match_Operand_LeftParenthesisKeyword_0_0_a;
+	protected AbstractElementAlias match_Operand_LeftParenthesisKeyword_0_0_p;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_a;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_p;
 	protected AbstractElementAlias match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q;
@@ -48,18 +46,16 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CryptSLGrammarAccess) access;
-		match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCompAccess().getINTTerminalRuleCall_0_1_2_1()), new TokenAlias(false, false, grammarAccess.getCompAccess().getSTRINGTerminalRuleCall_0_1_2_0()));
-		match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCompAccess().getINTTerminalRuleCall_0_2_0_1()), new TokenAlias(false, false, grammarAccess.getCompAccess().getSTRINGTerminalRuleCall_0_2_0_0()));
-		match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_RightParenthesisKeyword_0_4_OfKeyword_0_5__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getConsPredAccess().getPartKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getRightParenthesisKeyword_0_4()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getOfKeyword_0_5()));
-		match_Constraint_ExclamationMarkKeyword_2_0_q = new TokenAlias(false, true, grammarAccess.getConstraintAccess().getExclamationMarkKeyword_2_0());
-		match_ForbMethod_ArrayBracketsParserRuleCall_1_2_1_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getArrayBracketsParserRuleCall_1_2_1());
+		match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getFullStopKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getIDTerminalRuleCall_1_1()));
+		match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getConsPredAccess().getPartKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_4()));
+		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_1());
 		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_2_2());
 		match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()));
 		match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()));
-		match_NoEq_INTTerminalRuleCall_1_2_1_or_STRINGTerminalRuleCall_1_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getNoEqAccess().getINTTerminalRuleCall_1_2_1()), new TokenAlias(false, false, grammarAccess.getNoEqAccess().getSTRINGTerminalRuleCall_1_2_0()));
-		match_NoEq_INTTerminalRuleCall_2_0_1_or_STRINGTerminalRuleCall_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getNoEqAccess().getINTTerminalRuleCall_2_0_1()), new TokenAlias(false, false, grammarAccess.getNoEqAccess().getSTRINGTerminalRuleCall_2_0_0()));
-		match_ObAc___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getObAcAccess().getFullStopKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getObAcAccess().getIDTerminalRuleCall_1_1()));
-		match_ObjectDecl_ArrayBracketsParserRuleCall_1_q = new TokenAlias(false, true, grammarAccess.getObjectDeclAccess().getArrayBracketsParserRuleCall_1());
+		match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_0()), new TokenAlias(false, false, grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_1()));
+		match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q = new TokenAlias(false, true, grammarAccess.getObjectDeclAccess().getLeftSquareBracketRightSquareBracketKeyword_1());
+		match_Operand_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_0_0());
+		match_Operand_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_0_0());
 		match_Primary_LeftParenthesisKeyword_1_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()));
@@ -80,12 +76,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getIDToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getINTRule())
 			return getINTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getLogConRule())
-			return getLogConToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getNoEqOpRule())
-			return getNoEqOpToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getOpCompareRule())
-			return getOpCompareToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
@@ -125,38 +115,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * LogCon:
-	 * 	OpAnd | OpOr
-	 * ;
-	 */
-	protected String getLogConToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "&&";
-	}
-	
-	/**
-	 * NoEqOp:
-	 *  '!='	
-	 * ;
-	 */
-	protected String getNoEqOpToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "!=";
-	}
-	
-	/**
-	 * OpCompare:
-	 * 	'>=' | '<' '=' | '>' | '<' ;
-	 */
-	protected String getOpCompareToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ">=";
-	}
-	
-	/**
 	 * OpSingleAssign:
 	 * 	'='
 	 * ;
@@ -184,30 +142,26 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0.equals(syntax))
-				emit_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0.equals(syntax))
-				emit_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_RightParenthesisKeyword_0_4_OfKeyword_0_5__q.equals(syntax))
-				emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_RightParenthesisKeyword_0_4_OfKeyword_0_5__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Constraint_ExclamationMarkKeyword_2_0_q.equals(syntax))
-				emit_Constraint_ExclamationMarkKeyword_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ForbMethod_ArrayBracketsParserRuleCall_1_2_1_q.equals(syntax))
-				emit_ForbMethod_ArrayBracketsParserRuleCall_1_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q.equals(syntax))
+				emit_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q.equals(syntax))
+				emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q.equals(syntax))
+				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q.equals(syntax))
 				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a.equals(syntax))
 				emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a.equals(syntax))
 				emit_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NoEq_INTTerminalRuleCall_1_2_1_or_STRINGTerminalRuleCall_1_2_0.equals(syntax))
-				emit_NoEq_INTTerminalRuleCall_1_2_1_or_STRINGTerminalRuleCall_1_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NoEq_INTTerminalRuleCall_2_0_1_or_STRINGTerminalRuleCall_2_0_0.equals(syntax))
-				emit_NoEq_INTTerminalRuleCall_2_0_1_or_STRINGTerminalRuleCall_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ObAc___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q.equals(syntax))
-				emit_ObAc___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ObjectDecl_ArrayBracketsParserRuleCall_1_q.equals(syntax))
-				emit_ObjectDecl_ArrayBracketsParserRuleCall_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1.equals(syntax))
+				emit_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q.equals(syntax))
+				emit_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Operand_LeftParenthesisKeyword_0_0_a.equals(syntax))
+				emit_Operand_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Operand_LeftParenthesisKeyword_0_0_p.equals(syntax))
+				emit_Operand_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Primary_LeftParenthesisKeyword_1_0_a.equals(syntax))
 				emit_Primary_LeftParenthesisKeyword_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Primary_LeftParenthesisKeyword_1_0_p.equals(syntax))
@@ -234,65 +188,37 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Ambiguous syntax:
-	 *     STRING | INT
+	 *     ('.' ID)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     left=ObAc OpCompare (ambiguity) ';' (rule end)
+	 *     value=[SuperType|ID] (ambiguity) (rule end)
 	 */
-	protected void emit_Comp_INTTerminalRuleCall_0_1_2_1_or_STRINGTerminalRuleCall_0_1_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     STRING | INT
+	 *     ('part(' INT ',' STRING ',')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) OpCompare right=ObAc
+	 *     (rule start) (ambiguity) (INT | STRING) (rule start)
+	 *     (rule start) (ambiguity) value=[SuperType|ID]
 	 */
-	protected void emit_Comp_INTTerminalRuleCall_0_2_0_1_or_STRINGTerminalRuleCall_0_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (
-	  *         'part(' 
-	  *         INT 
-	  *         ',' 
-	  *         STRING 
-	  *         ')' 
-	  *         'of'
-	  *     )?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=[Object|ID]
-	 */
-	protected void emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_RightParenthesisKeyword_0_4_OfKeyword_0_5__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '!'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) cons+=Pred
-	 */
-	protected void emit_Constraint_ExclamationMarkKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ArrayBrackets?
+	 *     '[]'?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' '=>' rep=[Event|ID]
 	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' (rule end)
 	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ',' parameters+=[JvmType|QualifiedName]
 	 */
-	protected void emit_ForbMethod_ArrayBracketsParserRuleCall_1_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -333,45 +259,57 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     STRING | INT
+	 *     INT | STRING
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     left=ObAc NoEqOp (ambiguity) (rule end)
+	 *     (rule start) ('part(' INT ',' STRING ',')? (ambiguity) (rule start)
+	 *     (rule start) (ambiguity) (rule start)
 	 */
-	protected void emit_NoEq_INTTerminalRuleCall_1_2_1_or_STRINGTerminalRuleCall_1_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     STRING | INT
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) NoEqOp right=ObAc
-	 */
-	protected void emit_NoEq_INTTerminalRuleCall_2_0_1_or_STRINGTerminalRuleCall_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' ID)?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     name=[Object|ID] (ambiguity) (rule end)
-	 */
-	protected void emit_ObAc___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ArrayBrackets?
+	 *     '[]'?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     objectType=[JvmType|QualifiedName] (ambiguity) objectName=Object
 	 */
-	protected void emit_ObjectDecl_ArrayBracketsParserRuleCall_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '('*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) cons=ConsPred
+	 *     (rule start) (ambiguity) cons=LiteralExpression
+	 *     (rule start) (ambiguity) operator=UnaryPreOperator
+	 *     (rule start) (ambiguity) predName=ID
+	 *     (rule start) (ambiguity) {ArithmeticExpression.leftExpression=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.leftExpression=}
+	 *     (rule start) (ambiguity) {Constraint.leftExpression=}
+	 */
+	protected void emit_Operand_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '('+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) operator=UnaryPreOperator
+	 *     (rule start) (ambiguity) {ArithmeticExpression.leftExpression=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.leftExpression=}
+	 *     (rule start) (ambiguity) {Constraint.leftExpression=}
+	 */
+	protected void emit_Operand_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -19,16 +19,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectDecl">
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="objectName" eType="#//Object"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectName" eType="#//SuperType"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ForbMethod">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" unique="false"
         upperBound="-1" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Event"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelMethodCall" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="meth" eType="#//Method"
@@ -47,10 +47,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Par">
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//Object"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//Event">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
-        eType="#//Event"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperType" eSuperTypes="#//Event"/>
   <eClassifiers xsi:type="ecore:EClass" name="Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderEv" unique="false"
         upperBound="-1" eType="#//Event"/>
@@ -60,49 +57,75 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" upperBound="-1" eType="#//Constraint"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algl" eType="#//ConsList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algr" eType="#//ConsList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//ParList"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ObAc" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ObAc"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//SuParList"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConsList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="list" upperBound="-1" eType="#//Cons"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalImply">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="IMPLIES" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Cons">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//ConsPred"
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OR" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AND" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparingOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LESS" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LESS_OR_EQUAL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="GREATER_OR_EQUAL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="GREATER" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EQUAL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="UNEQUAL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArithmeticOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PLUS" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MINUS" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TIMES" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DIVIDE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralExpression" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SuperType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//LiteralExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NoEq" eSuperTypes="#//Cons">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ObAc" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ObAc"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConsPred">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NOT" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LitList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObAc">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SuParList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//SuPar" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Object">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SuPar">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//LiteralExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aggegate" eSuperTypes="#//SuperType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
+        eType="#//Event"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleOrder" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparisonExpression" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Constraint"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArithmeticExpression" eSuperTypes="#//Constraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryPreExpression" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enclosedExpression" eType="#//Constraint"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//LiteralExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//SuperType"/>
 </ecore:EPackage>

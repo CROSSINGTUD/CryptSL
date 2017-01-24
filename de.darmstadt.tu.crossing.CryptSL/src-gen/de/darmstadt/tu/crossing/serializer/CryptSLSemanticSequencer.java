@@ -4,10 +4,11 @@
 package de.darmstadt.tu.crossing.serializer;
 
 import com.google.inject.Inject;
-import de.darmstadt.tu.crossing.cryptSL.Aggregate;
-import de.darmstadt.tu.crossing.cryptSL.Cons;
-import de.darmstadt.tu.crossing.cryptSL.ConsList;
-import de.darmstadt.tu.crossing.cryptSL.ConsPred;
+import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
@@ -15,14 +16,20 @@ import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
+import de.darmstadt.tu.crossing.cryptSL.Literal;
+import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
+import de.darmstadt.tu.crossing.cryptSL.LogicalImply;
+import de.darmstadt.tu.crossing.cryptSL.LogicalOperator;
 import de.darmstadt.tu.crossing.cryptSL.Method;
-import de.darmstadt.tu.crossing.cryptSL.NoEq;
-import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
+import de.darmstadt.tu.crossing.cryptSL.SuPar;
+import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
+import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
 import de.darmstadt.tu.crossing.services.CryptSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -94,29 +101,54 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == CryptSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case CryptSLPackage.AGGREGATE:
-				sequence_Aggregate(context, (Aggregate) semanticObject); 
+			case CryptSLPackage.AGGEGATE:
+				sequence_Aggregate(context, (Aggegate) semanticObject); 
 				return; 
-			case CryptSLPackage.CONS:
-				sequence_Cons(context, (Cons) semanticObject); 
+			case CryptSLPackage.ARITHMETIC_EXPRESSION:
+				sequence_AdditionExpression_MultiplicationExpression(context, (ArithmeticExpression) semanticObject); 
 				return; 
-			case CryptSLPackage.CONS_LIST:
-				sequence_ConsList(context, (ConsList) semanticObject); 
-				return; 
-			case CryptSLPackage.CONS_PRED:
-				sequence_ConsPred(context, (ConsPred) semanticObject); 
+			case CryptSLPackage.ARITHMETIC_OPERATOR:
+				if (rule == grammarAccess.getAdditionOperatorRule()) {
+					sequence_AdditionOperator(context, (ArithmeticOperator) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getMultiplicationOperatorRule()) {
+					sequence_MultiplicationOperator(context, (ArithmeticOperator) semanticObject); 
+					return; 
+				}
+				else break;
+			case CryptSLPackage.COMPARING_OPERATOR:
+				if (rule == grammarAccess.getComparingEQNEQOperatorRule()) {
+					sequence_ComparingEQNEQOperator(context, (ComparingOperator) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getComparingRelOperatorRule()) {
+					sequence_ComparingRelOperator(context, (ComparingOperator) semanticObject); 
+					return; 
+				}
+				else break;
+			case CryptSLPackage.COMPARISON_EXPRESSION:
+				sequence_ComparisonExpression_ComparisonHigherOpExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
 			case CryptSLPackage.CONSTRAINT:
-				if (rule == grammarAccess.getCompRule()) {
-					sequence_Comp(context, (Constraint) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getConstraintRule()) {
-					sequence_Constraint(context, (Constraint) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getInclRule()) {
-					sequence_Incl(context, (Constraint) semanticObject); 
+				if (rule == grammarAccess.getConstraintRule()
+						|| rule == grammarAccess.getLogicalImplyExpressionRule()
+						|| action == grammarAccess.getLogicalImplyExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getComparisonExpressionRule()
+						|| action == grammarAccess.getComparisonExpressionAccess().getComparisonExpressionLeftAction_1_0()
+						|| rule == grammarAccess.getComparisonHigherOpExpressionRule()
+						|| action == grammarAccess.getComparisonHigherOpExpressionAccess().getComparisonExpressionLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getArithmeticExpressionRule()
+						|| rule == grammarAccess.getAdditionExpressionRule()
+						|| action == grammarAccess.getAdditionExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getMultiplicationExpressionRule()
+						|| action == grammarAccess.getMultiplicationExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_1_0()
+						|| rule == grammarAccess.getOperandRule()) {
+					sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_Pred(context, (Constraint) semanticObject); 
 					return; 
 				}
 				else if (rule == grammarAccess.getPredRule()) {
@@ -139,14 +171,53 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 			case CryptSLPackage.LIT_LIST:
 				sequence_LitList(context, (LitList) semanticObject); 
 				return; 
+			case CryptSLPackage.LITERAL:
+				sequence_Literal(context, (Literal) semanticObject); 
+				return; 
+			case CryptSLPackage.LITERAL_EXPRESSION:
+				if (rule == grammarAccess.getLiteralExpressionRule()
+						|| rule == grammarAccess.getAggregateExpressionRule()
+						|| rule == grammarAccess.getConsPredRule()) {
+					sequence_AggregateExpression(context, (LiteralExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getConstraintRule()
+						|| rule == grammarAccess.getLogicalImplyExpressionRule()
+						|| action == grammarAccess.getLogicalImplyExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getConstraintLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getComparisonExpressionRule()
+						|| action == grammarAccess.getComparisonExpressionAccess().getComparisonExpressionLeftAction_1_0()
+						|| rule == grammarAccess.getComparisonHigherOpExpressionRule()
+						|| action == grammarAccess.getComparisonHigherOpExpressionAccess().getComparisonExpressionLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getArithmeticExpressionRule()
+						|| rule == grammarAccess.getAdditionExpressionRule()
+						|| action == grammarAccess.getAdditionExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_0()
+						|| rule == grammarAccess.getMultiplicationExpressionRule()
+						|| action == grammarAccess.getMultiplicationExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_1_0()
+						|| rule == grammarAccess.getOperandRule()
+						|| rule == grammarAccess.getConsRule()) {
+					sequence_Cons(context, (LiteralExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case CryptSLPackage.LOGICAL_IMPLY:
+				sequence_LogicalImply(context, (LogicalImply) semanticObject); 
+				return; 
+			case CryptSLPackage.LOGICAL_OPERATOR:
+				if (rule == grammarAccess.getLogicalAndRule()) {
+					sequence_LogicalAnd(context, (LogicalOperator) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getLogicalOrRule()) {
+					sequence_LogicalOr(context, (LogicalOperator) semanticObject); 
+					return; 
+				}
+				else break;
 			case CryptSLPackage.METHOD:
 				sequence_Method(context, (Method) semanticObject); 
-				return; 
-			case CryptSLPackage.NO_EQ:
-				sequence_NoEq(context, (NoEq) semanticObject); 
-				return; 
-			case CryptSLPackage.OB_AC:
-				sequence_ObAc(context, (ObAc) semanticObject); 
 				return; 
 			case CryptSLPackage.OBJECT:
 				sequence_Object(context, (de.darmstadt.tu.crossing.cryptSL.Object) semanticObject); 
@@ -165,6 +236,18 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case CryptSLPackage.SIMPLE_ORDER:
 				sequence_SimpleOrder(context, (SimpleOrder) semanticObject); 
+				return; 
+			case CryptSLPackage.SU_PAR:
+				sequence_SuPar(context, (SuPar) semanticObject); 
+				return; 
+			case CryptSLPackage.SU_PAR_LIST:
+				sequence_SuParList(context, (SuParList) semanticObject); 
+				return; 
+			case CryptSLPackage.UNARY_OPERATOR:
+				sequence_UnaryPreOperator(context, (UnaryOperator) semanticObject); 
+				return; 
+			case CryptSLPackage.UNARY_PRE_EXPRESSION:
+				sequence_UnaryPreExpression(context, (UnaryPreExpression) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -412,88 +495,160 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Event returns Aggregate
-	 *     Aggregate returns Aggregate
+	 *     Constraint returns ArithmeticExpression
+	 *     LogicalImplyExpression returns ArithmeticExpression
+	 *     LogicalImplyExpression.Constraint_1_0 returns ArithmeticExpression
+	 *     LogicalOrExpression returns ArithmeticExpression
+	 *     LogicalOrExpression.Constraint_1_0 returns ArithmeticExpression
+	 *     LogicalAndExpression returns ArithmeticExpression
+	 *     LogicalAndExpression.Constraint_1_0 returns ArithmeticExpression
+	 *     ComparisonExpression returns ArithmeticExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns ArithmeticExpression
+	 *     ComparisonHigherOpExpression returns ArithmeticExpression
+	 *     ComparisonHigherOpExpression.ComparisonExpression_1_0 returns ArithmeticExpression
+	 *     ArithmeticExpression returns ArithmeticExpression
+	 *     AdditionExpression returns ArithmeticExpression
+	 *     AdditionExpression.ArithmeticExpression_1_0 returns ArithmeticExpression
+	 *     MultiplicationExpression returns ArithmeticExpression
+	 *     MultiplicationExpression.ArithmeticExpression_1_1_0 returns ArithmeticExpression
+	 *     Operand returns ArithmeticExpression
+	 *
+	 * Constraint:
+	 *     (
+	 *         (leftExpression=AdditionExpression_ArithmeticExpression_1_0 operator=AdditionOperator rightExpression=MultiplicationExpression) | 
+	 *         (leftExpression=MultiplicationExpression_ArithmeticExpression_1_1_0 operator=MultiplicationOperator rightExpression=Operand)
+	 *     )
+	 */
+	protected void sequence_AdditionExpression_MultiplicationExpression(ISerializationContext context, ArithmeticExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AdditionOperator returns ArithmeticOperator
+	 *
+	 * Constraint:
+	 *     (PLUS='+' | MINUS='-')
+	 */
+	protected void sequence_AdditionOperator(ISerializationContext context, ArithmeticOperator semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns LiteralExpression
+	 *     AggregateExpression returns LiteralExpression
+	 *     ConsPred returns LiteralExpression
+	 *
+	 * Constraint:
+	 *     value=[SuperType|ID]
+	 */
+	protected void sequence_AggregateExpression(ISerializationContext context, LiteralExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.LITERAL_EXPRESSION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.LITERAL_EXPRESSION__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAggregateExpressionAccess().getValueSuperTypeIDTerminalRuleCall_0_0_1(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Event returns Aggegate
+	 *     Aggregate returns Aggegate
 	 *
 	 * Constraint:
 	 *     (name=ID lab+=[Event|ID] lab+=[Event|ID]*)
 	 */
-	protected void sequence_Aggregate(ISerializationContext context, Aggregate semanticObject) {
+	protected void sequence_Aggregate(ISerializationContext context, Aggegate semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Comp returns Constraint
+	 *     ComparingEQNEQOperator returns ComparingOperator
 	 *
 	 * Constraint:
-	 *     ((left=ObAc right=ObAc) | left=ObAc | right=ObAc)
+	 *     (EQUAL='==' | UNEQUAL='!=')
 	 */
-	protected void sequence_Comp(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_ComparingEQNEQOperator(ISerializationContext context, ComparingOperator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ConsList returns ConsList
+	 *     ComparingRelOperator returns ComparingOperator
 	 *
 	 * Constraint:
-	 *     (list+=Cons list+=Cons*)
+	 *     (LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>')
 	 */
-	protected void sequence_ConsList(ISerializationContext context, ConsList semanticObject) {
+	protected void sequence_ComparingRelOperator(ISerializationContext context, ComparingOperator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ConsPred returns ConsPred
+	 *     Constraint returns ComparisonExpression
+	 *     LogicalImplyExpression returns ComparisonExpression
+	 *     LogicalImplyExpression.Constraint_1_0 returns ComparisonExpression
+	 *     LogicalOrExpression returns ComparisonExpression
+	 *     LogicalOrExpression.Constraint_1_0 returns ComparisonExpression
+	 *     LogicalAndExpression returns ComparisonExpression
+	 *     LogicalAndExpression.Constraint_1_0 returns ComparisonExpression
+	 *     ComparisonExpression returns ComparisonExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns ComparisonExpression
+	 *     ComparisonHigherOpExpression returns ComparisonExpression
+	 *     ComparisonHigherOpExpression.ComparisonExpression_1_0 returns ComparisonExpression
+	 *     ArithmeticExpression returns ComparisonExpression
+	 *     AdditionExpression returns ComparisonExpression
+	 *     AdditionExpression.ArithmeticExpression_1_0 returns ComparisonExpression
+	 *     MultiplicationExpression returns ComparisonExpression
+	 *     MultiplicationExpression.ArithmeticExpression_1_1_0 returns ComparisonExpression
+	 *     Operand returns ComparisonExpression
 	 *
 	 * Constraint:
-	 *     name=[Object|ID]
+	 *     (
+	 *         (left=ComparisonExpression_ComparisonExpression_1_0 operator=ComparingEQNEQOperator rightExpression=ComparisonHigherOpExpression) | 
+	 *         (leftExpression=ComparisonHigherOpExpression_ComparisonExpression_1_0 operator=ComparingRelOperator rightExpression=ArithmeticExpression)
+	 *     )
 	 */
-	protected void sequence_ConsPred(ISerializationContext context, ConsPred semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.CONS_PRED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.CONS_PRED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConsPredAccess().getNameObjectIDTerminalRuleCall_1_0_1(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_ComparisonExpression_ComparisonHigherOpExpression(ISerializationContext context, ComparisonExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Cons returns Cons
+	 *     Constraint returns LiteralExpression
+	 *     LogicalImplyExpression returns LiteralExpression
+	 *     LogicalImplyExpression.Constraint_1_0 returns LiteralExpression
+	 *     LogicalOrExpression returns LiteralExpression
+	 *     LogicalOrExpression.Constraint_1_0 returns LiteralExpression
+	 *     LogicalAndExpression returns LiteralExpression
+	 *     LogicalAndExpression.Constraint_1_0 returns LiteralExpression
+	 *     ComparisonExpression returns LiteralExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns LiteralExpression
+	 *     ComparisonHigherOpExpression returns LiteralExpression
+	 *     ComparisonHigherOpExpression.ComparisonExpression_1_0 returns LiteralExpression
+	 *     ArithmeticExpression returns LiteralExpression
+	 *     AdditionExpression returns LiteralExpression
+	 *     AdditionExpression.ArithmeticExpression_1_0 returns LiteralExpression
+	 *     MultiplicationExpression returns LiteralExpression
+	 *     MultiplicationExpression.ArithmeticExpression_1_1_0 returns LiteralExpression
+	 *     Operand returns LiteralExpression
+	 *     Cons returns LiteralExpression
 	 *
 	 * Constraint:
-	 *     (cons=ConsPred litsleft=LitList)
+	 *     ((cons=ConsPred litsleft=LitList) | cons=LiteralExpression)
 	 */
-	protected void sequence_Cons(ISerializationContext context, Cons semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.CONS__CONS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.CONS__CONS));
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.CONS__LITSLEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.CONS__LITSLEFT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConsAccess().getConsConsPredParserRuleCall_0_0_0(), semanticObject.getCons());
-		feeder.accept(grammarAccess.getConsAccess().getLitsleftLitListParserRuleCall_0_3_0(), semanticObject.getLitsleft());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Constraint returns Constraint
-	 *
-	 * Constraint:
-	 *     (cons+=Comp | cons+=Incl | cons+=Pred)
-	 */
-	protected void sequence_Constraint(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_Cons(ISerializationContext context, LiteralExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -526,18 +681,6 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	 *     ((parameters+=[JvmType|QualifiedName] parameters+=[JvmType|QualifiedName]*)? rep=[Event|ID]?)
 	 */
 	protected void sequence_ForbMethod(ISerializationContext context, ForbMethod semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Incl returns Constraint
-	 *
-	 * Constraint:
-	 *     (algl=ConsList algr=ConsList?)
-	 */
-	protected void sequence_Incl(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -578,6 +721,107 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     LiteralExpression returns Literal
+	 *     Literal returns Literal
+	 *     ConsPred returns Literal
+	 *
+	 * Constraint:
+	 *     {Literal}
+	 */
+	protected void sequence_Literal(ISerializationContext context, Literal semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Constraint returns Constraint
+	 *     LogicalImplyExpression returns Constraint
+	 *     LogicalImplyExpression.Constraint_1_0 returns Constraint
+	 *     LogicalOrExpression returns Constraint
+	 *     LogicalOrExpression.Constraint_1_0 returns Constraint
+	 *     LogicalAndExpression returns Constraint
+	 *     LogicalAndExpression.Constraint_1_0 returns Constraint
+	 *     ComparisonExpression returns Constraint
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns Constraint
+	 *     ComparisonHigherOpExpression returns Constraint
+	 *     ComparisonHigherOpExpression.ComparisonExpression_1_0 returns Constraint
+	 *     ArithmeticExpression returns Constraint
+	 *     AdditionExpression returns Constraint
+	 *     AdditionExpression.ArithmeticExpression_1_0 returns Constraint
+	 *     MultiplicationExpression returns Constraint
+	 *     MultiplicationExpression.ArithmeticExpression_1_1_0 returns Constraint
+	 *     Operand returns Constraint
+	 *
+	 * Constraint:
+	 *     (
+	 *         (leftExpression=LogicalImplyExpression_Constraint_1_0 operator=LogicalImply rightExpression=LogicalOrExpression) | 
+	 *         (leftExpression=LogicalOrExpression_Constraint_1_0 operator=LogicalOr rightExpression=LogicalAndExpression) | 
+	 *         (leftExpression=LogicalAndExpression_Constraint_1_0 operator=LogicalAnd rightExpression=ComparisonExpression) | 
+	 *         (predName=ID parList=SuParList?)
+	 *     )
+	 */
+	protected void sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_Pred(ISerializationContext context, Constraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LogicalAnd returns LogicalOperator
+	 *
+	 * Constraint:
+	 *     AND='&&'
+	 */
+	protected void sequence_LogicalAnd(ISerializationContext context, LogicalOperator semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.LOGICAL_OPERATOR__AND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.LOGICAL_OPERATOR__AND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLogicalAndAccess().getANDAmpersandAmpersandKeyword_0(), semanticObject.getAND());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LogicalImply returns LogicalImply
+	 *
+	 * Constraint:
+	 *     IMPLIES='=>'
+	 */
+	protected void sequence_LogicalImply(ISerializationContext context, LogicalImply semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.LOGICAL_IMPLY__IMPLIES) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.LOGICAL_IMPLY__IMPLIES));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLogicalImplyAccess().getIMPLIESEqualsSignGreaterThanSignKeyword_0(), semanticObject.getIMPLIES());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LogicalOr returns LogicalOperator
+	 *
+	 * Constraint:
+	 *     OR='||'
+	 */
+	protected void sequence_LogicalOr(ISerializationContext context, LogicalOperator semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.LOGICAL_OPERATOR__OR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.LOGICAL_OPERATOR__OR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLogicalOrAccess().getORVerticalLineVerticalLineKeyword_0(), semanticObject.getOR());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Method returns Method
 	 *
 	 * Constraint:
@@ -590,32 +834,13 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Cons returns NoEq
-	 *     NoEq returns NoEq
+	 *     MultiplicationOperator returns ArithmeticOperator
 	 *
 	 * Constraint:
-	 *     ((left=ObAc right=ObAc) | left=ObAc | right=ObAc)
+	 *     (TIMES='*' | DIVIDE='/')
 	 */
-	protected void sequence_NoEq(ISerializationContext context, NoEq semanticObject) {
+	protected void sequence_MultiplicationOperator(ISerializationContext context, ArithmeticOperator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ObAc returns ObAc
-	 *
-	 * Constraint:
-	 *     name=[Object|ID]
-	 */
-	protected void sequence_ObAc(ISerializationContext context, ObAc semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.OB_AC__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.OB_AC__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getObAcAccess().getNameObjectIDTerminalRuleCall_0_0_1(), semanticObject.getName());
-		feeder.finish();
 	}
 	
 	
@@ -649,8 +874,8 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_Object(ISerializationContext context, de.darmstadt.tu.crossing.cryptSL.Object semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.OBJECT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.OBJECT__NAME));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EVENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EVENT__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getObjectAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -712,7 +937,7 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 	 *     Pred returns Constraint
 	 *
 	 * Constraint:
-	 *     (leftSide=[Object|ID]? predName=ID parList=ParList?)
+	 *     (predName=ID parList=SuParList?)
 	 */
 	protected void sequence_Pred(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -756,6 +981,86 @@ public class CryptSLSemanticSequencer extends XbaseSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSimpleOrderAccess().getSimpleOrderLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getSimpleOrderAccess().getRightPrimaryParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuParList returns SuParList
+	 *
+	 * Constraint:
+	 *     (parameters+=SuPar parameters+=SuPar*)
+	 */
+	protected void sequence_SuParList(ISerializationContext context, SuParList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuPar returns SuPar
+	 *
+	 * Constraint:
+	 *     val=ConsPred?
+	 */
+	protected void sequence_SuPar(ISerializationContext context, SuPar semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Constraint returns UnaryPreExpression
+	 *     LogicalImplyExpression returns UnaryPreExpression
+	 *     LogicalImplyExpression.Constraint_1_0 returns UnaryPreExpression
+	 *     LogicalOrExpression returns UnaryPreExpression
+	 *     LogicalOrExpression.Constraint_1_0 returns UnaryPreExpression
+	 *     LogicalAndExpression returns UnaryPreExpression
+	 *     LogicalAndExpression.Constraint_1_0 returns UnaryPreExpression
+	 *     ComparisonExpression returns UnaryPreExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns UnaryPreExpression
+	 *     ComparisonHigherOpExpression returns UnaryPreExpression
+	 *     ComparisonHigherOpExpression.ComparisonExpression_1_0 returns UnaryPreExpression
+	 *     ArithmeticExpression returns UnaryPreExpression
+	 *     AdditionExpression returns UnaryPreExpression
+	 *     AdditionExpression.ArithmeticExpression_1_0 returns UnaryPreExpression
+	 *     MultiplicationExpression returns UnaryPreExpression
+	 *     MultiplicationExpression.ArithmeticExpression_1_1_0 returns UnaryPreExpression
+	 *     UnaryPreExpression returns UnaryPreExpression
+	 *     Operand returns UnaryPreExpression
+	 *
+	 * Constraint:
+	 *     (operator=UnaryPreOperator enclosedExpression=Operand)
+	 */
+	protected void sequence_UnaryPreExpression(ISerializationContext context, UnaryPreExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.CONSTRAINT__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.CONSTRAINT__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.UNARY_PRE_EXPRESSION__ENCLOSED_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.UNARY_PRE_EXPRESSION__ENCLOSED_EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUnaryPreExpressionAccess().getOperatorUnaryPreOperatorParserRuleCall_1_0_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getUnaryPreExpressionAccess().getEnclosedExpressionOperandParserRuleCall_1_1_0(), semanticObject.getEnclosedExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     UnaryPreOperator returns UnaryOperator
+	 *
+	 * Constraint:
+	 *     NOT='!'
+	 */
+	protected void sequence_UnaryPreOperator(ISerializationContext context, UnaryOperator semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.UNARY_OPERATOR__NOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.UNARY_OPERATOR__NOT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUnaryPreOperatorAccess().getNOTExclamationMarkKeyword_0(), semanticObject.getNOT());
 		feeder.finish();
 	}
 	

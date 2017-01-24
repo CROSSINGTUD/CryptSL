@@ -3,10 +3,11 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.util;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggregate;
-import de.darmstadt.tu.crossing.cryptSL.Cons;
-import de.darmstadt.tu.crossing.cryptSL.ConsList;
-import de.darmstadt.tu.crossing.cryptSL.ConsPred;
+import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
@@ -15,14 +16,21 @@ import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
+import de.darmstadt.tu.crossing.cryptSL.Literal;
+import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
+import de.darmstadt.tu.crossing.cryptSL.LogicalImply;
+import de.darmstadt.tu.crossing.cryptSL.LogicalOperator;
 import de.darmstadt.tu.crossing.cryptSL.Method;
-import de.darmstadt.tu.crossing.cryptSL.NoEq;
-import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
+import de.darmstadt.tu.crossing.cryptSL.SuPar;
+import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
+import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
+import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -105,14 +113,14 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createObjectDeclAdapter();
       }
       @Override
-      public Adapter caseEvent(Event object)
-      {
-        return createEventAdapter();
-      }
-      @Override
       public Adapter caseForbMethod(ForbMethod object)
       {
         return createForbMethodAdapter();
+      }
+      @Override
+      public Adapter caseEvent(Event object)
+      {
+        return createEventAdapter();
       }
       @Override
       public Adapter caseLabelMethodCall(LabelMethodCall object)
@@ -135,9 +143,9 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createParAdapter();
       }
       @Override
-      public Adapter caseAggregate(Aggregate object)
+      public Adapter caseSuperType(SuperType object)
       {
-        return createAggregateAdapter();
+        return createSuperTypeAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -150,24 +158,34 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createConstraintAdapter();
       }
       @Override
-      public Adapter caseConsList(ConsList object)
+      public Adapter caseLogicalImply(LogicalImply object)
       {
-        return createConsListAdapter();
+        return createLogicalImplyAdapter();
       }
       @Override
-      public Adapter caseCons(Cons object)
+      public Adapter caseLogicalOperator(LogicalOperator object)
       {
-        return createConsAdapter();
+        return createLogicalOperatorAdapter();
       }
       @Override
-      public Adapter caseNoEq(NoEq object)
+      public Adapter caseComparingOperator(ComparingOperator object)
       {
-        return createNoEqAdapter();
+        return createComparingOperatorAdapter();
       }
       @Override
-      public Adapter caseConsPred(ConsPred object)
+      public Adapter caseArithmeticOperator(ArithmeticOperator object)
       {
-        return createConsPredAdapter();
+        return createArithmeticOperatorAdapter();
+      }
+      @Override
+      public Adapter caseLiteralExpression(LiteralExpression object)
+      {
+        return createLiteralExpressionAdapter();
+      }
+      @Override
+      public Adapter caseUnaryOperator(UnaryOperator object)
+      {
+        return createUnaryOperatorAdapter();
       }
       @Override
       public Adapter caseLitList(LitList object)
@@ -175,14 +193,19 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createLitListAdapter();
       }
       @Override
-      public Adapter caseObAc(ObAc object)
+      public Adapter caseSuParList(SuParList object)
       {
-        return createObAcAdapter();
+        return createSuParListAdapter();
       }
       @Override
-      public Adapter caseObject(de.darmstadt.tu.crossing.cryptSL.Object object)
+      public Adapter caseSuPar(SuPar object)
       {
-        return createObjectAdapter();
+        return createSuParAdapter();
+      }
+      @Override
+      public Adapter caseAggegate(Aggegate object)
+      {
+        return createAggegateAdapter();
       }
       @Override
       public Adapter caseOrder(Order object)
@@ -193,6 +216,31 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSimpleOrder(SimpleOrder object)
       {
         return createSimpleOrderAdapter();
+      }
+      @Override
+      public Adapter caseComparisonExpression(ComparisonExpression object)
+      {
+        return createComparisonExpressionAdapter();
+      }
+      @Override
+      public Adapter caseArithmeticExpression(ArithmeticExpression object)
+      {
+        return createArithmeticExpressionAdapter();
+      }
+      @Override
+      public Adapter caseUnaryPreExpression(UnaryPreExpression object)
+      {
+        return createUnaryPreExpressionAdapter();
+      }
+      @Override
+      public Adapter caseLiteral(Literal object)
+      {
+        return createLiteralAdapter();
+      }
+      @Override
+      public Adapter caseObject(de.darmstadt.tu.crossing.cryptSL.Object object)
+      {
+        return createObjectAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -247,21 +295,6 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Event <em>Event</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Event
-   * @generated
-   */
-  public Adapter createEventAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod <em>Forb Method</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -272,6 +305,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createForbMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Event <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Event
+   * @generated
+   */
+  public Adapter createEventAdapter()
   {
     return null;
   }
@@ -337,16 +385,16 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Aggregate <em>Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.SuperType <em>Super Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Aggregate
+   * @see de.darmstadt.tu.crossing.cryptSL.SuperType
    * @generated
    */
-  public Adapter createAggregateAdapter()
+  public Adapter createSuperTypeAdapter()
   {
     return null;
   }
@@ -382,61 +430,91 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ConsList <em>Cons List</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.LogicalImply <em>Logical Imply</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.ConsList
+   * @see de.darmstadt.tu.crossing.cryptSL.LogicalImply
    * @generated
    */
-  public Adapter createConsListAdapter()
+  public Adapter createLogicalImplyAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Cons <em>Cons</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.LogicalOperator <em>Logical Operator</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Cons
+   * @see de.darmstadt.tu.crossing.cryptSL.LogicalOperator
    * @generated
    */
-  public Adapter createConsAdapter()
+  public Adapter createLogicalOperatorAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.NoEq <em>No Eq</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ComparingOperator <em>Comparing Operator</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.NoEq
+   * @see de.darmstadt.tu.crossing.cryptSL.ComparingOperator
    * @generated
    */
-  public Adapter createNoEqAdapter()
+  public Adapter createComparingOperatorAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ConsPred <em>Cons Pred</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator <em>Arithmetic Operator</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.ConsPred
+   * @see de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator
    * @generated
    */
-  public Adapter createConsPredAdapter()
+  public Adapter createArithmeticOperatorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression <em>Literal Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression
+   * @generated
+   */
+  public Adapter createLiteralExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.UnaryOperator <em>Unary Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.UnaryOperator
+   * @generated
+   */
+  public Adapter createUnaryOperatorAdapter()
   {
     return null;
   }
@@ -457,31 +535,46 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ObAc <em>Ob Ac</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.SuParList <em>Su Par List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.ObAc
+   * @see de.darmstadt.tu.crossing.cryptSL.SuParList
    * @generated
    */
-  public Adapter createObAcAdapter()
+  public Adapter createSuParListAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Object <em>Object</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.SuPar <em>Su Par</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Object
+   * @see de.darmstadt.tu.crossing.cryptSL.SuPar
    * @generated
    */
-  public Adapter createObjectAdapter()
+  public Adapter createSuParAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Aggegate <em>Aggegate</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Aggegate
+   * @generated
+   */
+  public Adapter createAggegateAdapter()
   {
     return null;
   }
@@ -512,6 +605,81 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSimpleOrderAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ComparisonExpression <em>Comparison Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.ComparisonExpression
+   * @generated
+   */
+  public Adapter createComparisonExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression <em>Arithmetic Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression
+   * @generated
+   */
+  public Adapter createArithmeticExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression <em>Unary Pre Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression
+   * @generated
+   */
+  public Adapter createUnaryPreExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Literal
+   * @generated
+   */
+  public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Object <em>Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Object
+   * @generated
+   */
+  public Adapter createObjectAdapter()
   {
     return null;
   }

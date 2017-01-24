@@ -61,12 +61,12 @@ public interface ObjectDecl extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Object Name</em>' containment reference.
-   * @see #setObjectName(de.darmstadt.tu.crossing.cryptSL.Object)
+   * @see #setObjectName(SuperType)
    * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getObjectDecl_ObjectName()
    * @model containment="true"
    * @generated
    */
-  de.darmstadt.tu.crossing.cryptSL.Object getObjectName();
+  SuperType getObjectName();
 
   /**
    * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getObjectName <em>Object Name</em>}' containment reference.
@@ -76,6 +76,6 @@ public interface ObjectDecl extends EObject
    * @see #getObjectName()
    * @generated
    */
-  void setObjectName(de.darmstadt.tu.crossing.cryptSL.Object value);
+  void setObjectName(SuperType value);
 
 } // ObjectDecl

@@ -42,15 +42,6 @@ public interface CryptSLFactory extends EFactory
   ObjectDecl createObjectDecl();
 
   /**
-   * Returns a new object of class '<em>Event</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Event</em>'.
-   * @generated
-   */
-  Event createEvent();
-
-  /**
    * Returns a new object of class '<em>Forb Method</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -58,6 +49,15 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   ForbMethod createForbMethod();
+
+  /**
+   * Returns a new object of class '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event</em>'.
+   * @generated
+   */
+  Event createEvent();
 
   /**
    * Returns a new object of class '<em>Label Method Call</em>'.
@@ -96,13 +96,13 @@ public interface CryptSLFactory extends EFactory
   Par createPar();
 
   /**
-   * Returns a new object of class '<em>Aggregate</em>'.
+   * Returns a new object of class '<em>Super Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Aggregate</em>'.
+   * @return a new object of class '<em>Super Type</em>'.
    * @generated
    */
-  Aggregate createAggregate();
+  SuperType createSuperType();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -123,40 +123,58 @@ public interface CryptSLFactory extends EFactory
   Constraint createConstraint();
 
   /**
-   * Returns a new object of class '<em>Cons List</em>'.
+   * Returns a new object of class '<em>Logical Imply</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cons List</em>'.
+   * @return a new object of class '<em>Logical Imply</em>'.
    * @generated
    */
-  ConsList createConsList();
+  LogicalImply createLogicalImply();
 
   /**
-   * Returns a new object of class '<em>Cons</em>'.
+   * Returns a new object of class '<em>Logical Operator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cons</em>'.
+   * @return a new object of class '<em>Logical Operator</em>'.
    * @generated
    */
-  Cons createCons();
+  LogicalOperator createLogicalOperator();
 
   /**
-   * Returns a new object of class '<em>No Eq</em>'.
+   * Returns a new object of class '<em>Comparing Operator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>No Eq</em>'.
+   * @return a new object of class '<em>Comparing Operator</em>'.
    * @generated
    */
-  NoEq createNoEq();
+  ComparingOperator createComparingOperator();
 
   /**
-   * Returns a new object of class '<em>Cons Pred</em>'.
+   * Returns a new object of class '<em>Arithmetic Operator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cons Pred</em>'.
+   * @return a new object of class '<em>Arithmetic Operator</em>'.
    * @generated
    */
-  ConsPred createConsPred();
+  ArithmeticOperator createArithmeticOperator();
+
+  /**
+   * Returns a new object of class '<em>Literal Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal Expression</em>'.
+   * @generated
+   */
+  LiteralExpression createLiteralExpression();
+
+  /**
+   * Returns a new object of class '<em>Unary Operator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unary Operator</em>'.
+   * @generated
+   */
+  UnaryOperator createUnaryOperator();
 
   /**
    * Returns a new object of class '<em>Lit List</em>'.
@@ -168,22 +186,31 @@ public interface CryptSLFactory extends EFactory
   LitList createLitList();
 
   /**
-   * Returns a new object of class '<em>Ob Ac</em>'.
+   * Returns a new object of class '<em>Su Par List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ob Ac</em>'.
+   * @return a new object of class '<em>Su Par List</em>'.
    * @generated
    */
-  ObAc createObAc();
+  SuParList createSuParList();
 
   /**
-   * Returns a new object of class '<em>Object</em>'.
+   * Returns a new object of class '<em>Su Par</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Object</em>'.
+   * @return a new object of class '<em>Su Par</em>'.
    * @generated
    */
-  Object createObject();
+  SuPar createSuPar();
+
+  /**
+   * Returns a new object of class '<em>Aggegate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Aggegate</em>'.
+   * @generated
+   */
+  Aggegate createAggegate();
 
   /**
    * Returns a new object of class '<em>Order</em>'.
@@ -202,6 +229,51 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   SimpleOrder createSimpleOrder();
+
+  /**
+   * Returns a new object of class '<em>Comparison Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comparison Expression</em>'.
+   * @generated
+   */
+  ComparisonExpression createComparisonExpression();
+
+  /**
+   * Returns a new object of class '<em>Arithmetic Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Arithmetic Expression</em>'.
+   * @generated
+   */
+  ArithmeticExpression createArithmeticExpression();
+
+  /**
+   * Returns a new object of class '<em>Unary Pre Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unary Pre Expression</em>'.
+   * @generated
+   */
+  UnaryPreExpression createUnaryPreExpression();
+
+  /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
+
+  /**
+   * Returns a new object of class '<em>Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object</em>'.
+   * @generated
+   */
+  Object createObject();
 
   /**
    * Returns the package supported by this factory.

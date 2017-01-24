@@ -12,16 +12,20 @@ Domainmodel:
 	'ENFORCES_CONSTRAINTS' (req+=Constraint)*
 	('ENSURES' (ens+=Pred)+)?;
 
+////////////// OBJECTS
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
+	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
 
+/////////// FORBIDDEN EVENTS
+ForbMethod:
+	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? 
+		(',' parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")?)*)? ")" ("=>" rep=[Event])?);
+
+///////////// EVENTS
 Event:
 	LabelMethodCall | Aggregate;
 
-ForbMethod:
-	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? 
-		(',' parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")?)*)? ")" ("=>" rep=[Event])?);
-
+/// LABELMETHCALL
 LabelMethodCall:
 	name=ID ":" meth=Method;
 
@@ -34,9 +38,11 @@ ParList:
 Par:
 	{Par} (val=[Object] | '_');
 
-Aggregate:
-	name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";";
+/// AGGS
+Aggregate returns SuperType:
+	{Aggegate}(name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
 
+///////////// ORDER
 Order returns Expression:
 	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*;
 
@@ -46,49 +52,164 @@ SimpleOrder returns Expression:
 Primary returns Expression:
 	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?;
 
+///////////// CONSTRAINTS
 Constraint:
-	(cons+=Comp | cons+=Incl | ('!')? cons+=Pred);
-
-Incl returns Constraint:
-	algl=ConsList ("=>" algr=ConsList)?
+	LogicalImplyExpression
 ;
 
-ConsList:
-	list+=Cons (LogCon list+=Cons)*
+LogicalImplyExpression returns Constraint:
+	LogicalOrExpression
+	(
+		{Constraint.leftExpression=current}
+		operator=LogicalImply
+		rightExpression=LogicalOrExpression
+	)*
 ;
 
-LogCon:
-	OpAnd | OpOr
+LogicalImply:
+	IMPLIES="=>"
+;
+LogicalOrExpression returns Constraint:
+	LogicalAndExpression 
+	(
+		{Constraint.leftExpression=current}
+		operator=LogicalOr
+		rightExpression=LogicalAndExpression
+	)*
 ;
 
-Cons:
-	cons= ConsPred "in" "{" litsleft=LitList "}"| NoEq
+LogicalOr returns LogicalOperator:
+	OR='||'
 ;
 
-NoEq:
-	(left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc)
+LogicalAndExpression returns Constraint:
+
+	(ComparisonExpression 
+	(
+		{Constraint.leftExpression=current}
+		operator=LogicalAnd
+		rightExpression=ComparisonExpression
+	)*)
 ;
 
-NoEqOp:
- '!='	
+
+LogicalAnd returns LogicalOperator:
+	AND='&&'
 ;
 
-ConsPred:
-	("part(" INT "," STRING ")" "of")? name=[Object] 
+ComparisonExpression returns Constraint:
+	ComparisonHigherOpExpression 
+	(
+		{ComparisonExpression.left=current}
+		operator=ComparingEQNEQOperator
+		rightExpression=ComparisonHigherOpExpression
+	)?
+;
+
+
+ComparisonHigherOpExpression returns Constraint:
+	ArithmeticExpression
+	(
+		{ComparisonExpression.leftExpression=current}
+		operator=ComparingRelOperator
+		rightExpression=ArithmeticExpression
+	)?
+;
+
+ComparingRelOperator returns ComparingOperator:
+	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
+;
+
+ArithmeticExpression returns Constraint:
+	AdditionExpression
+;
+
+AdditionExpression returns Constraint:
+	MultiplicationExpression
+	(
+		{ArithmeticExpression.leftExpression=current} 
+		operator=AdditionOperator
+		rightExpression=MultiplicationExpression
+	)*
+;
+
+AdditionOperator returns ArithmeticOperator:
+	PLUS='+' | MINUS='-'
+;
+
+MultiplicationExpression returns Constraint:
+	UnaryPreExpression
+	|
+	Operand
+	 
+	(
+		{ArithmeticExpression.leftExpression=current}
+		operator=MultiplicationOperator
+		rightExpression=Operand
+	)*
+;
+
+MultiplicationOperator returns ArithmeticOperator:
+	TIMES='*' | DIVIDE='/'
+;
+
+UnaryPreExpression returns Constraint:
+	{UnaryPreExpression} 
+	(operator=UnaryPreOperator
+	enclosedExpression=Operand)
+;
+
+Operand returns Constraint:
+	'(' Constraint ')' 
+	| 
+	Cons
+	|
+	Pred
+;
+
+LiteralExpression returns LiteralExpression:
+	  Literal | AggregateExpression 	  
+;
+
+AggregateExpression returns LiteralExpression:
+	 value = [SuperType]("." ID)?
+;
+
+Literal returns LiteralExpression:
+	 {Literal}(INT | STRING)
+;
+
+UnaryPreOperator returns UnaryOperator:
+	NOT='!' 
+;
+	
+ComparingEQNEQOperator returns ComparingOperator:
+	EQUAL='==' | UNEQUAL='!=' 
+;	
+
+Cons returns LiteralExpression:
+	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression 
+;
+
+ConsPred returns LiteralExpression:
+	("part(" INT "," STRING "," LiteralExpression ")") | LiteralExpression 
 ;
 
 LitList:
 	(parameters+=XLiteral (',' (parameters+=XLiteral | '...'))*);
 
 Pred returns Constraint:
-	(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");";
-
-Comp returns Constraint:
-	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";";
-
-ObAc:
-	name=[Object] ("." ID)?
+	predName=ID "(" parList=SuParList? ");"
 ;
 
-Object:
-	{Object} name=ID;
+SuParList:
+	(parameters+=SuPar (',' parameters+=SuPar)*)
+;
+
+SuPar:
+	{SuPar} (val=ConsPred | '_')
+;
+
+Object returns SuperType:
+	{Object} name=ID
+;

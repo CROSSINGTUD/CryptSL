@@ -19,12 +19,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ObjectDecl/objectType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ObjectDecl/objectName"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//Event">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Event/name"/>
-    </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//ForbMethod">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ForbMethod/parameters"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ForbMethod/rep"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Event/name"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//LabelMethodCall">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LabelMethodCall/meth"/>
@@ -40,48 +40,70 @@
     <genClasses ecoreClass="CryptSL.ecore#//Par">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Par/val"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//Aggregate">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Aggregate/lab"/>
-    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//SuperType"/>
     <genClasses ecoreClass="CryptSL.ecore#//Expression">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Expression/orderEv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Expression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Expression/right"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//Constraint">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/cons"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/algl"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/algr"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/leftSide"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/leftExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/rightExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Constraint/predName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/parList"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/right"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//ConsList">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ConsList/list"/>
+    <genClasses ecoreClass="CryptSL.ecore#//LogicalImply">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LogicalImply/IMPLIES"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//Cons">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Cons/cons"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Cons/litsleft"/>
+    <genClasses ecoreClass="CryptSL.ecore#//LogicalOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LogicalOperator/OR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LogicalOperator/AND"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//NoEq">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//NoEq/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//NoEq/right"/>
+    <genClasses ecoreClass="CryptSL.ecore#//ComparingOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/LESS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/LESS_OR_EQUAL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/GREATER_OR_EQUAL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/GREATER"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/EQUAL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ComparingOperator/UNEQUAL"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//ConsPred">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ConsPred/name"/>
+    <genClasses ecoreClass="CryptSL.ecore#//ArithmeticOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ArithmeticOperator/PLUS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ArithmeticOperator/MINUS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ArithmeticOperator/TIMES"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ArithmeticOperator/DIVIDE"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//LiteralExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/cons"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/litsleft"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//UnaryOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//UnaryOperator/NOT"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//LitList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LitList/parameters"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//ObAc">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ObAc/name"/>
+    <genClasses ecoreClass="CryptSL.ecore#//SuParList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//SuParList/parameters"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//Object">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Object/name"/>
+    <genClasses ecoreClass="CryptSL.ecore#//SuPar">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//SuPar/val"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//Aggegate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Aggegate/lab"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//Order"/>
     <genClasses ecoreClass="CryptSL.ecore#//SimpleOrder"/>
+    <genClasses ecoreClass="CryptSL.ecore#//ComparisonExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ComparisonExpression/left"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//ArithmeticExpression"/>
+    <genClasses ecoreClass="CryptSL.ecore#//UnaryPreExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//UnaryPreExpression/enclosedExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//Literal"/>
+    <genClasses ecoreClass="CryptSL.ecore#//Object"/>
   </genPackages>
 </genmodel:GenModel>

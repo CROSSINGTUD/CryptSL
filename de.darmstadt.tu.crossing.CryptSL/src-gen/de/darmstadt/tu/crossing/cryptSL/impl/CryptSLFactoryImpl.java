@@ -3,10 +3,11 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggregate;
-import de.darmstadt.tu.crossing.cryptSL.Cons;
-import de.darmstadt.tu.crossing.cryptSL.ConsList;
-import de.darmstadt.tu.crossing.cryptSL.ConsPred;
+import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
+import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
+import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
@@ -16,14 +17,21 @@ import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
+import de.darmstadt.tu.crossing.cryptSL.Literal;
+import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
+import de.darmstadt.tu.crossing.cryptSL.LogicalImply;
+import de.darmstadt.tu.crossing.cryptSL.LogicalOperator;
 import de.darmstadt.tu.crossing.cryptSL.Method;
-import de.darmstadt.tu.crossing.cryptSL.NoEq;
-import de.darmstadt.tu.crossing.cryptSL.ObAc;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
+import de.darmstadt.tu.crossing.cryptSL.SuPar;
+import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
+import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
+import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -87,24 +95,32 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
     {
       case CryptSLPackage.DOMAINMODEL: return createDomainmodel();
       case CryptSLPackage.OBJECT_DECL: return createObjectDecl();
-      case CryptSLPackage.EVENT: return createEvent();
       case CryptSLPackage.FORB_METHOD: return createForbMethod();
+      case CryptSLPackage.EVENT: return createEvent();
       case CryptSLPackage.LABEL_METHOD_CALL: return createLabelMethodCall();
       case CryptSLPackage.METHOD: return createMethod();
       case CryptSLPackage.PAR_LIST: return createParList();
       case CryptSLPackage.PAR: return createPar();
-      case CryptSLPackage.AGGREGATE: return createAggregate();
+      case CryptSLPackage.SUPER_TYPE: return createSuperType();
       case CryptSLPackage.EXPRESSION: return createExpression();
       case CryptSLPackage.CONSTRAINT: return createConstraint();
-      case CryptSLPackage.CONS_LIST: return createConsList();
-      case CryptSLPackage.CONS: return createCons();
-      case CryptSLPackage.NO_EQ: return createNoEq();
-      case CryptSLPackage.CONS_PRED: return createConsPred();
+      case CryptSLPackage.LOGICAL_IMPLY: return createLogicalImply();
+      case CryptSLPackage.LOGICAL_OPERATOR: return createLogicalOperator();
+      case CryptSLPackage.COMPARING_OPERATOR: return createComparingOperator();
+      case CryptSLPackage.ARITHMETIC_OPERATOR: return createArithmeticOperator();
+      case CryptSLPackage.LITERAL_EXPRESSION: return createLiteralExpression();
+      case CryptSLPackage.UNARY_OPERATOR: return createUnaryOperator();
       case CryptSLPackage.LIT_LIST: return createLitList();
-      case CryptSLPackage.OB_AC: return createObAc();
-      case CryptSLPackage.OBJECT: return createObject();
+      case CryptSLPackage.SU_PAR_LIST: return createSuParList();
+      case CryptSLPackage.SU_PAR: return createSuPar();
+      case CryptSLPackage.AGGEGATE: return createAggegate();
       case CryptSLPackage.ORDER: return createOrder();
       case CryptSLPackage.SIMPLE_ORDER: return createSimpleOrder();
+      case CryptSLPackage.COMPARISON_EXPRESSION: return createComparisonExpression();
+      case CryptSLPackage.ARITHMETIC_EXPRESSION: return createArithmeticExpression();
+      case CryptSLPackage.UNARY_PRE_EXPRESSION: return createUnaryPreExpression();
+      case CryptSLPackage.LITERAL: return createLiteral();
+      case CryptSLPackage.OBJECT: return createObject();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -137,10 +153,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Event createEvent()
+  public ForbMethod createForbMethod()
   {
-    EventImpl event = new EventImpl();
-    return event;
+    ForbMethodImpl forbMethod = new ForbMethodImpl();
+    return forbMethod;
   }
 
   /**
@@ -148,10 +164,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ForbMethod createForbMethod()
+  public Event createEvent()
   {
-    ForbMethodImpl forbMethod = new ForbMethodImpl();
-    return forbMethod;
+    EventImpl event = new EventImpl();
+    return event;
   }
 
   /**
@@ -203,10 +219,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Aggregate createAggregate()
+  public SuperType createSuperType()
   {
-    AggregateImpl aggregate = new AggregateImpl();
-    return aggregate;
+    SuperTypeImpl superType = new SuperTypeImpl();
+    return superType;
   }
 
   /**
@@ -236,10 +252,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConsList createConsList()
+  public LogicalImply createLogicalImply()
   {
-    ConsListImpl consList = new ConsListImpl();
-    return consList;
+    LogicalImplyImpl logicalImply = new LogicalImplyImpl();
+    return logicalImply;
   }
 
   /**
@@ -247,10 +263,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Cons createCons()
+  public LogicalOperator createLogicalOperator()
   {
-    ConsImpl cons = new ConsImpl();
-    return cons;
+    LogicalOperatorImpl logicalOperator = new LogicalOperatorImpl();
+    return logicalOperator;
   }
 
   /**
@@ -258,10 +274,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoEq createNoEq()
+  public ComparingOperator createComparingOperator()
   {
-    NoEqImpl noEq = new NoEqImpl();
-    return noEq;
+    ComparingOperatorImpl comparingOperator = new ComparingOperatorImpl();
+    return comparingOperator;
   }
 
   /**
@@ -269,10 +285,32 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConsPred createConsPred()
+  public ArithmeticOperator createArithmeticOperator()
   {
-    ConsPredImpl consPred = new ConsPredImpl();
-    return consPred;
+    ArithmeticOperatorImpl arithmeticOperator = new ArithmeticOperatorImpl();
+    return arithmeticOperator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LiteralExpression createLiteralExpression()
+  {
+    LiteralExpressionImpl literalExpression = new LiteralExpressionImpl();
+    return literalExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UnaryOperator createUnaryOperator()
+  {
+    UnaryOperatorImpl unaryOperator = new UnaryOperatorImpl();
+    return unaryOperator;
   }
 
   /**
@@ -291,10 +329,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ObAc createObAc()
+  public SuParList createSuParList()
   {
-    ObAcImpl obAc = new ObAcImpl();
-    return obAc;
+    SuParListImpl suParList = new SuParListImpl();
+    return suParList;
   }
 
   /**
@@ -302,10 +340,21 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.darmstadt.tu.crossing.cryptSL.Object createObject()
+  public SuPar createSuPar()
   {
-    ObjectImpl object = new ObjectImpl();
-    return object;
+    SuParImpl suPar = new SuParImpl();
+    return suPar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Aggegate createAggegate()
+  {
+    AggegateImpl aggegate = new AggegateImpl();
+    return aggegate;
   }
 
   /**
@@ -328,6 +377,61 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     SimpleOrderImpl simpleOrder = new SimpleOrderImpl();
     return simpleOrder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComparisonExpression createComparisonExpression()
+  {
+    ComparisonExpressionImpl comparisonExpression = new ComparisonExpressionImpl();
+    return comparisonExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArithmeticExpression createArithmeticExpression()
+  {
+    ArithmeticExpressionImpl arithmeticExpression = new ArithmeticExpressionImpl();
+    return arithmeticExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UnaryPreExpression createUnaryPreExpression()
+  {
+    UnaryPreExpressionImpl unaryPreExpression = new UnaryPreExpressionImpl();
+    return unaryPreExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public de.darmstadt.tu.crossing.cryptSL.Object createObject()
+  {
+    ObjectImpl object = new ObjectImpl();
+    return object;
   }
 
   /**

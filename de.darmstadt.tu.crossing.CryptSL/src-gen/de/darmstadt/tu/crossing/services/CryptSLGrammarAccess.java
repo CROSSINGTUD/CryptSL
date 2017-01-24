@@ -144,16 +144,17 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cObjectTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cObjectTypeJvmTypeCrossReference_0_0 = (CrossReference)cObjectTypeAssignment_0.eContents().get(0);
 		private final RuleCall cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cObjectTypeJvmTypeCrossReference_0_0.eContents().get(1);
-		private final RuleCall cArrayBracketsParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cLeftSquareBracketRightSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cObjectNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cObjectNameObjectParserRuleCall_2_0 = (RuleCall)cObjectNameAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
+		//////////////// OBJECTS
 		//ObjectDecl:
-		//	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
+		//	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";"
+		//objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";"
 		public Group getGroup() { return cGroup; }
 		
 		//objectType=[jvmTypes::JvmType|QualifiedName]
@@ -165,8 +166,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1() { return cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1; }
 		
-		//ArrayBrackets?
-		public RuleCall getArrayBracketsParserRuleCall_1() { return cArrayBracketsParserRuleCall_1; }
+		//"[]"?
+		public Keyword getLeftSquareBracketRightSquareBracketKeyword_1() { return cLeftSquareBracketRightSquareBracketKeyword_1; }
 		
 		//objectName=Object
 		public Assignment getObjectNameAssignment_2() { return cObjectNameAssignment_2; }
@@ -176,25 +177,6 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class EventElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Event");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cLabelMethodCallParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cAggregateParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//Event:
-		//	LabelMethodCall | Aggregate;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//LabelMethodCall | Aggregate
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//LabelMethodCall
-		public RuleCall getLabelMethodCallParserRuleCall_0() { return cLabelMethodCallParserRuleCall_0; }
-		
-		//Aggregate
-		public RuleCall getAggregateParserRuleCall_1() { return cAggregateParserRuleCall_1; }
 	}
 	public class ForbMethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ForbMethod");
@@ -207,7 +189,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cParametersAssignment_1_2_0 = (Assignment)cGroup_1_2.eContents().get(0);
 		private final CrossReference cParametersJvmTypeCrossReference_1_2_0_0 = (CrossReference)cParametersAssignment_1_2_0.eContents().get(0);
 		private final RuleCall cParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1 = (RuleCall)cParametersJvmTypeCrossReference_1_2_0_0.eContents().get(1);
-		private final RuleCall cArrayBracketsParserRuleCall_1_2_1 = (RuleCall)cGroup_1_2.eContents().get(1);
+		private final Keyword cLeftSquareBracketRightSquareBracketKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
 		private final Group cGroup_1_2_2 = (Group)cGroup_1_2.eContents().get(2);
 		private final Keyword cCommaKeyword_1_2_2_0 = (Keyword)cGroup_1_2_2.eContents().get(0);
 		private final Assignment cParametersAssignment_1_2_2_1 = (Assignment)cGroup_1_2_2.eContents().get(1);
@@ -221,19 +203,20 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cRepEventCrossReference_1_4_1_0 = (CrossReference)cRepAssignment_1_4_1.eContents().get(0);
 		private final RuleCall cRepEventIDTerminalRuleCall_1_4_1_0_1 = (RuleCall)cRepEventCrossReference_1_4_1_0.eContents().get(1);
 		
+		///////////// FORBIDDEN EVENTS
 		//ForbMethod:
-		//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
+		//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
 		//	parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
+		//{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
 		//parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?)
 		public Group getGroup() { return cGroup; }
 		
 		//{ForbMethod}
 		public Action getForbMethodAction_0() { return cForbMethodAction_0; }
 		
-		//(ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
+		//(ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
 		//"[]"?)*)? ")" ("=>" rep=[Event])?)
 		public Group getGroup_1() { return cGroup_1; }
 		
@@ -243,8 +226,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 		
-		//(parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (',' parameters+=[jvmTypes::JvmType|QualifiedName]
-		//"[]"?)*)?
+		//(parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (',' parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)?
 		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//parameters+=[jvmTypes::JvmType|QualifiedName]
@@ -256,8 +238,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1() { return cParametersJvmTypeQualifiedNameParserRuleCall_1_2_0_0_1; }
 		
-		//ArrayBrackets?
-		public RuleCall getArrayBracketsParserRuleCall_1_2_1() { return cArrayBracketsParserRuleCall_1_2_1; }
+		//"[]"?
+		public Keyword getLeftSquareBracketRightSquareBracketKeyword_1_2_1() { return cLeftSquareBracketRightSquareBracketKeyword_1_2_1; }
 		
 		//(',' parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*
 		public Group getGroup_1_2_2() { return cGroup_1_2_2; }
@@ -295,6 +277,26 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getRepEventIDTerminalRuleCall_1_4_1_0_1() { return cRepEventIDTerminalRuleCall_1_4_1_0_1; }
 	}
+	public class EventElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Event");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLabelMethodCallParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAggregateParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		/////////////// EVENTS
+		//Event:
+		//	LabelMethodCall | Aggregate;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LabelMethodCall | Aggregate
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//LabelMethodCall
+		public RuleCall getLabelMethodCallParserRuleCall_0() { return cLabelMethodCallParserRuleCall_0; }
+		
+		//Aggregate
+		public RuleCall getAggregateParserRuleCall_1() { return cAggregateParserRuleCall_1; }
+	}
 	public class LabelMethodCallElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LabelMethodCall");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -304,6 +306,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMethAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMethMethodParserRuleCall_2_0 = (RuleCall)cMethAssignment_2.eContents().get(0);
 		
+		///// LABELMETHCALL
 		//LabelMethodCall:
 		//	name=ID ":" meth=Method;
 		@Override public ParserRule getRule() { return rule; }
@@ -454,65 +457,74 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class AggregateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Aggregate");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Assignment cLabAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final CrossReference cLabEventCrossReference_2_0_0 = (CrossReference)cLabAssignment_2_0.eContents().get(0);
-		private final RuleCall cLabEventIDTerminalRuleCall_2_0_0_1 = (RuleCall)cLabEventCrossReference_2_0_0.eContents().get(1);
-		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
-		private final Keyword cCommaKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
-		private final Assignment cLabAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final CrossReference cLabEventCrossReference_2_1_1_0 = (CrossReference)cLabAssignment_2_1_1.eContents().get(0);
-		private final RuleCall cLabEventIDTerminalRuleCall_2_1_1_0_1 = (RuleCall)cLabEventCrossReference_2_1_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Action cAggegateAction_0 = (Action)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
+		private final Keyword cColonEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
+		private final Assignment cLabAssignment_1_2_0 = (Assignment)cGroup_1_2.eContents().get(0);
+		private final CrossReference cLabEventCrossReference_1_2_0_0 = (CrossReference)cLabAssignment_1_2_0.eContents().get(0);
+		private final RuleCall cLabEventIDTerminalRuleCall_1_2_0_0_1 = (RuleCall)cLabEventCrossReference_1_2_0_0.eContents().get(1);
+		private final Group cGroup_1_2_1 = (Group)cGroup_1_2.eContents().get(1);
+		private final Keyword cCommaKeyword_1_2_1_0 = (Keyword)cGroup_1_2_1.eContents().get(0);
+		private final Assignment cLabAssignment_1_2_1_1 = (Assignment)cGroup_1_2_1.eContents().get(1);
+		private final CrossReference cLabEventCrossReference_1_2_1_1_0 = (CrossReference)cLabAssignment_1_2_1_1.eContents().get(0);
+		private final RuleCall cLabEventIDTerminalRuleCall_1_2_1_1_0_1 = (RuleCall)cLabEventCrossReference_1_2_1_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		
-		//Aggregate:
-		//	name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";";
+		///// AGGS
+		//Aggregate SuperType:
+		//	{Aggegate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";")
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";"
+		//{Aggegate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";")
 		public Group getGroup() { return cGroup; }
 		
+		//{Aggegate}
+		public Action getAggegateAction_0() { return cAggegateAction_0; }
+		
+		//(name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";")
+		public Group getGroup_1() { return cGroup_1; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0_0() { return cNameIDTerminalRuleCall_1_0_0; }
 		
 		//':='
-		public Keyword getColonEqualsSignKeyword_1() { return cColonEqualsSignKeyword_1; }
+		public Keyword getColonEqualsSignKeyword_1_1() { return cColonEqualsSignKeyword_1_1; }
 		
 		//(lab+=[Event] (',' lab+=[Event])*)
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//lab+=[Event]
-		public Assignment getLabAssignment_2_0() { return cLabAssignment_2_0; }
+		public Assignment getLabAssignment_1_2_0() { return cLabAssignment_1_2_0; }
 		
 		//[Event]
-		public CrossReference getLabEventCrossReference_2_0_0() { return cLabEventCrossReference_2_0_0; }
+		public CrossReference getLabEventCrossReference_1_2_0_0() { return cLabEventCrossReference_1_2_0_0; }
 		
 		//ID
-		public RuleCall getLabEventIDTerminalRuleCall_2_0_0_1() { return cLabEventIDTerminalRuleCall_2_0_0_1; }
+		public RuleCall getLabEventIDTerminalRuleCall_1_2_0_0_1() { return cLabEventIDTerminalRuleCall_1_2_0_0_1; }
 		
 		//(',' lab+=[Event])*
-		public Group getGroup_2_1() { return cGroup_2_1; }
+		public Group getGroup_1_2_1() { return cGroup_1_2_1; }
 		
 		//','
-		public Keyword getCommaKeyword_2_1_0() { return cCommaKeyword_2_1_0; }
+		public Keyword getCommaKeyword_1_2_1_0() { return cCommaKeyword_1_2_1_0; }
 		
 		//lab+=[Event]
-		public Assignment getLabAssignment_2_1_1() { return cLabAssignment_2_1_1; }
+		public Assignment getLabAssignment_1_2_1_1() { return cLabAssignment_1_2_1_1; }
 		
 		//[Event]
-		public CrossReference getLabEventCrossReference_2_1_1_0() { return cLabEventCrossReference_2_1_1_0; }
+		public CrossReference getLabEventCrossReference_1_2_1_1_0() { return cLabEventCrossReference_1_2_1_1_0; }
 		
 		//ID
-		public RuleCall getLabEventIDTerminalRuleCall_2_1_1_0_1() { return cLabEventIDTerminalRuleCall_2_1_1_0_1; }
+		public RuleCall getLabEventIDTerminalRuleCall_1_2_1_1_0_1() { return cLabEventIDTerminalRuleCall_1_2_1_1_0_1; }
 		
 		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+		public Keyword getSemicolonKeyword_1_3() { return cSemicolonKeyword_1_3; }
 	}
 	public class OrderElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Order");
@@ -524,6 +536,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightSimpleOrderParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
+		/////////////// ORDER
 		//Order Expression:
 		//	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*
 		@Override public ParserRule getRule() { return rule; }
@@ -661,135 +674,657 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class ConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Constraint");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cConsAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cConsCompParserRuleCall_0_0 = (RuleCall)cConsAssignment_0.eContents().get(0);
-		private final Assignment cConsAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cConsInclParserRuleCall_1_0 = (RuleCall)cConsAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cExclamationMarkKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cConsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cConsPredParserRuleCall_2_1_0 = (RuleCall)cConsAssignment_2_1.eContents().get(0);
+		private final RuleCall cLogicalImplyExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
+		/////////////// CONSTRAINTS
 		//Constraint:
-		//	cons+=Comp | cons+=Incl | '!'? cons+=Pred;
+		//	LogicalImplyExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//cons+=Comp | cons+=Incl | '!'? cons+=Pred
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//cons+=Comp
-		public Assignment getConsAssignment_0() { return cConsAssignment_0; }
-		
-		//Comp
-		public RuleCall getConsCompParserRuleCall_0_0() { return cConsCompParserRuleCall_0_0; }
-		
-		//cons+=Incl
-		public Assignment getConsAssignment_1() { return cConsAssignment_1; }
-		
-		//Incl
-		public RuleCall getConsInclParserRuleCall_1_0() { return cConsInclParserRuleCall_1_0; }
-		
-		//'!'? cons+=Pred
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'!'?
-		public Keyword getExclamationMarkKeyword_2_0() { return cExclamationMarkKeyword_2_0; }
-		
-		//cons+=Pred
-		public Assignment getConsAssignment_2_1() { return cConsAssignment_2_1; }
-		
-		//Pred
-		public RuleCall getConsPredParserRuleCall_2_1_0() { return cConsPredParserRuleCall_2_1_0; }
+		//LogicalImplyExpression
+		public RuleCall getLogicalImplyExpressionParserRuleCall() { return cLogicalImplyExpressionParserRuleCall; }
 	}
-	public class InclElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Incl");
+	public class LogicalImplyExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalImplyExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAlglAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAlglConsListParserRuleCall_0_0 = (RuleCall)cAlglAssignment_0.eContents().get(0);
+		private final RuleCall cLogicalOrExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cAlgrAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cAlgrConsListParserRuleCall_1_1_0 = (RuleCall)cAlgrAssignment_1_1.eContents().get(0);
+		private final Action cConstraintLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorLogicalImplyParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionLogicalOrExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
-		//Incl Constraint:
-		//	algl=ConsList ("=>" algr=ConsList)?
+		//LogicalImplyExpression Constraint:
+		//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply
+		//	rightExpression=LogicalOrExpression)*
 		@Override public ParserRule getRule() { return rule; }
 		
-		//algl=ConsList ("=>" algr=ConsList)?
+		//LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply rightExpression=LogicalOrExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//algl=ConsList
-		public Assignment getAlglAssignment_0() { return cAlglAssignment_0; }
+		//LogicalOrExpression
+		public RuleCall getLogicalOrExpressionParserRuleCall_0() { return cLogicalOrExpressionParserRuleCall_0; }
 		
-		//ConsList
-		public RuleCall getAlglConsListParserRuleCall_0_0() { return cAlglConsListParserRuleCall_0_0; }
-		
-		//("=>" algr=ConsList)?
+		//({Constraint.leftExpression=current} operator=LogicalImply rightExpression=LogicalOrExpression)*
 		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Constraint.leftExpression=current}
+		public Action getConstraintLeftExpressionAction_1_0() { return cConstraintLeftExpressionAction_1_0; }
+		
+		//operator=LogicalImply
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//LogicalImply
+		public RuleCall getOperatorLogicalImplyParserRuleCall_1_1_0() { return cOperatorLogicalImplyParserRuleCall_1_1_0; }
+		
+		//rightExpression=LogicalOrExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//LogicalOrExpression
+		public RuleCall getRightExpressionLogicalOrExpressionParserRuleCall_1_2_0() { return cRightExpressionLogicalOrExpressionParserRuleCall_1_2_0; }
+	}
+	public class LogicalImplyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalImply");
+		private final Assignment cIMPLIESAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cIMPLIESEqualsSignGreaterThanSignKeyword_0 = (Keyword)cIMPLIESAssignment.eContents().get(0);
+		
+		//LogicalImply:
+		//	IMPLIES="=>";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IMPLIES="=>"
+		public Assignment getIMPLIESAssignment() { return cIMPLIESAssignment; }
 		
 		//"=>"
-		public Keyword getEqualsSignGreaterThanSignKeyword_1_0() { return cEqualsSignGreaterThanSignKeyword_1_0; }
-		
-		//algr=ConsList
-		public Assignment getAlgrAssignment_1_1() { return cAlgrAssignment_1_1; }
-		
-		//ConsList
-		public RuleCall getAlgrConsListParserRuleCall_1_1_0() { return cAlgrConsListParserRuleCall_1_1_0; }
+		public Keyword getIMPLIESEqualsSignGreaterThanSignKeyword_0() { return cIMPLIESEqualsSignGreaterThanSignKeyword_0; }
 	}
-	public class ConsListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ConsList");
+	public class LogicalOrExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalOrExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cListAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cListConsParserRuleCall_0_0 = (RuleCall)cListAssignment_0.eContents().get(0);
+		private final RuleCall cLogicalAndExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final RuleCall cLogConParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cListAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cListConsParserRuleCall_1_1_0 = (RuleCall)cListAssignment_1_1.eContents().get(0);
+		private final Action cConstraintLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorLogicalOrParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionLogicalAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
-		//ConsList:
-		//	list+=Cons (LogCon list+=Cons)*;
+		//LogicalOrExpression Constraint:
+		//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr
+		//	rightExpression=LogicalAndExpression)*
 		@Override public ParserRule getRule() { return rule; }
 		
-		//list+=Cons (LogCon list+=Cons)*
+		//LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr rightExpression=LogicalAndExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//list+=Cons
-		public Assignment getListAssignment_0() { return cListAssignment_0; }
+		//LogicalAndExpression
+		public RuleCall getLogicalAndExpressionParserRuleCall_0() { return cLogicalAndExpressionParserRuleCall_0; }
 		
-		//Cons
-		public RuleCall getListConsParserRuleCall_0_0() { return cListConsParserRuleCall_0_0; }
-		
-		//(LogCon list+=Cons)*
+		//({Constraint.leftExpression=current} operator=LogicalOr rightExpression=LogicalAndExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//LogCon
-		public RuleCall getLogConParserRuleCall_1_0() { return cLogConParserRuleCall_1_0; }
+		//{Constraint.leftExpression=current}
+		public Action getConstraintLeftExpressionAction_1_0() { return cConstraintLeftExpressionAction_1_0; }
 		
-		//list+=Cons
-		public Assignment getListAssignment_1_1() { return cListAssignment_1_1; }
+		//operator=LogicalOr
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
 		
-		//Cons
-		public RuleCall getListConsParserRuleCall_1_1_0() { return cListConsParserRuleCall_1_1_0; }
+		//LogicalOr
+		public RuleCall getOperatorLogicalOrParserRuleCall_1_1_0() { return cOperatorLogicalOrParserRuleCall_1_1_0; }
+		
+		//rightExpression=LogicalAndExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//LogicalAndExpression
+		public RuleCall getRightExpressionLogicalAndExpressionParserRuleCall_1_2_0() { return cRightExpressionLogicalAndExpressionParserRuleCall_1_2_0; }
 	}
-	public class LogConElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogCon");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cOpAndParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cOpOrParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+	public class LogicalOrElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalOr");
+		private final Assignment cORAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cORVerticalLineVerticalLineKeyword_0 = (Keyword)cORAssignment.eContents().get(0);
 		
-		//LogCon:
-		//	OpAnd | OpOr;
+		//LogicalOr LogicalOperator:
+		//	OR='||'
 		@Override public ParserRule getRule() { return rule; }
 		
-		//OpAnd | OpOr
+		//OR='||'
+		public Assignment getORAssignment() { return cORAssignment; }
+		
+		//'||'
+		public Keyword getORVerticalLineVerticalLineKeyword_0() { return cORVerticalLineVerticalLineKeyword_0; }
+	}
+	public class LogicalAndExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalAndExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cComparisonExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cConstraintLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorLogicalAndParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
+		
+		//LogicalAndExpression Constraint:
+		//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd
+		//	rightExpression=ComparisonExpression)*
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd rightExpression=ComparisonExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//ComparisonExpression
+		public RuleCall getComparisonExpressionParserRuleCall_0() { return cComparisonExpressionParserRuleCall_0; }
+		
+		//({Constraint.leftExpression=current} operator=LogicalAnd rightExpression=ComparisonExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Constraint.leftExpression=current}
+		public Action getConstraintLeftExpressionAction_1_0() { return cConstraintLeftExpressionAction_1_0; }
+		
+		//operator=LogicalAnd
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//LogicalAnd
+		public RuleCall getOperatorLogicalAndParserRuleCall_1_1_0() { return cOperatorLogicalAndParserRuleCall_1_1_0; }
+		
+		//rightExpression=ComparisonExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//ComparisonExpression
+		public RuleCall getRightExpressionComparisonExpressionParserRuleCall_1_2_0() { return cRightExpressionComparisonExpressionParserRuleCall_1_2_0; }
+	}
+	public class LogicalAndElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LogicalAnd");
+		private final Assignment cANDAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cANDAmpersandAmpersandKeyword_0 = (Keyword)cANDAssignment.eContents().get(0);
+		
+		//LogicalAnd LogicalOperator:
+		//	AND='&&'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AND='&&'
+		public Assignment getANDAssignment() { return cANDAssignment; }
+		
+		//'&&'
+		public Keyword getANDAmpersandAmpersandKeyword_0() { return cANDAmpersandAmpersandKeyword_0; }
+	}
+	public class ComparisonExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ComparisonExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cComparisonHigherOpExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cComparisonExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorComparingEQNEQOperatorParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionComparisonHigherOpExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
+		
+		//ComparisonExpression Constraint:
+		//	ComparisonHigherOpExpression ({ComparisonExpression.left=current} operator=ComparingEQNEQOperator
+		//	rightExpression=ComparisonHigherOpExpression)?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ComparisonHigherOpExpression ({ComparisonExpression.left=current} operator=ComparingEQNEQOperator
+		//rightExpression=ComparisonHigherOpExpression)?
+		public Group getGroup() { return cGroup; }
+		
+		//ComparisonHigherOpExpression
+		public RuleCall getComparisonHigherOpExpressionParserRuleCall_0() { return cComparisonHigherOpExpressionParserRuleCall_0; }
+		
+		//({ComparisonExpression.left=current} operator=ComparingEQNEQOperator rightExpression=ComparisonHigherOpExpression)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ComparisonExpression.left=current}
+		public Action getComparisonExpressionLeftAction_1_0() { return cComparisonExpressionLeftAction_1_0; }
+		
+		//operator=ComparingEQNEQOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//ComparingEQNEQOperator
+		public RuleCall getOperatorComparingEQNEQOperatorParserRuleCall_1_1_0() { return cOperatorComparingEQNEQOperatorParserRuleCall_1_1_0; }
+		
+		//rightExpression=ComparisonHigherOpExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//ComparisonHigherOpExpression
+		public RuleCall getRightExpressionComparisonHigherOpExpressionParserRuleCall_1_2_0() { return cRightExpressionComparisonHigherOpExpressionParserRuleCall_1_2_0; }
+	}
+	public class ComparisonHigherOpExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ComparisonHigherOpExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cArithmeticExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cComparisonExpressionLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorComparingRelOperatorParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionArithmeticExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
+		
+		//ComparisonHigherOpExpression Constraint:
+		//	ArithmeticExpression ({ComparisonExpression.leftExpression=current} operator=ComparingRelOperator
+		//	rightExpression=ArithmeticExpression)?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ArithmeticExpression ({ComparisonExpression.leftExpression=current} operator=ComparingRelOperator
+		//rightExpression=ArithmeticExpression)?
+		public Group getGroup() { return cGroup; }
+		
+		//ArithmeticExpression
+		public RuleCall getArithmeticExpressionParserRuleCall_0() { return cArithmeticExpressionParserRuleCall_0; }
+		
+		//({ComparisonExpression.leftExpression=current} operator=ComparingRelOperator rightExpression=ArithmeticExpression)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ComparisonExpression.leftExpression=current}
+		public Action getComparisonExpressionLeftExpressionAction_1_0() { return cComparisonExpressionLeftExpressionAction_1_0; }
+		
+		//operator=ComparingRelOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//ComparingRelOperator
+		public RuleCall getOperatorComparingRelOperatorParserRuleCall_1_1_0() { return cOperatorComparingRelOperatorParserRuleCall_1_1_0; }
+		
+		//rightExpression=ArithmeticExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//ArithmeticExpression
+		public RuleCall getRightExpressionArithmeticExpressionParserRuleCall_1_2_0() { return cRightExpressionArithmeticExpressionParserRuleCall_1_2_0; }
+	}
+	public class ComparingRelOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ComparingRelOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cLESSAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cLESSLessThanSignKeyword_0_0 = (Keyword)cLESSAssignment_0.eContents().get(0);
+		private final Assignment cLESS_OR_EQUALAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cLESS_OR_EQUALLessThanSignEqualsSignKeyword_1_0 = (Keyword)cLESS_OR_EQUALAssignment_1.eContents().get(0);
+		private final Assignment cGREATER_OR_EQUALAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0 = (Keyword)cGREATER_OR_EQUALAssignment_2.eContents().get(0);
+		private final Assignment cGREATERAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final Keyword cGREATERGreaterThanSignKeyword_3_0 = (Keyword)cGREATERAssignment_3.eContents().get(0);
+		
+		//ComparingRelOperator ComparingOperator:
+		//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//OpAnd
-		public RuleCall getOpAndParserRuleCall_0() { return cOpAndParserRuleCall_0; }
+		//LESS='<'
+		public Assignment getLESSAssignment_0() { return cLESSAssignment_0; }
 		
-		//OpOr
-		public RuleCall getOpOrParserRuleCall_1() { return cOpOrParserRuleCall_1; }
+		//'<'
+		public Keyword getLESSLessThanSignKeyword_0_0() { return cLESSLessThanSignKeyword_0_0; }
+		
+		//LESS_OR_EQUAL='<='
+		public Assignment getLESS_OR_EQUALAssignment_1() { return cLESS_OR_EQUALAssignment_1; }
+		
+		//'<='
+		public Keyword getLESS_OR_EQUALLessThanSignEqualsSignKeyword_1_0() { return cLESS_OR_EQUALLessThanSignEqualsSignKeyword_1_0; }
+		
+		//GREATER_OR_EQUAL='>='
+		public Assignment getGREATER_OR_EQUALAssignment_2() { return cGREATER_OR_EQUALAssignment_2; }
+		
+		//'>='
+		public Keyword getGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0() { return cGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0; }
+		
+		//GREATER='>'
+		public Assignment getGREATERAssignment_3() { return cGREATERAssignment_3; }
+		
+		//'>'
+		public Keyword getGREATERGreaterThanSignKeyword_3_0() { return cGREATERGreaterThanSignKeyword_3_0; }
+	}
+	public class ArithmeticExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ArithmeticExpression");
+		private final RuleCall cAdditionExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//ArithmeticExpression Constraint:
+		//	AdditionExpression
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AdditionExpression
+		public RuleCall getAdditionExpressionParserRuleCall() { return cAdditionExpressionParserRuleCall; }
+	}
+	public class AdditionExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.AdditionExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cMultiplicationExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cArithmeticExpressionLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorAdditionOperatorParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionMultiplicationExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
+		
+		//AdditionExpression Constraint:
+		//	MultiplicationExpression ({ArithmeticExpression.leftExpression=current} operator=AdditionOperator
+		//	rightExpression=MultiplicationExpression)*
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MultiplicationExpression ({ArithmeticExpression.leftExpression=current} operator=AdditionOperator
+		//rightExpression=MultiplicationExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//MultiplicationExpression
+		public RuleCall getMultiplicationExpressionParserRuleCall_0() { return cMultiplicationExpressionParserRuleCall_0; }
+		
+		//({ArithmeticExpression.leftExpression=current} operator=AdditionOperator rightExpression=MultiplicationExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ArithmeticExpression.leftExpression=current}
+		public Action getArithmeticExpressionLeftExpressionAction_1_0() { return cArithmeticExpressionLeftExpressionAction_1_0; }
+		
+		//operator=AdditionOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//AdditionOperator
+		public RuleCall getOperatorAdditionOperatorParserRuleCall_1_1_0() { return cOperatorAdditionOperatorParserRuleCall_1_1_0; }
+		
+		//rightExpression=MultiplicationExpression
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//MultiplicationExpression
+		public RuleCall getRightExpressionMultiplicationExpressionParserRuleCall_1_2_0() { return cRightExpressionMultiplicationExpressionParserRuleCall_1_2_0; }
+	}
+	public class AdditionOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.AdditionOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cPLUSAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cPLUSPlusSignKeyword_0_0 = (Keyword)cPLUSAssignment_0.eContents().get(0);
+		private final Assignment cMINUSAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cMINUSHyphenMinusKeyword_1_0 = (Keyword)cMINUSAssignment_1.eContents().get(0);
+		
+		//AdditionOperator ArithmeticOperator:
+		//	PLUS='+' | MINUS='-'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//PLUS='+' | MINUS='-'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//PLUS='+'
+		public Assignment getPLUSAssignment_0() { return cPLUSAssignment_0; }
+		
+		//'+'
+		public Keyword getPLUSPlusSignKeyword_0_0() { return cPLUSPlusSignKeyword_0_0; }
+		
+		//MINUS='-'
+		public Assignment getMINUSAssignment_1() { return cMINUSAssignment_1; }
+		
+		//'-'
+		public Keyword getMINUSHyphenMinusKeyword_1_0() { return cMINUSHyphenMinusKeyword_1_0; }
+	}
+	public class MultiplicationExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.MultiplicationExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cUnaryPreExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final RuleCall cOperandParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Action cArithmeticExpressionLeftExpressionAction_1_1_0 = (Action)cGroup_1_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cOperatorMultiplicationOperatorParserRuleCall_1_1_1_0 = (RuleCall)cOperatorAssignment_1_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cRightExpressionOperandParserRuleCall_1_1_2_0 = (RuleCall)cRightExpressionAssignment_1_1_2.eContents().get(0);
+		
+		//MultiplicationExpression Constraint:
+		//	UnaryPreExpression
+		//	| Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
+		//	rightExpression=Operand)*
+		@Override public ParserRule getRule() { return rule; }
+		
+		//UnaryPreExpression | Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
+		//rightExpression=Operand)*
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//UnaryPreExpression
+		public RuleCall getUnaryPreExpressionParserRuleCall_0() { return cUnaryPreExpressionParserRuleCall_0; }
+		
+		//Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator rightExpression=Operand)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//Operand
+		public RuleCall getOperandParserRuleCall_1_0() { return cOperandParserRuleCall_1_0; }
+		
+		//({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator rightExpression=Operand)*
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//{ArithmeticExpression.leftExpression=current}
+		public Action getArithmeticExpressionLeftExpressionAction_1_1_0() { return cArithmeticExpressionLeftExpressionAction_1_1_0; }
+		
+		//operator=MultiplicationOperator
+		public Assignment getOperatorAssignment_1_1_1() { return cOperatorAssignment_1_1_1; }
+		
+		//MultiplicationOperator
+		public RuleCall getOperatorMultiplicationOperatorParserRuleCall_1_1_1_0() { return cOperatorMultiplicationOperatorParserRuleCall_1_1_1_0; }
+		
+		//rightExpression=Operand
+		public Assignment getRightExpressionAssignment_1_1_2() { return cRightExpressionAssignment_1_1_2; }
+		
+		//Operand
+		public RuleCall getRightExpressionOperandParserRuleCall_1_1_2_0() { return cRightExpressionOperandParserRuleCall_1_1_2_0; }
+	}
+	public class MultiplicationOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.MultiplicationOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cTIMESAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cTIMESAsteriskKeyword_0_0 = (Keyword)cTIMESAssignment_0.eContents().get(0);
+		private final Assignment cDIVIDEAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cDIVIDESolidusKeyword_1_0 = (Keyword)cDIVIDEAssignment_1.eContents().get(0);
+		
+		//MultiplicationOperator ArithmeticOperator:
+		//	TIMES='*' | DIVIDE='/'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//TIMES='*' | DIVIDE='/'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//TIMES='*'
+		public Assignment getTIMESAssignment_0() { return cTIMESAssignment_0; }
+		
+		//'*'
+		public Keyword getTIMESAsteriskKeyword_0_0() { return cTIMESAsteriskKeyword_0_0; }
+		
+		//DIVIDE='/'
+		public Assignment getDIVIDEAssignment_1() { return cDIVIDEAssignment_1; }
+		
+		//'/'
+		public Keyword getDIVIDESolidusKeyword_1_0() { return cDIVIDESolidusKeyword_1_0; }
+	}
+	public class UnaryPreExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.UnaryPreExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cUnaryPreExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cOperatorAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cOperatorUnaryPreOperatorParserRuleCall_1_0_0 = (RuleCall)cOperatorAssignment_1_0.eContents().get(0);
+		private final Assignment cEnclosedExpressionAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cEnclosedExpressionOperandParserRuleCall_1_1_0 = (RuleCall)cEnclosedExpressionAssignment_1_1.eContents().get(0);
+		
+		//UnaryPreExpression Constraint:
+		//	{UnaryPreExpression} (operator=UnaryPreOperator
+		//	enclosedExpression=Operand)
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{UnaryPreExpression} (operator=UnaryPreOperator enclosedExpression=Operand)
+		public Group getGroup() { return cGroup; }
+		
+		//{UnaryPreExpression}
+		public Action getUnaryPreExpressionAction_0() { return cUnaryPreExpressionAction_0; }
+		
+		//(operator=UnaryPreOperator enclosedExpression=Operand)
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//operator=UnaryPreOperator
+		public Assignment getOperatorAssignment_1_0() { return cOperatorAssignment_1_0; }
+		
+		//UnaryPreOperator
+		public RuleCall getOperatorUnaryPreOperatorParserRuleCall_1_0_0() { return cOperatorUnaryPreOperatorParserRuleCall_1_0_0; }
+		
+		//enclosedExpression=Operand
+		public Assignment getEnclosedExpressionAssignment_1_1() { return cEnclosedExpressionAssignment_1_1; }
+		
+		//Operand
+		public RuleCall getEnclosedExpressionOperandParserRuleCall_1_1_0() { return cEnclosedExpressionOperandParserRuleCall_1_1_0; }
+	}
+	public class OperandElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Operand");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cConstraintParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cConsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cPredParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Operand Constraint:
+		//	'(' Constraint ')'
+		//	| Cons
+		//	| Pred
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'(' Constraint ')' | Cons | Pred
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'(' Constraint ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//Constraint
+		public RuleCall getConstraintParserRuleCall_0_1() { return cConstraintParserRuleCall_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//Cons
+		public RuleCall getConsParserRuleCall_1() { return cConsParserRuleCall_1; }
+		
+		//Pred
+		public RuleCall getPredParserRuleCall_2() { return cPredParserRuleCall_2; }
+	}
+	public class LiteralExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LiteralExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAggregateExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//LiteralExpression:
+		//	Literal | AggregateExpression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Literal | AggregateExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Literal
+		public RuleCall getLiteralParserRuleCall_0() { return cLiteralParserRuleCall_0; }
+		
+		//AggregateExpression
+		public RuleCall getAggregateExpressionParserRuleCall_1() { return cAggregateExpressionParserRuleCall_1; }
+	}
+	public class AggregateExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.AggregateExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cValueAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cValueSuperTypeCrossReference_0_0 = (CrossReference)cValueAssignment_0.eContents().get(0);
+		private final RuleCall cValueSuperTypeIDTerminalRuleCall_0_0_1 = (RuleCall)cValueSuperTypeCrossReference_0_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//AggregateExpression LiteralExpression:
+		//	value=[SuperType] ("." ID)?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=[SuperType] ("." ID)?
+		public Group getGroup() { return cGroup; }
+		
+		//value=[SuperType]
+		public Assignment getValueAssignment_0() { return cValueAssignment_0; }
+		
+		//[SuperType]
+		public CrossReference getValueSuperTypeCrossReference_0_0() { return cValueSuperTypeCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getValueSuperTypeIDTerminalRuleCall_0_0_1() { return cValueSuperTypeIDTerminalRuleCall_0_0_1; }
+		
+		//("." ID)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+	public class LiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Literal");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		
+		//Literal LiteralExpression:
+		//	{Literal} (INT | STRING)
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Literal} (INT | STRING)
+		public Group getGroup() { return cGroup; }
+		
+		//{Literal}
+		public Action getLiteralAction_0() { return cLiteralAction_0; }
+		
+		//(INT | STRING)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1_1() { return cSTRINGTerminalRuleCall_1_1; }
+	}
+	public class UnaryPreOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.UnaryPreOperator");
+		private final Assignment cNOTAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNOTExclamationMarkKeyword_0 = (Keyword)cNOTAssignment.eContents().get(0);
+		
+		//UnaryPreOperator UnaryOperator:
+		//	NOT='!'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//NOT='!'
+		public Assignment getNOTAssignment() { return cNOTAssignment; }
+		
+		//'!'
+		public Keyword getNOTExclamationMarkKeyword_0() { return cNOTExclamationMarkKeyword_0; }
+	}
+	public class ComparingEQNEQOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ComparingEQNEQOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cEQUALAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cEQUALEqualsSignEqualsSignKeyword_0_0 = (Keyword)cEQUALAssignment_0.eContents().get(0);
+		private final Assignment cUNEQUALAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cUNEQUALExclamationMarkEqualsSignKeyword_1_0 = (Keyword)cUNEQUALAssignment_1.eContents().get(0);
+		
+		//ComparingEQNEQOperator ComparingOperator:
+		//	EQUAL='==' | UNEQUAL='!='
+		@Override public ParserRule getRule() { return rule; }
+		
+		//EQUAL='==' | UNEQUAL='!='
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EQUAL='=='
+		public Assignment getEQUALAssignment_0() { return cEQUALAssignment_0; }
+		
+		//'=='
+		public Keyword getEQUALEqualsSignEqualsSignKeyword_0_0() { return cEQUALEqualsSignEqualsSignKeyword_0_0; }
+		
+		//UNEQUAL='!='
+		public Assignment getUNEQUALAssignment_1() { return cUNEQUALAssignment_1; }
+		
+		//'!='
+		public Keyword getUNEQUALExclamationMarkEqualsSignKeyword_1_0() { return cUNEQUALExclamationMarkEqualsSignKeyword_1_0; }
 	}
 	public class ConsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Cons");
@@ -802,13 +1337,14 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLitsleftAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
 		private final RuleCall cLitsleftLitListParserRuleCall_0_3_0 = (RuleCall)cLitsleftAssignment_0_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final RuleCall cNoEqParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Assignment cConsAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cConsLiteralExpressionParserRuleCall_1_0 = (RuleCall)cConsAssignment_1.eContents().get(0);
 		
-		//Cons:
-		//	cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq;
+		//Cons LiteralExpression:
+		//	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression
 		@Override public ParserRule getRule() { return rule; }
 		
-		//cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq
+		//cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//cons=ConsPred "in" "{" litsleft=LitList "}"
@@ -835,133 +1371,33 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_0_4() { return cRightCurlyBracketKeyword_0_4; }
 		
-		//NoEq
-		public RuleCall getNoEqParserRuleCall_1() { return cNoEqParserRuleCall_1; }
-	}
-	public class NoEqElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.NoEq");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Assignment cLeftAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cLeftObAcParserRuleCall_0_0_0 = (RuleCall)cLeftAssignment_0_0.eContents().get(0);
-		private final RuleCall cNoEqOpParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final Assignment cRightAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cRightObAcParserRuleCall_0_2_0 = (RuleCall)cRightAssignment_0_2.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cLeftAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cLeftObAcParserRuleCall_1_0_0 = (RuleCall)cLeftAssignment_1_0.eContents().get(0);
-		private final RuleCall cNoEqOpParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final Alternatives cAlternatives_1_2 = (Alternatives)cGroup_1.eContents().get(2);
-		private final RuleCall cSTRINGTerminalRuleCall_1_2_0 = (RuleCall)cAlternatives_1_2.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1_2_1 = (RuleCall)cAlternatives_1_2.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_2_0_0 = (RuleCall)cAlternatives_2_0.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_2_0_1 = (RuleCall)cAlternatives_2_0.eContents().get(1);
-		private final RuleCall cNoEqOpParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final Assignment cRightAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cRightObAcParserRuleCall_2_2_0 = (RuleCall)cRightAssignment_2_2.eContents().get(0);
+		//cons=LiteralExpression
+		public Assignment getConsAssignment_1() { return cConsAssignment_1; }
 		
-		//NoEq:
-		//	left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//left=ObAc NoEqOp right=ObAc
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//left=ObAc
-		public Assignment getLeftAssignment_0_0() { return cLeftAssignment_0_0; }
-		
-		//ObAc
-		public RuleCall getLeftObAcParserRuleCall_0_0_0() { return cLeftObAcParserRuleCall_0_0_0; }
-		
-		//NoEqOp
-		public RuleCall getNoEqOpParserRuleCall_0_1() { return cNoEqOpParserRuleCall_0_1; }
-		
-		//right=ObAc
-		public Assignment getRightAssignment_0_2() { return cRightAssignment_0_2; }
-		
-		//ObAc
-		public RuleCall getRightObAcParserRuleCall_0_2_0() { return cRightObAcParserRuleCall_0_2_0; }
-		
-		//left=ObAc NoEqOp (STRING | INT)
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//left=ObAc
-		public Assignment getLeftAssignment_1_0() { return cLeftAssignment_1_0; }
-		
-		//ObAc
-		public RuleCall getLeftObAcParserRuleCall_1_0_0() { return cLeftObAcParserRuleCall_1_0_0; }
-		
-		//NoEqOp
-		public RuleCall getNoEqOpParserRuleCall_1_1() { return cNoEqOpParserRuleCall_1_1; }
-		
-		//(STRING | INT)
-		public Alternatives getAlternatives_1_2() { return cAlternatives_1_2; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1_2_0() { return cSTRINGTerminalRuleCall_1_2_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_1_2_1() { return cINTTerminalRuleCall_1_2_1; }
-		
-		//(STRING | INT) NoEqOp right=ObAc
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//(STRING | INT)
-		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_2_0_0() { return cSTRINGTerminalRuleCall_2_0_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_2_0_1() { return cINTTerminalRuleCall_2_0_1; }
-		
-		//NoEqOp
-		public RuleCall getNoEqOpParserRuleCall_2_1() { return cNoEqOpParserRuleCall_2_1; }
-		
-		//right=ObAc
-		public Assignment getRightAssignment_2_2() { return cRightAssignment_2_2; }
-		
-		//ObAc
-		public RuleCall getRightObAcParserRuleCall_2_2_0() { return cRightObAcParserRuleCall_2_2_0; }
-	}
-	public class NoEqOpElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.NoEqOp");
-		private final Keyword cExclamationMarkEqualsSignKeyword = (Keyword)rule.eContents().get(1);
-		
-		//NoEqOp:
-		//	'!=';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'!='
-		public Keyword getExclamationMarkEqualsSignKeyword() { return cExclamationMarkEqualsSignKeyword; }
+		//LiteralExpression
+		public RuleCall getConsLiteralExpressionParserRuleCall_1_0() { return cConsLiteralExpressionParserRuleCall_1_0; }
 	}
 	public class ConsPredElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ConsPred");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cPartKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final Keyword cCommaKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cSTRINGTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
-		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final Keyword cOfKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cNameObjectCrossReference_1_0 = (CrossReference)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cNameObjectIDTerminalRuleCall_1_0_1 = (RuleCall)cNameObjectCrossReference_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final RuleCall cLiteralExpressionParserRuleCall_0_5 = (RuleCall)cGroup_0.eContents().get(5);
+		private final Keyword cRightParenthesisKeyword_0_6 = (Keyword)cGroup_0.eContents().get(6);
+		private final RuleCall cLiteralExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//ConsPred:
-		//	("part(" INT "," STRING ")" "of")? name=[Object];
+		//ConsPred LiteralExpression:
+		//	"part(" INT "," STRING "," LiteralExpression ")" | LiteralExpression
 		@Override public ParserRule getRule() { return rule; }
 		
-		//("part(" INT "," STRING ")" "of")? name=[Object]
-		public Group getGroup() { return cGroup; }
+		//"part(" INT "," STRING "," LiteralExpression ")" | LiteralExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//("part(" INT "," STRING ")" "of")?
+		//"part(" INT "," STRING "," LiteralExpression ")"
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//"part("
@@ -976,20 +1412,17 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_0_3() { return cSTRINGTerminalRuleCall_0_3; }
 		
+		//","
+		public Keyword getCommaKeyword_0_4() { return cCommaKeyword_0_4; }
+		
+		//LiteralExpression
+		public RuleCall getLiteralExpressionParserRuleCall_0_5() { return cLiteralExpressionParserRuleCall_0_5; }
+		
 		//")"
-		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
+		public Keyword getRightParenthesisKeyword_0_6() { return cRightParenthesisKeyword_0_6; }
 		
-		//"of"
-		public Keyword getOfKeyword_0_5() { return cOfKeyword_0_5; }
-		
-		//name=[Object]
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//[Object]
-		public CrossReference getNameObjectCrossReference_1_0() { return cNameObjectCrossReference_1_0; }
-		
-		//ID
-		public RuleCall getNameObjectIDTerminalRuleCall_1_0_1() { return cNameObjectIDTerminalRuleCall_1_0_1; }
+		//LiteralExpression
+		public RuleCall getLiteralExpressionParserRuleCall_1() { return cLiteralExpressionParserRuleCall_1; }
 	}
 	public class LitListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LitList");
@@ -1037,191 +1470,103 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class PredElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Pred");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Assignment cLeftSideAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final CrossReference cLeftSideObjectCrossReference_0_0_0 = (CrossReference)cLeftSideAssignment_0_0.eContents().get(0);
-		private final RuleCall cLeftSideObjectIDTerminalRuleCall_0_0_0_1 = (RuleCall)cLeftSideObjectCrossReference_0_0_0.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cPredNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPredNameIDTerminalRuleCall_1_0 = (RuleCall)cPredNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cParListAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cParListParListParserRuleCall_3_0 = (RuleCall)cParListAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cPredNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPredNameIDTerminalRuleCall_0_0 = (RuleCall)cPredNameAssignment_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cParListAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cParListSuParListParserRuleCall_2_0 = (RuleCall)cParListAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Pred Constraint:
-		//	(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");"
+		//	predName=ID "(" parList=SuParList? ");"
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");"
+		//predName=ID "(" parList=SuParList? ");"
 		public Group getGroup() { return cGroup; }
-		
-		//(leftSide=[Object] "=")?
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//leftSide=[Object]
-		public Assignment getLeftSideAssignment_0_0() { return cLeftSideAssignment_0_0; }
-		
-		//[Object]
-		public CrossReference getLeftSideObjectCrossReference_0_0_0() { return cLeftSideObjectCrossReference_0_0_0; }
-		
-		//ID
-		public RuleCall getLeftSideObjectIDTerminalRuleCall_0_0_0_1() { return cLeftSideObjectIDTerminalRuleCall_0_0_0_1; }
-		
-		//"="
-		public Keyword getEqualsSignKeyword_0_1() { return cEqualsSignKeyword_0_1; }
 		
 		//predName=ID
-		public Assignment getPredNameAssignment_1() { return cPredNameAssignment_1; }
+		public Assignment getPredNameAssignment_0() { return cPredNameAssignment_0; }
 		
 		//ID
-		public RuleCall getPredNameIDTerminalRuleCall_1_0() { return cPredNameIDTerminalRuleCall_1_0; }
+		public RuleCall getPredNameIDTerminalRuleCall_0_0() { return cPredNameIDTerminalRuleCall_0_0; }
 		
 		//"("
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//parList=ParList?
-		public Assignment getParListAssignment_3() { return cParListAssignment_3; }
+		//parList=SuParList?
+		public Assignment getParListAssignment_2() { return cParListAssignment_2; }
 		
-		//ParList
-		public RuleCall getParListParListParserRuleCall_3_0() { return cParListParListParserRuleCall_3_0; }
+		//SuParList
+		public RuleCall getParListSuParListParserRuleCall_2_0() { return cParListSuParListParserRuleCall_2_0; }
 		
 		//");"
-		public Keyword getRightParenthesisSemicolonKeyword_4() { return cRightParenthesisSemicolonKeyword_4; }
+		public Keyword getRightParenthesisSemicolonKeyword_3() { return cRightParenthesisSemicolonKeyword_3; }
 	}
-	public class CompElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Comp");
+	public class SuParListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.SuParList");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
-		private final Assignment cLeftAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
-		private final RuleCall cLeftObAcParserRuleCall_0_0_0_0 = (RuleCall)cLeftAssignment_0_0_0.eContents().get(0);
-		private final RuleCall cOpCompareParserRuleCall_0_0_1 = (RuleCall)cGroup_0_0.eContents().get(1);
-		private final Assignment cRightAssignment_0_0_2 = (Assignment)cGroup_0_0.eContents().get(2);
-		private final RuleCall cRightObAcParserRuleCall_0_0_2_0 = (RuleCall)cRightAssignment_0_0_2.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
-		private final Assignment cLeftAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
-		private final RuleCall cLeftObAcParserRuleCall_0_1_0_0 = (RuleCall)cLeftAssignment_0_1_0.eContents().get(0);
-		private final RuleCall cOpCompareParserRuleCall_0_1_1 = (RuleCall)cGroup_0_1.eContents().get(1);
-		private final Alternatives cAlternatives_0_1_2 = (Alternatives)cGroup_0_1.eContents().get(2);
-		private final RuleCall cSTRINGTerminalRuleCall_0_1_2_0 = (RuleCall)cAlternatives_0_1_2.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_0_1_2_1 = (RuleCall)cAlternatives_0_1_2.eContents().get(1);
-		private final Group cGroup_0_2 = (Group)cAlternatives_0.eContents().get(2);
-		private final Alternatives cAlternatives_0_2_0 = (Alternatives)cGroup_0_2.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_0_2_0_0 = (RuleCall)cAlternatives_0_2_0.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_0_2_0_1 = (RuleCall)cAlternatives_0_2_0.eContents().get(1);
-		private final RuleCall cOpCompareParserRuleCall_0_2_1 = (RuleCall)cGroup_0_2.eContents().get(1);
-		private final Assignment cRightAssignment_0_2_2 = (Assignment)cGroup_0_2.eContents().get(2);
-		private final RuleCall cRightObAcParserRuleCall_0_2_2_0 = (RuleCall)cRightAssignment_0_2_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		//Comp Constraint:
-		//	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
-		public Group getGroup() { return cGroup; }
-		
-		//(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc)
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//left=ObAc OpCompare right=ObAc
-		public Group getGroup_0_0() { return cGroup_0_0; }
-		
-		//left=ObAc
-		public Assignment getLeftAssignment_0_0_0() { return cLeftAssignment_0_0_0; }
-		
-		//ObAc
-		public RuleCall getLeftObAcParserRuleCall_0_0_0_0() { return cLeftObAcParserRuleCall_0_0_0_0; }
-		
-		//OpCompare
-		public RuleCall getOpCompareParserRuleCall_0_0_1() { return cOpCompareParserRuleCall_0_0_1; }
-		
-		//right=ObAc
-		public Assignment getRightAssignment_0_0_2() { return cRightAssignment_0_0_2; }
-		
-		//ObAc
-		public RuleCall getRightObAcParserRuleCall_0_0_2_0() { return cRightObAcParserRuleCall_0_0_2_0; }
-		
-		//left=ObAc OpCompare (STRING | INT)
-		public Group getGroup_0_1() { return cGroup_0_1; }
-		
-		//left=ObAc
-		public Assignment getLeftAssignment_0_1_0() { return cLeftAssignment_0_1_0; }
-		
-		//ObAc
-		public RuleCall getLeftObAcParserRuleCall_0_1_0_0() { return cLeftObAcParserRuleCall_0_1_0_0; }
-		
-		//OpCompare
-		public RuleCall getOpCompareParserRuleCall_0_1_1() { return cOpCompareParserRuleCall_0_1_1; }
-		
-		//(STRING | INT)
-		public Alternatives getAlternatives_0_1_2() { return cAlternatives_0_1_2; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0_1_2_0() { return cSTRINGTerminalRuleCall_0_1_2_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_0_1_2_1() { return cINTTerminalRuleCall_0_1_2_1; }
-		
-		//(STRING | INT) OpCompare right=ObAc
-		public Group getGroup_0_2() { return cGroup_0_2; }
-		
-		//(STRING | INT)
-		public Alternatives getAlternatives_0_2_0() { return cAlternatives_0_2_0; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0_2_0_0() { return cSTRINGTerminalRuleCall_0_2_0_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_0_2_0_1() { return cINTTerminalRuleCall_0_2_0_1; }
-		
-		//OpCompare
-		public RuleCall getOpCompareParserRuleCall_0_2_1() { return cOpCompareParserRuleCall_0_2_1; }
-		
-		//right=ObAc
-		public Assignment getRightAssignment_0_2_2() { return cRightAssignment_0_2_2; }
-		
-		//ObAc
-		public RuleCall getRightObAcParserRuleCall_0_2_2_0() { return cRightObAcParserRuleCall_0_2_2_0; }
-		
-		//";"
-		public Keyword getSemicolonKeyword_1() { return cSemicolonKeyword_1; }
-	}
-	public class ObAcElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ObAc");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cNameObjectCrossReference_0_0 = (CrossReference)cNameAssignment_0.eContents().get(0);
-		private final RuleCall cNameObjectIDTerminalRuleCall_0_0_1 = (RuleCall)cNameObjectCrossReference_0_0.eContents().get(1);
+		private final Assignment cParametersAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cParametersSuParParserRuleCall_0_0 = (RuleCall)cParametersAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cParametersAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cParametersSuParParserRuleCall_1_1_0 = (RuleCall)cParametersAssignment_1_1.eContents().get(0);
 		
-		//ObAc:
-		//	name=[Object] ("." ID)?;
+		//SuParList:
+		//	parameters+=SuPar (',' parameters+=SuPar)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=[Object] ("." ID)?
+		//parameters+=SuPar (',' parameters+=SuPar)*
 		public Group getGroup() { return cGroup; }
 		
-		//name=[Object]
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//parameters+=SuPar
+		public Assignment getParametersAssignment_0() { return cParametersAssignment_0; }
 		
-		//[Object]
-		public CrossReference getNameObjectCrossReference_0_0() { return cNameObjectCrossReference_0_0; }
+		//SuPar
+		public RuleCall getParametersSuParParserRuleCall_0_0() { return cParametersSuParParserRuleCall_0_0; }
 		
-		//ID
-		public RuleCall getNameObjectIDTerminalRuleCall_0_0_1() { return cNameObjectIDTerminalRuleCall_0_0_1; }
-		
-		//("." ID)?
+		//(',' parameters+=SuPar)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		//','
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 		
-		//ID
-		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+		//parameters+=SuPar
+		public Assignment getParametersAssignment_1_1() { return cParametersAssignment_1_1; }
+		
+		//SuPar
+		public RuleCall getParametersSuParParserRuleCall_1_1_0() { return cParametersSuParParserRuleCall_1_1_0; }
+	}
+	public class SuParElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.SuPar");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSuParAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cValAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cValConsPredParserRuleCall_1_0_0 = (RuleCall)cValAssignment_1_0.eContents().get(0);
+		private final Keyword c_Keyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		
+		//SuPar:
+		//	{SuPar} (val=ConsPred | '_');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SuPar} (val=ConsPred | '_')
+		public Group getGroup() { return cGroup; }
+		
+		//{SuPar}
+		public Action getSuParAction_0() { return cSuParAction_0; }
+		
+		//(val=ConsPred | '_')
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//val=ConsPred
+		public Assignment getValAssignment_1_0() { return cValAssignment_1_0; }
+		
+		//ConsPred
+		public RuleCall getValConsPredParserRuleCall_1_0_0() { return cValConsPredParserRuleCall_1_0_0; }
+		
+		//'_'
+		public Keyword get_Keyword_1_1() { return c_Keyword_1_1; }
 	}
 	public class ObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Object");
@@ -1230,8 +1575,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//Object:
-		//	{Object} name=ID;
+		//Object SuperType:
+		//	{Object} name=ID
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Object} name=ID
@@ -1250,8 +1595,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final DomainmodelElements pDomainmodel;
 	private final ObjectDeclElements pObjectDecl;
-	private final EventElements pEvent;
 	private final ForbMethodElements pForbMethod;
+	private final EventElements pEvent;
 	private final LabelMethodCallElements pLabelMethodCall;
 	private final MethodElements pMethod;
 	private final ParListElements pParList;
@@ -1261,17 +1606,33 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final SimpleOrderElements pSimpleOrder;
 	private final PrimaryElements pPrimary;
 	private final ConstraintElements pConstraint;
-	private final InclElements pIncl;
-	private final ConsListElements pConsList;
-	private final LogConElements pLogCon;
+	private final LogicalImplyExpressionElements pLogicalImplyExpression;
+	private final LogicalImplyElements pLogicalImply;
+	private final LogicalOrExpressionElements pLogicalOrExpression;
+	private final LogicalOrElements pLogicalOr;
+	private final LogicalAndExpressionElements pLogicalAndExpression;
+	private final LogicalAndElements pLogicalAnd;
+	private final ComparisonExpressionElements pComparisonExpression;
+	private final ComparisonHigherOpExpressionElements pComparisonHigherOpExpression;
+	private final ComparingRelOperatorElements pComparingRelOperator;
+	private final ArithmeticExpressionElements pArithmeticExpression;
+	private final AdditionExpressionElements pAdditionExpression;
+	private final AdditionOperatorElements pAdditionOperator;
+	private final MultiplicationExpressionElements pMultiplicationExpression;
+	private final MultiplicationOperatorElements pMultiplicationOperator;
+	private final UnaryPreExpressionElements pUnaryPreExpression;
+	private final OperandElements pOperand;
+	private final LiteralExpressionElements pLiteralExpression;
+	private final AggregateExpressionElements pAggregateExpression;
+	private final LiteralElements pLiteral;
+	private final UnaryPreOperatorElements pUnaryPreOperator;
+	private final ComparingEQNEQOperatorElements pComparingEQNEQOperator;
 	private final ConsElements pCons;
-	private final NoEqElements pNoEq;
-	private final NoEqOpElements pNoEqOp;
 	private final ConsPredElements pConsPred;
 	private final LitListElements pLitList;
 	private final PredElements pPred;
-	private final CompElements pComp;
-	private final ObAcElements pObAc;
+	private final SuParListElements pSuParList;
+	private final SuParElements pSuPar;
 	private final ObjectElements pObject;
 	
 	private final Grammar grammar;
@@ -1289,8 +1650,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXtype = gaXtype;
 		this.pDomainmodel = new DomainmodelElements();
 		this.pObjectDecl = new ObjectDeclElements();
-		this.pEvent = new EventElements();
 		this.pForbMethod = new ForbMethodElements();
+		this.pEvent = new EventElements();
 		this.pLabelMethodCall = new LabelMethodCallElements();
 		this.pMethod = new MethodElements();
 		this.pParList = new ParListElements();
@@ -1300,17 +1661,33 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pSimpleOrder = new SimpleOrderElements();
 		this.pPrimary = new PrimaryElements();
 		this.pConstraint = new ConstraintElements();
-		this.pIncl = new InclElements();
-		this.pConsList = new ConsListElements();
-		this.pLogCon = new LogConElements();
+		this.pLogicalImplyExpression = new LogicalImplyExpressionElements();
+		this.pLogicalImply = new LogicalImplyElements();
+		this.pLogicalOrExpression = new LogicalOrExpressionElements();
+		this.pLogicalOr = new LogicalOrElements();
+		this.pLogicalAndExpression = new LogicalAndExpressionElements();
+		this.pLogicalAnd = new LogicalAndElements();
+		this.pComparisonExpression = new ComparisonExpressionElements();
+		this.pComparisonHigherOpExpression = new ComparisonHigherOpExpressionElements();
+		this.pComparingRelOperator = new ComparingRelOperatorElements();
+		this.pArithmeticExpression = new ArithmeticExpressionElements();
+		this.pAdditionExpression = new AdditionExpressionElements();
+		this.pAdditionOperator = new AdditionOperatorElements();
+		this.pMultiplicationExpression = new MultiplicationExpressionElements();
+		this.pMultiplicationOperator = new MultiplicationOperatorElements();
+		this.pUnaryPreExpression = new UnaryPreExpressionElements();
+		this.pOperand = new OperandElements();
+		this.pLiteralExpression = new LiteralExpressionElements();
+		this.pAggregateExpression = new AggregateExpressionElements();
+		this.pLiteral = new LiteralElements();
+		this.pUnaryPreOperator = new UnaryPreOperatorElements();
+		this.pComparingEQNEQOperator = new ComparingEQNEQOperatorElements();
 		this.pCons = new ConsElements();
-		this.pNoEq = new NoEqElements();
-		this.pNoEqOp = new NoEqOpElements();
 		this.pConsPred = new ConsPredElements();
 		this.pLitList = new LitListElements();
 		this.pPred = new PredElements();
-		this.pComp = new CompElements();
-		this.pObAc = new ObAcElements();
+		this.pSuParList = new SuParListElements();
+		this.pSuPar = new SuParElements();
 		this.pObject = new ObjectElements();
 	}
 	
@@ -1359,8 +1736,9 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getDomainmodelAccess().getRule();
 	}
 	
+	//////////////// OBJECTS
 	//ObjectDecl:
-	//	objectType=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? objectName=Object ";";
+	//	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
 	public ObjectDeclElements getObjectDeclAccess() {
 		return pObjectDecl;
 	}
@@ -1369,6 +1747,19 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getObjectDeclAccess().getRule();
 	}
 	
+	///////////// FORBIDDEN EVENTS
+	//ForbMethod:
+	//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? (','
+	//	parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?);
+	public ForbMethodElements getForbMethodAccess() {
+		return pForbMethod;
+	}
+	
+	public ParserRule getForbMethodRule() {
+		return getForbMethodAccess().getRule();
+	}
+	
+	/////////////// EVENTS
 	//Event:
 	//	LabelMethodCall | Aggregate;
 	public EventElements getEventAccess() {
@@ -1379,17 +1770,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getEventAccess().getRule();
 	}
 	
-	//ForbMethod:
-	//	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] ArrayBrackets? (','
-	//	parameters+=[jvmTypes::JvmType|QualifiedName] "[]"?)*)? ")" ("=>" rep=[Event])?);
-	public ForbMethodElements getForbMethodAccess() {
-		return pForbMethod;
-	}
-	
-	public ParserRule getForbMethodRule() {
-		return getForbMethodAccess().getRule();
-	}
-	
+	///// LABELMETHCALL
 	//LabelMethodCall:
 	//	name=ID ":" meth=Method;
 	public LabelMethodCallElements getLabelMethodCallAccess() {
@@ -1430,8 +1811,9 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getParAccess().getRule();
 	}
 	
-	//Aggregate:
-	//	name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";";
+	///// AGGS
+	//Aggregate SuperType:
+	//	{Aggegate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";")
 	public AggregateElements getAggregateAccess() {
 		return pAggregate;
 	}
@@ -1440,6 +1822,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getAggregateAccess().getRule();
 	}
 	
+	/////////////// ORDER
 	//Order Expression:
 	//	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*
 	public OrderElements getOrderAccess() {
@@ -1470,8 +1853,9 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getPrimaryAccess().getRule();
 	}
 	
+	/////////////// CONSTRAINTS
 	//Constraint:
-	//	cons+=Comp | cons+=Incl | '!'? cons+=Pred;
+	//	LogicalImplyExpression;
 	public ConstraintElements getConstraintAccess() {
 		return pConstraint;
 	}
@@ -1480,38 +1864,229 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstraintAccess().getRule();
 	}
 	
-	//Incl Constraint:
-	//	algl=ConsList ("=>" algr=ConsList)?
-	public InclElements getInclAccess() {
-		return pIncl;
+	//LogicalImplyExpression Constraint:
+	//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply
+	//	rightExpression=LogicalOrExpression)*
+	public LogicalImplyExpressionElements getLogicalImplyExpressionAccess() {
+		return pLogicalImplyExpression;
 	}
 	
-	public ParserRule getInclRule() {
-		return getInclAccess().getRule();
+	public ParserRule getLogicalImplyExpressionRule() {
+		return getLogicalImplyExpressionAccess().getRule();
 	}
 	
-	//ConsList:
-	//	list+=Cons (LogCon list+=Cons)*;
-	public ConsListElements getConsListAccess() {
-		return pConsList;
+	//LogicalImply:
+	//	IMPLIES="=>";
+	public LogicalImplyElements getLogicalImplyAccess() {
+		return pLogicalImply;
 	}
 	
-	public ParserRule getConsListRule() {
-		return getConsListAccess().getRule();
+	public ParserRule getLogicalImplyRule() {
+		return getLogicalImplyAccess().getRule();
 	}
 	
-	//LogCon:
-	//	OpAnd | OpOr;
-	public LogConElements getLogConAccess() {
-		return pLogCon;
+	//LogicalOrExpression Constraint:
+	//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr
+	//	rightExpression=LogicalAndExpression)*
+	public LogicalOrExpressionElements getLogicalOrExpressionAccess() {
+		return pLogicalOrExpression;
 	}
 	
-	public ParserRule getLogConRule() {
-		return getLogConAccess().getRule();
+	public ParserRule getLogicalOrExpressionRule() {
+		return getLogicalOrExpressionAccess().getRule();
 	}
 	
-	//Cons:
-	//	cons=ConsPred "in" "{" litsleft=LitList "}" | NoEq;
+	//LogicalOr LogicalOperator:
+	//	OR='||'
+	public LogicalOrElements getLogicalOrAccess() {
+		return pLogicalOr;
+	}
+	
+	public ParserRule getLogicalOrRule() {
+		return getLogicalOrAccess().getRule();
+	}
+	
+	//LogicalAndExpression Constraint:
+	//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd
+	//	rightExpression=ComparisonExpression)*
+	public LogicalAndExpressionElements getLogicalAndExpressionAccess() {
+		return pLogicalAndExpression;
+	}
+	
+	public ParserRule getLogicalAndExpressionRule() {
+		return getLogicalAndExpressionAccess().getRule();
+	}
+	
+	//LogicalAnd LogicalOperator:
+	//	AND='&&'
+	public LogicalAndElements getLogicalAndAccess() {
+		return pLogicalAnd;
+	}
+	
+	public ParserRule getLogicalAndRule() {
+		return getLogicalAndAccess().getRule();
+	}
+	
+	//ComparisonExpression Constraint:
+	//	ComparisonHigherOpExpression ({ComparisonExpression.left=current} operator=ComparingEQNEQOperator
+	//	rightExpression=ComparisonHigherOpExpression)?
+	public ComparisonExpressionElements getComparisonExpressionAccess() {
+		return pComparisonExpression;
+	}
+	
+	public ParserRule getComparisonExpressionRule() {
+		return getComparisonExpressionAccess().getRule();
+	}
+	
+	//ComparisonHigherOpExpression Constraint:
+	//	ArithmeticExpression ({ComparisonExpression.leftExpression=current} operator=ComparingRelOperator
+	//	rightExpression=ArithmeticExpression)?
+	public ComparisonHigherOpExpressionElements getComparisonHigherOpExpressionAccess() {
+		return pComparisonHigherOpExpression;
+	}
+	
+	public ParserRule getComparisonHigherOpExpressionRule() {
+		return getComparisonHigherOpExpressionAccess().getRule();
+	}
+	
+	//ComparingRelOperator ComparingOperator:
+	//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
+	public ComparingRelOperatorElements getComparingRelOperatorAccess() {
+		return pComparingRelOperator;
+	}
+	
+	public ParserRule getComparingRelOperatorRule() {
+		return getComparingRelOperatorAccess().getRule();
+	}
+	
+	//ArithmeticExpression Constraint:
+	//	AdditionExpression
+	public ArithmeticExpressionElements getArithmeticExpressionAccess() {
+		return pArithmeticExpression;
+	}
+	
+	public ParserRule getArithmeticExpressionRule() {
+		return getArithmeticExpressionAccess().getRule();
+	}
+	
+	//AdditionExpression Constraint:
+	//	MultiplicationExpression ({ArithmeticExpression.leftExpression=current} operator=AdditionOperator
+	//	rightExpression=MultiplicationExpression)*
+	public AdditionExpressionElements getAdditionExpressionAccess() {
+		return pAdditionExpression;
+	}
+	
+	public ParserRule getAdditionExpressionRule() {
+		return getAdditionExpressionAccess().getRule();
+	}
+	
+	//AdditionOperator ArithmeticOperator:
+	//	PLUS='+' | MINUS='-'
+	public AdditionOperatorElements getAdditionOperatorAccess() {
+		return pAdditionOperator;
+	}
+	
+	public ParserRule getAdditionOperatorRule() {
+		return getAdditionOperatorAccess().getRule();
+	}
+	
+	//MultiplicationExpression Constraint:
+	//	UnaryPreExpression
+	//	| Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
+	//	rightExpression=Operand)*
+	public MultiplicationExpressionElements getMultiplicationExpressionAccess() {
+		return pMultiplicationExpression;
+	}
+	
+	public ParserRule getMultiplicationExpressionRule() {
+		return getMultiplicationExpressionAccess().getRule();
+	}
+	
+	//MultiplicationOperator ArithmeticOperator:
+	//	TIMES='*' | DIVIDE='/'
+	public MultiplicationOperatorElements getMultiplicationOperatorAccess() {
+		return pMultiplicationOperator;
+	}
+	
+	public ParserRule getMultiplicationOperatorRule() {
+		return getMultiplicationOperatorAccess().getRule();
+	}
+	
+	//UnaryPreExpression Constraint:
+	//	{UnaryPreExpression} (operator=UnaryPreOperator
+	//	enclosedExpression=Operand)
+	public UnaryPreExpressionElements getUnaryPreExpressionAccess() {
+		return pUnaryPreExpression;
+	}
+	
+	public ParserRule getUnaryPreExpressionRule() {
+		return getUnaryPreExpressionAccess().getRule();
+	}
+	
+	//Operand Constraint:
+	//	'(' Constraint ')'
+	//	| Cons
+	//	| Pred
+	public OperandElements getOperandAccess() {
+		return pOperand;
+	}
+	
+	public ParserRule getOperandRule() {
+		return getOperandAccess().getRule();
+	}
+	
+	//LiteralExpression:
+	//	Literal | AggregateExpression;
+	public LiteralExpressionElements getLiteralExpressionAccess() {
+		return pLiteralExpression;
+	}
+	
+	public ParserRule getLiteralExpressionRule() {
+		return getLiteralExpressionAccess().getRule();
+	}
+	
+	//AggregateExpression LiteralExpression:
+	//	value=[SuperType] ("." ID)?
+	public AggregateExpressionElements getAggregateExpressionAccess() {
+		return pAggregateExpression;
+	}
+	
+	public ParserRule getAggregateExpressionRule() {
+		return getAggregateExpressionAccess().getRule();
+	}
+	
+	//Literal LiteralExpression:
+	//	{Literal} (INT | STRING)
+	public LiteralElements getLiteralAccess() {
+		return pLiteral;
+	}
+	
+	public ParserRule getLiteralRule() {
+		return getLiteralAccess().getRule();
+	}
+	
+	//UnaryPreOperator UnaryOperator:
+	//	NOT='!'
+	public UnaryPreOperatorElements getUnaryPreOperatorAccess() {
+		return pUnaryPreOperator;
+	}
+	
+	public ParserRule getUnaryPreOperatorRule() {
+		return getUnaryPreOperatorAccess().getRule();
+	}
+	
+	//ComparingEQNEQOperator ComparingOperator:
+	//	EQUAL='==' | UNEQUAL='!='
+	public ComparingEQNEQOperatorElements getComparingEQNEQOperatorAccess() {
+		return pComparingEQNEQOperator;
+	}
+	
+	public ParserRule getComparingEQNEQOperatorRule() {
+		return getComparingEQNEQOperatorAccess().getRule();
+	}
+	
+	//Cons LiteralExpression:
+	//	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression
 	public ConsElements getConsAccess() {
 		return pCons;
 	}
@@ -1520,28 +2095,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getConsAccess().getRule();
 	}
 	
-	//NoEq:
-	//	left=ObAc NoEqOp right=ObAc | left=ObAc NoEqOp (STRING | INT) | (STRING | INT) NoEqOp right=ObAc;
-	public NoEqElements getNoEqAccess() {
-		return pNoEq;
-	}
-	
-	public ParserRule getNoEqRule() {
-		return getNoEqAccess().getRule();
-	}
-	
-	//NoEqOp:
-	//	'!=';
-	public NoEqOpElements getNoEqOpAccess() {
-		return pNoEqOp;
-	}
-	
-	public ParserRule getNoEqOpRule() {
-		return getNoEqOpAccess().getRule();
-	}
-	
-	//ConsPred:
-	//	("part(" INT "," STRING ")" "of")? name=[Object];
+	//ConsPred LiteralExpression:
+	//	"part(" INT "," STRING "," LiteralExpression ")" | LiteralExpression
 	public ConsPredElements getConsPredAccess() {
 		return pConsPred;
 	}
@@ -1561,7 +2116,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Pred Constraint:
-	//	(leftSide=[Object] "=")? predName=ID "(" parList=ParList? ");"
+	//	predName=ID "(" parList=SuParList? ");"
 	public PredElements getPredAccess() {
 		return pPred;
 	}
@@ -1570,28 +2125,28 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getPredAccess().getRule();
 	}
 	
-	//Comp Constraint:
-	//	(left=ObAc OpCompare right=ObAc | left=ObAc OpCompare (STRING | INT) | (STRING | INT) OpCompare right=ObAc) ";"
-	public CompElements getCompAccess() {
-		return pComp;
+	//SuParList:
+	//	parameters+=SuPar (',' parameters+=SuPar)*;
+	public SuParListElements getSuParListAccess() {
+		return pSuParList;
 	}
 	
-	public ParserRule getCompRule() {
-		return getCompAccess().getRule();
+	public ParserRule getSuParListRule() {
+		return getSuParListAccess().getRule();
 	}
 	
-	//ObAc:
-	//	name=[Object] ("." ID)?;
-	public ObAcElements getObAcAccess() {
-		return pObAc;
+	//SuPar:
+	//	{SuPar} (val=ConsPred | '_');
+	public SuParElements getSuParAccess() {
+		return pSuPar;
 	}
 	
-	public ParserRule getObAcRule() {
-		return getObAcAccess().getRule();
+	public ParserRule getSuParRule() {
+		return getSuParAccess().getRule();
 	}
 	
-	//Object:
-	//	{Object} name=ID;
+	//Object SuperType:
+	//	{Object} name=ID
 	public ObjectElements getObjectAccess() {
 		return pObject;
 	}

@@ -5,6 +5,7 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -51,7 +52,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * @generated
    * @ordered
    */
-  protected de.darmstadt.tu.crossing.cryptSL.Object objectName;
+  protected SuperType objectName;
 
   /**
    * <!-- begin-user-doc -->
@@ -122,7 +123,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.darmstadt.tu.crossing.cryptSL.Object getObjectName()
+  public SuperType getObjectName()
   {
     return objectName;
   }
@@ -132,9 +133,9 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetObjectName(de.darmstadt.tu.crossing.cryptSL.Object newObjectName, NotificationChain msgs)
+  public NotificationChain basicSetObjectName(SuperType newObjectName, NotificationChain msgs)
   {
-    de.darmstadt.tu.crossing.cryptSL.Object oldObjectName = objectName;
+    SuperType oldObjectName = objectName;
     objectName = newObjectName;
     if (eNotificationRequired())
     {
@@ -149,7 +150,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setObjectName(de.darmstadt.tu.crossing.cryptSL.Object newObjectName)
+  public void setObjectName(SuperType newObjectName)
   {
     if (newObjectName != objectName)
     {
@@ -214,7 +215,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
         setObjectType((JvmType)newValue);
         return;
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
-        setObjectName((de.darmstadt.tu.crossing.cryptSL.Object)newValue);
+        setObjectName((SuperType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,7 +235,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
         setObjectType((JvmType)null);
         return;
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
-        setObjectName((de.darmstadt.tu.crossing.cryptSL.Object)null);
+        setObjectName((SuperType)null);
         return;
     }
     super.eUnset(featureID);
