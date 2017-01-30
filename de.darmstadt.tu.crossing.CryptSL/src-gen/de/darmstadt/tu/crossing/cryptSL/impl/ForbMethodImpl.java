@@ -7,11 +7,7 @@ import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -19,9 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +25,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbMethodImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbMethodImpl#getJavaMeth <em>Java Meth</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbMethodImpl#getRep <em>Rep</em>}</li>
  * </ul>
  *
@@ -40,14 +34,14 @@ import org.eclipse.xtext.common.types.JvmType;
 public class ForbMethodImpl extends MinimalEObjectImpl.Container implements ForbMethod
 {
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
+   * The cached value of the '{@link #getJavaMeth() <em>Java Meth</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameters()
+   * @see #getJavaMeth()
    * @generated
    * @ordered
    */
-  protected EList<JvmType> parameters;
+  protected JvmOperation javaMeth;
 
   /**
    * The cached value of the '{@link #getRep() <em>Rep</em>}' reference.
@@ -85,13 +79,42 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<JvmType> getParameters()
+  public JvmOperation getJavaMeth()
   {
-    if (parameters == null)
+    if (javaMeth != null && javaMeth.eIsProxy())
     {
-      parameters = new EObjectResolvingEList<JvmType>(JvmType.class, this, CryptSLPackage.FORB_METHOD__PARAMETERS);
+      InternalEObject oldJavaMeth = (InternalEObject)javaMeth;
+      javaMeth = (JvmOperation)eResolveProxy(oldJavaMeth);
+      if (javaMeth != oldJavaMeth)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.FORB_METHOD__JAVA_METH, oldJavaMeth, javaMeth));
+      }
     }
-    return parameters;
+    return javaMeth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmOperation basicGetJavaMeth()
+  {
+    return javaMeth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setJavaMeth(JvmOperation newJavaMeth)
+  {
+    JvmOperation oldJavaMeth = javaMeth;
+    javaMeth = newJavaMeth;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.FORB_METHOD__JAVA_METH, oldJavaMeth, javaMeth));
   }
 
   /**
@@ -147,8 +170,9 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
   {
     switch (featureID)
     {
-      case CryptSLPackage.FORB_METHOD__PARAMETERS:
-        return getParameters();
+      case CryptSLPackage.FORB_METHOD__JAVA_METH:
+        if (resolve) return getJavaMeth();
+        return basicGetJavaMeth();
       case CryptSLPackage.FORB_METHOD__REP:
         if (resolve) return getRep();
         return basicGetRep();
@@ -161,15 +185,13 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CryptSLPackage.FORB_METHOD__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends JvmType>)newValue);
+      case CryptSLPackage.FORB_METHOD__JAVA_METH:
+        setJavaMeth((JvmOperation)newValue);
         return;
       case CryptSLPackage.FORB_METHOD__REP:
         setRep((Event)newValue);
@@ -188,8 +210,8 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
   {
     switch (featureID)
     {
-      case CryptSLPackage.FORB_METHOD__PARAMETERS:
-        getParameters().clear();
+      case CryptSLPackage.FORB_METHOD__JAVA_METH:
+        setJavaMeth((JvmOperation)null);
         return;
       case CryptSLPackage.FORB_METHOD__REP:
         setRep((Event)null);
@@ -208,8 +230,8 @@ public class ForbMethodImpl extends MinimalEObjectImpl.Container implements Forb
   {
     switch (featureID)
     {
-      case CryptSLPackage.FORB_METHOD__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
+      case CryptSLPackage.FORB_METHOD__JAVA_METH:
+        return javaMeth != null;
       case CryptSLPackage.FORB_METHOD__REP:
         return rep != null;
     }

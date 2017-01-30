@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.xtext.common.types.JvmOperation;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Method</b></em>'.
@@ -44,24 +46,14 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   protected de.darmstadt.tu.crossing.cryptSL.Object leftSide;
 
   /**
-   * The default value of the '{@link #getMethName() <em>Meth Name</em>}' attribute.
+   * The cached value of the '{@link #getMethName() <em>Meth Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getMethName()
    * @generated
    * @ordered
    */
-  protected static final String METH_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMethName() <em>Meth Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMethName()
-   * @generated
-   * @ordered
-   */
-  protected String methName = METH_NAME_EDEFAULT;
+  protected JvmOperation methName;
 
   /**
    * The cached value of the '{@link #getParList() <em>Par List</em>}' containment reference.
@@ -142,7 +134,27 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMethName()
+  public JvmOperation getMethName()
+  {
+    if (methName != null && methName.eIsProxy())
+    {
+      InternalEObject oldMethName = (InternalEObject)methName;
+      methName = (JvmOperation)eResolveProxy(oldMethName);
+      if (methName != oldMethName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.METHOD__METH_NAME, oldMethName, methName));
+      }
+    }
+    return methName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmOperation basicGetMethName()
   {
     return methName;
   }
@@ -152,9 +164,9 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMethName(String newMethName)
+  public void setMethName(JvmOperation newMethName)
   {
-    String oldMethName = methName;
+    JvmOperation oldMethName = methName;
     methName = newMethName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.METHOD__METH_NAME, oldMethName, methName));
@@ -238,7 +250,8 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         if (resolve) return getLeftSide();
         return basicGetLeftSide();
       case CryptSLPackage.METHOD__METH_NAME:
-        return getMethName();
+        if (resolve) return getMethName();
+        return basicGetMethName();
       case CryptSLPackage.METHOD__PAR_LIST:
         return getParList();
     }
@@ -259,7 +272,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         setLeftSide((de.darmstadt.tu.crossing.cryptSL.Object)newValue);
         return;
       case CryptSLPackage.METHOD__METH_NAME:
-        setMethName((String)newValue);
+        setMethName((JvmOperation)newValue);
         return;
       case CryptSLPackage.METHOD__PAR_LIST:
         setParList((ParList)newValue);
@@ -282,7 +295,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         setLeftSide((de.darmstadt.tu.crossing.cryptSL.Object)null);
         return;
       case CryptSLPackage.METHOD__METH_NAME:
-        setMethName(METH_NAME_EDEFAULT);
+        setMethName((JvmOperation)null);
         return;
       case CryptSLPackage.METHOD__PAR_LIST:
         setParList((ParList)null);
@@ -304,28 +317,11 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case CryptSLPackage.METHOD__LEFT_SIDE:
         return leftSide != null;
       case CryptSLPackage.METHOD__METH_NAME:
-        return METH_NAME_EDEFAULT == null ? methName != null : !METH_NAME_EDEFAULT.equals(methName);
+        return methName != null;
       case CryptSLPackage.METHOD__PAR_LIST:
         return parList != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (methName: ");
-    result.append(methName);
-    result.append(')');
-    return result.toString();
   }
 
 } //MethodImpl

@@ -24,8 +24,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected CryptSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q;
 	protected AbstractElementAlias match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q;
-	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q;
-	protected AbstractElementAlias match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q;
 	protected AbstractElementAlias match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a;
 	protected AbstractElementAlias match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a;
 	protected AbstractElementAlias match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1;
@@ -36,20 +34,14 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_p;
 	protected AbstractElementAlias match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q;
 	protected AbstractElementAlias match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q;
-	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
-	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
 	protected AbstractElementAlias match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q;
 	protected AbstractElementAlias match_XImportDeclaration_SemicolonKeyword_2_q;
-	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_a;
-	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CryptSLGrammarAccess) access;
 		match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getFullStopKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getIDTerminalRuleCall_1_1()));
 		match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getConsPredAccess().getPartKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_4()));
-		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_1());
-		match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q = new TokenAlias(false, true, grammarAccess.getForbMethodAccess().getLeftSquareBracketRightSquareBracketKeyword_1_2_2_2());
 		match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()));
 		match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()));
 		match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_0()), new TokenAlias(false, false, grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_1()));
@@ -60,12 +52,8 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_Primary_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()));
 		match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_1_3_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_1_3_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_1_3_1()));
-		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
-		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
 		match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()));
 		match_XImportDeclaration_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
-		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
-		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 	}
 	
 	@Override
@@ -76,8 +64,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getIDToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getINTRule())
 			return getINTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
-			return getOpSingleAssignToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
 			return getSTRINGToken(semanticObject, ruleCall, node);
 		return "";
@@ -105,24 +91,13 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal INT returns ecore::EInt:
+	 * terminal INT:
 	 * 	'0'..'9' ('0'..'9'|'_')*;
 	 */
 	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "";
-	}
-	
-	/**
-	 * OpSingleAssign:
-	 * 	'='
-	 * ;
-	 */
-	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "=";
 	}
 	
 	/**
@@ -146,10 +121,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q.equals(syntax))
 				emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q.equals(syntax))
-				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q.equals(syntax))
-				emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a.equals(syntax))
 				emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a.equals(syntax))
@@ -170,18 +141,10 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q.equals(syntax))
 				emit_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
-				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XExpressionInClosure_SemicolonKeyword_1_1_q.equals(syntax))
-				emit_XExpressionInClosure_SemicolonKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q.equals(syntax))
 				emit_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XImportDeclaration_SemicolonKeyword_2_q.equals(syntax))
 				emit_XImportDeclaration_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XParenthesizedExpression_LeftParenthesisKeyword_0_a.equals(syntax))
-				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XParenthesizedExpression_LeftParenthesisKeyword_0_p.equals(syntax))
-				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -211,36 +174,10 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     '[]'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' '=>' rep=[Event|ID]
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' (rule end)
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ',' parameters+=[JvmType|QualifiedName]
-	 */
-	protected void emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '[]'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' '=>' rep=[Event|ID]
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ')' (rule end)
-	 *     parameters+=[JvmType|QualifiedName] (ambiguity) ',' parameters+=[JvmType|QualifiedName]
-	 */
-	protected void emit_ForbMethod_LeftSquareBracketRightSquareBracketKeyword_1_2_2_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     (',' '...')*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameters+=XLiteral (ambiguity) (rule end)
+	 *     parameters+=Literal (ambiguity) (rule end)
 	 */
 	protected void emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -251,7 +188,7 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('...' ',')*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameters+=XLiteral ',' (ambiguity) parameters+=XLiteral
+	 *     parameters+=Literal ',' (ambiguity) parameters+=Literal
 	 */
 	protected void emit_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -362,31 +299,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     expressions+=XExpressionOrVarDeclaration (ambiguity) '}' ')' (rule end)
-	 *     expressions+=XExpressionOrVarDeclaration (ambiguity) '}' (rule end)
-	 *     expressions+=XExpressionOrVarDeclaration (ambiguity) expressions+=XExpressionOrVarDeclaration
-	 */
-	protected void emit_XBlockExpression_SemicolonKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     expressions+=XExpressionOrVarDeclaration (ambiguity) (rule end)
-	 *     expressions+=XExpressionOrVarDeclaration (ambiguity) expressions+=XExpressionOrVarDeclaration
-	 */
-	protected void emit_XExpressionInClosure_SemicolonKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
@@ -407,110 +319,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     wildcard?='*' (ambiguity) (rule end)
 	 */
 	protected void emit_XImportDeclaration_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '#' '[' ']' (rule start)
-	 *     (rule start) (ambiguity) '#' '[' elements+=XExpression
-	 *     (rule start) (ambiguity) '#' '{' '}' (rule start)
-	 *     (rule start) (ambiguity) '#' '{' elements+=XExpression
-	 *     (rule start) (ambiguity) '<' typeArguments+=JvmArgumentTypeReference
-	 *     (rule start) (ambiguity) '[' declaredFormalParameters+=JvmFormalParameter
-	 *     (rule start) (ambiguity) '[' explicitSyntax?='|'
-	 *     (rule start) (ambiguity) '[' expression=XExpressionInClosure
-	 *     (rule start) (ambiguity) 'do' body=XExpression
-	 *     (rule start) (ambiguity) 'false' (rule start)
-	 *     (rule start) (ambiguity) 'for' '(' ';' ';' ')' eachExpression=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' ';' ';' updateExpressions+=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' ';' expression=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'for' '(' initExpressions+=XExpressionOrVarDeclaration
-	 *     (rule start) (ambiguity) 'if' '(' if=XExpression
-	 *     (rule start) (ambiguity) 'new' constructor=[JvmConstructor|QualifiedName]
-	 *     (rule start) (ambiguity) 'null' (rule start)
-	 *     (rule start) (ambiguity) 'return' (rule start)
-	 *     (rule start) (ambiguity) 'return' expression=XExpression
-	 *     (rule start) (ambiguity) 'switch' '(' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'switch' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'switch' switch=XExpression
-	 *     (rule start) (ambiguity) 'synchronized' '(' param=XExpression
-	 *     (rule start) (ambiguity) 'throw' expression=XExpression
-	 *     (rule start) (ambiguity) 'try' expression=XExpression
-	 *     (rule start) (ambiguity) 'typeof' '(' type=[JvmType|QualifiedName]
-	 *     (rule start) (ambiguity) 'while' '(' predicate=XExpression
-	 *     (rule start) (ambiguity) '{' '}' (rule start)
-	 *     (rule start) (ambiguity) '{' expressions+=XExpressionOrVarDeclaration
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|FeatureCallID]
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|IdOrSuper]
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|OpUnary]
-	 *     (rule start) (ambiguity) isTrue?='true'
-	 *     (rule start) (ambiguity) value=Number
-	 *     (rule start) (ambiguity) value=STRING
-	 *     (rule start) (ambiguity) {XAssignment.assignable=}
-	 *     (rule start) (ambiguity) {XBinaryOperation.leftOperand=}
-	 *     (rule start) (ambiguity) {XCastedExpression.target=}
-	 *     (rule start) (ambiguity) {XInstanceOfExpression.expression=}
-	 *     (rule start) (ambiguity) {XMemberFeatureCall.memberCallTarget=}
-	 *     (rule start) (ambiguity) {XPostfixOperation.operand=}
-	 */
-	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '#' '[' ']' ')' (rule start)
-	 *     (rule start) (ambiguity) '#' '[' elements+=XExpression
-	 *     (rule start) (ambiguity) '#' '{' '}' ')' (rule start)
-	 *     (rule start) (ambiguity) '#' '{' elements+=XExpression
-	 *     (rule start) (ambiguity) '<' typeArguments+=JvmArgumentTypeReference
-	 *     (rule start) (ambiguity) '[' declaredFormalParameters+=JvmFormalParameter
-	 *     (rule start) (ambiguity) '[' explicitSyntax?='|'
-	 *     (rule start) (ambiguity) '[' expression=XExpressionInClosure
-	 *     (rule start) (ambiguity) 'do' body=XExpression
-	 *     (rule start) (ambiguity) 'false' ')' (rule start)
-	 *     (rule start) (ambiguity) 'for' '(' ';' ';' ')' eachExpression=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' ';' ';' updateExpressions+=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' ';' expression=XExpression
-	 *     (rule start) (ambiguity) 'for' '(' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'for' '(' initExpressions+=XExpressionOrVarDeclaration
-	 *     (rule start) (ambiguity) 'if' '(' if=XExpression
-	 *     (rule start) (ambiguity) 'new' constructor=[JvmConstructor|QualifiedName]
-	 *     (rule start) (ambiguity) 'null' ')' (rule start)
-	 *     (rule start) (ambiguity) 'return' ')' (rule start)
-	 *     (rule start) (ambiguity) 'return' expression=XExpression
-	 *     (rule start) (ambiguity) 'switch' '(' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'switch' declaredParam=JvmFormalParameter
-	 *     (rule start) (ambiguity) 'switch' switch=XExpression
-	 *     (rule start) (ambiguity) 'synchronized' '(' param=XExpression
-	 *     (rule start) (ambiguity) 'throw' expression=XExpression
-	 *     (rule start) (ambiguity) 'try' expression=XExpression
-	 *     (rule start) (ambiguity) 'typeof' '(' type=[JvmType|QualifiedName]
-	 *     (rule start) (ambiguity) 'while' '(' predicate=XExpression
-	 *     (rule start) (ambiguity) '{' '}' ')' (rule start)
-	 *     (rule start) (ambiguity) '{' expressions+=XExpressionOrVarDeclaration
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|FeatureCallID]
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|IdOrSuper]
-	 *     (rule start) (ambiguity) feature=[JvmIdentifiableElement|OpUnary]
-	 *     (rule start) (ambiguity) isTrue?='true'
-	 *     (rule start) (ambiguity) value=Number
-	 *     (rule start) (ambiguity) value=STRING
-	 *     (rule start) (ambiguity) {XAssignment.assignable=}
-	 *     (rule start) (ambiguity) {XBinaryOperation.leftOperand=}
-	 *     (rule start) (ambiguity) {XCastedExpression.target=}
-	 *     (rule start) (ambiguity) {XInstanceOfExpression.expression=}
-	 *     (rule start) (ambiguity) {XMemberFeatureCall.memberCallTarget=}
-	 *     (rule start) (ambiguity) {XPostfixOperation.operand=}
-	 */
-	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

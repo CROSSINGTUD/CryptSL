@@ -3,11 +3,9 @@
  */
 package de.darmstadt.tu.crossing.cryptSL;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +16,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getJavaMeth <em>Java Meth</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getRep <em>Rep</em>}</li>
  * </ul>
  *
@@ -29,20 +27,30 @@ import org.eclipse.xtext.common.types.JvmType;
 public interface ForbMethod extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmType}.
+   * Returns the value of the '<em><b>Java Meth</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
+   * If the meaning of the '<em>Java Meth</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getForbMethod_Parameters()
+   * @return the value of the '<em>Java Meth</em>' reference.
+   * @see #setJavaMeth(JvmOperation)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getForbMethod_JavaMeth()
    * @model
    * @generated
    */
-  EList<JvmType> getParameters();
+  JvmOperation getJavaMeth();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getJavaMeth <em>Java Meth</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Java Meth</em>' reference.
+   * @see #getJavaMeth()
+   * @generated
+   */
+  void setJavaMeth(JvmOperation value);
 
   /**
    * Returns the value of the '<em><b>Rep</b></em>' reference.

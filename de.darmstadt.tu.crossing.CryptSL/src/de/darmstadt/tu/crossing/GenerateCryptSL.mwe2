@@ -32,7 +32,10 @@ Workflow {
 		language = StandardLanguage {
 			name = "de.darmstadt.tu.crossing.CryptSL"
 			fileExtensions = "cryptsl"
-
+			scopeProvider = {
+				generateXtendStub = false
+			}
+			 
 			serializer = {
 				generateStub = false
 			}

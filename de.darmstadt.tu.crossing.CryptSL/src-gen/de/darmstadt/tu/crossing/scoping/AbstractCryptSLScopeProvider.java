@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.scoping;
 
-import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
+import org.eclipse.xtext.xbase.scoping.XtypeScopeProvider;
 
-public abstract class AbstractCryptSLScopeProvider extends XbaseBatchScopeProvider {
+public abstract class AbstractCryptSLScopeProvider extends XtypeScopeProvider {
 }

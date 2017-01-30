@@ -11,14 +11,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
+import org.eclipse.xtext.xbase.XtypeStandaloneSetup;
 
 @SuppressWarnings("all")
 public class CryptSLStandaloneSetupGenerated implements ISetup {
 
 	@Override
 	public Injector createInjectorAndDoEMFRegistration() {
-		XbaseStandaloneSetup.doSetup();
+		XtypeStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

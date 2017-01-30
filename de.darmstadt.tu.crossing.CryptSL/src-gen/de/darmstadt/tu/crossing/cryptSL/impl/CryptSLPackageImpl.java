@@ -42,8 +42,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
-import org.eclipse.xtext.xbase.XbasePackage;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -297,7 +295,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
+    TypesPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theCryptSLPackage.createPackageContents();
@@ -439,7 +437,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getForbMethod_Parameters()
+  public EReference getForbMethod_JavaMeth()
   {
     return (EReference)forbMethodEClass.getEStructuralFeatures().get(0);
   }
@@ -519,9 +517,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMethod_MethName()
+  public EReference getMethod_MethName()
   {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(1);
+    return (EReference)methodEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1128,7 +1126,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     createEReference(objectDeclEClass, OBJECT_DECL__OBJECT_NAME);
 
     forbMethodEClass = createEClass(FORB_METHOD);
-    createEReference(forbMethodEClass, FORB_METHOD__PARAMETERS);
+    createEReference(forbMethodEClass, FORB_METHOD__JAVA_METH);
     createEReference(forbMethodEClass, FORB_METHOD__REP);
 
     eventEClass = createEClass(EVENT);
@@ -1139,7 +1137,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     methodEClass = createEClass(METHOD);
     createEReference(methodEClass, METHOD__LEFT_SIDE);
-    createEAttribute(methodEClass, METHOD__METH_NAME);
+    createEReference(methodEClass, METHOD__METH_NAME);
     createEReference(methodEClass, METHOD__PAR_LIST);
 
     parListEClass = createEClass(PAR_LIST);
@@ -1246,7 +1244,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     // Obtain other dependent packages
     TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
 
@@ -1280,7 +1277,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEReference(getObjectDecl_ObjectName(), this.getSuperType(), null, "objectName", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forbMethodEClass, ForbMethod.class, "ForbMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getForbMethod_Parameters(), theTypesPackage.getJvmType(), null, "parameters", null, 0, -1, ForbMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForbMethod_JavaMeth(), theTypesPackage.getJvmOperation(), null, "javaMeth", null, 0, 1, ForbMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getForbMethod_Rep(), this.getEvent(), null, "rep", null, 0, 1, ForbMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1291,7 +1288,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethod_LeftSide(), this.getObject(), null, "leftSide", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_MethName(), ecorePackage.getEString(), "methName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethod_MethName(), theTypesPackage.getJvmOperation(), null, "methName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_ParList(), this.getParList(), null, "parList", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parListEClass, ParList.class, "ParList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1344,7 +1341,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEAttribute(getUnaryOperator_NOT(), ecorePackage.getEString(), "NOT", null, 0, 1, UnaryOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(litListEClass, LitList.class, "LitList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLitList_Parameters(), theXbasePackage.getXExpression(), null, "parameters", null, 0, -1, LitList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLitList_Parameters(), this.getLiteralExpression(), null, "parameters", null, 0, -1, LitList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(suParListEClass, SuParList.class, "SuParList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSuParList_Parameters(), this.getSuPar(), null, "parameters", null, 0, -1, SuParList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -187,13 +187,13 @@ public interface CryptSLPackage extends EPackage
   int FORB_METHOD = 2;
 
   /**
-   * The feature id for the '<em><b>Parameters</b></em>' reference list.
+   * The feature id for the '<em><b>Java Meth</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORB_METHOD__PARAMETERS = 0;
+  int FORB_METHOD__JAVA_METH = 0;
 
   /**
    * The feature id for the '<em><b>Rep</b></em>' reference.
@@ -298,7 +298,7 @@ public interface CryptSLPackage extends EPackage
   int METHOD__LEFT_SIDE = 0;
 
   /**
-   * The feature id for the '<em><b>Meth Name</b></em>' attribute.
+   * The feature id for the '<em><b>Meth Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1503,15 +1503,15 @@ public interface CryptSLPackage extends EPackage
   EClass getForbMethod();
 
   /**
-   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getJavaMeth <em>Java Meth</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Parameters</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.ForbMethod#getParameters()
+   * @return the meta object for the reference '<em>Java Meth</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ForbMethod#getJavaMeth()
    * @see #getForbMethod()
    * @generated
    */
-  EReference getForbMethod_Parameters();
+  EReference getForbMethod_JavaMeth();
 
   /**
    * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.ForbMethod#getRep <em>Rep</em>}'.
@@ -1588,15 +1588,15 @@ public interface CryptSLPackage extends EPackage
   EReference getMethod_LeftSide();
 
   /**
-   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}'.
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Meth Name</em>'.
+   * @return the meta object for the reference '<em>Meth Name</em>'.
    * @see de.darmstadt.tu.crossing.cryptSL.Method#getMethName()
    * @see #getMethod()
    * @generated
    */
-  EAttribute getMethod_MethName();
+  EReference getMethod_MethName();
 
   /**
    * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Method#getParList <em>Par List</em>}'.
@@ -2318,12 +2318,12 @@ public interface CryptSLPackage extends EPackage
     EClass FORB_METHOD = eINSTANCE.getForbMethod();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Java Meth</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORB_METHOD__PARAMETERS = eINSTANCE.getForbMethod_Parameters();
+    EReference FORB_METHOD__JAVA_METH = eINSTANCE.getForbMethod_JavaMeth();
 
     /**
      * The meta object literal for the '<em><b>Rep</b></em>' reference feature.
@@ -2388,12 +2388,12 @@ public interface CryptSLPackage extends EPackage
     EReference METHOD__LEFT_SIDE = eINSTANCE.getMethod_LeftSide();
 
     /**
-     * The meta object literal for the '<em><b>Meth Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Meth Name</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METHOD__METH_NAME = eINSTANCE.getMethod_MethName();
+    EReference METHOD__METH_NAME = eINSTANCE.getMethod_MethName();
 
     /**
      * The meta object literal for the '<em><b>Par List</b></em>' containment reference feature.

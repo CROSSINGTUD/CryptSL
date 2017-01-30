@@ -5,6 +5,8 @@ package de.darmstadt.tu.crossing.cryptSL;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmOperation;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Method</b></em>'.
@@ -52,30 +54,30 @@ public interface Method extends EObject
   void setLeftSide(de.darmstadt.tu.crossing.cryptSL.Object value);
 
   /**
-   * Returns the value of the '<em><b>Meth Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Meth Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Meth Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Meth Name</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Meth Name</em>' attribute.
-   * @see #setMethName(String)
+   * @return the value of the '<em>Meth Name</em>' reference.
+   * @see #setMethName(JvmOperation)
    * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getMethod_MethName()
    * @model
    * @generated
    */
-  String getMethName();
+  JvmOperation getMethName();
 
   /**
-   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}' attribute.
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Method#getMethName <em>Meth Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Meth Name</em>' attribute.
+   * @param value the new value of the '<em>Meth Name</em>' reference.
    * @see #getMethName()
    * @generated
    */
-  void setMethName(String value);
+  void setMethName(JvmOperation value);
 
   /**
    * Returns the value of the '<em><b>Par List</b></em>' containment reference.

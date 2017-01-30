@@ -1,7 +1,8 @@
-grammar de.darmstadt.tu.crossing.CryptSL with org.eclipse.xtext.xbase.Xbase
+grammar de.darmstadt.tu.crossing.CryptSL with org.eclipse.xtext.xbase.Xtype
 
 generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+
 
 Domainmodel:
 	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
@@ -14,12 +15,18 @@ Domainmodel:
 
 ////////////// OBJECTS
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";";
+	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";"
+;
 
 /////////// FORBIDDEN EVENTS
 ForbMethod:
-	{ForbMethod} (ID "(" (parameters+=[jvmTypes::JvmType|QualifiedName] "[]"? 
-		(',' parameters+=[jvmTypes::JvmType|QualifiedName] ("[]")?)*)? ")" ("=>" rep=[Event])?);
+	{ForbMethod} (javaMeth=[jvmTypes::JvmOperation|FQN] ("=>" rep=[Event])?)';';
+
+FQN: QN "(" (QN ("," QN)*)? ")";
+
+QN:
+	ID ('.' ID)*
+;
 
 ///////////// EVENTS
 Event:
@@ -30,7 +37,7 @@ LabelMethodCall:
 	name=ID ":" meth=Method;
 
 Method:
-	(leftSide=[Object] "=")? methName=ID "(" parList=ParList? ");";
+	(leftSide=[Object] "=")? methName=[jvmTypes::JvmOperation|ID] "(" parList=ParList? ");";
 
 ParList:
 	(parameters+=Par (',' parameters+=Par)*);
@@ -195,8 +202,12 @@ ConsPred returns LiteralExpression:
 	("part(" INT "," STRING "," LiteralExpression ")") | LiteralExpression 
 ;
 
+terminal INT:
+	'0'..'9' ('0'..'9'|'_')*; 
+
 LitList:
-	(parameters+=XLiteral (',' (parameters+=XLiteral | '...'))*);
+	(parameters+=Literal (',' (parameters+=Literal | '...'))*)
+;
 
 Pred returns Constraint:
 	predName=ID "(" parList=SuParList? ");"
