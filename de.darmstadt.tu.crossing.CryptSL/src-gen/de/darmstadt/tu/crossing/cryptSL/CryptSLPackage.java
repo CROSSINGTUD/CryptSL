@@ -767,13 +767,31 @@ public interface CryptSLPackage extends EPackage
   int LITERAL_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
 
   /**
+   * The feature id for the '<em><b>Obj</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Value</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 0;
+  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Cons</b></em>' containment reference.
@@ -782,7 +800,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 1;
+  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
@@ -791,7 +809,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 2;
+  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Literal Expression</em>' class.
@@ -800,7 +818,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 3;
+  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UnaryOperatorImpl <em>Unary Operator</em>}' class.
@@ -1307,6 +1325,24 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int LITERAL__PAR_LIST = LITERAL_EXPRESSION__PAR_LIST;
+
+  /**
+   * The feature id for the '<em><b>Obj</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__OBJ = LITERAL_EXPRESSION__OBJ;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__TYPE = LITERAL_EXPRESSION__TYPE;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -1961,6 +1997,28 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EClass getLiteralExpression();
+
+  /**
+   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj <em>Obj</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Obj</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EReference getLiteralExpression_Obj();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getType()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EReference getLiteralExpression_Type();
 
   /**
    * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getValue <em>Value</em>}'.
@@ -2686,6 +2744,22 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EClass LITERAL_EXPRESSION = eINSTANCE.getLiteralExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Obj</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LITERAL_EXPRESSION__OBJ = eINSTANCE.getLiteralExpression_Obj();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LITERAL_EXPRESSION__TYPE = eINSTANCE.getLiteralExpression_Type();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' reference feature.

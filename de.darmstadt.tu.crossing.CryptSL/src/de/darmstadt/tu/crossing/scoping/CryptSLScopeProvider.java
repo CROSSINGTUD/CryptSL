@@ -4,7 +4,9 @@
 package de.darmstadt.tu.crossing.scoping;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -12,6 +14,7 @@ import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
@@ -30,29 +33,44 @@ import de.darmstadt.tu.crossing.cryptSL.Method;
 public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 	IScope scope_ForbMethod_javaMeth(ForbMethod fm , EReference reference) {
 		EObject cont = fm.eContainer();
-		List<IEObjectDescription> descriptions = new ArrayList<IEObjectDescription>();
+		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
 		
 		if (cont instanceof Domainmodel) {
 			JvmType jvmType = ((Domainmodel) cont).getJavaType();
 			if (jvmType instanceof JvmGenericType) {
-				JvmGenericType gt = (JvmGenericType) jvmType;
-				for (JvmConstructor member : gt.getDeclaredConstructors()) {
-					String memidentifier = member.getIdentifier();
-					String classdotname = memidentifier.substring(memidentifier.indexOf(jvmType.getSimpleName()));
-					String name = classdotname.substring(classdotname.indexOf(".") + 1);
-					descriptions.add(EObjectDescription.create(name.replace(".", "_"), member));
-				}
-				
-				for (JvmOperation member : gt.getDeclaredOperations()) {
-					String memidentifier = member.getIdentifier();
-					String classdotname = memidentifier.substring(memidentifier.indexOf(jvmType.getSimpleName()));
-					String name = classdotname.substring(classdotname.indexOf(".") + 1);
-					descriptions.add(EObjectDescription.create(name.replace(".", "_"), member));
-				}
+				descriptions = iterateThroughSuperTypes((JvmGenericType)jvmType, descriptions);
+				System.out.println(descriptions);
 			}
 		}
 		return new SimpleScope(descriptions);
 	  }
+	
+	private Set<IEObjectDescription> iterateThroughSuperTypes(JvmGenericType jvmType, Set<IEObjectDescription> descriptions) {
+		descriptions.addAll(collectMethods(jvmType));
+		for (JvmTypeReference superType: jvmType.getSuperTypes()) {
+			 return iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions);
+		}
+		return descriptions;
+	}
+	
+	private Set<IEObjectDescription> collectMethods(JvmGenericType jvmType) {
+		Set<IEObjectDescription> methods = new HashSet<IEObjectDescription>();
+		for (JvmConstructor member : jvmType.getDeclaredConstructors()) {
+			String memidentifier = member.getIdentifier();
+			String classdotname = memidentifier.substring(memidentifier.indexOf(jvmType.getSimpleName()));
+			String name = classdotname.substring(classdotname.indexOf(".") + 1);
+			methods.add(EObjectDescription.create(name.replace(".", "_"), member));
+		}
+		
+		for (JvmOperation member : jvmType.getDeclaredOperations()) {
+			String memidentifier = member.getIdentifier();
+			String classdotname = memidentifier.substring(memidentifier.indexOf(jvmType.getSimpleName()));
+			String name = classdotname.substring(classdotname.indexOf(".") + 1);
+			methods.add(EObjectDescription.create(name.replace(".", "_"), member));
+		}
+		return methods;
+	}
+	
 	
 	IScope scope_Method_methName(Method fm, EReference reference) {
 		EObject cont = fm.eContainer().eContainer();

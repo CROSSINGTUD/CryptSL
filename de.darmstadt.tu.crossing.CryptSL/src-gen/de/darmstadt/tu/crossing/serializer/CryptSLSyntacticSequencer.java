@@ -165,6 +165,7 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('part(' INT ',' STRING ',')?
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'typeOf(' obj+=[Object|ID]
 	 *     (rule start) (ambiguity) (INT | STRING) (rule start)
 	 *     (rule start) (ambiguity) value=[SuperType|ID]
 	 */

@@ -75,6 +75,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ArithmeticOperator/DIVIDE"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//LiteralExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/obj"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/cons"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/litsleft"/>

@@ -88,6 +88,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="DIVIDE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralExpression" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
+        eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SuperType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//LiteralExpression"
         containment="true"/>

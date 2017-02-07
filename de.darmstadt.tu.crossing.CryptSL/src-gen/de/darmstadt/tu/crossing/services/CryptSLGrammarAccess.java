@@ -1238,12 +1238,22 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cAggregateExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cTypeOfKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cObjAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cObjObjectCrossReference_2_1_0 = (CrossReference)cObjAssignment_2_1.eContents().get(0);
+		private final RuleCall cObjObjectIDTerminalRuleCall_2_1_0_1 = (RuleCall)cObjObjectCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cTypeAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final CrossReference cTypeJvmTypeCrossReference_2_3_0 = (CrossReference)cTypeAssignment_2_3.eContents().get(0);
+		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_2_3_0_1 = (RuleCall)cTypeJvmTypeCrossReference_2_3_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		//LiteralExpression:
-		//	Literal | AggregateExpression;
+		//	Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Literal | AggregateExpression
+		//Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Literal
@@ -1251,6 +1261,36 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AggregateExpression
 		public RuleCall getAggregateExpressionParserRuleCall_1() { return cAggregateExpressionParserRuleCall_1; }
+		
+		//"typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")"
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//"typeOf("
+		public Keyword getTypeOfKeyword_2_0() { return cTypeOfKeyword_2_0; }
+		
+		//obj+=[Object]
+		public Assignment getObjAssignment_2_1() { return cObjAssignment_2_1; }
+		
+		//[Object]
+		public CrossReference getObjObjectCrossReference_2_1_0() { return cObjObjectCrossReference_2_1_0; }
+		
+		//ID
+		public RuleCall getObjObjectIDTerminalRuleCall_2_1_0_1() { return cObjObjectIDTerminalRuleCall_2_1_0_1; }
+		
+		//","
+		public Keyword getCommaKeyword_2_2() { return cCommaKeyword_2_2; }
+		
+		//type=[jvmTypes::JvmType|QualifiedName]
+		public Assignment getTypeAssignment_2_3() { return cTypeAssignment_2_3; }
+		
+		//[jvmTypes::JvmType|QualifiedName]
+		public CrossReference getTypeJvmTypeCrossReference_2_3_0() { return cTypeJvmTypeCrossReference_2_3_0; }
+		
+		//QualifiedName
+		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_2_3_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_2_3_0_1; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
 	}
 	public class AggregateExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.AggregateExpression");
@@ -2083,7 +2123,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LiteralExpression:
-	//	Literal | AggregateExpression;
+	//	Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
 	public LiteralExpressionElements getLiteralExpressionAccess() {
 		return pLiteralExpression;
 	}

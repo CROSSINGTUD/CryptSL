@@ -2054,6 +2054,50 @@ ruleLiteralExpression returns [EObject current=null]
 			$current = $this_AggregateExpression_1.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		(
+			otherlv_2='typeOf('
+			{
+				newLeafNode(otherlv_2, grammarAccess.getLiteralExpressionAccess().getTypeOfKeyword_2_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+						}
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getLiteralExpressionAccess().getObjObjectCrossReference_2_1_0());
+					}
+				)
+			)
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getLiteralExpressionAccess().getCommaKeyword_2_2());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getLiteralExpressionAccess().getTypeJvmTypeCrossReference_2_3_0());
+					}
+					ruleQualifiedName
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_6=')'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getLiteralExpressionAccess().getRightParenthesisKeyword_2_4());
+			}
+		)
 	)
 ;
 

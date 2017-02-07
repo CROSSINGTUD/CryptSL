@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SPEC'", "'USES_OBJECTS'", "'FORBIDDEN_EVENTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'ENFORCES_CONSTRAINTS'", "'ENSURES'", "'[]'", "';'", "'=>'", "'('", "','", "')'", "'.'", "':'", "'='", "');'", "'_'", "':='", "'|'", "'+'", "'?'", "'*'", "'||'", "'&&'", "'<'", "'<='", "'>='", "'>'", "'-'", "'/'", "'!'", "'=='", "'!='", "'in'", "'{'", "'}'", "'part('", "'...'", "'['", "']'", "'extends'", "'&'", "'super'", "'import'", "'static'", "'extension'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SPEC'", "'USES_OBJECTS'", "'FORBIDDEN_EVENTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'ENFORCES_CONSTRAINTS'", "'ENSURES'", "'[]'", "';'", "'=>'", "'('", "','", "')'", "'.'", "':'", "'='", "');'", "'_'", "':='", "'|'", "'+'", "'?'", "'*'", "'||'", "'&&'", "'<'", "'<='", "'>='", "'>'", "'-'", "'/'", "'typeOf('", "'!'", "'=='", "'!='", "'in'", "'{'", "'}'", "'part('", "'...'", "'['", "']'", "'extends'", "'&'", "'super'", "'import'", "'static'", "'extension'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -37,6 +37,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final int T__13=13;
     public static final int T__57=57;
     public static final int T__14=14;
+    public static final int T__58=58;
     public static final int T__51=51;
     public static final int T__52=52;
     public static final int T__53=53;
@@ -499,7 +500,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_STRING)||LA5_0==21||LA5_0==42||LA5_0==48) ) {
+                if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_STRING)||LA5_0==21||(LA5_0>=42 && LA5_0<=43)||LA5_0==49) ) {
                     alt5=1;
                 }
 
@@ -4242,7 +4243,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( ((LA27_0>=43 && LA27_0<=44)) ) {
+            if ( ((LA27_0>=44 && LA27_0<=45)) ) {
                 alt27=1;
             }
             switch (alt27) {
@@ -5332,10 +5333,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( (LA33_0==42) ) {
+            if ( (LA33_0==43) ) {
                 alt33=1;
             }
-            else if ( ((LA33_0>=RULE_ID && LA33_0<=RULE_STRING)||LA33_0==21||LA33_0==48) ) {
+            else if ( ((LA33_0>=RULE_ID && LA33_0<=RULE_STRING)||LA33_0==21||LA33_0==42||LA33_0==49) ) {
                 alt33=2;
             }
             else {
@@ -6075,10 +6076,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralExpression"
-    // InternalCryptSL.g:2032:1: ruleLiteralExpression returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression ) ;
+    // InternalCryptSL.g:2032:1: ruleLiteralExpression returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression | (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' ) ) ;
     public final EObject ruleLiteralExpression() throws RecognitionException {
         EObject current = null;
 
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
         EObject this_Literal_0 = null;
 
         EObject this_AggregateExpression_1 = null;
@@ -6088,26 +6093,36 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2038:2: ( (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression ) )
-            // InternalCryptSL.g:2039:2: (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression )
+            // InternalCryptSL.g:2038:2: ( (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression | (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' ) ) )
+            // InternalCryptSL.g:2039:2: (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression | (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' ) )
             {
-            // InternalCryptSL.g:2039:2: (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression )
-            int alt36=2;
-            int LA36_0 = input.LA(1);
-
-            if ( ((LA36_0>=RULE_INT && LA36_0<=RULE_STRING)) ) {
+            // InternalCryptSL.g:2039:2: (this_Literal_0= ruleLiteral | this_AggregateExpression_1= ruleAggregateExpression | (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' ) )
+            int alt36=3;
+            switch ( input.LA(1) ) {
+            case RULE_INT:
+            case RULE_STRING:
+                {
                 alt36=1;
-            }
-            else if ( (LA36_0==RULE_ID) ) {
+                }
+                break;
+            case RULE_ID:
+                {
                 alt36=2;
-            }
-            else {
+                }
+                break;
+            case 42:
+                {
+                alt36=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 36, 0, input);
 
                 throw nvae;
             }
+
             switch (alt36) {
                 case 1 :
                     // InternalCryptSL.g:2040:3: this_Literal_0= ruleLiteral
@@ -6153,6 +6168,95 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 3 :
+                    // InternalCryptSL.g:2058:3: (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' )
+                    {
+                    // InternalCryptSL.g:2058:3: (otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')' )
+                    // InternalCryptSL.g:2059:4: otherlv_2= 'typeOf(' ( (otherlv_3= RULE_ID ) ) otherlv_4= ',' ( ( ruleQualifiedName ) ) otherlv_6= ')'
+                    {
+                    otherlv_2=(Token)match(input,42,FOLLOW_3); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_2, grammarAccess.getLiteralExpressionAccess().getTypeOfKeyword_2_0());
+                      			
+                    }
+                    // InternalCryptSL.g:2063:4: ( (otherlv_3= RULE_ID ) )
+                    // InternalCryptSL.g:2064:5: (otherlv_3= RULE_ID )
+                    {
+                    // InternalCryptSL.g:2064:5: (otherlv_3= RULE_ID )
+                    // InternalCryptSL.g:2065:6: otherlv_3= RULE_ID
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      						if (current==null) {
+                      							current = createModelElement(grammarAccess.getLiteralExpressionRule());
+                      						}
+                      					
+                    }
+                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_38); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      						newLeafNode(otherlv_3, grammarAccess.getLiteralExpressionAccess().getObjObjectCrossReference_2_1_0());
+                      					
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_4=(Token)match(input,22,FOLLOW_3); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_4, grammarAccess.getLiteralExpressionAccess().getCommaKeyword_2_2());
+                      			
+                    }
+                    // InternalCryptSL.g:2080:4: ( ( ruleQualifiedName ) )
+                    // InternalCryptSL.g:2081:5: ( ruleQualifiedName )
+                    {
+                    // InternalCryptSL.g:2081:5: ( ruleQualifiedName )
+                    // InternalCryptSL.g:2082:6: ruleQualifiedName
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      						if (current==null) {
+                      							current = createModelElement(grammarAccess.getLiteralExpressionRule());
+                      						}
+                      					
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      						newCompositeNode(grammarAccess.getLiteralExpressionAccess().getTypeJvmTypeCrossReference_2_3_0());
+                      					
+                    }
+                    pushFollow(FOLLOW_30);
+                    ruleQualifiedName();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      						afterParserOrEnumRuleCall();
+                      					
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_6=(Token)match(input,23,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_6, grammarAccess.getLiteralExpressionAccess().getRightParenthesisKeyword_2_4());
+                      			
+                    }
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -6178,7 +6282,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAggregateExpression"
-    // InternalCryptSL.g:2061:1: entryRuleAggregateExpression returns [EObject current=null] : iv_ruleAggregateExpression= ruleAggregateExpression EOF ;
+    // InternalCryptSL.g:2105:1: entryRuleAggregateExpression returns [EObject current=null] : iv_ruleAggregateExpression= ruleAggregateExpression EOF ;
     public final EObject entryRuleAggregateExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6186,8 +6290,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2061:60: (iv_ruleAggregateExpression= ruleAggregateExpression EOF )
-            // InternalCryptSL.g:2062:2: iv_ruleAggregateExpression= ruleAggregateExpression EOF
+            // InternalCryptSL.g:2105:60: (iv_ruleAggregateExpression= ruleAggregateExpression EOF )
+            // InternalCryptSL.g:2106:2: iv_ruleAggregateExpression= ruleAggregateExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAggregateExpressionRule()); 
@@ -6218,7 +6322,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAggregateExpression"
-    // InternalCryptSL.g:2068:1: ruleAggregateExpression returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? ) ;
+    // InternalCryptSL.g:2112:1: ruleAggregateExpression returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? ) ;
     public final EObject ruleAggregateExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6230,17 +6334,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2074:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? ) )
-            // InternalCryptSL.g:2075:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? )
+            // InternalCryptSL.g:2118:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? ) )
+            // InternalCryptSL.g:2119:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? )
             {
-            // InternalCryptSL.g:2075:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? )
-            // InternalCryptSL.g:2076:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )?
+            // InternalCryptSL.g:2119:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )? )
+            // InternalCryptSL.g:2120:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '.' this_ID_2= RULE_ID )?
             {
-            // InternalCryptSL.g:2076:3: ( (otherlv_0= RULE_ID ) )
-            // InternalCryptSL.g:2077:4: (otherlv_0= RULE_ID )
+            // InternalCryptSL.g:2120:3: ( (otherlv_0= RULE_ID ) )
+            // InternalCryptSL.g:2121:4: (otherlv_0= RULE_ID )
             {
-            // InternalCryptSL.g:2077:4: (otherlv_0= RULE_ID )
-            // InternalCryptSL.g:2078:5: otherlv_0= RULE_ID
+            // InternalCryptSL.g:2121:4: (otherlv_0= RULE_ID )
+            // InternalCryptSL.g:2122:5: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -6261,7 +6365,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2089:3: (otherlv_1= '.' this_ID_2= RULE_ID )?
+            // InternalCryptSL.g:2133:3: (otherlv_1= '.' this_ID_2= RULE_ID )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
@@ -6270,7 +6374,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt37) {
                 case 1 :
-                    // InternalCryptSL.g:2090:4: otherlv_1= '.' this_ID_2= RULE_ID
+                    // InternalCryptSL.g:2134:4: otherlv_1= '.' this_ID_2= RULE_ID
                     {
                     otherlv_1=(Token)match(input,24,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -6315,7 +6419,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // InternalCryptSL.g:2103:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // InternalCryptSL.g:2147:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final EObject entryRuleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -6323,8 +6427,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2103:48: (iv_ruleLiteral= ruleLiteral EOF )
-            // InternalCryptSL.g:2104:2: iv_ruleLiteral= ruleLiteral EOF
+            // InternalCryptSL.g:2147:48: (iv_ruleLiteral= ruleLiteral EOF )
+            // InternalCryptSL.g:2148:2: iv_ruleLiteral= ruleLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLiteralRule()); 
@@ -6355,7 +6459,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // InternalCryptSL.g:2110:1: ruleLiteral returns [EObject current=null] : ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) ) ;
+    // InternalCryptSL.g:2154:1: ruleLiteral returns [EObject current=null] : ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) ) ;
     public final EObject ruleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -6366,14 +6470,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2116:2: ( ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) ) )
-            // InternalCryptSL.g:2117:2: ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) )
+            // InternalCryptSL.g:2160:2: ( ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) ) )
+            // InternalCryptSL.g:2161:2: ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) )
             {
-            // InternalCryptSL.g:2117:2: ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) )
-            // InternalCryptSL.g:2118:3: () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING )
+            // InternalCryptSL.g:2161:2: ( () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING ) )
+            // InternalCryptSL.g:2162:3: () (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING )
             {
-            // InternalCryptSL.g:2118:3: ()
-            // InternalCryptSL.g:2119:4: 
+            // InternalCryptSL.g:2162:3: ()
+            // InternalCryptSL.g:2163:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -6385,7 +6489,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2125:3: (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING )
+            // InternalCryptSL.g:2169:3: (this_INT_1= RULE_INT | this_STRING_2= RULE_STRING )
             int alt38=2;
             int LA38_0 = input.LA(1);
 
@@ -6404,7 +6508,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt38) {
                 case 1 :
-                    // InternalCryptSL.g:2126:4: this_INT_1= RULE_INT
+                    // InternalCryptSL.g:2170:4: this_INT_1= RULE_INT
                     {
                     this_INT_1=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -6416,7 +6520,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2131:4: this_STRING_2= RULE_STRING
+                    // InternalCryptSL.g:2175:4: this_STRING_2= RULE_STRING
                     {
                     this_STRING_2=(Token)match(input,RULE_STRING,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -6455,7 +6559,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUnaryPreOperator"
-    // InternalCryptSL.g:2140:1: entryRuleUnaryPreOperator returns [EObject current=null] : iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF ;
+    // InternalCryptSL.g:2184:1: entryRuleUnaryPreOperator returns [EObject current=null] : iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF ;
     public final EObject entryRuleUnaryPreOperator() throws RecognitionException {
         EObject current = null;
 
@@ -6463,8 +6567,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2140:57: (iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF )
-            // InternalCryptSL.g:2141:2: iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF
+            // InternalCryptSL.g:2184:57: (iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF )
+            // InternalCryptSL.g:2185:2: iv_ruleUnaryPreOperator= ruleUnaryPreOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getUnaryPreOperatorRule()); 
@@ -6495,7 +6599,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryPreOperator"
-    // InternalCryptSL.g:2147:1: ruleUnaryPreOperator returns [EObject current=null] : ( (lv_NOT_0_0= '!' ) ) ;
+    // InternalCryptSL.g:2191:1: ruleUnaryPreOperator returns [EObject current=null] : ( (lv_NOT_0_0= '!' ) ) ;
     public final EObject ruleUnaryPreOperator() throws RecognitionException {
         EObject current = null;
 
@@ -6505,16 +6609,16 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2153:2: ( ( (lv_NOT_0_0= '!' ) ) )
-            // InternalCryptSL.g:2154:2: ( (lv_NOT_0_0= '!' ) )
+            // InternalCryptSL.g:2197:2: ( ( (lv_NOT_0_0= '!' ) ) )
+            // InternalCryptSL.g:2198:2: ( (lv_NOT_0_0= '!' ) )
             {
-            // InternalCryptSL.g:2154:2: ( (lv_NOT_0_0= '!' ) )
-            // InternalCryptSL.g:2155:3: (lv_NOT_0_0= '!' )
+            // InternalCryptSL.g:2198:2: ( (lv_NOT_0_0= '!' ) )
+            // InternalCryptSL.g:2199:3: (lv_NOT_0_0= '!' )
             {
-            // InternalCryptSL.g:2155:3: (lv_NOT_0_0= '!' )
-            // InternalCryptSL.g:2156:4: lv_NOT_0_0= '!'
+            // InternalCryptSL.g:2199:3: (lv_NOT_0_0= '!' )
+            // InternalCryptSL.g:2200:4: lv_NOT_0_0= '!'
             {
-            lv_NOT_0_0=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            lv_NOT_0_0=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               				newLeafNode(lv_NOT_0_0, grammarAccess.getUnaryPreOperatorAccess().getNOTExclamationMarkKeyword_0());
@@ -6556,7 +6660,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComparingEQNEQOperator"
-    // InternalCryptSL.g:2171:1: entryRuleComparingEQNEQOperator returns [EObject current=null] : iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF ;
+    // InternalCryptSL.g:2215:1: entryRuleComparingEQNEQOperator returns [EObject current=null] : iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF ;
     public final EObject entryRuleComparingEQNEQOperator() throws RecognitionException {
         EObject current = null;
 
@@ -6564,8 +6668,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2171:63: (iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF )
-            // InternalCryptSL.g:2172:2: iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF
+            // InternalCryptSL.g:2215:63: (iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF )
+            // InternalCryptSL.g:2216:2: iv_ruleComparingEQNEQOperator= ruleComparingEQNEQOperator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getComparingEQNEQOperatorRule()); 
@@ -6596,7 +6700,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparingEQNEQOperator"
-    // InternalCryptSL.g:2178:1: ruleComparingEQNEQOperator returns [EObject current=null] : ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) ) ;
+    // InternalCryptSL.g:2222:1: ruleComparingEQNEQOperator returns [EObject current=null] : ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) ) ;
     public final EObject ruleComparingEQNEQOperator() throws RecognitionException {
         EObject current = null;
 
@@ -6607,17 +6711,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2184:2: ( ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) ) )
-            // InternalCryptSL.g:2185:2: ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) )
+            // InternalCryptSL.g:2228:2: ( ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) ) )
+            // InternalCryptSL.g:2229:2: ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) )
             {
-            // InternalCryptSL.g:2185:2: ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) )
+            // InternalCryptSL.g:2229:2: ( ( (lv_EQUAL_0_0= '==' ) ) | ( (lv_UNEQUAL_1_0= '!=' ) ) )
             int alt39=2;
             int LA39_0 = input.LA(1);
 
-            if ( (LA39_0==43) ) {
+            if ( (LA39_0==44) ) {
                 alt39=1;
             }
-            else if ( (LA39_0==44) ) {
+            else if ( (LA39_0==45) ) {
                 alt39=2;
             }
             else {
@@ -6629,15 +6733,15 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt39) {
                 case 1 :
-                    // InternalCryptSL.g:2186:3: ( (lv_EQUAL_0_0= '==' ) )
+                    // InternalCryptSL.g:2230:3: ( (lv_EQUAL_0_0= '==' ) )
                     {
-                    // InternalCryptSL.g:2186:3: ( (lv_EQUAL_0_0= '==' ) )
-                    // InternalCryptSL.g:2187:4: (lv_EQUAL_0_0= '==' )
+                    // InternalCryptSL.g:2230:3: ( (lv_EQUAL_0_0= '==' ) )
+                    // InternalCryptSL.g:2231:4: (lv_EQUAL_0_0= '==' )
                     {
-                    // InternalCryptSL.g:2187:4: (lv_EQUAL_0_0= '==' )
-                    // InternalCryptSL.g:2188:5: lv_EQUAL_0_0= '=='
+                    // InternalCryptSL.g:2231:4: (lv_EQUAL_0_0= '==' )
+                    // InternalCryptSL.g:2232:5: lv_EQUAL_0_0= '=='
                     {
-                    lv_EQUAL_0_0=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
+                    lv_EQUAL_0_0=(Token)match(input,44,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(lv_EQUAL_0_0, grammarAccess.getComparingEQNEQOperatorAccess().getEQUALEqualsSignEqualsSignKeyword_0_0());
@@ -6661,15 +6765,15 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2201:3: ( (lv_UNEQUAL_1_0= '!=' ) )
+                    // InternalCryptSL.g:2245:3: ( (lv_UNEQUAL_1_0= '!=' ) )
                     {
-                    // InternalCryptSL.g:2201:3: ( (lv_UNEQUAL_1_0= '!=' ) )
-                    // InternalCryptSL.g:2202:4: (lv_UNEQUAL_1_0= '!=' )
+                    // InternalCryptSL.g:2245:3: ( (lv_UNEQUAL_1_0= '!=' ) )
+                    // InternalCryptSL.g:2246:4: (lv_UNEQUAL_1_0= '!=' )
                     {
-                    // InternalCryptSL.g:2202:4: (lv_UNEQUAL_1_0= '!=' )
-                    // InternalCryptSL.g:2203:5: lv_UNEQUAL_1_0= '!='
+                    // InternalCryptSL.g:2246:4: (lv_UNEQUAL_1_0= '!=' )
+                    // InternalCryptSL.g:2247:5: lv_UNEQUAL_1_0= '!='
                     {
-                    lv_UNEQUAL_1_0=(Token)match(input,44,FOLLOW_2); if (state.failed) return current;
+                    lv_UNEQUAL_1_0=(Token)match(input,45,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(lv_UNEQUAL_1_0, grammarAccess.getComparingEQNEQOperatorAccess().getUNEQUALExclamationMarkEqualsSignKeyword_1_0());
@@ -6717,7 +6821,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCons"
-    // InternalCryptSL.g:2219:1: entryRuleCons returns [EObject current=null] : iv_ruleCons= ruleCons EOF ;
+    // InternalCryptSL.g:2263:1: entryRuleCons returns [EObject current=null] : iv_ruleCons= ruleCons EOF ;
     public final EObject entryRuleCons() throws RecognitionException {
         EObject current = null;
 
@@ -6725,8 +6829,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2219:45: (iv_ruleCons= ruleCons EOF )
-            // InternalCryptSL.g:2220:2: iv_ruleCons= ruleCons EOF
+            // InternalCryptSL.g:2263:45: (iv_ruleCons= ruleCons EOF )
+            // InternalCryptSL.g:2264:2: iv_ruleCons= ruleCons EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConsRule()); 
@@ -6757,7 +6861,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCons"
-    // InternalCryptSL.g:2226:1: ruleCons returns [EObject current=null] : ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) ) ;
+    // InternalCryptSL.g:2270:1: ruleCons returns [EObject current=null] : ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) ) ;
     public final EObject ruleCons() throws RecognitionException {
         EObject current = null;
 
@@ -6775,156 +6879,31 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2232:2: ( ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) ) )
-            // InternalCryptSL.g:2233:2: ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )
+            // InternalCryptSL.g:2276:2: ( ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) ) )
+            // InternalCryptSL.g:2277:2: ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )
             {
-            // InternalCryptSL.g:2233:2: ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )
+            // InternalCryptSL.g:2277:2: ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )
             int alt40=2;
-            switch ( input.LA(1) ) {
-            case 48:
-                {
-                alt40=1;
-                }
-                break;
-            case RULE_INT:
-                {
-                int LA40_2 = input.LA(2);
-
-                if ( (LA40_2==EOF||(LA40_2>=RULE_ID && LA40_2<=RULE_STRING)||LA40_2==17||(LA40_2>=20 && LA40_2<=21)||LA40_2==23||LA40_2==31||(LA40_2>=33 && LA40_2<=44)||LA40_2==48) ) {
-                    alt40=2;
-                }
-                else if ( (LA40_2==45) ) {
-                    alt40=1;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 40, 2, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case RULE_STRING:
-                {
-                int LA40_3 = input.LA(2);
-
-                if ( (LA40_3==45) ) {
-                    alt40=1;
-                }
-                else if ( (LA40_3==EOF||(LA40_3>=RULE_ID && LA40_3<=RULE_STRING)||LA40_3==17||(LA40_3>=20 && LA40_3<=21)||LA40_3==23||LA40_3==31||(LA40_3>=33 && LA40_3<=44)||LA40_3==48) ) {
-                    alt40=2;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 40, 3, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case RULE_ID:
-                {
-                switch ( input.LA(2) ) {
-                case 24:
-                    {
-                    int LA40_6 = input.LA(3);
-
-                    if ( (LA40_6==RULE_ID) ) {
-                        int LA40_7 = input.LA(4);
-
-                        if ( (LA40_7==EOF||(LA40_7>=RULE_ID && LA40_7<=RULE_STRING)||LA40_7==17||(LA40_7>=20 && LA40_7<=21)||LA40_7==23||LA40_7==31||(LA40_7>=33 && LA40_7<=44)||LA40_7==48) ) {
-                            alt40=2;
-                        }
-                        else if ( (LA40_7==45) ) {
-                            alt40=1;
-                        }
-                        else {
-                            if (state.backtracking>0) {state.failed=true; return current;}
-                            NoViableAltException nvae =
-                                new NoViableAltException("", 40, 7, input);
-
-                            throw nvae;
-                        }
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 40, 6, input);
-
-                        throw nvae;
-                    }
-                    }
-                    break;
-                case 45:
-                    {
-                    alt40=1;
-                    }
-                    break;
-                case EOF:
-                case RULE_ID:
-                case RULE_INT:
-                case RULE_STRING:
-                case 17:
-                case 20:
-                case 21:
-                case 23:
-                case 31:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 48:
-                    {
-                    alt40=2;
-                    }
-                    break;
-                default:
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 40, 4, input);
-
-                    throw nvae;
-                }
-
-                }
-                break;
-            default:
-                if (state.backtracking>0) {state.failed=true; return current;}
-                NoViableAltException nvae =
-                    new NoViableAltException("", 40, 0, input);
-
-                throw nvae;
-            }
-
+            alt40 = dfa40.predict(input);
             switch (alt40) {
                 case 1 :
-                    // InternalCryptSL.g:2234:3: ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' )
+                    // InternalCryptSL.g:2278:3: ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' )
                     {
-                    // InternalCryptSL.g:2234:3: ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' )
-                    // InternalCryptSL.g:2235:4: ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}'
+                    // InternalCryptSL.g:2278:3: ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' )
+                    // InternalCryptSL.g:2279:4: ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}'
                     {
-                    // InternalCryptSL.g:2235:4: ( (lv_cons_0_0= ruleConsPred ) )
-                    // InternalCryptSL.g:2236:5: (lv_cons_0_0= ruleConsPred )
+                    // InternalCryptSL.g:2279:4: ( (lv_cons_0_0= ruleConsPred ) )
+                    // InternalCryptSL.g:2280:5: (lv_cons_0_0= ruleConsPred )
                     {
-                    // InternalCryptSL.g:2236:5: (lv_cons_0_0= ruleConsPred )
-                    // InternalCryptSL.g:2237:6: lv_cons_0_0= ruleConsPred
+                    // InternalCryptSL.g:2280:5: (lv_cons_0_0= ruleConsPred )
+                    // InternalCryptSL.g:2281:6: lv_cons_0_0= ruleConsPred
                     {
                     if ( state.backtracking==0 ) {
 
                       						newCompositeNode(grammarAccess.getConsAccess().getConsConsPredParserRuleCall_0_0_0());
                       					
                     }
-                    pushFollow(FOLLOW_38);
+                    pushFollow(FOLLOW_39);
                     lv_cons_0_0=ruleConsPred();
 
                     state._fsp--;
@@ -6948,30 +6927,30 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,45,FOLLOW_39); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,46,FOLLOW_40); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getConsAccess().getInKeyword_0_1());
                       			
                     }
-                    otherlv_2=(Token)match(input,46,FOLLOW_40); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,47,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getConsAccess().getLeftCurlyBracketKeyword_0_2());
                       			
                     }
-                    // InternalCryptSL.g:2262:4: ( (lv_litsleft_3_0= ruleLitList ) )
-                    // InternalCryptSL.g:2263:5: (lv_litsleft_3_0= ruleLitList )
+                    // InternalCryptSL.g:2306:4: ( (lv_litsleft_3_0= ruleLitList ) )
+                    // InternalCryptSL.g:2307:5: (lv_litsleft_3_0= ruleLitList )
                     {
-                    // InternalCryptSL.g:2263:5: (lv_litsleft_3_0= ruleLitList )
-                    // InternalCryptSL.g:2264:6: lv_litsleft_3_0= ruleLitList
+                    // InternalCryptSL.g:2307:5: (lv_litsleft_3_0= ruleLitList )
+                    // InternalCryptSL.g:2308:6: lv_litsleft_3_0= ruleLitList
                     {
                     if ( state.backtracking==0 ) {
 
                       						newCompositeNode(grammarAccess.getConsAccess().getLitsleftLitListParserRuleCall_0_3_0());
                       					
                     }
-                    pushFollow(FOLLOW_41);
+                    pushFollow(FOLLOW_42);
                     lv_litsleft_3_0=ruleLitList();
 
                     state._fsp--;
@@ -6995,7 +6974,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,47,FOLLOW_2); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,48,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getConsAccess().getRightCurlyBracketKeyword_0_4());
@@ -7008,13 +6987,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2287:3: ( (lv_cons_5_0= ruleLiteralExpression ) )
+                    // InternalCryptSL.g:2331:3: ( (lv_cons_5_0= ruleLiteralExpression ) )
                     {
-                    // InternalCryptSL.g:2287:3: ( (lv_cons_5_0= ruleLiteralExpression ) )
-                    // InternalCryptSL.g:2288:4: (lv_cons_5_0= ruleLiteralExpression )
+                    // InternalCryptSL.g:2331:3: ( (lv_cons_5_0= ruleLiteralExpression ) )
+                    // InternalCryptSL.g:2332:4: (lv_cons_5_0= ruleLiteralExpression )
                     {
-                    // InternalCryptSL.g:2288:4: (lv_cons_5_0= ruleLiteralExpression )
-                    // InternalCryptSL.g:2289:5: lv_cons_5_0= ruleLiteralExpression
+                    // InternalCryptSL.g:2332:4: (lv_cons_5_0= ruleLiteralExpression )
+                    // InternalCryptSL.g:2333:5: lv_cons_5_0= ruleLiteralExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7073,7 +7052,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConsPred"
-    // InternalCryptSL.g:2310:1: entryRuleConsPred returns [EObject current=null] : iv_ruleConsPred= ruleConsPred EOF ;
+    // InternalCryptSL.g:2354:1: entryRuleConsPred returns [EObject current=null] : iv_ruleConsPred= ruleConsPred EOF ;
     public final EObject entryRuleConsPred() throws RecognitionException {
         EObject current = null;
 
@@ -7081,8 +7060,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2310:49: (iv_ruleConsPred= ruleConsPred EOF )
-            // InternalCryptSL.g:2311:2: iv_ruleConsPred= ruleConsPred EOF
+            // InternalCryptSL.g:2354:49: (iv_ruleConsPred= ruleConsPred EOF )
+            // InternalCryptSL.g:2355:2: iv_ruleConsPred= ruleConsPred EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConsPredRule()); 
@@ -7113,7 +7092,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConsPred"
-    // InternalCryptSL.g:2317:1: ruleConsPred returns [EObject current=null] : ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression ) ;
+    // InternalCryptSL.g:2361:1: ruleConsPred returns [EObject current=null] : ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression ) ;
     public final EObject ruleConsPred() throws RecognitionException {
         EObject current = null;
 
@@ -7132,17 +7111,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2323:2: ( ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression ) )
-            // InternalCryptSL.g:2324:2: ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression )
+            // InternalCryptSL.g:2367:2: ( ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression ) )
+            // InternalCryptSL.g:2368:2: ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression )
             {
-            // InternalCryptSL.g:2324:2: ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression )
+            // InternalCryptSL.g:2368:2: ( (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' ) | this_LiteralExpression_7= ruleLiteralExpression )
             int alt41=2;
             int LA41_0 = input.LA(1);
 
-            if ( (LA41_0==48) ) {
+            if ( (LA41_0==49) ) {
                 alt41=1;
             }
-            else if ( ((LA41_0>=RULE_ID && LA41_0<=RULE_STRING)) ) {
+            else if ( ((LA41_0>=RULE_ID && LA41_0<=RULE_STRING)||LA41_0==42) ) {
                 alt41=2;
             }
             else {
@@ -7154,18 +7133,18 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt41) {
                 case 1 :
-                    // InternalCryptSL.g:2325:3: (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' )
+                    // InternalCryptSL.g:2369:3: (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' )
                     {
-                    // InternalCryptSL.g:2325:3: (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' )
-                    // InternalCryptSL.g:2326:4: otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')'
+                    // InternalCryptSL.g:2369:3: (otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')' )
+                    // InternalCryptSL.g:2370:4: otherlv_0= 'part(' this_INT_1= RULE_INT otherlv_2= ',' this_STRING_3= RULE_STRING otherlv_4= ',' this_LiteralExpression_5= ruleLiteralExpression otherlv_6= ')'
                     {
-                    otherlv_0=(Token)match(input,48,FOLLOW_42); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,49,FOLLOW_43); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_0, grammarAccess.getConsPredAccess().getPartKeyword_0_0());
                       			
                     }
-                    this_INT_1=(Token)match(input,RULE_INT,FOLLOW_43); if (state.failed) return current;
+                    this_INT_1=(Token)match(input,RULE_INT,FOLLOW_38); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(this_INT_1, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1());
@@ -7177,7 +7156,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_2, grammarAccess.getConsPredAccess().getCommaKeyword_0_2());
                       			
                     }
-                    this_STRING_3=(Token)match(input,RULE_STRING,FOLLOW_43); if (state.failed) return current;
+                    this_STRING_3=(Token)match(input,RULE_STRING,FOLLOW_38); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(this_STRING_3, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3());
@@ -7218,7 +7197,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2360:3: this_LiteralExpression_7= ruleLiteralExpression
+                    // InternalCryptSL.g:2404:3: this_LiteralExpression_7= ruleLiteralExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7264,7 +7243,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLitList"
-    // InternalCryptSL.g:2372:1: entryRuleLitList returns [EObject current=null] : iv_ruleLitList= ruleLitList EOF ;
+    // InternalCryptSL.g:2416:1: entryRuleLitList returns [EObject current=null] : iv_ruleLitList= ruleLitList EOF ;
     public final EObject entryRuleLitList() throws RecognitionException {
         EObject current = null;
 
@@ -7272,8 +7251,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2372:48: (iv_ruleLitList= ruleLitList EOF )
-            // InternalCryptSL.g:2373:2: iv_ruleLitList= ruleLitList EOF
+            // InternalCryptSL.g:2416:48: (iv_ruleLitList= ruleLitList EOF )
+            // InternalCryptSL.g:2417:2: iv_ruleLitList= ruleLitList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLitListRule()); 
@@ -7304,7 +7283,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLitList"
-    // InternalCryptSL.g:2379:1: ruleLitList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* ) ;
+    // InternalCryptSL.g:2423:1: ruleLitList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* ) ;
     public final EObject ruleLitList() throws RecognitionException {
         EObject current = null;
 
@@ -7319,17 +7298,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2385:2: ( ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* ) )
-            // InternalCryptSL.g:2386:2: ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* )
+            // InternalCryptSL.g:2429:2: ( ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* ) )
+            // InternalCryptSL.g:2430:2: ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* )
             {
-            // InternalCryptSL.g:2386:2: ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* )
-            // InternalCryptSL.g:2387:3: ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )*
+            // InternalCryptSL.g:2430:2: ( ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )* )
+            // InternalCryptSL.g:2431:3: ( (lv_parameters_0_0= ruleLiteral ) ) (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )*
             {
-            // InternalCryptSL.g:2387:3: ( (lv_parameters_0_0= ruleLiteral ) )
-            // InternalCryptSL.g:2388:4: (lv_parameters_0_0= ruleLiteral )
+            // InternalCryptSL.g:2431:3: ( (lv_parameters_0_0= ruleLiteral ) )
+            // InternalCryptSL.g:2432:4: (lv_parameters_0_0= ruleLiteral )
             {
-            // InternalCryptSL.g:2388:4: (lv_parameters_0_0= ruleLiteral )
-            // InternalCryptSL.g:2389:5: lv_parameters_0_0= ruleLiteral
+            // InternalCryptSL.g:2432:4: (lv_parameters_0_0= ruleLiteral )
+            // InternalCryptSL.g:2433:5: lv_parameters_0_0= ruleLiteral
             {
             if ( state.backtracking==0 ) {
 
@@ -7360,7 +7339,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2406:3: (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )*
+            // InternalCryptSL.g:2450:3: (otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' ) )*
             loop43:
             do {
                 int alt43=2;
@@ -7373,7 +7352,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt43) {
             	case 1 :
-            	    // InternalCryptSL.g:2407:4: otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' )
+            	    // InternalCryptSL.g:2451:4: otherlv_1= ',' ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' )
             	    {
             	    otherlv_1=(Token)match(input,22,FOLLOW_46); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -7381,14 +7360,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             	      				newLeafNode(otherlv_1, grammarAccess.getLitListAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalCryptSL.g:2411:4: ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' )
+            	    // InternalCryptSL.g:2455:4: ( ( (lv_parameters_2_0= ruleLiteral ) ) | otherlv_3= '...' )
             	    int alt42=2;
             	    int LA42_0 = input.LA(1);
 
             	    if ( ((LA42_0>=RULE_INT && LA42_0<=RULE_STRING)) ) {
             	        alt42=1;
             	    }
-            	    else if ( (LA42_0==49) ) {
+            	    else if ( (LA42_0==50) ) {
             	        alt42=2;
             	    }
             	    else {
@@ -7400,13 +7379,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt42) {
             	        case 1 :
-            	            // InternalCryptSL.g:2412:5: ( (lv_parameters_2_0= ruleLiteral ) )
+            	            // InternalCryptSL.g:2456:5: ( (lv_parameters_2_0= ruleLiteral ) )
             	            {
-            	            // InternalCryptSL.g:2412:5: ( (lv_parameters_2_0= ruleLiteral ) )
-            	            // InternalCryptSL.g:2413:6: (lv_parameters_2_0= ruleLiteral )
+            	            // InternalCryptSL.g:2456:5: ( (lv_parameters_2_0= ruleLiteral ) )
+            	            // InternalCryptSL.g:2457:6: (lv_parameters_2_0= ruleLiteral )
             	            {
-            	            // InternalCryptSL.g:2413:6: (lv_parameters_2_0= ruleLiteral )
-            	            // InternalCryptSL.g:2414:7: lv_parameters_2_0= ruleLiteral
+            	            // InternalCryptSL.g:2457:6: (lv_parameters_2_0= ruleLiteral )
+            	            // InternalCryptSL.g:2458:7: lv_parameters_2_0= ruleLiteral
             	            {
             	            if ( state.backtracking==0 ) {
 
@@ -7441,9 +7420,9 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalCryptSL.g:2432:5: otherlv_3= '...'
+            	            // InternalCryptSL.g:2476:5: otherlv_3= '...'
             	            {
-            	            otherlv_3=(Token)match(input,49,FOLLOW_24); if (state.failed) return current;
+            	            otherlv_3=(Token)match(input,50,FOLLOW_24); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              					newLeafNode(otherlv_3, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1());
@@ -7489,7 +7468,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePred"
-    // InternalCryptSL.g:2442:1: entryRulePred returns [EObject current=null] : iv_rulePred= rulePred EOF ;
+    // InternalCryptSL.g:2486:1: entryRulePred returns [EObject current=null] : iv_rulePred= rulePred EOF ;
     public final EObject entryRulePred() throws RecognitionException {
         EObject current = null;
 
@@ -7497,8 +7476,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2442:45: (iv_rulePred= rulePred EOF )
-            // InternalCryptSL.g:2443:2: iv_rulePred= rulePred EOF
+            // InternalCryptSL.g:2486:45: (iv_rulePred= rulePred EOF )
+            // InternalCryptSL.g:2487:2: iv_rulePred= rulePred EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPredRule()); 
@@ -7529,7 +7508,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePred"
-    // InternalCryptSL.g:2449:1: rulePred returns [EObject current=null] : ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' ) ;
+    // InternalCryptSL.g:2493:1: rulePred returns [EObject current=null] : ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' ) ;
     public final EObject rulePred() throws RecognitionException {
         EObject current = null;
 
@@ -7543,17 +7522,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2455:2: ( ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' ) )
-            // InternalCryptSL.g:2456:2: ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' )
+            // InternalCryptSL.g:2499:2: ( ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' ) )
+            // InternalCryptSL.g:2500:2: ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' )
             {
-            // InternalCryptSL.g:2456:2: ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' )
-            // InternalCryptSL.g:2457:3: ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');'
+            // InternalCryptSL.g:2500:2: ( ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');' )
+            // InternalCryptSL.g:2501:3: ( (lv_predName_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_parList_2_0= ruleSuParList ) )? otherlv_3= ');'
             {
-            // InternalCryptSL.g:2457:3: ( (lv_predName_0_0= RULE_ID ) )
-            // InternalCryptSL.g:2458:4: (lv_predName_0_0= RULE_ID )
+            // InternalCryptSL.g:2501:3: ( (lv_predName_0_0= RULE_ID ) )
+            // InternalCryptSL.g:2502:4: (lv_predName_0_0= RULE_ID )
             {
-            // InternalCryptSL.g:2458:4: (lv_predName_0_0= RULE_ID )
-            // InternalCryptSL.g:2459:5: lv_predName_0_0= RULE_ID
+            // InternalCryptSL.g:2502:4: (lv_predName_0_0= RULE_ID )
+            // InternalCryptSL.g:2503:5: lv_predName_0_0= RULE_ID
             {
             lv_predName_0_0=(Token)match(input,RULE_ID,FOLLOW_16); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -7585,19 +7564,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_1, grammarAccess.getPredAccess().getLeftParenthesisKeyword_1());
               		
             }
-            // InternalCryptSL.g:2479:3: ( (lv_parList_2_0= ruleSuParList ) )?
+            // InternalCryptSL.g:2523:3: ( (lv_parList_2_0= ruleSuParList ) )?
             int alt44=2;
             int LA44_0 = input.LA(1);
 
-            if ( ((LA44_0>=RULE_ID && LA44_0<=RULE_STRING)||LA44_0==28||LA44_0==48) ) {
+            if ( ((LA44_0>=RULE_ID && LA44_0<=RULE_STRING)||LA44_0==28||LA44_0==42||LA44_0==49) ) {
                 alt44=1;
             }
             switch (alt44) {
                 case 1 :
-                    // InternalCryptSL.g:2480:4: (lv_parList_2_0= ruleSuParList )
+                    // InternalCryptSL.g:2524:4: (lv_parList_2_0= ruleSuParList )
                     {
-                    // InternalCryptSL.g:2480:4: (lv_parList_2_0= ruleSuParList )
-                    // InternalCryptSL.g:2481:5: lv_parList_2_0= ruleSuParList
+                    // InternalCryptSL.g:2524:4: (lv_parList_2_0= ruleSuParList )
+                    // InternalCryptSL.g:2525:5: lv_parList_2_0= ruleSuParList
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7662,7 +7641,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSuParList"
-    // InternalCryptSL.g:2506:1: entryRuleSuParList returns [EObject current=null] : iv_ruleSuParList= ruleSuParList EOF ;
+    // InternalCryptSL.g:2550:1: entryRuleSuParList returns [EObject current=null] : iv_ruleSuParList= ruleSuParList EOF ;
     public final EObject entryRuleSuParList() throws RecognitionException {
         EObject current = null;
 
@@ -7670,8 +7649,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2506:50: (iv_ruleSuParList= ruleSuParList EOF )
-            // InternalCryptSL.g:2507:2: iv_ruleSuParList= ruleSuParList EOF
+            // InternalCryptSL.g:2550:50: (iv_ruleSuParList= ruleSuParList EOF )
+            // InternalCryptSL.g:2551:2: iv_ruleSuParList= ruleSuParList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSuParListRule()); 
@@ -7702,7 +7681,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSuParList"
-    // InternalCryptSL.g:2513:1: ruleSuParList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) ;
+    // InternalCryptSL.g:2557:1: ruleSuParList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) ;
     public final EObject ruleSuParList() throws RecognitionException {
         EObject current = null;
 
@@ -7716,17 +7695,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2519:2: ( ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) )
-            // InternalCryptSL.g:2520:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
+            // InternalCryptSL.g:2563:2: ( ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) )
+            // InternalCryptSL.g:2564:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
             {
-            // InternalCryptSL.g:2520:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
-            // InternalCryptSL.g:2521:3: ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
+            // InternalCryptSL.g:2564:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
+            // InternalCryptSL.g:2565:3: ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
             {
-            // InternalCryptSL.g:2521:3: ( (lv_parameters_0_0= ruleSuPar ) )
-            // InternalCryptSL.g:2522:4: (lv_parameters_0_0= ruleSuPar )
+            // InternalCryptSL.g:2565:3: ( (lv_parameters_0_0= ruleSuPar ) )
+            // InternalCryptSL.g:2566:4: (lv_parameters_0_0= ruleSuPar )
             {
-            // InternalCryptSL.g:2522:4: (lv_parameters_0_0= ruleSuPar )
-            // InternalCryptSL.g:2523:5: lv_parameters_0_0= ruleSuPar
+            // InternalCryptSL.g:2566:4: (lv_parameters_0_0= ruleSuPar )
+            // InternalCryptSL.g:2567:5: lv_parameters_0_0= ruleSuPar
             {
             if ( state.backtracking==0 ) {
 
@@ -7757,7 +7736,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2540:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
+            // InternalCryptSL.g:2584:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
             loop45:
             do {
                 int alt45=2;
@@ -7770,7 +7749,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt45) {
             	case 1 :
-            	    // InternalCryptSL.g:2541:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) )
+            	    // InternalCryptSL.g:2585:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) )
             	    {
             	    otherlv_1=(Token)match(input,22,FOLLOW_48); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -7778,11 +7757,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             	      				newLeafNode(otherlv_1, grammarAccess.getSuParListAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalCryptSL.g:2545:4: ( (lv_parameters_2_0= ruleSuPar ) )
-            	    // InternalCryptSL.g:2546:5: (lv_parameters_2_0= ruleSuPar )
+            	    // InternalCryptSL.g:2589:4: ( (lv_parameters_2_0= ruleSuPar ) )
+            	    // InternalCryptSL.g:2590:5: (lv_parameters_2_0= ruleSuPar )
             	    {
-            	    // InternalCryptSL.g:2546:5: (lv_parameters_2_0= ruleSuPar )
-            	    // InternalCryptSL.g:2547:6: lv_parameters_2_0= ruleSuPar
+            	    // InternalCryptSL.g:2590:5: (lv_parameters_2_0= ruleSuPar )
+            	    // InternalCryptSL.g:2591:6: lv_parameters_2_0= ruleSuPar
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7847,7 +7826,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSuPar"
-    // InternalCryptSL.g:2569:1: entryRuleSuPar returns [EObject current=null] : iv_ruleSuPar= ruleSuPar EOF ;
+    // InternalCryptSL.g:2613:1: entryRuleSuPar returns [EObject current=null] : iv_ruleSuPar= ruleSuPar EOF ;
     public final EObject entryRuleSuPar() throws RecognitionException {
         EObject current = null;
 
@@ -7855,8 +7834,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2569:46: (iv_ruleSuPar= ruleSuPar EOF )
-            // InternalCryptSL.g:2570:2: iv_ruleSuPar= ruleSuPar EOF
+            // InternalCryptSL.g:2613:46: (iv_ruleSuPar= ruleSuPar EOF )
+            // InternalCryptSL.g:2614:2: iv_ruleSuPar= ruleSuPar EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSuParRule()); 
@@ -7887,7 +7866,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSuPar"
-    // InternalCryptSL.g:2576:1: ruleSuPar returns [EObject current=null] : ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) ) ;
+    // InternalCryptSL.g:2620:1: ruleSuPar returns [EObject current=null] : ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) ) ;
     public final EObject ruleSuPar() throws RecognitionException {
         EObject current = null;
 
@@ -7899,14 +7878,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2582:2: ( ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) ) )
-            // InternalCryptSL.g:2583:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) )
+            // InternalCryptSL.g:2626:2: ( ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) ) )
+            // InternalCryptSL.g:2627:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) )
             {
-            // InternalCryptSL.g:2583:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) )
-            // InternalCryptSL.g:2584:3: () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' )
+            // InternalCryptSL.g:2627:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' ) )
+            // InternalCryptSL.g:2628:3: () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' )
             {
-            // InternalCryptSL.g:2584:3: ()
-            // InternalCryptSL.g:2585:4: 
+            // InternalCryptSL.g:2628:3: ()
+            // InternalCryptSL.g:2629:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -7918,11 +7897,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2591:3: ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' )
+            // InternalCryptSL.g:2635:3: ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' )
             int alt46=2;
             int LA46_0 = input.LA(1);
 
-            if ( ((LA46_0>=RULE_ID && LA46_0<=RULE_STRING)||LA46_0==48) ) {
+            if ( ((LA46_0>=RULE_ID && LA46_0<=RULE_STRING)||LA46_0==42||LA46_0==49) ) {
                 alt46=1;
             }
             else if ( (LA46_0==28) ) {
@@ -7937,13 +7916,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt46) {
                 case 1 :
-                    // InternalCryptSL.g:2592:4: ( (lv_val_1_0= ruleConsPred ) )
+                    // InternalCryptSL.g:2636:4: ( (lv_val_1_0= ruleConsPred ) )
                     {
-                    // InternalCryptSL.g:2592:4: ( (lv_val_1_0= ruleConsPred ) )
-                    // InternalCryptSL.g:2593:5: (lv_val_1_0= ruleConsPred )
+                    // InternalCryptSL.g:2636:4: ( (lv_val_1_0= ruleConsPred ) )
+                    // InternalCryptSL.g:2637:5: (lv_val_1_0= ruleConsPred )
                     {
-                    // InternalCryptSL.g:2593:5: (lv_val_1_0= ruleConsPred )
-                    // InternalCryptSL.g:2594:6: lv_val_1_0= ruleConsPred
+                    // InternalCryptSL.g:2637:5: (lv_val_1_0= ruleConsPred )
+                    // InternalCryptSL.g:2638:6: lv_val_1_0= ruleConsPred
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7978,7 +7957,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2612:4: otherlv_2= '_'
+                    // InternalCryptSL.g:2656:4: otherlv_2= '_'
                     {
                     otherlv_2=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8017,7 +7996,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleObject"
-    // InternalCryptSL.g:2621:1: entryRuleObject returns [EObject current=null] : iv_ruleObject= ruleObject EOF ;
+    // InternalCryptSL.g:2665:1: entryRuleObject returns [EObject current=null] : iv_ruleObject= ruleObject EOF ;
     public final EObject entryRuleObject() throws RecognitionException {
         EObject current = null;
 
@@ -8025,8 +8004,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2621:47: (iv_ruleObject= ruleObject EOF )
-            // InternalCryptSL.g:2622:2: iv_ruleObject= ruleObject EOF
+            // InternalCryptSL.g:2665:47: (iv_ruleObject= ruleObject EOF )
+            // InternalCryptSL.g:2666:2: iv_ruleObject= ruleObject EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getObjectRule()); 
@@ -8057,7 +8036,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleObject"
-    // InternalCryptSL.g:2628:1: ruleObject returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
+    // InternalCryptSL.g:2672:1: ruleObject returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
     public final EObject ruleObject() throws RecognitionException {
         EObject current = null;
 
@@ -8067,14 +8046,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2634:2: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
-            // InternalCryptSL.g:2635:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalCryptSL.g:2678:2: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
+            // InternalCryptSL.g:2679:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
             {
-            // InternalCryptSL.g:2635:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
-            // InternalCryptSL.g:2636:3: () ( (lv_name_1_0= RULE_ID ) )
+            // InternalCryptSL.g:2679:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalCryptSL.g:2680:3: () ( (lv_name_1_0= RULE_ID ) )
             {
-            // InternalCryptSL.g:2636:3: ()
-            // InternalCryptSL.g:2637:4: 
+            // InternalCryptSL.g:2680:3: ()
+            // InternalCryptSL.g:2681:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -8086,11 +8065,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2643:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalCryptSL.g:2644:4: (lv_name_1_0= RULE_ID )
+            // InternalCryptSL.g:2687:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalCryptSL.g:2688:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalCryptSL.g:2644:4: (lv_name_1_0= RULE_ID )
-            // InternalCryptSL.g:2645:5: lv_name_1_0= RULE_ID
+            // InternalCryptSL.g:2688:4: (lv_name_1_0= RULE_ID )
+            // InternalCryptSL.g:2689:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -8141,7 +8120,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmTypeReference"
-    // InternalCryptSL.g:2665:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
+    // InternalCryptSL.g:2709:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
     public final EObject entryRuleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -8149,8 +8128,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2665:57: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
-            // InternalCryptSL.g:2666:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
+            // InternalCryptSL.g:2709:57: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
+            // InternalCryptSL.g:2710:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeReferenceRule()); 
@@ -8181,7 +8160,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmTypeReference"
-    // InternalCryptSL.g:2672:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) ;
+    // InternalCryptSL.g:2716:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) ;
     public final EObject ruleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -8194,10 +8173,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2678:2: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) )
-            // InternalCryptSL.g:2679:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
+            // InternalCryptSL.g:2722:2: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) )
+            // InternalCryptSL.g:2723:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
             {
-            // InternalCryptSL.g:2679:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
+            // InternalCryptSL.g:2723:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
             int alt48=2;
             int LA48_0 = input.LA(1);
 
@@ -8216,10 +8195,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt48) {
                 case 1 :
-                    // InternalCryptSL.g:2680:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+                    // InternalCryptSL.g:2724:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
                     {
-                    // InternalCryptSL.g:2680:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
-                    // InternalCryptSL.g:2681:4: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+                    // InternalCryptSL.g:2724:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+                    // InternalCryptSL.g:2725:4: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8237,26 +8216,26 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                       				afterParserOrEnumRuleCall();
                       			
                     }
-                    // InternalCryptSL.g:2689:4: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+                    // InternalCryptSL.g:2733:4: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
                     loop47:
                     do {
                         int alt47=2;
                         int LA47_0 = input.LA(1);
 
-                        if ( (LA47_0==50) && (synpred1_InternalCryptSL())) {
+                        if ( (LA47_0==51) && (synpred1_InternalCryptSL())) {
                             alt47=1;
                         }
 
 
                         switch (alt47) {
                     	case 1 :
-                    	    // InternalCryptSL.g:2690:5: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
+                    	    // InternalCryptSL.g:2734:5: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
                     	    {
-                    	    // InternalCryptSL.g:2696:5: ( () ruleArrayBrackets )
-                    	    // InternalCryptSL.g:2697:6: () ruleArrayBrackets
+                    	    // InternalCryptSL.g:2740:5: ( () ruleArrayBrackets )
+                    	    // InternalCryptSL.g:2741:6: () ruleArrayBrackets
                     	    {
-                    	    // InternalCryptSL.g:2697:6: ()
-                    	    // InternalCryptSL.g:2698:7: 
+                    	    // InternalCryptSL.g:2741:6: ()
+                    	    // InternalCryptSL.g:2742:7: 
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -8302,7 +8281,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:2715:3: this_XFunctionTypeRef_3= ruleXFunctionTypeRef
+                    // InternalCryptSL.g:2759:3: this_XFunctionTypeRef_3= ruleXFunctionTypeRef
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8348,7 +8327,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArrayBrackets"
-    // InternalCryptSL.g:2727:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
+    // InternalCryptSL.g:2771:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
     public final String entryRuleArrayBrackets() throws RecognitionException {
         String current = null;
 
@@ -8356,8 +8335,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2727:53: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
-            // InternalCryptSL.g:2728:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
+            // InternalCryptSL.g:2771:53: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
+            // InternalCryptSL.g:2772:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayBracketsRule()); 
@@ -8388,7 +8367,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArrayBrackets"
-    // InternalCryptSL.g:2734:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
+    // InternalCryptSL.g:2778:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
     public final AntlrDatatypeRuleToken ruleArrayBrackets() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8398,20 +8377,20 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2740:2: ( (kw= '[' kw= ']' ) )
-            // InternalCryptSL.g:2741:2: (kw= '[' kw= ']' )
+            // InternalCryptSL.g:2784:2: ( (kw= '[' kw= ']' ) )
+            // InternalCryptSL.g:2785:2: (kw= '[' kw= ']' )
             {
-            // InternalCryptSL.g:2741:2: (kw= '[' kw= ']' )
-            // InternalCryptSL.g:2742:3: kw= '[' kw= ']'
+            // InternalCryptSL.g:2785:2: (kw= '[' kw= ']' )
+            // InternalCryptSL.g:2786:3: kw= '[' kw= ']'
             {
-            kw=(Token)match(input,50,FOLLOW_50); if (state.failed) return current;
+            kw=(Token)match(input,51,FOLLOW_50); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			current.merge(kw);
               			newLeafNode(kw, grammarAccess.getArrayBracketsAccess().getLeftSquareBracketKeyword_0());
               		
             }
-            kw=(Token)match(input,51,FOLLOW_2); if (state.failed) return current;
+            kw=(Token)match(input,52,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			current.merge(kw);
@@ -8443,7 +8422,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXFunctionTypeRef"
-    // InternalCryptSL.g:2756:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
+    // InternalCryptSL.g:2800:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
     public final EObject entryRuleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -8451,8 +8430,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2756:57: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
-            // InternalCryptSL.g:2757:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
+            // InternalCryptSL.g:2800:57: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
+            // InternalCryptSL.g:2801:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFunctionTypeRefRule()); 
@@ -8483,7 +8462,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXFunctionTypeRef"
-    // InternalCryptSL.g:2763:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCryptSL.g:2807:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -8502,13 +8481,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2769:2: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
-            // InternalCryptSL.g:2770:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:2813:2: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
+            // InternalCryptSL.g:2814:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCryptSL.g:2770:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
-            // InternalCryptSL.g:2771:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:2814:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:2815:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
             {
-            // InternalCryptSL.g:2771:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
+            // InternalCryptSL.g:2815:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
             int alt51=2;
             int LA51_0 = input.LA(1);
 
@@ -8517,7 +8496,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt51) {
                 case 1 :
-                    // InternalCryptSL.g:2772:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
+                    // InternalCryptSL.g:2816:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
                     {
                     otherlv_0=(Token)match(input,21,FOLLOW_51); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8525,7 +8504,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_0, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0());
                       			
                     }
-                    // InternalCryptSL.g:2776:4: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
+                    // InternalCryptSL.g:2820:4: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
                     int alt50=2;
                     int LA50_0 = input.LA(1);
 
@@ -8534,13 +8513,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt50) {
                         case 1 :
-                            // InternalCryptSL.g:2777:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            // InternalCryptSL.g:2821:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
                             {
-                            // InternalCryptSL.g:2777:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
-                            // InternalCryptSL.g:2778:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // InternalCryptSL.g:2821:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
+                            // InternalCryptSL.g:2822:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
                             {
-                            // InternalCryptSL.g:2778:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
-                            // InternalCryptSL.g:2779:7: lv_paramTypes_1_0= ruleJvmTypeReference
+                            // InternalCryptSL.g:2822:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // InternalCryptSL.g:2823:7: lv_paramTypes_1_0= ruleJvmTypeReference
                             {
                             if ( state.backtracking==0 ) {
 
@@ -8571,7 +8550,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // InternalCryptSL.g:2796:5: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            // InternalCryptSL.g:2840:5: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
                             loop49:
                             do {
                                 int alt49=2;
@@ -8584,7 +8563,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                                 switch (alt49) {
                             	case 1 :
-                            	    // InternalCryptSL.g:2797:6: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // InternalCryptSL.g:2841:6: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
                             	    {
                             	    otherlv_2=(Token)match(input,22,FOLLOW_52); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
@@ -8592,11 +8571,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                             	      						newLeafNode(otherlv_2, grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0());
                             	      					
                             	    }
-                            	    // InternalCryptSL.g:2801:6: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
-                            	    // InternalCryptSL.g:2802:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // InternalCryptSL.g:2845:6: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // InternalCryptSL.g:2846:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
                             	    {
-                            	    // InternalCryptSL.g:2802:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
-                            	    // InternalCryptSL.g:2803:8: lv_paramTypes_3_0= ruleJvmTypeReference
+                            	    // InternalCryptSL.g:2846:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // InternalCryptSL.g:2847:8: lv_paramTypes_3_0= ruleJvmTypeReference
                             	    {
                             	    if ( state.backtracking==0 ) {
 
@@ -8660,11 +8639,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_5, grammarAccess.getXFunctionTypeRefAccess().getEqualsSignGreaterThanSignKeyword_1());
               		
             }
-            // InternalCryptSL.g:2831:3: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
-            // InternalCryptSL.g:2832:4: (lv_returnType_6_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:2875:3: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:2876:4: (lv_returnType_6_0= ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:2832:4: (lv_returnType_6_0= ruleJvmTypeReference )
-            // InternalCryptSL.g:2833:5: lv_returnType_6_0= ruleJvmTypeReference
+            // InternalCryptSL.g:2876:4: (lv_returnType_6_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:2877:5: lv_returnType_6_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -8720,7 +8699,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmParameterizedTypeReference"
-    // InternalCryptSL.g:2854:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
+    // InternalCryptSL.g:2898:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
     public final EObject entryRuleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -8728,8 +8707,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:2854:70: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
-            // InternalCryptSL.g:2855:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
+            // InternalCryptSL.g:2898:70: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
+            // InternalCryptSL.g:2899:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceRule()); 
@@ -8760,7 +8739,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmParameterizedTypeReference"
-    // InternalCryptSL.g:2861:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) ;
+    // InternalCryptSL.g:2905:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) ;
     public final EObject ruleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -8784,17 +8763,17 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:2867:2: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) )
-            // InternalCryptSL.g:2868:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
+            // InternalCryptSL.g:2911:2: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) )
+            // InternalCryptSL.g:2912:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
             {
-            // InternalCryptSL.g:2868:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
-            // InternalCryptSL.g:2869:3: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
+            // InternalCryptSL.g:2912:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
+            // InternalCryptSL.g:2913:3: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
             {
-            // InternalCryptSL.g:2869:3: ( ( ruleQualifiedName ) )
-            // InternalCryptSL.g:2870:4: ( ruleQualifiedName )
+            // InternalCryptSL.g:2913:3: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:2914:4: ( ruleQualifiedName )
             {
-            // InternalCryptSL.g:2870:4: ( ruleQualifiedName )
-            // InternalCryptSL.g:2871:5: ruleQualifiedName
+            // InternalCryptSL.g:2914:4: ( ruleQualifiedName )
+            // InternalCryptSL.g:2915:5: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -8824,7 +8803,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:2885:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
+            // InternalCryptSL.g:2929:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
             int alt56=2;
             int LA56_0 = input.LA(1);
 
@@ -8833,10 +8812,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt56) {
                 case 1 :
-                    // InternalCryptSL.g:2886:4: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
+                    // InternalCryptSL.g:2930:4: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
                     {
-                    // InternalCryptSL.g:2886:4: ( ( '<' )=>otherlv_1= '<' )
-                    // InternalCryptSL.g:2887:5: ( '<' )=>otherlv_1= '<'
+                    // InternalCryptSL.g:2930:4: ( ( '<' )=>otherlv_1= '<' )
+                    // InternalCryptSL.g:2931:5: ( '<' )=>otherlv_1= '<'
                     {
                     otherlv_1=(Token)match(input,36,FOLLOW_55); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8847,11 +8826,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:2893:4: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
-                    // InternalCryptSL.g:2894:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // InternalCryptSL.g:2937:4: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
+                    // InternalCryptSL.g:2938:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
                     {
-                    // InternalCryptSL.g:2894:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
-                    // InternalCryptSL.g:2895:6: lv_arguments_2_0= ruleJvmArgumentTypeReference
+                    // InternalCryptSL.g:2938:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // InternalCryptSL.g:2939:6: lv_arguments_2_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8882,7 +8861,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:2912:4: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
+                    // InternalCryptSL.g:2956:4: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
                     loop52:
                     do {
                         int alt52=2;
@@ -8895,7 +8874,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                         switch (alt52) {
                     	case 1 :
-                    	    // InternalCryptSL.g:2913:5: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // InternalCryptSL.g:2957:5: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
                     	    otherlv_3=(Token)match(input,22,FOLLOW_55); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
@@ -8903,11 +8882,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     	      					newLeafNode(otherlv_3, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0());
                     	      				
                     	    }
-                    	    // InternalCryptSL.g:2917:5: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
-                    	    // InternalCryptSL.g:2918:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // InternalCryptSL.g:2961:5: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // InternalCryptSL.g:2962:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // InternalCryptSL.g:2918:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
-                    	    // InternalCryptSL.g:2919:7: lv_arguments_4_0= ruleJvmArgumentTypeReference
+                    	    // InternalCryptSL.g:2962:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // InternalCryptSL.g:2963:7: lv_arguments_4_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -8953,7 +8932,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_5, grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3());
                       			
                     }
-                    // InternalCryptSL.g:2941:4: ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
+                    // InternalCryptSL.g:2985:4: ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
                     loop55:
                     do {
                         int alt55=2;
@@ -8966,16 +8945,16 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                         switch (alt55) {
                     	case 1 :
-                    	    // InternalCryptSL.g:2942:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
+                    	    // InternalCryptSL.g:2986:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
                     	    {
-                    	    // InternalCryptSL.g:2942:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) )
-                    	    // InternalCryptSL.g:2943:6: ( ( () '.' ) )=> ( () otherlv_7= '.' )
+                    	    // InternalCryptSL.g:2986:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) )
+                    	    // InternalCryptSL.g:2987:6: ( ( () '.' ) )=> ( () otherlv_7= '.' )
                     	    {
-                    	    // InternalCryptSL.g:2949:6: ( () otherlv_7= '.' )
-                    	    // InternalCryptSL.g:2950:7: () otherlv_7= '.'
+                    	    // InternalCryptSL.g:2993:6: ( () otherlv_7= '.' )
+                    	    // InternalCryptSL.g:2994:7: () otherlv_7= '.'
                     	    {
-                    	    // InternalCryptSL.g:2950:7: ()
-                    	    // InternalCryptSL.g:2951:8: 
+                    	    // InternalCryptSL.g:2994:7: ()
+                    	    // InternalCryptSL.g:2995:8: 
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -8999,11 +8978,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalCryptSL.g:2963:5: ( ( ruleValidID ) )
-                    	    // InternalCryptSL.g:2964:6: ( ruleValidID )
+                    	    // InternalCryptSL.g:3007:5: ( ( ruleValidID ) )
+                    	    // InternalCryptSL.g:3008:6: ( ruleValidID )
                     	    {
-                    	    // InternalCryptSL.g:2964:6: ( ruleValidID )
-                    	    // InternalCryptSL.g:2965:7: ruleValidID
+                    	    // InternalCryptSL.g:3008:6: ( ruleValidID )
+                    	    // InternalCryptSL.g:3009:7: ruleValidID
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -9033,7 +9012,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalCryptSL.g:2979:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
+                    	    // InternalCryptSL.g:3023:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
                     	    int alt54=2;
                     	    int LA54_0 = input.LA(1);
 
@@ -9042,10 +9021,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     	    }
                     	    switch (alt54) {
                     	        case 1 :
-                    	            // InternalCryptSL.g:2980:6: ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>'
+                    	            // InternalCryptSL.g:3024:6: ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>'
                     	            {
-                    	            // InternalCryptSL.g:2980:6: ( ( '<' )=>otherlv_9= '<' )
-                    	            // InternalCryptSL.g:2981:7: ( '<' )=>otherlv_9= '<'
+                    	            // InternalCryptSL.g:3024:6: ( ( '<' )=>otherlv_9= '<' )
+                    	            // InternalCryptSL.g:3025:7: ( '<' )=>otherlv_9= '<'
                     	            {
                     	            otherlv_9=(Token)match(input,36,FOLLOW_55); if (state.failed) return current;
                     	            if ( state.backtracking==0 ) {
@@ -9056,11 +9035,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     	            }
 
-                    	            // InternalCryptSL.g:2987:6: ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) )
-                    	            // InternalCryptSL.g:2988:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
+                    	            // InternalCryptSL.g:3031:6: ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) )
+                    	            // InternalCryptSL.g:3032:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
                     	            {
-                    	            // InternalCryptSL.g:2988:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
-                    	            // InternalCryptSL.g:2989:8: lv_arguments_10_0= ruleJvmArgumentTypeReference
+                    	            // InternalCryptSL.g:3032:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
+                    	            // InternalCryptSL.g:3033:8: lv_arguments_10_0= ruleJvmArgumentTypeReference
                     	            {
                     	            if ( state.backtracking==0 ) {
 
@@ -9091,7 +9070,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     	            }
 
-                    	            // InternalCryptSL.g:3006:6: (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )*
+                    	            // InternalCryptSL.g:3050:6: (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )*
                     	            loop53:
                     	            do {
                     	                int alt53=2;
@@ -9104,7 +9083,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     	                switch (alt53) {
                     	            	case 1 :
-                    	            	    // InternalCryptSL.g:3007:7: otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
+                    	            	    // InternalCryptSL.g:3051:7: otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
                     	            	    {
                     	            	    otherlv_11=(Token)match(input,22,FOLLOW_55); if (state.failed) return current;
                     	            	    if ( state.backtracking==0 ) {
@@ -9112,11 +9091,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     	            	      							newLeafNode(otherlv_11, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_4_2_2_0());
                     	            	      						
                     	            	    }
-                    	            	    // InternalCryptSL.g:3011:7: ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
-                    	            	    // InternalCryptSL.g:3012:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
+                    	            	    // InternalCryptSL.g:3055:7: ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
+                    	            	    // InternalCryptSL.g:3056:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
                     	            	    {
-                    	            	    // InternalCryptSL.g:3012:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
-                    	            	    // InternalCryptSL.g:3013:9: lv_arguments_12_0= ruleJvmArgumentTypeReference
+                    	            	    // InternalCryptSL.g:3056:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
+                    	            	    // InternalCryptSL.g:3057:9: lv_arguments_12_0= ruleJvmArgumentTypeReference
                     	            	    {
                     	            	    if ( state.backtracking==0 ) {
 
@@ -9208,7 +9187,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmArgumentTypeReference"
-    // InternalCryptSL.g:3042:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
+    // InternalCryptSL.g:3086:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
     public final EObject entryRuleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -9216,8 +9195,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3042:65: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
-            // InternalCryptSL.g:3043:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
+            // InternalCryptSL.g:3086:65: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
+            // InternalCryptSL.g:3087:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceRule()); 
@@ -9248,7 +9227,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmArgumentTypeReference"
-    // InternalCryptSL.g:3049:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
+    // InternalCryptSL.g:3093:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
     public final EObject ruleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -9261,10 +9240,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3055:2: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
-            // InternalCryptSL.g:3056:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            // InternalCryptSL.g:3099:2: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
+            // InternalCryptSL.g:3100:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             {
-            // InternalCryptSL.g:3056:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            // InternalCryptSL.g:3100:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             int alt57=2;
             int LA57_0 = input.LA(1);
 
@@ -9283,7 +9262,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt57) {
                 case 1 :
-                    // InternalCryptSL.g:3057:3: this_JvmTypeReference_0= ruleJvmTypeReference
+                    // InternalCryptSL.g:3101:3: this_JvmTypeReference_0= ruleJvmTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9305,7 +9284,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:3066:3: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
+                    // InternalCryptSL.g:3110:3: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9351,7 +9330,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmWildcardTypeReference"
-    // InternalCryptSL.g:3078:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
+    // InternalCryptSL.g:3122:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
     public final EObject entryRuleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -9359,8 +9338,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3078:65: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
-            // InternalCryptSL.g:3079:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
+            // InternalCryptSL.g:3122:65: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
+            // InternalCryptSL.g:3123:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceRule()); 
@@ -9391,7 +9370,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmWildcardTypeReference"
-    // InternalCryptSL.g:3085:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) ;
+    // InternalCryptSL.g:3129:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) ;
     public final EObject ruleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -9409,14 +9388,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3091:2: ( ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) )
-            // InternalCryptSL.g:3092:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
+            // InternalCryptSL.g:3135:2: ( ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) )
+            // InternalCryptSL.g:3136:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
             {
-            // InternalCryptSL.g:3092:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
-            // InternalCryptSL.g:3093:3: () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
+            // InternalCryptSL.g:3136:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
+            // InternalCryptSL.g:3137:3: () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
             {
-            // InternalCryptSL.g:3093:3: ()
-            // InternalCryptSL.g:3094:4: 
+            // InternalCryptSL.g:3137:3: ()
+            // InternalCryptSL.g:3138:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -9434,28 +9413,28 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_1, grammarAccess.getJvmWildcardTypeReferenceAccess().getQuestionMarkKeyword_1());
               		
             }
-            // InternalCryptSL.g:3104:3: ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
+            // InternalCryptSL.g:3148:3: ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
             int alt60=3;
             int LA60_0 = input.LA(1);
 
-            if ( (LA60_0==52) ) {
+            if ( (LA60_0==53) ) {
                 alt60=1;
             }
-            else if ( (LA60_0==54) ) {
+            else if ( (LA60_0==55) ) {
                 alt60=2;
             }
             switch (alt60) {
                 case 1 :
-                    // InternalCryptSL.g:3105:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
+                    // InternalCryptSL.g:3149:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
                     {
-                    // InternalCryptSL.g:3105:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
-                    // InternalCryptSL.g:3106:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
+                    // InternalCryptSL.g:3149:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
+                    // InternalCryptSL.g:3150:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
                     {
-                    // InternalCryptSL.g:3106:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
-                    // InternalCryptSL.g:3107:6: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // InternalCryptSL.g:3150:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // InternalCryptSL.g:3151:6: (lv_constraints_2_0= ruleJvmUpperBound )
                     {
-                    // InternalCryptSL.g:3107:6: (lv_constraints_2_0= ruleJvmUpperBound )
-                    // InternalCryptSL.g:3108:7: lv_constraints_2_0= ruleJvmUpperBound
+                    // InternalCryptSL.g:3151:6: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // InternalCryptSL.g:3152:7: lv_constraints_2_0= ruleJvmUpperBound
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9486,23 +9465,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:3125:5: ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
+                    // InternalCryptSL.g:3169:5: ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
                     loop58:
                     do {
                         int alt58=2;
                         int LA58_0 = input.LA(1);
 
-                        if ( (LA58_0==53) ) {
+                        if ( (LA58_0==54) ) {
                             alt58=1;
                         }
 
 
                         switch (alt58) {
                     	case 1 :
-                    	    // InternalCryptSL.g:3126:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
+                    	    // InternalCryptSL.g:3170:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
                     	    {
-                    	    // InternalCryptSL.g:3126:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
-                    	    // InternalCryptSL.g:3127:7: lv_constraints_3_0= ruleJvmUpperBoundAnded
+                    	    // InternalCryptSL.g:3170:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
+                    	    // InternalCryptSL.g:3171:7: lv_constraints_3_0= ruleJvmUpperBoundAnded
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -9546,16 +9525,16 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:3146:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
+                    // InternalCryptSL.g:3190:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
                     {
-                    // InternalCryptSL.g:3146:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
-                    // InternalCryptSL.g:3147:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
+                    // InternalCryptSL.g:3190:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
+                    // InternalCryptSL.g:3191:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
                     {
-                    // InternalCryptSL.g:3147:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) )
-                    // InternalCryptSL.g:3148:6: (lv_constraints_4_0= ruleJvmLowerBound )
+                    // InternalCryptSL.g:3191:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) )
+                    // InternalCryptSL.g:3192:6: (lv_constraints_4_0= ruleJvmLowerBound )
                     {
-                    // InternalCryptSL.g:3148:6: (lv_constraints_4_0= ruleJvmLowerBound )
-                    // InternalCryptSL.g:3149:7: lv_constraints_4_0= ruleJvmLowerBound
+                    // InternalCryptSL.g:3192:6: (lv_constraints_4_0= ruleJvmLowerBound )
+                    // InternalCryptSL.g:3193:7: lv_constraints_4_0= ruleJvmLowerBound
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9586,23 +9565,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:3166:5: ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
+                    // InternalCryptSL.g:3210:5: ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
                     loop59:
                     do {
                         int alt59=2;
                         int LA59_0 = input.LA(1);
 
-                        if ( (LA59_0==53) ) {
+                        if ( (LA59_0==54) ) {
                             alt59=1;
                         }
 
 
                         switch (alt59) {
                     	case 1 :
-                    	    // InternalCryptSL.g:3167:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
+                    	    // InternalCryptSL.g:3211:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
                     	    {
-                    	    // InternalCryptSL.g:3167:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
-                    	    // InternalCryptSL.g:3168:7: lv_constraints_5_0= ruleJvmLowerBoundAnded
+                    	    // InternalCryptSL.g:3211:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
+                    	    // InternalCryptSL.g:3212:7: lv_constraints_5_0= ruleJvmLowerBoundAnded
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -9673,7 +9652,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBound"
-    // InternalCryptSL.g:3191:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
+    // InternalCryptSL.g:3235:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
     public final EObject entryRuleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -9681,8 +9660,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3191:54: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
-            // InternalCryptSL.g:3192:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
+            // InternalCryptSL.g:3235:54: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
+            // InternalCryptSL.g:3236:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundRule()); 
@@ -9713,7 +9692,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBound"
-    // InternalCryptSL.g:3198:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCryptSL.g:3242:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -9725,23 +9704,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3204:2: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCryptSL.g:3205:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3248:2: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCryptSL.g:3249:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCryptSL.g:3205:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCryptSL.g:3206:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3249:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3250:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,52,FOLLOW_52); if (state.failed) return current;
+            otherlv_0=(Token)match(input,53,FOLLOW_52); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0());
               		
             }
-            // InternalCryptSL.g:3210:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCryptSL.g:3211:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3254:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3255:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:3211:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCryptSL.g:3212:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCryptSL.g:3255:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3256:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -9797,7 +9776,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBoundAnded"
-    // InternalCryptSL.g:3233:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
+    // InternalCryptSL.g:3277:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
     public final EObject entryRuleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -9805,8 +9784,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3233:59: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
-            // InternalCryptSL.g:3234:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
+            // InternalCryptSL.g:3277:59: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
+            // InternalCryptSL.g:3278:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundAndedRule()); 
@@ -9837,7 +9816,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBoundAnded"
-    // InternalCryptSL.g:3240:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCryptSL.g:3284:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -9849,23 +9828,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3246:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCryptSL.g:3247:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3290:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCryptSL.g:3291:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCryptSL.g:3247:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCryptSL.g:3248:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3291:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3292:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,53,FOLLOW_52); if (state.failed) return current;
+            otherlv_0=(Token)match(input,54,FOLLOW_52); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0());
               		
             }
-            // InternalCryptSL.g:3252:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCryptSL.g:3253:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3296:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3297:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:3253:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCryptSL.g:3254:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCryptSL.g:3297:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3298:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -9921,7 +9900,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBound"
-    // InternalCryptSL.g:3275:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
+    // InternalCryptSL.g:3319:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
     public final EObject entryRuleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -9929,8 +9908,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3275:54: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
-            // InternalCryptSL.g:3276:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
+            // InternalCryptSL.g:3319:54: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
+            // InternalCryptSL.g:3320:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundRule()); 
@@ -9961,7 +9940,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBound"
-    // InternalCryptSL.g:3282:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCryptSL.g:3326:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -9973,23 +9952,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3288:2: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCryptSL.g:3289:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3332:2: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCryptSL.g:3333:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCryptSL.g:3289:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCryptSL.g:3290:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3333:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3334:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,54,FOLLOW_52); if (state.failed) return current;
+            otherlv_0=(Token)match(input,55,FOLLOW_52); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0());
               		
             }
-            // InternalCryptSL.g:3294:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCryptSL.g:3295:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3338:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3339:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:3295:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCryptSL.g:3296:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCryptSL.g:3339:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3340:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -10045,7 +10024,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBoundAnded"
-    // InternalCryptSL.g:3317:1: entryRuleJvmLowerBoundAnded returns [EObject current=null] : iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF ;
+    // InternalCryptSL.g:3361:1: entryRuleJvmLowerBoundAnded returns [EObject current=null] : iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF ;
     public final EObject entryRuleJvmLowerBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -10053,8 +10032,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3317:59: (iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF )
-            // InternalCryptSL.g:3318:2: iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF
+            // InternalCryptSL.g:3361:59: (iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF )
+            // InternalCryptSL.g:3362:2: iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundAndedRule()); 
@@ -10085,7 +10064,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBoundAnded"
-    // InternalCryptSL.g:3324:1: ruleJvmLowerBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCryptSL.g:3368:1: ruleJvmLowerBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -10097,23 +10076,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3330:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCryptSL.g:3331:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3374:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCryptSL.g:3375:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCryptSL.g:3331:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCryptSL.g:3332:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3375:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCryptSL.g:3376:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,53,FOLLOW_52); if (state.failed) return current;
+            otherlv_0=(Token)match(input,54,FOLLOW_52); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAndedAccess().getAmpersandKeyword_0());
               		
             }
-            // InternalCryptSL.g:3336:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCryptSL.g:3337:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3380:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCryptSL.g:3381:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:3337:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCryptSL.g:3338:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCryptSL.g:3381:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCryptSL.g:3382:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -10169,7 +10148,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // InternalCryptSL.g:3359:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // InternalCryptSL.g:3403:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -10177,8 +10156,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3359:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // InternalCryptSL.g:3360:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // InternalCryptSL.g:3403:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // InternalCryptSL.g:3404:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
@@ -10209,7 +10188,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // InternalCryptSL.g:3366:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) ;
+    // InternalCryptSL.g:3410:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10223,11 +10202,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3372:2: ( (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) )
-            // InternalCryptSL.g:3373:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
+            // InternalCryptSL.g:3416:2: ( (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) )
+            // InternalCryptSL.g:3417:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
             {
-            // InternalCryptSL.g:3373:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
-            // InternalCryptSL.g:3374:3: this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )*
+            // InternalCryptSL.g:3417:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
+            // InternalCryptSL.g:3418:3: this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )*
             {
             if ( state.backtracking==0 ) {
 
@@ -10249,7 +10228,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalCryptSL.g:3384:3: (kw= '.' this_ValidID_2= ruleValidID )*
+            // InternalCryptSL.g:3428:3: (kw= '.' this_ValidID_2= ruleValidID )*
             loop61:
             do {
                 int alt61=2;
@@ -10268,7 +10247,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt61) {
             	case 1 :
-            	    // InternalCryptSL.g:3385:4: kw= '.' this_ValidID_2= ruleValidID
+            	    // InternalCryptSL.g:3429:4: kw= '.' this_ValidID_2= ruleValidID
             	    {
             	    kw=(Token)match(input,24,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -10331,7 +10310,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // InternalCryptSL.g:3405:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
+    // InternalCryptSL.g:3449:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
     public final String entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         String current = null;
 
@@ -10339,8 +10318,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3405:65: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
-            // InternalCryptSL.g:3406:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
+            // InternalCryptSL.g:3449:65: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
+            // InternalCryptSL.g:3450:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
@@ -10371,7 +10350,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // InternalCryptSL.g:3412:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) ;
+    // InternalCryptSL.g:3456:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameWithWildcard() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10383,11 +10362,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3418:2: ( (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) )
-            // InternalCryptSL.g:3419:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
+            // InternalCryptSL.g:3462:2: ( (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) )
+            // InternalCryptSL.g:3463:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
             {
-            // InternalCryptSL.g:3419:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
-            // InternalCryptSL.g:3420:3: this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*'
+            // InternalCryptSL.g:3463:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
+            // InternalCryptSL.g:3464:3: this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*'
             {
             if ( state.backtracking==0 ) {
 
@@ -10448,7 +10427,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValidID"
-    // InternalCryptSL.g:3444:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
+    // InternalCryptSL.g:3488:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
     public final String entryRuleValidID() throws RecognitionException {
         String current = null;
 
@@ -10456,8 +10435,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3444:47: (iv_ruleValidID= ruleValidID EOF )
-            // InternalCryptSL.g:3445:2: iv_ruleValidID= ruleValidID EOF
+            // InternalCryptSL.g:3488:47: (iv_ruleValidID= ruleValidID EOF )
+            // InternalCryptSL.g:3489:2: iv_ruleValidID= ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
@@ -10488,7 +10467,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValidID"
-    // InternalCryptSL.g:3451:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
+    // InternalCryptSL.g:3495:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
     public final AntlrDatatypeRuleToken ruleValidID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10498,8 +10477,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3457:2: (this_ID_0= RULE_ID )
-            // InternalCryptSL.g:3458:2: this_ID_0= RULE_ID
+            // InternalCryptSL.g:3501:2: (this_ID_0= RULE_ID )
+            // InternalCryptSL.g:3502:2: this_ID_0= RULE_ID
             {
             this_ID_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -10534,7 +10513,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXImportDeclaration"
-    // InternalCryptSL.g:3468:1: entryRuleXImportDeclaration returns [EObject current=null] : iv_ruleXImportDeclaration= ruleXImportDeclaration EOF ;
+    // InternalCryptSL.g:3512:1: entryRuleXImportDeclaration returns [EObject current=null] : iv_ruleXImportDeclaration= ruleXImportDeclaration EOF ;
     public final EObject entryRuleXImportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -10542,8 +10521,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3468:59: (iv_ruleXImportDeclaration= ruleXImportDeclaration EOF )
-            // InternalCryptSL.g:3469:2: iv_ruleXImportDeclaration= ruleXImportDeclaration EOF
+            // InternalCryptSL.g:3512:59: (iv_ruleXImportDeclaration= ruleXImportDeclaration EOF )
+            // InternalCryptSL.g:3513:2: iv_ruleXImportDeclaration= ruleXImportDeclaration EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXImportDeclarationRule()); 
@@ -10574,7 +10553,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXImportDeclaration"
-    // InternalCryptSL.g:3475:1: ruleXImportDeclaration returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) ;
+    // InternalCryptSL.g:3519:1: ruleXImportDeclaration returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) ;
     public final EObject ruleXImportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -10592,35 +10571,35 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3481:2: ( (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) )
-            // InternalCryptSL.g:3482:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
+            // InternalCryptSL.g:3525:2: ( (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) )
+            // InternalCryptSL.g:3526:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
             {
-            // InternalCryptSL.g:3482:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
-            // InternalCryptSL.g:3483:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
+            // InternalCryptSL.g:3526:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
+            // InternalCryptSL.g:3527:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
             {
-            otherlv_0=(Token)match(input,55,FOLLOW_62); if (state.failed) return current;
+            otherlv_0=(Token)match(input,56,FOLLOW_62); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getXImportDeclarationAccess().getImportKeyword_0());
               		
             }
-            // InternalCryptSL.g:3487:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
+            // InternalCryptSL.g:3531:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
             int alt64=3;
             alt64 = dfa64.predict(input);
             switch (alt64) {
                 case 1 :
-                    // InternalCryptSL.g:3488:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
+                    // InternalCryptSL.g:3532:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
                     {
-                    // InternalCryptSL.g:3488:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
-                    // InternalCryptSL.g:3489:5: ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
+                    // InternalCryptSL.g:3532:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
+                    // InternalCryptSL.g:3533:5: ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
                     {
-                    // InternalCryptSL.g:3489:5: ( (lv_static_1_0= 'static' ) )
-                    // InternalCryptSL.g:3490:6: (lv_static_1_0= 'static' )
+                    // InternalCryptSL.g:3533:5: ( (lv_static_1_0= 'static' ) )
+                    // InternalCryptSL.g:3534:6: (lv_static_1_0= 'static' )
                     {
-                    // InternalCryptSL.g:3490:6: (lv_static_1_0= 'static' )
-                    // InternalCryptSL.g:3491:7: lv_static_1_0= 'static'
+                    // InternalCryptSL.g:3534:6: (lv_static_1_0= 'static' )
+                    // InternalCryptSL.g:3535:7: lv_static_1_0= 'static'
                     {
-                    lv_static_1_0=(Token)match(input,56,FOLLOW_63); if (state.failed) return current;
+                    lv_static_1_0=(Token)match(input,57,FOLLOW_63); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       							newLeafNode(lv_static_1_0, grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0());
@@ -10640,21 +10619,21 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:3503:5: ( (lv_extension_2_0= 'extension' ) )?
+                    // InternalCryptSL.g:3547:5: ( (lv_extension_2_0= 'extension' ) )?
                     int alt62=2;
                     int LA62_0 = input.LA(1);
 
-                    if ( (LA62_0==57) ) {
+                    if ( (LA62_0==58) ) {
                         alt62=1;
                     }
                     switch (alt62) {
                         case 1 :
-                            // InternalCryptSL.g:3504:6: (lv_extension_2_0= 'extension' )
+                            // InternalCryptSL.g:3548:6: (lv_extension_2_0= 'extension' )
                             {
-                            // InternalCryptSL.g:3504:6: (lv_extension_2_0= 'extension' )
-                            // InternalCryptSL.g:3505:7: lv_extension_2_0= 'extension'
+                            // InternalCryptSL.g:3548:6: (lv_extension_2_0= 'extension' )
+                            // InternalCryptSL.g:3549:7: lv_extension_2_0= 'extension'
                             {
-                            lv_extension_2_0=(Token)match(input,57,FOLLOW_63); if (state.failed) return current;
+                            lv_extension_2_0=(Token)match(input,58,FOLLOW_63); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               							newLeafNode(lv_extension_2_0, grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0());
@@ -10677,11 +10656,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:3517:5: ( ( ruleQualifiedNameInStaticImport ) )
-                    // InternalCryptSL.g:3518:6: ( ruleQualifiedNameInStaticImport )
+                    // InternalCryptSL.g:3561:5: ( ( ruleQualifiedNameInStaticImport ) )
+                    // InternalCryptSL.g:3562:6: ( ruleQualifiedNameInStaticImport )
                     {
-                    // InternalCryptSL.g:3518:6: ( ruleQualifiedNameInStaticImport )
-                    // InternalCryptSL.g:3519:7: ruleQualifiedNameInStaticImport
+                    // InternalCryptSL.g:3562:6: ( ruleQualifiedNameInStaticImport )
+                    // InternalCryptSL.g:3563:7: ruleQualifiedNameInStaticImport
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10711,7 +10690,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:3533:5: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
+                    // InternalCryptSL.g:3577:5: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
                     int alt63=2;
                     int LA63_0 = input.LA(1);
 
@@ -10730,13 +10709,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt63) {
                         case 1 :
-                            // InternalCryptSL.g:3534:6: ( (lv_wildcard_4_0= '*' ) )
+                            // InternalCryptSL.g:3578:6: ( (lv_wildcard_4_0= '*' ) )
                             {
-                            // InternalCryptSL.g:3534:6: ( (lv_wildcard_4_0= '*' ) )
-                            // InternalCryptSL.g:3535:7: (lv_wildcard_4_0= '*' )
+                            // InternalCryptSL.g:3578:6: ( (lv_wildcard_4_0= '*' ) )
+                            // InternalCryptSL.g:3579:7: (lv_wildcard_4_0= '*' )
                             {
-                            // InternalCryptSL.g:3535:7: (lv_wildcard_4_0= '*' )
-                            // InternalCryptSL.g:3536:8: lv_wildcard_4_0= '*'
+                            // InternalCryptSL.g:3579:7: (lv_wildcard_4_0= '*' )
+                            // InternalCryptSL.g:3580:8: lv_wildcard_4_0= '*'
                             {
                             lv_wildcard_4_0=(Token)match(input,33,FOLLOW_65); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -10762,13 +10741,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalCryptSL.g:3549:6: ( (lv_memberName_5_0= ruleValidID ) )
+                            // InternalCryptSL.g:3593:6: ( (lv_memberName_5_0= ruleValidID ) )
                             {
-                            // InternalCryptSL.g:3549:6: ( (lv_memberName_5_0= ruleValidID ) )
-                            // InternalCryptSL.g:3550:7: (lv_memberName_5_0= ruleValidID )
+                            // InternalCryptSL.g:3593:6: ( (lv_memberName_5_0= ruleValidID ) )
+                            // InternalCryptSL.g:3594:7: (lv_memberName_5_0= ruleValidID )
                             {
-                            // InternalCryptSL.g:3550:7: (lv_memberName_5_0= ruleValidID )
-                            // InternalCryptSL.g:3551:8: lv_memberName_5_0= ruleValidID
+                            // InternalCryptSL.g:3594:7: (lv_memberName_5_0= ruleValidID )
+                            // InternalCryptSL.g:3595:8: lv_memberName_5_0= ruleValidID
                             {
                             if ( state.backtracking==0 ) {
 
@@ -10812,13 +10791,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:3571:4: ( ( ruleQualifiedName ) )
+                    // InternalCryptSL.g:3615:4: ( ( ruleQualifiedName ) )
                     {
-                    // InternalCryptSL.g:3571:4: ( ( ruleQualifiedName ) )
-                    // InternalCryptSL.g:3572:5: ( ruleQualifiedName )
+                    // InternalCryptSL.g:3615:4: ( ( ruleQualifiedName ) )
+                    // InternalCryptSL.g:3616:5: ( ruleQualifiedName )
                     {
-                    // InternalCryptSL.g:3572:5: ( ruleQualifiedName )
-                    // InternalCryptSL.g:3573:6: ruleQualifiedName
+                    // InternalCryptSL.g:3616:5: ( ruleQualifiedName )
+                    // InternalCryptSL.g:3617:6: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10852,13 +10831,13 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalCryptSL.g:3588:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
+                    // InternalCryptSL.g:3632:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
                     {
-                    // InternalCryptSL.g:3588:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
-                    // InternalCryptSL.g:3589:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
+                    // InternalCryptSL.g:3632:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
+                    // InternalCryptSL.g:3633:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
                     {
-                    // InternalCryptSL.g:3589:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
-                    // InternalCryptSL.g:3590:6: lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard
+                    // InternalCryptSL.g:3633:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
+                    // InternalCryptSL.g:3634:6: lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10895,7 +10874,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:3608:3: (otherlv_8= ';' )?
+            // InternalCryptSL.g:3652:3: (otherlv_8= ';' )?
             int alt65=2;
             int LA65_0 = input.LA(1);
 
@@ -10904,7 +10883,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt65) {
                 case 1 :
-                    // InternalCryptSL.g:3609:4: otherlv_8= ';'
+                    // InternalCryptSL.g:3653:4: otherlv_8= ';'
                     {
                     otherlv_8=(Token)match(input,19,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -10943,7 +10922,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameInStaticImport"
-    // InternalCryptSL.g:3618:1: entryRuleQualifiedNameInStaticImport returns [String current=null] : iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF ;
+    // InternalCryptSL.g:3662:1: entryRuleQualifiedNameInStaticImport returns [String current=null] : iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF ;
     public final String entryRuleQualifiedNameInStaticImport() throws RecognitionException {
         String current = null;
 
@@ -10951,8 +10930,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCryptSL.g:3618:67: (iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF )
-            // InternalCryptSL.g:3619:2: iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF
+            // InternalCryptSL.g:3662:67: (iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF )
+            // InternalCryptSL.g:3663:2: iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameInStaticImportRule()); 
@@ -10983,7 +10962,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameInStaticImport"
-    // InternalCryptSL.g:3625:1: ruleQualifiedNameInStaticImport returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID kw= '.' )+ ;
+    // InternalCryptSL.g:3669:1: ruleQualifiedNameInStaticImport returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID kw= '.' )+ ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameInStaticImport() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10995,10 +10974,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:3631:2: ( (this_ValidID_0= ruleValidID kw= '.' )+ )
-            // InternalCryptSL.g:3632:2: (this_ValidID_0= ruleValidID kw= '.' )+
+            // InternalCryptSL.g:3675:2: ( (this_ValidID_0= ruleValidID kw= '.' )+ )
+            // InternalCryptSL.g:3676:2: (this_ValidID_0= ruleValidID kw= '.' )+
             {
-            // InternalCryptSL.g:3632:2: (this_ValidID_0= ruleValidID kw= '.' )+
+            // InternalCryptSL.g:3676:2: (this_ValidID_0= ruleValidID kw= '.' )+
             int cnt66=0;
             loop66:
             do {
@@ -11018,7 +10997,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt66) {
             	case 1 :
-            	    // InternalCryptSL.g:3633:3: this_ValidID_0= ruleValidID kw= '.'
+            	    // InternalCryptSL.g:3677:3: this_ValidID_0= ruleValidID kw= '.'
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -11083,14 +11062,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred1_InternalCryptSL
     public final void synpred1_InternalCryptSL_fragment() throws RecognitionException {   
-        // InternalCryptSL.g:2690:5: ( ( () ruleArrayBrackets ) )
-        // InternalCryptSL.g:2690:6: ( () ruleArrayBrackets )
+        // InternalCryptSL.g:2734:5: ( ( () ruleArrayBrackets ) )
+        // InternalCryptSL.g:2734:6: ( () ruleArrayBrackets )
         {
-        // InternalCryptSL.g:2690:6: ( () ruleArrayBrackets )
-        // InternalCryptSL.g:2691:6: () ruleArrayBrackets
+        // InternalCryptSL.g:2734:6: ( () ruleArrayBrackets )
+        // InternalCryptSL.g:2735:6: () ruleArrayBrackets
         {
-        // InternalCryptSL.g:2691:6: ()
-        // InternalCryptSL.g:2692:6: 
+        // InternalCryptSL.g:2735:6: ()
+        // InternalCryptSL.g:2736:6: 
         {
         }
 
@@ -11109,8 +11088,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred2_InternalCryptSL
     public final void synpred2_InternalCryptSL_fragment() throws RecognitionException {   
-        // InternalCryptSL.g:2887:5: ( '<' )
-        // InternalCryptSL.g:2887:6: '<'
+        // InternalCryptSL.g:2931:5: ( '<' )
+        // InternalCryptSL.g:2931:6: '<'
         {
         match(input,36,FOLLOW_2); if (state.failed) return ;
 
@@ -11120,14 +11099,14 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred3_InternalCryptSL
     public final void synpred3_InternalCryptSL_fragment() throws RecognitionException {   
-        // InternalCryptSL.g:2943:6: ( ( () '.' ) )
-        // InternalCryptSL.g:2943:7: ( () '.' )
+        // InternalCryptSL.g:2987:6: ( ( () '.' ) )
+        // InternalCryptSL.g:2987:7: ( () '.' )
         {
-        // InternalCryptSL.g:2943:7: ( () '.' )
-        // InternalCryptSL.g:2944:7: () '.'
+        // InternalCryptSL.g:2987:7: ( () '.' )
+        // InternalCryptSL.g:2988:7: () '.'
         {
-        // InternalCryptSL.g:2944:7: ()
-        // InternalCryptSL.g:2945:7: 
+        // InternalCryptSL.g:2988:7: ()
+        // InternalCryptSL.g:2989:7: 
         {
         }
 
@@ -11142,8 +11121,8 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred4_InternalCryptSL
     public final void synpred4_InternalCryptSL_fragment() throws RecognitionException {   
-        // InternalCryptSL.g:2981:7: ( '<' )
-        // InternalCryptSL.g:2981:8: '<'
+        // InternalCryptSL.g:3025:7: ( '<' )
+        // InternalCryptSL.g:3025:8: '<'
         {
         match(input,36,FOLLOW_2); if (state.failed) return ;
 
@@ -11212,36 +11191,51 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     protected DFA35 dfa35 = new DFA35(this);
+    protected DFA40 dfa40 = new DFA40(this);
     protected DFA64 dfa64 = new DFA64(this);
-    static final String dfa_1s = "\26\uffff";
-    static final String dfa_2s = "\3\uffff\1\2\22\uffff";
-    static final String dfa_3s = "\1\4\2\uffff\2\4\1\5\3\24\1\uffff\1\26\1\4\1\6\1\24\1\26\1\4\3\27\1\26\1\4\1\27";
-    static final String dfa_4s = "\1\60\2\uffff\2\60\1\5\3\55\1\uffff\1\26\1\4\1\6\1\55\1\26\1\6\2\27\1\30\1\55\1\4\1\27";
-    static final String dfa_5s = "\1\uffff\1\1\1\2\6\uffff\1\3\14\uffff";
-    static final String dfa_6s = "\26\uffff}>";
+    static final String dfa_1s = "\44\uffff";
+    static final String dfa_2s = "\3\uffff\1\2\40\uffff";
+    static final String dfa_3s = "\1\4\2\uffff\2\4\1\5\3\24\1\4\1\uffff\1\26\1\4\1\26\1\6\1\24\1\4\1\26\1\27\2\4\1\24\3\27\1\4\1\27\1\26\1\4\1\26\1\27\1\4\1\27\1\4\2\27";
+    static final String dfa_4s = "\1\61\2\uffff\2\61\1\5\3\56\1\4\1\uffff\1\26\1\4\1\26\1\6\1\56\1\4\1\26\1\30\1\52\1\4\1\56\2\27\1\30\1\4\1\30\1\56\1\4\1\26\1\27\1\4\1\30\1\4\1\27\1\30";
+    static final String dfa_5s = "\1\uffff\1\1\1\2\7\uffff\1\3\31\uffff";
+    static final String dfa_6s = "\44\uffff}>";
     static final String[] dfa_7s = {
-            "\1\3\2\2\16\uffff\1\1\32\uffff\1\2",
+            "\1\3\2\2\16\uffff\1\1\24\uffff\1\2\6\uffff\1\2",
             "",
             "",
-            "\3\2\12\uffff\1\2\2\uffff\1\2\1\4\1\uffff\2\2\6\uffff\1\2\1\uffff\15\2\2\uffff\1\2",
-            "\1\10\1\6\1\7\16\uffff\1\2\5\uffff\2\11\15\uffff\1\2\5\uffff\1\5",
-            "\1\12",
-            "\1\2\1\uffff\1\11\1\2\3\uffff\1\11\3\uffff\1\2\1\uffff\11\2\1\uffff\3\2",
-            "\1\2\1\uffff\1\11\1\2\3\uffff\1\11\3\uffff\1\2\1\uffff\11\2\1\uffff\3\2",
-            "\2\2\1\11\1\2\1\13\2\uffff\1\11\3\uffff\1\2\1\uffff\11\2\1\uffff\3\2",
-            "",
-            "\1\14",
+            "\3\2\12\uffff\1\2\2\uffff\1\2\1\4\1\uffff\2\2\6\uffff\1\2\1\uffff\16\2\2\uffff\1\2",
+            "\1\10\1\6\1\7\16\uffff\1\2\5\uffff\2\12\15\uffff\1\11\1\2\5\uffff\1\5",
+            "\1\13",
+            "\1\2\1\uffff\1\12\1\2\3\uffff\1\12\3\uffff\1\2\1\uffff\11\2\2\uffff\3\2",
+            "\1\2\1\uffff\1\12\1\2\3\uffff\1\12\3\uffff\1\2\1\uffff\11\2\2\uffff\3\2",
+            "\2\2\1\12\1\2\1\14\2\uffff\1\12\3\uffff\1\2\1\uffff\11\2\2\uffff\3\2",
             "\1\15",
+            "",
             "\1\16",
-            "\1\2\1\uffff\1\11\1\2\3\uffff\1\11\3\uffff\1\2\1\uffff\11\2\1\uffff\3\2",
             "\1\17",
-            "\1\22\1\20\1\21",
+            "\1\20",
+            "\1\21",
+            "\1\2\1\uffff\1\12\1\2\3\uffff\1\12\3\uffff\1\2\1\uffff\11\2\2\uffff\3\2",
+            "\1\22",
             "\1\23",
-            "\1\23",
-            "\1\23\1\24",
-            "\1\11\4\uffff\1\11\21\uffff\1\2",
-            "\1\25",
-            "\1\23"
+            "\1\25\1\24",
+            "\1\30\1\26\1\27\43\uffff\1\31",
+            "\1\32",
+            "\1\2\1\uffff\1\12\1\2\3\uffff\1\12\3\uffff\1\2\1\uffff\11\2\2\uffff\3\2",
+            "\1\33",
+            "\1\33",
+            "\1\33\1\34",
+            "\1\35",
+            "\1\25\1\24",
+            "\1\12\4\uffff\1\12\22\uffff\1\2",
+            "\1\36",
+            "\1\37",
+            "\1\33",
+            "\1\40",
+            "\1\42\1\41",
+            "\1\43",
+            "\1\33",
+            "\1\42\1\41"
     };
 
     static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
@@ -11269,20 +11263,28 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             return "1984:2: ( (otherlv_0= '(' this_Constraint_1= ruleConstraint otherlv_2= ')' ) | this_Cons_3= ruleCons | this_Pred_4= rulePred )";
         }
     }
-    static final String dfa_8s = "\7\uffff";
-    static final String dfa_9s = "\2\uffff\1\4\2\uffff\1\4\1\uffff";
-    static final String dfa_10s = "\1\4\1\uffff\1\23\1\4\1\uffff\1\23\1\uffff";
-    static final String dfa_11s = "\1\70\1\uffff\1\30\1\41\1\uffff\1\30\1\uffff";
-    static final String dfa_12s = "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
-    static final String dfa_13s = "\7\uffff}>";
+    static final String dfa_8s = "\17\uffff";
+    static final String dfa_9s = "\2\uffff\3\6\4\uffff\1\6\3\uffff\1\6\1\uffff";
+    static final String dfa_10s = "\1\4\1\uffff\4\4\1\uffff\1\4\1\26\2\4\1\27\2\4\1\27";
+    static final String dfa_11s = "\1\61\1\uffff\3\61\1\4\1\uffff\1\4\1\26\1\61\1\4\1\30\1\4\1\61\1\30";
+    static final String dfa_12s = "\1\uffff\1\1\4\uffff\1\2\10\uffff";
+    static final String dfa_13s = "\17\uffff}>";
     static final String[] dfa_14s = {
-            "\1\2\63\uffff\1\1",
+            "\1\4\1\2\1\3\43\uffff\1\5\6\uffff\1\1",
             "",
-            "\1\4\4\uffff\1\3",
-            "\1\5\34\uffff\1\6",
+            "\3\6\12\uffff\1\6\2\uffff\2\6\1\uffff\1\6\7\uffff\1\6\1\uffff\15\6\1\1\2\uffff\1\6",
+            "\3\6\12\uffff\1\6\2\uffff\2\6\1\uffff\1\6\7\uffff\1\6\1\uffff\15\6\1\1\2\uffff\1\6",
+            "\3\6\12\uffff\1\6\2\uffff\2\6\1\uffff\1\6\1\7\6\uffff\1\6\1\uffff\15\6\1\1\2\uffff\1\6",
+            "\1\10",
             "",
-            "\1\4\4\uffff\1\3",
-            ""
+            "\1\11",
+            "\1\12",
+            "\3\6\12\uffff\1\6\2\uffff\2\6\1\uffff\1\6\7\uffff\1\6\1\uffff\15\6\1\1\2\uffff\1\6",
+            "\1\13",
+            "\1\15\1\14",
+            "\1\16",
+            "\3\6\12\uffff\1\6\2\uffff\2\6\1\uffff\1\6\7\uffff\1\6\1\uffff\15\6\1\1\2\uffff\1\6",
+            "\1\15\1\14"
     };
 
     static final short[] dfa_8 = DFA.unpackEncodedString(dfa_8s);
@@ -11293,11 +11295,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
     static final short[][] dfa_14 = unpackEncodedStringArray(dfa_14s);
 
-    class DFA64 extends DFA {
+    class DFA40 extends DFA {
 
-        public DFA64(BaseRecognizer recognizer) {
+        public DFA40(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 64;
+            this.decisionNumber = 40;
             this.eot = dfa_8;
             this.eof = dfa_9;
             this.min = dfa_10;
@@ -11307,7 +11309,48 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             this.transition = dfa_14;
         }
         public String getDescription() {
-            return "3487:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
+            return "2277:2: ( ( ( (lv_cons_0_0= ruleConsPred ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )";
+        }
+    }
+    static final String dfa_15s = "\7\uffff";
+    static final String dfa_16s = "\2\uffff\1\4\2\uffff\1\4\1\uffff";
+    static final String dfa_17s = "\1\4\1\uffff\1\23\1\4\1\uffff\1\23\1\uffff";
+    static final String dfa_18s = "\1\71\1\uffff\1\30\1\41\1\uffff\1\30\1\uffff";
+    static final String dfa_19s = "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
+    static final String dfa_20s = "\7\uffff}>";
+    static final String[] dfa_21s = {
+            "\1\2\64\uffff\1\1",
+            "",
+            "\1\4\4\uffff\1\3",
+            "\1\5\34\uffff\1\6",
+            "",
+            "\1\4\4\uffff\1\3",
+            ""
+    };
+
+    static final short[] dfa_15 = DFA.unpackEncodedString(dfa_15s);
+    static final short[] dfa_16 = DFA.unpackEncodedString(dfa_16s);
+    static final char[] dfa_17 = DFA.unpackEncodedStringToUnsignedChars(dfa_17s);
+    static final char[] dfa_18 = DFA.unpackEncodedStringToUnsignedChars(dfa_18s);
+    static final short[] dfa_19 = DFA.unpackEncodedString(dfa_19s);
+    static final short[] dfa_20 = DFA.unpackEncodedString(dfa_20s);
+    static final short[][] dfa_21 = unpackEncodedStringArray(dfa_21s);
+
+    class DFA64 extends DFA {
+
+        public DFA64(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 64;
+            this.eot = dfa_15;
+            this.eof = dfa_16;
+            this.min = dfa_17;
+            this.max = dfa_18;
+            this.accept = dfa_19;
+            this.special = dfa_20;
+            this.transition = dfa_21;
+        }
+        public String getDescription() {
+            return "3531:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
         }
     }
  
@@ -11321,9 +11364,9 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000008010L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000200010L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0001040000220072L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0001040000200070L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0001040000200072L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00020C0000220072L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00020C0000200070L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00020C0000200072L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040010L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000180000L});
@@ -11345,23 +11388,23 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000100002L});
     public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000400000002L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000180000000002L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000300000000002L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x000000F000000002L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000010080000002L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000020200000002L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000060L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000060L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0001000000000070L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0002000000000060L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0001000018000070L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0001000010000070L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0004000000000002L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0002040000000070L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0004000000000060L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0002040018000070L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0002040010000070L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0010000000000000L});
     public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000B00010L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000300010L});
     public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000100000L});
@@ -11369,12 +11412,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000100300010L});
     public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000008000400000L});
     public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000001001000002L});
-    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0050000000000002L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x00A0000000000002L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0040000000000002L});
     public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0100000000000010L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0200000000000010L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0200000000000010L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0400000000000010L});
     public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000200000010L});
     public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000080002L});
     public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000012L});

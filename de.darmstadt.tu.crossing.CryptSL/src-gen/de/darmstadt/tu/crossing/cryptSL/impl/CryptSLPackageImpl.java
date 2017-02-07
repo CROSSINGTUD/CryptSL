@@ -867,7 +867,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Value()
+  public EReference getLiteralExpression_Obj()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -877,7 +877,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Cons()
+  public EReference getLiteralExpression_Type()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(1);
   }
@@ -887,9 +887,29 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Litsleft()
+  public EReference getLiteralExpression_Value()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLiteralExpression_Cons()
+  {
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLiteralExpression_Litsleft()
+  {
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1182,6 +1202,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     createEAttribute(arithmeticOperatorEClass, ARITHMETIC_OPERATOR__DIVIDE);
 
     literalExpressionEClass = createEClass(LITERAL_EXPRESSION);
+    createEReference(literalExpressionEClass, LITERAL_EXPRESSION__OBJ);
+    createEReference(literalExpressionEClass, LITERAL_EXPRESSION__TYPE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__VALUE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__CONS);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__LITSLEFT);
@@ -1333,6 +1355,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEAttribute(getArithmeticOperator_DIVIDE(), ecorePackage.getEString(), "DIVIDE", null, 0, 1, ArithmeticOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalExpressionEClass, LiteralExpression.class, "LiteralExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLiteralExpression_Obj(), this.getObject(), null, "obj", null, 0, -1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLiteralExpression_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Value(), this.getSuperType(), null, "value", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Cons(), this.getLiteralExpression(), null, "cons", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

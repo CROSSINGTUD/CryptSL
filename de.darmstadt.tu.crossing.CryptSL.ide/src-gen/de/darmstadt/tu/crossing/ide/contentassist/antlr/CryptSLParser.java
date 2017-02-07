@@ -102,6 +102,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnaryPreExpressionAccess().getGroup(), "rule__UnaryPreExpression__Group__0");
 					put(grammarAccess.getUnaryPreExpressionAccess().getGroup_1(), "rule__UnaryPreExpression__Group_1__0");
 					put(grammarAccess.getOperandAccess().getGroup_0(), "rule__Operand__Group_0__0");
+					put(grammarAccess.getLiteralExpressionAccess().getGroup_2(), "rule__LiteralExpression__Group_2__0");
 					put(grammarAccess.getAggregateExpressionAccess().getGroup(), "rule__AggregateExpression__Group__0");
 					put(grammarAccess.getAggregateExpressionAccess().getGroup_1(), "rule__AggregateExpression__Group_1__0");
 					put(grammarAccess.getLiteralAccess().getGroup(), "rule__Literal__Group__0");
@@ -197,6 +198,8 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMultiplicationOperatorAccess().getDIVIDEAssignment_1(), "rule__MultiplicationOperator__DIVIDEAssignment_1");
 					put(grammarAccess.getUnaryPreExpressionAccess().getOperatorAssignment_1_0(), "rule__UnaryPreExpression__OperatorAssignment_1_0");
 					put(grammarAccess.getUnaryPreExpressionAccess().getEnclosedExpressionAssignment_1_1(), "rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1");
+					put(grammarAccess.getLiteralExpressionAccess().getObjAssignment_2_1(), "rule__LiteralExpression__ObjAssignment_2_1");
+					put(grammarAccess.getLiteralExpressionAccess().getTypeAssignment_2_3(), "rule__LiteralExpression__TypeAssignment_2_3");
 					put(grammarAccess.getAggregateExpressionAccess().getValueAssignment_0(), "rule__AggregateExpression__ValueAssignment_0");
 					put(grammarAccess.getUnaryPreOperatorAccess().getNOTAssignment(), "rule__UnaryPreOperator__NOTAssignment");
 					put(grammarAccess.getComparingEQNEQOperatorAccess().getEQUALAssignment_0(), "rule__ComparingEQNEQOperator__EQUALAssignment_0");

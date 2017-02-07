@@ -142,10 +142,13 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				sequence_Literal(context, (Literal) semanticObject); 
 				return; 
 			case CryptSLPackage.LITERAL_EXPRESSION:
-				if (rule == grammarAccess.getLiteralExpressionRule()
-						|| rule == grammarAccess.getAggregateExpressionRule()
-						|| rule == grammarAccess.getConsPredRule()) {
+				if (rule == grammarAccess.getAggregateExpressionRule()) {
 					sequence_AggregateExpression(context, (LiteralExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getLiteralExpressionRule()
+						|| rule == grammarAccess.getConsPredRule()) {
+					sequence_AggregateExpression_LiteralExpression(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
 				else if (rule == grammarAccess.getConstraintRule()
@@ -326,9 +329,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     LiteralExpression returns LiteralExpression
 	 *     AggregateExpression returns LiteralExpression
-	 *     ConsPred returns LiteralExpression
 	 *
 	 * Constraint:
 	 *     value=[SuperType|ID]
@@ -341,6 +342,19 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAggregateExpressionAccess().getValueSuperTypeIDTerminalRuleCall_0_0_1(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralExpression returns LiteralExpression
+	 *     ConsPred returns LiteralExpression
+	 *
+	 * Constraint:
+	 *     ((obj+=[Object|ID] type=[JvmType|QualifiedName]) | value=[SuperType|ID])
+	 */
+	protected void sequence_AggregateExpression_LiteralExpression(ISerializationContext context, LiteralExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

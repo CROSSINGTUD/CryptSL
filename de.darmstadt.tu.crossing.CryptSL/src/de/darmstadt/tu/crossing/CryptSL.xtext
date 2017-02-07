@@ -175,7 +175,7 @@ Operand returns Constraint:
 ;
 
 LiteralExpression returns LiteralExpression:
-	  Literal | AggregateExpression 	  
+	  Literal | AggregateExpression | "typeOf(" obj+=[Object]"," type=[jvmTypes::JvmType|QualifiedName] ")"  
 ;
 
 AggregateExpression returns LiteralExpression:
