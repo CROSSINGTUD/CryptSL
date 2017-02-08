@@ -38,22 +38,39 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 		if (cont instanceof Domainmodel) {
 			JvmType jvmType = ((Domainmodel) cont).getJavaType();
 			if (jvmType instanceof JvmGenericType) {
-				descriptions = iterateThroughSuperTypes((JvmGenericType)jvmType, descriptions);
-				System.out.println(descriptions);
+				descriptions = iterateThroughSuperTypes((JvmGenericType)jvmType, descriptions, true);
 			}
 		}
 		return new SimpleScope(descriptions);
-	  }
+	}
 	
-	private Set<IEObjectDescription> iterateThroughSuperTypes(JvmGenericType jvmType, Set<IEObjectDescription> descriptions) {
-		descriptions.addAll(collectMethods(jvmType));
+	IScope scope_Method_methName(Method fm, EReference reference) {
+		EObject cont = fm.eContainer().eContainer();
+		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
+		
+		if (cont instanceof Domainmodel) {
+			JvmType jvmType = ((Domainmodel) cont).getJavaType();
+			if (jvmType instanceof JvmGenericType) {
+				descriptions = iterateThroughSuperTypes((JvmGenericType)jvmType, descriptions, false);
+				
+			}
+		}
+		return new SimpleScope(descriptions);
+	}
+	
+	private Set<IEObjectDescription> iterateThroughSuperTypes(JvmGenericType jvmType, Set<IEObjectDescription> descriptions, boolean FQN) {
+		if (FQN) {
+			descriptions.addAll(collectMethodsFQN(jvmType));
+		} else {
+			descriptions.addAll(collectMethodsSimpleName(jvmType));
+		}
 		for (JvmTypeReference superType: jvmType.getSuperTypes()) {
-			 return iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions);
+			 return iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions, FQN);
 		}
 		return descriptions;
 	}
 	
-	private Set<IEObjectDescription> collectMethods(JvmGenericType jvmType) {
+	private Set<IEObjectDescription> collectMethodsFQN(JvmGenericType jvmType) {
 		Set<IEObjectDescription> methods = new HashSet<IEObjectDescription>();
 		for (JvmConstructor member : jvmType.getDeclaredConstructors()) {
 			String memidentifier = member.getIdentifier();
@@ -71,25 +88,17 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 		return methods;
 	}
 	
-	
-	IScope scope_Method_methName(Method fm, EReference reference) {
-		EObject cont = fm.eContainer().eContainer();
-		List<IEObjectDescription> descriptions = new ArrayList<IEObjectDescription>();
-		
-		if (cont instanceof Domainmodel) {
-			JvmType jvmType = ((Domainmodel) cont).getJavaType();
-			if (jvmType instanceof JvmGenericType) {
-				JvmGenericType gt = (JvmGenericType) jvmType;
 
-				for (JvmConstructor member : gt.getDeclaredConstructors()) {
-					descriptions.add(EObjectDescription.create(member.getSimpleName(), member));
-				}
-				for (JvmOperation member : gt.getDeclaredOperations()) {
-					descriptions.add(EObjectDescription.create(member.getSimpleName(), member));
-				}
-			}
+
+	private Set<IEObjectDescription> collectMethodsSimpleName(JvmGenericType gt) {
+		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
+		for (JvmConstructor member : gt.getDeclaredConstructors()) {
+			descriptions.add(EObjectDescription.create(member.getSimpleName(), member));
 		}
-		return new SimpleScope(descriptions);
+		for (JvmOperation member : gt.getDeclaredOperations()) {
+			descriptions.add(EObjectDescription.create(member.getSimpleName(), member));
+		}
+		return descriptions;
 	}
 	
 }
