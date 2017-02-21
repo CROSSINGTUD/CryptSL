@@ -30,4 +30,5 @@ Export-Package: de.darmstadt.tu.crossing.parser.antlr,
  de.darmstadt.tu.crossing.parser.antlr.internal,
  de.darmstadt.tu.crossing.jvmmodel
 Import-Package: org.apache.log4j,
+ org.eclipse.jdt.core.dom,
  org.eclipse.xtext.common.types.xtext.ui

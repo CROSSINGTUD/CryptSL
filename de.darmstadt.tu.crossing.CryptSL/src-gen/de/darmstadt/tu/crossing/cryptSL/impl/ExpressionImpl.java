@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl#getOrderEv <em>Order Ev</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl#getOrderop <em>Orderop</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
@@ -48,6 +49,26 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @ordered
    */
   protected EList<Event> orderEv;
+
+  /**
+   * The default value of the '{@link #getOrderop() <em>Orderop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOrderop()
+   * @generated
+   * @ordered
+   */
+  protected static final String ORDEROP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOrderop() <em>Orderop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOrderop()
+   * @generated
+   * @ordered
+   */
+  protected String orderop = ORDEROP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -102,6 +123,29 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       orderEv = new EObjectResolvingEList<Event>(Event.class, this, CryptSLPackage.EXPRESSION__ORDER_EV);
     }
     return orderEv;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getOrderop()
+  {
+    return orderop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOrderop(String newOrderop)
+  {
+    String oldOrderop = orderop;
+    orderop = newOrderop;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.EXPRESSION__ORDEROP, oldOrderop, orderop));
   }
 
   /**
@@ -230,6 +274,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case CryptSLPackage.EXPRESSION__ORDER_EV:
         return getOrderEv();
+      case CryptSLPackage.EXPRESSION__ORDEROP:
+        return getOrderop();
       case CryptSLPackage.EXPRESSION__LEFT:
         return getLeft();
       case CryptSLPackage.EXPRESSION__RIGHT:
@@ -252,6 +298,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       case CryptSLPackage.EXPRESSION__ORDER_EV:
         getOrderEv().clear();
         getOrderEv().addAll((Collection<? extends Event>)newValue);
+        return;
+      case CryptSLPackage.EXPRESSION__ORDEROP:
+        setOrderop((String)newValue);
         return;
       case CryptSLPackage.EXPRESSION__LEFT:
         setLeft((Expression)newValue);
@@ -276,6 +325,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       case CryptSLPackage.EXPRESSION__ORDER_EV:
         getOrderEv().clear();
         return;
+      case CryptSLPackage.EXPRESSION__ORDEROP:
+        setOrderop(ORDEROP_EDEFAULT);
+        return;
       case CryptSLPackage.EXPRESSION__LEFT:
         setLeft((Expression)null);
         return;
@@ -298,12 +350,31 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case CryptSLPackage.EXPRESSION__ORDER_EV:
         return orderEv != null && !orderEv.isEmpty();
+      case CryptSLPackage.EXPRESSION__ORDEROP:
+        return ORDEROP_EDEFAULT == null ? orderop != null : !ORDEROP_EDEFAULT.equals(orderop);
       case CryptSLPackage.EXPRESSION__LEFT:
         return left != null;
       case CryptSLPackage.EXPRESSION__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (orderop: ");
+    result.append(orderop);
+    result.append(')');
+    return result.toString();
   }
 
 } //ExpressionImpl

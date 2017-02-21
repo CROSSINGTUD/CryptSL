@@ -168,6 +168,15 @@ public interface CryptSLFactory extends EFactory
   LiteralExpression createLiteralExpression();
 
   /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
+
+  /**
    * Returns a new object of class '<em>Unary Operator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -256,15 +265,6 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   UnaryPreExpression createUnaryPreExpression();
-
-  /**
-   * Returns a new object of class '<em>Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Literal</em>'.
-   * @generated
-   */
-  Literal createLiteral();
 
   /**
    * Returns a new object of class '<em>Object</em>'.

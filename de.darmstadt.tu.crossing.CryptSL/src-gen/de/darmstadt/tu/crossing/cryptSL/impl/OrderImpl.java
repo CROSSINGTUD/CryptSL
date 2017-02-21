@@ -3,39 +3,66 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.Order;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.Event;
+import de.darmstadt.tu.crossing.cryptSL.Expression;
+import de.darmstadt.tu.crossing.cryptSL.Order;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Order</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Order</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
-public class OrderImpl extends ExpressionImpl implements Order
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected OrderImpl()
-  {
-    super();
-  }
+public class OrderImpl extends ExpressionImpl implements Order {
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return CryptSLPackage.Literals.ORDER;
-  }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected OrderImpl() {
+		super();
+	}
 
-} //OrderImpl
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return CryptSLPackage.Literals.ORDER;
+	}
+
+	public String stringify(OrderImpl orderImpl) {
+		return "(" + "(" + stringify(orderImpl.getLeft()) + ")" + orderImpl.getOrderop() + "(" + stringify(orderImpl.getRight()) + ")" + ")";
+	}
+
+	public String stringify(Expression exp) {
+		EList<Event> expValueList = exp.getOrderEv();
+
+		StringBuilder sb = new StringBuilder();
+		if (exp.getOrderop() != null && (exp.getOrderop().equals("|") || exp.getOrderop().equals(","))) {
+			sb.append("(");
+			sb.append(stringify(exp.getLeft()));
+			sb.append(")");
+			sb.append(exp.getOrderop());
+			sb.append("(");
+			sb.append(stringify(exp.getRight()));
+			sb.append(")");
+		} else {
+			sb.append(expValueList.get(0).getName());
+			if (exp.getOrderop() != null) {
+				sb.append(exp.getOrderop());
+			}
+		}
+		return sb.toString();
+	}
+
+	public String toString() {
+		return stringify(this);
+	}
+}

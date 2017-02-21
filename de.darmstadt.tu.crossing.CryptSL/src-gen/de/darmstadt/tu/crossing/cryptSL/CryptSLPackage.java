@@ -428,13 +428,22 @@ public interface CryptSLPackage extends EPackage
   int EXPRESSION__ORDER_EV = 0;
 
   /**
+   * The feature id for the '<em><b>Orderop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__ORDEROP = 1;
+
+  /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__LEFT = 1;
+  int EXPRESSION__LEFT = 2;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -443,7 +452,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__RIGHT = 2;
+  int EXPRESSION__RIGHT = 3;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -452,7 +461,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 3;
+  int EXPRESSION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -767,13 +776,22 @@ public interface CryptSLPackage extends EPackage
   int LITERAL_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__NAME = CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Obj</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 0;
+  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -782,7 +800,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 1;
+  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -791,7 +809,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 2;
+  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Cons</b></em>' containment reference.
@@ -800,7 +818,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 3;
+  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
@@ -809,7 +827,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 4;
+  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Literal Expression</em>' class.
@@ -818,7 +836,26 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 5;
+  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
+   * @generated
+   */
+  int LITERAL = 16;
+
+  /**
+   * The number of structural features of the '<em>Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UnaryOperatorImpl <em>Unary Operator</em>}' class.
@@ -828,7 +865,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 16;
+  int UNARY_OPERATOR = 17;
 
   /**
    * The feature id for the '<em><b>NOT</b></em>' attribute.
@@ -856,7 +893,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 17;
+  int LIT_LIST = 18;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -884,7 +921,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuParList()
    * @generated
    */
-  int SU_PAR_LIST = 18;
+  int SU_PAR_LIST = 19;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -912,7 +949,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuPar()
    * @generated
    */
-  int SU_PAR = 19;
+  int SU_PAR = 20;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -940,7 +977,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggegate()
    * @generated
    */
-  int AGGEGATE = 20;
+  int AGGEGATE = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -977,7 +1014,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 21;
+  int ORDER = 22;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -987,6 +1024,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int ORDER__ORDER_EV = EXPRESSION__ORDER_EV;
+
+  /**
+   * The feature id for the '<em><b>Orderop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER__ORDEROP = EXPRESSION__ORDEROP;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1023,7 +1069,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 22;
+  int SIMPLE_ORDER = 23;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1033,6 +1079,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_ORDER__ORDER_EV = EXPRESSION__ORDER_EV;
+
+  /**
+   * The feature id for the '<em><b>Orderop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_ORDER__ORDEROP = EXPRESSION__ORDEROP;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1069,7 +1124,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 23;
+  int COMPARISON_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1142,7 +1197,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticExpression()
    * @generated
    */
-  int ARITHMETIC_EXPRESSION = 24;
+  int ARITHMETIC_EXPRESSION = 25;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1206,7 +1261,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryPreExpression()
    * @generated
    */
-  int UNARY_PRE_EXPRESSION = 25;
+  int UNARY_PRE_EXPRESSION = 26;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1270,115 +1325,6 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int UNARY_PRE_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
-   * @generated
-   */
-  int LITERAL = 26;
-
-  /**
-   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__LEFT_EXPRESSION = LITERAL_EXPRESSION__LEFT_EXPRESSION;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__OPERATOR = LITERAL_EXPRESSION__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__RIGHT_EXPRESSION = LITERAL_EXPRESSION__RIGHT_EXPRESSION;
-
-  /**
-   * The feature id for the '<em><b>Pred Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__PRED_NAME = LITERAL_EXPRESSION__PRED_NAME;
-
-  /**
-   * The feature id for the '<em><b>Par List</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__PAR_LIST = LITERAL_EXPRESSION__PAR_LIST;
-
-  /**
-   * The feature id for the '<em><b>Obj</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__OBJ = LITERAL_EXPRESSION__OBJ;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__TYPE = LITERAL_EXPRESSION__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__VALUE = LITERAL_EXPRESSION__VALUE;
-
-  /**
-   * The feature id for the '<em><b>Cons</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__CONS = LITERAL_EXPRESSION__CONS;
-
-  /**
-   * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__LITSLEFT = LITERAL_EXPRESSION__LITSLEFT;
-
-  /**
-   * The number of structural features of the '<em>Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_FEATURE_COUNT = LITERAL_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectImpl <em>Object</em>}' class.
@@ -1719,6 +1665,17 @@ public interface CryptSLPackage extends EPackage
   EReference getExpression_OrderEv();
 
   /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.Expression#getOrderop <em>Orderop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Orderop</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Expression#getOrderop()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_Orderop();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Expression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1999,6 +1956,17 @@ public interface CryptSLPackage extends EPackage
   EClass getLiteralExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getName()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EReference getLiteralExpression_Name();
+
+  /**
    * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj <em>Obj</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2052,6 +2020,16 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getLiteralExpression_Litsleft();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Literal</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Literal
+   * @generated
+   */
+  EClass getLiteral();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.UnaryOperator <em>Unary Operator</em>}'.
@@ -2229,16 +2207,6 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getUnaryPreExpression_EnclosedExpression();
-
-  /**
-   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Literal</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Literal
-   * @generated
-   */
-  EClass getLiteral();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Object <em>Object</em>}'.
@@ -2526,6 +2494,14 @@ public interface CryptSLPackage extends EPackage
     EReference EXPRESSION__ORDER_EV = eINSTANCE.getExpression_OrderEv();
 
     /**
+     * The meta object literal for the '<em><b>Orderop</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__ORDEROP = eINSTANCE.getExpression_Orderop();
+
+    /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2746,6 +2722,14 @@ public interface CryptSLPackage extends EPackage
     EClass LITERAL_EXPRESSION = eINSTANCE.getLiteralExpression();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LITERAL_EXPRESSION__NAME = eINSTANCE.getLiteralExpression_Name();
+
+    /**
      * The meta object literal for the '<em><b>Obj</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2784,6 +2768,16 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference LITERAL_EXPRESSION__LITSLEFT = eINSTANCE.getLiteralExpression_Litsleft();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
+     * @generated
+     */
+    EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UnaryOperatorImpl <em>Unary Operator</em>}' class.
@@ -2940,16 +2934,6 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference UNARY_PRE_EXPRESSION__ENCLOSED_EXPRESSION = eINSTANCE.getUnaryPreExpression_EnclosedExpression();
-
-    /**
-     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
-     * @generated
-     */
-    EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectImpl <em>Object</em>}' class.

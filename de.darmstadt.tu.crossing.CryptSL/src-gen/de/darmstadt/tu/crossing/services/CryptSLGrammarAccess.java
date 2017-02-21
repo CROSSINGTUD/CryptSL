@@ -562,29 +562,33 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSimpleOrderParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cOrderLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cCommaKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cOrderopAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cOrderopCommaKeyword_1_1_0 = (Keyword)cOrderopAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightSimpleOrderParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		/////////////// ORDER
 		//Order Expression:
-		//	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*
+		//	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*
+		//SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*
 		public Group getGroup() { return cGroup; }
 		
 		//SimpleOrder
 		public RuleCall getSimpleOrderParserRuleCall_0() { return cSimpleOrderParserRuleCall_0; }
 		
-		//({Order.left=current} ',' right=SimpleOrder)*
+		//({Order.left=current} orderop=',' right=SimpleOrder)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Order.left=current}
 		public Action getOrderLeftAction_1_0() { return cOrderLeftAction_1_0; }
 		
+		//orderop=','
+		public Assignment getOrderopAssignment_1_1() { return cOrderopAssignment_1_1; }
+		
 		//','
-		public Keyword getCommaKeyword_1_1() { return cCommaKeyword_1_1; }
+		public Keyword getOrderopCommaKeyword_1_1_0() { return cOrderopCommaKeyword_1_1_0; }
 		
 		//right=SimpleOrder
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -598,28 +602,32 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cSimpleOrderLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cVerticalLineKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cOrderopAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cOrderopVerticalLineKeyword_1_1_0 = (Keyword)cOrderopAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//SimpleOrder Expression:
-		//	Primary ({SimpleOrder.left=current} '|' right=Primary)*
+		//	Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Primary ({SimpleOrder.left=current} '|' right=Primary)*
+		//Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*
 		public Group getGroup() { return cGroup; }
 		
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({SimpleOrder.left=current} '|' right=Primary)*
+		//({SimpleOrder.left=current} orderop='|' right=Primary)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{SimpleOrder.left=current}
 		public Action getSimpleOrderLeftAction_1_0() { return cSimpleOrderLeftAction_1_0; }
 		
+		//orderop='|'
+		public Assignment getOrderopAssignment_1_1() { return cOrderopAssignment_1_1; }
+		
 		//'|'
-		public Keyword getVerticalLineKeyword_1_1() { return cVerticalLineKeyword_1_1; }
+		public Keyword getOrderopVerticalLineKeyword_1_1_0() { return cOrderopVerticalLineKeyword_1_1_0; }
 		
 		//right=Primary
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -634,27 +642,29 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cOrderEvAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
 		private final CrossReference cOrderEvEventCrossReference_0_0_0 = (CrossReference)cOrderEvAssignment_0_0.eContents().get(0);
 		private final RuleCall cOrderEvEventIDTerminalRuleCall_0_0_0_1 = (RuleCall)cOrderEvEventCrossReference_0_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_0_1 = (Alternatives)cGroup_0.eContents().get(1);
-		private final Keyword cPlusSignKeyword_0_1_0 = (Keyword)cAlternatives_0_1.eContents().get(0);
-		private final Keyword cQuestionMarkKeyword_0_1_1 = (Keyword)cAlternatives_0_1.eContents().get(1);
-		private final Keyword cAsteriskKeyword_0_1_2 = (Keyword)cAlternatives_0_1.eContents().get(2);
+		private final Assignment cOrderopAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Alternatives cOrderopAlternatives_0_1_0 = (Alternatives)cOrderopAssignment_0_1.eContents().get(0);
+		private final Keyword cOrderopPlusSignKeyword_0_1_0_0 = (Keyword)cOrderopAlternatives_0_1_0.eContents().get(0);
+		private final Keyword cOrderopQuestionMarkKeyword_0_1_0_1 = (Keyword)cOrderopAlternatives_0_1_0.eContents().get(1);
+		private final Keyword cOrderopAsteriskKeyword_0_1_0_2 = (Keyword)cOrderopAlternatives_0_1_0.eContents().get(2);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cOrderParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Alternatives cAlternatives_1_3 = (Alternatives)cGroup_1.eContents().get(3);
-		private final Keyword cPlusSignKeyword_1_3_0 = (Keyword)cAlternatives_1_3.eContents().get(0);
-		private final Keyword cQuestionMarkKeyword_1_3_1 = (Keyword)cAlternatives_1_3.eContents().get(1);
-		private final Keyword cAsteriskKeyword_1_3_2 = (Keyword)cAlternatives_1_3.eContents().get(2);
+		private final Assignment cOrderopAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final Alternatives cOrderopAlternatives_1_3_0 = (Alternatives)cOrderopAssignment_1_3.eContents().get(0);
+		private final Keyword cOrderopPlusSignKeyword_1_3_0_0 = (Keyword)cOrderopAlternatives_1_3_0.eContents().get(0);
+		private final Keyword cOrderopQuestionMarkKeyword_1_3_0_1 = (Keyword)cOrderopAlternatives_1_3_0.eContents().get(1);
+		private final Keyword cOrderopAsteriskKeyword_1_3_0_2 = (Keyword)cOrderopAlternatives_1_3_0.eContents().get(2);
 		
 		//Primary Expression:
-		//	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?
+		//	orderEv+=[Event] orderop=('+' | '?' | '*')? | '(' Order ')' orderop=('+' | '?' | '*')?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?
+		//orderEv+=[Event] orderop=('+' | '?' | '*')? | '(' Order ')' orderop=('+' | '?' | '*')?
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//orderEv+=[Event] ('+' | '?' | '*')?
+		//orderEv+=[Event] orderop=('+' | '?' | '*')?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//orderEv+=[Event]
@@ -666,19 +676,22 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getOrderEvEventIDTerminalRuleCall_0_0_0_1() { return cOrderEvEventIDTerminalRuleCall_0_0_0_1; }
 		
-		//('+' | '?' | '*')?
-		public Alternatives getAlternatives_0_1() { return cAlternatives_0_1; }
+		//orderop=('+' | '?' | '*')?
+		public Assignment getOrderopAssignment_0_1() { return cOrderopAssignment_0_1; }
+		
+		//('+' | '?' | '*')
+		public Alternatives getOrderopAlternatives_0_1_0() { return cOrderopAlternatives_0_1_0; }
 		
 		//'+'
-		public Keyword getPlusSignKeyword_0_1_0() { return cPlusSignKeyword_0_1_0; }
+		public Keyword getOrderopPlusSignKeyword_0_1_0_0() { return cOrderopPlusSignKeyword_0_1_0_0; }
 		
 		//'?'
-		public Keyword getQuestionMarkKeyword_0_1_1() { return cQuestionMarkKeyword_0_1_1; }
+		public Keyword getOrderopQuestionMarkKeyword_0_1_0_1() { return cOrderopQuestionMarkKeyword_0_1_0_1; }
 		
 		//'*'
-		public Keyword getAsteriskKeyword_0_1_2() { return cAsteriskKeyword_0_1_2; }
+		public Keyword getOrderopAsteriskKeyword_0_1_0_2() { return cOrderopAsteriskKeyword_0_1_0_2; }
 		
-		//'(' Order ')' ('+' | '?' | '*')?
+		//'(' Order ')' orderop=('+' | '?' | '*')?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'('
@@ -690,17 +703,20 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 		
-		//('+' | '?' | '*')?
-		public Alternatives getAlternatives_1_3() { return cAlternatives_1_3; }
+		//orderop=('+' | '?' | '*')?
+		public Assignment getOrderopAssignment_1_3() { return cOrderopAssignment_1_3; }
+		
+		//('+' | '?' | '*')
+		public Alternatives getOrderopAlternatives_1_3_0() { return cOrderopAlternatives_1_3_0; }
 		
 		//'+'
-		public Keyword getPlusSignKeyword_1_3_0() { return cPlusSignKeyword_1_3_0; }
+		public Keyword getOrderopPlusSignKeyword_1_3_0_0() { return cOrderopPlusSignKeyword_1_3_0_0; }
 		
 		//'?'
-		public Keyword getQuestionMarkKeyword_1_3_1() { return cQuestionMarkKeyword_1_3_1; }
+		public Keyword getOrderopQuestionMarkKeyword_1_3_0_1() { return cOrderopQuestionMarkKeyword_1_3_0_1; }
 		
 		//'*'
-		public Keyword getAsteriskKeyword_1_3_2() { return cAsteriskKeyword_1_3_2; }
+		public Keyword getOrderopAsteriskKeyword_1_3_0_2() { return cOrderopAsteriskKeyword_1_3_0_2; }
 	}
 	public class ConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.Constraint");
@@ -1236,8 +1252,10 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class LiteralExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.LiteralExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cAggregateExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cNameLiteralParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cNameAggregateExpressionParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Keyword cTypeOfKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cObjAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
@@ -1250,17 +1268,23 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		//LiteralExpression:
-		//	Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
+		//	name=Literal | name=AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")"
+		//name=Literal | name=AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//name=Literal
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
 		//Literal
-		public RuleCall getLiteralParserRuleCall_0() { return cLiteralParserRuleCall_0; }
+		public RuleCall getNameLiteralParserRuleCall_0_0() { return cNameLiteralParserRuleCall_0_0; }
+		
+		//name=AggregateExpression
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//AggregateExpression
-		public RuleCall getAggregateExpressionParserRuleCall_1() { return cAggregateExpressionParserRuleCall_1; }
+		public RuleCall getNameAggregateExpressionParserRuleCall_1_0() { return cNameAggregateExpressionParserRuleCall_1_0; }
 		
 		//"typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")"
 		public Group getGroup_2() { return cGroup_2; }
@@ -1332,27 +1356,27 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		
-		//Literal LiteralExpression:
-		//	{Literal} (INT | STRING)
+		//Literal:
+		//	{Literal} (STRING | INT);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Literal} (INT | STRING)
+		//{Literal} (STRING | INT)
 		public Group getGroup() { return cGroup; }
 		
 		//{Literal}
 		public Action getLiteralAction_0() { return cLiteralAction_0; }
 		
-		//(INT | STRING)
+		//(STRING | INT)
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//INT
-		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
-		
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1_1() { return cSTRINGTerminalRuleCall_1_1; }
+		public RuleCall getSTRINGTerminalRuleCall_1_0() { return cSTRINGTerminalRuleCall_1_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_1() { return cINTTerminalRuleCall_1_1; }
 	}
 	public class UnaryPreOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.UnaryPreOperator");
@@ -1911,7 +1935,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	/////////////// ORDER
 	//Order Expression:
-	//	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*
+	//	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*
 	public OrderElements getOrderAccess() {
 		return pOrder;
 	}
@@ -1921,7 +1945,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SimpleOrder Expression:
-	//	Primary ({SimpleOrder.left=current} '|' right=Primary)*
+	//	Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*
 	public SimpleOrderElements getSimpleOrderAccess() {
 		return pSimpleOrder;
 	}
@@ -1931,7 +1955,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Primary Expression:
-	//	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?
+	//	orderEv+=[Event] orderop=('+' | '?' | '*')? | '(' Order ')' orderop=('+' | '?' | '*')?
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}
@@ -2123,7 +2147,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LiteralExpression:
-	//	Literal | AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
+	//	name=Literal | name=AggregateExpression | "typeOf(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")";
 	public LiteralExpressionElements getLiteralExpressionAccess() {
 		return pLiteralExpression;
 	}
@@ -2142,8 +2166,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getAggregateExpressionAccess().getRule();
 	}
 	
-	//Literal LiteralExpression:
-	//	{Literal} (INT | STRING)
+	//Literal:
+	//	{Literal} (STRING | INT);
 	public LiteralElements getLiteralAccess() {
 		return pLiteral;
 	}

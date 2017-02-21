@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'_'", "'+'", "'?'", "'*'", "'...'", "'SPEC'", "'USES_OBJECTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'ENFORCES_CONSTRAINTS'", "'FORBIDDEN_EVENTS'", "'ENSURES'", "'[]'", "';'", "'=>'", "'('", "')'", "','", "'.'", "':'", "');'", "'='", "':='", "'|'", "'typeOf('", "'in'", "'{'", "'}'", "'part('", "'['", "']'", "'<'", "'>'", "'extends'", "'&'", "'super'", "'import'", "'||'", "'&&'", "'<='", "'>='", "'-'", "'/'", "'!'", "'=='", "'!='", "'static'", "'extension'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'_'", "'+'", "'?'", "'*'", "'...'", "'SPEC'", "'USES_OBJECTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'ENFORCES_CONSTRAINTS'", "'FORBIDDEN_EVENTS'", "'ENSURES'", "'[]'", "';'", "'=>'", "'('", "')'", "','", "'.'", "':'", "');'", "'='", "':='", "'typeOf('", "'in'", "'{'", "'}'", "'part('", "'['", "']'", "'<'", "'>'", "'extends'", "'&'", "'super'", "'import'", "'|'", "'||'", "'&&'", "'<='", "'>='", "'-'", "'/'", "'!'", "'=='", "'!='", "'static'", "'extension'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -47,7 +47,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=6;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
@@ -56,7 +56,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
-    public static final int RULE_STRING=6;
+    public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__37=37;
     public static final int T__38=38;
@@ -5092,11 +5092,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( (LA2_0==RULE_ID) ) {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==33) ) {
-                    alt2=2;
-                }
-                else if ( (LA2_1==30) ) {
+                if ( (LA2_1==30) ) {
                     alt2=1;
+                }
+                else if ( (LA2_1==33) ) {
+                    alt2=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -5367,9 +5367,9 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Primary__Alternatives"
 
 
-    // $ANTLR start "rule__Primary__Alternatives_0_1"
-    // InternalCryptSL.g:1573:1: rule__Primary__Alternatives_0_1 : ( ( '+' ) | ( '?' ) | ( '*' ) );
-    public final void rule__Primary__Alternatives_0_1() throws RecognitionException {
+    // $ANTLR start "rule__Primary__OrderopAlternatives_0_1_0"
+    // InternalCryptSL.g:1573:1: rule__Primary__OrderopAlternatives_0_1_0 : ( ( '+' ) | ( '?' ) | ( '*' ) );
+    public final void rule__Primary__OrderopAlternatives_0_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -5408,11 +5408,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1579:3: '+'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_0_1_0_0()); 
                     }
                     match(input,12,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_0_1_0_0()); 
                     }
 
                     }
@@ -5427,11 +5427,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1585:3: '?'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_0_1_0_1()); 
                     }
                     match(input,13,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_0_1_0_1()); 
                     }
 
                     }
@@ -5446,11 +5446,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1591:3: '*'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_0_1_0_2()); 
                     }
                     match(input,14,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_0_1_0_2()); 
                     }
 
                     }
@@ -5472,12 +5472,12 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Primary__Alternatives_0_1"
+    // $ANTLR end "rule__Primary__OrderopAlternatives_0_1_0"
 
 
-    // $ANTLR start "rule__Primary__Alternatives_1_3"
-    // InternalCryptSL.g:1600:1: rule__Primary__Alternatives_1_3 : ( ( '+' ) | ( '?' ) | ( '*' ) );
-    public final void rule__Primary__Alternatives_1_3() throws RecognitionException {
+    // $ANTLR start "rule__Primary__OrderopAlternatives_1_3_0"
+    // InternalCryptSL.g:1600:1: rule__Primary__OrderopAlternatives_1_3_0 : ( ( '+' ) | ( '?' ) | ( '*' ) );
+    public final void rule__Primary__OrderopAlternatives_1_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -5516,11 +5516,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1606:3: '+'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getPlusSignKeyword_1_3_0()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_1_3_0_0()); 
                     }
                     match(input,12,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getPlusSignKeyword_1_3_0()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_1_3_0_0()); 
                     }
 
                     }
@@ -5535,11 +5535,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1612:3: '?'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_1_3_1()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_1_3_0_1()); 
                     }
                     match(input,13,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_1_3_1()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_1_3_0_1()); 
                     }
 
                     }
@@ -5554,11 +5554,11 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     // InternalCryptSL.g:1618:3: '*'
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPrimaryAccess().getAsteriskKeyword_1_3_2()); 
+                       before(grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_1_3_0_2()); 
                     }
                     match(input,14,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPrimaryAccess().getAsteriskKeyword_1_3_2()); 
+                       after(grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_1_3_0_2()); 
                     }
 
                     }
@@ -5580,7 +5580,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Primary__Alternatives_1_3"
+    // $ANTLR end "rule__Primary__OrderopAlternatives_1_3_0"
 
 
     // $ANTLR start "rule__ComparingRelOperator__Alternatives"
@@ -5593,7 +5593,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             // InternalCryptSL.g:1631:1: ( ( ( rule__ComparingRelOperator__LESSAssignment_0 ) ) | ( ( rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1 ) ) | ( ( rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2 ) ) | ( ( rule__ComparingRelOperator__GREATERAssignment_3 ) ) )
             int alt7=4;
             switch ( input.LA(1) ) {
-            case 42:
+            case 41:
                 {
                 alt7=1;
                 }
@@ -5608,7 +5608,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 alt7=3;
                 }
                 break;
-            case 43:
+            case 42:
                 {
                 alt7=4;
                 }
@@ -5869,7 +5869,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( (LA9_0==54) ) {
                 alt9=1;
             }
-            else if ( ((LA9_0>=RULE_ID && LA9_0<=RULE_STRING)||LA9_0==26||LA9_0==35||LA9_0==39) ) {
+            else if ( ((LA9_0>=RULE_ID && LA9_0<=RULE_INT)||LA9_0==26||LA9_0==34||LA9_0==38) ) {
                 alt9=2;
             }
             else {
@@ -6153,17 +6153,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LiteralExpression__Alternatives"
-    // InternalCryptSL.g:1750:1: rule__LiteralExpression__Alternatives : ( ( ruleLiteral ) | ( ruleAggregateExpression ) | ( ( rule__LiteralExpression__Group_2__0 ) ) );
+    // InternalCryptSL.g:1750:1: rule__LiteralExpression__Alternatives : ( ( ( rule__LiteralExpression__NameAssignment_0 ) ) | ( ( rule__LiteralExpression__NameAssignment_1 ) ) | ( ( rule__LiteralExpression__Group_2__0 ) ) );
     public final void rule__LiteralExpression__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:1754:1: ( ( ruleLiteral ) | ( ruleAggregateExpression ) | ( ( rule__LiteralExpression__Group_2__0 ) ) )
+            // InternalCryptSL.g:1754:1: ( ( ( rule__LiteralExpression__NameAssignment_0 ) ) | ( ( rule__LiteralExpression__NameAssignment_1 ) ) | ( ( rule__LiteralExpression__Group_2__0 ) ) )
             int alt12=3;
             switch ( input.LA(1) ) {
-            case RULE_INT:
             case RULE_STRING:
+            case RULE_INT:
                 {
                 alt12=1;
                 }
@@ -6173,7 +6173,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 alt12=2;
                 }
                 break;
-            case 35:
+            case 34:
                 {
                 alt12=3;
                 }
@@ -6188,21 +6188,27 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
             switch (alt12) {
                 case 1 :
-                    // InternalCryptSL.g:1755:2: ( ruleLiteral )
+                    // InternalCryptSL.g:1755:2: ( ( rule__LiteralExpression__NameAssignment_0 ) )
                     {
-                    // InternalCryptSL.g:1755:2: ( ruleLiteral )
-                    // InternalCryptSL.g:1756:3: ruleLiteral
+                    // InternalCryptSL.g:1755:2: ( ( rule__LiteralExpression__NameAssignment_0 ) )
+                    // InternalCryptSL.g:1756:3: ( rule__LiteralExpression__NameAssignment_0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getLiteralExpressionAccess().getLiteralParserRuleCall_0()); 
+                       before(grammarAccess.getLiteralExpressionAccess().getNameAssignment_0()); 
                     }
+                    // InternalCryptSL.g:1757:3: ( rule__LiteralExpression__NameAssignment_0 )
+                    // InternalCryptSL.g:1757:4: rule__LiteralExpression__NameAssignment_0
+                    {
                     pushFollow(FOLLOW_2);
-                    ruleLiteral();
+                    rule__LiteralExpression__NameAssignment_0();
 
                     state._fsp--;
                     if (state.failed) return ;
+
+                    }
+
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getLiteralExpressionAccess().getLiteralParserRuleCall_0()); 
+                       after(grammarAccess.getLiteralExpressionAccess().getNameAssignment_0()); 
                     }
 
                     }
@@ -6211,21 +6217,27 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:1761:2: ( ruleAggregateExpression )
+                    // InternalCryptSL.g:1761:2: ( ( rule__LiteralExpression__NameAssignment_1 ) )
                     {
-                    // InternalCryptSL.g:1761:2: ( ruleAggregateExpression )
-                    // InternalCryptSL.g:1762:3: ruleAggregateExpression
+                    // InternalCryptSL.g:1761:2: ( ( rule__LiteralExpression__NameAssignment_1 ) )
+                    // InternalCryptSL.g:1762:3: ( rule__LiteralExpression__NameAssignment_1 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getLiteralExpressionAccess().getAggregateExpressionParserRuleCall_1()); 
+                       before(grammarAccess.getLiteralExpressionAccess().getNameAssignment_1()); 
                     }
+                    // InternalCryptSL.g:1763:3: ( rule__LiteralExpression__NameAssignment_1 )
+                    // InternalCryptSL.g:1763:4: rule__LiteralExpression__NameAssignment_1
+                    {
                     pushFollow(FOLLOW_2);
-                    ruleAggregateExpression();
+                    rule__LiteralExpression__NameAssignment_1();
 
                     state._fsp--;
                     if (state.failed) return ;
+
+                    }
+
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getLiteralExpressionAccess().getAggregateExpressionParserRuleCall_1()); 
+                       after(grammarAccess.getLiteralExpressionAccess().getNameAssignment_1()); 
                     }
 
                     }
@@ -6280,20 +6292,20 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Literal__Alternatives_1"
-    // InternalCryptSL.g:1777:1: rule__Literal__Alternatives_1 : ( ( RULE_INT ) | ( RULE_STRING ) );
+    // InternalCryptSL.g:1777:1: rule__Literal__Alternatives_1 : ( ( RULE_STRING ) | ( RULE_INT ) );
     public final void rule__Literal__Alternatives_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:1781:1: ( ( RULE_INT ) | ( RULE_STRING ) )
+            // InternalCryptSL.g:1781:1: ( ( RULE_STRING ) | ( RULE_INT ) )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==RULE_INT) ) {
+            if ( (LA13_0==RULE_STRING) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==RULE_STRING) ) {
+            else if ( (LA13_0==RULE_INT) ) {
                 alt13=2;
             }
             else {
@@ -6305,17 +6317,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt13) {
                 case 1 :
-                    // InternalCryptSL.g:1782:2: ( RULE_INT )
+                    // InternalCryptSL.g:1782:2: ( RULE_STRING )
                     {
-                    // InternalCryptSL.g:1782:2: ( RULE_INT )
-                    // InternalCryptSL.g:1783:3: RULE_INT
+                    // InternalCryptSL.g:1782:2: ( RULE_STRING )
+                    // InternalCryptSL.g:1783:3: RULE_STRING
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_0()); 
+                       before(grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_0()); 
                     }
-                    match(input,RULE_INT,FOLLOW_2); if (state.failed) return ;
+                    match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_0()); 
+                       after(grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_0()); 
                     }
 
                     }
@@ -6324,17 +6336,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:1788:2: ( RULE_STRING )
+                    // InternalCryptSL.g:1788:2: ( RULE_INT )
                     {
-                    // InternalCryptSL.g:1788:2: ( RULE_STRING )
-                    // InternalCryptSL.g:1789:3: RULE_STRING
+                    // InternalCryptSL.g:1788:2: ( RULE_INT )
+                    // InternalCryptSL.g:1789:3: RULE_INT
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_1()); 
+                       before(grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_1()); 
                     }
-                    match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
+                    match(input,RULE_INT,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_1()); 
+                       after(grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_1()); 
                     }
 
                     }
@@ -6556,10 +6568,10 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==39) ) {
+            if ( (LA16_0==38) ) {
                 alt16=1;
             }
-            else if ( ((LA16_0>=RULE_ID && LA16_0<=RULE_STRING)||LA16_0==35) ) {
+            else if ( ((LA16_0>=RULE_ID && LA16_0<=RULE_INT)||LA16_0==34) ) {
                 alt16=2;
             }
             else {
@@ -6650,7 +6662,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt17=2;
             int LA17_0 = input.LA(1);
 
-            if ( ((LA17_0>=RULE_INT && LA17_0<=RULE_STRING)) ) {
+            if ( ((LA17_0>=RULE_STRING && LA17_0<=RULE_INT)) ) {
                 alt17=1;
             }
             else if ( (LA17_0==15) ) {
@@ -6740,7 +6752,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt18=2;
             int LA18_0 = input.LA(1);
 
-            if ( ((LA18_0>=RULE_ID && LA18_0<=RULE_STRING)||LA18_0==35||LA18_0==39) ) {
+            if ( ((LA18_0>=RULE_ID && LA18_0<=RULE_INT)||LA18_0==34||LA18_0==38) ) {
                 alt18=1;
             }
             else if ( (LA18_0==11) ) {
@@ -7012,10 +7024,10 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt21=2;
             int LA21_0 = input.LA(1);
 
-            if ( (LA21_0==44) ) {
+            if ( (LA21_0==43) ) {
                 alt21=1;
             }
-            else if ( (LA21_0==46) ) {
+            else if ( (LA21_0==45) ) {
                 alt21=2;
             }
             else {
@@ -8321,7 +8333,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 int alt27=2;
                 int LA27_0 = input.LA(1);
 
-                if ( ((LA27_0>=RULE_ID && LA27_0<=RULE_STRING)||LA27_0==26||LA27_0==35||LA27_0==39||LA27_0==54) ) {
+                if ( ((LA27_0>=RULE_ID && LA27_0<=RULE_INT)||LA27_0==26||LA27_0==34||LA27_0==38||LA27_0==54) ) {
                     alt27=1;
                 }
 
@@ -13361,24 +13373,34 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Order__Group_1__1__Impl"
-    // InternalCryptSL.g:3890:1: rule__Order__Group_1__1__Impl : ( ',' ) ;
+    // InternalCryptSL.g:3890:1: rule__Order__Group_1__1__Impl : ( ( rule__Order__OrderopAssignment_1_1 ) ) ;
     public final void rule__Order__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:3894:1: ( ( ',' ) )
-            // InternalCryptSL.g:3895:1: ( ',' )
+            // InternalCryptSL.g:3894:1: ( ( ( rule__Order__OrderopAssignment_1_1 ) ) )
+            // InternalCryptSL.g:3895:1: ( ( rule__Order__OrderopAssignment_1_1 ) )
             {
-            // InternalCryptSL.g:3895:1: ( ',' )
-            // InternalCryptSL.g:3896:2: ','
+            // InternalCryptSL.g:3895:1: ( ( rule__Order__OrderopAssignment_1_1 ) )
+            // InternalCryptSL.g:3896:2: ( rule__Order__OrderopAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getOrderAccess().getCommaKeyword_1_1()); 
+               before(grammarAccess.getOrderAccess().getOrderopAssignment_1_1()); 
             }
-            match(input,28,FOLLOW_2); if (state.failed) return ;
+            // InternalCryptSL.g:3897:2: ( rule__Order__OrderopAssignment_1_1 )
+            // InternalCryptSL.g:3897:3: rule__Order__OrderopAssignment_1_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__Order__OrderopAssignment_1_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getOrderAccess().getCommaKeyword_1_1()); 
+               after(grammarAccess.getOrderAccess().getOrderopAssignment_1_1()); 
             }
 
             }
@@ -13623,7 +13645,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 int alt41=2;
                 int LA41_0 = input.LA(1);
 
-                if ( (LA41_0==34) ) {
+                if ( (LA41_0==47) ) {
                     alt41=1;
                 }
 
@@ -13788,24 +13810,34 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SimpleOrder__Group_1__1__Impl"
-    // InternalCryptSL.g:4025:1: rule__SimpleOrder__Group_1__1__Impl : ( '|' ) ;
+    // InternalCryptSL.g:4025:1: rule__SimpleOrder__Group_1__1__Impl : ( ( rule__SimpleOrder__OrderopAssignment_1_1 ) ) ;
     public final void rule__SimpleOrder__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:4029:1: ( ( '|' ) )
-            // InternalCryptSL.g:4030:1: ( '|' )
+            // InternalCryptSL.g:4029:1: ( ( ( rule__SimpleOrder__OrderopAssignment_1_1 ) ) )
+            // InternalCryptSL.g:4030:1: ( ( rule__SimpleOrder__OrderopAssignment_1_1 ) )
             {
-            // InternalCryptSL.g:4030:1: ( '|' )
-            // InternalCryptSL.g:4031:2: '|'
+            // InternalCryptSL.g:4030:1: ( ( rule__SimpleOrder__OrderopAssignment_1_1 ) )
+            // InternalCryptSL.g:4031:2: ( rule__SimpleOrder__OrderopAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSimpleOrderAccess().getVerticalLineKeyword_1_1()); 
+               before(grammarAccess.getSimpleOrderAccess().getOrderopAssignment_1_1()); 
             }
-            match(input,34,FOLLOW_2); if (state.failed) return ;
+            // InternalCryptSL.g:4032:2: ( rule__SimpleOrder__OrderopAssignment_1_1 )
+            // InternalCryptSL.g:4032:3: rule__SimpleOrder__OrderopAssignment_1_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__SimpleOrder__OrderopAssignment_1_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSimpleOrderAccess().getVerticalLineKeyword_1_1()); 
+               after(grammarAccess.getSimpleOrderAccess().getOrderopAssignment_1_1()); 
             }
 
             }
@@ -14035,22 +14067,22 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Primary__Group_0__1__Impl"
-    // InternalCryptSL.g:4105:1: rule__Primary__Group_0__1__Impl : ( ( rule__Primary__Alternatives_0_1 )? ) ;
+    // InternalCryptSL.g:4105:1: rule__Primary__Group_0__1__Impl : ( ( rule__Primary__OrderopAssignment_0_1 )? ) ;
     public final void rule__Primary__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:4109:1: ( ( ( rule__Primary__Alternatives_0_1 )? ) )
-            // InternalCryptSL.g:4110:1: ( ( rule__Primary__Alternatives_0_1 )? )
+            // InternalCryptSL.g:4109:1: ( ( ( rule__Primary__OrderopAssignment_0_1 )? ) )
+            // InternalCryptSL.g:4110:1: ( ( rule__Primary__OrderopAssignment_0_1 )? )
             {
-            // InternalCryptSL.g:4110:1: ( ( rule__Primary__Alternatives_0_1 )? )
-            // InternalCryptSL.g:4111:2: ( rule__Primary__Alternatives_0_1 )?
+            // InternalCryptSL.g:4110:1: ( ( rule__Primary__OrderopAssignment_0_1 )? )
+            // InternalCryptSL.g:4111:2: ( rule__Primary__OrderopAssignment_0_1 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPrimaryAccess().getAlternatives_0_1()); 
+               before(grammarAccess.getPrimaryAccess().getOrderopAssignment_0_1()); 
             }
-            // InternalCryptSL.g:4112:2: ( rule__Primary__Alternatives_0_1 )?
+            // InternalCryptSL.g:4112:2: ( rule__Primary__OrderopAssignment_0_1 )?
             int alt42=2;
             int LA42_0 = input.LA(1);
 
@@ -14059,10 +14091,10 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt42) {
                 case 1 :
-                    // InternalCryptSL.g:4112:3: rule__Primary__Alternatives_0_1
+                    // InternalCryptSL.g:4112:3: rule__Primary__OrderopAssignment_0_1
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Primary__Alternatives_0_1();
+                    rule__Primary__OrderopAssignment_0_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -14073,7 +14105,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPrimaryAccess().getAlternatives_0_1()); 
+               after(grammarAccess.getPrimaryAccess().getOrderopAssignment_0_1()); 
             }
 
             }
@@ -14371,22 +14403,22 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Primary__Group_1__3__Impl"
-    // InternalCryptSL.g:4213:1: rule__Primary__Group_1__3__Impl : ( ( rule__Primary__Alternatives_1_3 )? ) ;
+    // InternalCryptSL.g:4213:1: rule__Primary__Group_1__3__Impl : ( ( rule__Primary__OrderopAssignment_1_3 )? ) ;
     public final void rule__Primary__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:4217:1: ( ( ( rule__Primary__Alternatives_1_3 )? ) )
-            // InternalCryptSL.g:4218:1: ( ( rule__Primary__Alternatives_1_3 )? )
+            // InternalCryptSL.g:4217:1: ( ( ( rule__Primary__OrderopAssignment_1_3 )? ) )
+            // InternalCryptSL.g:4218:1: ( ( rule__Primary__OrderopAssignment_1_3 )? )
             {
-            // InternalCryptSL.g:4218:1: ( ( rule__Primary__Alternatives_1_3 )? )
-            // InternalCryptSL.g:4219:2: ( rule__Primary__Alternatives_1_3 )?
+            // InternalCryptSL.g:4218:1: ( ( rule__Primary__OrderopAssignment_1_3 )? )
+            // InternalCryptSL.g:4219:2: ( rule__Primary__OrderopAssignment_1_3 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPrimaryAccess().getAlternatives_1_3()); 
+               before(grammarAccess.getPrimaryAccess().getOrderopAssignment_1_3()); 
             }
-            // InternalCryptSL.g:4220:2: ( rule__Primary__Alternatives_1_3 )?
+            // InternalCryptSL.g:4220:2: ( rule__Primary__OrderopAssignment_1_3 )?
             int alt43=2;
             int LA43_0 = input.LA(1);
 
@@ -14395,10 +14427,10 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt43) {
                 case 1 :
-                    // InternalCryptSL.g:4220:3: rule__Primary__Alternatives_1_3
+                    // InternalCryptSL.g:4220:3: rule__Primary__OrderopAssignment_1_3
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Primary__Alternatives_1_3();
+                    rule__Primary__OrderopAssignment_1_3();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -14409,7 +14441,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPrimaryAccess().getAlternatives_1_3()); 
+               after(grammarAccess.getPrimaryAccess().getOrderopAssignment_1_3()); 
             }
 
             }
@@ -16309,7 +16341,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt48=2;
             int LA48_0 = input.LA(1);
 
-            if ( ((LA48_0>=42 && LA48_0<=43)||(LA48_0>=50 && LA48_0<=51)) ) {
+            if ( ((LA48_0>=41 && LA48_0<=42)||(LA48_0>=50 && LA48_0<=51)) ) {
                 alt48=1;
             }
             switch (alt48) {
@@ -18103,7 +18135,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionAccess().getTypeOfKeyword_2_0()); 
             }
-            match(input,35,FOLLOW_2); if (state.failed) return ;
+            match(input,34,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLiteralExpressionAccess().getTypeOfKeyword_2_0()); 
             }
@@ -19102,7 +19134,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getInKeyword_0_1()); 
             }
-            match(input,36,FOLLOW_2); if (state.failed) return ;
+            match(input,35,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConsAccess().getInKeyword_0_1()); 
             }
@@ -19181,7 +19213,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getLeftCurlyBracketKeyword_0_2()); 
             }
-            match(input,37,FOLLOW_2); if (state.failed) return ;
+            match(input,36,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConsAccess().getLeftCurlyBracketKeyword_0_2()); 
             }
@@ -19344,7 +19376,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getRightCurlyBracketKeyword_0_4()); 
             }
-            match(input,38,FOLLOW_2); if (state.failed) return ;
+            match(input,37,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConsAccess().getRightCurlyBracketKeyword_0_4()); 
             }
@@ -19423,7 +19455,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsPredAccess().getPartKeyword_0_0()); 
             }
-            match(input,39,FOLLOW_2); if (state.failed) return ;
+            match(input,38,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConsPredAccess().getPartKeyword_0_0()); 
             }
@@ -20501,7 +20533,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt53=2;
             int LA53_0 = input.LA(1);
 
-            if ( ((LA53_0>=RULE_ID && LA53_0<=RULE_STRING)||LA53_0==11||LA53_0==35||LA53_0==39) ) {
+            if ( ((LA53_0>=RULE_ID && LA53_0<=RULE_INT)||LA53_0==11||LA53_0==34||LA53_0==38) ) {
                 alt53=1;
             }
             switch (alt53) {
@@ -21435,7 +21467,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 int alt55=2;
                 int LA55_0 = input.LA(1);
 
-                if ( (LA55_0==40) ) {
+                if ( (LA55_0==39) ) {
                     alt55=1;
                 }
 
@@ -21777,7 +21809,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayBracketsAccess().getLeftSquareBracketKeyword_0()); 
             }
-            match(input,40,FOLLOW_2); if (state.failed) return ;
+            match(input,39,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayBracketsAccess().getLeftSquareBracketKeyword_0()); 
             }
@@ -21851,7 +21883,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayBracketsAccess().getRightSquareBracketKeyword_1()); 
             }
-            match(input,41,FOLLOW_2); if (state.failed) return ;
+            match(input,40,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayBracketsAccess().getRightSquareBracketKeyword_1()); 
             }
@@ -22888,7 +22920,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt59=2;
             int LA59_0 = input.LA(1);
 
-            if ( (LA59_0==42) ) {
+            if ( (LA59_0==41) ) {
                 alt59=1;
             }
             switch (alt59) {
@@ -22987,7 +23019,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             // InternalCryptSL.g:6948:2: ( '<' )
             // InternalCryptSL.g:6948:3: '<'
             {
-            match(input,42,FOLLOW_2); if (state.failed) return ;
+            match(input,41,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -23265,7 +23297,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3()); 
             }
-            match(input,43,FOLLOW_2); if (state.failed) return ;
+            match(input,42,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3()); 
             }
@@ -23786,7 +23818,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt62=2;
             int LA62_0 = input.LA(1);
 
-            if ( (LA62_0==42) ) {
+            if ( (LA62_0==41) ) {
                 alt62=1;
             }
             switch (alt62) {
@@ -24122,7 +24154,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             // InternalCryptSL.g:7299:2: ( '<' )
             // InternalCryptSL.g:7299:3: '<'
             {
-            match(input,42,FOLLOW_2); if (state.failed) return ;
+            match(input,41,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -24395,7 +24427,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_4_2_3()); 
             }
-            match(input,43,FOLLOW_2); if (state.failed) return ;
+            match(input,42,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_4_2_3()); 
             }
@@ -24794,7 +24826,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             int alt64=2;
             int LA64_0 = input.LA(1);
 
-            if ( (LA64_0==44||LA64_0==46) ) {
+            if ( (LA64_0==43||LA64_0==45) ) {
                 alt64=1;
             }
             switch (alt64) {
@@ -24980,7 +25012,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
-                if ( (LA65_0==45) ) {
+                if ( (LA65_0==44) ) {
                     alt65=1;
                 }
 
@@ -25171,7 +25203,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
                 int alt66=2;
                 int LA66_0 = input.LA(1);
 
-                if ( (LA66_0==45) ) {
+                if ( (LA66_0==44) ) {
                     alt66=1;
                 }
 
@@ -25272,7 +25304,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,43,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0()); 
             }
@@ -25435,7 +25467,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,44,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0()); 
             }
@@ -25598,7 +25630,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0()); 
             }
@@ -25761,7 +25793,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmLowerBoundAndedAccess().getAmpersandKeyword_0()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,44,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getJvmLowerBoundAndedAccess().getAmpersandKeyword_0()); 
             }
@@ -26508,7 +26540,7 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportKeyword_0()); 
             }
-            match(input,47,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXImportDeclarationAccess().getImportKeyword_0()); 
             }
@@ -28298,18 +28330,71 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Aggregate__LabAssignment_1_2_1_1"
 
 
+    // $ANTLR start "rule__Order__OrderopAssignment_1_1"
+    // InternalCryptSL.g:8645:1: rule__Order__OrderopAssignment_1_1 : ( ( ',' ) ) ;
+    public final void rule__Order__OrderopAssignment_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:8649:1: ( ( ( ',' ) ) )
+            // InternalCryptSL.g:8650:2: ( ( ',' ) )
+            {
+            // InternalCryptSL.g:8650:2: ( ( ',' ) )
+            // InternalCryptSL.g:8651:3: ( ',' )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getOrderAccess().getOrderopCommaKeyword_1_1_0()); 
+            }
+            // InternalCryptSL.g:8652:3: ( ',' )
+            // InternalCryptSL.g:8653:4: ','
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getOrderAccess().getOrderopCommaKeyword_1_1_0()); 
+            }
+            match(input,28,FOLLOW_2); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getOrderAccess().getOrderopCommaKeyword_1_1_0()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getOrderAccess().getOrderopCommaKeyword_1_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Order__OrderopAssignment_1_1"
+
+
     // $ANTLR start "rule__Order__RightAssignment_1_2"
-    // InternalCryptSL.g:8645:1: rule__Order__RightAssignment_1_2 : ( ruleSimpleOrder ) ;
+    // InternalCryptSL.g:8664:1: rule__Order__RightAssignment_1_2 : ( ruleSimpleOrder ) ;
     public final void rule__Order__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8649:1: ( ( ruleSimpleOrder ) )
-            // InternalCryptSL.g:8650:2: ( ruleSimpleOrder )
+            // InternalCryptSL.g:8668:1: ( ( ruleSimpleOrder ) )
+            // InternalCryptSL.g:8669:2: ( ruleSimpleOrder )
             {
-            // InternalCryptSL.g:8650:2: ( ruleSimpleOrder )
-            // InternalCryptSL.g:8651:3: ruleSimpleOrder
+            // InternalCryptSL.g:8669:2: ( ruleSimpleOrder )
+            // InternalCryptSL.g:8670:3: ruleSimpleOrder
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOrderAccess().getRightSimpleOrderParserRuleCall_1_2_0()); 
@@ -28343,18 +28428,71 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Order__RightAssignment_1_2"
 
 
+    // $ANTLR start "rule__SimpleOrder__OrderopAssignment_1_1"
+    // InternalCryptSL.g:8679:1: rule__SimpleOrder__OrderopAssignment_1_1 : ( ( '|' ) ) ;
+    public final void rule__SimpleOrder__OrderopAssignment_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:8683:1: ( ( ( '|' ) ) )
+            // InternalCryptSL.g:8684:2: ( ( '|' ) )
+            {
+            // InternalCryptSL.g:8684:2: ( ( '|' ) )
+            // InternalCryptSL.g:8685:3: ( '|' )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getSimpleOrderAccess().getOrderopVerticalLineKeyword_1_1_0()); 
+            }
+            // InternalCryptSL.g:8686:3: ( '|' )
+            // InternalCryptSL.g:8687:4: '|'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getSimpleOrderAccess().getOrderopVerticalLineKeyword_1_1_0()); 
+            }
+            match(input,47,FOLLOW_2); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getSimpleOrderAccess().getOrderopVerticalLineKeyword_1_1_0()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getSimpleOrderAccess().getOrderopVerticalLineKeyword_1_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SimpleOrder__OrderopAssignment_1_1"
+
+
     // $ANTLR start "rule__SimpleOrder__RightAssignment_1_2"
-    // InternalCryptSL.g:8660:1: rule__SimpleOrder__RightAssignment_1_2 : ( rulePrimary ) ;
+    // InternalCryptSL.g:8698:1: rule__SimpleOrder__RightAssignment_1_2 : ( rulePrimary ) ;
     public final void rule__SimpleOrder__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8664:1: ( ( rulePrimary ) )
-            // InternalCryptSL.g:8665:2: ( rulePrimary )
+            // InternalCryptSL.g:8702:1: ( ( rulePrimary ) )
+            // InternalCryptSL.g:8703:2: ( rulePrimary )
             {
-            // InternalCryptSL.g:8665:2: ( rulePrimary )
-            // InternalCryptSL.g:8666:3: rulePrimary
+            // InternalCryptSL.g:8703:2: ( rulePrimary )
+            // InternalCryptSL.g:8704:3: rulePrimary
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSimpleOrderAccess().getRightPrimaryParserRuleCall_1_2_0()); 
@@ -28389,23 +28527,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Primary__OrderEvAssignment_0_0"
-    // InternalCryptSL.g:8675:1: rule__Primary__OrderEvAssignment_0_0 : ( ( RULE_ID ) ) ;
+    // InternalCryptSL.g:8713:1: rule__Primary__OrderEvAssignment_0_0 : ( ( RULE_ID ) ) ;
     public final void rule__Primary__OrderEvAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8679:1: ( ( ( RULE_ID ) ) )
-            // InternalCryptSL.g:8680:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:8717:1: ( ( ( RULE_ID ) ) )
+            // InternalCryptSL.g:8718:2: ( ( RULE_ID ) )
             {
-            // InternalCryptSL.g:8680:2: ( ( RULE_ID ) )
-            // InternalCryptSL.g:8681:3: ( RULE_ID )
+            // InternalCryptSL.g:8718:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:8719:3: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPrimaryAccess().getOrderEvEventCrossReference_0_0_0()); 
             }
-            // InternalCryptSL.g:8682:3: ( RULE_ID )
-            // InternalCryptSL.g:8683:4: RULE_ID
+            // InternalCryptSL.g:8720:3: ( RULE_ID )
+            // InternalCryptSL.g:8721:4: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPrimaryAccess().getOrderEvEventIDTerminalRuleCall_0_0_0_1()); 
@@ -28441,18 +28579,120 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Primary__OrderEvAssignment_0_0"
 
 
+    // $ANTLR start "rule__Primary__OrderopAssignment_0_1"
+    // InternalCryptSL.g:8732:1: rule__Primary__OrderopAssignment_0_1 : ( ( rule__Primary__OrderopAlternatives_0_1_0 ) ) ;
+    public final void rule__Primary__OrderopAssignment_0_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:8736:1: ( ( ( rule__Primary__OrderopAlternatives_0_1_0 ) ) )
+            // InternalCryptSL.g:8737:2: ( ( rule__Primary__OrderopAlternatives_0_1_0 ) )
+            {
+            // InternalCryptSL.g:8737:2: ( ( rule__Primary__OrderopAlternatives_0_1_0 ) )
+            // InternalCryptSL.g:8738:3: ( rule__Primary__OrderopAlternatives_0_1_0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getPrimaryAccess().getOrderopAlternatives_0_1_0()); 
+            }
+            // InternalCryptSL.g:8739:3: ( rule__Primary__OrderopAlternatives_0_1_0 )
+            // InternalCryptSL.g:8739:4: rule__Primary__OrderopAlternatives_0_1_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Primary__OrderopAlternatives_0_1_0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getPrimaryAccess().getOrderopAlternatives_0_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Primary__OrderopAssignment_0_1"
+
+
+    // $ANTLR start "rule__Primary__OrderopAssignment_1_3"
+    // InternalCryptSL.g:8747:1: rule__Primary__OrderopAssignment_1_3 : ( ( rule__Primary__OrderopAlternatives_1_3_0 ) ) ;
+    public final void rule__Primary__OrderopAssignment_1_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:8751:1: ( ( ( rule__Primary__OrderopAlternatives_1_3_0 ) ) )
+            // InternalCryptSL.g:8752:2: ( ( rule__Primary__OrderopAlternatives_1_3_0 ) )
+            {
+            // InternalCryptSL.g:8752:2: ( ( rule__Primary__OrderopAlternatives_1_3_0 ) )
+            // InternalCryptSL.g:8753:3: ( rule__Primary__OrderopAlternatives_1_3_0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getPrimaryAccess().getOrderopAlternatives_1_3_0()); 
+            }
+            // InternalCryptSL.g:8754:3: ( rule__Primary__OrderopAlternatives_1_3_0 )
+            // InternalCryptSL.g:8754:4: rule__Primary__OrderopAlternatives_1_3_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Primary__OrderopAlternatives_1_3_0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getPrimaryAccess().getOrderopAlternatives_1_3_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Primary__OrderopAssignment_1_3"
+
+
     // $ANTLR start "rule__LogicalImplyExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8694:1: rule__LogicalImplyExpression__OperatorAssignment_1_1 : ( ruleLogicalImply ) ;
+    // InternalCryptSL.g:8762:1: rule__LogicalImplyExpression__OperatorAssignment_1_1 : ( ruleLogicalImply ) ;
     public final void rule__LogicalImplyExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8698:1: ( ( ruleLogicalImply ) )
-            // InternalCryptSL.g:8699:2: ( ruleLogicalImply )
+            // InternalCryptSL.g:8766:1: ( ( ruleLogicalImply ) )
+            // InternalCryptSL.g:8767:2: ( ruleLogicalImply )
             {
-            // InternalCryptSL.g:8699:2: ( ruleLogicalImply )
-            // InternalCryptSL.g:8700:3: ruleLogicalImply
+            // InternalCryptSL.g:8767:2: ( ruleLogicalImply )
+            // InternalCryptSL.g:8768:3: ruleLogicalImply
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalImplyExpressionAccess().getOperatorLogicalImplyParserRuleCall_1_1_0()); 
@@ -28487,17 +28727,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalImplyExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8709:1: rule__LogicalImplyExpression__RightExpressionAssignment_1_2 : ( ruleLogicalOrExpression ) ;
+    // InternalCryptSL.g:8777:1: rule__LogicalImplyExpression__RightExpressionAssignment_1_2 : ( ruleLogicalOrExpression ) ;
     public final void rule__LogicalImplyExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8713:1: ( ( ruleLogicalOrExpression ) )
-            // InternalCryptSL.g:8714:2: ( ruleLogicalOrExpression )
+            // InternalCryptSL.g:8781:1: ( ( ruleLogicalOrExpression ) )
+            // InternalCryptSL.g:8782:2: ( ruleLogicalOrExpression )
             {
-            // InternalCryptSL.g:8714:2: ( ruleLogicalOrExpression )
-            // InternalCryptSL.g:8715:3: ruleLogicalOrExpression
+            // InternalCryptSL.g:8782:2: ( ruleLogicalOrExpression )
+            // InternalCryptSL.g:8783:3: ruleLogicalOrExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalImplyExpressionAccess().getRightExpressionLogicalOrExpressionParserRuleCall_1_2_0()); 
@@ -28532,23 +28772,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalImply__IMPLIESAssignment"
-    // InternalCryptSL.g:8724:1: rule__LogicalImply__IMPLIESAssignment : ( ( '=>' ) ) ;
+    // InternalCryptSL.g:8792:1: rule__LogicalImply__IMPLIESAssignment : ( ( '=>' ) ) ;
     public final void rule__LogicalImply__IMPLIESAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8728:1: ( ( ( '=>' ) ) )
-            // InternalCryptSL.g:8729:2: ( ( '=>' ) )
+            // InternalCryptSL.g:8796:1: ( ( ( '=>' ) ) )
+            // InternalCryptSL.g:8797:2: ( ( '=>' ) )
             {
-            // InternalCryptSL.g:8729:2: ( ( '=>' ) )
-            // InternalCryptSL.g:8730:3: ( '=>' )
+            // InternalCryptSL.g:8797:2: ( ( '=>' ) )
+            // InternalCryptSL.g:8798:3: ( '=>' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalImplyAccess().getIMPLIESEqualsSignGreaterThanSignKeyword_0()); 
             }
-            // InternalCryptSL.g:8731:3: ( '=>' )
-            // InternalCryptSL.g:8732:4: '=>'
+            // InternalCryptSL.g:8799:3: ( '=>' )
+            // InternalCryptSL.g:8800:4: '=>'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalImplyAccess().getIMPLIESEqualsSignGreaterThanSignKeyword_0()); 
@@ -28585,17 +28825,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalOrExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8743:1: rule__LogicalOrExpression__OperatorAssignment_1_1 : ( ruleLogicalOr ) ;
+    // InternalCryptSL.g:8811:1: rule__LogicalOrExpression__OperatorAssignment_1_1 : ( ruleLogicalOr ) ;
     public final void rule__LogicalOrExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8747:1: ( ( ruleLogicalOr ) )
-            // InternalCryptSL.g:8748:2: ( ruleLogicalOr )
+            // InternalCryptSL.g:8815:1: ( ( ruleLogicalOr ) )
+            // InternalCryptSL.g:8816:2: ( ruleLogicalOr )
             {
-            // InternalCryptSL.g:8748:2: ( ruleLogicalOr )
-            // InternalCryptSL.g:8749:3: ruleLogicalOr
+            // InternalCryptSL.g:8816:2: ( ruleLogicalOr )
+            // InternalCryptSL.g:8817:3: ruleLogicalOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalOrExpressionAccess().getOperatorLogicalOrParserRuleCall_1_1_0()); 
@@ -28630,17 +28870,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalOrExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8758:1: rule__LogicalOrExpression__RightExpressionAssignment_1_2 : ( ruleLogicalAndExpression ) ;
+    // InternalCryptSL.g:8826:1: rule__LogicalOrExpression__RightExpressionAssignment_1_2 : ( ruleLogicalAndExpression ) ;
     public final void rule__LogicalOrExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8762:1: ( ( ruleLogicalAndExpression ) )
-            // InternalCryptSL.g:8763:2: ( ruleLogicalAndExpression )
+            // InternalCryptSL.g:8830:1: ( ( ruleLogicalAndExpression ) )
+            // InternalCryptSL.g:8831:2: ( ruleLogicalAndExpression )
             {
-            // InternalCryptSL.g:8763:2: ( ruleLogicalAndExpression )
-            // InternalCryptSL.g:8764:3: ruleLogicalAndExpression
+            // InternalCryptSL.g:8831:2: ( ruleLogicalAndExpression )
+            // InternalCryptSL.g:8832:3: ruleLogicalAndExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalOrExpressionAccess().getRightExpressionLogicalAndExpressionParserRuleCall_1_2_0()); 
@@ -28675,23 +28915,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalOr__ORAssignment"
-    // InternalCryptSL.g:8773:1: rule__LogicalOr__ORAssignment : ( ( '||' ) ) ;
+    // InternalCryptSL.g:8841:1: rule__LogicalOr__ORAssignment : ( ( '||' ) ) ;
     public final void rule__LogicalOr__ORAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8777:1: ( ( ( '||' ) ) )
-            // InternalCryptSL.g:8778:2: ( ( '||' ) )
+            // InternalCryptSL.g:8845:1: ( ( ( '||' ) ) )
+            // InternalCryptSL.g:8846:2: ( ( '||' ) )
             {
-            // InternalCryptSL.g:8778:2: ( ( '||' ) )
-            // InternalCryptSL.g:8779:3: ( '||' )
+            // InternalCryptSL.g:8846:2: ( ( '||' ) )
+            // InternalCryptSL.g:8847:3: ( '||' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalOrAccess().getORVerticalLineVerticalLineKeyword_0()); 
             }
-            // InternalCryptSL.g:8780:3: ( '||' )
-            // InternalCryptSL.g:8781:4: '||'
+            // InternalCryptSL.g:8848:3: ( '||' )
+            // InternalCryptSL.g:8849:4: '||'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalOrAccess().getORVerticalLineVerticalLineKeyword_0()); 
@@ -28728,17 +28968,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalAndExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8792:1: rule__LogicalAndExpression__OperatorAssignment_1_1 : ( ruleLogicalAnd ) ;
+    // InternalCryptSL.g:8860:1: rule__LogicalAndExpression__OperatorAssignment_1_1 : ( ruleLogicalAnd ) ;
     public final void rule__LogicalAndExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8796:1: ( ( ruleLogicalAnd ) )
-            // InternalCryptSL.g:8797:2: ( ruleLogicalAnd )
+            // InternalCryptSL.g:8864:1: ( ( ruleLogicalAnd ) )
+            // InternalCryptSL.g:8865:2: ( ruleLogicalAnd )
             {
-            // InternalCryptSL.g:8797:2: ( ruleLogicalAnd )
-            // InternalCryptSL.g:8798:3: ruleLogicalAnd
+            // InternalCryptSL.g:8865:2: ( ruleLogicalAnd )
+            // InternalCryptSL.g:8866:3: ruleLogicalAnd
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalAndExpressionAccess().getOperatorLogicalAndParserRuleCall_1_1_0()); 
@@ -28773,17 +29013,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalAndExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8807:1: rule__LogicalAndExpression__RightExpressionAssignment_1_2 : ( ruleComparisonExpression ) ;
+    // InternalCryptSL.g:8875:1: rule__LogicalAndExpression__RightExpressionAssignment_1_2 : ( ruleComparisonExpression ) ;
     public final void rule__LogicalAndExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8811:1: ( ( ruleComparisonExpression ) )
-            // InternalCryptSL.g:8812:2: ( ruleComparisonExpression )
+            // InternalCryptSL.g:8879:1: ( ( ruleComparisonExpression ) )
+            // InternalCryptSL.g:8880:2: ( ruleComparisonExpression )
             {
-            // InternalCryptSL.g:8812:2: ( ruleComparisonExpression )
-            // InternalCryptSL.g:8813:3: ruleComparisonExpression
+            // InternalCryptSL.g:8880:2: ( ruleComparisonExpression )
+            // InternalCryptSL.g:8881:3: ruleComparisonExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalAndExpressionAccess().getRightExpressionComparisonExpressionParserRuleCall_1_2_0()); 
@@ -28818,23 +29058,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LogicalAnd__ANDAssignment"
-    // InternalCryptSL.g:8822:1: rule__LogicalAnd__ANDAssignment : ( ( '&&' ) ) ;
+    // InternalCryptSL.g:8890:1: rule__LogicalAnd__ANDAssignment : ( ( '&&' ) ) ;
     public final void rule__LogicalAnd__ANDAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8826:1: ( ( ( '&&' ) ) )
-            // InternalCryptSL.g:8827:2: ( ( '&&' ) )
+            // InternalCryptSL.g:8894:1: ( ( ( '&&' ) ) )
+            // InternalCryptSL.g:8895:2: ( ( '&&' ) )
             {
-            // InternalCryptSL.g:8827:2: ( ( '&&' ) )
-            // InternalCryptSL.g:8828:3: ( '&&' )
+            // InternalCryptSL.g:8895:2: ( ( '&&' ) )
+            // InternalCryptSL.g:8896:3: ( '&&' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalAndAccess().getANDAmpersandAmpersandKeyword_0()); 
             }
-            // InternalCryptSL.g:8829:3: ( '&&' )
-            // InternalCryptSL.g:8830:4: '&&'
+            // InternalCryptSL.g:8897:3: ( '&&' )
+            // InternalCryptSL.g:8898:4: '&&'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogicalAndAccess().getANDAmpersandAmpersandKeyword_0()); 
@@ -28871,17 +29111,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8841:1: rule__ComparisonExpression__OperatorAssignment_1_1 : ( ruleComparingEQNEQOperator ) ;
+    // InternalCryptSL.g:8909:1: rule__ComparisonExpression__OperatorAssignment_1_1 : ( ruleComparingEQNEQOperator ) ;
     public final void rule__ComparisonExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8845:1: ( ( ruleComparingEQNEQOperator ) )
-            // InternalCryptSL.g:8846:2: ( ruleComparingEQNEQOperator )
+            // InternalCryptSL.g:8913:1: ( ( ruleComparingEQNEQOperator ) )
+            // InternalCryptSL.g:8914:2: ( ruleComparingEQNEQOperator )
             {
-            // InternalCryptSL.g:8846:2: ( ruleComparingEQNEQOperator )
-            // InternalCryptSL.g:8847:3: ruleComparingEQNEQOperator
+            // InternalCryptSL.g:8914:2: ( ruleComparingEQNEQOperator )
+            // InternalCryptSL.g:8915:3: ruleComparingEQNEQOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparisonExpressionAccess().getOperatorComparingEQNEQOperatorParserRuleCall_1_1_0()); 
@@ -28916,17 +29156,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8856:1: rule__ComparisonExpression__RightExpressionAssignment_1_2 : ( ruleComparisonHigherOpExpression ) ;
+    // InternalCryptSL.g:8924:1: rule__ComparisonExpression__RightExpressionAssignment_1_2 : ( ruleComparisonHigherOpExpression ) ;
     public final void rule__ComparisonExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8860:1: ( ( ruleComparisonHigherOpExpression ) )
-            // InternalCryptSL.g:8861:2: ( ruleComparisonHigherOpExpression )
+            // InternalCryptSL.g:8928:1: ( ( ruleComparisonHigherOpExpression ) )
+            // InternalCryptSL.g:8929:2: ( ruleComparisonHigherOpExpression )
             {
-            // InternalCryptSL.g:8861:2: ( ruleComparisonHigherOpExpression )
-            // InternalCryptSL.g:8862:3: ruleComparisonHigherOpExpression
+            // InternalCryptSL.g:8929:2: ( ruleComparisonHigherOpExpression )
+            // InternalCryptSL.g:8930:3: ruleComparisonHigherOpExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparisonExpressionAccess().getRightExpressionComparisonHigherOpExpressionParserRuleCall_1_2_0()); 
@@ -28961,17 +29201,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonHigherOpExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8871:1: rule__ComparisonHigherOpExpression__OperatorAssignment_1_1 : ( ruleComparingRelOperator ) ;
+    // InternalCryptSL.g:8939:1: rule__ComparisonHigherOpExpression__OperatorAssignment_1_1 : ( ruleComparingRelOperator ) ;
     public final void rule__ComparisonHigherOpExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8875:1: ( ( ruleComparingRelOperator ) )
-            // InternalCryptSL.g:8876:2: ( ruleComparingRelOperator )
+            // InternalCryptSL.g:8943:1: ( ( ruleComparingRelOperator ) )
+            // InternalCryptSL.g:8944:2: ( ruleComparingRelOperator )
             {
-            // InternalCryptSL.g:8876:2: ( ruleComparingRelOperator )
-            // InternalCryptSL.g:8877:3: ruleComparingRelOperator
+            // InternalCryptSL.g:8944:2: ( ruleComparingRelOperator )
+            // InternalCryptSL.g:8945:3: ruleComparingRelOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparisonHigherOpExpressionAccess().getOperatorComparingRelOperatorParserRuleCall_1_1_0()); 
@@ -29006,17 +29246,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonHigherOpExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8886:1: rule__ComparisonHigherOpExpression__RightExpressionAssignment_1_2 : ( ruleArithmeticExpression ) ;
+    // InternalCryptSL.g:8954:1: rule__ComparisonHigherOpExpression__RightExpressionAssignment_1_2 : ( ruleArithmeticExpression ) ;
     public final void rule__ComparisonHigherOpExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8890:1: ( ( ruleArithmeticExpression ) )
-            // InternalCryptSL.g:8891:2: ( ruleArithmeticExpression )
+            // InternalCryptSL.g:8958:1: ( ( ruleArithmeticExpression ) )
+            // InternalCryptSL.g:8959:2: ( ruleArithmeticExpression )
             {
-            // InternalCryptSL.g:8891:2: ( ruleArithmeticExpression )
-            // InternalCryptSL.g:8892:3: ruleArithmeticExpression
+            // InternalCryptSL.g:8959:2: ( ruleArithmeticExpression )
+            // InternalCryptSL.g:8960:3: ruleArithmeticExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparisonHigherOpExpressionAccess().getRightExpressionArithmeticExpressionParserRuleCall_1_2_0()); 
@@ -29051,28 +29291,28 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingRelOperator__LESSAssignment_0"
-    // InternalCryptSL.g:8901:1: rule__ComparingRelOperator__LESSAssignment_0 : ( ( '<' ) ) ;
+    // InternalCryptSL.g:8969:1: rule__ComparingRelOperator__LESSAssignment_0 : ( ( '<' ) ) ;
     public final void rule__ComparingRelOperator__LESSAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8905:1: ( ( ( '<' ) ) )
-            // InternalCryptSL.g:8906:2: ( ( '<' ) )
+            // InternalCryptSL.g:8973:1: ( ( ( '<' ) ) )
+            // InternalCryptSL.g:8974:2: ( ( '<' ) )
             {
-            // InternalCryptSL.g:8906:2: ( ( '<' ) )
-            // InternalCryptSL.g:8907:3: ( '<' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getComparingRelOperatorAccess().getLESSLessThanSignKeyword_0_0()); 
-            }
-            // InternalCryptSL.g:8908:3: ( '<' )
-            // InternalCryptSL.g:8909:4: '<'
+            // InternalCryptSL.g:8974:2: ( ( '<' ) )
+            // InternalCryptSL.g:8975:3: ( '<' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getLESSLessThanSignKeyword_0_0()); 
             }
-            match(input,42,FOLLOW_2); if (state.failed) return ;
+            // InternalCryptSL.g:8976:3: ( '<' )
+            // InternalCryptSL.g:8977:4: '<'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComparingRelOperatorAccess().getLESSLessThanSignKeyword_0_0()); 
+            }
+            match(input,41,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getComparingRelOperatorAccess().getLESSLessThanSignKeyword_0_0()); 
             }
@@ -29104,23 +29344,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1"
-    // InternalCryptSL.g:8920:1: rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1 : ( ( '<=' ) ) ;
+    // InternalCryptSL.g:8988:1: rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1 : ( ( '<=' ) ) ;
     public final void rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8924:1: ( ( ( '<=' ) ) )
-            // InternalCryptSL.g:8925:2: ( ( '<=' ) )
+            // InternalCryptSL.g:8992:1: ( ( ( '<=' ) ) )
+            // InternalCryptSL.g:8993:2: ( ( '<=' ) )
             {
-            // InternalCryptSL.g:8925:2: ( ( '<=' ) )
-            // InternalCryptSL.g:8926:3: ( '<=' )
+            // InternalCryptSL.g:8993:2: ( ( '<=' ) )
+            // InternalCryptSL.g:8994:3: ( '<=' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getLESS_OR_EQUALLessThanSignEqualsSignKeyword_1_0()); 
             }
-            // InternalCryptSL.g:8927:3: ( '<=' )
-            // InternalCryptSL.g:8928:4: '<='
+            // InternalCryptSL.g:8995:3: ( '<=' )
+            // InternalCryptSL.g:8996:4: '<='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getLESS_OR_EQUALLessThanSignEqualsSignKeyword_1_0()); 
@@ -29157,23 +29397,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2"
-    // InternalCryptSL.g:8939:1: rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2 : ( ( '>=' ) ) ;
+    // InternalCryptSL.g:9007:1: rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2 : ( ( '>=' ) ) ;
     public final void rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8943:1: ( ( ( '>=' ) ) )
-            // InternalCryptSL.g:8944:2: ( ( '>=' ) )
+            // InternalCryptSL.g:9011:1: ( ( ( '>=' ) ) )
+            // InternalCryptSL.g:9012:2: ( ( '>=' ) )
             {
-            // InternalCryptSL.g:8944:2: ( ( '>=' ) )
-            // InternalCryptSL.g:8945:3: ( '>=' )
+            // InternalCryptSL.g:9012:2: ( ( '>=' ) )
+            // InternalCryptSL.g:9013:3: ( '>=' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0()); 
             }
-            // InternalCryptSL.g:8946:3: ( '>=' )
-            // InternalCryptSL.g:8947:4: '>='
+            // InternalCryptSL.g:9014:3: ( '>=' )
+            // InternalCryptSL.g:9015:4: '>='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0()); 
@@ -29210,28 +29450,28 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingRelOperator__GREATERAssignment_3"
-    // InternalCryptSL.g:8958:1: rule__ComparingRelOperator__GREATERAssignment_3 : ( ( '>' ) ) ;
+    // InternalCryptSL.g:9026:1: rule__ComparingRelOperator__GREATERAssignment_3 : ( ( '>' ) ) ;
     public final void rule__ComparingRelOperator__GREATERAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8962:1: ( ( ( '>' ) ) )
-            // InternalCryptSL.g:8963:2: ( ( '>' ) )
+            // InternalCryptSL.g:9030:1: ( ( ( '>' ) ) )
+            // InternalCryptSL.g:9031:2: ( ( '>' ) )
             {
-            // InternalCryptSL.g:8963:2: ( ( '>' ) )
-            // InternalCryptSL.g:8964:3: ( '>' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getComparingRelOperatorAccess().getGREATERGreaterThanSignKeyword_3_0()); 
-            }
-            // InternalCryptSL.g:8965:3: ( '>' )
-            // InternalCryptSL.g:8966:4: '>'
+            // InternalCryptSL.g:9031:2: ( ( '>' ) )
+            // InternalCryptSL.g:9032:3: ( '>' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingRelOperatorAccess().getGREATERGreaterThanSignKeyword_3_0()); 
             }
-            match(input,43,FOLLOW_2); if (state.failed) return ;
+            // InternalCryptSL.g:9033:3: ( '>' )
+            // InternalCryptSL.g:9034:4: '>'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getComparingRelOperatorAccess().getGREATERGreaterThanSignKeyword_3_0()); 
+            }
+            match(input,42,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getComparingRelOperatorAccess().getGREATERGreaterThanSignKeyword_3_0()); 
             }
@@ -29263,17 +29503,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditionExpression__OperatorAssignment_1_1"
-    // InternalCryptSL.g:8977:1: rule__AdditionExpression__OperatorAssignment_1_1 : ( ruleAdditionOperator ) ;
+    // InternalCryptSL.g:9045:1: rule__AdditionExpression__OperatorAssignment_1_1 : ( ruleAdditionOperator ) ;
     public final void rule__AdditionExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8981:1: ( ( ruleAdditionOperator ) )
-            // InternalCryptSL.g:8982:2: ( ruleAdditionOperator )
+            // InternalCryptSL.g:9049:1: ( ( ruleAdditionOperator ) )
+            // InternalCryptSL.g:9050:2: ( ruleAdditionOperator )
             {
-            // InternalCryptSL.g:8982:2: ( ruleAdditionOperator )
-            // InternalCryptSL.g:8983:3: ruleAdditionOperator
+            // InternalCryptSL.g:9050:2: ( ruleAdditionOperator )
+            // InternalCryptSL.g:9051:3: ruleAdditionOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionExpressionAccess().getOperatorAdditionOperatorParserRuleCall_1_1_0()); 
@@ -29308,17 +29548,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditionExpression__RightExpressionAssignment_1_2"
-    // InternalCryptSL.g:8992:1: rule__AdditionExpression__RightExpressionAssignment_1_2 : ( ruleMultiplicationExpression ) ;
+    // InternalCryptSL.g:9060:1: rule__AdditionExpression__RightExpressionAssignment_1_2 : ( ruleMultiplicationExpression ) ;
     public final void rule__AdditionExpression__RightExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:8996:1: ( ( ruleMultiplicationExpression ) )
-            // InternalCryptSL.g:8997:2: ( ruleMultiplicationExpression )
+            // InternalCryptSL.g:9064:1: ( ( ruleMultiplicationExpression ) )
+            // InternalCryptSL.g:9065:2: ( ruleMultiplicationExpression )
             {
-            // InternalCryptSL.g:8997:2: ( ruleMultiplicationExpression )
-            // InternalCryptSL.g:8998:3: ruleMultiplicationExpression
+            // InternalCryptSL.g:9065:2: ( ruleMultiplicationExpression )
+            // InternalCryptSL.g:9066:3: ruleMultiplicationExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionExpressionAccess().getRightExpressionMultiplicationExpressionParserRuleCall_1_2_0()); 
@@ -29353,23 +29593,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditionOperator__PLUSAssignment_0"
-    // InternalCryptSL.g:9007:1: rule__AdditionOperator__PLUSAssignment_0 : ( ( '+' ) ) ;
+    // InternalCryptSL.g:9075:1: rule__AdditionOperator__PLUSAssignment_0 : ( ( '+' ) ) ;
     public final void rule__AdditionOperator__PLUSAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9011:1: ( ( ( '+' ) ) )
-            // InternalCryptSL.g:9012:2: ( ( '+' ) )
+            // InternalCryptSL.g:9079:1: ( ( ( '+' ) ) )
+            // InternalCryptSL.g:9080:2: ( ( '+' ) )
             {
-            // InternalCryptSL.g:9012:2: ( ( '+' ) )
-            // InternalCryptSL.g:9013:3: ( '+' )
+            // InternalCryptSL.g:9080:2: ( ( '+' ) )
+            // InternalCryptSL.g:9081:3: ( '+' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionOperatorAccess().getPLUSPlusSignKeyword_0_0()); 
             }
-            // InternalCryptSL.g:9014:3: ( '+' )
-            // InternalCryptSL.g:9015:4: '+'
+            // InternalCryptSL.g:9082:3: ( '+' )
+            // InternalCryptSL.g:9083:4: '+'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionOperatorAccess().getPLUSPlusSignKeyword_0_0()); 
@@ -29406,23 +29646,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditionOperator__MINUSAssignment_1"
-    // InternalCryptSL.g:9026:1: rule__AdditionOperator__MINUSAssignment_1 : ( ( '-' ) ) ;
+    // InternalCryptSL.g:9094:1: rule__AdditionOperator__MINUSAssignment_1 : ( ( '-' ) ) ;
     public final void rule__AdditionOperator__MINUSAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9030:1: ( ( ( '-' ) ) )
-            // InternalCryptSL.g:9031:2: ( ( '-' ) )
+            // InternalCryptSL.g:9098:1: ( ( ( '-' ) ) )
+            // InternalCryptSL.g:9099:2: ( ( '-' ) )
             {
-            // InternalCryptSL.g:9031:2: ( ( '-' ) )
-            // InternalCryptSL.g:9032:3: ( '-' )
+            // InternalCryptSL.g:9099:2: ( ( '-' ) )
+            // InternalCryptSL.g:9100:3: ( '-' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionOperatorAccess().getMINUSHyphenMinusKeyword_1_0()); 
             }
-            // InternalCryptSL.g:9033:3: ( '-' )
-            // InternalCryptSL.g:9034:4: '-'
+            // InternalCryptSL.g:9101:3: ( '-' )
+            // InternalCryptSL.g:9102:4: '-'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionOperatorAccess().getMINUSHyphenMinusKeyword_1_0()); 
@@ -29459,17 +29699,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicationExpression__OperatorAssignment_1_1_1"
-    // InternalCryptSL.g:9045:1: rule__MultiplicationExpression__OperatorAssignment_1_1_1 : ( ruleMultiplicationOperator ) ;
+    // InternalCryptSL.g:9113:1: rule__MultiplicationExpression__OperatorAssignment_1_1_1 : ( ruleMultiplicationOperator ) ;
     public final void rule__MultiplicationExpression__OperatorAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9049:1: ( ( ruleMultiplicationOperator ) )
-            // InternalCryptSL.g:9050:2: ( ruleMultiplicationOperator )
+            // InternalCryptSL.g:9117:1: ( ( ruleMultiplicationOperator ) )
+            // InternalCryptSL.g:9118:2: ( ruleMultiplicationOperator )
             {
-            // InternalCryptSL.g:9050:2: ( ruleMultiplicationOperator )
-            // InternalCryptSL.g:9051:3: ruleMultiplicationOperator
+            // InternalCryptSL.g:9118:2: ( ruleMultiplicationOperator )
+            // InternalCryptSL.g:9119:3: ruleMultiplicationOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationExpressionAccess().getOperatorMultiplicationOperatorParserRuleCall_1_1_1_0()); 
@@ -29504,17 +29744,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicationExpression__RightExpressionAssignment_1_1_2"
-    // InternalCryptSL.g:9060:1: rule__MultiplicationExpression__RightExpressionAssignment_1_1_2 : ( ruleOperand ) ;
+    // InternalCryptSL.g:9128:1: rule__MultiplicationExpression__RightExpressionAssignment_1_1_2 : ( ruleOperand ) ;
     public final void rule__MultiplicationExpression__RightExpressionAssignment_1_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9064:1: ( ( ruleOperand ) )
-            // InternalCryptSL.g:9065:2: ( ruleOperand )
+            // InternalCryptSL.g:9132:1: ( ( ruleOperand ) )
+            // InternalCryptSL.g:9133:2: ( ruleOperand )
             {
-            // InternalCryptSL.g:9065:2: ( ruleOperand )
-            // InternalCryptSL.g:9066:3: ruleOperand
+            // InternalCryptSL.g:9133:2: ( ruleOperand )
+            // InternalCryptSL.g:9134:3: ruleOperand
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationExpressionAccess().getRightExpressionOperandParserRuleCall_1_1_2_0()); 
@@ -29549,23 +29789,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicationOperator__TIMESAssignment_0"
-    // InternalCryptSL.g:9075:1: rule__MultiplicationOperator__TIMESAssignment_0 : ( ( '*' ) ) ;
+    // InternalCryptSL.g:9143:1: rule__MultiplicationOperator__TIMESAssignment_0 : ( ( '*' ) ) ;
     public final void rule__MultiplicationOperator__TIMESAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9079:1: ( ( ( '*' ) ) )
-            // InternalCryptSL.g:9080:2: ( ( '*' ) )
+            // InternalCryptSL.g:9147:1: ( ( ( '*' ) ) )
+            // InternalCryptSL.g:9148:2: ( ( '*' ) )
             {
-            // InternalCryptSL.g:9080:2: ( ( '*' ) )
-            // InternalCryptSL.g:9081:3: ( '*' )
+            // InternalCryptSL.g:9148:2: ( ( '*' ) )
+            // InternalCryptSL.g:9149:3: ( '*' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationOperatorAccess().getTIMESAsteriskKeyword_0_0()); 
             }
-            // InternalCryptSL.g:9082:3: ( '*' )
-            // InternalCryptSL.g:9083:4: '*'
+            // InternalCryptSL.g:9150:3: ( '*' )
+            // InternalCryptSL.g:9151:4: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationOperatorAccess().getTIMESAsteriskKeyword_0_0()); 
@@ -29602,23 +29842,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicationOperator__DIVIDEAssignment_1"
-    // InternalCryptSL.g:9094:1: rule__MultiplicationOperator__DIVIDEAssignment_1 : ( ( '/' ) ) ;
+    // InternalCryptSL.g:9162:1: rule__MultiplicationOperator__DIVIDEAssignment_1 : ( ( '/' ) ) ;
     public final void rule__MultiplicationOperator__DIVIDEAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9098:1: ( ( ( '/' ) ) )
-            // InternalCryptSL.g:9099:2: ( ( '/' ) )
+            // InternalCryptSL.g:9166:1: ( ( ( '/' ) ) )
+            // InternalCryptSL.g:9167:2: ( ( '/' ) )
             {
-            // InternalCryptSL.g:9099:2: ( ( '/' ) )
-            // InternalCryptSL.g:9100:3: ( '/' )
+            // InternalCryptSL.g:9167:2: ( ( '/' ) )
+            // InternalCryptSL.g:9168:3: ( '/' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationOperatorAccess().getDIVIDESolidusKeyword_1_0()); 
             }
-            // InternalCryptSL.g:9101:3: ( '/' )
-            // InternalCryptSL.g:9102:4: '/'
+            // InternalCryptSL.g:9169:3: ( '/' )
+            // InternalCryptSL.g:9170:4: '/'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiplicationOperatorAccess().getDIVIDESolidusKeyword_1_0()); 
@@ -29655,17 +29895,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnaryPreExpression__OperatorAssignment_1_0"
-    // InternalCryptSL.g:9113:1: rule__UnaryPreExpression__OperatorAssignment_1_0 : ( ruleUnaryPreOperator ) ;
+    // InternalCryptSL.g:9181:1: rule__UnaryPreExpression__OperatorAssignment_1_0 : ( ruleUnaryPreOperator ) ;
     public final void rule__UnaryPreExpression__OperatorAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9117:1: ( ( ruleUnaryPreOperator ) )
-            // InternalCryptSL.g:9118:2: ( ruleUnaryPreOperator )
+            // InternalCryptSL.g:9185:1: ( ( ruleUnaryPreOperator ) )
+            // InternalCryptSL.g:9186:2: ( ruleUnaryPreOperator )
             {
-            // InternalCryptSL.g:9118:2: ( ruleUnaryPreOperator )
-            // InternalCryptSL.g:9119:3: ruleUnaryPreOperator
+            // InternalCryptSL.g:9186:2: ( ruleUnaryPreOperator )
+            // InternalCryptSL.g:9187:3: ruleUnaryPreOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryPreExpressionAccess().getOperatorUnaryPreOperatorParserRuleCall_1_0_0()); 
@@ -29700,17 +29940,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1"
-    // InternalCryptSL.g:9128:1: rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1 : ( ruleOperand ) ;
+    // InternalCryptSL.g:9196:1: rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1 : ( ruleOperand ) ;
     public final void rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9132:1: ( ( ruleOperand ) )
-            // InternalCryptSL.g:9133:2: ( ruleOperand )
+            // InternalCryptSL.g:9200:1: ( ( ruleOperand ) )
+            // InternalCryptSL.g:9201:2: ( ruleOperand )
             {
-            // InternalCryptSL.g:9133:2: ( ruleOperand )
-            // InternalCryptSL.g:9134:3: ruleOperand
+            // InternalCryptSL.g:9201:2: ( ruleOperand )
+            // InternalCryptSL.g:9202:3: ruleOperand
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryPreExpressionAccess().getEnclosedExpressionOperandParserRuleCall_1_1_0()); 
@@ -29744,24 +29984,114 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1"
 
 
+    // $ANTLR start "rule__LiteralExpression__NameAssignment_0"
+    // InternalCryptSL.g:9211:1: rule__LiteralExpression__NameAssignment_0 : ( ruleLiteral ) ;
+    public final void rule__LiteralExpression__NameAssignment_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:9215:1: ( ( ruleLiteral ) )
+            // InternalCryptSL.g:9216:2: ( ruleLiteral )
+            {
+            // InternalCryptSL.g:9216:2: ( ruleLiteral )
+            // InternalCryptSL.g:9217:3: ruleLiteral
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getLiteralExpressionAccess().getNameLiteralParserRuleCall_0_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            ruleLiteral();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getLiteralExpressionAccess().getNameLiteralParserRuleCall_0_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__LiteralExpression__NameAssignment_0"
+
+
+    // $ANTLR start "rule__LiteralExpression__NameAssignment_1"
+    // InternalCryptSL.g:9226:1: rule__LiteralExpression__NameAssignment_1 : ( ruleAggregateExpression ) ;
+    public final void rule__LiteralExpression__NameAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalCryptSL.g:9230:1: ( ( ruleAggregateExpression ) )
+            // InternalCryptSL.g:9231:2: ( ruleAggregateExpression )
+            {
+            // InternalCryptSL.g:9231:2: ( ruleAggregateExpression )
+            // InternalCryptSL.g:9232:3: ruleAggregateExpression
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getLiteralExpressionAccess().getNameAggregateExpressionParserRuleCall_1_0()); 
+            }
+            pushFollow(FOLLOW_2);
+            ruleAggregateExpression();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getLiteralExpressionAccess().getNameAggregateExpressionParserRuleCall_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__LiteralExpression__NameAssignment_1"
+
+
     // $ANTLR start "rule__LiteralExpression__ObjAssignment_2_1"
-    // InternalCryptSL.g:9143:1: rule__LiteralExpression__ObjAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // InternalCryptSL.g:9241:1: rule__LiteralExpression__ObjAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__LiteralExpression__ObjAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9147:1: ( ( ( RULE_ID ) ) )
-            // InternalCryptSL.g:9148:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9245:1: ( ( ( RULE_ID ) ) )
+            // InternalCryptSL.g:9246:2: ( ( RULE_ID ) )
             {
-            // InternalCryptSL.g:9148:2: ( ( RULE_ID ) )
-            // InternalCryptSL.g:9149:3: ( RULE_ID )
+            // InternalCryptSL.g:9246:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9247:3: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionAccess().getObjObjectCrossReference_2_1_0()); 
             }
-            // InternalCryptSL.g:9150:3: ( RULE_ID )
-            // InternalCryptSL.g:9151:4: RULE_ID
+            // InternalCryptSL.g:9248:3: ( RULE_ID )
+            // InternalCryptSL.g:9249:4: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionAccess().getObjObjectIDTerminalRuleCall_2_1_0_1()); 
@@ -29798,23 +30128,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LiteralExpression__TypeAssignment_2_3"
-    // InternalCryptSL.g:9162:1: rule__LiteralExpression__TypeAssignment_2_3 : ( ( ruleQualifiedName ) ) ;
+    // InternalCryptSL.g:9260:1: rule__LiteralExpression__TypeAssignment_2_3 : ( ( ruleQualifiedName ) ) ;
     public final void rule__LiteralExpression__TypeAssignment_2_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9166:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalCryptSL.g:9167:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9264:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalCryptSL.g:9265:2: ( ( ruleQualifiedName ) )
             {
-            // InternalCryptSL.g:9167:2: ( ( ruleQualifiedName ) )
-            // InternalCryptSL.g:9168:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9265:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9266:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionAccess().getTypeJvmTypeCrossReference_2_3_0()); 
             }
-            // InternalCryptSL.g:9169:3: ( ruleQualifiedName )
-            // InternalCryptSL.g:9170:4: ruleQualifiedName
+            // InternalCryptSL.g:9267:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9268:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionAccess().getTypeJvmTypeQualifiedNameParserRuleCall_2_3_0_1()); 
@@ -29855,23 +30185,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AggregateExpression__ValueAssignment_0"
-    // InternalCryptSL.g:9181:1: rule__AggregateExpression__ValueAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalCryptSL.g:9279:1: rule__AggregateExpression__ValueAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__AggregateExpression__ValueAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9185:1: ( ( ( RULE_ID ) ) )
-            // InternalCryptSL.g:9186:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9283:1: ( ( ( RULE_ID ) ) )
+            // InternalCryptSL.g:9284:2: ( ( RULE_ID ) )
             {
-            // InternalCryptSL.g:9186:2: ( ( RULE_ID ) )
-            // InternalCryptSL.g:9187:3: ( RULE_ID )
+            // InternalCryptSL.g:9284:2: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9285:3: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAggregateExpressionAccess().getValueSuperTypeCrossReference_0_0()); 
             }
-            // InternalCryptSL.g:9188:3: ( RULE_ID )
-            // InternalCryptSL.g:9189:4: RULE_ID
+            // InternalCryptSL.g:9286:3: ( RULE_ID )
+            // InternalCryptSL.g:9287:4: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAggregateExpressionAccess().getValueSuperTypeIDTerminalRuleCall_0_0_1()); 
@@ -29908,23 +30238,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnaryPreOperator__NOTAssignment"
-    // InternalCryptSL.g:9200:1: rule__UnaryPreOperator__NOTAssignment : ( ( '!' ) ) ;
+    // InternalCryptSL.g:9298:1: rule__UnaryPreOperator__NOTAssignment : ( ( '!' ) ) ;
     public final void rule__UnaryPreOperator__NOTAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9204:1: ( ( ( '!' ) ) )
-            // InternalCryptSL.g:9205:2: ( ( '!' ) )
+            // InternalCryptSL.g:9302:1: ( ( ( '!' ) ) )
+            // InternalCryptSL.g:9303:2: ( ( '!' ) )
             {
-            // InternalCryptSL.g:9205:2: ( ( '!' ) )
-            // InternalCryptSL.g:9206:3: ( '!' )
+            // InternalCryptSL.g:9303:2: ( ( '!' ) )
+            // InternalCryptSL.g:9304:3: ( '!' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryPreOperatorAccess().getNOTExclamationMarkKeyword_0()); 
             }
-            // InternalCryptSL.g:9207:3: ( '!' )
-            // InternalCryptSL.g:9208:4: '!'
+            // InternalCryptSL.g:9305:3: ( '!' )
+            // InternalCryptSL.g:9306:4: '!'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryPreOperatorAccess().getNOTExclamationMarkKeyword_0()); 
@@ -29961,23 +30291,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingEQNEQOperator__EQUALAssignment_0"
-    // InternalCryptSL.g:9219:1: rule__ComparingEQNEQOperator__EQUALAssignment_0 : ( ( '==' ) ) ;
+    // InternalCryptSL.g:9317:1: rule__ComparingEQNEQOperator__EQUALAssignment_0 : ( ( '==' ) ) ;
     public final void rule__ComparingEQNEQOperator__EQUALAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9223:1: ( ( ( '==' ) ) )
-            // InternalCryptSL.g:9224:2: ( ( '==' ) )
+            // InternalCryptSL.g:9321:1: ( ( ( '==' ) ) )
+            // InternalCryptSL.g:9322:2: ( ( '==' ) )
             {
-            // InternalCryptSL.g:9224:2: ( ( '==' ) )
-            // InternalCryptSL.g:9225:3: ( '==' )
+            // InternalCryptSL.g:9322:2: ( ( '==' ) )
+            // InternalCryptSL.g:9323:3: ( '==' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingEQNEQOperatorAccess().getEQUALEqualsSignEqualsSignKeyword_0_0()); 
             }
-            // InternalCryptSL.g:9226:3: ( '==' )
-            // InternalCryptSL.g:9227:4: '=='
+            // InternalCryptSL.g:9324:3: ( '==' )
+            // InternalCryptSL.g:9325:4: '=='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingEQNEQOperatorAccess().getEQUALEqualsSignEqualsSignKeyword_0_0()); 
@@ -30014,23 +30344,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparingEQNEQOperator__UNEQUALAssignment_1"
-    // InternalCryptSL.g:9238:1: rule__ComparingEQNEQOperator__UNEQUALAssignment_1 : ( ( '!=' ) ) ;
+    // InternalCryptSL.g:9336:1: rule__ComparingEQNEQOperator__UNEQUALAssignment_1 : ( ( '!=' ) ) ;
     public final void rule__ComparingEQNEQOperator__UNEQUALAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9242:1: ( ( ( '!=' ) ) )
-            // InternalCryptSL.g:9243:2: ( ( '!=' ) )
+            // InternalCryptSL.g:9340:1: ( ( ( '!=' ) ) )
+            // InternalCryptSL.g:9341:2: ( ( '!=' ) )
             {
-            // InternalCryptSL.g:9243:2: ( ( '!=' ) )
-            // InternalCryptSL.g:9244:3: ( '!=' )
+            // InternalCryptSL.g:9341:2: ( ( '!=' ) )
+            // InternalCryptSL.g:9342:3: ( '!=' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingEQNEQOperatorAccess().getUNEQUALExclamationMarkEqualsSignKeyword_1_0()); 
             }
-            // InternalCryptSL.g:9245:3: ( '!=' )
-            // InternalCryptSL.g:9246:4: '!='
+            // InternalCryptSL.g:9343:3: ( '!=' )
+            // InternalCryptSL.g:9344:4: '!='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getComparingEQNEQOperatorAccess().getUNEQUALExclamationMarkEqualsSignKeyword_1_0()); 
@@ -30067,17 +30397,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Cons__ConsAssignment_0_0"
-    // InternalCryptSL.g:9257:1: rule__Cons__ConsAssignment_0_0 : ( ruleConsPred ) ;
+    // InternalCryptSL.g:9355:1: rule__Cons__ConsAssignment_0_0 : ( ruleConsPred ) ;
     public final void rule__Cons__ConsAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9261:1: ( ( ruleConsPred ) )
-            // InternalCryptSL.g:9262:2: ( ruleConsPred )
+            // InternalCryptSL.g:9359:1: ( ( ruleConsPred ) )
+            // InternalCryptSL.g:9360:2: ( ruleConsPred )
             {
-            // InternalCryptSL.g:9262:2: ( ruleConsPred )
-            // InternalCryptSL.g:9263:3: ruleConsPred
+            // InternalCryptSL.g:9360:2: ( ruleConsPred )
+            // InternalCryptSL.g:9361:3: ruleConsPred
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getConsConsPredParserRuleCall_0_0_0()); 
@@ -30112,17 +30442,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Cons__LitsleftAssignment_0_3"
-    // InternalCryptSL.g:9272:1: rule__Cons__LitsleftAssignment_0_3 : ( ruleLitList ) ;
+    // InternalCryptSL.g:9370:1: rule__Cons__LitsleftAssignment_0_3 : ( ruleLitList ) ;
     public final void rule__Cons__LitsleftAssignment_0_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9276:1: ( ( ruleLitList ) )
-            // InternalCryptSL.g:9277:2: ( ruleLitList )
+            // InternalCryptSL.g:9374:1: ( ( ruleLitList ) )
+            // InternalCryptSL.g:9375:2: ( ruleLitList )
             {
-            // InternalCryptSL.g:9277:2: ( ruleLitList )
-            // InternalCryptSL.g:9278:3: ruleLitList
+            // InternalCryptSL.g:9375:2: ( ruleLitList )
+            // InternalCryptSL.g:9376:3: ruleLitList
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getLitsleftLitListParserRuleCall_0_3_0()); 
@@ -30157,17 +30487,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Cons__ConsAssignment_1"
-    // InternalCryptSL.g:9287:1: rule__Cons__ConsAssignment_1 : ( ruleLiteralExpression ) ;
+    // InternalCryptSL.g:9385:1: rule__Cons__ConsAssignment_1 : ( ruleLiteralExpression ) ;
     public final void rule__Cons__ConsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9291:1: ( ( ruleLiteralExpression ) )
-            // InternalCryptSL.g:9292:2: ( ruleLiteralExpression )
+            // InternalCryptSL.g:9389:1: ( ( ruleLiteralExpression ) )
+            // InternalCryptSL.g:9390:2: ( ruleLiteralExpression )
             {
-            // InternalCryptSL.g:9292:2: ( ruleLiteralExpression )
-            // InternalCryptSL.g:9293:3: ruleLiteralExpression
+            // InternalCryptSL.g:9390:2: ( ruleLiteralExpression )
+            // InternalCryptSL.g:9391:3: ruleLiteralExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConsAccess().getConsLiteralExpressionParserRuleCall_1_0()); 
@@ -30202,17 +30532,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LitList__ParametersAssignment_0"
-    // InternalCryptSL.g:9302:1: rule__LitList__ParametersAssignment_0 : ( ruleLiteral ) ;
+    // InternalCryptSL.g:9400:1: rule__LitList__ParametersAssignment_0 : ( ruleLiteral ) ;
     public final void rule__LitList__ParametersAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9306:1: ( ( ruleLiteral ) )
-            // InternalCryptSL.g:9307:2: ( ruleLiteral )
+            // InternalCryptSL.g:9404:1: ( ( ruleLiteral ) )
+            // InternalCryptSL.g:9405:2: ( ruleLiteral )
             {
-            // InternalCryptSL.g:9307:2: ( ruleLiteral )
-            // InternalCryptSL.g:9308:3: ruleLiteral
+            // InternalCryptSL.g:9405:2: ( ruleLiteral )
+            // InternalCryptSL.g:9406:3: ruleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLitListAccess().getParametersLiteralParserRuleCall_0_0()); 
@@ -30247,17 +30577,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LitList__ParametersAssignment_1_1_0"
-    // InternalCryptSL.g:9317:1: rule__LitList__ParametersAssignment_1_1_0 : ( ruleLiteral ) ;
+    // InternalCryptSL.g:9415:1: rule__LitList__ParametersAssignment_1_1_0 : ( ruleLiteral ) ;
     public final void rule__LitList__ParametersAssignment_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9321:1: ( ( ruleLiteral ) )
-            // InternalCryptSL.g:9322:2: ( ruleLiteral )
+            // InternalCryptSL.g:9419:1: ( ( ruleLiteral ) )
+            // InternalCryptSL.g:9420:2: ( ruleLiteral )
             {
-            // InternalCryptSL.g:9322:2: ( ruleLiteral )
-            // InternalCryptSL.g:9323:3: ruleLiteral
+            // InternalCryptSL.g:9420:2: ( ruleLiteral )
+            // InternalCryptSL.g:9421:3: ruleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLitListAccess().getParametersLiteralParserRuleCall_1_1_0_0()); 
@@ -30292,17 +30622,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Pred__PredNameAssignment_0"
-    // InternalCryptSL.g:9332:1: rule__Pred__PredNameAssignment_0 : ( RULE_ID ) ;
+    // InternalCryptSL.g:9430:1: rule__Pred__PredNameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Pred__PredNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9336:1: ( ( RULE_ID ) )
-            // InternalCryptSL.g:9337:2: ( RULE_ID )
+            // InternalCryptSL.g:9434:1: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9435:2: ( RULE_ID )
             {
-            // InternalCryptSL.g:9337:2: ( RULE_ID )
-            // InternalCryptSL.g:9338:3: RULE_ID
+            // InternalCryptSL.g:9435:2: ( RULE_ID )
+            // InternalCryptSL.g:9436:3: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPredAccess().getPredNameIDTerminalRuleCall_0_0()); 
@@ -30333,17 +30663,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Pred__ParListAssignment_2"
-    // InternalCryptSL.g:9347:1: rule__Pred__ParListAssignment_2 : ( ruleSuParList ) ;
+    // InternalCryptSL.g:9445:1: rule__Pred__ParListAssignment_2 : ( ruleSuParList ) ;
     public final void rule__Pred__ParListAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9351:1: ( ( ruleSuParList ) )
-            // InternalCryptSL.g:9352:2: ( ruleSuParList )
+            // InternalCryptSL.g:9449:1: ( ( ruleSuParList ) )
+            // InternalCryptSL.g:9450:2: ( ruleSuParList )
             {
-            // InternalCryptSL.g:9352:2: ( ruleSuParList )
-            // InternalCryptSL.g:9353:3: ruleSuParList
+            // InternalCryptSL.g:9450:2: ( ruleSuParList )
+            // InternalCryptSL.g:9451:3: ruleSuParList
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPredAccess().getParListSuParListParserRuleCall_2_0()); 
@@ -30378,17 +30708,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SuParList__ParametersAssignment_0"
-    // InternalCryptSL.g:9362:1: rule__SuParList__ParametersAssignment_0 : ( ruleSuPar ) ;
+    // InternalCryptSL.g:9460:1: rule__SuParList__ParametersAssignment_0 : ( ruleSuPar ) ;
     public final void rule__SuParList__ParametersAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9366:1: ( ( ruleSuPar ) )
-            // InternalCryptSL.g:9367:2: ( ruleSuPar )
+            // InternalCryptSL.g:9464:1: ( ( ruleSuPar ) )
+            // InternalCryptSL.g:9465:2: ( ruleSuPar )
             {
-            // InternalCryptSL.g:9367:2: ( ruleSuPar )
-            // InternalCryptSL.g:9368:3: ruleSuPar
+            // InternalCryptSL.g:9465:2: ( ruleSuPar )
+            // InternalCryptSL.g:9466:3: ruleSuPar
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSuParListAccess().getParametersSuParParserRuleCall_0_0()); 
@@ -30423,17 +30753,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SuParList__ParametersAssignment_1_1"
-    // InternalCryptSL.g:9377:1: rule__SuParList__ParametersAssignment_1_1 : ( ruleSuPar ) ;
+    // InternalCryptSL.g:9475:1: rule__SuParList__ParametersAssignment_1_1 : ( ruleSuPar ) ;
     public final void rule__SuParList__ParametersAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9381:1: ( ( ruleSuPar ) )
-            // InternalCryptSL.g:9382:2: ( ruleSuPar )
+            // InternalCryptSL.g:9479:1: ( ( ruleSuPar ) )
+            // InternalCryptSL.g:9480:2: ( ruleSuPar )
             {
-            // InternalCryptSL.g:9382:2: ( ruleSuPar )
-            // InternalCryptSL.g:9383:3: ruleSuPar
+            // InternalCryptSL.g:9480:2: ( ruleSuPar )
+            // InternalCryptSL.g:9481:3: ruleSuPar
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSuParListAccess().getParametersSuParParserRuleCall_1_1_0()); 
@@ -30468,17 +30798,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SuPar__ValAssignment_1_0"
-    // InternalCryptSL.g:9392:1: rule__SuPar__ValAssignment_1_0 : ( ruleConsPred ) ;
+    // InternalCryptSL.g:9490:1: rule__SuPar__ValAssignment_1_0 : ( ruleConsPred ) ;
     public final void rule__SuPar__ValAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9396:1: ( ( ruleConsPred ) )
-            // InternalCryptSL.g:9397:2: ( ruleConsPred )
+            // InternalCryptSL.g:9494:1: ( ( ruleConsPred ) )
+            // InternalCryptSL.g:9495:2: ( ruleConsPred )
             {
-            // InternalCryptSL.g:9397:2: ( ruleConsPred )
-            // InternalCryptSL.g:9398:3: ruleConsPred
+            // InternalCryptSL.g:9495:2: ( ruleConsPred )
+            // InternalCryptSL.g:9496:3: ruleConsPred
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSuParAccess().getValConsPredParserRuleCall_1_0_0()); 
@@ -30513,17 +30843,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__NameAssignment_1"
-    // InternalCryptSL.g:9407:1: rule__Object__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalCryptSL.g:9505:1: rule__Object__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Object__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9411:1: ( ( RULE_ID ) )
-            // InternalCryptSL.g:9412:2: ( RULE_ID )
+            // InternalCryptSL.g:9509:1: ( ( RULE_ID ) )
+            // InternalCryptSL.g:9510:2: ( RULE_ID )
             {
-            // InternalCryptSL.g:9412:2: ( RULE_ID )
-            // InternalCryptSL.g:9413:3: RULE_ID
+            // InternalCryptSL.g:9510:2: ( RULE_ID )
+            // InternalCryptSL.g:9511:3: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getObjectAccess().getNameIDTerminalRuleCall_1_0()); 
@@ -30554,17 +30884,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0"
-    // InternalCryptSL.g:9422:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9520:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9426:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9427:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9524:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9525:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9427:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9428:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9525:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9526:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_0_0()); 
@@ -30599,17 +30929,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1"
-    // InternalCryptSL.g:9437:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9535:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9441:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9442:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9539:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9540:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9442:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9443:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9540:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9541:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_1_1_0()); 
@@ -30644,17 +30974,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ReturnTypeAssignment_2"
-    // InternalCryptSL.g:9452:1: rule__XFunctionTypeRef__ReturnTypeAssignment_2 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9550:1: rule__XFunctionTypeRef__ReturnTypeAssignment_2 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ReturnTypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9456:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9457:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9554:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9555:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9457:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9458:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9555:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9556:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeJvmTypeReferenceParserRuleCall_2_0()); 
@@ -30689,23 +31019,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__TypeAssignment_0"
-    // InternalCryptSL.g:9467:1: rule__JvmParameterizedTypeReference__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // InternalCryptSL.g:9565:1: rule__JvmParameterizedTypeReference__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__JvmParameterizedTypeReference__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9471:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalCryptSL.g:9472:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9569:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalCryptSL.g:9570:2: ( ( ruleQualifiedName ) )
             {
-            // InternalCryptSL.g:9472:2: ( ( ruleQualifiedName ) )
-            // InternalCryptSL.g:9473:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9570:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9571:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_0_0()); 
             }
-            // InternalCryptSL.g:9474:3: ( ruleQualifiedName )
-            // InternalCryptSL.g:9475:4: ruleQualifiedName
+            // InternalCryptSL.g:9572:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9573:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeQualifiedNameParserRuleCall_0_0_1()); 
@@ -30746,17 +31076,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1"
-    // InternalCryptSL.g:9486:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
+    // InternalCryptSL.g:9584:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9490:1: ( ( ruleJvmArgumentTypeReference ) )
-            // InternalCryptSL.g:9491:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9588:1: ( ( ruleJvmArgumentTypeReference ) )
+            // InternalCryptSL.g:9589:2: ( ruleJvmArgumentTypeReference )
             {
-            // InternalCryptSL.g:9491:2: ( ruleJvmArgumentTypeReference )
-            // InternalCryptSL.g:9492:3: ruleJvmArgumentTypeReference
+            // InternalCryptSL.g:9589:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9590:3: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
@@ -30791,17 +31121,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1"
-    // InternalCryptSL.g:9501:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // InternalCryptSL.g:9599:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9505:1: ( ( ruleJvmArgumentTypeReference ) )
-            // InternalCryptSL.g:9506:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9603:1: ( ( ruleJvmArgumentTypeReference ) )
+            // InternalCryptSL.g:9604:2: ( ruleJvmArgumentTypeReference )
             {
-            // InternalCryptSL.g:9506:2: ( ruleJvmArgumentTypeReference )
-            // InternalCryptSL.g:9507:3: ruleJvmArgumentTypeReference
+            // InternalCryptSL.g:9604:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9605:3: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
@@ -30836,23 +31166,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__TypeAssignment_1_4_1"
-    // InternalCryptSL.g:9516:1: rule__JvmParameterizedTypeReference__TypeAssignment_1_4_1 : ( ( ruleValidID ) ) ;
+    // InternalCryptSL.g:9614:1: rule__JvmParameterizedTypeReference__TypeAssignment_1_4_1 : ( ( ruleValidID ) ) ;
     public final void rule__JvmParameterizedTypeReference__TypeAssignment_1_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9520:1: ( ( ( ruleValidID ) ) )
-            // InternalCryptSL.g:9521:2: ( ( ruleValidID ) )
+            // InternalCryptSL.g:9618:1: ( ( ( ruleValidID ) ) )
+            // InternalCryptSL.g:9619:2: ( ( ruleValidID ) )
             {
-            // InternalCryptSL.g:9521:2: ( ( ruleValidID ) )
-            // InternalCryptSL.g:9522:3: ( ruleValidID )
+            // InternalCryptSL.g:9619:2: ( ( ruleValidID ) )
+            // InternalCryptSL.g:9620:3: ( ruleValidID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_1_4_1_0()); 
             }
-            // InternalCryptSL.g:9523:3: ( ruleValidID )
-            // InternalCryptSL.g:9524:4: ruleValidID
+            // InternalCryptSL.g:9621:3: ( ruleValidID )
+            // InternalCryptSL.g:9622:4: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeValidIDParserRuleCall_1_4_1_0_1()); 
@@ -30893,17 +31223,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_1"
-    // InternalCryptSL.g:9535:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // InternalCryptSL.g:9633:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9539:1: ( ( ruleJvmArgumentTypeReference ) )
-            // InternalCryptSL.g:9540:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9637:1: ( ( ruleJvmArgumentTypeReference ) )
+            // InternalCryptSL.g:9638:2: ( ruleJvmArgumentTypeReference )
             {
-            // InternalCryptSL.g:9540:2: ( ruleJvmArgumentTypeReference )
-            // InternalCryptSL.g:9541:3: ruleJvmArgumentTypeReference
+            // InternalCryptSL.g:9638:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9639:3: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_4_2_1_0()); 
@@ -30938,17 +31268,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_2_1"
-    // InternalCryptSL.g:9550:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // InternalCryptSL.g:9648:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_4_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9554:1: ( ( ruleJvmArgumentTypeReference ) )
-            // InternalCryptSL.g:9555:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9652:1: ( ( ruleJvmArgumentTypeReference ) )
+            // InternalCryptSL.g:9653:2: ( ruleJvmArgumentTypeReference )
             {
-            // InternalCryptSL.g:9555:2: ( ruleJvmArgumentTypeReference )
-            // InternalCryptSL.g:9556:3: ruleJvmArgumentTypeReference
+            // InternalCryptSL.g:9653:2: ( ruleJvmArgumentTypeReference )
+            // InternalCryptSL.g:9654:3: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_4_2_2_1_0()); 
@@ -30983,17 +31313,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_0"
-    // InternalCryptSL.g:9565:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_0 : ( ruleJvmUpperBound ) ;
+    // InternalCryptSL.g:9663:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_0 : ( ruleJvmUpperBound ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9569:1: ( ( ruleJvmUpperBound ) )
-            // InternalCryptSL.g:9570:2: ( ruleJvmUpperBound )
+            // InternalCryptSL.g:9667:1: ( ( ruleJvmUpperBound ) )
+            // InternalCryptSL.g:9668:2: ( ruleJvmUpperBound )
             {
-            // InternalCryptSL.g:9570:2: ( ruleJvmUpperBound )
-            // InternalCryptSL.g:9571:3: ruleJvmUpperBound
+            // InternalCryptSL.g:9668:2: ( ruleJvmUpperBound )
+            // InternalCryptSL.g:9669:3: ruleJvmUpperBound
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundParserRuleCall_2_0_0_0()); 
@@ -31028,17 +31358,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_1"
-    // InternalCryptSL.g:9580:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_1 : ( ruleJvmUpperBoundAnded ) ;
+    // InternalCryptSL.g:9678:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_1 : ( ruleJvmUpperBoundAnded ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9584:1: ( ( ruleJvmUpperBoundAnded ) )
-            // InternalCryptSL.g:9585:2: ( ruleJvmUpperBoundAnded )
+            // InternalCryptSL.g:9682:1: ( ( ruleJvmUpperBoundAnded ) )
+            // InternalCryptSL.g:9683:2: ( ruleJvmUpperBoundAnded )
             {
-            // InternalCryptSL.g:9585:2: ( ruleJvmUpperBoundAnded )
-            // InternalCryptSL.g:9586:3: ruleJvmUpperBoundAnded
+            // InternalCryptSL.g:9683:2: ( ruleJvmUpperBoundAnded )
+            // InternalCryptSL.g:9684:3: ruleJvmUpperBoundAnded
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundAndedParserRuleCall_2_0_1_0()); 
@@ -31073,17 +31403,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_0"
-    // InternalCryptSL.g:9595:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_0 : ( ruleJvmLowerBound ) ;
+    // InternalCryptSL.g:9693:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_0 : ( ruleJvmLowerBound ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9599:1: ( ( ruleJvmLowerBound ) )
-            // InternalCryptSL.g:9600:2: ( ruleJvmLowerBound )
+            // InternalCryptSL.g:9697:1: ( ( ruleJvmLowerBound ) )
+            // InternalCryptSL.g:9698:2: ( ruleJvmLowerBound )
             {
-            // InternalCryptSL.g:9600:2: ( ruleJvmLowerBound )
-            // InternalCryptSL.g:9601:3: ruleJvmLowerBound
+            // InternalCryptSL.g:9698:2: ( ruleJvmLowerBound )
+            // InternalCryptSL.g:9699:3: ruleJvmLowerBound
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundParserRuleCall_2_1_0_0()); 
@@ -31118,17 +31448,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_1"
-    // InternalCryptSL.g:9610:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_1 : ( ruleJvmLowerBoundAnded ) ;
+    // InternalCryptSL.g:9708:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_1 : ( ruleJvmLowerBoundAnded ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9614:1: ( ( ruleJvmLowerBoundAnded ) )
-            // InternalCryptSL.g:9615:2: ( ruleJvmLowerBoundAnded )
+            // InternalCryptSL.g:9712:1: ( ( ruleJvmLowerBoundAnded ) )
+            // InternalCryptSL.g:9713:2: ( ruleJvmLowerBoundAnded )
             {
-            // InternalCryptSL.g:9615:2: ( ruleJvmLowerBoundAnded )
-            // InternalCryptSL.g:9616:3: ruleJvmLowerBoundAnded
+            // InternalCryptSL.g:9713:2: ( ruleJvmLowerBoundAnded )
+            // InternalCryptSL.g:9714:3: ruleJvmLowerBoundAnded
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundAndedParserRuleCall_2_1_1_0()); 
@@ -31163,17 +31493,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmUpperBound__TypeReferenceAssignment_1"
-    // InternalCryptSL.g:9625:1: rule__JvmUpperBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9723:1: rule__JvmUpperBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmUpperBound__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9629:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9630:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9727:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9728:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9630:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9631:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9728:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9729:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
@@ -31208,17 +31538,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmUpperBoundAnded__TypeReferenceAssignment_1"
-    // InternalCryptSL.g:9640:1: rule__JvmUpperBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9738:1: rule__JvmUpperBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmUpperBoundAnded__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9644:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9645:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9742:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9743:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9645:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9646:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9743:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9744:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
@@ -31253,17 +31583,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmLowerBound__TypeReferenceAssignment_1"
-    // InternalCryptSL.g:9655:1: rule__JvmLowerBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9753:1: rule__JvmLowerBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmLowerBound__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9659:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9660:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9757:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9758:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9660:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9661:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9758:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9759:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
@@ -31298,17 +31628,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__JvmLowerBoundAnded__TypeReferenceAssignment_1"
-    // InternalCryptSL.g:9670:1: rule__JvmLowerBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // InternalCryptSL.g:9768:1: rule__JvmLowerBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmLowerBoundAnded__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9674:1: ( ( ruleJvmTypeReference ) )
-            // InternalCryptSL.g:9675:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9772:1: ( ( ruleJvmTypeReference ) )
+            // InternalCryptSL.g:9773:2: ( ruleJvmTypeReference )
             {
-            // InternalCryptSL.g:9675:2: ( ruleJvmTypeReference )
-            // InternalCryptSL.g:9676:3: ruleJvmTypeReference
+            // InternalCryptSL.g:9773:2: ( ruleJvmTypeReference )
+            // InternalCryptSL.g:9774:3: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmLowerBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
@@ -31343,23 +31673,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__StaticAssignment_1_0_0"
-    // InternalCryptSL.g:9685:1: rule__XImportDeclaration__StaticAssignment_1_0_0 : ( ( 'static' ) ) ;
+    // InternalCryptSL.g:9783:1: rule__XImportDeclaration__StaticAssignment_1_0_0 : ( ( 'static' ) ) ;
     public final void rule__XImportDeclaration__StaticAssignment_1_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9689:1: ( ( ( 'static' ) ) )
-            // InternalCryptSL.g:9690:2: ( ( 'static' ) )
+            // InternalCryptSL.g:9787:1: ( ( ( 'static' ) ) )
+            // InternalCryptSL.g:9788:2: ( ( 'static' ) )
             {
-            // InternalCryptSL.g:9690:2: ( ( 'static' ) )
-            // InternalCryptSL.g:9691:3: ( 'static' )
+            // InternalCryptSL.g:9788:2: ( ( 'static' ) )
+            // InternalCryptSL.g:9789:3: ( 'static' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
             }
-            // InternalCryptSL.g:9692:3: ( 'static' )
-            // InternalCryptSL.g:9693:4: 'static'
+            // InternalCryptSL.g:9790:3: ( 'static' )
+            // InternalCryptSL.g:9791:4: 'static'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
@@ -31396,23 +31726,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__ExtensionAssignment_1_0_1"
-    // InternalCryptSL.g:9704:1: rule__XImportDeclaration__ExtensionAssignment_1_0_1 : ( ( 'extension' ) ) ;
+    // InternalCryptSL.g:9802:1: rule__XImportDeclaration__ExtensionAssignment_1_0_1 : ( ( 'extension' ) ) ;
     public final void rule__XImportDeclaration__ExtensionAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9708:1: ( ( ( 'extension' ) ) )
-            // InternalCryptSL.g:9709:2: ( ( 'extension' ) )
+            // InternalCryptSL.g:9806:1: ( ( ( 'extension' ) ) )
+            // InternalCryptSL.g:9807:2: ( ( 'extension' ) )
             {
-            // InternalCryptSL.g:9709:2: ( ( 'extension' ) )
-            // InternalCryptSL.g:9710:3: ( 'extension' )
+            // InternalCryptSL.g:9807:2: ( ( 'extension' ) )
+            // InternalCryptSL.g:9808:3: ( 'extension' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
             }
-            // InternalCryptSL.g:9711:3: ( 'extension' )
-            // InternalCryptSL.g:9712:4: 'extension'
+            // InternalCryptSL.g:9809:3: ( 'extension' )
+            // InternalCryptSL.g:9810:4: 'extension'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
@@ -31449,23 +31779,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedTypeAssignment_1_0_2"
-    // InternalCryptSL.g:9723:1: rule__XImportDeclaration__ImportedTypeAssignment_1_0_2 : ( ( ruleQualifiedNameInStaticImport ) ) ;
+    // InternalCryptSL.g:9821:1: rule__XImportDeclaration__ImportedTypeAssignment_1_0_2 : ( ( ruleQualifiedNameInStaticImport ) ) ;
     public final void rule__XImportDeclaration__ImportedTypeAssignment_1_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9727:1: ( ( ( ruleQualifiedNameInStaticImport ) ) )
-            // InternalCryptSL.g:9728:2: ( ( ruleQualifiedNameInStaticImport ) )
+            // InternalCryptSL.g:9825:1: ( ( ( ruleQualifiedNameInStaticImport ) ) )
+            // InternalCryptSL.g:9826:2: ( ( ruleQualifiedNameInStaticImport ) )
             {
-            // InternalCryptSL.g:9728:2: ( ( ruleQualifiedNameInStaticImport ) )
-            // InternalCryptSL.g:9729:3: ( ruleQualifiedNameInStaticImport )
+            // InternalCryptSL.g:9826:2: ( ( ruleQualifiedNameInStaticImport ) )
+            // InternalCryptSL.g:9827:3: ( ruleQualifiedNameInStaticImport )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0()); 
             }
-            // InternalCryptSL.g:9730:3: ( ruleQualifiedNameInStaticImport )
-            // InternalCryptSL.g:9731:4: ruleQualifiedNameInStaticImport
+            // InternalCryptSL.g:9828:3: ( ruleQualifiedNameInStaticImport )
+            // InternalCryptSL.g:9829:4: ruleQualifiedNameInStaticImport
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeQualifiedNameInStaticImportParserRuleCall_1_0_2_0_1()); 
@@ -31506,23 +31836,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__WildcardAssignment_1_0_3_0"
-    // InternalCryptSL.g:9742:1: rule__XImportDeclaration__WildcardAssignment_1_0_3_0 : ( ( '*' ) ) ;
+    // InternalCryptSL.g:9840:1: rule__XImportDeclaration__WildcardAssignment_1_0_3_0 : ( ( '*' ) ) ;
     public final void rule__XImportDeclaration__WildcardAssignment_1_0_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9746:1: ( ( ( '*' ) ) )
-            // InternalCryptSL.g:9747:2: ( ( '*' ) )
+            // InternalCryptSL.g:9844:1: ( ( ( '*' ) ) )
+            // InternalCryptSL.g:9845:2: ( ( '*' ) )
             {
-            // InternalCryptSL.g:9747:2: ( ( '*' ) )
-            // InternalCryptSL.g:9748:3: ( '*' )
+            // InternalCryptSL.g:9845:2: ( ( '*' ) )
+            // InternalCryptSL.g:9846:3: ( '*' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_1_0_3_0_0()); 
             }
-            // InternalCryptSL.g:9749:3: ( '*' )
-            // InternalCryptSL.g:9750:4: '*'
+            // InternalCryptSL.g:9847:3: ( '*' )
+            // InternalCryptSL.g:9848:4: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_1_0_3_0_0()); 
@@ -31559,17 +31889,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__MemberNameAssignment_1_0_3_1"
-    // InternalCryptSL.g:9761:1: rule__XImportDeclaration__MemberNameAssignment_1_0_3_1 : ( ruleValidID ) ;
+    // InternalCryptSL.g:9859:1: rule__XImportDeclaration__MemberNameAssignment_1_0_3_1 : ( ruleValidID ) ;
     public final void rule__XImportDeclaration__MemberNameAssignment_1_0_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9765:1: ( ( ruleValidID ) )
-            // InternalCryptSL.g:9766:2: ( ruleValidID )
+            // InternalCryptSL.g:9863:1: ( ( ruleValidID ) )
+            // InternalCryptSL.g:9864:2: ( ruleValidID )
             {
-            // InternalCryptSL.g:9766:2: ( ruleValidID )
-            // InternalCryptSL.g:9767:3: ruleValidID
+            // InternalCryptSL.g:9864:2: ( ruleValidID )
+            // InternalCryptSL.g:9865:3: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getMemberNameValidIDParserRuleCall_1_0_3_1_0()); 
@@ -31604,23 +31934,23 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedTypeAssignment_1_1"
-    // InternalCryptSL.g:9776:1: rule__XImportDeclaration__ImportedTypeAssignment_1_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalCryptSL.g:9874:1: rule__XImportDeclaration__ImportedTypeAssignment_1_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__XImportDeclaration__ImportedTypeAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9780:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalCryptSL.g:9781:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9878:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalCryptSL.g:9879:2: ( ( ruleQualifiedName ) )
             {
-            // InternalCryptSL.g:9781:2: ( ( ruleQualifiedName ) )
-            // InternalCryptSL.g:9782:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9879:2: ( ( ruleQualifiedName ) )
+            // InternalCryptSL.g:9880:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_1_0()); 
             }
-            // InternalCryptSL.g:9783:3: ( ruleQualifiedName )
-            // InternalCryptSL.g:9784:4: ruleQualifiedName
+            // InternalCryptSL.g:9881:3: ( ruleQualifiedName )
+            // InternalCryptSL.g:9882:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_1_0_1()); 
@@ -31661,17 +31991,17 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2"
-    // InternalCryptSL.g:9795:1: rule__XImportDeclaration__ImportedNamespaceAssignment_1_2 : ( ruleQualifiedNameWithWildcard ) ;
+    // InternalCryptSL.g:9893:1: rule__XImportDeclaration__ImportedNamespaceAssignment_1_2 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__XImportDeclaration__ImportedNamespaceAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:9799:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // InternalCryptSL.g:9800:2: ( ruleQualifiedNameWithWildcard )
+            // InternalCryptSL.g:9897:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // InternalCryptSL.g:9898:2: ( ruleQualifiedNameWithWildcard )
             {
-            // InternalCryptSL.g:9800:2: ( ruleQualifiedNameWithWildcard )
-            // InternalCryptSL.g:9801:3: ruleQualifiedNameWithWildcard
+            // InternalCryptSL.g:9898:2: ( ruleQualifiedNameWithWildcard )
+            // InternalCryptSL.g:9899:3: ruleQualifiedNameWithWildcard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0()); 
@@ -31712,39 +32042,39 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     protected DFA22 dfa22 = new DFA22(this);
     static final String dfa_1s = "\44\uffff";
     static final String dfa_2s = "\3\uffff\1\2\40\uffff";
-    static final String dfa_3s = "\1\4\2\uffff\2\4\1\5\3\14\1\4\1\uffff\1\34\1\4\1\34\1\6\1\14\1\4\1\34\1\33\2\4\1\14\3\33\1\4\1\33\1\34\1\4\1\34\1\33\1\4\1\33\1\4\2\33";
-    static final String dfa_4s = "\1\47\2\uffff\1\70\1\66\1\5\3\70\1\4\1\uffff\1\34\1\4\1\34\1\6\1\70\1\4\1\34\1\35\1\43\1\4\1\70\2\33\1\35\1\4\1\35\1\44\1\4\1\34\1\33\1\4\1\35\1\4\1\33\1\35";
+    static final String dfa_3s = "\1\4\2\uffff\2\4\1\6\3\14\1\4\1\uffff\1\34\1\4\1\34\1\5\1\14\1\4\1\34\1\33\2\4\1\14\3\33\1\4\1\33\1\34\1\4\1\34\1\33\1\4\1\33\1\4\2\33";
+    static final String dfa_4s = "\1\46\2\uffff\1\70\1\66\1\6\3\70\1\4\1\uffff\1\34\1\4\1\34\1\5\1\70\1\4\1\34\1\35\1\42\1\4\1\70\2\33\1\35\1\4\1\35\1\43\1\4\1\34\1\33\1\4\1\35\1\4\1\33\1\35";
     static final String dfa_5s = "\1\uffff\1\1\1\2\7\uffff\1\3\31\uffff";
     static final String dfa_6s = "\44\uffff}>";
     static final String[] dfa_7s = {
-            "\1\3\2\2\23\uffff\1\1\10\uffff\1\2\3\uffff\1\2",
+            "\1\3\2\2\23\uffff\1\1\7\uffff\1\2\3\uffff\1\2",
             "",
             "",
-            "\3\2\5\uffff\1\2\1\uffff\1\2\7\uffff\1\2\2\uffff\1\2\1\4\1\2\1\uffff\1\2\5\uffff\2\2\2\uffff\1\2\2\uffff\2\2\4\uffff\11\2",
-            "\1\10\1\6\1\7\4\uffff\1\12\16\uffff\1\2\4\uffff\1\12\3\uffff\1\11\3\uffff\1\5\16\uffff\1\2",
+            "\3\2\5\uffff\1\2\1\uffff\1\2\7\uffff\1\2\2\uffff\1\2\1\4\1\2\1\uffff\1\2\4\uffff\2\2\2\uffff\1\2\2\uffff\2\2\5\uffff\11\2",
+            "\1\10\1\6\1\7\4\uffff\1\12\16\uffff\1\2\4\uffff\1\12\2\uffff\1\11\3\uffff\1\5\17\uffff\1\2",
             "\1\13",
-            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\4\uffff\1\2\5\uffff\2\2\4\uffff\6\2\1\uffff\2\2",
-            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\4\uffff\1\2\5\uffff\2\2\4\uffff\6\2\1\uffff\2\2",
-            "\1\2\1\uffff\1\2\12\uffff\3\2\1\12\1\14\1\uffff\1\12\4\uffff\1\2\5\uffff\2\2\4\uffff\6\2\1\uffff\2\2",
+            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\3\uffff\1\2\5\uffff\2\2\5\uffff\6\2\1\uffff\2\2",
+            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\3\uffff\1\2\5\uffff\2\2\5\uffff\6\2\1\uffff\2\2",
+            "\1\2\1\uffff\1\2\12\uffff\3\2\1\12\1\14\1\uffff\1\12\3\uffff\1\2\5\uffff\2\2\5\uffff\6\2\1\uffff\2\2",
             "\1\15",
             "",
             "\1\16",
             "\1\17",
             "\1\20",
             "\1\21",
-            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\4\uffff\1\2\5\uffff\2\2\4\uffff\6\2\1\uffff\2\2",
+            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\3\uffff\1\2\5\uffff\2\2\5\uffff\6\2\1\uffff\2\2",
             "\1\22",
             "\1\23",
             "\1\25\1\uffff\1\24",
-            "\1\30\1\26\1\27\34\uffff\1\31",
+            "\1\30\1\26\1\27\33\uffff\1\31",
             "\1\32",
-            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\4\uffff\1\2\5\uffff\2\2\4\uffff\6\2\1\uffff\2\2",
+            "\1\2\1\uffff\1\2\12\uffff\1\2\1\uffff\1\2\1\12\2\uffff\1\12\3\uffff\1\2\5\uffff\2\2\5\uffff\6\2\1\uffff\2\2",
             "\1\33",
             "\1\33",
             "\1\33\1\uffff\1\34",
             "\1\35",
             "\1\25\1\uffff\1\24",
-            "\1\12\2\uffff\1\12\4\uffff\1\2",
+            "\1\12\2\uffff\1\12\3\uffff\1\2",
             "\1\36",
             "\1\37",
             "\1\33",
@@ -31783,24 +32113,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     static final String dfa_8s = "\17\uffff";
     static final String dfa_9s = "\2\uffff\3\6\4\uffff\1\6\3\uffff\1\6\1\uffff";
     static final String dfa_10s = "\1\4\1\uffff\4\4\1\uffff\1\4\1\34\2\4\1\33\2\4\1\33";
-    static final String dfa_11s = "\1\47\1\uffff\3\70\1\4\1\uffff\1\4\1\34\1\70\1\4\1\35\1\4\1\70\1\35";
+    static final String dfa_11s = "\1\46\1\uffff\3\70\1\4\1\uffff\1\4\1\34\1\70\1\4\1\35\1\4\1\70\1\35";
     static final String dfa_12s = "\1\uffff\1\1\4\uffff\1\2\10\uffff";
     static final String dfa_13s = "\17\uffff}>";
     static final String[] dfa_14s = {
-            "\1\4\1\2\1\3\34\uffff\1\5\3\uffff\1\1",
+            "\1\4\1\2\1\3\33\uffff\1\5\3\uffff\1\1",
             "",
-            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\7\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\4\uffff\11\6",
-            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\7\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\4\uffff\11\6",
-            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\1\uffff\1\7\5\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\4\uffff\11\6",
+            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\6\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\5\uffff\11\6",
+            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\6\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\5\uffff\11\6",
+            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\1\uffff\1\7\4\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\5\uffff\11\6",
             "\1\10",
             "",
             "\1\11",
             "\1\12",
-            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\7\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\4\uffff\11\6",
+            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\6\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\5\uffff\11\6",
             "\1\13",
             "\1\15\1\uffff\1\14",
             "\1\16",
-            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\7\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\4\uffff\11\6",
+            "\3\6\5\uffff\1\6\1\uffff\1\6\7\uffff\1\6\2\uffff\3\6\6\uffff\1\6\1\1\2\uffff\1\6\2\uffff\2\6\5\uffff\11\6",
             "\1\15\1\uffff\1\14"
     };
 
@@ -31881,9 +32211,9 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000004000010L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0040008804400070L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0040008804000072L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0040008804000070L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0040004404400070L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0040004404000072L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0040004404000070L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000800010L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000002000000L});
@@ -31898,8 +32228,8 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000100000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000810L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000800000000002L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000007000L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000002000002L});
@@ -31908,33 +32238,33 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0002000000000000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0002000000000002L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0180000000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x000C0C0000000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x000C060000000000L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0010000000001000L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0010000000001002L});
     public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0020000000004000L});
     public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0020000000004002L});
     public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0040000000000000L});
     public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000060L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000008800000070L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000004400000070L});
     public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000008060L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000008880000870L});
-    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000008800000870L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000004480000870L});
+    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000004400000870L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000006000010L});
     public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x000000000E000010L});
-    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000006002010L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000080010000000L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000500000000000L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000040010000000L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000280000000000L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000100000000002L});
     public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0200000000000010L});
     public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0400000000000010L});

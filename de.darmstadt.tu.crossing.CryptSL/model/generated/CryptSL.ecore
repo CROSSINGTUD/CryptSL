@@ -50,6 +50,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderEv" unique="false"
         upperBound="-1" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
@@ -88,6 +89,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="DIVIDE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralExpression" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
         eType="#//Object"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
@@ -97,12 +100,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal"/>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="NOT" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LitList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//LiteralExpression" containment="true"/>
+        eType="#//Literal" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuParList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
@@ -127,6 +131,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="enclosedExpression" eType="#//Constraint"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//LiteralExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//SuperType"/>
 </ecore:EPackage>

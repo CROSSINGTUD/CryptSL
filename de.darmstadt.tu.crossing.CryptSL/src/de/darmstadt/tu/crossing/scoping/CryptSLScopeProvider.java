@@ -3,9 +3,7 @@
  */
 package de.darmstadt.tu.crossing.scoping;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;

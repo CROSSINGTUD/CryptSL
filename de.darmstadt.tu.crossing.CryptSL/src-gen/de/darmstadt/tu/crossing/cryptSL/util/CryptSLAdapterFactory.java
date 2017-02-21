@@ -183,6 +183,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createLiteralExpressionAdapter();
       }
       @Override
+      public Adapter caseLiteral(Literal object)
+      {
+        return createLiteralAdapter();
+      }
+      @Override
       public Adapter caseUnaryOperator(UnaryOperator object)
       {
         return createUnaryOperatorAdapter();
@@ -231,11 +236,6 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseUnaryPreExpression(UnaryPreExpression object)
       {
         return createUnaryPreExpressionAdapter();
-      }
-      @Override
-      public Adapter caseLiteral(Literal object)
-      {
-        return createLiteralAdapter();
       }
       @Override
       public Adapter caseObject(de.darmstadt.tu.crossing.cryptSL.Object object)
@@ -505,6 +505,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Literal
+   * @generated
+   */
+  public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.UnaryOperator <em>Unary Operator</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -650,21 +665,6 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUnaryPreExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Literal
-   * @generated
-   */
-  public Adapter createLiteralAdapter()
   {
     return null;
   }

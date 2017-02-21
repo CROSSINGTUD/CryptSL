@@ -146,11 +146,6 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 					sequence_AggregateExpression(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getLiteralExpressionRule()
-						|| rule == grammarAccess.getConsPredRule()) {
-					sequence_AggregateExpression_LiteralExpression(context, (LiteralExpression) semanticObject); 
-					return; 
-				}
 				else if (rule == grammarAccess.getConstraintRule()
 						|| rule == grammarAccess.getLogicalImplyExpressionRule()
 						|| action == grammarAccess.getLogicalImplyExpressionAccess().getConstraintLeftExpressionAction_1_0()
@@ -170,6 +165,11 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 						|| rule == grammarAccess.getOperandRule()
 						|| rule == grammarAccess.getConsRule()) {
 					sequence_Cons(context, (LiteralExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getLiteralExpressionRule()
+						|| rule == grammarAccess.getConsPredRule()) {
+					sequence_LiteralExpression(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -196,7 +196,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				sequence_ObjectDecl(context, (ObjectDecl) semanticObject); 
 				return; 
 			case CryptSLPackage.ORDER:
-				sequence_Order(context, (Order) semanticObject); 
+				sequence_Order_Primary(context, (Order) semanticObject); 
 				return; 
 			case CryptSLPackage.PAR:
 				sequence_Par(context, (Par) semanticObject); 
@@ -205,7 +205,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				sequence_ParList(context, (ParList) semanticObject); 
 				return; 
 			case CryptSLPackage.SIMPLE_ORDER:
-				sequence_SimpleOrder(context, (SimpleOrder) semanticObject); 
+				sequence_Primary_SimpleOrder(context, (SimpleOrder) semanticObject); 
 				return; 
 			case CryptSLPackage.SU_PAR:
 				sequence_SuPar(context, (SuPar) semanticObject); 
@@ -342,19 +342,6 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAggregateExpressionAccess().getValueSuperTypeIDTerminalRuleCall_0_0_1(), semanticObject.getValue());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     LiteralExpression returns LiteralExpression
-	 *     ConsPred returns LiteralExpression
-	 *
-	 * Constraint:
-	 *     ((obj+=[Object|ID] type=[JvmType|QualifiedName]) | value=[SuperType|ID])
-	 */
-	protected void sequence_AggregateExpression_LiteralExpression(ISerializationContext context, LiteralExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -523,9 +510,20 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     LiteralExpression returns Literal
+	 *     LiteralExpression returns LiteralExpression
+	 *     ConsPred returns LiteralExpression
+	 *
+	 * Constraint:
+	 *     (name=Literal | name=AggregateExpression | (obj+=[Object|ID] type=[JvmType|QualifiedName]))
+	 */
+	protected void sequence_LiteralExpression(ISerializationContext context, LiteralExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Literal returns Literal
-	 *     ConsPred returns Literal
 	 *
 	 * Constraint:
 	 *     {Literal}
@@ -694,19 +692,10 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Order
 	 *
 	 * Constraint:
-	 *     (left=Order_Order_1_0 right=SimpleOrder)
+	 *     (left=Order_Order_1_0 orderop=',' right=SimpleOrder (orderop='+' | orderop='?' | orderop='*')*)
 	 */
-	protected void sequence_Order(ISerializationContext context, Order semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EXPRESSION__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOrderAccess().getOrderLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getOrderAccess().getRightSimpleOrderParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
+	protected void sequence_Order_Primary(ISerializationContext context, Order semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -755,7 +744,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     orderEv+=[Event|ID]
+	 *     (orderEv+=[Event|ID] (orderop='+' | orderop='?' | orderop='*')? (orderop='+' | orderop='?' | orderop='*')*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -771,19 +760,10 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns SimpleOrder
 	 *
 	 * Constraint:
-	 *     (left=SimpleOrder_SimpleOrder_1_0 right=Primary)
+	 *     (left=SimpleOrder_SimpleOrder_1_0 orderop='|' right=Primary (orderop='+' | orderop='?' | orderop='*')*)
 	 */
-	protected void sequence_SimpleOrder(ISerializationContext context, SimpleOrder semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EXPRESSION__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSimpleOrderAccess().getSimpleOrderLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getSimpleOrderAccess().getRightPrimaryParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
+	protected void sequence_Primary_SimpleOrder(ISerializationContext context, SimpleOrder semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

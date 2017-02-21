@@ -38,8 +38,8 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEventAccess().getAlternatives(), "rule__Event__Alternatives");
 					put(grammarAccess.getParAccess().getAlternatives_1(), "rule__Par__Alternatives_1");
 					put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
-					put(grammarAccess.getPrimaryAccess().getAlternatives_0_1(), "rule__Primary__Alternatives_0_1");
-					put(grammarAccess.getPrimaryAccess().getAlternatives_1_3(), "rule__Primary__Alternatives_1_3");
+					put(grammarAccess.getPrimaryAccess().getOrderopAlternatives_0_1_0(), "rule__Primary__OrderopAlternatives_0_1_0");
+					put(grammarAccess.getPrimaryAccess().getOrderopAlternatives_1_3_0(), "rule__Primary__OrderopAlternatives_1_3_0");
 					put(grammarAccess.getComparingRelOperatorAccess().getAlternatives(), "rule__ComparingRelOperator__Alternatives");
 					put(grammarAccess.getAdditionOperatorAccess().getAlternatives(), "rule__AdditionOperator__Alternatives");
 					put(grammarAccess.getMultiplicationExpressionAccess().getAlternatives(), "rule__MultiplicationExpression__Alternatives");
@@ -168,9 +168,13 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAggregateAccess().getNameAssignment_1_0(), "rule__Aggregate__NameAssignment_1_0");
 					put(grammarAccess.getAggregateAccess().getLabAssignment_1_2_0(), "rule__Aggregate__LabAssignment_1_2_0");
 					put(grammarAccess.getAggregateAccess().getLabAssignment_1_2_1_1(), "rule__Aggregate__LabAssignment_1_2_1_1");
+					put(grammarAccess.getOrderAccess().getOrderopAssignment_1_1(), "rule__Order__OrderopAssignment_1_1");
 					put(grammarAccess.getOrderAccess().getRightAssignment_1_2(), "rule__Order__RightAssignment_1_2");
+					put(grammarAccess.getSimpleOrderAccess().getOrderopAssignment_1_1(), "rule__SimpleOrder__OrderopAssignment_1_1");
 					put(grammarAccess.getSimpleOrderAccess().getRightAssignment_1_2(), "rule__SimpleOrder__RightAssignment_1_2");
 					put(grammarAccess.getPrimaryAccess().getOrderEvAssignment_0_0(), "rule__Primary__OrderEvAssignment_0_0");
+					put(grammarAccess.getPrimaryAccess().getOrderopAssignment_0_1(), "rule__Primary__OrderopAssignment_0_1");
+					put(grammarAccess.getPrimaryAccess().getOrderopAssignment_1_3(), "rule__Primary__OrderopAssignment_1_3");
 					put(grammarAccess.getLogicalImplyExpressionAccess().getOperatorAssignment_1_1(), "rule__LogicalImplyExpression__OperatorAssignment_1_1");
 					put(grammarAccess.getLogicalImplyExpressionAccess().getRightExpressionAssignment_1_2(), "rule__LogicalImplyExpression__RightExpressionAssignment_1_2");
 					put(grammarAccess.getLogicalImplyAccess().getIMPLIESAssignment(), "rule__LogicalImply__IMPLIESAssignment");
@@ -198,6 +202,8 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMultiplicationOperatorAccess().getDIVIDEAssignment_1(), "rule__MultiplicationOperator__DIVIDEAssignment_1");
 					put(grammarAccess.getUnaryPreExpressionAccess().getOperatorAssignment_1_0(), "rule__UnaryPreExpression__OperatorAssignment_1_0");
 					put(grammarAccess.getUnaryPreExpressionAccess().getEnclosedExpressionAssignment_1_1(), "rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1");
+					put(grammarAccess.getLiteralExpressionAccess().getNameAssignment_0(), "rule__LiteralExpression__NameAssignment_0");
+					put(grammarAccess.getLiteralExpressionAccess().getNameAssignment_1(), "rule__LiteralExpression__NameAssignment_1");
 					put(grammarAccess.getLiteralExpressionAccess().getObjAssignment_2_1(), "rule__LiteralExpression__ObjAssignment_2_1");
 					put(grammarAccess.getLiteralExpressionAccess().getTypeAssignment_2_3(), "rule__LiteralExpression__TypeAssignment_2_3");
 					put(grammarAccess.getAggregateExpressionAccess().getValueAssignment_0(), "rule__AggregateExpression__ValueAssignment_0");

@@ -109,6 +109,7 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.COMPARING_OPERATOR: return createComparingOperator();
       case CryptSLPackage.ARITHMETIC_OPERATOR: return createArithmeticOperator();
       case CryptSLPackage.LITERAL_EXPRESSION: return createLiteralExpression();
+      case CryptSLPackage.LITERAL: return createLiteral();
       case CryptSLPackage.UNARY_OPERATOR: return createUnaryOperator();
       case CryptSLPackage.LIT_LIST: return createLitList();
       case CryptSLPackage.SU_PAR_LIST: return createSuParList();
@@ -119,7 +120,6 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.COMPARISON_EXPRESSION: return createComparisonExpression();
       case CryptSLPackage.ARITHMETIC_EXPRESSION: return createArithmeticExpression();
       case CryptSLPackage.UNARY_PRE_EXPRESSION: return createUnaryPreExpression();
-      case CryptSLPackage.LITERAL: return createLiteral();
       case CryptSLPackage.OBJECT: return createObject();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -307,6 +307,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public UnaryOperator createUnaryOperator()
   {
     UnaryOperatorImpl unaryOperator = new UnaryOperatorImpl();
@@ -410,17 +421,6 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     UnaryPreExpressionImpl unaryPreExpression = new UnaryPreExpressionImpl();
     return unaryPreExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Literal createLiteral()
-  {
-    LiteralImpl literal = new LiteralImpl();
-    return literal;
   }
 
   /**

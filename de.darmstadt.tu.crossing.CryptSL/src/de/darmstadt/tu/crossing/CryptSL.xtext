@@ -4,7 +4,7 @@ generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 
-Domainmodel:
+Domainmodel :
 	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
 	'USES_OBJECTS' (object+=ObjectDecl)+
 	('FORBIDDEN_EVENTS' (method+=ForbMethod)+)?
@@ -51,13 +51,13 @@ Aggregate returns SuperType:
 
 ///////////// ORDER
 Order returns Expression:
-	SimpleOrder ({Order.left=current} ',' right=SimpleOrder)*;
+	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*;
 
 SimpleOrder returns Expression:
-	Primary ({SimpleOrder.left=current} '|' right=Primary)*;
+	Primary ({SimpleOrder.left=current} orderop= '|' right=Primary)*;
 
 Primary returns Expression:
-	orderEv+=[Event] ('+' | '?' | '*')? | '(' Order ')' ('+' | '?' | '*')?;
+	(orderEv+=[Event] orderop=('+' | '?' | '*')?) | ('(' Order ')' orderop=('+' | '?' | '*')?);
 
 ///////////// CONSTRAINTS
 Constraint:
@@ -175,15 +175,15 @@ Operand returns Constraint:
 ;
 
 LiteralExpression returns LiteralExpression:
-	  Literal | AggregateExpression | "typeOf(" obj+=[Object]"," type=[jvmTypes::JvmType|QualifiedName] ")"  
+	  name=Literal | name=AggregateExpression | "typeOf(" obj+=[Object]"," type=[jvmTypes::JvmType|QualifiedName] ")"  
 ;
 
 AggregateExpression returns LiteralExpression:
 	 value = [SuperType]("." ID)?
 ;
 
-Literal returns LiteralExpression:
-	 {Literal}(INT | STRING)
+Literal :
+	{Literal} (STRING | INT)
 ;
 
 UnaryPreOperator returns UnaryOperator:

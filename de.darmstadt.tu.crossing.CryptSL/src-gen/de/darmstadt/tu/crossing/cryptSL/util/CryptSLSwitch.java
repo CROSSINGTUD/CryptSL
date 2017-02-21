@@ -215,6 +215,13 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CryptSLPackage.LITERAL:
+      {
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CryptSLPackage.UNARY_OPERATOR:
       {
         UnaryOperator unaryOperator = (UnaryOperator)theEObject;
@@ -289,15 +296,6 @@ public class CryptSLSwitch<T> extends Switch<T>
         UnaryPreExpression unaryPreExpression = (UnaryPreExpression)theEObject;
         T result = caseUnaryPreExpression(unaryPreExpression);
         if (result == null) result = caseConstraint(unaryPreExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CryptSLPackage.LITERAL:
-      {
-        Literal literal = (Literal)theEObject;
-        T result = caseLiteral(literal);
-        if (result == null) result = caseLiteralExpression(literal);
-        if (result == null) result = caseConstraint(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -571,6 +569,22 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Unary Operator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -726,22 +740,6 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUnaryPreExpression(UnaryPreExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLiteral(Literal object)
   {
     return null;
   }

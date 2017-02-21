@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Expression#getOrderEv <em>Order Ev</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Expression#getOrderop <em>Orderop</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Expression#getLeft <em>Left</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Expression#getRight <em>Right</em>}</li>
  * </ul>
@@ -42,6 +43,32 @@ public interface Expression extends EObject
    * @generated
    */
   EList<Event> getOrderEv();
+
+  /**
+   * Returns the value of the '<em><b>Orderop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Orderop</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Orderop</em>' attribute.
+   * @see #setOrderop(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getExpression_Orderop()
+   * @model
+   * @generated
+   */
+  String getOrderop();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Expression#getOrderop <em>Orderop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Orderop</em>' attribute.
+   * @see #getOrderop()
+   * @generated
+   */
+  void setOrderop(String value);
 
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.

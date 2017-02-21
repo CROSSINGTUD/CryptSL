@@ -26,14 +26,12 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q;
 	protected AbstractElementAlias match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a;
 	protected AbstractElementAlias match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a;
-	protected AbstractElementAlias match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1;
+	protected AbstractElementAlias match_Literal_INTTerminalRuleCall_1_1_or_STRINGTerminalRuleCall_1_0;
 	protected AbstractElementAlias match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q;
 	protected AbstractElementAlias match_Operand_LeftParenthesisKeyword_0_0_a;
 	protected AbstractElementAlias match_Operand_LeftParenthesisKeyword_0_0_p;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_a;
 	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_1_0_p;
-	protected AbstractElementAlias match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q;
-	protected AbstractElementAlias match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q;
 	protected AbstractElementAlias match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q;
 	protected AbstractElementAlias match_XImportDeclaration_SemicolonKeyword_2_q;
 	
@@ -44,14 +42,12 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getConsPredAccess().getPartKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_4()));
 		match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()));
 		match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()));
-		match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_0()), new TokenAlias(false, false, grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_1()));
+		match_Literal_INTTerminalRuleCall_1_1_or_STRINGTerminalRuleCall_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLiteralAccess().getINTTerminalRuleCall_1_1()), new TokenAlias(false, false, grammarAccess.getLiteralAccess().getSTRINGTerminalRuleCall_1_0()));
 		match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q = new TokenAlias(false, true, grammarAccess.getObjectDeclAccess().getLeftSquareBracketRightSquareBracketKeyword_1());
 		match_Operand_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_0_0());
 		match_Operand_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_0_0());
 		match_Primary_LeftParenthesisKeyword_1_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
 		match_Primary_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_0());
-		match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_0_1_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_0_1_1()));
-		match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getAsteriskKeyword_1_3_2()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getPlusSignKeyword_1_3_0()), new TokenAlias(false, false, grammarAccess.getPrimaryAccess().getQuestionMarkKeyword_1_3_1()));
 		match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()));
 		match_XImportDeclaration_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
 	}
@@ -125,8 +121,8 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a.equals(syntax))
 				emit_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1.equals(syntax))
-				emit_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Literal_INTTerminalRuleCall_1_1_or_STRINGTerminalRuleCall_1_0.equals(syntax))
+				emit_Literal_INTTerminalRuleCall_1_1_or_STRINGTerminalRuleCall_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q.equals(syntax))
 				emit_ObjectDecl_LeftSquareBracketRightSquareBracketKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Operand_LeftParenthesisKeyword_0_0_a.equals(syntax))
@@ -137,10 +133,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Primary_LeftParenthesisKeyword_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Primary_LeftParenthesisKeyword_1_0_p.equals(syntax))
 				emit_Primary_LeftParenthesisKeyword_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q.equals(syntax))
-				emit_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q.equals(syntax))
-				emit_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q.equals(syntax))
 				emit_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XImportDeclaration_SemicolonKeyword_2_q.equals(syntax))
@@ -166,8 +158,8 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) 'typeOf(' obj+=[Object|ID]
-	 *     (rule start) (ambiguity) (INT | STRING) (rule start)
-	 *     (rule start) (ambiguity) value=[SuperType|ID]
+	 *     (rule start) (ambiguity) name=AggregateExpression
+	 *     (rule start) (ambiguity) name=Literal
 	 */
 	protected void emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -197,13 +189,12 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     INT | STRING
+	 *     STRING | INT
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('part(' INT ',' STRING ',')? (ambiguity) (rule start)
 	 *     (rule start) (ambiguity) (rule start)
 	 */
-	protected void emit_Literal_INTTerminalRuleCall_1_0_or_STRINGTerminalRuleCall_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Literal_INTTerminalRuleCall_1_1_or_STRINGTerminalRuleCall_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -273,28 +264,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {SimpleOrder.left=}
 	 */
 	protected void emit_Primary_LeftParenthesisKeyword_1_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('+' | '?' | '*')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     orderEv+=[Event|ID] (ambiguity) (rule end)
-	 */
-	protected void emit_Primary___AsteriskKeyword_0_1_2_or_PlusSignKeyword_0_1_0_or_QuestionMarkKeyword_0_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('+' | '?' | '*')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     right=SimpleOrder ')' (ambiguity) (rule end)
-	 */
-	protected void emit_Primary___AsteriskKeyword_1_3_2_or_PlusSignKeyword_1_3_0_or_QuestionMarkKeyword_1_3_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
