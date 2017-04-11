@@ -50,7 +50,6 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 			JvmType jvmType = ((Domainmodel) cont).getJavaType();
 			if (jvmType instanceof JvmGenericType) {
 				descriptions = iterateThroughSuperTypes((JvmGenericType)jvmType, descriptions, false);
-				
 			}
 		}
 		return new SimpleScope(descriptions);

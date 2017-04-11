@@ -15,8 +15,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner.class)
-@InjectWith(CryptSLInjectorProvider.class)
+@RunWith(XtextRunner.class)/* 
+@InjectWith(CryptSLInjectorProvider.class) */
 @SuppressWarnings("all")
 public class CryptSLParsingTest {
   @Inject

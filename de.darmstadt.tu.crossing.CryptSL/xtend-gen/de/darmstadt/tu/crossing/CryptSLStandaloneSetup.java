@@ -11,7 +11,6 @@ import de.darmstadt.tu.crossing.CryptSLStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class CryptSLStandaloneSetup extends CryptSLStandaloneSetupGenerated {
   public static void doSetup() {
-    CryptSLStandaloneSetup _cryptSLStandaloneSetup = new CryptSLStandaloneSetup();
-    _cryptSLStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new CryptSLStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }

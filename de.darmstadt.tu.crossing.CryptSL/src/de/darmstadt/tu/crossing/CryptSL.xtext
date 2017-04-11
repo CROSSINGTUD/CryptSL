@@ -57,7 +57,7 @@ SimpleOrder returns Expression:
 	Primary ({SimpleOrder.left=current} orderop= '|' right=Primary)*;
 
 Primary returns Expression:
-	(orderEv+=[Event] orderop=('+' | '?' | '*')?) | ('(' Order ')' orderop=('+' | '?' | '*')?);
+	(orderEv+=[Event] elementop=('+' | '?' | '*')?) | ('(' Order ')' elementop=('+' | '?' | '*')?);
 
 ///////////// CONSTRAINTS
 Constraint:

@@ -2917,19 +2917,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimary"
-    // InternalCryptSL.g:1000:1: rulePrimary returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? ) ) ;
+    // InternalCryptSL.g:1000:1: rulePrimary returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? ) ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token lv_orderop_1_1=null;
-        Token lv_orderop_1_2=null;
-        Token lv_orderop_1_3=null;
+        Token lv_elementop_1_1=null;
+        Token lv_elementop_1_2=null;
+        Token lv_elementop_1_3=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        Token lv_orderop_5_1=null;
-        Token lv_orderop_5_2=null;
-        Token lv_orderop_5_3=null;
+        Token lv_elementop_5_1=null;
+        Token lv_elementop_5_2=null;
+        Token lv_elementop_5_3=null;
         EObject this_Order_3 = null;
 
 
@@ -2937,10 +2937,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:1006:2: ( ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? ) ) )
-            // InternalCryptSL.g:1007:2: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? ) )
+            // InternalCryptSL.g:1006:2: ( ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? ) ) )
+            // InternalCryptSL.g:1007:2: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? ) )
             {
-            // InternalCryptSL.g:1007:2: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? ) )
+            // InternalCryptSL.g:1007:2: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? ) | (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? ) )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -2959,10 +2959,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt25) {
                 case 1 :
-                    // InternalCryptSL.g:1008:3: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? )
+                    // InternalCryptSL.g:1008:3: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? )
                     {
-                    // InternalCryptSL.g:1008:3: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )? )
-                    // InternalCryptSL.g:1009:4: ( (otherlv_0= RULE_ID ) ) ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )?
+                    // InternalCryptSL.g:1008:3: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )? )
+                    // InternalCryptSL.g:1009:4: ( (otherlv_0= RULE_ID ) ) ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )?
                     {
                     // InternalCryptSL.g:1009:4: ( (otherlv_0= RULE_ID ) )
                     // InternalCryptSL.g:1010:5: (otherlv_0= RULE_ID )
@@ -2989,7 +2989,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCryptSL.g:1022:4: ( ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) ) )?
+                    // InternalCryptSL.g:1022:4: ( ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) ) )?
                     int alt22=2;
                     int LA22_0 = input.LA(1);
 
@@ -2998,12 +2998,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt22) {
                         case 1 :
-                            // InternalCryptSL.g:1023:5: ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) )
+                            // InternalCryptSL.g:1023:5: ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) )
                             {
-                            // InternalCryptSL.g:1023:5: ( (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' ) )
-                            // InternalCryptSL.g:1024:6: (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' )
+                            // InternalCryptSL.g:1023:5: ( (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' ) )
+                            // InternalCryptSL.g:1024:6: (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' )
                             {
-                            // InternalCryptSL.g:1024:6: (lv_orderop_1_1= '+' | lv_orderop_1_2= '?' | lv_orderop_1_3= '*' )
+                            // InternalCryptSL.g:1024:6: (lv_elementop_1_1= '+' | lv_elementop_1_2= '?' | lv_elementop_1_3= '*' )
                             int alt21=3;
                             switch ( input.LA(1) ) {
                             case 31:
@@ -3031,12 +3031,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                             switch (alt21) {
                                 case 1 :
-                                    // InternalCryptSL.g:1025:7: lv_orderop_1_1= '+'
+                                    // InternalCryptSL.g:1025:7: lv_elementop_1_1= '+'
                                     {
-                                    lv_orderop_1_1=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_1_1=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_1_1, grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_0_1_0_0());
+                                      							newLeafNode(lv_elementop_1_1, grammarAccess.getPrimaryAccess().getElementopPlusSignKeyword_0_1_0_0());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3044,19 +3044,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_1_1, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_1_1, null);
                                       						
                                     }
 
                                     }
                                     break;
                                 case 2 :
-                                    // InternalCryptSL.g:1036:7: lv_orderop_1_2= '?'
+                                    // InternalCryptSL.g:1036:7: lv_elementop_1_2= '?'
                                     {
-                                    lv_orderop_1_2=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_1_2=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_1_2, grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_0_1_0_1());
+                                      							newLeafNode(lv_elementop_1_2, grammarAccess.getPrimaryAccess().getElementopQuestionMarkKeyword_0_1_0_1());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3064,19 +3064,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_1_2, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_1_2, null);
                                       						
                                     }
 
                                     }
                                     break;
                                 case 3 :
-                                    // InternalCryptSL.g:1047:7: lv_orderop_1_3= '*'
+                                    // InternalCryptSL.g:1047:7: lv_elementop_1_3= '*'
                                     {
-                                    lv_orderop_1_3=(Token)match(input,33,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_1_3=(Token)match(input,33,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_1_3, grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_0_1_0_2());
+                                      							newLeafNode(lv_elementop_1_3, grammarAccess.getPrimaryAccess().getElementopAsteriskKeyword_0_1_0_2());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3084,7 +3084,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_1_3, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_1_3, null);
                                       						
                                     }
 
@@ -3109,10 +3109,10 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCryptSL.g:1062:3: (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? )
+                    // InternalCryptSL.g:1062:3: (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? )
                     {
-                    // InternalCryptSL.g:1062:3: (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )? )
-                    // InternalCryptSL.g:1063:4: otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )?
+                    // InternalCryptSL.g:1062:3: (otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )? )
+                    // InternalCryptSL.g:1063:4: otherlv_2= '(' this_Order_3= ruleOrder otherlv_4= ')' ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )?
                     {
                     otherlv_2=(Token)match(input,21,FOLLOW_8); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -3142,7 +3142,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_4, grammarAccess.getPrimaryAccess().getRightParenthesisKeyword_1_2());
                       			
                     }
-                    // InternalCryptSL.g:1079:4: ( ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) ) )?
+                    // InternalCryptSL.g:1079:4: ( ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) ) )?
                     int alt24=2;
                     int LA24_0 = input.LA(1);
 
@@ -3151,12 +3151,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt24) {
                         case 1 :
-                            // InternalCryptSL.g:1080:5: ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) )
+                            // InternalCryptSL.g:1080:5: ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) )
                             {
-                            // InternalCryptSL.g:1080:5: ( (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' ) )
-                            // InternalCryptSL.g:1081:6: (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' )
+                            // InternalCryptSL.g:1080:5: ( (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' ) )
+                            // InternalCryptSL.g:1081:6: (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' )
                             {
-                            // InternalCryptSL.g:1081:6: (lv_orderop_5_1= '+' | lv_orderop_5_2= '?' | lv_orderop_5_3= '*' )
+                            // InternalCryptSL.g:1081:6: (lv_elementop_5_1= '+' | lv_elementop_5_2= '?' | lv_elementop_5_3= '*' )
                             int alt23=3;
                             switch ( input.LA(1) ) {
                             case 31:
@@ -3184,12 +3184,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
                             switch (alt23) {
                                 case 1 :
-                                    // InternalCryptSL.g:1082:7: lv_orderop_5_1= '+'
+                                    // InternalCryptSL.g:1082:7: lv_elementop_5_1= '+'
                                     {
-                                    lv_orderop_5_1=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_5_1=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_5_1, grammarAccess.getPrimaryAccess().getOrderopPlusSignKeyword_1_3_0_0());
+                                      							newLeafNode(lv_elementop_5_1, grammarAccess.getPrimaryAccess().getElementopPlusSignKeyword_1_3_0_0());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3197,19 +3197,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_5_1, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_5_1, null);
                                       						
                                     }
 
                                     }
                                     break;
                                 case 2 :
-                                    // InternalCryptSL.g:1093:7: lv_orderop_5_2= '?'
+                                    // InternalCryptSL.g:1093:7: lv_elementop_5_2= '?'
                                     {
-                                    lv_orderop_5_2=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_5_2=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_5_2, grammarAccess.getPrimaryAccess().getOrderopQuestionMarkKeyword_1_3_0_1());
+                                      							newLeafNode(lv_elementop_5_2, grammarAccess.getPrimaryAccess().getElementopQuestionMarkKeyword_1_3_0_1());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3217,19 +3217,19 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_5_2, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_5_2, null);
                                       						
                                     }
 
                                     }
                                     break;
                                 case 3 :
-                                    // InternalCryptSL.g:1104:7: lv_orderop_5_3= '*'
+                                    // InternalCryptSL.g:1104:7: lv_elementop_5_3= '*'
                                     {
-                                    lv_orderop_5_3=(Token)match(input,33,FOLLOW_2); if (state.failed) return current;
+                                    lv_elementop_5_3=(Token)match(input,33,FOLLOW_2); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
-                                      							newLeafNode(lv_orderop_5_3, grammarAccess.getPrimaryAccess().getOrderopAsteriskKeyword_1_3_0_2());
+                                      							newLeafNode(lv_elementop_5_3, grammarAccess.getPrimaryAccess().getElementopAsteriskKeyword_1_3_0_2());
                                       						
                                     }
                                     if ( state.backtracking==0 ) {
@@ -3237,7 +3237,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
                                       							if (current==null) {
                                       								current = createModelElement(grammarAccess.getPrimaryRule());
                                       							}
-                                      							setWithLastConsumed(current, "orderop", lv_orderop_5_3, null);
+                                      							setWithLastConsumed(current, "elementop", lv_elementop_5_3, null);
                                       						
                                     }
 
