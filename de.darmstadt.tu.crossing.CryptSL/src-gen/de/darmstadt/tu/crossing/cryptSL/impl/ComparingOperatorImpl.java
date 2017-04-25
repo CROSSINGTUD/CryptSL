@@ -435,19 +435,24 @@ public class ComparingOperatorImpl extends MinimalEObjectImpl.Container implemen
    */
   @Override
   public String toString()
-  {if (less != null) {
-	return less;
-   } else if (lesS_OR_EQUAL != null) {
-    	return lesS_OR_EQUAL;
-    } else if (greateR_OR_EQUAL != null) {
-    	return greateR_OR_EQUAL;
-    } else if (greater != null) {
-    	return greater;
-    } else if (equal != null) {
-    	return equal;
-    } else if (unequal != null) {
-    	return unequal;
-    }
-return "";
-}
-} //ComparingOperatorImpl
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (LESS: ");
+    result.append(less);
+    result.append(", LESS_OR_EQUAL: ");
+    result.append(lesS_OR_EQUAL);
+    result.append(", GREATER_OR_EQUAL: ");
+    result.append(greateR_OR_EQUAL);
+    result.append(", GREATER: ");
+    result.append(greater);
+    result.append(", EQUAL: ");
+    result.append(equal);
+    result.append(", UNEQUAL: ");
+    result.append(unequal);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ComparingOperatorImpl

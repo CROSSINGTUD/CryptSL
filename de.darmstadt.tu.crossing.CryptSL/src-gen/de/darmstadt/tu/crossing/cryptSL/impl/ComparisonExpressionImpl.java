@@ -6,7 +6,6 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -192,7 +191,4 @@ public class ComparisonExpressionImpl extends ConstraintImpl implements Comparis
     return super.eIsSet(featureID);
   }
 
-//       public String toString() {
-//      return ((LiteralExpression)this.getLeftExpression()).getCons().getName()..getValue().getName() + " " + this.getOperator().toString() + " " +((LiteralExpression)this.getRightExpression()).getCons().getName().getValue().getName();
-//     }
-}
+} //ComparisonExpressionImpl

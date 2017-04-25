@@ -5,7 +5,6 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -468,9 +467,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    */
   @Override
   public String toString()
-  {if (this instanceof LiteralExpression) {
- return ((LiteralExpressionImpl) this).toString();
-    }
- return super.toString(); 
-}
-} //ConstraintImpl
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (predName: ");
+    result.append(predName);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ConstraintImpl

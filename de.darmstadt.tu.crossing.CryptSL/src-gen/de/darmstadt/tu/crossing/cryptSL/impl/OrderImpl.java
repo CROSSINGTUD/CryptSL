@@ -38,30 +38,4 @@ public class OrderImpl extends ExpressionImpl implements Order
     return CryptSLPackage.Literals.ORDER;
   }
 
-//       public String stringify(OrderImpl orderImpl) {
-//      return "(" + "(" + stringify(orderImpl.getLeft()) + ")" + orderImpl.getOrderop() + "(" + stringify(orderImpl.getRight()) + ")" + ")";
-//     }
-//       public String stringify(Expression exp) {
-//      	EList<Event> expValueList = exp.getOrderEv();
-//
-//	StringBuilder sb = new StringBuilder();
-//	if (exp.getOrderop() != null && (exp.getOrderop().equals("|") || exp.getOrderop().equals(","))) {
-//		sb.append("(");
-//	sb.append(stringify(exp.getLeft()));
-//		sb.append(")");
-//	sb.append(exp.getOrderop());
-//		sb.append("(");
-// sb.append(stringify(exp.getRight()));
-//		sb.append(")");
-//	} else {
-//		sb.append(expValueList.get(0).getName());
-//		if (exp.getOrderop() != null) {
-//			sb.append(exp.getOrderop());
-//		}
-//	}
-//	return sb.toString();
-//     }
-//       public String toString() {
-//      return stringify(this);
-//     }
-}
+} //OrderImpl

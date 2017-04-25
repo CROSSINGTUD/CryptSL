@@ -510,7 +510,4 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     return super.eIsSet(featureID);
   }
 
-//       public String toString() {
-//      return this.getCons().getName().getValue().getName();
-//     }
-}
+} //LiteralExpressionImpl

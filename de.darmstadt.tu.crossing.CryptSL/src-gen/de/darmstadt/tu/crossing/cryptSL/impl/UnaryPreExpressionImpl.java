@@ -191,7 +191,4 @@ public class UnaryPreExpressionImpl extends ConstraintImpl implements UnaryPreEx
     return super.eIsSet(featureID);
   }
 
-       public String toString() {
-      return this.getOperator().toString() + this.getEnclosedExpression().getPredName();
-     }
-}
+} //UnaryPreExpressionImpl
