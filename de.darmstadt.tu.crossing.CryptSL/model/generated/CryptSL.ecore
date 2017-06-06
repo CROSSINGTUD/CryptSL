@@ -19,11 +19,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectDecl">
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="array" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectName" eType="#//SuperType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ForbMethod">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="javaMeth" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javaMeth" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmExecutable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Event"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event">
@@ -35,7 +36,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Method">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftSide" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="methName" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methName" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmExecutable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//ParList"
         containment="true"/>
   </eClassifiers>
@@ -101,7 +102,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="NOT" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -123,10 +126,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleOrder" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ComparisonExpression" eSuperTypes="#//Constraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Constraint"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparisonExpression" eSuperTypes="#//Constraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="ArithmeticExpression" eSuperTypes="#//Constraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryPreExpression" eSuperTypes="#//Constraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="enclosedExpression" eType="#//Constraint"

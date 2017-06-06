@@ -3,21 +3,32 @@
  */
 package de.darmstadt.tu.crossing.tests;
 
+import com.google.inject.Inject;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
-import de.darmstadt.tu.crossing.tests.CryptSLInjectorProvider;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.junit4.XtextRunner;
+import org.eclipse.xtext.junit4.util.ParseHelper;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-/* @RunWith(/* name is null */)
-@InjectWith(CryptSLInjectorProvider.class) */@SuppressWarnings("all")
+@RunWith(XtextRunner.class)
+@SuppressWarnings("all")
 public class CryptSLParsingTest {
-  /* @Inject
-   */private /* ParseHelper<Domainmodel> */Object parseHelper;
+  @Inject
+  private ParseHelper<Domainmodel> parseHelper;
   
-  /* @Test
-   */public void loadModel() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field Assert is undefined"
-      + "\nThe field CryptSLParsingTest.parseHelper refers to the missing type ParseHelper"
-      + "\nparse cannot be resolved"
-      + "\nassertNotNull cannot be resolved");
+  @Test
+  public void loadModel() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Hello Xtext!");
+      _builder.newLine();
+      final Domainmodel result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

@@ -15,17 +15,17 @@ Domainmodel :
 
 ////////////// OBJECTS
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] "[]"? objectName=Object ";"
+	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]")? objectName=Object ";"
 ;
 
 /////////// FORBIDDEN EVENTS
 ForbMethod:
-	{ForbMethod} (javaMeth=[jvmTypes::JvmOperation|FQN] ("=>" rep=[Event])?)';';
+	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?)';';
 
 FQN: QN "(" (QN ("," QN)*)? ")";
 
 QN:
-	ID ('.' ID)*
+	ID ('.' ID)* ("[]")?
 ;
 
 ///////////// EVENTS
@@ -37,7 +37,7 @@ LabelMethodCall:
 	name=ID ":" meth=Method;
 
 Method:
-	(leftSide=[Object] "=")? methName=[jvmTypes::JvmOperation|ID] "(" parList=ParList? ");";
+	(leftSide=[Object] "=")? methName=[jvmTypes::JvmExecutable|ID] "(" parList=ParList? ");";
 
 ParList:
 	(parameters+=Par (',' parameters+=Par)*);
@@ -107,7 +107,7 @@ LogicalAnd returns LogicalOperator:
 ComparisonExpression returns Constraint:
 	ComparisonHigherOpExpression 
 	(
-		{ComparisonExpression.left=current}
+		{ComparisonExpression.leftExpression=current}
 		operator=ComparingEQNEQOperator
 		rightExpression=ComparisonHigherOpExpression
 	)?
@@ -183,7 +183,15 @@ AggregateExpression returns LiteralExpression:
 ;
 
 Literal :
-	{Literal} (STRING | INT)
+	{Literal} val = (StringLiteral |  IntegerLiteral)
+;
+
+StringLiteral :
+	STRING
+;
+
+IntegerLiteral :
+	INT	
 ;
 
 UnaryPreOperator returns UnaryOperator:
@@ -218,7 +226,7 @@ SuParList:
 ;
 
 SuPar:
-	{SuPar} (val=ConsPred | '_')
+	{SuPar} (val=ConsPred | '_' | 'this')
 ;
 
 Object returns SuperType:
