@@ -12,9 +12,11 @@ import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
+import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Literal;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
@@ -25,11 +27,14 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
 import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
 import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
+import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 import de.darmstadt.tu.crossing.services.CryptSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -126,14 +131,20 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 			case CryptSLPackage.DOMAINMODEL:
 				sequence_Domainmodel(context, (Domainmodel) semanticObject); 
 				return; 
+			case CryptSLPackage.ENFORCE_CONS_BLOCK:
+				sequence_EnforceConsBlock(context, (EnforceConsBlock) semanticObject); 
+				return; 
+			case CryptSLPackage.ENSURES_BLOCK:
+				sequence_EnsuresBlock(context, (EnsuresBlock) semanticObject); 
+				return; 
 			case CryptSLPackage.EXPRESSION:
 				sequence_Primary(context, (Expression) semanticObject); 
 				return; 
 			case CryptSLPackage.FORB_METHOD:
 				sequence_ForbMethod(context, (ForbMethod) semanticObject); 
 				return; 
-			case CryptSLPackage.LABEL_METHOD_CALL:
-				sequence_LabelMethodCall(context, (LabelMethodCall) semanticObject); 
+			case CryptSLPackage.FORBIDDEN_BLOCK:
+				sequence_ForbiddenBlock(context, (ForbiddenBlock) semanticObject); 
 				return; 
 			case CryptSLPackage.LIT_LIST:
 				sequence_LitList(context, (LitList) semanticObject); 
@@ -144,6 +155,10 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 			case CryptSLPackage.LITERAL_EXPRESSION:
 				if (rule == grammarAccess.getAggregateExpressionRule()) {
 					sequence_AggregateExpression(context, (LiteralExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getConsPredRule()) {
+					sequence_ConsPred(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
 				else if (rule == grammarAccess.getConstraintRule()
@@ -167,8 +182,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 					sequence_Cons(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getLiteralExpressionRule()
-						|| rule == grammarAccess.getConsPredRule()) {
+				else if (rule == grammarAccess.getLiteralExpressionRule()) {
 					sequence_LiteralExpression(context, (LiteralExpression) semanticObject); 
 					return; 
 				}
@@ -204,6 +218,9 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 			case CryptSLPackage.PAR_LIST:
 				sequence_ParList(context, (ParList) semanticObject); 
 				return; 
+			case CryptSLPackage.REQUIRED_BLOCK:
+				sequence_RequiredBlock(context, (RequiredBlock) semanticObject); 
+				return; 
 			case CryptSLPackage.SIMPLE_ORDER:
 				sequence_Primary_SimpleOrder(context, (SimpleOrder) semanticObject); 
 				return; 
@@ -213,11 +230,17 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 			case CryptSLPackage.SU_PAR_LIST:
 				sequence_SuParList(context, (SuParList) semanticObject); 
 				return; 
+			case CryptSLPackage.SUPER_TYPE:
+				sequence_LabelMethodCall(context, (SuperType) semanticObject); 
+				return; 
 			case CryptSLPackage.UNARY_OPERATOR:
 				sequence_UnaryPreOperator(context, (UnaryOperator) semanticObject); 
 				return; 
 			case CryptSLPackage.UNARY_PRE_EXPRESSION:
 				sequence_UnaryPreExpression(context, (UnaryPreExpression) semanticObject); 
+				return; 
+			case CryptSLPackage.USE_BLOCK:
+				sequence_UseBlock(context, (UseBlock) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -415,6 +438,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ConsPred returns LiteralExpression
+	 *
+	 * Constraint:
+	 *     ((part='part(' ind=IntegerLiteral split=StringLiteral lit=LiteralExpression) | lit=LiteralExpression)
+	 */
+	protected void sequence_ConsPred(ISerializationContext context, LiteralExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Constraint returns LiteralExpression
 	 *     LogicalImplyExpression returns LiteralExpression
 	 *     LogicalImplyExpression.Constraint_1_0 returns LiteralExpression
@@ -449,15 +484,39 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         javaType=[JvmType|QualifiedName] 
-	 *         object+=ObjectDecl+ 
-	 *         method+=ForbMethod* 
-	 *         event+=Event+ 
+	 *         usage=UseBlock 
+	 *         forbEvent=ForbiddenBlock? 
+	 *         req_events=RequiredBlock 
 	 *         order=Order 
-	 *         req+=Constraint* 
-	 *         ens+=Pred*
+	 *         reqConstraints=EnforceConsBlock? 
+	 *         ensure=EnsuresBlock?
 	 *     )
 	 */
 	protected void sequence_Domainmodel(ISerializationContext context, Domainmodel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EnforceConsBlock returns EnforceConsBlock
+	 *
+	 * Constraint:
+	 *     req+=Constraint+
+	 */
+	protected void sequence_EnforceConsBlock(ISerializationContext context, EnforceConsBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EnsuresBlock returns EnsuresBlock
+	 *
+	 * Constraint:
+	 *     pred+=Pred+
+	 */
+	protected void sequence_EnsuresBlock(ISerializationContext context, EnsuresBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -476,18 +535,30 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Event returns LabelMethodCall
-	 *     LabelMethodCall returns LabelMethodCall
+	 *     ForbiddenBlock returns ForbiddenBlock
+	 *
+	 * Constraint:
+	 *     forb_methods+=ForbMethod+
+	 */
+	protected void sequence_ForbiddenBlock(ISerializationContext context, ForbiddenBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Event returns SuperType
+	 *     LabelMethodCall returns SuperType
 	 *
 	 * Constraint:
 	 *     (name=ID meth=Method)
 	 */
-	protected void sequence_LabelMethodCall(ISerializationContext context, LabelMethodCall semanticObject) {
+	protected void sequence_LabelMethodCall(ISerializationContext context, SuperType semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EVENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EVENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.LABEL_METHOD_CALL__METH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.LABEL_METHOD_CALL__METH));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__NAME));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__METH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__METH));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getLabelMethodCallAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
@@ -511,10 +582,9 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     LiteralExpression returns LiteralExpression
-	 *     ConsPred returns LiteralExpression
 	 *
 	 * Constraint:
-	 *     (name=Literal | name=AggregateExpression | (obj+=[Object|ID] type=[JvmType|QualifiedName]))
+	 *     (name=Literal | name=AggregateExpression | (pred='neverTypeOf'+ obj+=[Object|ID] type=[JvmType|QualifiedName]) | (pred='noCallTo'+ obj+=[Event|ID]))
 	 */
 	protected void sequence_LiteralExpression(ISerializationContext context, LiteralExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -665,8 +735,8 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 */
 	protected void sequence_Object(ISerializationContext context, de.darmstadt.tu.crossing.cryptSL.Object semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.EVENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.EVENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.SUPER_TYPE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getObjectAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -760,6 +830,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     RequiredBlock returns RequiredBlock
+	 *
+	 * Constraint:
+	 *     req_event+=Event+
+	 */
+	protected void sequence_RequiredBlock(ISerializationContext context, RequiredBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SuParList returns SuParList
 	 *
 	 * Constraint:
@@ -835,6 +917,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getUnaryPreOperatorAccess().getNOTExclamationMarkKeyword_0(), semanticObject.getNOT());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     UseBlock returns UseBlock
+	 *
+	 * Constraint:
+	 *     objects+=ObjectDecl+
+	 */
+	protected void sequence_UseBlock(ISerializationContext context, UseBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

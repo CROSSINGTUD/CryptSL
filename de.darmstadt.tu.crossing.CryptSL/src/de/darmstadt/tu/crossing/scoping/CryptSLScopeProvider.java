@@ -29,8 +29,10 @@ import de.darmstadt.tu.crossing.cryptSL.Method;
  * on how and when to use it.
  */
 public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
+
+
 	IScope scope_ForbMethod_javaMeth(ForbMethod fm , EReference reference) {
-		EObject cont = fm.eContainer();
+		EObject cont = fm.eContainer().eContainer();
 		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
 		
 		if (cont instanceof Domainmodel) {
@@ -43,7 +45,7 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 	}
 	
 	IScope scope_Method_methName(Method fm, EReference reference) {
-		EObject cont = fm.eContainer().eContainer();
+		EObject cont = fm.eContainer().eContainer().eContainer();
 		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
 		
 		if (cont instanceof Domainmodel) {

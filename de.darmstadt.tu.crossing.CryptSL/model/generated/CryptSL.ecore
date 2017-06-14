@@ -4,17 +4,37 @@
     nsPrefix="cryptSL">
   <eClassifiers xsi:type="ecore:EClass" name="Domainmodel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="javaType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="object" upperBound="-1"
-        eType="#//ObjectDecl" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="method" upperBound="-1"
-        eType="#//ForbMethod" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
-        eType="#//Event" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usage" eType="#//UseBlock"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forbEvent" eType="#//ForbiddenBlock"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req_events" eType="#//RequiredBlock"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="order" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reqConstraints" eType="#//EnforceConsBlock"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ensure" eType="#//EnsuresBlock"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UseBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" upperBound="-1"
+        eType="#//ObjectDecl" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForbiddenBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forb_methods" upperBound="-1"
+        eType="#//ForbMethod" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req_event" upperBound="-1"
+        eType="#//Event" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnforceConsBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="req" upperBound="-1" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ens" upperBound="-1" eType="#//Constraint"
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnsuresBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pred" upperBound="-1" eType="#//Constraint"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectDecl">
@@ -27,10 +47,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="javaMeth" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmExecutable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rep" eType="#//Event"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event">
+  <eClassifiers xsi:type="ecore:EClass" name="Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperType" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LabelMethodCall" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="meth" eType="#//Method"
         containment="true"/>
   </eClassifiers>
@@ -47,7 +66,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Par">
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//Object"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SuperType" eSuperTypes="#//Event"/>
   <eClassifiers xsi:type="ecore:EClass" name="Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderEv" unique="false"
         upperBound="-1" eType="#//Event"/>
@@ -93,13 +111,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="LiteralExpression" eSuperTypes="#//Constraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pred" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
-        eType="#//Object"/>
+        eType="#//Event"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SuperType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//LiteralExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="part" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lit" eType="#//LiteralExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal">

@@ -23,7 +23,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CryptSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q;
-	protected AbstractElementAlias match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q;
 	protected AbstractElementAlias match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a;
 	protected AbstractElementAlias match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a;
 	protected AbstractElementAlias match_Operand_LeftParenthesisKeyword_0_0_a;
@@ -38,7 +37,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CryptSLGrammarAccess) access;
 		match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getFullStopKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getAggregateExpressionAccess().getIDTerminalRuleCall_1_1()));
-		match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getConsPredAccess().getPartKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getINTTerminalRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getSTRINGTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getConsPredAccess().getCommaKeyword_0_4()));
 		match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()));
 		match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getLitListAccess().getFullStopFullStopFullStopKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getLitListAccess().getCommaKeyword_1_0()));
 		match_Operand_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_0_0());
@@ -56,10 +54,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getArrayBracketsToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getIDRule())
 			return getIDToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getINTRule())
-			return getINTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
-			return getSTRINGToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -84,27 +78,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "";
 	}
 	
-	/**
-	 * terminal INT:
-	 * 	'0'..'9' ('0'..'9'|'_')*;
-	 */
-	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * terminal STRING: 
-	 * 			'"' ( '\\' .  | !('\\'|'"') )* '"'? |
-	 * 			"'" ( '\\' .  | !('\\'|"'") )* "'"?;
-	 */
-	protected String getSTRINGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "\"";
-	}
-	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
@@ -113,8 +86,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q.equals(syntax))
 				emit_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q.equals(syntax))
-				emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a.equals(syntax))
 				emit_LitList___CommaKeyword_1_0_FullStopFullStopFullStopKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_LitList___FullStopFullStopFullStopKeyword_1_1_1_CommaKeyword_1_0__a.equals(syntax))
@@ -145,19 +116,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     value=[SuperType|ID] (ambiguity) (rule end)
 	 */
 	protected void emit_AggregateExpression___FullStopKeyword_1_0_IDTerminalRuleCall_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('part(' INT ',' STRING ',')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'typeOf(' obj+=[Object|ID]
-	 *     (rule start) (ambiguity) name=AggregateExpression
-	 *     (rule start) (ambiguity) name=Literal
-	 */
-	protected void emit_ConsPred___PartKeyword_0_0_INTTerminalRuleCall_0_1_CommaKeyword_0_2_STRINGTerminalRuleCall_0_3_CommaKeyword_0_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

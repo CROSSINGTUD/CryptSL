@@ -77,31 +77,31 @@ public interface CryptSLPackage extends EPackage
   int DOMAINMODEL__JAVA_TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Object</b></em>' containment reference list.
+   * The feature id for the '<em><b>Usage</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__OBJECT = 1;
+  int DOMAINMODEL__USAGE = 1;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' containment reference list.
+   * The feature id for the '<em><b>Forb Event</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__METHOD = 2;
+  int DOMAINMODEL__FORB_EVENT = 2;
 
   /**
-   * The feature id for the '<em><b>Event</b></em>' containment reference list.
+   * The feature id for the '<em><b>Req events</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__EVENT = 3;
+  int DOMAINMODEL__REQ_EVENTS = 3;
 
   /**
    * The feature id for the '<em><b>Order</b></em>' containment reference.
@@ -113,22 +113,22 @@ public interface CryptSLPackage extends EPackage
   int DOMAINMODEL__ORDER = 4;
 
   /**
-   * The feature id for the '<em><b>Req</b></em>' containment reference list.
+   * The feature id for the '<em><b>Req Constraints</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__REQ = 5;
+  int DOMAINMODEL__REQ_CONSTRAINTS = 5;
 
   /**
-   * The feature id for the '<em><b>Ens</b></em>' containment reference list.
+   * The feature id for the '<em><b>Ensure</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__ENS = 6;
+  int DOMAINMODEL__ENSURE = 6;
 
   /**
    * The number of structural features of the '<em>Domainmodel</em>' class.
@@ -140,6 +140,146 @@ public interface CryptSLPackage extends EPackage
   int DOMAINMODEL_FEATURE_COUNT = 7;
 
   /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl <em>Use Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUseBlock()
+   * @generated
+   */
+  int USE_BLOCK = 1;
+
+  /**
+   * The feature id for the '<em><b>Objects</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USE_BLOCK__OBJECTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Use Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USE_BLOCK_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbiddenBlockImpl <em>Forbidden Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ForbiddenBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getForbiddenBlock()
+   * @generated
+   */
+  int FORBIDDEN_BLOCK = 2;
+
+  /**
+   * The feature id for the '<em><b>Forb methods</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_BLOCK__FORB_METHODS = 0;
+
+  /**
+   * The number of structural features of the '<em>Forbidden Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_BLOCK_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.RequiredBlockImpl <em>Required Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.RequiredBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getRequiredBlock()
+   * @generated
+   */
+  int REQUIRED_BLOCK = 3;
+
+  /**
+   * The feature id for the '<em><b>Req event</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REQUIRED_BLOCK__REQ_EVENT = 0;
+
+  /**
+   * The number of structural features of the '<em>Required Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REQUIRED_BLOCK_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.EnforceConsBlockImpl <em>Enforce Cons Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.EnforceConsBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEnforceConsBlock()
+   * @generated
+   */
+  int ENFORCE_CONS_BLOCK = 4;
+
+  /**
+   * The feature id for the '<em><b>Req</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENFORCE_CONS_BLOCK__REQ = 0;
+
+  /**
+   * The number of structural features of the '<em>Enforce Cons Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENFORCE_CONS_BLOCK_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.EnsuresBlockImpl <em>Ensures Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.EnsuresBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEnsuresBlock()
+   * @generated
+   */
+  int ENSURES_BLOCK = 5;
+
+  /**
+   * The feature id for the '<em><b>Pred</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENSURES_BLOCK__PRED = 0;
+
+  /**
+   * The number of structural features of the '<em>Ensures Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENSURES_BLOCK_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl <em>Object Decl</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -147,7 +287,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObjectDecl()
    * @generated
    */
-  int OBJECT_DECL = 1;
+  int OBJECT_DECL = 6;
 
   /**
    * The feature id for the '<em><b>Object Type</b></em>' reference.
@@ -193,7 +333,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getForbMethod()
    * @generated
    */
-  int FORB_METHOD = 2;
+  int FORB_METHOD = 7;
 
   /**
    * The feature id for the '<em><b>Java Meth</b></em>' reference.
@@ -230,16 +370,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEvent()
    * @generated
    */
-  int EVENT = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVENT__NAME = 0;
+  int EVENT = 8;
 
   /**
    * The number of structural features of the '<em>Event</em>' class.
@@ -248,17 +379,17 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVENT_FEATURE_COUNT = 1;
+  int EVENT_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LabelMethodCallImpl <em>Label Method Call</em>}' class.
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl <em>Super Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.LabelMethodCallImpl
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLabelMethodCall()
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuperType()
    * @generated
    */
-  int LABEL_METHOD_CALL = 4;
+  int SUPER_TYPE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -267,7 +398,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LABEL_METHOD_CALL__NAME = EVENT__NAME;
+  int SUPER_TYPE__NAME = EVENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Meth</b></em>' containment reference.
@@ -276,16 +407,16 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LABEL_METHOD_CALL__METH = EVENT_FEATURE_COUNT + 0;
+  int SUPER_TYPE__METH = EVENT_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Label Method Call</em>' class.
+   * The number of structural features of the '<em>Super Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LABEL_METHOD_CALL_FEATURE_COUNT = EVENT_FEATURE_COUNT + 1;
+  int SUPER_TYPE_FEATURE_COUNT = EVENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl <em>Method</em>}' class.
@@ -295,7 +426,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getMethod()
    * @generated
    */
-  int METHOD = 5;
+  int METHOD = 10;
 
   /**
    * The feature id for the '<em><b>Left Side</b></em>' reference.
@@ -341,7 +472,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getParList()
    * @generated
    */
-  int PAR_LIST = 6;
+  int PAR_LIST = 11;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -369,7 +500,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPar()
    * @generated
    */
-  int PAR = 7;
+  int PAR = 12;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' reference.
@@ -390,34 +521,6 @@ public interface CryptSLPackage extends EPackage
   int PAR_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl <em>Super Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuperType()
-   * @generated
-   */
-  int SUPER_TYPE = 8;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUPER_TYPE__NAME = EVENT__NAME;
-
-  /**
-   * The number of structural features of the '<em>Super Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUPER_TYPE_FEATURE_COUNT = EVENT_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -425,7 +528,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 9;
+  int EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -489,7 +592,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConstraint()
    * @generated
    */
-  int CONSTRAINT = 10;
+  int CONSTRAINT = 14;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -553,7 +656,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLogicalImply()
    * @generated
    */
-  int LOGICAL_IMPLY = 11;
+  int LOGICAL_IMPLY = 15;
 
   /**
    * The feature id for the '<em><b>IMPLIES</b></em>' attribute.
@@ -581,7 +684,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 12;
+  int LOGICAL_OPERATOR = 16;
 
   /**
    * The feature id for the '<em><b>OR</b></em>' attribute.
@@ -618,7 +721,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparingOperator()
    * @generated
    */
-  int COMPARING_OPERATOR = 13;
+  int COMPARING_OPERATOR = 17;
 
   /**
    * The feature id for the '<em><b>LESS</b></em>' attribute.
@@ -691,7 +794,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticOperator()
    * @generated
    */
-  int ARITHMETIC_OPERATOR = 14;
+  int ARITHMETIC_OPERATOR = 18;
 
   /**
    * The feature id for the '<em><b>PLUS</b></em>' attribute.
@@ -746,7 +849,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteralExpression()
    * @generated
    */
-  int LITERAL_EXPRESSION = 15;
+  int LITERAL_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -803,13 +906,22 @@ public interface CryptSLPackage extends EPackage
   int LITERAL_EXPRESSION__NAME = CONSTRAINT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Pred</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__PRED = CONSTRAINT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Obj</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 1;
+  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -818,7 +930,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 2;
+  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -827,7 +939,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 3;
+  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Cons</b></em>' containment reference.
@@ -836,7 +948,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 4;
+  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
@@ -845,7 +957,43 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 5;
+  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Part</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__PART = CONSTRAINT_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>Ind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__IND = CONSTRAINT_FEATURE_COUNT + 8;
+
+  /**
+   * The feature id for the '<em><b>Split</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__SPLIT = CONSTRAINT_FEATURE_COUNT + 9;
+
+  /**
+   * The feature id for the '<em><b>Lit</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__LIT = CONSTRAINT_FEATURE_COUNT + 10;
 
   /**
    * The number of structural features of the '<em>Literal Expression</em>' class.
@@ -854,7 +1002,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 6;
+  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 11;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
@@ -864,7 +1012,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 16;
+  int LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -892,7 +1040,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 17;
+  int UNARY_OPERATOR = 21;
 
   /**
    * The feature id for the '<em><b>NOT</b></em>' attribute.
@@ -920,7 +1068,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 18;
+  int LIT_LIST = 22;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -948,7 +1096,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuParList()
    * @generated
    */
-  int SU_PAR_LIST = 19;
+  int SU_PAR_LIST = 23;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -976,7 +1124,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuPar()
    * @generated
    */
-  int SU_PAR = 20;
+  int SU_PAR = 24;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1004,7 +1152,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggegate()
    * @generated
    */
-  int AGGEGATE = 21;
+  int AGGEGATE = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1014,6 +1162,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int AGGEGATE__NAME = SUPER_TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Meth</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGEGATE__METH = SUPER_TYPE__METH;
 
   /**
    * The feature id for the '<em><b>Lab</b></em>' reference list.
@@ -1041,7 +1198,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 22;
+  int ORDER = 26;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1105,7 +1262,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 23;
+  int SIMPLE_ORDER = 27;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1169,7 +1326,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 24;
+  int COMPARISON_EXPRESSION = 28;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1233,7 +1390,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticExpression()
    * @generated
    */
-  int ARITHMETIC_EXPRESSION = 25;
+  int ARITHMETIC_EXPRESSION = 29;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1297,7 +1454,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryPreExpression()
    * @generated
    */
-  int UNARY_PRE_EXPRESSION = 26;
+  int UNARY_PRE_EXPRESSION = 30;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1370,7 +1527,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 27;
+  int OBJECT = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1380,6 +1537,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int OBJECT__NAME = SUPER_TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Meth</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__METH = SUPER_TYPE__METH;
 
   /**
    * The number of structural features of the '<em>Object</em>' class.
@@ -1413,37 +1579,37 @@ public interface CryptSLPackage extends EPackage
   EReference getDomainmodel_JavaType();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getObject <em>Object</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getUsage <em>Usage</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Object</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getObject()
+   * @return the meta object for the containment reference '<em>Usage</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getUsage()
    * @see #getDomainmodel()
    * @generated
    */
-  EReference getDomainmodel_Object();
+  EReference getDomainmodel_Usage();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getMethod <em>Method</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getForbEvent <em>Forb Event</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Method</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getMethod()
+   * @return the meta object for the containment reference '<em>Forb Event</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getForbEvent()
    * @see #getDomainmodel()
    * @generated
    */
-  EReference getDomainmodel_Method();
+  EReference getDomainmodel_ForbEvent();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEvent <em>Event</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq_events <em>Req events</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Event</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEvent()
+   * @return the meta object for the containment reference '<em>Req events</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq_events()
    * @see #getDomainmodel()
    * @generated
    */
-  EReference getDomainmodel_Event();
+  EReference getDomainmodel_Req_events();
 
   /**
    * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getOrder <em>Order</em>}'.
@@ -1457,26 +1623,131 @@ public interface CryptSLPackage extends EPackage
   EReference getDomainmodel_Order();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq <em>Req</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReqConstraints <em>Req Constraints</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Req Constraints</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReqConstraints()
+   * @see #getDomainmodel()
+   * @generated
+   */
+  EReference getDomainmodel_ReqConstraints();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEnsure <em>Ensure</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ensure</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEnsure()
+   * @see #getDomainmodel()
+   * @generated
+   */
+  EReference getDomainmodel_Ensure();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.UseBlock <em>Use Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Use Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.UseBlock
+   * @generated
+   */
+  EClass getUseBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.UseBlock#getObjects <em>Objects</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Objects</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.UseBlock#getObjects()
+   * @see #getUseBlock()
+   * @generated
+   */
+  EReference getUseBlock_Objects();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock <em>Forbidden Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Forbidden Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock
+   * @generated
+   */
+  EClass getForbiddenBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock#getForb_methods <em>Forb methods</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Forb methods</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock#getForb_methods()
+   * @see #getForbiddenBlock()
+   * @generated
+   */
+  EReference getForbiddenBlock_Forb_methods();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.RequiredBlock <em>Required Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Required Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.RequiredBlock
+   * @generated
+   */
+  EClass getRequiredBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.RequiredBlock#getReq_event <em>Req event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Req event</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.RequiredBlock#getReq_event()
+   * @see #getRequiredBlock()
+   * @generated
+   */
+  EReference getRequiredBlock_Req_event();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock <em>Enforce Cons Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Enforce Cons Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock
+   * @generated
+   */
+  EClass getEnforceConsBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock#getReq <em>Req</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Req</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq()
-   * @see #getDomainmodel()
+   * @see de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock#getReq()
+   * @see #getEnforceConsBlock()
    * @generated
    */
-  EReference getDomainmodel_Req();
+  EReference getEnforceConsBlock_Req();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEns <em>Ens</em>}'.
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.EnsuresBlock <em>Ensures Block</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Ens</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEns()
-   * @see #getDomainmodel()
+   * @return the meta object for class '<em>Ensures Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.EnsuresBlock
    * @generated
    */
-  EReference getDomainmodel_Ens();
+  EClass getEnsuresBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.EnsuresBlock#getPred <em>Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Pred</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.EnsuresBlock#getPred()
+   * @see #getEnsuresBlock()
+   * @generated
+   */
+  EReference getEnsuresBlock_Pred();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl <em>Object Decl</em>}'.
@@ -1564,36 +1835,36 @@ public interface CryptSLPackage extends EPackage
   EClass getEvent();
 
   /**
-   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.Event#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.SuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Super Type</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.SuperType
+   * @generated
+   */
+  EClass getSuperType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.SuperType#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Event#getName()
-   * @see #getEvent()
+   * @see de.darmstadt.tu.crossing.cryptSL.SuperType#getName()
+   * @see #getSuperType()
    * @generated
    */
-  EAttribute getEvent_Name();
+  EAttribute getSuperType_Name();
 
   /**
-   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.LabelMethodCall <em>Label Method Call</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Label Method Call</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.LabelMethodCall
-   * @generated
-   */
-  EClass getLabelMethodCall();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.LabelMethodCall#getMeth <em>Meth</em>}'.
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.SuperType#getMeth <em>Meth</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Meth</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.LabelMethodCall#getMeth()
-   * @see #getLabelMethodCall()
+   * @see de.darmstadt.tu.crossing.cryptSL.SuperType#getMeth()
+   * @see #getSuperType()
    * @generated
    */
-  EReference getLabelMethodCall_Meth();
+  EReference getSuperType_Meth();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Method <em>Method</em>}'.
@@ -1679,16 +1950,6 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getPar_Val();
-
-  /**
-   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.SuperType <em>Super Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Super Type</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.SuperType
-   * @generated
-   */
-  EClass getSuperType();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Expression <em>Expression</em>}'.
@@ -2025,6 +2286,17 @@ public interface CryptSLPackage extends EPackage
   EReference getLiteralExpression_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred <em>Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Pred</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EAttribute getLiteralExpression_Pred();
+
+  /**
    * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj <em>Obj</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2078,6 +2350,50 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getLiteralExpression_Litsleft();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPart <em>Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Part</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPart()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EAttribute getLiteralExpression_Part();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getInd <em>Ind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ind</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getInd()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EAttribute getLiteralExpression_Ind();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getSplit <em>Split</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Split</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getSplit()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EAttribute getLiteralExpression_Split();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getLit <em>Lit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Lit</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getLit()
+   * @see #getLiteralExpression()
+   * @generated
+   */
+  EReference getLiteralExpression_Lit();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
@@ -2318,28 +2634,28 @@ public interface CryptSLPackage extends EPackage
     EReference DOMAINMODEL__JAVA_TYPE = eINSTANCE.getDomainmodel_JavaType();
 
     /**
-     * The meta object literal for the '<em><b>Object</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Usage</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOMAINMODEL__OBJECT = eINSTANCE.getDomainmodel_Object();
+    EReference DOMAINMODEL__USAGE = eINSTANCE.getDomainmodel_Usage();
 
     /**
-     * The meta object literal for the '<em><b>Method</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Forb Event</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOMAINMODEL__METHOD = eINSTANCE.getDomainmodel_Method();
+    EReference DOMAINMODEL__FORB_EVENT = eINSTANCE.getDomainmodel_ForbEvent();
 
     /**
-     * The meta object literal for the '<em><b>Event</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Req events</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOMAINMODEL__EVENT = eINSTANCE.getDomainmodel_Event();
+    EReference DOMAINMODEL__REQ_EVENTS = eINSTANCE.getDomainmodel_Req_events();
 
     /**
      * The meta object literal for the '<em><b>Order</b></em>' containment reference feature.
@@ -2350,20 +2666,110 @@ public interface CryptSLPackage extends EPackage
     EReference DOMAINMODEL__ORDER = eINSTANCE.getDomainmodel_Order();
 
     /**
+     * The meta object literal for the '<em><b>Req Constraints</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAINMODEL__REQ_CONSTRAINTS = eINSTANCE.getDomainmodel_ReqConstraints();
+
+    /**
+     * The meta object literal for the '<em><b>Ensure</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAINMODEL__ENSURE = eINSTANCE.getDomainmodel_Ensure();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl <em>Use Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUseBlock()
+     * @generated
+     */
+    EClass USE_BLOCK = eINSTANCE.getUseBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Objects</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference USE_BLOCK__OBJECTS = eINSTANCE.getUseBlock_Objects();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbiddenBlockImpl <em>Forbidden Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ForbiddenBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getForbiddenBlock()
+     * @generated
+     */
+    EClass FORBIDDEN_BLOCK = eINSTANCE.getForbiddenBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Forb methods</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORBIDDEN_BLOCK__FORB_METHODS = eINSTANCE.getForbiddenBlock_Forb_methods();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.RequiredBlockImpl <em>Required Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.RequiredBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getRequiredBlock()
+     * @generated
+     */
+    EClass REQUIRED_BLOCK = eINSTANCE.getRequiredBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Req event</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REQUIRED_BLOCK__REQ_EVENT = eINSTANCE.getRequiredBlock_Req_event();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.EnforceConsBlockImpl <em>Enforce Cons Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.EnforceConsBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEnforceConsBlock()
+     * @generated
+     */
+    EClass ENFORCE_CONS_BLOCK = eINSTANCE.getEnforceConsBlock();
+
+    /**
      * The meta object literal for the '<em><b>Req</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOMAINMODEL__REQ = eINSTANCE.getDomainmodel_Req();
+    EReference ENFORCE_CONS_BLOCK__REQ = eINSTANCE.getEnforceConsBlock_Req();
 
     /**
-     * The meta object literal for the '<em><b>Ens</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.EnsuresBlockImpl <em>Ensures Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.EnsuresBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEnsuresBlock()
+     * @generated
+     */
+    EClass ENSURES_BLOCK = eINSTANCE.getEnsuresBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Pred</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOMAINMODEL__ENS = eINSTANCE.getDomainmodel_Ens();
+    EReference ENSURES_BLOCK__PRED = eINSTANCE.getEnsuresBlock_Pred();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl <em>Object Decl</em>}' class.
@@ -2436,22 +2842,22 @@ public interface CryptSLPackage extends EPackage
     EClass EVENT = eINSTANCE.getEvent();
 
     /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl <em>Super Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuperType()
+     * @generated
+     */
+    EClass SUPER_TYPE = eINSTANCE.getSuperType();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EVENT__NAME = eINSTANCE.getEvent_Name();
-
-    /**
-     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LabelMethodCallImpl <em>Label Method Call</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.LabelMethodCallImpl
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLabelMethodCall()
-     * @generated
-     */
-    EClass LABEL_METHOD_CALL = eINSTANCE.getLabelMethodCall();
+    EAttribute SUPER_TYPE__NAME = eINSTANCE.getSuperType_Name();
 
     /**
      * The meta object literal for the '<em><b>Meth</b></em>' containment reference feature.
@@ -2459,7 +2865,7 @@ public interface CryptSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LABEL_METHOD_CALL__METH = eINSTANCE.getLabelMethodCall_Meth();
+    EReference SUPER_TYPE__METH = eINSTANCE.getSuperType_Meth();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.MethodImpl <em>Method</em>}' class.
@@ -2530,16 +2936,6 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference PAR__VAL = eINSTANCE.getPar_Val();
-
-    /**
-     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl <em>Super Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.SuperTypeImpl
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuperType()
-     * @generated
-     */
-    EClass SUPER_TYPE = eINSTANCE.getSuperType();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -2804,6 +3200,14 @@ public interface CryptSLPackage extends EPackage
     EReference LITERAL_EXPRESSION__NAME = eINSTANCE.getLiteralExpression_Name();
 
     /**
+     * The meta object literal for the '<em><b>Pred</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LITERAL_EXPRESSION__PRED = eINSTANCE.getLiteralExpression_Pred();
+
+    /**
      * The meta object literal for the '<em><b>Obj</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2842,6 +3246,38 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference LITERAL_EXPRESSION__LITSLEFT = eINSTANCE.getLiteralExpression_Litsleft();
+
+    /**
+     * The meta object literal for the '<em><b>Part</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LITERAL_EXPRESSION__PART = eINSTANCE.getLiteralExpression_Part();
+
+    /**
+     * The meta object literal for the '<em><b>Ind</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LITERAL_EXPRESSION__IND = eINSTANCE.getLiteralExpression_Ind();
+
+    /**
+     * The meta object literal for the '<em><b>Split</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LITERAL_EXPRESSION__SPLIT = eINSTANCE.getLiteralExpression_Split();
+
+    /**
+     * The meta object literal for the '<em><b>Lit</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LITERAL_EXPRESSION__LIT = eINSTANCE.getLiteralExpression_Lit();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.

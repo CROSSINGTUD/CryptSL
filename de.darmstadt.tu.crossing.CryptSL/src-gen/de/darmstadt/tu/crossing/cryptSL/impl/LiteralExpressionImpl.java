@@ -4,6 +4,7 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
 import de.darmstadt.tu.crossing.cryptSL.SuperType;
@@ -34,11 +35,16 @@ import org.eclipse.xtext.common.types.JvmType;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getPred <em>Pred</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getObj <em>Obj</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getCons <em>Cons</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getLitsleft <em>Litsleft</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getPart <em>Part</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getInd <em>Ind</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getSplit <em>Split</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getLit <em>Lit</em>}</li>
  * </ul>
  *
  * @generated
@@ -56,6 +62,26 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
   protected EObject name;
 
   /**
+   * The default value of the '{@link #getPred() <em>Pred</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPred()
+   * @generated
+   * @ordered
+   */
+  protected static final String PRED_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPred() <em>Pred</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPred()
+   * @generated
+   * @ordered
+   */
+  protected String pred = PRED_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getObj() <em>Obj</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -63,7 +89,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * @generated
    * @ordered
    */
-  protected EList<de.darmstadt.tu.crossing.cryptSL.Object> obj;
+  protected EList<Event> obj;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -104,6 +130,76 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * @ordered
    */
   protected LitList litsleft;
+
+  /**
+   * The default value of the '{@link #getPart() <em>Part</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPart()
+   * @generated
+   * @ordered
+   */
+  protected static final String PART_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPart() <em>Part</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPart()
+   * @generated
+   * @ordered
+   */
+  protected String part = PART_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getInd() <em>Ind</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInd()
+   * @generated
+   * @ordered
+   */
+  protected static final String IND_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getInd() <em>Ind</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInd()
+   * @generated
+   * @ordered
+   */
+  protected String ind = IND_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSplit() <em>Split</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSplit()
+   * @generated
+   * @ordered
+   */
+  protected static final String SPLIT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSplit() <em>Split</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSplit()
+   * @generated
+   * @ordered
+   */
+  protected String split = SPLIT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLit() <em>Lit</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLit()
+   * @generated
+   * @ordered
+   */
+  protected LiteralExpression lit;
 
   /**
    * <!-- begin-user-doc -->
@@ -179,11 +275,34 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<de.darmstadt.tu.crossing.cryptSL.Object> getObj()
+  public String getPred()
+  {
+    return pred;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPred(String newPred)
+  {
+    String oldPred = pred;
+    pred = newPred;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__PRED, oldPred, pred));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Event> getObj()
   {
     if (obj == null)
     {
-      obj = new EObjectResolvingEList<de.darmstadt.tu.crossing.cryptSL.Object>(de.darmstadt.tu.crossing.cryptSL.Object.class, this, CryptSLPackage.LITERAL_EXPRESSION__OBJ);
+      obj = new EObjectResolvingEList<Event>(Event.class, this, CryptSLPackage.LITERAL_EXPRESSION__OBJ);
     }
     return obj;
   }
@@ -375,6 +494,123 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getPart()
+  {
+    return part;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPart(String newPart)
+  {
+    String oldPart = part;
+    part = newPart;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__PART, oldPart, part));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getInd()
+  {
+    return ind;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInd(String newInd)
+  {
+    String oldInd = ind;
+    ind = newInd;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__IND, oldInd, ind));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getSplit()
+  {
+    return split;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSplit(String newSplit)
+  {
+    String oldSplit = split;
+    split = newSplit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__SPLIT, oldSplit, split));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LiteralExpression getLit()
+  {
+    return lit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLit(LiteralExpression newLit, NotificationChain msgs)
+  {
+    LiteralExpression oldLit = lit;
+    lit = newLit;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__LIT, oldLit, newLit);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLit(LiteralExpression newLit)
+  {
+    if (newLit != lit)
+    {
+      NotificationChain msgs = null;
+      if (lit != null)
+        msgs = ((InternalEObject)lit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.LITERAL_EXPRESSION__LIT, null, msgs);
+      if (newLit != null)
+        msgs = ((InternalEObject)newLit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.LITERAL_EXPRESSION__LIT, null, msgs);
+      msgs = basicSetLit(newLit, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__LIT, newLit, newLit));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -386,6 +622,8 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         return basicSetCons(null, msgs);
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         return basicSetLitsleft(null, msgs);
+      case CryptSLPackage.LITERAL_EXPRESSION__LIT:
+        return basicSetLit(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -402,6 +640,8 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     {
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         return getName();
+      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
+        return getPred();
       case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
         return getObj();
       case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
@@ -414,6 +654,14 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         return getCons();
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         return getLitsleft();
+      case CryptSLPackage.LITERAL_EXPRESSION__PART:
+        return getPart();
+      case CryptSLPackage.LITERAL_EXPRESSION__IND:
+        return getInd();
+      case CryptSLPackage.LITERAL_EXPRESSION__SPLIT:
+        return getSplit();
+      case CryptSLPackage.LITERAL_EXPRESSION__LIT:
+        return getLit();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -432,9 +680,12 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         setName((EObject)newValue);
         return;
+      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
+        setPred((String)newValue);
+        return;
       case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
         getObj().clear();
-        getObj().addAll((Collection<? extends de.darmstadt.tu.crossing.cryptSL.Object>)newValue);
+        getObj().addAll((Collection<? extends Event>)newValue);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
         setType((JvmType)newValue);
@@ -447,6 +698,18 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         setLitsleft((LitList)newValue);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__PART:
+        setPart((String)newValue);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__IND:
+        setInd((String)newValue);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__SPLIT:
+        setSplit((String)newValue);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__LIT:
+        setLit((LiteralExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -465,6 +728,9 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         setName((EObject)null);
         return;
+      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
+        setPred(PRED_EDEFAULT);
+        return;
       case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
         getObj().clear();
         return;
@@ -479,6 +745,18 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         setLitsleft((LitList)null);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__PART:
+        setPart(PART_EDEFAULT);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__IND:
+        setInd(IND_EDEFAULT);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__SPLIT:
+        setSplit(SPLIT_EDEFAULT);
+        return;
+      case CryptSLPackage.LITERAL_EXPRESSION__LIT:
+        setLit((LiteralExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -496,6 +774,8 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     {
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         return name != null;
+      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
+        return PRED_EDEFAULT == null ? pred != null : !PRED_EDEFAULT.equals(pred);
       case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
         return obj != null && !obj.isEmpty();
       case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
@@ -506,8 +786,39 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         return cons != null;
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         return litsleft != null;
+      case CryptSLPackage.LITERAL_EXPRESSION__PART:
+        return PART_EDEFAULT == null ? part != null : !PART_EDEFAULT.equals(part);
+      case CryptSLPackage.LITERAL_EXPRESSION__IND:
+        return IND_EDEFAULT == null ? ind != null : !IND_EDEFAULT.equals(ind);
+      case CryptSLPackage.LITERAL_EXPRESSION__SPLIT:
+        return SPLIT_EDEFAULT == null ? split != null : !SPLIT_EDEFAULT.equals(split);
+      case CryptSLPackage.LITERAL_EXPRESSION__LIT:
+        return lit != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (pred: ");
+    result.append(pred);
+    result.append(", part: ");
+    result.append(part);
+    result.append(", ind: ");
+    result.append(ind);
+    result.append(", split: ");
+    result.append(split);
+    result.append(')');
+    return result.toString();
   }
 
 } //LiteralExpressionImpl

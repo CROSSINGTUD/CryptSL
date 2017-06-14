@@ -3,8 +3,6 @@
  */
 package de.darmstadt.tu.crossing.cryptSL;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.common.types.JvmType;
@@ -19,12 +17,12 @@ import org.eclipse.xtext.common.types.JvmType;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getJavaType <em>Java Type</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getObject <em>Object</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getMethod <em>Method</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEvent <em>Event</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getUsage <em>Usage</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getForbEvent <em>Forb Event</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq_events <em>Req events</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getOrder <em>Order</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq <em>Req</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEns <em>Ens</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReqConstraints <em>Req Constraints</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEnsure <em>Ensure</em>}</li>
  * </ul>
  *
  * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel()
@@ -60,52 +58,82 @@ public interface Domainmodel extends EObject
   void setJavaType(JvmType value);
 
   /**
-   * Returns the value of the '<em><b>Object</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl}.
+   * Returns the value of the '<em><b>Usage</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Object</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Usage</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Object</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Object()
+   * @return the value of the '<em>Usage</em>' containment reference.
+   * @see #setUsage(UseBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Usage()
    * @model containment="true"
    * @generated
    */
-  EList<ObjectDecl> getObject();
+  UseBlock getUsage();
 
   /**
-   * Returns the value of the '<em><b>Method</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.ForbMethod}.
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getUsage <em>Usage</em>}' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Method</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Method</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Method()
-   * @model containment="true"
+   * @param value the new value of the '<em>Usage</em>' containment reference.
+   * @see #getUsage()
    * @generated
    */
-  EList<ForbMethod> getMethod();
+  void setUsage(UseBlock value);
 
   /**
-   * Returns the value of the '<em><b>Event</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Event}.
+   * Returns the value of the '<em><b>Forb Event</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Event</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Forb Event</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Event</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Event()
+   * @return the value of the '<em>Forb Event</em>' containment reference.
+   * @see #setForbEvent(ForbiddenBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_ForbEvent()
    * @model containment="true"
    * @generated
    */
-  EList<Event> getEvent();
+  ForbiddenBlock getForbEvent();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getForbEvent <em>Forb Event</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Forb Event</em>' containment reference.
+   * @see #getForbEvent()
+   * @generated
+   */
+  void setForbEvent(ForbiddenBlock value);
+
+  /**
+   * Returns the value of the '<em><b>Req events</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Req events</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Req events</em>' containment reference.
+   * @see #setReq_events(RequiredBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Req_events()
+   * @model containment="true"
+   * @generated
+   */
+  RequiredBlock getReq_events();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq_events <em>Req events</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Req events</em>' containment reference.
+   * @see #getReq_events()
+   * @generated
+   */
+  void setReq_events(RequiredBlock value);
 
   /**
    * Returns the value of the '<em><b>Order</b></em>' containment reference.
@@ -134,35 +162,55 @@ public interface Domainmodel extends EObject
   void setOrder(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Req</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Constraint}.
+   * Returns the value of the '<em><b>Req Constraints</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Req</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Req Constraints</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Req</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Req()
+   * @return the value of the '<em>Req Constraints</em>' containment reference.
+   * @see #setReqConstraints(EnforceConsBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_ReqConstraints()
    * @model containment="true"
    * @generated
    */
-  EList<Constraint> getReq();
+  EnforceConsBlock getReqConstraints();
 
   /**
-   * Returns the value of the '<em><b>Ens</b></em>' containment reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Constraint}.
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReqConstraints <em>Req Constraints</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Req Constraints</em>' containment reference.
+   * @see #getReqConstraints()
+   * @generated
+   */
+  void setReqConstraints(EnforceConsBlock value);
+
+  /**
+   * Returns the value of the '<em><b>Ensure</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ens</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Ensure</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ens</em>' containment reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Ens()
+   * @return the value of the '<em>Ensure</em>' containment reference.
+   * @see #setEnsure(EnsuresBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Ensure()
    * @model containment="true"
    * @generated
    */
-  EList<Constraint> getEns();
+  EnsuresBlock getEnsure();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEnsure <em>Ensure</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ensure</em>' containment reference.
+   * @see #getEnsure()
+   * @generated
+   */
+  void setEnsure(EnsuresBlock value);
 
 } // Domainmodel

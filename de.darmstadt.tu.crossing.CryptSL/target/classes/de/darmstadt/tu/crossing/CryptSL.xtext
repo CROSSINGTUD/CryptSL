@@ -3,37 +3,57 @@ grammar de.darmstadt.tu.crossing.CryptSL with org.eclipse.xtext.xbase.Xtype
 generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
-
-Domainmodel :
+Domainmodel:
 	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
-	'USES_OBJECTS' (object+=ObjectDecl)+
-	('FORBIDDEN_EVENTS' (method+=ForbMethod)+)?
-	'REQUIRED_EVENTS' (event+=Event)+
+	'USES_OBJECTS' (usage=UseBlock)
+	('FORBIDDEN_EVENTS' forbEvent=ForbiddenBlock)?
+	'REQUIRED_EVENTS' (req_events=RequiredBlock)
 	'ENFORCE_ORDER' order=Order
-	'ENFORCES_CONSTRAINTS' (req+=Constraint)*
-	('ENSURES' (ens+=Pred)+)?;
+	('ENFORCES_CONSTRAINTS' reqConstraints=EnforceConsBlock)?
+	('ENSURES' ensure=EnsuresBlock)?
+	;
 
-////////////// OBJECTS
-ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]")? objectName=Object ";"
+UseBlock:
+	objects+=(ObjectDecl)+
 ;
 
-/////////// FORBIDDEN EVENTS
-ForbMethod:
-	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?)';';
+ForbiddenBlock:
+	forb_methods+=(ForbMethod)+
+;
 
-FQN: QN "(" (QN ("," QN)*)? ")";
+RequiredBlock:
+	req_event+=(Event)+
+;
+
+EnforceConsBlock:
+	(req+=Constraint  ';')+
+;
+
+
+EnsuresBlock:
+	(pred+=Pred ';')+
+;
+
+	////////////// OBJECTS
+ObjectDecl:
+	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]")? objectName=Object ";";
+
+	/////////// FORBIDDEN EVENTS
+ForbMethod:
+	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?) ';';
+
+FQN:
+	QN "(" (QN ("," QN)*)? ")";
 
 QN:
-	ID ('.' ID)* ("[]")?
-;
+	ID ('.' ID)* ("[]")?;
 
-///////////// EVENTS
+	///////////// EVENTS
 Event:
 	LabelMethodCall | Aggregate;
 
-/// LABELMETHCALL
-LabelMethodCall:
+	/// LABELMETHCALL
+LabelMethodCall returns SuperType:
 	name=ID ":" meth=Method;
 
 Method:
@@ -45,190 +65,144 @@ ParList:
 Par:
 	{Par} (val=[Object] | '_');
 
-/// AGGS
+	/// AGGS
 Aggregate returns SuperType:
-	{Aggegate}(name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
+	{Aggegate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
 
-///////////// ORDER
+	///////////// ORDER
 Order returns Expression:
 	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*;
 
 SimpleOrder returns Expression:
-	Primary ({SimpleOrder.left=current} orderop= '|' right=Primary)*;
+	Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*;
 
 Primary returns Expression:
 	(orderEv+=[Event] elementop=('+' | '?' | '*')?) | ('(' Order ')' elementop=('+' | '?' | '*')?);
 
-///////////// CONSTRAINTS
+	///////////// CONSTRAINTS
 Constraint:
-	LogicalImplyExpression
-;
+	LogicalImplyExpression;
 
 LogicalImplyExpression returns Constraint:
 	LogicalOrExpression
-	(
-		{Constraint.leftExpression=current}
-		operator=LogicalImply
-		rightExpression=LogicalOrExpression
-	)*
-;
+	({Constraint.leftExpression=current}
+	operator=LogicalImply
+	rightExpression=LogicalOrExpression)*;
 
 LogicalImply:
-	IMPLIES="=>"
-;
+	IMPLIES="=>";
+
 LogicalOrExpression returns Constraint:
-	LogicalAndExpression 
-	(
-		{Constraint.leftExpression=current}
-		operator=LogicalOr
-		rightExpression=LogicalAndExpression
-	)*
-;
+	LogicalAndExpression
+	({Constraint.leftExpression=current}
+	operator=LogicalOr
+	rightExpression=LogicalAndExpression)*;
 
 LogicalOr returns LogicalOperator:
-	OR='||'
-;
+	OR='||';
 
 LogicalAndExpression returns Constraint:
-
-	(ComparisonExpression 
-	(
-		{Constraint.leftExpression=current}
-		operator=LogicalAnd
-		rightExpression=ComparisonExpression
-	)*)
-;
-
+	(ComparisonExpression
+	({Constraint.leftExpression=current}
+	operator=LogicalAnd
+	rightExpression=ComparisonExpression)*);
 
 LogicalAnd returns LogicalOperator:
-	AND='&&'
-;
+	AND='&&';
 
 ComparisonExpression returns Constraint:
-	ComparisonHigherOpExpression 
-	(
-		{ComparisonExpression.leftExpression=current}
-		operator=ComparingEQNEQOperator
-		rightExpression=ComparisonHigherOpExpression
-	)?
-;
-
+	ComparisonHigherOpExpression
+	({ComparisonExpression.leftExpression=current}
+	operator=ComparingEQNEQOperator
+	rightExpression=ComparisonHigherOpExpression)?;
 
 ComparisonHigherOpExpression returns Constraint:
 	ArithmeticExpression
-	(
-		{ComparisonExpression.leftExpression=current}
-		operator=ComparingRelOperator
-		rightExpression=ArithmeticExpression
-	)?
-;
+	({ComparisonExpression.leftExpression=current}
+	operator=ComparingRelOperator
+	rightExpression=ArithmeticExpression)?;
 
 ComparingRelOperator returns ComparingOperator:
-	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
-;
+	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>';
 
 ArithmeticExpression returns Constraint:
-	AdditionExpression
-;
+	AdditionExpression;
 
 AdditionExpression returns Constraint:
 	MultiplicationExpression
-	(
-		{ArithmeticExpression.leftExpression=current} 
-		operator=AdditionOperator
-		rightExpression=MultiplicationExpression
-	)*
-;
+	({ArithmeticExpression.leftExpression=current}
+	operator=AdditionOperator
+	rightExpression=MultiplicationExpression)*;
 
 AdditionOperator returns ArithmeticOperator:
-	PLUS='+' | MINUS='-'
-;
+	PLUS='+' | MINUS='-';
 
 MultiplicationExpression returns Constraint:
 	UnaryPreExpression
 	|
 	Operand
-	 
-	(
-		{ArithmeticExpression.leftExpression=current}
-		operator=MultiplicationOperator
-		rightExpression=Operand
-	)*
-;
+	({ArithmeticExpression.leftExpression=current}
+	operator=MultiplicationOperator
+	rightExpression=Operand)*;
 
 MultiplicationOperator returns ArithmeticOperator:
-	TIMES='*' | DIVIDE='/'
-;
+	TIMES='*' | DIVIDE='/';
 
 UnaryPreExpression returns Constraint:
-	{UnaryPreExpression} 
+	{UnaryPreExpression}
 	(operator=UnaryPreOperator
-	enclosedExpression=Operand)
-;
+	enclosedExpression=Operand);
 
 Operand returns Constraint:
-	'(' Constraint ')' 
-	| 
+	'(' Constraint ')'
+	|
 	Cons
 	|
-	Pred
-;
+	Pred;
 
 LiteralExpression returns LiteralExpression:
-	  name=Literal | name=AggregateExpression | "typeOf(" obj+=[Object]"," type=[jvmTypes::JvmType|QualifiedName] ")"  
-;
+	name=Literal | name=AggregateExpression | pred="neverTypeOf"+ "(" obj+=[Object] ","
+	type=[jvmTypes::JvmType|QualifiedName] ")" | pred="noCallTo" + "(" obj+=[Event] ")" 
+	;
 
 AggregateExpression returns LiteralExpression:
-	 value = [SuperType]("." ID)?
-;
+	value=[SuperType] ("." ID)?;
 
-Literal :
-	{Literal} val = (StringLiteral |  IntegerLiteral)
-;
+Literal:
+	{Literal} val=(StringLiteral | IntegerLiteral);
 
-StringLiteral :
-	STRING
-;
+StringLiteral:
+	STRING;
 
-IntegerLiteral :
-	INT	
-;
+IntegerLiteral:
+	INT;
 
 UnaryPreOperator returns UnaryOperator:
-	NOT='!' 
-;
-	
+	NOT='!';
+
 ComparingEQNEQOperator returns ComparingOperator:
-	EQUAL='==' | UNEQUAL='!=' 
-;	
+	EQUAL='==' | UNEQUAL='!=';
 
 Cons returns LiteralExpression:
-	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression 
-;
+	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
 
 ConsPred returns LiteralExpression:
-	("part(" INT "," STRING "," LiteralExpression ")") | LiteralExpression 
-;
+	(part= "part(" ind = IntegerLiteral "," split=StringLiteral "," lit = LiteralExpression ")") | lit = LiteralExpression;
 
 terminal INT:
-	'0'..'9' ('0'..'9'|'_')*; 
+	'0'..'9' ('0'..'9' | '_')*;
 
 LitList:
-	(parameters+=Literal (',' (parameters+=Literal | '...'))*)
-;
+	(parameters+=Literal (',' (parameters+=Literal | '...'))*);
 
 Pred returns Constraint:
-	predName=ID "(" parList=SuParList? ");"
-;
+	predName=ID '[' parList=SuParList? ']';
 
 SuParList:
-	(parameters+=SuPar (',' parameters+=SuPar)*)
-;
+	(parameters+=SuPar (',' parameters+=SuPar)*);
 
 SuPar:
-	{SuPar} (val=ConsPred | '_' | 'this')
-;
+	{SuPar} (val=ConsPred | '_' | 'this');
 
 Object returns SuperType:
-	{Object} name=ID
-;
+	{Object} name=ID;

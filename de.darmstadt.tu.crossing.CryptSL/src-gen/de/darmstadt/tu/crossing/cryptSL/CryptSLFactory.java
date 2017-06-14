@@ -33,6 +33,51 @@ public interface CryptSLFactory extends EFactory
   Domainmodel createDomainmodel();
 
   /**
+   * Returns a new object of class '<em>Use Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Use Block</em>'.
+   * @generated
+   */
+  UseBlock createUseBlock();
+
+  /**
+   * Returns a new object of class '<em>Forbidden Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forbidden Block</em>'.
+   * @generated
+   */
+  ForbiddenBlock createForbiddenBlock();
+
+  /**
+   * Returns a new object of class '<em>Required Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Required Block</em>'.
+   * @generated
+   */
+  RequiredBlock createRequiredBlock();
+
+  /**
+   * Returns a new object of class '<em>Enforce Cons Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enforce Cons Block</em>'.
+   * @generated
+   */
+  EnforceConsBlock createEnforceConsBlock();
+
+  /**
+   * Returns a new object of class '<em>Ensures Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ensures Block</em>'.
+   * @generated
+   */
+  EnsuresBlock createEnsuresBlock();
+
+  /**
    * Returns a new object of class '<em>Object Decl</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -60,13 +105,13 @@ public interface CryptSLFactory extends EFactory
   Event createEvent();
 
   /**
-   * Returns a new object of class '<em>Label Method Call</em>'.
+   * Returns a new object of class '<em>Super Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Label Method Call</em>'.
+   * @return a new object of class '<em>Super Type</em>'.
    * @generated
    */
-  LabelMethodCall createLabelMethodCall();
+  SuperType createSuperType();
 
   /**
    * Returns a new object of class '<em>Method</em>'.
@@ -94,15 +139,6 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   Par createPar();
-
-  /**
-   * Returns a new object of class '<em>Super Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Super Type</em>'.
-   * @generated
-   */
-  SuperType createSuperType();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.

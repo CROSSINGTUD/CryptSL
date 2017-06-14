@@ -3,29 +3,23 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
-import de.darmstadt.tu.crossing.cryptSL.Event;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
+import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
-import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
-
-import java.util.Collection;
+import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmType;
 
@@ -38,12 +32,12 @@ import org.eclipse.xtext.common.types.JvmType;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getJavaType <em>Java Type</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getObject <em>Object</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getUsage <em>Usage</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getForbEvent <em>Forb Event</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReq_events <em>Req events</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getOrder <em>Order</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReq <em>Req</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEns <em>Ens</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReqConstraints <em>Req Constraints</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEnsure <em>Ensure</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,34 +55,34 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   protected JvmType javaType;
 
   /**
-   * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference list.
+   * The cached value of the '{@link #getUsage() <em>Usage</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getObject()
+   * @see #getUsage()
    * @generated
    * @ordered
    */
-  protected EList<ObjectDecl> object;
+  protected UseBlock usage;
 
   /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference list.
+   * The cached value of the '{@link #getForbEvent() <em>Forb Event</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getForbEvent()
    * @generated
    * @ordered
    */
-  protected EList<ForbMethod> method;
+  protected ForbiddenBlock forbEvent;
 
   /**
-   * The cached value of the '{@link #getEvent() <em>Event</em>}' containment reference list.
+   * The cached value of the '{@link #getReq_events() <em>Req events</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEvent()
+   * @see #getReq_events()
    * @generated
    * @ordered
    */
-  protected EList<Event> event;
+  protected RequiredBlock req_events;
 
   /**
    * The cached value of the '{@link #getOrder() <em>Order</em>}' containment reference.
@@ -101,24 +95,24 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   protected Expression order;
 
   /**
-   * The cached value of the '{@link #getReq() <em>Req</em>}' containment reference list.
+   * The cached value of the '{@link #getReqConstraints() <em>Req Constraints</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReq()
+   * @see #getReqConstraints()
    * @generated
    * @ordered
    */
-  protected EList<Constraint> req;
+  protected EnforceConsBlock reqConstraints;
 
   /**
-   * The cached value of the '{@link #getEns() <em>Ens</em>}' containment reference list.
+   * The cached value of the '{@link #getEnsure() <em>Ensure</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEns()
+   * @see #getEnsure()
    * @generated
    * @ordered
    */
-  protected EList<Constraint> ens;
+  protected EnsuresBlock ensure;
 
   /**
    * <!-- begin-user-doc -->
@@ -189,13 +183,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ObjectDecl> getObject()
+  public UseBlock getUsage()
   {
-    if (object == null)
-    {
-      object = new EObjectContainmentEList<ObjectDecl>(ObjectDecl.class, this, CryptSLPackage.DOMAINMODEL__OBJECT);
-    }
-    return object;
+    return usage;
   }
 
   /**
@@ -203,13 +193,16 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ForbMethod> getMethod()
+  public NotificationChain basicSetUsage(UseBlock newUsage, NotificationChain msgs)
   {
-    if (method == null)
+    UseBlock oldUsage = usage;
+    usage = newUsage;
+    if (eNotificationRequired())
     {
-      method = new EObjectContainmentEList<ForbMethod>(ForbMethod.class, this, CryptSLPackage.DOMAINMODEL__METHOD);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__USAGE, oldUsage, newUsage);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return method;
+    return msgs;
   }
 
   /**
@@ -217,13 +210,116 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Event> getEvent()
+  public void setUsage(UseBlock newUsage)
   {
-    if (event == null)
+    if (newUsage != usage)
     {
-      event = new EObjectContainmentEList<Event>(Event.class, this, CryptSLPackage.DOMAINMODEL__EVENT);
+      NotificationChain msgs = null;
+      if (usage != null)
+        msgs = ((InternalEObject)usage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__USAGE, null, msgs);
+      if (newUsage != null)
+        msgs = ((InternalEObject)newUsage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__USAGE, null, msgs);
+      msgs = basicSetUsage(newUsage, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return event;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__USAGE, newUsage, newUsage));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ForbiddenBlock getForbEvent()
+  {
+    return forbEvent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetForbEvent(ForbiddenBlock newForbEvent, NotificationChain msgs)
+  {
+    ForbiddenBlock oldForbEvent = forbEvent;
+    forbEvent = newForbEvent;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__FORB_EVENT, oldForbEvent, newForbEvent);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setForbEvent(ForbiddenBlock newForbEvent)
+  {
+    if (newForbEvent != forbEvent)
+    {
+      NotificationChain msgs = null;
+      if (forbEvent != null)
+        msgs = ((InternalEObject)forbEvent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__FORB_EVENT, null, msgs);
+      if (newForbEvent != null)
+        msgs = ((InternalEObject)newForbEvent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__FORB_EVENT, null, msgs);
+      msgs = basicSetForbEvent(newForbEvent, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__FORB_EVENT, newForbEvent, newForbEvent));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RequiredBlock getReq_events()
+  {
+    return req_events;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReq_events(RequiredBlock newReq_events, NotificationChain msgs)
+  {
+    RequiredBlock oldReq_events = req_events;
+    req_events = newReq_events;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQ_EVENTS, oldReq_events, newReq_events);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReq_events(RequiredBlock newReq_events)
+  {
+    if (newReq_events != req_events)
+    {
+      NotificationChain msgs = null;
+      if (req_events != null)
+        msgs = ((InternalEObject)req_events).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQ_EVENTS, null, msgs);
+      if (newReq_events != null)
+        msgs = ((InternalEObject)newReq_events).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQ_EVENTS, null, msgs);
+      msgs = basicSetReq_events(newReq_events, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQ_EVENTS, newReq_events, newReq_events));
   }
 
   /**
@@ -279,13 +375,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Constraint> getReq()
+  public EnforceConsBlock getReqConstraints()
   {
-    if (req == null)
-    {
-      req = new EObjectContainmentEList<Constraint>(Constraint.class, this, CryptSLPackage.DOMAINMODEL__REQ);
-    }
-    return req;
+    return reqConstraints;
   }
 
   /**
@@ -293,13 +385,85 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Constraint> getEns()
+  public NotificationChain basicSetReqConstraints(EnforceConsBlock newReqConstraints, NotificationChain msgs)
   {
-    if (ens == null)
+    EnforceConsBlock oldReqConstraints = reqConstraints;
+    reqConstraints = newReqConstraints;
+    if (eNotificationRequired())
     {
-      ens = new EObjectContainmentEList<Constraint>(Constraint.class, this, CryptSLPackage.DOMAINMODEL__ENS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS, oldReqConstraints, newReqConstraints);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return ens;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReqConstraints(EnforceConsBlock newReqConstraints)
+  {
+    if (newReqConstraints != reqConstraints)
+    {
+      NotificationChain msgs = null;
+      if (reqConstraints != null)
+        msgs = ((InternalEObject)reqConstraints).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS, null, msgs);
+      if (newReqConstraints != null)
+        msgs = ((InternalEObject)newReqConstraints).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS, null, msgs);
+      msgs = basicSetReqConstraints(newReqConstraints, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS, newReqConstraints, newReqConstraints));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnsuresBlock getEnsure()
+  {
+    return ensure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEnsure(EnsuresBlock newEnsure, NotificationChain msgs)
+  {
+    EnsuresBlock oldEnsure = ensure;
+    ensure = newEnsure;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__ENSURE, oldEnsure, newEnsure);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnsure(EnsuresBlock newEnsure)
+  {
+    if (newEnsure != ensure)
+    {
+      NotificationChain msgs = null;
+      if (ensure != null)
+        msgs = ((InternalEObject)ensure).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__ENSURE, null, msgs);
+      if (newEnsure != null)
+        msgs = ((InternalEObject)newEnsure).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__ENSURE, null, msgs);
+      msgs = basicSetEnsure(newEnsure, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__ENSURE, newEnsure, newEnsure));
   }
 
   /**
@@ -312,18 +476,18 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CryptSLPackage.DOMAINMODEL__OBJECT:
-        return ((InternalEList<?>)getObject()).basicRemove(otherEnd, msgs);
-      case CryptSLPackage.DOMAINMODEL__METHOD:
-        return ((InternalEList<?>)getMethod()).basicRemove(otherEnd, msgs);
-      case CryptSLPackage.DOMAINMODEL__EVENT:
-        return ((InternalEList<?>)getEvent()).basicRemove(otherEnd, msgs);
+      case CryptSLPackage.DOMAINMODEL__USAGE:
+        return basicSetUsage(null, msgs);
+      case CryptSLPackage.DOMAINMODEL__FORB_EVENT:
+        return basicSetForbEvent(null, msgs);
+      case CryptSLPackage.DOMAINMODEL__REQ_EVENTS:
+        return basicSetReq_events(null, msgs);
       case CryptSLPackage.DOMAINMODEL__ORDER:
         return basicSetOrder(null, msgs);
-      case CryptSLPackage.DOMAINMODEL__REQ:
-        return ((InternalEList<?>)getReq()).basicRemove(otherEnd, msgs);
-      case CryptSLPackage.DOMAINMODEL__ENS:
-        return ((InternalEList<?>)getEns()).basicRemove(otherEnd, msgs);
+      case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
+        return basicSetReqConstraints(null, msgs);
+      case CryptSLPackage.DOMAINMODEL__ENSURE:
+        return basicSetEnsure(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -341,18 +505,18 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__JAVA_TYPE:
         if (resolve) return getJavaType();
         return basicGetJavaType();
-      case CryptSLPackage.DOMAINMODEL__OBJECT:
-        return getObject();
-      case CryptSLPackage.DOMAINMODEL__METHOD:
-        return getMethod();
-      case CryptSLPackage.DOMAINMODEL__EVENT:
-        return getEvent();
+      case CryptSLPackage.DOMAINMODEL__USAGE:
+        return getUsage();
+      case CryptSLPackage.DOMAINMODEL__FORB_EVENT:
+        return getForbEvent();
+      case CryptSLPackage.DOMAINMODEL__REQ_EVENTS:
+        return getReq_events();
       case CryptSLPackage.DOMAINMODEL__ORDER:
         return getOrder();
-      case CryptSLPackage.DOMAINMODEL__REQ:
-        return getReq();
-      case CryptSLPackage.DOMAINMODEL__ENS:
-        return getEns();
+      case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
+        return getReqConstraints();
+      case CryptSLPackage.DOMAINMODEL__ENSURE:
+        return getEnsure();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -362,7 +526,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -371,28 +534,23 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__JAVA_TYPE:
         setJavaType((JvmType)newValue);
         return;
-      case CryptSLPackage.DOMAINMODEL__OBJECT:
-        getObject().clear();
-        getObject().addAll((Collection<? extends ObjectDecl>)newValue);
+      case CryptSLPackage.DOMAINMODEL__USAGE:
+        setUsage((UseBlock)newValue);
         return;
-      case CryptSLPackage.DOMAINMODEL__METHOD:
-        getMethod().clear();
-        getMethod().addAll((Collection<? extends ForbMethod>)newValue);
+      case CryptSLPackage.DOMAINMODEL__FORB_EVENT:
+        setForbEvent((ForbiddenBlock)newValue);
         return;
-      case CryptSLPackage.DOMAINMODEL__EVENT:
-        getEvent().clear();
-        getEvent().addAll((Collection<? extends Event>)newValue);
+      case CryptSLPackage.DOMAINMODEL__REQ_EVENTS:
+        setReq_events((RequiredBlock)newValue);
         return;
       case CryptSLPackage.DOMAINMODEL__ORDER:
         setOrder((Expression)newValue);
         return;
-      case CryptSLPackage.DOMAINMODEL__REQ:
-        getReq().clear();
-        getReq().addAll((Collection<? extends Constraint>)newValue);
+      case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
+        setReqConstraints((EnforceConsBlock)newValue);
         return;
-      case CryptSLPackage.DOMAINMODEL__ENS:
-        getEns().clear();
-        getEns().addAll((Collection<? extends Constraint>)newValue);
+      case CryptSLPackage.DOMAINMODEL__ENSURE:
+        setEnsure((EnsuresBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -411,23 +569,23 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__JAVA_TYPE:
         setJavaType((JvmType)null);
         return;
-      case CryptSLPackage.DOMAINMODEL__OBJECT:
-        getObject().clear();
+      case CryptSLPackage.DOMAINMODEL__USAGE:
+        setUsage((UseBlock)null);
         return;
-      case CryptSLPackage.DOMAINMODEL__METHOD:
-        getMethod().clear();
+      case CryptSLPackage.DOMAINMODEL__FORB_EVENT:
+        setForbEvent((ForbiddenBlock)null);
         return;
-      case CryptSLPackage.DOMAINMODEL__EVENT:
-        getEvent().clear();
+      case CryptSLPackage.DOMAINMODEL__REQ_EVENTS:
+        setReq_events((RequiredBlock)null);
         return;
       case CryptSLPackage.DOMAINMODEL__ORDER:
         setOrder((Expression)null);
         return;
-      case CryptSLPackage.DOMAINMODEL__REQ:
-        getReq().clear();
+      case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
+        setReqConstraints((EnforceConsBlock)null);
         return;
-      case CryptSLPackage.DOMAINMODEL__ENS:
-        getEns().clear();
+      case CryptSLPackage.DOMAINMODEL__ENSURE:
+        setEnsure((EnsuresBlock)null);
         return;
     }
     super.eUnset(featureID);
@@ -445,18 +603,18 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
     {
       case CryptSLPackage.DOMAINMODEL__JAVA_TYPE:
         return javaType != null;
-      case CryptSLPackage.DOMAINMODEL__OBJECT:
-        return object != null && !object.isEmpty();
-      case CryptSLPackage.DOMAINMODEL__METHOD:
-        return method != null && !method.isEmpty();
-      case CryptSLPackage.DOMAINMODEL__EVENT:
-        return event != null && !event.isEmpty();
+      case CryptSLPackage.DOMAINMODEL__USAGE:
+        return usage != null;
+      case CryptSLPackage.DOMAINMODEL__FORB_EVENT:
+        return forbEvent != null;
+      case CryptSLPackage.DOMAINMODEL__REQ_EVENTS:
+        return req_events != null;
       case CryptSLPackage.DOMAINMODEL__ORDER:
         return order != null;
-      case CryptSLPackage.DOMAINMODEL__REQ:
-        return req != null && !req.isEmpty();
-      case CryptSLPackage.DOMAINMODEL__ENS:
-        return ens != null && !ens.isEmpty();
+      case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
+        return reqConstraints != null;
+      case CryptSLPackage.DOMAINMODEL__ENSURE:
+        return ensure != null;
     }
     return super.eIsSet(featureID);
   }

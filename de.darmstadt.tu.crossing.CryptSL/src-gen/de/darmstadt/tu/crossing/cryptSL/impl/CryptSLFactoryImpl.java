@@ -12,10 +12,12 @@ import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
+import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Literal;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
@@ -26,12 +28,14 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
 import de.darmstadt.tu.crossing.cryptSL.SuperType;
 import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
 import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
+import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -94,14 +98,18 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
     switch (eClass.getClassifierID())
     {
       case CryptSLPackage.DOMAINMODEL: return createDomainmodel();
+      case CryptSLPackage.USE_BLOCK: return createUseBlock();
+      case CryptSLPackage.FORBIDDEN_BLOCK: return createForbiddenBlock();
+      case CryptSLPackage.REQUIRED_BLOCK: return createRequiredBlock();
+      case CryptSLPackage.ENFORCE_CONS_BLOCK: return createEnforceConsBlock();
+      case CryptSLPackage.ENSURES_BLOCK: return createEnsuresBlock();
       case CryptSLPackage.OBJECT_DECL: return createObjectDecl();
       case CryptSLPackage.FORB_METHOD: return createForbMethod();
       case CryptSLPackage.EVENT: return createEvent();
-      case CryptSLPackage.LABEL_METHOD_CALL: return createLabelMethodCall();
+      case CryptSLPackage.SUPER_TYPE: return createSuperType();
       case CryptSLPackage.METHOD: return createMethod();
       case CryptSLPackage.PAR_LIST: return createParList();
       case CryptSLPackage.PAR: return createPar();
-      case CryptSLPackage.SUPER_TYPE: return createSuperType();
       case CryptSLPackage.EXPRESSION: return createExpression();
       case CryptSLPackage.CONSTRAINT: return createConstraint();
       case CryptSLPackage.LOGICAL_IMPLY: return createLogicalImply();
@@ -142,6 +150,61 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public UseBlock createUseBlock()
+  {
+    UseBlockImpl useBlock = new UseBlockImpl();
+    return useBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ForbiddenBlock createForbiddenBlock()
+  {
+    ForbiddenBlockImpl forbiddenBlock = new ForbiddenBlockImpl();
+    return forbiddenBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RequiredBlock createRequiredBlock()
+  {
+    RequiredBlockImpl requiredBlock = new RequiredBlockImpl();
+    return requiredBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnforceConsBlock createEnforceConsBlock()
+  {
+    EnforceConsBlockImpl enforceConsBlock = new EnforceConsBlockImpl();
+    return enforceConsBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnsuresBlock createEnsuresBlock()
+  {
+    EnsuresBlockImpl ensuresBlock = new EnsuresBlockImpl();
+    return ensuresBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ObjectDecl createObjectDecl()
   {
     ObjectDeclImpl objectDecl = new ObjectDeclImpl();
@@ -175,10 +238,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LabelMethodCall createLabelMethodCall()
+  public SuperType createSuperType()
   {
-    LabelMethodCallImpl labelMethodCall = new LabelMethodCallImpl();
-    return labelMethodCall;
+    SuperTypeImpl superType = new SuperTypeImpl();
+    return superType;
   }
 
   /**
@@ -212,17 +275,6 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     ParImpl par = new ParImpl();
     return par;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SuperType createSuperType()
-  {
-    SuperTypeImpl superType = new SuperTypeImpl();
-    return superType;
   }
 
   /**

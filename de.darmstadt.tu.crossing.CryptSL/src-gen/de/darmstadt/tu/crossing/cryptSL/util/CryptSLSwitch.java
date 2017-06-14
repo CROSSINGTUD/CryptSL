@@ -11,10 +11,12 @@ import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
+import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Literal;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
@@ -25,12 +27,14 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
 import de.darmstadt.tu.crossing.cryptSL.SuperType;
 import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
 import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
+import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -107,6 +111,41 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CryptSLPackage.USE_BLOCK:
+      {
+        UseBlock useBlock = (UseBlock)theEObject;
+        T result = caseUseBlock(useBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.FORBIDDEN_BLOCK:
+      {
+        ForbiddenBlock forbiddenBlock = (ForbiddenBlock)theEObject;
+        T result = caseForbiddenBlock(forbiddenBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.REQUIRED_BLOCK:
+      {
+        RequiredBlock requiredBlock = (RequiredBlock)theEObject;
+        T result = caseRequiredBlock(requiredBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.ENFORCE_CONS_BLOCK:
+      {
+        EnforceConsBlock enforceConsBlock = (EnforceConsBlock)theEObject;
+        T result = caseEnforceConsBlock(enforceConsBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.ENSURES_BLOCK:
+      {
+        EnsuresBlock ensuresBlock = (EnsuresBlock)theEObject;
+        T result = caseEnsuresBlock(ensuresBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CryptSLPackage.OBJECT_DECL:
       {
         ObjectDecl objectDecl = (ObjectDecl)theEObject;
@@ -128,11 +167,11 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.LABEL_METHOD_CALL:
+      case CryptSLPackage.SUPER_TYPE:
       {
-        LabelMethodCall labelMethodCall = (LabelMethodCall)theEObject;
-        T result = caseLabelMethodCall(labelMethodCall);
-        if (result == null) result = caseEvent(labelMethodCall);
+        SuperType superType = (SuperType)theEObject;
+        T result = caseSuperType(superType);
+        if (result == null) result = caseEvent(superType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -154,14 +193,6 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         Par par = (Par)theEObject;
         T result = casePar(par);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CryptSLPackage.SUPER_TYPE:
-      {
-        SuperType superType = (SuperType)theEObject;
-        T result = caseSuperType(superType);
-        if (result == null) result = caseEvent(superType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -329,6 +360,86 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Use Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Use Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUseBlock(UseBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Forbidden Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Forbidden Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForbiddenBlock(ForbiddenBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Required Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Required Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRequiredBlock(RequiredBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Enforce Cons Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Enforce Cons Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnforceConsBlock(EnforceConsBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Ensures Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ensures Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnsuresBlock(EnsuresBlock object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Object Decl</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -377,17 +488,17 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Label Method Call</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Super Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Label Method Call</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Super Type</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLabelMethodCall(LabelMethodCall object)
+  public T caseSuperType(SuperType object)
   {
     return null;
   }
@@ -436,22 +547,6 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePar(Par object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Super Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Super Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSuperType(SuperType object)
   {
     return null;
   }

@@ -3,57 +3,55 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
+import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.LogicalImply;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Logical Imply</b></em>'.
+ * An implementation of the model object '<em><b>Enforce Cons Block</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LogicalImplyImpl#getIMPLIES <em>IMPLIES</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.EnforceConsBlockImpl#getReq <em>Req</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements LogicalImply
+public class EnforceConsBlockImpl extends MinimalEObjectImpl.Container implements EnforceConsBlock
 {
   /**
-   * The default value of the '{@link #getIMPLIES() <em>IMPLIES</em>}' attribute.
+   * The cached value of the '{@link #getReq() <em>Req</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIMPLIES()
+   * @see #getReq()
    * @generated
    * @ordered
    */
-  protected static final String IMPLIES_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getIMPLIES() <em>IMPLIES</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIMPLIES()
-   * @generated
-   * @ordered
-   */
-  protected String implies = IMPLIES_EDEFAULT;
+  protected EList<Constraint> req;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LogicalImplyImpl()
+  protected EnforceConsBlockImpl()
   {
     super();
   }
@@ -66,7 +64,7 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
   @Override
   protected EClass eStaticClass()
   {
-    return CryptSLPackage.Literals.LOGICAL_IMPLY;
+    return CryptSLPackage.Literals.ENFORCE_CONS_BLOCK;
   }
 
   /**
@@ -74,9 +72,13 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getIMPLIES()
+  public EList<Constraint> getReq()
   {
-    return implies;
+    if (req == null)
+    {
+      req = new EObjectContainmentEList<Constraint>(Constraint.class, this, CryptSLPackage.ENFORCE_CONS_BLOCK__REQ);
+    }
+    return req;
   }
 
   /**
@@ -84,12 +86,15 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIMPLIES(String newIMPLIES)
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    String oldIMPLIES = implies;
-    implies = newIMPLIES;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LOGICAL_IMPLY__IMPLIES, oldIMPLIES, implies));
+    switch (featureID)
+    {
+      case CryptSLPackage.ENFORCE_CONS_BLOCK__REQ:
+        return ((InternalEList<?>)getReq()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -102,8 +107,8 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
   {
     switch (featureID)
     {
-      case CryptSLPackage.LOGICAL_IMPLY__IMPLIES:
-        return getIMPLIES();
+      case CryptSLPackage.ENFORCE_CONS_BLOCK__REQ:
+        return getReq();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -113,13 +118,15 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CryptSLPackage.LOGICAL_IMPLY__IMPLIES:
-        setIMPLIES((String)newValue);
+      case CryptSLPackage.ENFORCE_CONS_BLOCK__REQ:
+        getReq().clear();
+        getReq().addAll((Collection<? extends Constraint>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +142,8 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
   {
     switch (featureID)
     {
-      case CryptSLPackage.LOGICAL_IMPLY__IMPLIES:
-        setIMPLIES(IMPLIES_EDEFAULT);
+      case CryptSLPackage.ENFORCE_CONS_BLOCK__REQ:
+        getReq().clear();
         return;
     }
     super.eUnset(featureID);
@@ -152,21 +159,10 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
   {
     switch (featureID)
     {
-      case CryptSLPackage.LOGICAL_IMPLY__IMPLIES:
-        return IMPLIES_EDEFAULT == null ? implies != null : !IMPLIES_EDEFAULT.equals(implies);
+      case CryptSLPackage.ENFORCE_CONS_BLOCK__REQ:
+        return req != null && !req.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    return implies;
-  }
-
-} //LogicalImplyImpl
+} //EnforceConsBlockImpl

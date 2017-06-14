@@ -19,11 +19,16 @@ import org.eclipse.xtext.common.types.JvmType;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getName <em>Name</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred <em>Pred</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj <em>Obj</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getType <em>Type</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getValue <em>Value</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getCons <em>Cons</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getLitsleft <em>Litsleft</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPart <em>Part</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getInd <em>Ind</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getSplit <em>Split</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getLit <em>Lit</em>}</li>
  * </ul>
  *
  * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression()
@@ -59,8 +64,34 @@ public interface LiteralExpression extends Constraint
   void setName(EObject value);
 
   /**
+   * Returns the value of the '<em><b>Pred</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pred</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pred</em>' attribute.
+   * @see #setPred(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Pred()
+   * @model
+   * @generated
+   */
+  String getPred();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred <em>Pred</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pred</em>' attribute.
+   * @see #getPred()
+   * @generated
+   */
+  void setPred(String value);
+
+  /**
    * Returns the value of the '<em><b>Obj</b></em>' reference list.
-   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Object}.
+   * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Event}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Obj</em>' reference list isn't clear,
@@ -72,7 +103,7 @@ public interface LiteralExpression extends Constraint
    * @model
    * @generated
    */
-  EList<de.darmstadt.tu.crossing.cryptSL.Object> getObj();
+  EList<Event> getObj();
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' reference.
@@ -177,5 +208,109 @@ public interface LiteralExpression extends Constraint
    * @generated
    */
   void setLitsleft(LitList value);
+
+  /**
+   * Returns the value of the '<em><b>Part</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Part</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Part</em>' attribute.
+   * @see #setPart(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Part()
+   * @model
+   * @generated
+   */
+  String getPart();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPart <em>Part</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Part</em>' attribute.
+   * @see #getPart()
+   * @generated
+   */
+  void setPart(String value);
+
+  /**
+   * Returns the value of the '<em><b>Ind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ind</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ind</em>' attribute.
+   * @see #setInd(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Ind()
+   * @model
+   * @generated
+   */
+  String getInd();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getInd <em>Ind</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ind</em>' attribute.
+   * @see #getInd()
+   * @generated
+   */
+  void setInd(String value);
+
+  /**
+   * Returns the value of the '<em><b>Split</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Split</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Split</em>' attribute.
+   * @see #setSplit(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Split()
+   * @model
+   * @generated
+   */
+  String getSplit();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getSplit <em>Split</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Split</em>' attribute.
+   * @see #getSplit()
+   * @generated
+   */
+  void setSplit(String value);
+
+  /**
+   * Returns the value of the '<em><b>Lit</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Lit</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Lit</em>' containment reference.
+   * @see #setLit(LiteralExpression)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Lit()
+   * @model containment="true"
+   * @generated
+   */
+  LiteralExpression getLit();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getLit <em>Lit</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Lit</em>' containment reference.
+   * @see #getLit()
+   * @generated
+   */
+  void setLit(LiteralExpression value);
 
 } // LiteralExpression

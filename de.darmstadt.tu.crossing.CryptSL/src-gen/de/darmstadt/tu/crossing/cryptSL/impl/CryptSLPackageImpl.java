@@ -12,10 +12,12 @@ import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
+import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
+import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
-import de.darmstadt.tu.crossing.cryptSL.LabelMethodCall;
+import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.Literal;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
@@ -26,12 +28,14 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
 import de.darmstadt.tu.crossing.cryptSL.SuperType;
 import de.darmstadt.tu.crossing.cryptSL.UnaryOperator;
 import de.darmstadt.tu.crossing.cryptSL.UnaryPreExpression;
+import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -62,6 +66,41 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass useBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forbiddenBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass requiredBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enforceConsBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ensuresBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass objectDeclEClass = null;
 
   /**
@@ -83,7 +122,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass labelMethodCallEClass = null;
+  private EClass superTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -105,13 +144,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * @generated
    */
   private EClass parEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass superTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -337,7 +369,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Object()
+  public EReference getDomainmodel_Usage()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(1);
   }
@@ -347,7 +379,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Method()
+  public EReference getDomainmodel_ForbEvent()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(2);
   }
@@ -357,7 +389,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Event()
+  public EReference getDomainmodel_Req_events()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(3);
   }
@@ -377,7 +409,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Req()
+  public EReference getDomainmodel_ReqConstraints()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(5);
   }
@@ -387,9 +419,109 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Ens()
+  public EReference getDomainmodel_Ensure()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUseBlock()
+  {
+    return useBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUseBlock_Objects()
+  {
+    return (EReference)useBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getForbiddenBlock()
+  {
+    return forbiddenBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getForbiddenBlock_Forb_methods()
+  {
+    return (EReference)forbiddenBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRequiredBlock()
+  {
+    return requiredBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRequiredBlock_Req_event()
+  {
+    return (EReference)requiredBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEnforceConsBlock()
+  {
+    return enforceConsBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnforceConsBlock_Req()
+  {
+    return (EReference)enforceConsBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEnsuresBlock()
+  {
+    return ensuresBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnsuresBlock_Pred()
+  {
+    return (EReference)ensuresBlockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -477,9 +609,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEvent_Name()
+  public EClass getSuperType()
   {
-    return (EAttribute)eventEClass.getEStructuralFeatures().get(0);
+    return superTypeEClass;
   }
 
   /**
@@ -487,9 +619,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLabelMethodCall()
+  public EAttribute getSuperType_Name()
   {
-    return labelMethodCallEClass;
+    return (EAttribute)superTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -497,9 +629,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLabelMethodCall_Meth()
+  public EReference getSuperType_Meth()
   {
-    return (EReference)labelMethodCallEClass.getEStructuralFeatures().get(0);
+    return (EReference)superTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -580,16 +712,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
   public EReference getPar_Val()
   {
     return (EReference)parEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSuperType()
-  {
-    return superTypeEClass;
   }
 
   /**
@@ -907,9 +1029,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Obj()
+  public EAttribute getLiteralExpression_Pred()
   {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -917,7 +1039,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Type()
+  public EReference getLiteralExpression_Obj()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(2);
   }
@@ -927,7 +1049,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Value()
+  public EReference getLiteralExpression_Type()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(3);
   }
@@ -937,7 +1059,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Cons()
+  public EReference getLiteralExpression_Value()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(4);
   }
@@ -947,9 +1069,59 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLiteralExpression_Litsleft()
+  public EReference getLiteralExpression_Cons()
   {
     return (EReference)literalExpressionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLiteralExpression_Litsleft()
+  {
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLiteralExpression_Part()
+  {
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLiteralExpression_Ind()
+  {
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLiteralExpression_Split()
+  {
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLiteralExpression_Lit()
+  {
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1174,12 +1346,27 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Create classes and their features
     domainmodelEClass = createEClass(DOMAINMODEL);
     createEReference(domainmodelEClass, DOMAINMODEL__JAVA_TYPE);
-    createEReference(domainmodelEClass, DOMAINMODEL__OBJECT);
-    createEReference(domainmodelEClass, DOMAINMODEL__METHOD);
-    createEReference(domainmodelEClass, DOMAINMODEL__EVENT);
+    createEReference(domainmodelEClass, DOMAINMODEL__USAGE);
+    createEReference(domainmodelEClass, DOMAINMODEL__FORB_EVENT);
+    createEReference(domainmodelEClass, DOMAINMODEL__REQ_EVENTS);
     createEReference(domainmodelEClass, DOMAINMODEL__ORDER);
-    createEReference(domainmodelEClass, DOMAINMODEL__REQ);
-    createEReference(domainmodelEClass, DOMAINMODEL__ENS);
+    createEReference(domainmodelEClass, DOMAINMODEL__REQ_CONSTRAINTS);
+    createEReference(domainmodelEClass, DOMAINMODEL__ENSURE);
+
+    useBlockEClass = createEClass(USE_BLOCK);
+    createEReference(useBlockEClass, USE_BLOCK__OBJECTS);
+
+    forbiddenBlockEClass = createEClass(FORBIDDEN_BLOCK);
+    createEReference(forbiddenBlockEClass, FORBIDDEN_BLOCK__FORB_METHODS);
+
+    requiredBlockEClass = createEClass(REQUIRED_BLOCK);
+    createEReference(requiredBlockEClass, REQUIRED_BLOCK__REQ_EVENT);
+
+    enforceConsBlockEClass = createEClass(ENFORCE_CONS_BLOCK);
+    createEReference(enforceConsBlockEClass, ENFORCE_CONS_BLOCK__REQ);
+
+    ensuresBlockEClass = createEClass(ENSURES_BLOCK);
+    createEReference(ensuresBlockEClass, ENSURES_BLOCK__PRED);
 
     objectDeclEClass = createEClass(OBJECT_DECL);
     createEReference(objectDeclEClass, OBJECT_DECL__OBJECT_TYPE);
@@ -1191,10 +1378,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     createEReference(forbMethodEClass, FORB_METHOD__REP);
 
     eventEClass = createEClass(EVENT);
-    createEAttribute(eventEClass, EVENT__NAME);
 
-    labelMethodCallEClass = createEClass(LABEL_METHOD_CALL);
-    createEReference(labelMethodCallEClass, LABEL_METHOD_CALL__METH);
+    superTypeEClass = createEClass(SUPER_TYPE);
+    createEAttribute(superTypeEClass, SUPER_TYPE__NAME);
+    createEReference(superTypeEClass, SUPER_TYPE__METH);
 
     methodEClass = createEClass(METHOD);
     createEReference(methodEClass, METHOD__LEFT_SIDE);
@@ -1206,8 +1393,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     parEClass = createEClass(PAR);
     createEReference(parEClass, PAR__VAL);
-
-    superTypeEClass = createEClass(SUPER_TYPE);
 
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__ORDER_EV);
@@ -1246,11 +1431,16 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     literalExpressionEClass = createEClass(LITERAL_EXPRESSION);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__NAME);
+    createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__PRED);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__OBJ);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__TYPE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__VALUE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__CONS);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__LITSLEFT);
+    createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__PART);
+    createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__IND);
+    createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__SPLIT);
+    createEReference(literalExpressionEClass, LITERAL_EXPRESSION__LIT);
 
     literalEClass = createEClass(LITERAL);
     createEAttribute(literalEClass, LITERAL__VAL);
@@ -1316,7 +1506,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    labelMethodCallEClass.getESuperTypes().add(this.getEvent());
     superTypeEClass.getESuperTypes().add(this.getEvent());
     literalExpressionEClass.getESuperTypes().add(this.getConstraint());
     aggegateEClass.getESuperTypes().add(this.getSuperType());
@@ -1330,12 +1519,27 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDomainmodel_JavaType(), theTypesPackage.getJvmType(), null, "javaType", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDomainmodel_Object(), this.getObjectDecl(), null, "object", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDomainmodel_Method(), this.getForbMethod(), null, "method", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDomainmodel_Event(), this.getEvent(), null, "event", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_Usage(), this.getUseBlock(), null, "usage", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_ForbEvent(), this.getForbiddenBlock(), null, "forbEvent", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_Req_events(), this.getRequiredBlock(), null, "req_events", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDomainmodel_Order(), this.getExpression(), null, "order", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDomainmodel_Req(), this.getConstraint(), null, "req", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDomainmodel_Ens(), this.getConstraint(), null, "ens", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_ReqConstraints(), this.getEnforceConsBlock(), null, "reqConstraints", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_Ensure(), this.getEnsuresBlock(), null, "ensure", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(useBlockEClass, UseBlock.class, "UseBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUseBlock_Objects(), this.getObjectDecl(), null, "objects", null, 0, -1, UseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forbiddenBlockEClass, ForbiddenBlock.class, "ForbiddenBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForbiddenBlock_Forb_methods(), this.getForbMethod(), null, "forb_methods", null, 0, -1, ForbiddenBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(requiredBlockEClass, RequiredBlock.class, "RequiredBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRequiredBlock_Req_event(), this.getEvent(), null, "req_event", null, 0, -1, RequiredBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enforceConsBlockEClass, EnforceConsBlock.class, "EnforceConsBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnforceConsBlock_Req(), this.getConstraint(), null, "req", null, 0, -1, EnforceConsBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ensuresBlockEClass, EnsuresBlock.class, "EnsuresBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnsuresBlock_Pred(), this.getConstraint(), null, "pred", null, 0, -1, EnsuresBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectDeclEClass, ObjectDecl.class, "ObjectDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObjectDecl_ObjectType(), theTypesPackage.getJvmType(), null, "objectType", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1347,10 +1551,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEReference(getForbMethod_Rep(), this.getEvent(), null, "rep", null, 0, 1, ForbMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEvent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(labelMethodCallEClass, LabelMethodCall.class, "LabelMethodCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLabelMethodCall_Meth(), this.getMethod(), null, "meth", null, 0, 1, LabelMethodCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(superTypeEClass, SuperType.class, "SuperType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSuperType_Name(), ecorePackage.getEString(), "name", null, 0, 1, SuperType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSuperType_Meth(), this.getMethod(), null, "meth", null, 0, 1, SuperType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethod_LeftSide(), this.getObject(), null, "leftSide", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1362,8 +1566,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(parEClass, Par.class, "Par", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPar_Val(), this.getObject(), null, "val", null, 0, 1, Par.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(superTypeEClass, SuperType.class, "SuperType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_OrderEv(), this.getEvent(), null, "orderEv", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1402,11 +1604,16 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(literalExpressionEClass, LiteralExpression.class, "LiteralExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteralExpression_Name(), ecorePackage.getEObject(), null, "name", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLiteralExpression_Obj(), this.getObject(), null, "obj", null, 0, -1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLiteralExpression_Pred(), ecorePackage.getEString(), "pred", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLiteralExpression_Obj(), this.getEvent(), null, "obj", null, 0, -1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Value(), this.getSuperType(), null, "value", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Cons(), this.getLiteralExpression(), null, "cons", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLiteralExpression_Part(), ecorePackage.getEString(), "part", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLiteralExpression_Ind(), ecorePackage.getEString(), "ind", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLiteralExpression_Split(), ecorePackage.getEString(), "split", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLiteralExpression_Lit(), this.getLiteralExpression(), null, "lit", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLiteral_Val(), ecorePackage.getEString(), "val", null, 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
