@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
 import de.darmstadt.tu.crossing.cryptSL.Event;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Aggegate</b></em>'.
+ * An implementation of the model object '<em><b>Aggregate</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.AggegateImpl#getLab <em>Lab</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.AggregateImpl#getLab <em>Lab</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AggegateImpl extends SuperTypeImpl implements Aggegate
+public class AggregateImpl extends SuperTypeImpl implements Aggregate
 {
   /**
    * The cached value of the '{@link #getLab() <em>Lab</em>}' reference list.
@@ -45,7 +45,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AggegateImpl()
+  protected AggregateImpl()
   {
     super();
   }
@@ -58,7 +58,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   @Override
   protected EClass eStaticClass()
   {
-    return CryptSLPackage.Literals.AGGEGATE;
+    return CryptSLPackage.Literals.AGGREGATE;
   }
 
   /**
@@ -70,7 +70,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   {
     if (lab == null)
     {
-      lab = new EObjectResolvingEList<Event>(Event.class, this, CryptSLPackage.AGGEGATE__LAB);
+      lab = new EObjectResolvingEList<Event>(Event.class, this, CryptSLPackage.AGGREGATE__LAB);
     }
     return lab;
   }
@@ -85,7 +85,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   {
     switch (featureID)
     {
-      case CryptSLPackage.AGGEGATE__LAB:
+      case CryptSLPackage.AGGREGATE__LAB:
         return getLab();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -102,7 +102,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   {
     switch (featureID)
     {
-      case CryptSLPackage.AGGEGATE__LAB:
+      case CryptSLPackage.AGGREGATE__LAB:
         getLab().clear();
         getLab().addAll((Collection<? extends Event>)newValue);
         return;
@@ -120,7 +120,7 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   {
     switch (featureID)
     {
-      case CryptSLPackage.AGGEGATE__LAB:
+      case CryptSLPackage.AGGREGATE__LAB:
         getLab().clear();
         return;
     }
@@ -137,10 +137,10 @@ public class AggegateImpl extends SuperTypeImpl implements Aggegate
   {
     switch (featureID)
     {
-      case CryptSLPackage.AGGEGATE__LAB:
+      case CryptSLPackage.AGGREGATE__LAB:
         return lab != null && !lab.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //AggegateImpl
+} //AggregateImpl

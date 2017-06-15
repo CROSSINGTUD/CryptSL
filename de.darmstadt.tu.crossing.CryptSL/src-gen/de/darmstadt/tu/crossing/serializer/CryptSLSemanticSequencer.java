@@ -4,7 +4,7 @@
 package de.darmstadt.tu.crossing.serializer;
 
 import com.google.inject.Inject;
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
@@ -27,6 +27,7 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
@@ -73,8 +74,8 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == CryptSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case CryptSLPackage.AGGEGATE:
-				sequence_Aggregate(context, (Aggegate) semanticObject); 
+			case CryptSLPackage.AGGREGATE:
+				sequence_Aggregate(context, (Aggregate) semanticObject); 
 				return; 
 			case CryptSLPackage.ARITHMETIC_EXPRESSION:
 				sequence_AdditionExpression_MultiplicationExpression(context, (ArithmeticExpression) semanticObject); 
@@ -217,6 +218,9 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				return; 
 			case CryptSLPackage.PAR_LIST:
 				sequence_ParList(context, (ParList) semanticObject); 
+				return; 
+			case CryptSLPackage.PRE_DEFINED_PREDICATES:
+				sequence_PreDefinedPredicates(context, (PreDefinedPredicates) semanticObject); 
 				return; 
 			case CryptSLPackage.REQUIRED_BLOCK:
 				sequence_RequiredBlock(context, (RequiredBlock) semanticObject); 
@@ -370,13 +374,13 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Event returns Aggegate
-	 *     Aggregate returns Aggegate
+	 *     Event returns Aggregate
+	 *     Aggregate returns Aggregate
 	 *
 	 * Constraint:
 	 *     (name=ID lab+=[Event|ID] lab+=[Event|ID]*)
 	 */
-	protected void sequence_Aggregate(ISerializationContext context, Aggegate semanticObject) {
+	protected void sequence_Aggregate(ISerializationContext context, Aggregate semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -584,7 +588,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     LiteralExpression returns LiteralExpression
 	 *
 	 * Constraint:
-	 *     (name=Literal | name=AggregateExpression | (pred='neverTypeOf'+ obj+=[Object|ID] type=[JvmType|QualifiedName]) | (pred='noCallTo'+ obj+=[Event|ID]))
+	 *     (name=Literal | name=AggregateExpression)
 	 */
 	protected void sequence_LiteralExpression(ISerializationContext context, LiteralExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -786,6 +790,23 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     LiteralExpression returns PreDefinedPredicates
+	 *     PreDefinedPredicates returns PreDefinedPredicates
+	 *
+	 * Constraint:
+	 *     (
+	 *         (predName='neverTypeOf'+ obj+=[Object|ID] type=[JvmType|QualifiedName]) | 
+	 *         (predName='noCallTo'+ obj+=[Event|ID]) | 
+	 *         (predName='callTo'+ obj+=[Event|ID])
+	 *     )
+	 */
+	protected void sequence_PreDefinedPredicates(ISerializationContext context, PreDefinedPredicates semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Pred returns Constraint
 	 *
 	 * Constraint:
@@ -805,7 +826,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='+'? ((elementop='?' | elementop='*')? elementop='+'?)*)
+	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='?'? ((elementop='+' | elementop='*')? elementop='?'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

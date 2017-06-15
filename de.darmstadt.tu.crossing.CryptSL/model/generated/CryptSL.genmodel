@@ -92,9 +92,6 @@
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//LiteralExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LiteralExpression/pred"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/obj"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/cons"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/litsleft"/>
@@ -102,6 +99,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LiteralExpression/ind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LiteralExpression/split"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//LiteralExpression/lit"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//PreDefinedPredicates">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//PreDefinedPredicates/obj"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//PreDefinedPredicates/type"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//Literal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Literal/val"/>
@@ -118,8 +119,8 @@
     <genClasses ecoreClass="CryptSL.ecore#//SuPar">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//SuPar/val"/>
     </genClasses>
-    <genClasses ecoreClass="CryptSL.ecore#//Aggegate">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Aggegate/lab"/>
+    <genClasses ecoreClass="CryptSL.ecore#//Aggregate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Aggregate/lab"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//Order"/>
     <genClasses ecoreClass="CryptSL.ecore#//SimpleOrder"/>

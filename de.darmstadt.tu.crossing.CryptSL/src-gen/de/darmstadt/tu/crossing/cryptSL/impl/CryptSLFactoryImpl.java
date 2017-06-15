@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
@@ -28,6 +28,7 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
@@ -117,12 +118,13 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.COMPARING_OPERATOR: return createComparingOperator();
       case CryptSLPackage.ARITHMETIC_OPERATOR: return createArithmeticOperator();
       case CryptSLPackage.LITERAL_EXPRESSION: return createLiteralExpression();
+      case CryptSLPackage.PRE_DEFINED_PREDICATES: return createPreDefinedPredicates();
       case CryptSLPackage.LITERAL: return createLiteral();
       case CryptSLPackage.UNARY_OPERATOR: return createUnaryOperator();
       case CryptSLPackage.LIT_LIST: return createLitList();
       case CryptSLPackage.SU_PAR_LIST: return createSuParList();
       case CryptSLPackage.SU_PAR: return createSuPar();
-      case CryptSLPackage.AGGEGATE: return createAggegate();
+      case CryptSLPackage.AGGREGATE: return createAggregate();
       case CryptSLPackage.ORDER: return createOrder();
       case CryptSLPackage.SIMPLE_ORDER: return createSimpleOrder();
       case CryptSLPackage.COMPARISON_EXPRESSION: return createComparisonExpression();
@@ -359,6 +361,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public PreDefinedPredicates createPreDefinedPredicates()
+  {
+    PreDefinedPredicatesImpl preDefinedPredicates = new PreDefinedPredicatesImpl();
+    return preDefinedPredicates;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Literal createLiteral()
   {
     LiteralImpl literal = new LiteralImpl();
@@ -414,10 +427,10 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Aggegate createAggegate()
+  public Aggregate createAggregate()
   {
-    AggegateImpl aggegate = new AggegateImpl();
-    return aggegate;
+    AggregateImpl aggregate = new AggregateImpl();
+    return aggregate;
   }
 
   /**

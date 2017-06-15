@@ -906,40 +906,13 @@ public interface CryptSLPackage extends EPackage
   int LITERAL_EXPRESSION__NAME = CONSTRAINT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Pred</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_EXPRESSION__PRED = CONSTRAINT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Obj</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_EXPRESSION__OBJ = CONSTRAINT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_EXPRESSION__TYPE = CONSTRAINT_FEATURE_COUNT + 3;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 4;
+  int LITERAL_EXPRESSION__VALUE = CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Cons</b></em>' containment reference.
@@ -948,7 +921,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 5;
+  int LITERAL_EXPRESSION__CONS = CONSTRAINT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
@@ -957,7 +930,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 6;
+  int LITERAL_EXPRESSION__LITSLEFT = CONSTRAINT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Part</b></em>' attribute.
@@ -966,7 +939,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__PART = CONSTRAINT_FEATURE_COUNT + 7;
+  int LITERAL_EXPRESSION__PART = CONSTRAINT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Ind</b></em>' attribute.
@@ -975,7 +948,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__IND = CONSTRAINT_FEATURE_COUNT + 8;
+  int LITERAL_EXPRESSION__IND = CONSTRAINT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Split</b></em>' attribute.
@@ -984,7 +957,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__SPLIT = CONSTRAINT_FEATURE_COUNT + 9;
+  int LITERAL_EXPRESSION__SPLIT = CONSTRAINT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Lit</b></em>' containment reference.
@@ -993,7 +966,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION__LIT = CONSTRAINT_FEATURE_COUNT + 10;
+  int LITERAL_EXPRESSION__LIT = CONSTRAINT_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Literal Expression</em>' class.
@@ -1002,7 +975,161 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 11;
+  int LITERAL_EXPRESSION_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 8;
+
+  /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl <em>Pre Defined Predicates</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPreDefinedPredicates()
+   * @generated
+   */
+  int PRE_DEFINED_PREDICATES = 20;
+
+  /**
+   * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__LEFT_EXPRESSION = LITERAL_EXPRESSION__LEFT_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__OPERATOR = LITERAL_EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__RIGHT_EXPRESSION = LITERAL_EXPRESSION__RIGHT_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Pred Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__PRED_NAME = LITERAL_EXPRESSION__PRED_NAME;
+
+  /**
+   * The feature id for the '<em><b>Par List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__PAR_LIST = LITERAL_EXPRESSION__PAR_LIST;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__NAME = LITERAL_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__VALUE = LITERAL_EXPRESSION__VALUE;
+
+  /**
+   * The feature id for the '<em><b>Cons</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__CONS = LITERAL_EXPRESSION__CONS;
+
+  /**
+   * The feature id for the '<em><b>Litsleft</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__LITSLEFT = LITERAL_EXPRESSION__LITSLEFT;
+
+  /**
+   * The feature id for the '<em><b>Part</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__PART = LITERAL_EXPRESSION__PART;
+
+  /**
+   * The feature id for the '<em><b>Ind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__IND = LITERAL_EXPRESSION__IND;
+
+  /**
+   * The feature id for the '<em><b>Split</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__SPLIT = LITERAL_EXPRESSION__SPLIT;
+
+  /**
+   * The feature id for the '<em><b>Lit</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__LIT = LITERAL_EXPRESSION__LIT;
+
+  /**
+   * The feature id for the '<em><b>Obj</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__OBJ = LITERAL_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__TYPE = LITERAL_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Pre Defined Predicates</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES_FEATURE_COUNT = LITERAL_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
@@ -1012,7 +1139,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 20;
+  int LITERAL = 21;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -1040,7 +1167,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 21;
+  int UNARY_OPERATOR = 22;
 
   /**
    * The feature id for the '<em><b>NOT</b></em>' attribute.
@@ -1068,7 +1195,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 22;
+  int LIT_LIST = 23;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1096,7 +1223,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuParList()
    * @generated
    */
-  int SU_PAR_LIST = 23;
+  int SU_PAR_LIST = 24;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1124,7 +1251,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuPar()
    * @generated
    */
-  int SU_PAR = 24;
+  int SU_PAR = 25;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1145,14 +1272,14 @@ public interface CryptSLPackage extends EPackage
   int SU_PAR_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.AggegateImpl <em>Aggegate</em>}' class.
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.AggregateImpl <em>Aggregate</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.AggegateImpl
-   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggegate()
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.AggregateImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggregate()
    * @generated
    */
-  int AGGEGATE = 25;
+  int AGGREGATE = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1161,7 +1288,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGGEGATE__NAME = SUPER_TYPE__NAME;
+  int AGGREGATE__NAME = SUPER_TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Meth</b></em>' containment reference.
@@ -1170,7 +1297,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGGEGATE__METH = SUPER_TYPE__METH;
+  int AGGREGATE__METH = SUPER_TYPE__METH;
 
   /**
    * The feature id for the '<em><b>Lab</b></em>' reference list.
@@ -1179,16 +1306,16 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AGGEGATE__LAB = SUPER_TYPE_FEATURE_COUNT + 0;
+  int AGGREGATE__LAB = SUPER_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Aggegate</em>' class.
+   * The number of structural features of the '<em>Aggregate</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AGGEGATE_FEATURE_COUNT = SUPER_TYPE_FEATURE_COUNT + 1;
+  int AGGREGATE_FEATURE_COUNT = SUPER_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.OrderImpl <em>Order</em>}' class.
@@ -1198,7 +1325,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 26;
+  int ORDER = 27;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1262,7 +1389,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 27;
+  int SIMPLE_ORDER = 28;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1326,7 +1453,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 28;
+  int COMPARISON_EXPRESSION = 29;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1390,7 +1517,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticExpression()
    * @generated
    */
-  int ARITHMETIC_EXPRESSION = 29;
+  int ARITHMETIC_EXPRESSION = 30;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1454,7 +1581,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryPreExpression()
    * @generated
    */
-  int UNARY_PRE_EXPRESSION = 30;
+  int UNARY_PRE_EXPRESSION = 31;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1527,7 +1654,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 31;
+  int OBJECT = 32;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2286,39 +2413,6 @@ public interface CryptSLPackage extends EPackage
   EReference getLiteralExpression_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred <em>Pred</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Pred</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getPred()
-   * @see #getLiteralExpression()
-   * @generated
-   */
-  EAttribute getLiteralExpression_Pred();
-
-  /**
-   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj <em>Obj</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Obj</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getObj()
-   * @see #getLiteralExpression()
-   * @generated
-   */
-  EReference getLiteralExpression_Obj();
-
-  /**
-   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getType()
-   * @see #getLiteralExpression()
-   * @generated
-   */
-  EReference getLiteralExpression_Type();
-
-  /**
    * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2394,6 +2488,38 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getLiteralExpression_Lit();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates <em>Pre Defined Predicates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Pre Defined Predicates</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates
+   * @generated
+   */
+  EClass getPreDefinedPredicates();
+
+  /**
+   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getObj <em>Obj</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Obj</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getObj()
+   * @see #getPreDefinedPredicates()
+   * @generated
+   */
+  EReference getPreDefinedPredicates_Obj();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getType()
+   * @see #getPreDefinedPredicates()
+   * @generated
+   */
+  EReference getPreDefinedPredicates_Type();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
@@ -2501,25 +2627,25 @@ public interface CryptSLPackage extends EPackage
   EReference getSuPar_Val();
 
   /**
-   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Aggegate <em>Aggegate</em>}'.
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Aggregate <em>Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Aggegate</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Aggegate
+   * @return the meta object for class '<em>Aggregate</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Aggregate
    * @generated
    */
-  EClass getAggegate();
+  EClass getAggregate();
 
   /**
-   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.Aggegate#getLab <em>Lab</em>}'.
+   * Returns the meta object for the reference list '{@link de.darmstadt.tu.crossing.cryptSL.Aggregate#getLab <em>Lab</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Lab</em>'.
-   * @see de.darmstadt.tu.crossing.cryptSL.Aggegate#getLab()
-   * @see #getAggegate()
+   * @see de.darmstadt.tu.crossing.cryptSL.Aggregate#getLab()
+   * @see #getAggregate()
    * @generated
    */
-  EReference getAggegate_Lab();
+  EReference getAggregate_Lab();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.Order <em>Order</em>}'.
@@ -3200,30 +3326,6 @@ public interface CryptSLPackage extends EPackage
     EReference LITERAL_EXPRESSION__NAME = eINSTANCE.getLiteralExpression_Name();
 
     /**
-     * The meta object literal for the '<em><b>Pred</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LITERAL_EXPRESSION__PRED = eINSTANCE.getLiteralExpression_Pred();
-
-    /**
-     * The meta object literal for the '<em><b>Obj</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LITERAL_EXPRESSION__OBJ = eINSTANCE.getLiteralExpression_Obj();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LITERAL_EXPRESSION__TYPE = eINSTANCE.getLiteralExpression_Type();
-
-    /**
      * The meta object literal for the '<em><b>Value</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3278,6 +3380,32 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference LITERAL_EXPRESSION__LIT = eINSTANCE.getLiteralExpression_Lit();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl <em>Pre Defined Predicates</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPreDefinedPredicates()
+     * @generated
+     */
+    EClass PRE_DEFINED_PREDICATES = eINSTANCE.getPreDefinedPredicates();
+
+    /**
+     * The meta object literal for the '<em><b>Obj</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRE_DEFINED_PREDICATES__OBJ = eINSTANCE.getPreDefinedPredicates_Obj();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRE_DEFINED_PREDICATES__TYPE = eINSTANCE.getPreDefinedPredicates_Type();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralImpl <em>Literal</em>}' class.
@@ -3370,14 +3498,14 @@ public interface CryptSLPackage extends EPackage
     EReference SU_PAR__VAL = eINSTANCE.getSuPar_Val();
 
     /**
-     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.AggegateImpl <em>Aggegate</em>}' class.
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.AggregateImpl <em>Aggregate</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.AggegateImpl
-     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggegate()
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.AggregateImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggregate()
      * @generated
      */
-    EClass AGGEGATE = eINSTANCE.getAggegate();
+    EClass AGGREGATE = eINSTANCE.getAggregate();
 
     /**
      * The meta object literal for the '<em><b>Lab</b></em>' reference list feature.
@@ -3385,7 +3513,7 @@ public interface CryptSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AGGEGATE__LAB = eINSTANCE.getAggegate_Lab();
+    EReference AGGREGATE__LAB = eINSTANCE.getAggregate_Lab();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.OrderImpl <em>Order</em>}' class.

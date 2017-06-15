@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.util;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
@@ -27,6 +27,7 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
@@ -246,6 +247,15 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CryptSLPackage.PRE_DEFINED_PREDICATES:
+      {
+        PreDefinedPredicates preDefinedPredicates = (PreDefinedPredicates)theEObject;
+        T result = casePreDefinedPredicates(preDefinedPredicates);
+        if (result == null) result = caseLiteralExpression(preDefinedPredicates);
+        if (result == null) result = caseConstraint(preDefinedPredicates);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CryptSLPackage.LITERAL:
       {
         Literal literal = (Literal)theEObject;
@@ -281,12 +291,12 @@ public class CryptSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CryptSLPackage.AGGEGATE:
+      case CryptSLPackage.AGGREGATE:
       {
-        Aggegate aggegate = (Aggegate)theEObject;
-        T result = caseAggegate(aggegate);
-        if (result == null) result = caseSuperType(aggegate);
-        if (result == null) result = caseEvent(aggegate);
+        Aggregate aggregate = (Aggregate)theEObject;
+        T result = caseAggregate(aggregate);
+        if (result == null) result = caseSuperType(aggregate);
+        if (result == null) result = caseEvent(aggregate);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -664,6 +674,22 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Pre Defined Predicates</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pre Defined Predicates</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePreDefinedPredicates(PreDefinedPredicates object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -744,17 +770,17 @@ public class CryptSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Aggegate</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Aggregate</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Aggegate</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Aggregate</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAggegate(Aggegate object)
+  public T caseAggregate(Aggregate object)
   {
     return null;
   }

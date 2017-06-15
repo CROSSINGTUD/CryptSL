@@ -204,6 +204,15 @@ public interface CryptSLFactory extends EFactory
   LiteralExpression createLiteralExpression();
 
   /**
+   * Returns a new object of class '<em>Pre Defined Predicates</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pre Defined Predicates</em>'.
+   * @generated
+   */
+  PreDefinedPredicates createPreDefinedPredicates();
+
+  /**
    * Returns a new object of class '<em>Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -249,13 +258,13 @@ public interface CryptSLFactory extends EFactory
   SuPar createSuPar();
 
   /**
-   * Returns a new object of class '<em>Aggegate</em>'.
+   * Returns a new object of class '<em>Aggregate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Aggegate</em>'.
+   * @return a new object of class '<em>Aggregate</em>'.
    * @generated
    */
-  Aggegate createAggegate();
+  Aggregate createAggregate();
 
   /**
    * Returns a new object of class '<em>Order</em>'.

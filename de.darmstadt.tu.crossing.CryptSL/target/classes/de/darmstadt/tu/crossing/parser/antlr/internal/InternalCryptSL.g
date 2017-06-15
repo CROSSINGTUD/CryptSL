@@ -984,7 +984,7 @@ ruleAggregate returns [EObject current=null]
 		(
 			{
 				$current = forceCreateModelElement(
-					grammarAccess.getAggregateAccess().getAggegateAction_0(),
+					grammarAccess.getAggregateAccess().getAggregateAction_0(),
 					$current);
 			}
 		)
@@ -2343,51 +2343,78 @@ ruleLiteralExpression returns [EObject current=null]
 			)
 		)
 		    |
+		{
+			newCompositeNode(grammarAccess.getLiteralExpressionAccess().getPreDefinedPredicatesParserRuleCall_2());
+		}
+		this_PreDefinedPredicates_2=rulePreDefinedPredicates
+		{
+			$current = $this_PreDefinedPredicates_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRulePreDefinedPredicates
+entryRulePreDefinedPredicates returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPreDefinedPredicatesRule()); }
+	iv_rulePreDefinedPredicates=rulePreDefinedPredicates
+	{ $current=$iv_rulePreDefinedPredicates.current; }
+	EOF;
+
+// Rule PreDefinedPredicates
+rulePreDefinedPredicates returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		(
 			(
 				(
-					lv_pred_2_0='neverTypeOf'
+					lv_predName_0_0='neverTypeOf'
 					{
-						newLeafNode(lv_pred_2_0, grammarAccess.getLiteralExpressionAccess().getPredNeverTypeOfKeyword_2_0_0());
+						newLeafNode(lv_predName_0_0, grammarAccess.getPreDefinedPredicatesAccess().getPredNameNeverTypeOfKeyword_0_0_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
 						}
-						setWithLastConsumed($current, "pred", lv_pred_2_0, "neverTypeOf");
+						setWithLastConsumed($current, "predName", lv_predName_0_0, "neverTypeOf");
 					}
 				)
 			)+
-			otherlv_3='('
+			otherlv_1='('
 			{
-				newLeafNode(otherlv_3, grammarAccess.getLiteralExpressionAccess().getLeftParenthesisKeyword_2_1());
+				newLeafNode(otherlv_1, grammarAccess.getPreDefinedPredicatesAccess().getLeftParenthesisKeyword_0_1());
 			}
 			(
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
 						}
 					}
-					otherlv_4=RULE_ID
+					otherlv_2=RULE_ID
 					{
-						newLeafNode(otherlv_4, grammarAccess.getLiteralExpressionAccess().getObjObjectCrossReference_2_2_0());
+						newLeafNode(otherlv_2, grammarAccess.getPreDefinedPredicatesAccess().getObjObjectCrossReference_0_2_0());
 					}
 				)
 			)
-			otherlv_5=','
+			otherlv_3=','
 			{
-				newLeafNode(otherlv_5, grammarAccess.getLiteralExpressionAccess().getCommaKeyword_2_3());
+				newLeafNode(otherlv_3, grammarAccess.getPreDefinedPredicatesAccess().getCommaKeyword_0_3());
 			}
 			(
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
 						}
 					}
 					{
-						newCompositeNode(grammarAccess.getLiteralExpressionAccess().getTypeJvmTypeCrossReference_2_4_0());
+						newCompositeNode(grammarAccess.getPreDefinedPredicatesAccess().getTypeJvmTypeCrossReference_0_4_0());
 					}
 					ruleQualifiedName
 					{
@@ -2395,47 +2422,85 @@ ruleLiteralExpression returns [EObject current=null]
 					}
 				)
 			)
-			otherlv_7=')'
+			otherlv_5=')'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getLiteralExpressionAccess().getRightParenthesisKeyword_2_5());
+				newLeafNode(otherlv_5, grammarAccess.getPreDefinedPredicatesAccess().getRightParenthesisKeyword_0_5());
 			}
 		)
 		    |
 		(
 			(
 				(
-					lv_pred_8_0='noCallTo'
+					lv_predName_6_0='noCallTo'
 					{
-						newLeafNode(lv_pred_8_0, grammarAccess.getLiteralExpressionAccess().getPredNoCallToKeyword_3_0_0());
+						newLeafNode(lv_predName_6_0, grammarAccess.getPreDefinedPredicatesAccess().getPredNameNoCallToKeyword_1_0_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
 						}
-						setWithLastConsumed($current, "pred", lv_pred_8_0, "noCallTo");
+						setWithLastConsumed($current, "predName", lv_predName_6_0, "noCallTo");
 					}
 				)
 			)+
-			otherlv_9='('
+			otherlv_7='('
 			{
-				newLeafNode(otherlv_9, grammarAccess.getLiteralExpressionAccess().getLeftParenthesisKeyword_3_1());
+				newLeafNode(otherlv_7, grammarAccess.getPreDefinedPredicatesAccess().getLeftParenthesisKeyword_1_1());
 			}
 			(
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLiteralExpressionRule());
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
 						}
 					}
-					otherlv_10=RULE_ID
+					otherlv_8=RULE_ID
 					{
-						newLeafNode(otherlv_10, grammarAccess.getLiteralExpressionAccess().getObjEventCrossReference_3_2_0());
+						newLeafNode(otherlv_8, grammarAccess.getPreDefinedPredicatesAccess().getObjEventCrossReference_1_2_0());
 					}
 				)
 			)
-			otherlv_11=')'
+			otherlv_9=')'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getLiteralExpressionAccess().getRightParenthesisKeyword_3_3());
+				newLeafNode(otherlv_9, grammarAccess.getPreDefinedPredicatesAccess().getRightParenthesisKeyword_1_3());
+			}
+		)
+		    |
+		(
+			(
+				(
+					lv_predName_10_0='callTo'
+					{
+						newLeafNode(lv_predName_10_0, grammarAccess.getPreDefinedPredicatesAccess().getPredNameCallToKeyword_2_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
+						}
+						setWithLastConsumed($current, "predName", lv_predName_10_0, "callTo");
+					}
+				)
+			)+
+			otherlv_11='('
+			{
+				newLeafNode(otherlv_11, grammarAccess.getPreDefinedPredicatesAccess().getLeftParenthesisKeyword_2_1());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
+						}
+					}
+					otherlv_12=RULE_ID
+					{
+						newLeafNode(otherlv_12, grammarAccess.getPreDefinedPredicatesAccess().getObjEventCrossReference_2_2_0());
+					}
+				)
+			)
+			otherlv_13=')'
+			{
+				newLeafNode(otherlv_13, grammarAccess.getPreDefinedPredicatesAccess().getRightParenthesisKeyword_2_3());
 			}
 		)
 	)

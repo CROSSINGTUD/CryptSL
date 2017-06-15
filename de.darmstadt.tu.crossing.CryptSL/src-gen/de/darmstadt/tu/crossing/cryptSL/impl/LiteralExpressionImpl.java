@@ -4,27 +4,18 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.Event;
 import de.darmstadt.tu.crossing.cryptSL.LitList;
 import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
 import de.darmstadt.tu.crossing.cryptSL.SuperType;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,9 +26,6 @@ import org.eclipse.xtext.common.types.JvmType;
  * </p>
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getPred <em>Pred</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getObj <em>Obj</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getCons <em>Cons</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.LiteralExpressionImpl#getLitsleft <em>Litsleft</em>}</li>
@@ -60,46 +48,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * @ordered
    */
   protected EObject name;
-
-  /**
-   * The default value of the '{@link #getPred() <em>Pred</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPred()
-   * @generated
-   * @ordered
-   */
-  protected static final String PRED_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPred() <em>Pred</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPred()
-   * @generated
-   * @ordered
-   */
-  protected String pred = PRED_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getObj() <em>Obj</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getObj()
-   * @generated
-   * @ordered
-   */
-  protected EList<Event> obj;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected JvmType type;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -268,86 +216,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__NAME, newName, newName));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getPred()
-  {
-    return pred;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPred(String newPred)
-  {
-    String oldPred = pred;
-    pred = newPred;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__PRED, oldPred, pred));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Event> getObj()
-  {
-    if (obj == null)
-    {
-      obj = new EObjectResolvingEList<Event>(Event.class, this, CryptSLPackage.LITERAL_EXPRESSION__OBJ);
-    }
-    return obj;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType getType()
-  {
-    if (type != null && type.eIsProxy())
-    {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (JvmType)eResolveProxy(oldType);
-      if (type != oldType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.LITERAL_EXPRESSION__TYPE, oldType, type));
-      }
-    }
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(JvmType newType)
-  {
-    JvmType oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.LITERAL_EXPRESSION__TYPE, oldType, type));
   }
 
   /**
@@ -640,13 +508,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     {
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         return getName();
-      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
-        return getPred();
-      case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
-        return getObj();
-      case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
       case CryptSLPackage.LITERAL_EXPRESSION__VALUE:
         if (resolve) return getValue();
         return basicGetValue();
@@ -671,7 +532,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -679,16 +539,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     {
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         setName((EObject)newValue);
-        return;
-      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
-        setPred((String)newValue);
-        return;
-      case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
-        getObj().clear();
-        getObj().addAll((Collection<? extends Event>)newValue);
-        return;
-      case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
-        setType((JvmType)newValue);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__VALUE:
         setValue((SuperType)newValue);
@@ -728,15 +578,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         setName((EObject)null);
         return;
-      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
-        setPred(PRED_EDEFAULT);
-        return;
-      case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
-        getObj().clear();
-        return;
-      case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
-        setType((JvmType)null);
-        return;
       case CryptSLPackage.LITERAL_EXPRESSION__VALUE:
         setValue((SuperType)null);
         return;
@@ -774,12 +615,6 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     {
       case CryptSLPackage.LITERAL_EXPRESSION__NAME:
         return name != null;
-      case CryptSLPackage.LITERAL_EXPRESSION__PRED:
-        return PRED_EDEFAULT == null ? pred != null : !PRED_EDEFAULT.equals(pred);
-      case CryptSLPackage.LITERAL_EXPRESSION__OBJ:
-        return obj != null && !obj.isEmpty();
-      case CryptSLPackage.LITERAL_EXPRESSION__TYPE:
-        return type != null;
       case CryptSLPackage.LITERAL_EXPRESSION__VALUE:
         return value != null;
       case CryptSLPackage.LITERAL_EXPRESSION__CONS:
@@ -809,9 +644,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (pred: ");
-    result.append(pred);
-    result.append(", part: ");
+    result.append(" (part: ");
     result.append(part);
     result.append(", ind: ");
     result.append(ind);

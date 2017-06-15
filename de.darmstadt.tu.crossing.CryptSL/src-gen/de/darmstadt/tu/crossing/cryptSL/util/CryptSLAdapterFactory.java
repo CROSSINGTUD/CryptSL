@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.util;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
@@ -27,6 +27,7 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
@@ -207,6 +208,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createLiteralExpressionAdapter();
       }
       @Override
+      public Adapter casePreDefinedPredicates(PreDefinedPredicates object)
+      {
+        return createPreDefinedPredicatesAdapter();
+      }
+      @Override
       public Adapter caseLiteral(Literal object)
       {
         return createLiteralAdapter();
@@ -232,9 +238,9 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createSuParAdapter();
       }
       @Override
-      public Adapter caseAggegate(Aggegate object)
+      public Adapter caseAggregate(Aggregate object)
       {
-        return createAggegateAdapter();
+        return createAggregateAdapter();
       }
       @Override
       public Adapter caseOrder(Order object)
@@ -589,6 +595,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates <em>Pre Defined Predicates</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates
+   * @generated
+   */
+  public Adapter createPreDefinedPredicatesAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -664,16 +685,16 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Aggegate <em>Aggegate</em>}'.
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Aggregate <em>Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.darmstadt.tu.crossing.cryptSL.Aggegate
+   * @see de.darmstadt.tu.crossing.cryptSL.Aggregate
    * @generated
    */
-  public Adapter createAggegateAdapter()
+  public Adapter createAggregateAdapter()
   {
     return null;
   }

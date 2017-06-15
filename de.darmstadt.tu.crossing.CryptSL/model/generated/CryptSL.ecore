@@ -111,10 +111,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="LiteralExpression" eSuperTypes="#//Constraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pred" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
-        eType="#//Event"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SuperType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//LiteralExpression"
         containment="true"/>
@@ -125,6 +121,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lit" eType="#//LiteralExpression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreDefinedPredicates" eSuperTypes="#//LiteralExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
+        eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -144,7 +145,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//LiteralExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Aggegate" eSuperTypes="#//SuperType">
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//SuperType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lab" unique="false" upperBound="-1"
         eType="#//Event"/>
   </eClassifiers>

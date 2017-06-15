@@ -42,6 +42,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMultiplicationOperatorAccess().getAlternatives(), "rule__MultiplicationOperator__Alternatives");
 					put(grammarAccess.getOperandAccess().getAlternatives(), "rule__Operand__Alternatives");
 					put(grammarAccess.getLiteralExpressionAccess().getAlternatives(), "rule__LiteralExpression__Alternatives");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getAlternatives(), "rule__PreDefinedPredicates__Alternatives");
 					put(grammarAccess.getLiteralAccess().getValAlternatives_1_0(), "rule__Literal__ValAlternatives_1_0");
 					put(grammarAccess.getComparingEQNEQOperatorAccess().getAlternatives(), "rule__ComparingEQNEQOperator__Alternatives");
 					put(grammarAccess.getConsAccess().getAlternatives(), "rule__Cons__Alternatives");
@@ -101,8 +102,9 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnaryPreExpressionAccess().getGroup(), "rule__UnaryPreExpression__Group__0");
 					put(grammarAccess.getUnaryPreExpressionAccess().getGroup_1(), "rule__UnaryPreExpression__Group_1__0");
 					put(grammarAccess.getOperandAccess().getGroup_0(), "rule__Operand__Group_0__0");
-					put(grammarAccess.getLiteralExpressionAccess().getGroup_2(), "rule__LiteralExpression__Group_2__0");
-					put(grammarAccess.getLiteralExpressionAccess().getGroup_3(), "rule__LiteralExpression__Group_3__0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_0(), "rule__PreDefinedPredicates__Group_0__0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_1(), "rule__PreDefinedPredicates__Group_1__0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_2(), "rule__PreDefinedPredicates__Group_2__0");
 					put(grammarAccess.getAggregateExpressionAccess().getGroup(), "rule__AggregateExpression__Group__0");
 					put(grammarAccess.getAggregateExpressionAccess().getGroup_1(), "rule__AggregateExpression__Group_1__0");
 					put(grammarAccess.getLiteralAccess().getGroup(), "rule__Literal__Group__0");
@@ -210,11 +212,13 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnaryPreExpressionAccess().getEnclosedExpressionAssignment_1_1(), "rule__UnaryPreExpression__EnclosedExpressionAssignment_1_1");
 					put(grammarAccess.getLiteralExpressionAccess().getNameAssignment_0(), "rule__LiteralExpression__NameAssignment_0");
 					put(grammarAccess.getLiteralExpressionAccess().getNameAssignment_1(), "rule__LiteralExpression__NameAssignment_1");
-					put(grammarAccess.getLiteralExpressionAccess().getPredAssignment_2_0(), "rule__LiteralExpression__PredAssignment_2_0");
-					put(grammarAccess.getLiteralExpressionAccess().getObjAssignment_2_2(), "rule__LiteralExpression__ObjAssignment_2_2");
-					put(grammarAccess.getLiteralExpressionAccess().getTypeAssignment_2_4(), "rule__LiteralExpression__TypeAssignment_2_4");
-					put(grammarAccess.getLiteralExpressionAccess().getPredAssignment_3_0(), "rule__LiteralExpression__PredAssignment_3_0");
-					put(grammarAccess.getLiteralExpressionAccess().getObjAssignment_3_2(), "rule__LiteralExpression__ObjAssignment_3_2");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getPredNameAssignment_0_0(), "rule__PreDefinedPredicates__PredNameAssignment_0_0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_0_2(), "rule__PreDefinedPredicates__ObjAssignment_0_2");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getTypeAssignment_0_4(), "rule__PreDefinedPredicates__TypeAssignment_0_4");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getPredNameAssignment_1_0(), "rule__PreDefinedPredicates__PredNameAssignment_1_0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_1_2(), "rule__PreDefinedPredicates__ObjAssignment_1_2");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getPredNameAssignment_2_0(), "rule__PreDefinedPredicates__PredNameAssignment_2_0");
+					put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_2_2(), "rule__PreDefinedPredicates__ObjAssignment_2_2");
 					put(grammarAccess.getAggregateExpressionAccess().getValueAssignment_0(), "rule__AggregateExpression__ValueAssignment_0");
 					put(grammarAccess.getLiteralAccess().getValAssignment_1(), "rule__Literal__ValAssignment_1");
 					put(grammarAccess.getUnaryPreOperatorAccess().getNOTAssignment(), "rule__UnaryPreOperator__NOTAssignment");

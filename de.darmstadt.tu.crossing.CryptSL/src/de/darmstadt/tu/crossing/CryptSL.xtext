@@ -67,7 +67,7 @@ Par:
 
 	/// AGGS
 Aggregate returns SuperType:
-	{Aggegate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
+	{Aggregate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
 
 	///////////// ORDER
 Order returns Expression:
@@ -161,9 +161,14 @@ Operand returns Constraint:
 	Pred;
 
 LiteralExpression returns LiteralExpression:
-	name=Literal | name=AggregateExpression | pred="neverTypeOf"+ "(" obj+=[Object] ","
-	type=[jvmTypes::JvmType|QualifiedName] ")" | pred="noCallTo" + "(" obj+=[Event] ")" 
+	name=Literal | name=AggregateExpression | PreDefinedPredicates 
 	;
+
+PreDefinedPredicates:
+	predName= "neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" | 
+	predName= "noCallTo" + "(" obj+=[Event] ")" |
+	predName= "callTo" + "(" obj+=[Event] ")"
+;
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;

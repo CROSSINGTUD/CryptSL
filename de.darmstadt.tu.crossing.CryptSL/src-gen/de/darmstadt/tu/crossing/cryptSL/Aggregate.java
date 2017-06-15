@@ -7,21 +7,21 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Aggegate</b></em>'.
+ * A representation of the model object '<em><b>Aggregate</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Aggegate#getLab <em>Lab</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Aggregate#getLab <em>Lab</em>}</li>
  * </ul>
  *
- * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getAggegate()
+ * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getAggregate()
  * @model
  * @generated
  */
-public interface Aggegate extends SuperType
+public interface Aggregate extends SuperType
 {
   /**
    * Returns the value of the '<em><b>Lab</b></em>' reference list.
@@ -33,10 +33,10 @@ public interface Aggegate extends SuperType
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Lab</em>' reference list.
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getAggegate_Lab()
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getAggregate_Lab()
    * @model
    * @generated
    */
   EList<Event> getLab();
 
-} // Aggegate
+} // Aggregate

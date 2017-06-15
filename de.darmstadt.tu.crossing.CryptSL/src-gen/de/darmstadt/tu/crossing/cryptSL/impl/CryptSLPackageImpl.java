@@ -3,7 +3,7 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Aggegate;
+import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
@@ -28,6 +28,7 @@ import de.darmstadt.tu.crossing.cryptSL.ObjectDecl;
 import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
@@ -199,6 +200,13 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass preDefinedPredicatesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass literalEClass = null;
 
   /**
@@ -234,7 +242,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass aggegateEClass = null;
+  private EClass aggregateEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1029,39 +1037,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLiteralExpression_Pred()
-  {
-    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLiteralExpression_Obj()
-  {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLiteralExpression_Type()
-  {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getLiteralExpression_Value()
   {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(4);
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1071,7 +1049,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getLiteralExpression_Cons()
   {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(5);
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1081,7 +1059,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getLiteralExpression_Litsleft()
   {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(6);
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1091,7 +1069,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EAttribute getLiteralExpression_Part()
   {
-    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1101,7 +1079,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EAttribute getLiteralExpression_Ind()
   {
-    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1111,7 +1089,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EAttribute getLiteralExpression_Split()
   {
-    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)literalExpressionEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1121,7 +1099,37 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    */
   public EReference getLiteralExpression_Lit()
   {
-    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(10);
+    return (EReference)literalExpressionEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPreDefinedPredicates()
+  {
+    return preDefinedPredicatesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPreDefinedPredicates_Obj()
+  {
+    return (EReference)preDefinedPredicatesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPreDefinedPredicates_Type()
+  {
+    return (EReference)preDefinedPredicatesEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1229,9 +1237,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAggegate()
+  public EClass getAggregate()
   {
-    return aggegateEClass;
+    return aggregateEClass;
   }
 
   /**
@@ -1239,9 +1247,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAggegate_Lab()
+  public EReference getAggregate_Lab()
   {
-    return (EReference)aggegateEClass.getEStructuralFeatures().get(0);
+    return (EReference)aggregateEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1431,9 +1439,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     literalExpressionEClass = createEClass(LITERAL_EXPRESSION);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__NAME);
-    createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__PRED);
-    createEReference(literalExpressionEClass, LITERAL_EXPRESSION__OBJ);
-    createEReference(literalExpressionEClass, LITERAL_EXPRESSION__TYPE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__VALUE);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__CONS);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__LITSLEFT);
@@ -1441,6 +1446,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__IND);
     createEAttribute(literalExpressionEClass, LITERAL_EXPRESSION__SPLIT);
     createEReference(literalExpressionEClass, LITERAL_EXPRESSION__LIT);
+
+    preDefinedPredicatesEClass = createEClass(PRE_DEFINED_PREDICATES);
+    createEReference(preDefinedPredicatesEClass, PRE_DEFINED_PREDICATES__OBJ);
+    createEReference(preDefinedPredicatesEClass, PRE_DEFINED_PREDICATES__TYPE);
 
     literalEClass = createEClass(LITERAL);
     createEAttribute(literalEClass, LITERAL__VAL);
@@ -1457,8 +1466,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     suParEClass = createEClass(SU_PAR);
     createEReference(suParEClass, SU_PAR__VAL);
 
-    aggegateEClass = createEClass(AGGEGATE);
-    createEReference(aggegateEClass, AGGEGATE__LAB);
+    aggregateEClass = createEClass(AGGREGATE);
+    createEReference(aggregateEClass, AGGREGATE__LAB);
 
     orderEClass = createEClass(ORDER);
 
@@ -1508,7 +1517,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Add supertypes to classes
     superTypeEClass.getESuperTypes().add(this.getEvent());
     literalExpressionEClass.getESuperTypes().add(this.getConstraint());
-    aggegateEClass.getESuperTypes().add(this.getSuperType());
+    preDefinedPredicatesEClass.getESuperTypes().add(this.getLiteralExpression());
+    aggregateEClass.getESuperTypes().add(this.getSuperType());
     orderEClass.getESuperTypes().add(this.getExpression());
     simpleOrderEClass.getESuperTypes().add(this.getExpression());
     comparisonExpressionEClass.getESuperTypes().add(this.getConstraint());
@@ -1604,9 +1614,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(literalExpressionEClass, LiteralExpression.class, "LiteralExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteralExpression_Name(), ecorePackage.getEObject(), null, "name", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLiteralExpression_Pred(), ecorePackage.getEString(), "pred", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLiteralExpression_Obj(), this.getEvent(), null, "obj", null, 0, -1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLiteralExpression_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Value(), this.getSuperType(), null, "value", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Cons(), this.getLiteralExpression(), null, "cons", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1614,6 +1621,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEAttribute(getLiteralExpression_Ind(), ecorePackage.getEString(), "ind", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLiteralExpression_Split(), ecorePackage.getEString(), "split", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Lit(), this.getLiteralExpression(), null, "lit", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(preDefinedPredicatesEClass, PreDefinedPredicates.class, "PreDefinedPredicates", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPreDefinedPredicates_Obj(), this.getEvent(), null, "obj", null, 0, -1, PreDefinedPredicates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPreDefinedPredicates_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, PreDefinedPredicates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLiteral_Val(), ecorePackage.getEString(), "val", null, 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1630,8 +1641,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEClass(suParEClass, SuPar.class, "SuPar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSuPar_Val(), this.getLiteralExpression(), null, "val", null, 0, 1, SuPar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(aggegateEClass, Aggegate.class, "Aggegate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAggegate_Lab(), this.getEvent(), null, "lab", null, 0, -1, Aggegate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(aggregateEClass, Aggregate.class, "Aggregate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAggregate_Lab(), this.getEvent(), null, "lab", null, 0, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
