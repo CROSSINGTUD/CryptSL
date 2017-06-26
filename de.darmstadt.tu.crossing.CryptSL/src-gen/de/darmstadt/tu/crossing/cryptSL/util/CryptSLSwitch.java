@@ -10,6 +10,7 @@ import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.DestroysBlock;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
@@ -144,6 +145,13 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         EnsuresBlock ensuresBlock = (EnsuresBlock)theEObject;
         T result = caseEnsuresBlock(ensuresBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.DESTROYS_BLOCK:
+      {
+        DestroysBlock destroysBlock = (DestroysBlock)theEObject;
+        T result = caseDestroysBlock(destroysBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -445,6 +453,22 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEnsuresBlock(EnsuresBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Destroys Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Destroys Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDestroysBlock(DestroysBlock object)
   {
     return null;
   }

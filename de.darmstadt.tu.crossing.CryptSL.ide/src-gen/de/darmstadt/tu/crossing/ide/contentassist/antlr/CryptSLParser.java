@@ -48,6 +48,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConsAccess().getAlternatives(), "rule__Cons__Alternatives");
 					put(grammarAccess.getConsPredAccess().getAlternatives(), "rule__ConsPred__Alternatives");
 					put(grammarAccess.getLitListAccess().getAlternatives_1_1(), "rule__LitList__Alternatives_1_1");
+					put(grammarAccess.getReqPredAccess().getAlternatives_3(), "rule__ReqPred__Alternatives_3");
 					put(grammarAccess.getSuParAccess().getAlternatives_1(), "rule__SuPar__Alternatives_1");
 					put(grammarAccess.getJvmTypeReferenceAccess().getAlternatives(), "rule__JvmTypeReference__Alternatives");
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
@@ -58,8 +59,10 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDomainmodelAccess().getGroup_4(), "rule__Domainmodel__Group_4__0");
 					put(grammarAccess.getDomainmodelAccess().getGroup_9(), "rule__Domainmodel__Group_9__0");
 					put(grammarAccess.getDomainmodelAccess().getGroup_10(), "rule__Domainmodel__Group_10__0");
+					put(grammarAccess.getDomainmodelAccess().getGroup_11(), "rule__Domainmodel__Group_11__0");
 					put(grammarAccess.getEnforceConsBlockAccess().getGroup(), "rule__EnforceConsBlock__Group__0");
 					put(grammarAccess.getEnsuresBlockAccess().getGroup(), "rule__EnsuresBlock__Group__0");
+					put(grammarAccess.getDestroysBlockAccess().getGroup(), "rule__DestroysBlock__Group__0");
 					put(grammarAccess.getObjectDeclAccess().getGroup(), "rule__ObjectDecl__Group__0");
 					put(grammarAccess.getForbMethodAccess().getGroup(), "rule__ForbMethod__Group__0");
 					put(grammarAccess.getForbMethodAccess().getGroup_0(), "rule__ForbMethod__Group_0__0");
@@ -112,7 +115,10 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConsPredAccess().getGroup_0(), "rule__ConsPred__Group_0__0");
 					put(grammarAccess.getLitListAccess().getGroup(), "rule__LitList__Group__0");
 					put(grammarAccess.getLitListAccess().getGroup_1(), "rule__LitList__Group_1__0");
-					put(grammarAccess.getPredAccess().getGroup(), "rule__Pred__Group__0");
+					put(grammarAccess.getReqPredAccess().getGroup(), "rule__ReqPred__Group__0");
+					put(grammarAccess.getReqPredAccess().getGroup_3_0(), "rule__ReqPred__Group_3_0__0");
+					put(grammarAccess.getEnsPredAccess().getGroup(), "rule__EnsPred__Group__0");
+					put(grammarAccess.getEnsPredAccess().getGroup_1(), "rule__EnsPred__Group_1__0");
 					put(grammarAccess.getSuParListAccess().getGroup(), "rule__SuParList__Group__0");
 					put(grammarAccess.getSuParListAccess().getGroup_1(), "rule__SuParList__Group_1__0");
 					put(grammarAccess.getSuParAccess().getGroup(), "rule__SuPar__Group__0");
@@ -155,11 +161,13 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDomainmodelAccess().getOrderAssignment_8(), "rule__Domainmodel__OrderAssignment_8");
 					put(grammarAccess.getDomainmodelAccess().getReqConstraintsAssignment_9_1(), "rule__Domainmodel__ReqConstraintsAssignment_9_1");
 					put(grammarAccess.getDomainmodelAccess().getEnsureAssignment_10_1(), "rule__Domainmodel__EnsureAssignment_10_1");
+					put(grammarAccess.getDomainmodelAccess().getDestroyAssignment_11_1(), "rule__Domainmodel__DestroyAssignment_11_1");
 					put(grammarAccess.getUseBlockAccess().getObjectsAssignment(), "rule__UseBlock__ObjectsAssignment");
 					put(grammarAccess.getForbiddenBlockAccess().getForb_methodsAssignment(), "rule__ForbiddenBlock__Forb_methodsAssignment");
 					put(grammarAccess.getRequiredBlockAccess().getReq_eventAssignment(), "rule__RequiredBlock__Req_eventAssignment");
 					put(grammarAccess.getEnforceConsBlockAccess().getReqAssignment_0(), "rule__EnforceConsBlock__ReqAssignment_0");
 					put(grammarAccess.getEnsuresBlockAccess().getPredAssignment_0(), "rule__EnsuresBlock__PredAssignment_0");
+					put(grammarAccess.getDestroysBlockAccess().getPredAssignment_0(), "rule__DestroysBlock__PredAssignment_0");
 					put(grammarAccess.getObjectDeclAccess().getObjectTypeAssignment_0(), "rule__ObjectDecl__ObjectTypeAssignment_0");
 					put(grammarAccess.getObjectDeclAccess().getArrayAssignment_1(), "rule__ObjectDecl__ArrayAssignment_1");
 					put(grammarAccess.getObjectDeclAccess().getObjectNameAssignment_2(), "rule__ObjectDecl__ObjectNameAssignment_2");
@@ -234,8 +242,10 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConsPredAccess().getLitAssignment_1(), "rule__ConsPred__LitAssignment_1");
 					put(grammarAccess.getLitListAccess().getParametersAssignment_0(), "rule__LitList__ParametersAssignment_0");
 					put(grammarAccess.getLitListAccess().getParametersAssignment_1_1_0(), "rule__LitList__ParametersAssignment_1_1_0");
-					put(grammarAccess.getPredAccess().getPredNameAssignment_0(), "rule__Pred__PredNameAssignment_0");
-					put(grammarAccess.getPredAccess().getParListAssignment_2(), "rule__Pred__ParListAssignment_2");
+					put(grammarAccess.getReqPredAccess().getRetAssignment_0(), "rule__ReqPred__RetAssignment_0");
+					put(grammarAccess.getReqPredAccess().getPredNameAssignment_2(), "rule__ReqPred__PredNameAssignment_2");
+					put(grammarAccess.getReqPredAccess().getParListAssignment_3_0_1(), "rule__ReqPred__ParListAssignment_3_0_1");
+					put(grammarAccess.getEnsPredAccess().getLabelCondAssignment_1_1(), "rule__EnsPred__LabelCondAssignment_1_1");
 					put(grammarAccess.getSuParListAccess().getParametersAssignment_0(), "rule__SuParList__ParametersAssignment_0");
 					put(grammarAccess.getSuParListAccess().getParametersAssignment_1_1(), "rule__SuParList__ParametersAssignment_1_1");
 					put(grammarAccess.getSuParAccess().getValAssignment_1_0(), "rule__SuPar__ValAssignment_1_0");

@@ -240,6 +240,31 @@ ruleDomainmodel returns [EObject current=null]
 				)
 			)
 		)?
+		(
+			otherlv_14='DESTROYS'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getDestroyDestroysBlockParserRuleCall_11_1_0());
+					}
+					lv_destroy_15_0=ruleDestroysBlock
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
+						}
+						set(
+							$current,
+							"destroy",
+							lv_destroy_15_0,
+							"de.darmstadt.tu.crossing.CryptSL.DestroysBlock");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -412,9 +437,9 @@ ruleEnsuresBlock returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEnsuresBlockAccess().getPredPredParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getEnsuresBlockAccess().getPredEnsPredParserRuleCall_0_0());
 				}
-				lv_pred_0_0=rulePred
+				lv_pred_0_0=ruleEnsPred
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getEnsuresBlockRule());
@@ -423,7 +448,7 @@ ruleEnsuresBlock returns [EObject current=null]
 						$current,
 						"pred",
 						lv_pred_0_0,
-						"de.darmstadt.tu.crossing.CryptSL.Pred");
+						"de.darmstadt.tu.crossing.CryptSL.EnsPred");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -431,6 +456,48 @@ ruleEnsuresBlock returns [EObject current=null]
 		otherlv_1=';'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getEnsuresBlockAccess().getSemicolonKeyword_1());
+		}
+	)+
+;
+
+// Entry rule entryRuleDestroysBlock
+entryRuleDestroysBlock returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDestroysBlockRule()); }
+	iv_ruleDestroysBlock=ruleDestroysBlock
+	{ $current=$iv_ruleDestroysBlock.current; }
+	EOF;
+
+// Rule DestroysBlock
+ruleDestroysBlock returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDestroysBlockAccess().getPredEnsPredParserRuleCall_0_0());
+				}
+				lv_pred_0_0=ruleEnsPred
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDestroysBlockRule());
+					}
+					add(
+						$current,
+						"pred",
+						lv_pred_0_0,
+						"de.darmstadt.tu.crossing.CryptSL.EnsPred");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1=';'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDestroysBlockAccess().getSemicolonKeyword_1());
 		}
 	)+
 ;
@@ -2277,11 +2344,11 @@ ruleOperand returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getOperandAccess().getPredParserRuleCall_2());
+			newCompositeNode(grammarAccess.getOperandAccess().getReqPredParserRuleCall_2());
 		}
-		this_Pred_4=rulePred
+		this_ReqPred_4=ruleReqPred
 		{
-			$current = $this_Pred_4.current;
+			$current = $this_ReqPred_4.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -3023,15 +3090,15 @@ ruleLitList returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRulePred
-entryRulePred returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPredRule()); }
-	iv_rulePred=rulePred
-	{ $current=$iv_rulePred.current; }
+// Entry rule entryRuleReqPred
+entryRuleReqPred returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReqPredRule()); }
+	iv_ruleReqPred=ruleReqPred
+	{ $current=$iv_ruleReqPred.current; }
 	EOF;
 
-// Rule Pred
-rulePred returns [EObject current=null]
+// Rule ReqPred
+ruleReqPred returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -3041,49 +3108,127 @@ rulePred returns [EObject current=null]
 	(
 		(
 			(
-				lv_predName_0_0=RULE_ID
 				{
-					newLeafNode(lv_predName_0_0, grammarAccess.getPredAccess().getPredNameIDTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getReqPredAccess().getRetSuParParserRuleCall_0_0());
+				}
+				lv_ret_0_0=ruleSuPar
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getReqPredRule());
+					}
+					set(
+						$current,
+						"ret",
+						lv_ret_0_0,
+						"de.darmstadt.tu.crossing.CryptSL.SuPar");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='.'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getReqPredAccess().getFullStopKeyword_1());
+		}
+		(
+			(
+				lv_predName_2_0=RULE_ID
+				{
+					newLeafNode(lv_predName_2_0, grammarAccess.getReqPredAccess().getPredNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPredRule());
+						$current = createModelElement(grammarAccess.getReqPredRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"predName",
-						lv_predName_0_0,
+						lv_predName_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ID");
 				}
 			)
 		)
-		otherlv_1='['
-		{
-			newLeafNode(otherlv_1, grammarAccess.getPredAccess().getLeftSquareBracketKeyword_1());
-		}
 		(
 			(
+				otherlv_3='['
 				{
-					newCompositeNode(grammarAccess.getPredAccess().getParListSuParListParserRuleCall_2_0());
+					newLeafNode(otherlv_3, grammarAccess.getReqPredAccess().getLeftSquareBracketKeyword_3_0_0());
 				}
-				lv_parList_2_0=ruleSuParList
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getReqPredAccess().getParListSuParListParserRuleCall_3_0_1_0());
+						}
+						lv_parList_4_0=ruleSuParList
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getReqPredRule());
+							}
+							set(
+								$current,
+								"parList",
+								lv_parList_4_0,
+								"de.darmstadt.tu.crossing.CryptSL.SuParList");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_5=']'
 				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPredRule());
-					}
-					set(
-						$current,
-						"parList",
-						lv_parList_2_0,
-						"de.darmstadt.tu.crossing.CryptSL.SuParList");
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_5, grammarAccess.getReqPredAccess().getRightSquareBracketKeyword_3_0_2());
 				}
 			)
-		)?
-		otherlv_3=']'
+			    |
+			otherlv_6='[]'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getReqPredAccess().getLeftSquareBracketRightSquareBracketKeyword_3_1());
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleEnsPred
+entryRuleEnsPred returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEnsPredRule()); }
+	iv_ruleEnsPred=ruleEnsPred
+	{ $current=$iv_ruleEnsPred.current; }
+	EOF;
+
+// Rule EnsPred
+ruleEnsPred returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPredAccess().getRightSquareBracketKeyword_3());
+			newCompositeNode(grammarAccess.getEnsPredAccess().getReqPredParserRuleCall_0());
 		}
+		this_ReqPred_0=ruleReqPred
+		{
+			$current = $this_ReqPred_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			otherlv_1='after'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getEnsPredAccess().getAfterKeyword_1_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getEnsPredRule());
+						}
+					}
+					otherlv_2=RULE_ID
+					{
+						newLeafNode(otherlv_2, grammarAccess.getEnsPredAccess().getLabelCondSuperTypeCrossReference_1_1_0());
+					}
+				)
+			)
+		)?
 	)
 ;
 

@@ -4,6 +4,7 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.DestroysBlock;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
@@ -38,6 +39,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReqConstraints <em>Req Constraints</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEnsure <em>Ensure</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getDestroy <em>Destroy</em>}</li>
  * </ul>
  *
  * @generated
@@ -113,6 +115,16 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * @ordered
    */
   protected EnsuresBlock ensure;
+
+  /**
+   * The cached value of the '{@link #getDestroy() <em>Destroy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDestroy()
+   * @generated
+   * @ordered
+   */
+  protected DestroysBlock destroy;
 
   /**
    * <!-- begin-user-doc -->
@@ -471,6 +483,54 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
+  public DestroysBlock getDestroy()
+  {
+    return destroy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDestroy(DestroysBlock newDestroy, NotificationChain msgs)
+  {
+    DestroysBlock oldDestroy = destroy;
+    destroy = newDestroy;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__DESTROY, oldDestroy, newDestroy);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDestroy(DestroysBlock newDestroy)
+  {
+    if (newDestroy != destroy)
+    {
+      NotificationChain msgs = null;
+      if (destroy != null)
+        msgs = ((InternalEObject)destroy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__DESTROY, null, msgs);
+      if (newDestroy != null)
+        msgs = ((InternalEObject)newDestroy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__DESTROY, null, msgs);
+      msgs = basicSetDestroy(newDestroy, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__DESTROY, newDestroy, newDestroy));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -488,6 +548,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return basicSetReqConstraints(null, msgs);
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return basicSetEnsure(null, msgs);
+      case CryptSLPackage.DOMAINMODEL__DESTROY:
+        return basicSetDestroy(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -517,6 +579,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return getReqConstraints();
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return getEnsure();
+      case CryptSLPackage.DOMAINMODEL__DESTROY:
+        return getDestroy();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -551,6 +615,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return;
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         setEnsure((EnsuresBlock)newValue);
+        return;
+      case CryptSLPackage.DOMAINMODEL__DESTROY:
+        setDestroy((DestroysBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -587,6 +654,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         setEnsure((EnsuresBlock)null);
         return;
+      case CryptSLPackage.DOMAINMODEL__DESTROY:
+        setDestroy((DestroysBlock)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -615,6 +685,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return reqConstraints != null;
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return ensure != null;
+      case CryptSLPackage.DOMAINMODEL__DESTROY:
+        return destroy != null;
     }
     return super.eIsSet(featureID);
   }

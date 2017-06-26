@@ -14,6 +14,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Domainmodel/order"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Domainmodel/reqConstraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Domainmodel/ensure"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Domainmodel/destroy"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//UseBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//UseBlock/objects"/>
@@ -29,6 +30,9 @@
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//EnsuresBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//EnsuresBlock/pred"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//DestroysBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//DestroysBlock/pred"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//ObjectDecl">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ObjectDecl/objectType"/>
@@ -66,8 +70,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/leftExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/rightExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/ret"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//Constraint/predName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/parList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Constraint/labelCond"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//LogicalImply">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//LogicalImply/IMPLIES"/>

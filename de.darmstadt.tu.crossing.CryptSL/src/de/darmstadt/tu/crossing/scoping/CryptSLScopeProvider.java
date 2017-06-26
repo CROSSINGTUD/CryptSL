@@ -64,7 +64,10 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 			descriptions.addAll(collectMethodsSimpleName(jvmType));
 		}
 		for (JvmTypeReference superType: jvmType.getSuperTypes()) {
-			 return iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions, FQN);
+			 descriptions.addAll(iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions, FQN));
+		}
+		for (JvmTypeReference superType : jvmType.getExtendedInterfaces()) {
+			descriptions.addAll(iterateThroughSuperTypes((JvmGenericType)superType.getType(), descriptions, FQN));
 		}
 		return descriptions;
 	}

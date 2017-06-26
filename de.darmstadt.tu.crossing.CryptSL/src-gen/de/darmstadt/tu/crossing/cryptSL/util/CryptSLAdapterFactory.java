@@ -10,6 +10,7 @@ import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.DestroysBlock;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
@@ -136,6 +137,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseEnsuresBlock(EnsuresBlock object)
       {
         return createEnsuresBlockAdapter();
+      }
+      @Override
+      public Adapter caseDestroysBlock(DestroysBlock object)
+      {
+        return createDestroysBlockAdapter();
       }
       @Override
       public Adapter caseObjectDecl(ObjectDecl object)
@@ -380,6 +386,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEnsuresBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.DestroysBlock <em>Destroys Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.DestroysBlock
+   * @generated
+   */
+  public Adapter createDestroysBlockAdapter()
   {
     return null;
   }

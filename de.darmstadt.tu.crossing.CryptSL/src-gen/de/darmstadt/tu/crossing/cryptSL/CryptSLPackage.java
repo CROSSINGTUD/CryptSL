@@ -131,13 +131,22 @@ public interface CryptSLPackage extends EPackage
   int DOMAINMODEL__ENSURE = 6;
 
   /**
+   * The feature id for the '<em><b>Destroy</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOMAINMODEL__DESTROY = 7;
+
+  /**
    * The number of structural features of the '<em>Domainmodel</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL_FEATURE_COUNT = 7;
+  int DOMAINMODEL_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl <em>Use Block</em>}' class.
@@ -280,6 +289,34 @@ public interface CryptSLPackage extends EPackage
   int ENSURES_BLOCK_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.DestroysBlockImpl <em>Destroys Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.DestroysBlockImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getDestroysBlock()
+   * @generated
+   */
+  int DESTROYS_BLOCK = 6;
+
+  /**
+   * The feature id for the '<em><b>Pred</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DESTROYS_BLOCK__PRED = 0;
+
+  /**
+   * The number of structural features of the '<em>Destroys Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DESTROYS_BLOCK_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl <em>Object Decl</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -287,7 +324,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObjectDecl()
    * @generated
    */
-  int OBJECT_DECL = 6;
+  int OBJECT_DECL = 7;
 
   /**
    * The feature id for the '<em><b>Object Type</b></em>' reference.
@@ -333,7 +370,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getForbMethod()
    * @generated
    */
-  int FORB_METHOD = 7;
+  int FORB_METHOD = 8;
 
   /**
    * The feature id for the '<em><b>Java Meth</b></em>' reference.
@@ -370,7 +407,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getEvent()
    * @generated
    */
-  int EVENT = 8;
+  int EVENT = 9;
 
   /**
    * The number of structural features of the '<em>Event</em>' class.
@@ -389,7 +426,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuperType()
    * @generated
    */
-  int SUPER_TYPE = 9;
+  int SUPER_TYPE = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -426,7 +463,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getMethod()
    * @generated
    */
-  int METHOD = 10;
+  int METHOD = 11;
 
   /**
    * The feature id for the '<em><b>Left Side</b></em>' reference.
@@ -472,7 +509,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getParList()
    * @generated
    */
-  int PAR_LIST = 11;
+  int PAR_LIST = 12;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -500,7 +537,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPar()
    * @generated
    */
-  int PAR = 12;
+  int PAR = 13;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' reference.
@@ -528,7 +565,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 13;
+  int EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -592,7 +629,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getConstraint()
    * @generated
    */
-  int CONSTRAINT = 14;
+  int CONSTRAINT = 15;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -622,13 +659,22 @@ public interface CryptSLPackage extends EPackage
   int CONSTRAINT__RIGHT_EXPRESSION = 2;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__RET = 3;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRAINT__PRED_NAME = 3;
+  int CONSTRAINT__PRED_NAME = 4;
 
   /**
    * The feature id for the '<em><b>Par List</b></em>' containment reference.
@@ -637,7 +683,16 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__PAR_LIST = 4;
+  int CONSTRAINT__PAR_LIST = 5;
+
+  /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__LABEL_COND = 6;
 
   /**
    * The number of structural features of the '<em>Constraint</em>' class.
@@ -646,7 +701,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_FEATURE_COUNT = 5;
+  int CONSTRAINT_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LogicalImplyImpl <em>Logical Imply</em>}' class.
@@ -656,7 +711,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLogicalImply()
    * @generated
    */
-  int LOGICAL_IMPLY = 15;
+  int LOGICAL_IMPLY = 16;
 
   /**
    * The feature id for the '<em><b>IMPLIES</b></em>' attribute.
@@ -684,7 +739,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 16;
+  int LOGICAL_OPERATOR = 17;
 
   /**
    * The feature id for the '<em><b>OR</b></em>' attribute.
@@ -721,7 +776,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparingOperator()
    * @generated
    */
-  int COMPARING_OPERATOR = 17;
+  int COMPARING_OPERATOR = 18;
 
   /**
    * The feature id for the '<em><b>LESS</b></em>' attribute.
@@ -794,7 +849,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticOperator()
    * @generated
    */
-  int ARITHMETIC_OPERATOR = 18;
+  int ARITHMETIC_OPERATOR = 19;
 
   /**
    * The feature id for the '<em><b>PLUS</b></em>' attribute.
@@ -849,7 +904,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteralExpression()
    * @generated
    */
-  int LITERAL_EXPRESSION = 19;
+  int LITERAL_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -879,6 +934,15 @@ public interface CryptSLPackage extends EPackage
   int LITERAL_EXPRESSION__RIGHT_EXPRESSION = CONSTRAINT__RIGHT_EXPRESSION;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__RET = CONSTRAINT__RET;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -895,6 +959,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int LITERAL_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
+
+  /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_EXPRESSION__LABEL_COND = CONSTRAINT__LABEL_COND;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -985,7 +1058,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPreDefinedPredicates()
    * @generated
    */
-  int PRE_DEFINED_PREDICATES = 20;
+  int PRE_DEFINED_PREDICATES = 21;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1015,6 +1088,15 @@ public interface CryptSLPackage extends EPackage
   int PRE_DEFINED_PREDICATES__RIGHT_EXPRESSION = LITERAL_EXPRESSION__RIGHT_EXPRESSION;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__RET = LITERAL_EXPRESSION__RET;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1031,6 +1113,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int PRE_DEFINED_PREDICATES__PAR_LIST = LITERAL_EXPRESSION__PAR_LIST;
+
+  /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRE_DEFINED_PREDICATES__LABEL_COND = LITERAL_EXPRESSION__LABEL_COND;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1139,7 +1230,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 21;
+  int LITERAL = 22;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -1167,7 +1258,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 22;
+  int UNARY_OPERATOR = 23;
 
   /**
    * The feature id for the '<em><b>NOT</b></em>' attribute.
@@ -1195,7 +1286,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 23;
+  int LIT_LIST = 24;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1223,7 +1314,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuParList()
    * @generated
    */
-  int SU_PAR_LIST = 24;
+  int SU_PAR_LIST = 25;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1251,7 +1342,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuPar()
    * @generated
    */
-  int SU_PAR = 25;
+  int SU_PAR = 26;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1279,7 +1370,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggregate()
    * @generated
    */
-  int AGGREGATE = 26;
+  int AGGREGATE = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1325,7 +1416,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 27;
+  int ORDER = 28;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1389,7 +1480,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 28;
+  int SIMPLE_ORDER = 29;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1453,7 +1544,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 29;
+  int COMPARISON_EXPRESSION = 30;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1483,6 +1574,15 @@ public interface CryptSLPackage extends EPackage
   int COMPARISON_EXPRESSION__RIGHT_EXPRESSION = CONSTRAINT__RIGHT_EXPRESSION;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_EXPRESSION__RET = CONSTRAINT__RET;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1501,6 +1601,15 @@ public interface CryptSLPackage extends EPackage
   int COMPARISON_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
 
   /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_EXPRESSION__LABEL_COND = CONSTRAINT__LABEL_COND;
+
+  /**
    * The number of structural features of the '<em>Comparison Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1517,7 +1626,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticExpression()
    * @generated
    */
-  int ARITHMETIC_EXPRESSION = 30;
+  int ARITHMETIC_EXPRESSION = 31;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1547,6 +1656,15 @@ public interface CryptSLPackage extends EPackage
   int ARITHMETIC_EXPRESSION__RIGHT_EXPRESSION = CONSTRAINT__RIGHT_EXPRESSION;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARITHMETIC_EXPRESSION__RET = CONSTRAINT__RET;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1565,6 +1683,15 @@ public interface CryptSLPackage extends EPackage
   int ARITHMETIC_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
 
   /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARITHMETIC_EXPRESSION__LABEL_COND = CONSTRAINT__LABEL_COND;
+
+  /**
    * The number of structural features of the '<em>Arithmetic Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1581,7 +1708,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryPreExpression()
    * @generated
    */
-  int UNARY_PRE_EXPRESSION = 31;
+  int UNARY_PRE_EXPRESSION = 32;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1611,6 +1738,15 @@ public interface CryptSLPackage extends EPackage
   int UNARY_PRE_EXPRESSION__RIGHT_EXPRESSION = CONSTRAINT__RIGHT_EXPRESSION;
 
   /**
+   * The feature id for the '<em><b>Ret</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_PRE_EXPRESSION__RET = CONSTRAINT__RET;
+
+  /**
    * The feature id for the '<em><b>Pred Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1627,6 +1763,15 @@ public interface CryptSLPackage extends EPackage
    * @ordered
    */
   int UNARY_PRE_EXPRESSION__PAR_LIST = CONSTRAINT__PAR_LIST;
+
+  /**
+   * The feature id for the '<em><b>Label Cond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_PRE_EXPRESSION__LABEL_COND = CONSTRAINT__LABEL_COND;
 
   /**
    * The feature id for the '<em><b>Enclosed Expression</b></em>' containment reference.
@@ -1654,7 +1799,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 32;
+  int OBJECT = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1772,6 +1917,17 @@ public interface CryptSLPackage extends EPackage
   EReference getDomainmodel_Ensure();
 
   /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getDestroy <em>Destroy</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Destroy</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getDestroy()
+   * @see #getDomainmodel()
+   * @generated
+   */
+  EReference getDomainmodel_Destroy();
+
+  /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.UseBlock <em>Use Block</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1875,6 +2031,27 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getEnsuresBlock_Pred();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.DestroysBlock <em>Destroys Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Destroys Block</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.DestroysBlock
+   * @generated
+   */
+  EClass getDestroysBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.darmstadt.tu.crossing.cryptSL.DestroysBlock#getPred <em>Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Pred</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.DestroysBlock#getPred()
+   * @see #getDestroysBlock()
+   * @generated
+   */
+  EReference getDestroysBlock_Pred();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl <em>Object Decl</em>}'.
@@ -2187,6 +2364,17 @@ public interface CryptSLPackage extends EPackage
   EReference getConstraint_RightExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRet <em>Ret</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ret</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getRet()
+   * @see #getConstraint()
+   * @generated
+   */
+  EReference getConstraint_Ret();
+
+  /**
    * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getPredName <em>Pred Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2207,6 +2395,17 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EReference getConstraint_ParList();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLabelCond <em>Label Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Label Cond</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Constraint#getLabelCond()
+   * @see #getConstraint()
+   * @generated
+   */
+  EReference getConstraint_LabelCond();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.LogicalImply <em>Logical Imply</em>}'.
@@ -2808,6 +3007,14 @@ public interface CryptSLPackage extends EPackage
     EReference DOMAINMODEL__ENSURE = eINSTANCE.getDomainmodel_Ensure();
 
     /**
+     * The meta object literal for the '<em><b>Destroy</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAINMODEL__DESTROY = eINSTANCE.getDomainmodel_Destroy();
+
+    /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl <em>Use Block</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2896,6 +3103,24 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference ENSURES_BLOCK__PRED = eINSTANCE.getEnsuresBlock_Pred();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.DestroysBlockImpl <em>Destroys Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.DestroysBlockImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getDestroysBlock()
+     * @generated
+     */
+    EClass DESTROYS_BLOCK = eINSTANCE.getDestroysBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Pred</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DESTROYS_BLOCK__PRED = eINSTANCE.getDestroysBlock_Pred();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl <em>Object Decl</em>}' class.
@@ -3148,6 +3373,14 @@ public interface CryptSLPackage extends EPackage
     EReference CONSTRAINT__RIGHT_EXPRESSION = eINSTANCE.getConstraint_RightExpression();
 
     /**
+     * The meta object literal for the '<em><b>Ret</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT__RET = eINSTANCE.getConstraint_Ret();
+
+    /**
      * The meta object literal for the '<em><b>Pred Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3162,6 +3395,14 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference CONSTRAINT__PAR_LIST = eINSTANCE.getConstraint_ParList();
+
+    /**
+     * The meta object literal for the '<em><b>Label Cond</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT__LABEL_COND = eINSTANCE.getConstraint_LabelCond();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LogicalImplyImpl <em>Logical Imply</em>}' class.

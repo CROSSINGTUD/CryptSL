@@ -11,7 +11,10 @@ Domainmodel:
 	'ENFORCE_ORDER' order=Order
 	('ENFORCES_CONSTRAINTS' reqConstraints=EnforceConsBlock)?
 	('ENSURES' ensure=EnsuresBlock)?
+	('DESTROYS' destroy=DestroysBlock)?
 	;
+
+
 
 UseBlock:
 	objects+=(ObjectDecl)+
@@ -31,7 +34,11 @@ EnforceConsBlock:
 
 
 EnsuresBlock:
-	(pred+=Pred ';')+
+	(pred+=EnsPred ';')+
+;
+
+DestroysBlock:
+	(pred+=EnsPred ';')+
 ;
 
 	////////////// OBJECTS
@@ -158,7 +165,7 @@ Operand returns Constraint:
 	|
 	Cons
 	|
-	Pred;
+	ReqPred;
 
 LiteralExpression returns LiteralExpression:
 	name=Literal | name=AggregateExpression | PreDefinedPredicates 
@@ -200,8 +207,11 @@ terminal INT:
 LitList:
 	(parameters+=Literal (',' (parameters+=Literal | '...'))*);
 
-Pred returns Constraint:
-	predName=ID '[' parList=SuParList? ']';
+ReqPred returns Constraint:
+	ret = SuPar '.' predName=ID (('[' (parList= SuParList) ']') | ("[]"));
+
+EnsPred returns Constraint:
+	ReqPred ('after' labelCond=[SuperType])?;
 
 SuParList:
 	(parameters+=SuPar (',' parameters+=SuPar)*);

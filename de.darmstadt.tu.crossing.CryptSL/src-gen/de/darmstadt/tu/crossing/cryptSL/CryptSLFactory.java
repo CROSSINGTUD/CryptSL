@@ -78,6 +78,15 @@ public interface CryptSLFactory extends EFactory
   EnsuresBlock createEnsuresBlock();
 
   /**
+   * Returns a new object of class '<em>Destroys Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Destroys Block</em>'.
+   * @generated
+   */
+  DestroysBlock createDestroysBlock();
+
+  /**
    * Returns a new object of class '<em>Object Decl</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

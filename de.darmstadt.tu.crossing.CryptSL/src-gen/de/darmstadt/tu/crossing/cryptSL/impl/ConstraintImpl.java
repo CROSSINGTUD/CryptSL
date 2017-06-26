@@ -5,7 +5,9 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
+import de.darmstadt.tu.crossing.cryptSL.SuperType;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,8 +30,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getLeftExpression <em>Left Expression</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getRightExpression <em>Right Expression</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getRet <em>Ret</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getPredName <em>Pred Name</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getParList <em>Par List</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ConstraintImpl#getLabelCond <em>Label Cond</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +71,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
   protected Constraint rightExpression;
 
   /**
+   * The cached value of the '{@link #getRet() <em>Ret</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRet()
+   * @generated
+   * @ordered
+   */
+  protected SuPar ret;
+
+  /**
    * The default value of the '{@link #getPredName() <em>Pred Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -95,6 +109,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * @ordered
    */
   protected SuParList parList;
+
+  /**
+   * The cached value of the '{@link #getLabelCond() <em>Label Cond</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabelCond()
+   * @generated
+   * @ordered
+   */
+  protected SuperType labelCond;
 
   /**
    * <!-- begin-user-doc -->
@@ -266,6 +290,54 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * <!-- end-user-doc -->
    * @generated
    */
+  public SuPar getRet()
+  {
+    return ret;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRet(SuPar newRet, NotificationChain msgs)
+  {
+    SuPar oldRet = ret;
+    ret = newRet;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.CONSTRAINT__RET, oldRet, newRet);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRet(SuPar newRet)
+  {
+    if (newRet != ret)
+    {
+      NotificationChain msgs = null;
+      if (ret != null)
+        msgs = ((InternalEObject)ret).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.CONSTRAINT__RET, null, msgs);
+      if (newRet != null)
+        msgs = ((InternalEObject)newRet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.CONSTRAINT__RET, null, msgs);
+      msgs = basicSetRet(newRet, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.CONSTRAINT__RET, newRet, newRet));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getPredName()
   {
     return predName;
@@ -337,6 +409,49 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
    * <!-- end-user-doc -->
    * @generated
    */
+  public SuperType getLabelCond()
+  {
+    if (labelCond != null && labelCond.eIsProxy())
+    {
+      InternalEObject oldLabelCond = (InternalEObject)labelCond;
+      labelCond = (SuperType)eResolveProxy(oldLabelCond);
+      if (labelCond != oldLabelCond)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.CONSTRAINT__LABEL_COND, oldLabelCond, labelCond));
+      }
+    }
+    return labelCond;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SuperType basicGetLabelCond()
+  {
+    return labelCond;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLabelCond(SuperType newLabelCond)
+  {
+    SuperType oldLabelCond = labelCond;
+    labelCond = newLabelCond;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.CONSTRAINT__LABEL_COND, oldLabelCond, labelCond));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -348,6 +463,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
         return basicSetOperator(null, msgs);
       case CryptSLPackage.CONSTRAINT__RIGHT_EXPRESSION:
         return basicSetRightExpression(null, msgs);
+      case CryptSLPackage.CONSTRAINT__RET:
+        return basicSetRet(null, msgs);
       case CryptSLPackage.CONSTRAINT__PAR_LIST:
         return basicSetParList(null, msgs);
     }
@@ -370,10 +487,15 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
         return getOperator();
       case CryptSLPackage.CONSTRAINT__RIGHT_EXPRESSION:
         return getRightExpression();
+      case CryptSLPackage.CONSTRAINT__RET:
+        return getRet();
       case CryptSLPackage.CONSTRAINT__PRED_NAME:
         return getPredName();
       case CryptSLPackage.CONSTRAINT__PAR_LIST:
         return getParList();
+      case CryptSLPackage.CONSTRAINT__LABEL_COND:
+        if (resolve) return getLabelCond();
+        return basicGetLabelCond();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -397,11 +519,17 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
       case CryptSLPackage.CONSTRAINT__RIGHT_EXPRESSION:
         setRightExpression((Constraint)newValue);
         return;
+      case CryptSLPackage.CONSTRAINT__RET:
+        setRet((SuPar)newValue);
+        return;
       case CryptSLPackage.CONSTRAINT__PRED_NAME:
         setPredName((String)newValue);
         return;
       case CryptSLPackage.CONSTRAINT__PAR_LIST:
         setParList((SuParList)newValue);
+        return;
+      case CryptSLPackage.CONSTRAINT__LABEL_COND:
+        setLabelCond((SuperType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -426,11 +554,17 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
       case CryptSLPackage.CONSTRAINT__RIGHT_EXPRESSION:
         setRightExpression((Constraint)null);
         return;
+      case CryptSLPackage.CONSTRAINT__RET:
+        setRet((SuPar)null);
+        return;
       case CryptSLPackage.CONSTRAINT__PRED_NAME:
         setPredName(PRED_NAME_EDEFAULT);
         return;
       case CryptSLPackage.CONSTRAINT__PAR_LIST:
         setParList((SuParList)null);
+        return;
+      case CryptSLPackage.CONSTRAINT__LABEL_COND:
+        setLabelCond((SuperType)null);
         return;
     }
     super.eUnset(featureID);
@@ -452,10 +586,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
         return operator != null;
       case CryptSLPackage.CONSTRAINT__RIGHT_EXPRESSION:
         return rightExpression != null;
+      case CryptSLPackage.CONSTRAINT__RET:
+        return ret != null;
       case CryptSLPackage.CONSTRAINT__PRED_NAME:
         return PRED_NAME_EDEFAULT == null ? predName != null : !PRED_NAME_EDEFAULT.equals(predName);
       case CryptSLPackage.CONSTRAINT__PAR_LIST:
         return parList != null;
+      case CryptSLPackage.CONSTRAINT__LABEL_COND:
+        return labelCond != null;
     }
     return super.eIsSet(featureID);
   }

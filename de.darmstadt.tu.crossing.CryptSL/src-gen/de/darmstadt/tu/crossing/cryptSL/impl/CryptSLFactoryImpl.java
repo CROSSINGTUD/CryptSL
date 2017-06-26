@@ -11,6 +11,7 @@ import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLFactory;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.DestroysBlock;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
@@ -104,6 +105,7 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.REQUIRED_BLOCK: return createRequiredBlock();
       case CryptSLPackage.ENFORCE_CONS_BLOCK: return createEnforceConsBlock();
       case CryptSLPackage.ENSURES_BLOCK: return createEnsuresBlock();
+      case CryptSLPackage.DESTROYS_BLOCK: return createDestroysBlock();
       case CryptSLPackage.OBJECT_DECL: return createObjectDecl();
       case CryptSLPackage.FORB_METHOD: return createForbMethod();
       case CryptSLPackage.EVENT: return createEvent();
@@ -200,6 +202,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     EnsuresBlockImpl ensuresBlock = new EnsuresBlockImpl();
     return ensuresBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DestroysBlock createDestroysBlock()
+  {
+    DestroysBlockImpl destroysBlock = new DestroysBlockImpl();
+    return destroysBlock;
   }
 
   /**

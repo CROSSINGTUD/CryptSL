@@ -11,6 +11,7 @@ import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
+import de.darmstadt.tu.crossing.cryptSL.DestroysBlock;
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.EnforceConsBlock;
 import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
@@ -104,7 +105,11 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				sequence_ComparisonExpression_ComparisonHigherOpExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
 			case CryptSLPackage.CONSTRAINT:
-				if (rule == grammarAccess.getConstraintRule()
+				if (rule == grammarAccess.getEnsPredRule()) {
+					sequence_EnsPred_ReqPred(context, (Constraint) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getConstraintRule()
 						|| rule == grammarAccess.getLogicalImplyExpressionRule()
 						|| action == grammarAccess.getLogicalImplyExpressionAccess().getConstraintLeftExpressionAction_1_0()
 						|| rule == grammarAccess.getLogicalOrExpressionRule()
@@ -121,14 +126,17 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 						|| rule == grammarAccess.getMultiplicationExpressionRule()
 						|| action == grammarAccess.getMultiplicationExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_1_0()
 						|| rule == grammarAccess.getOperandRule()) {
-					sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_Pred(context, (Constraint) semanticObject); 
+					sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_ReqPred(context, (Constraint) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getPredRule()) {
-					sequence_Pred(context, (Constraint) semanticObject); 
+				else if (rule == grammarAccess.getReqPredRule()) {
+					sequence_ReqPred(context, (Constraint) semanticObject); 
 					return; 
 				}
 				else break;
+			case CryptSLPackage.DESTROYS_BLOCK:
+				sequence_DestroysBlock(context, (DestroysBlock) semanticObject); 
+				return; 
 			case CryptSLPackage.DOMAINMODEL:
 				sequence_Domainmodel(context, (Domainmodel) semanticObject); 
 				return; 
@@ -483,6 +491,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     DestroysBlock returns DestroysBlock
+	 *
+	 * Constraint:
+	 *     pred+=EnsPred+
+	 */
+	protected void sequence_DestroysBlock(ISerializationContext context, DestroysBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Domainmodel returns Domainmodel
 	 *
 	 * Constraint:
@@ -493,7 +513,8 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *         req_events=RequiredBlock 
 	 *         order=Order 
 	 *         reqConstraints=EnforceConsBlock? 
-	 *         ensure=EnsuresBlock?
+	 *         ensure=EnsuresBlock? 
+	 *         destroy=DestroysBlock?
 	 *     )
 	 */
 	protected void sequence_Domainmodel(ISerializationContext context, Domainmodel semanticObject) {
@@ -515,10 +536,22 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     EnsPred returns Constraint
+	 *
+	 * Constraint:
+	 *     (ret=SuPar predName=ID parList=SuParList? labelCond=[SuperType|ID]?)
+	 */
+	protected void sequence_EnsPred_ReqPred(ISerializationContext context, Constraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EnsuresBlock returns EnsuresBlock
 	 *
 	 * Constraint:
-	 *     pred+=Pred+
+	 *     pred+=EnsPred+
 	 */
 	protected void sequence_EnsuresBlock(ISerializationContext context, EnsuresBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -632,10 +665,10 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *         (leftExpression=LogicalImplyExpression_Constraint_1_0 operator=LogicalImply rightExpression=LogicalOrExpression) | 
 	 *         (leftExpression=LogicalOrExpression_Constraint_1_0 operator=LogicalOr rightExpression=LogicalAndExpression) | 
 	 *         (leftExpression=LogicalAndExpression_Constraint_1_0 operator=LogicalAnd rightExpression=ComparisonExpression) | 
-	 *         (predName=ID parList=SuParList?)
+	 *         (ret=SuPar predName=ID parList=SuParList?)
 	 *     )
 	 */
-	protected void sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_Pred(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_ReqPred(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -807,18 +840,6 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Pred returns Constraint
-	 *
-	 * Constraint:
-	 *     (predName=ID parList=SuParList?)
-	 */
-	protected void sequence_Pred(ISerializationContext context, Constraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Order returns Expression
 	 *     Order.Order_1_0 returns Expression
 	 *     SimpleOrder returns Expression
@@ -845,6 +866,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     (left=SimpleOrder_SimpleOrder_1_0 orderop='|' right=Primary (elementop='+' | elementop='?' | elementop='*')*)
 	 */
 	protected void sequence_Primary_SimpleOrder(ISerializationContext context, SimpleOrder semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReqPred returns Constraint
+	 *
+	 * Constraint:
+	 *     (ret=SuPar predName=ID parList=SuParList?)
+	 */
+	protected void sequence_ReqPred(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
