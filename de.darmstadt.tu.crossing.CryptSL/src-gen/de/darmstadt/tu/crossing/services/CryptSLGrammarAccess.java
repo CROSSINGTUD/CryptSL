@@ -31,21 +31,21 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cJavaTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cJavaTypeJvmTypeCrossReference_1_0 = (CrossReference)cJavaTypeAssignment_1.eContents().get(0);
 		private final RuleCall cJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cJavaTypeJvmTypeCrossReference_1_0.eContents().get(1);
-		private final Keyword cUSES_OBJECTSKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cOBJECTSKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cUsageAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cUsageUseBlockParserRuleCall_3_0 = (RuleCall)cUsageAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cFORBIDDEN_EVENTSKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cFORBIDDENKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cForbEventAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cForbEventForbiddenBlockParserRuleCall_4_1_0 = (RuleCall)cForbEventAssignment_4_1.eContents().get(0);
-		private final Keyword cREQUIRED_EVENTSKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cEVENTSKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cReq_eventsAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cReq_eventsRequiredBlockParserRuleCall_6_0 = (RuleCall)cReq_eventsAssignment_6.eContents().get(0);
-		private final Keyword cENFORCE_ORDERKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cORDERKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cOrderAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cOrderOrderParserRuleCall_8_0 = (RuleCall)cOrderAssignment_8.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cENFORCES_CONSTRAINTSKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cCONSTRAINTSKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Assignment cReqConstraintsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
 		private final RuleCall cReqConstraintsEnforceConsBlockParserRuleCall_9_1_0 = (RuleCall)cReqConstraintsAssignment_9_1.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
@@ -53,21 +53,20 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cEnsureAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
 		private final RuleCall cEnsureEnsuresBlockParserRuleCall_10_1_0 = (RuleCall)cEnsureAssignment_10_1.eContents().get(0);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cDESTROYSKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Keyword cNEGATESKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Assignment cDestroyAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
 		private final RuleCall cDestroyDestroysBlockParserRuleCall_11_1_0 = (RuleCall)cDestroyAssignment_11_1.eContents().get(0);
 		
 		//Domainmodel:
 		//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
-		//	'USES_OBJECTS' usage=UseBlock ('FORBIDDEN_EVENTS' forbEvent=ForbiddenBlock)?
-		//	'REQUIRED_EVENTS' req_events=RequiredBlock 'ENFORCE_ORDER' order=Order ('ENFORCES_CONSTRAINTS'
-		//	reqConstraints=EnforceConsBlock)? ('ENSURES' ensure=EnsuresBlock)? ('DESTROYS' destroy=DestroysBlock)?;
+		//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
+		//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('ENSURES'
+		//	ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] 'USES_OBJECTS' usage=UseBlock ('FORBIDDEN_EVENTS'
-		//forbEvent=ForbiddenBlock)? 'REQUIRED_EVENTS' req_events=RequiredBlock 'ENFORCE_ORDER' order=Order
-		//('ENFORCES_CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('ENSURES' ensure=EnsuresBlock)? ('DESTROYS'
-		//destroy=DestroysBlock)?
+		//'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] 'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
+		//'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('ENSURES'
+		//ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?
 		public Group getGroup() { return cGroup; }
 		
 		//'SPEC'
@@ -82,8 +81,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1; }
 		
-		//'USES_OBJECTS'
-		public Keyword getUSES_OBJECTSKeyword_2() { return cUSES_OBJECTSKeyword_2; }
+		//'OBJECTS'
+		public Keyword getOBJECTSKeyword_2() { return cOBJECTSKeyword_2; }
 		
 		//usage=UseBlock
 		public Assignment getUsageAssignment_3() { return cUsageAssignment_3; }
@@ -91,11 +90,11 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//UseBlock
 		public RuleCall getUsageUseBlockParserRuleCall_3_0() { return cUsageUseBlockParserRuleCall_3_0; }
 		
-		//('FORBIDDEN_EVENTS' forbEvent=ForbiddenBlock)?
+		//('FORBIDDEN' forbEvent=ForbiddenBlock)?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'FORBIDDEN_EVENTS'
-		public Keyword getFORBIDDEN_EVENTSKeyword_4_0() { return cFORBIDDEN_EVENTSKeyword_4_0; }
+		//'FORBIDDEN'
+		public Keyword getFORBIDDENKeyword_4_0() { return cFORBIDDENKeyword_4_0; }
 		
 		//forbEvent=ForbiddenBlock
 		public Assignment getForbEventAssignment_4_1() { return cForbEventAssignment_4_1; }
@@ -103,8 +102,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ForbiddenBlock
 		public RuleCall getForbEventForbiddenBlockParserRuleCall_4_1_0() { return cForbEventForbiddenBlockParserRuleCall_4_1_0; }
 		
-		//'REQUIRED_EVENTS'
-		public Keyword getREQUIRED_EVENTSKeyword_5() { return cREQUIRED_EVENTSKeyword_5; }
+		//'EVENTS'
+		public Keyword getEVENTSKeyword_5() { return cEVENTSKeyword_5; }
 		
 		//req_events=RequiredBlock
 		public Assignment getReq_eventsAssignment_6() { return cReq_eventsAssignment_6; }
@@ -112,8 +111,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//RequiredBlock
 		public RuleCall getReq_eventsRequiredBlockParserRuleCall_6_0() { return cReq_eventsRequiredBlockParserRuleCall_6_0; }
 		
-		//'ENFORCE_ORDER'
-		public Keyword getENFORCE_ORDERKeyword_7() { return cENFORCE_ORDERKeyword_7; }
+		//'ORDER'
+		public Keyword getORDERKeyword_7() { return cORDERKeyword_7; }
 		
 		//order=Order
 		public Assignment getOrderAssignment_8() { return cOrderAssignment_8; }
@@ -121,11 +120,11 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Order
 		public RuleCall getOrderOrderParserRuleCall_8_0() { return cOrderOrderParserRuleCall_8_0; }
 		
-		//('ENFORCES_CONSTRAINTS' reqConstraints=EnforceConsBlock)?
+		//('CONSTRAINTS' reqConstraints=EnforceConsBlock)?
 		public Group getGroup_9() { return cGroup_9; }
 		
-		//'ENFORCES_CONSTRAINTS'
-		public Keyword getENFORCES_CONSTRAINTSKeyword_9_0() { return cENFORCES_CONSTRAINTSKeyword_9_0; }
+		//'CONSTRAINTS'
+		public Keyword getCONSTRAINTSKeyword_9_0() { return cCONSTRAINTSKeyword_9_0; }
 		
 		//reqConstraints=EnforceConsBlock
 		public Assignment getReqConstraintsAssignment_9_1() { return cReqConstraintsAssignment_9_1; }
@@ -145,11 +144,11 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EnsuresBlock
 		public RuleCall getEnsureEnsuresBlockParserRuleCall_10_1_0() { return cEnsureEnsuresBlockParserRuleCall_10_1_0; }
 		
-		//('DESTROYS' destroy=DestroysBlock)?
+		//('NEGATES' destroy=DestroysBlock)?
 		public Group getGroup_11() { return cGroup_11; }
 		
-		//'DESTROYS'
-		public Keyword getDESTROYSKeyword_11_0() { return cDESTROYSKeyword_11_0; }
+		//'NEGATES'
+		public Keyword getNEGATESKeyword_11_0() { return cNEGATESKeyword_11_0; }
 		
 		//destroy=DestroysBlock
 		public Assignment getDestroyAssignment_11_1() { return cDestroyAssignment_11_1; }
@@ -2173,9 +2172,9 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Domainmodel:
 	//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
-	//	'USES_OBJECTS' usage=UseBlock ('FORBIDDEN_EVENTS' forbEvent=ForbiddenBlock)?
-	//	'REQUIRED_EVENTS' req_events=RequiredBlock 'ENFORCE_ORDER' order=Order ('ENFORCES_CONSTRAINTS'
-	//	reqConstraints=EnforceConsBlock)? ('ENSURES' ensure=EnsuresBlock)? ('DESTROYS' destroy=DestroysBlock)?;
+	//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
+	//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('ENSURES'
+	//	ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;
 	public DomainmodelElements getDomainmodelAccess() {
 		return pDomainmodel;
 	}

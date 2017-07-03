@@ -2429,9 +2429,9 @@ rule__Domainmodel__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2()); }
-	'USES_OBJECTS'
-	{ after(grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2()); }
+	{ before(grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2()); }
+	'OBJECTS'
+	{ after(grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2()); }
 )
 ;
 finally {
@@ -2510,9 +2510,9 @@ rule__Domainmodel__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5()); }
-	'REQUIRED_EVENTS'
-	{ after(grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5()); }
+	{ before(grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5()); }
+	'EVENTS'
+	{ after(grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5()); }
 )
 ;
 finally {
@@ -2564,9 +2564,9 @@ rule__Domainmodel__Group__7__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7()); }
-	'ENFORCE_ORDER'
-	{ after(grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7()); }
+	{ before(grammarAccess.getDomainmodelAccess().getORDERKeyword_7()); }
+	'ORDER'
+	{ after(grammarAccess.getDomainmodelAccess().getORDERKeyword_7()); }
 )
 ;
 finally {
@@ -2699,9 +2699,9 @@ rule__Domainmodel__Group_4__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0()); }
-	'FORBIDDEN_EVENTS'
-	{ after(grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0()); }
+	{ before(grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0()); }
+	'FORBIDDEN'
+	{ after(grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0()); }
 )
 ;
 finally {
@@ -2753,9 +2753,9 @@ rule__Domainmodel__Group_9__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0()); }
-	'ENFORCES_CONSTRAINTS'
-	{ after(grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0()); }
+	{ before(grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0()); }
+	'CONSTRAINTS'
+	{ after(grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0()); }
 )
 ;
 finally {
@@ -2861,9 +2861,9 @@ rule__Domainmodel__Group_11__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0()); }
-	'DESTROYS'
-	{ after(grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0()); }
+	{ before(grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0()); }
+	'NEGATES'
+	{ after(grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0()); }
 )
 ;
 finally {

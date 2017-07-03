@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCryptSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SPEC'", "'USES_OBJECTS'", "'FORBIDDEN_EVENTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'ENFORCES_CONSTRAINTS'", "'ENSURES'", "'DESTROYS'", "';'", "'[]'", "'=>'", "'('", "','", "')'", "'.'", "':'", "'='", "');'", "'_'", "':='", "'|'", "'+'", "'?'", "'*'", "'||'", "'&&'", "'<'", "'<='", "'>='", "'>'", "'-'", "'/'", "'neverTypeOf'", "'noCallTo'", "'callTo'", "'!'", "'=='", "'!='", "'in'", "'{'", "'}'", "'part('", "'...'", "'['", "']'", "'after'", "'this'", "'extends'", "'&'", "'super'", "'import'", "'static'", "'extension'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SPEC'", "'OBJECTS'", "'FORBIDDEN'", "'EVENTS'", "'ORDER'", "'CONSTRAINTS'", "'ENSURES'", "'NEGATES'", "';'", "'[]'", "'=>'", "'('", "','", "')'", "'.'", "':'", "'='", "');'", "'_'", "':='", "'|'", "'+'", "'?'", "'*'", "'||'", "'&&'", "'<'", "'<='", "'>='", "'>'", "'-'", "'/'", "'neverTypeOf'", "'noCallTo'", "'callTo'", "'!'", "'=='", "'!='", "'in'", "'{'", "'}'", "'part('", "'...'", "'['", "']'", "'after'", "'this'", "'extends'", "'&'", "'super'", "'import'", "'static'", "'extension'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -166,7 +166,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDomainmodel"
-    // InternalCryptSL.g:71:1: ruleDomainmodel returns [EObject current=null] : (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'USES_OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'REQUIRED_EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ENFORCE_ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? ) ;
+    // InternalCryptSL.g:71:1: ruleDomainmodel returns [EObject current=null] : (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? ) ;
     public final EObject ruleDomainmodel() throws RecognitionException {
         EObject current = null;
 
@@ -197,11 +197,11 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCryptSL.g:77:2: ( (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'USES_OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'REQUIRED_EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ENFORCE_ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? ) )
-            // InternalCryptSL.g:78:2: (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'USES_OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'REQUIRED_EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ENFORCE_ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? )
+            // InternalCryptSL.g:77:2: ( (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? ) )
+            // InternalCryptSL.g:78:2: (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? )
             {
-            // InternalCryptSL.g:78:2: (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'USES_OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'REQUIRED_EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ENFORCE_ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? )
-            // InternalCryptSL.g:79:3: otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'USES_OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'REQUIRED_EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ENFORCE_ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )?
+            // InternalCryptSL.g:78:2: (otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )? )
+            // InternalCryptSL.g:79:3: otherlv_0= 'SPEC' ( ( ruleQualifiedName ) ) otherlv_2= 'OBJECTS' ( (lv_usage_3_0= ruleUseBlock ) ) (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )? otherlv_6= 'EVENTS' ( (lv_req_events_7_0= ruleRequiredBlock ) ) otherlv_8= 'ORDER' ( (lv_order_9_0= ruleOrder ) ) (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )? (otherlv_12= 'ENSURES' ( (lv_ensure_13_0= ruleEnsuresBlock ) ) )? (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )?
             {
             otherlv_0=(Token)match(input,11,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -246,7 +246,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             otherlv_2=(Token)match(input,12,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_2, grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2());
+              			newLeafNode(otherlv_2, grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2());
               		
             }
             // InternalCryptSL.g:103:3: ( (lv_usage_3_0= ruleUseBlock ) )
@@ -284,7 +284,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:122:3: (otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )?
+            // InternalCryptSL.g:122:3: (otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) ) )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -293,12 +293,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalCryptSL.g:123:4: otherlv_4= 'FORBIDDEN_EVENTS' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) )
+                    // InternalCryptSL.g:123:4: otherlv_4= 'FORBIDDEN' ( (lv_forbEvent_5_0= ruleForbiddenBlock ) )
                     {
                     otherlv_4=(Token)match(input,13,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_4, grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0());
+                      				newLeafNode(otherlv_4, grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0());
                       			
                     }
                     // InternalCryptSL.g:127:4: ( (lv_forbEvent_5_0= ruleForbiddenBlock ) )
@@ -345,7 +345,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             otherlv_6=(Token)match(input,14,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5());
+              			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5());
               		
             }
             // InternalCryptSL.g:151:3: ( (lv_req_events_7_0= ruleRequiredBlock ) )
@@ -386,7 +386,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             otherlv_8=(Token)match(input,15,FOLLOW_8); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7());
+              			newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getORDERKeyword_7());
               		
             }
             // InternalCryptSL.g:174:3: ( (lv_order_9_0= ruleOrder ) )
@@ -424,7 +424,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:193:3: (otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )?
+            // InternalCryptSL.g:193:3: (otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) ) )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -433,12 +433,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalCryptSL.g:194:4: otherlv_10= 'ENFORCES_CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) )
+                    // InternalCryptSL.g:194:4: otherlv_10= 'CONSTRAINTS' ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) )
                     {
                     otherlv_10=(Token)match(input,16,FOLLOW_10); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0());
+                      				newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0());
                       			
                     }
                     // InternalCryptSL.g:198:4: ( (lv_reqConstraints_11_0= ruleEnforceConsBlock ) )
@@ -540,7 +540,7 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCryptSL.g:243:3: (otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )?
+            // InternalCryptSL.g:243:3: (otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -549,12 +549,12 @@ public class InternalCryptSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt4) {
                 case 1 :
-                    // InternalCryptSL.g:244:4: otherlv_14= 'DESTROYS' ( (lv_destroy_15_0= ruleDestroysBlock ) )
+                    // InternalCryptSL.g:244:4: otherlv_14= 'NEGATES' ( (lv_destroy_15_0= ruleDestroysBlock ) )
                     {
                     otherlv_14=(Token)match(input,18,FOLLOW_10); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0());
+                      				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0());
                       			
                     }
                     // InternalCryptSL.g:248:4: ( (lv_destroy_15_0= ruleDestroysBlock ) )

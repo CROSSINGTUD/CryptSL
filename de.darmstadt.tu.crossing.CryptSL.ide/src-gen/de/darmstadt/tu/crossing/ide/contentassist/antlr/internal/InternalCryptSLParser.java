@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'_'", "'+'", "'?'", "'*'", "'...'", "'[]'", "'this'", "'SPEC'", "'USES_OBJECTS'", "'REQUIRED_EVENTS'", "'ENFORCE_ORDER'", "'FORBIDDEN_EVENTS'", "'ENFORCES_CONSTRAINTS'", "'ENSURES'", "'DESTROYS'", "';'", "'=>'", "'('", "')'", "','", "'.'", "':'", "');'", "'='", "':='", "'in'", "'{'", "'}'", "'['", "']'", "'after'", "'<'", "'>'", "'extends'", "'&'", "'super'", "'import'", "'|'", "'||'", "'&&'", "'<='", "'>='", "'-'", "'/'", "'neverTypeOf'", "'noCallTo'", "'callTo'", "'!'", "'=='", "'!='", "'part('", "'static'", "'extension'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'_'", "'+'", "'?'", "'*'", "'...'", "'[]'", "'this'", "'SPEC'", "'OBJECTS'", "'EVENTS'", "'ORDER'", "'FORBIDDEN'", "'CONSTRAINTS'", "'ENSURES'", "'NEGATES'", "';'", "'=>'", "'('", "')'", "','", "'.'", "':'", "');'", "'='", "':='", "'in'", "'{'", "'}'", "'['", "']'", "'after'", "'<'", "'>'", "'extends'", "'&'", "'super'", "'import'", "'|'", "'||'", "'&&'", "'<='", "'>='", "'-'", "'/'", "'neverTypeOf'", "'noCallTo'", "'callTo'", "'!'", "'=='", "'!='", "'part('", "'static'", "'extension'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -8924,24 +8924,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group__2__Impl"
-    // InternalCryptSL.g:2426:1: rule__Domainmodel__Group__2__Impl : ( 'USES_OBJECTS' ) ;
+    // InternalCryptSL.g:2426:1: rule__Domainmodel__Group__2__Impl : ( 'OBJECTS' ) ;
     public final void rule__Domainmodel__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2430:1: ( ( 'USES_OBJECTS' ) )
-            // InternalCryptSL.g:2431:1: ( 'USES_OBJECTS' )
+            // InternalCryptSL.g:2430:1: ( ( 'OBJECTS' ) )
+            // InternalCryptSL.g:2431:1: ( 'OBJECTS' )
             {
-            // InternalCryptSL.g:2431:1: ( 'USES_OBJECTS' )
-            // InternalCryptSL.g:2432:2: 'USES_OBJECTS'
+            // InternalCryptSL.g:2431:1: ( 'OBJECTS' )
+            // InternalCryptSL.g:2432:2: 'OBJECTS'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2()); 
+               before(grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2()); 
             }
             match(input,19,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2()); 
+               after(grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2()); 
             }
 
             }
@@ -9192,24 +9192,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group__5__Impl"
-    // InternalCryptSL.g:2507:1: rule__Domainmodel__Group__5__Impl : ( 'REQUIRED_EVENTS' ) ;
+    // InternalCryptSL.g:2507:1: rule__Domainmodel__Group__5__Impl : ( 'EVENTS' ) ;
     public final void rule__Domainmodel__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2511:1: ( ( 'REQUIRED_EVENTS' ) )
-            // InternalCryptSL.g:2512:1: ( 'REQUIRED_EVENTS' )
+            // InternalCryptSL.g:2511:1: ( ( 'EVENTS' ) )
+            // InternalCryptSL.g:2512:1: ( 'EVENTS' )
             {
-            // InternalCryptSL.g:2512:1: ( 'REQUIRED_EVENTS' )
-            // InternalCryptSL.g:2513:2: 'REQUIRED_EVENTS'
+            // InternalCryptSL.g:2512:1: ( 'EVENTS' )
+            // InternalCryptSL.g:2513:2: 'EVENTS'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5()); 
+               before(grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5()); 
             }
             match(input,20,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5()); 
+               after(grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5()); 
             }
 
             }
@@ -9360,24 +9360,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group__7__Impl"
-    // InternalCryptSL.g:2561:1: rule__Domainmodel__Group__7__Impl : ( 'ENFORCE_ORDER' ) ;
+    // InternalCryptSL.g:2561:1: rule__Domainmodel__Group__7__Impl : ( 'ORDER' ) ;
     public final void rule__Domainmodel__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2565:1: ( ( 'ENFORCE_ORDER' ) )
-            // InternalCryptSL.g:2566:1: ( 'ENFORCE_ORDER' )
+            // InternalCryptSL.g:2565:1: ( ( 'ORDER' ) )
+            // InternalCryptSL.g:2566:1: ( 'ORDER' )
             {
-            // InternalCryptSL.g:2566:1: ( 'ENFORCE_ORDER' )
-            // InternalCryptSL.g:2567:2: 'ENFORCE_ORDER'
+            // InternalCryptSL.g:2566:1: ( 'ORDER' )
+            // InternalCryptSL.g:2567:2: 'ORDER'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7()); 
+               before(grammarAccess.getDomainmodelAccess().getORDERKeyword_7()); 
             }
             match(input,21,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7()); 
+               after(grammarAccess.getDomainmodelAccess().getORDERKeyword_7()); 
             }
 
             }
@@ -9823,24 +9823,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group_4__0__Impl"
-    // InternalCryptSL.g:2696:1: rule__Domainmodel__Group_4__0__Impl : ( 'FORBIDDEN_EVENTS' ) ;
+    // InternalCryptSL.g:2696:1: rule__Domainmodel__Group_4__0__Impl : ( 'FORBIDDEN' ) ;
     public final void rule__Domainmodel__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2700:1: ( ( 'FORBIDDEN_EVENTS' ) )
-            // InternalCryptSL.g:2701:1: ( 'FORBIDDEN_EVENTS' )
+            // InternalCryptSL.g:2700:1: ( ( 'FORBIDDEN' ) )
+            // InternalCryptSL.g:2701:1: ( 'FORBIDDEN' )
             {
-            // InternalCryptSL.g:2701:1: ( 'FORBIDDEN_EVENTS' )
-            // InternalCryptSL.g:2702:2: 'FORBIDDEN_EVENTS'
+            // InternalCryptSL.g:2701:1: ( 'FORBIDDEN' )
+            // InternalCryptSL.g:2702:2: 'FORBIDDEN'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0()); 
+               before(grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0()); 
             }
             match(input,22,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0()); 
+               after(grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0()); 
             }
 
             }
@@ -9986,24 +9986,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group_9__0__Impl"
-    // InternalCryptSL.g:2750:1: rule__Domainmodel__Group_9__0__Impl : ( 'ENFORCES_CONSTRAINTS' ) ;
+    // InternalCryptSL.g:2750:1: rule__Domainmodel__Group_9__0__Impl : ( 'CONSTRAINTS' ) ;
     public final void rule__Domainmodel__Group_9__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2754:1: ( ( 'ENFORCES_CONSTRAINTS' ) )
-            // InternalCryptSL.g:2755:1: ( 'ENFORCES_CONSTRAINTS' )
+            // InternalCryptSL.g:2754:1: ( ( 'CONSTRAINTS' ) )
+            // InternalCryptSL.g:2755:1: ( 'CONSTRAINTS' )
             {
-            // InternalCryptSL.g:2755:1: ( 'ENFORCES_CONSTRAINTS' )
-            // InternalCryptSL.g:2756:2: 'ENFORCES_CONSTRAINTS'
+            // InternalCryptSL.g:2755:1: ( 'CONSTRAINTS' )
+            // InternalCryptSL.g:2756:2: 'CONSTRAINTS'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0()); 
+               before(grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0()); 
             }
             match(input,23,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0()); 
+               after(grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0()); 
             }
 
             }
@@ -10312,24 +10312,24 @@ public class InternalCryptSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__Group_11__0__Impl"
-    // InternalCryptSL.g:2858:1: rule__Domainmodel__Group_11__0__Impl : ( 'DESTROYS' ) ;
+    // InternalCryptSL.g:2858:1: rule__Domainmodel__Group_11__0__Impl : ( 'NEGATES' ) ;
     public final void rule__Domainmodel__Group_11__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalCryptSL.g:2862:1: ( ( 'DESTROYS' ) )
-            // InternalCryptSL.g:2863:1: ( 'DESTROYS' )
+            // InternalCryptSL.g:2862:1: ( ( 'NEGATES' ) )
+            // InternalCryptSL.g:2863:1: ( 'NEGATES' )
             {
-            // InternalCryptSL.g:2863:1: ( 'DESTROYS' )
-            // InternalCryptSL.g:2864:2: 'DESTROYS'
+            // InternalCryptSL.g:2863:1: ( 'NEGATES' )
+            // InternalCryptSL.g:2864:2: 'NEGATES'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0()); 
+               before(grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0()); 
             }
             match(input,25,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0()); 
+               after(grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0()); 
             }
 
             }

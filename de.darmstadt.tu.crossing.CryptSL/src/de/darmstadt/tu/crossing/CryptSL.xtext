@@ -5,13 +5,13 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Domainmodel:
 	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
-	'USES_OBJECTS' (usage=UseBlock)
-	('FORBIDDEN_EVENTS' forbEvent=ForbiddenBlock)?
-	'REQUIRED_EVENTS' (req_events=RequiredBlock)
-	'ENFORCE_ORDER' order=Order
-	('ENFORCES_CONSTRAINTS' reqConstraints=EnforceConsBlock)?
+	'OBJECTS' (usage=UseBlock)
+	('FORBIDDEN' forbEvent=ForbiddenBlock)?
+	'EVENTS' (req_events=RequiredBlock)
+	'ORDER' order=Order
+	('CONSTRAINTS' reqConstraints=EnforceConsBlock)?
 	('ENSURES' ensure=EnsuresBlock)?
-	('DESTROYS' destroy=DestroysBlock)?
+	('NEGATES' destroy=DestroysBlock)?
 	;
 
 

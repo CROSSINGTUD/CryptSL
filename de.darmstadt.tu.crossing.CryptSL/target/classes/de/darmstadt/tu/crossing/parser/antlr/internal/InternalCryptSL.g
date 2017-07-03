@@ -96,9 +96,9 @@ ruleDomainmodel returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='USES_OBJECTS'
+		otherlv_2='OBJECTS'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getDomainmodelAccess().getUSES_OBJECTSKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2());
 		}
 		(
 			(
@@ -120,9 +120,9 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_4='FORBIDDEN_EVENTS'
+			otherlv_4='FORBIDDEN'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getDomainmodelAccess().getFORBIDDEN_EVENTSKeyword_4_0());
+				newLeafNode(otherlv_4, grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0());
 			}
 			(
 				(
@@ -144,9 +144,9 @@ ruleDomainmodel returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_6='REQUIRED_EVENTS'
+		otherlv_6='EVENTS'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getREQUIRED_EVENTSKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5());
 		}
 		(
 			(
@@ -167,9 +167,9 @@ ruleDomainmodel returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_8='ENFORCE_ORDER'
+		otherlv_8='ORDER'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getENFORCE_ORDERKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getORDERKeyword_7());
 		}
 		(
 			(
@@ -191,9 +191,9 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_10='ENFORCES_CONSTRAINTS'
+			otherlv_10='CONSTRAINTS'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getENFORCES_CONSTRAINTSKeyword_9_0());
+				newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0());
 			}
 			(
 				(
@@ -241,9 +241,9 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_14='DESTROYS'
+			otherlv_14='NEGATES'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getDESTROYSKeyword_11_0());
+				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getNEGATESKeyword_11_0());
 			}
 			(
 				(
