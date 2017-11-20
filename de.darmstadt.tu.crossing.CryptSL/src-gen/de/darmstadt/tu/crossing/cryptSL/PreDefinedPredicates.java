@@ -16,6 +16,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getPredName <em>Pred Name</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getObj <em>Obj</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getType <em>Type</em>}</li>
  * </ul>
@@ -26,6 +27,32 @@ import org.eclipse.xtext.common.types.JvmType;
  */
 public interface PreDefinedPredicates extends LiteralExpression
 {
+  /**
+   * Returns the value of the '<em><b>Pred Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pred Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pred Name</em>' attribute.
+   * @see #setPredName(String)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getPreDefinedPredicates_PredName()
+   * @model
+   * @generated
+   */
+  String getPredName();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates#getPredName <em>Pred Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pred Name</em>' attribute.
+   * @see #getPredName()
+   * @generated
+   */
+  void setPredName(String value);
+
   /**
    * Returns the value of the '<em><b>Obj</b></em>' reference list.
    * The list contents are of type {@link de.darmstadt.tu.crossing.cryptSL.Event}.

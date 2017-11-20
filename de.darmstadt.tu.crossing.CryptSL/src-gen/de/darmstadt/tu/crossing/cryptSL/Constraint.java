@@ -17,10 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLeftExpression <em>Left Expression</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRightExpression <em>Right Expression</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRet <em>Ret</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getPredName <em>Pred Name</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getParList <em>Par List</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLabelCond <em>Label Cond</em>}</li>
  * </ul>
  *
  * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getConstraint()
@@ -106,109 +102,5 @@ public interface Constraint extends EObject
    * @generated
    */
   void setRightExpression(Constraint value);
-
-  /**
-   * Returns the value of the '<em><b>Ret</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ret</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ret</em>' containment reference.
-   * @see #setRet(SuPar)
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getConstraint_Ret()
-   * @model containment="true"
-   * @generated
-   */
-  SuPar getRet();
-
-  /**
-   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getRet <em>Ret</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ret</em>' containment reference.
-   * @see #getRet()
-   * @generated
-   */
-  void setRet(SuPar value);
-
-  /**
-   * Returns the value of the '<em><b>Pred Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Pred Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Pred Name</em>' attribute.
-   * @see #setPredName(String)
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getConstraint_PredName()
-   * @model
-   * @generated
-   */
-  String getPredName();
-
-  /**
-   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getPredName <em>Pred Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pred Name</em>' attribute.
-   * @see #getPredName()
-   * @generated
-   */
-  void setPredName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Par List</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Par List</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Par List</em>' containment reference.
-   * @see #setParList(SuParList)
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getConstraint_ParList()
-   * @model containment="true"
-   * @generated
-   */
-  SuParList getParList();
-
-  /**
-   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getParList <em>Par List</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Par List</em>' containment reference.
-   * @see #getParList()
-   * @generated
-   */
-  void setParList(SuParList value);
-
-  /**
-   * Returns the value of the '<em><b>Label Cond</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Label Cond</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Label Cond</em>' reference.
-   * @see #setLabelCond(SuperType)
-   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getConstraint_LabelCond()
-   * @model
-   * @generated
-   */
-  SuperType getLabelCond();
-
-  /**
-   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Constraint#getLabelCond <em>Label Cond</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Label Cond</em>' reference.
-   * @see #getLabelCond()
-   * @generated
-   */
-  void setLabelCond(SuperType value);
 
 } // Constraint

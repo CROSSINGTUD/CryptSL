@@ -30,7 +30,10 @@ import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
+import de.darmstadt.tu.crossing.cryptSL.Pred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPred;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
@@ -104,6 +107,7 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.FORBIDDEN_BLOCK: return createForbiddenBlock();
       case CryptSLPackage.REQUIRED_BLOCK: return createRequiredBlock();
       case CryptSLPackage.ENFORCE_CONS_BLOCK: return createEnforceConsBlock();
+      case CryptSLPackage.REQUIRES_BLOCK: return createRequiresBlock();
       case CryptSLPackage.ENSURES_BLOCK: return createEnsuresBlock();
       case CryptSLPackage.DESTROYS_BLOCK: return createDestroysBlock();
       case CryptSLPackage.OBJECT_DECL: return createObjectDecl();
@@ -124,6 +128,8 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.LITERAL: return createLiteral();
       case CryptSLPackage.UNARY_OPERATOR: return createUnaryOperator();
       case CryptSLPackage.LIT_LIST: return createLitList();
+      case CryptSLPackage.PRED: return createPred();
+      case CryptSLPackage.REQ_PRED: return createReqPred();
       case CryptSLPackage.SU_PAR_LIST: return createSuParList();
       case CryptSLPackage.SU_PAR: return createSuPar();
       case CryptSLPackage.AGGREGATE: return createAggregate();
@@ -191,6 +197,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     EnforceConsBlockImpl enforceConsBlock = new EnforceConsBlockImpl();
     return enforceConsBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RequiresBlock createRequiresBlock()
+  {
+    RequiresBlockImpl requiresBlock = new RequiresBlockImpl();
+    return requiresBlock;
   }
 
   /**
@@ -411,6 +428,28 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     LitListImpl litList = new LitListImpl();
     return litList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Pred createPred()
+  {
+    PredImpl pred = new PredImpl();
+    return pred;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReqPred createReqPred()
+  {
+    ReqPredImpl reqPred = new ReqPredImpl();
+    return reqPred;
   }
 
   /**

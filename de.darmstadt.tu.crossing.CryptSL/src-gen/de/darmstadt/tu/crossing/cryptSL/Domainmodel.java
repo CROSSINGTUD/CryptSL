@@ -22,6 +22,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReq_events <em>Req events</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getOrder <em>Order</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getReqConstraints <em>Req Constraints</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getRequire <em>Require</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getEnsure <em>Ensure</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getDestroy <em>Destroy</em>}</li>
  * </ul>
@@ -187,6 +188,32 @@ public interface Domainmodel extends EObject
    * @generated
    */
   void setReqConstraints(EnforceConsBlock value);
+
+  /**
+   * Returns the value of the '<em><b>Require</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Require</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Require</em>' containment reference.
+   * @see #setRequire(RequiresBlock)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getDomainmodel_Require()
+   * @model containment="true"
+   * @generated
+   */
+  RequiresBlock getRequire();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getRequire <em>Require</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Require</em>' containment reference.
+   * @see #getRequire()
+   * @generated
+   */
+  void setRequire(RequiresBlock value);
 
   /**
    * Returns the value of the '<em><b>Ensure</b></em>' containment reference.

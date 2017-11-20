@@ -149,7 +149,6 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) cons=ConsPred
 	 *     (rule start) (ambiguity) cons=LiteralExpression
 	 *     (rule start) (ambiguity) operator=UnaryPreOperator
-	 *     (rule start) (ambiguity) ret=SuPar
 	 *     (rule start) (ambiguity) {ArithmeticExpression.leftExpression=}
 	 *     (rule start) (ambiguity) {ComparisonExpression.leftExpression=}
 	 *     (rule start) (ambiguity) {Constraint.leftExpression=}

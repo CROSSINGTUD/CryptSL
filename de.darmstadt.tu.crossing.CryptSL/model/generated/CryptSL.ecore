@@ -14,6 +14,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reqConstraints" eType="#//EnforceConsBlock"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="require" eType="#//RequiresBlock"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ensure" eType="#//EnsuresBlock"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="destroy" eType="#//DestroysBlock"
@@ -33,6 +35,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnforceConsBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="req" upperBound="-1" eType="#//Constraint"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiresBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pred" upperBound="-1" eType="#//ReqPred"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnsuresBlock">
@@ -89,11 +95,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" eType="#//Constraint"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ret" eType="#//SuPar" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//SuParList"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="labelCond" eType="#//SuperType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalImply">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="IMPLIES" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -131,6 +132,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PreDefinedPredicates" eSuperTypes="#//LiteralExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
         eType="#//Event"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
@@ -144,6 +146,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="LitList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Literal" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pred" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parList" eType="#//SuParList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelCond" eType="#//SuperType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReqPred">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//Constraint"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pred" eType="#//Pred" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuParList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"

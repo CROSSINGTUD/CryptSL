@@ -29,7 +29,10 @@ import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
+import de.darmstadt.tu.crossing.cryptSL.Pred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPred;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
@@ -134,6 +137,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
         return createEnforceConsBlockAdapter();
       }
       @Override
+      public Adapter caseRequiresBlock(RequiresBlock object)
+      {
+        return createRequiresBlockAdapter();
+      }
+      @Override
       public Adapter caseEnsuresBlock(EnsuresBlock object)
       {
         return createEnsuresBlockAdapter();
@@ -232,6 +240,16 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLitList(LitList object)
       {
         return createLitListAdapter();
+      }
+      @Override
+      public Adapter casePred(Pred object)
+      {
+        return createPredAdapter();
+      }
+      @Override
+      public Adapter caseReqPred(ReqPred object)
+      {
+        return createReqPredAdapter();
       }
       @Override
       public Adapter caseSuParList(SuParList object)
@@ -371,6 +389,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEnforceConsBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.RequiresBlock <em>Requires Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.RequiresBlock
+   * @generated
+   */
+  public Adapter createRequiresBlockAdapter()
   {
     return null;
   }
@@ -671,6 +704,36 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLitListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.Pred <em>Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.Pred
+   * @generated
+   */
+  public Adapter createPredAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ReqPred <em>Req Pred</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.ReqPred
+   * @generated
+   */
+  public Adapter createReqPredAdapter()
   {
     return null;
   }

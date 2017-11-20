@@ -10,36 +10,33 @@ Domainmodel:
 	'EVENTS' (req_events=RequiredBlock)
 	'ORDER' order=Order
 	('CONSTRAINTS' reqConstraints=EnforceConsBlock)?
+	('REQUIRES' require=RequiresBlock)?
 	('ENSURES' ensure=EnsuresBlock)?
-	('NEGATES' destroy=DestroysBlock)?
-	;
+	('NEGATES' destroy=DestroysBlock)?;
 
 
 
 UseBlock:
-	objects+=(ObjectDecl)+
-;
+	objects+=(ObjectDecl)+;
 
 ForbiddenBlock:
-	forb_methods+=(ForbMethod)+
-;
+	forb_methods+=(ForbMethod)+;
 
 RequiredBlock:
-	req_event+=(Event)+
-;
+	req_event+=(Event)+;
 
 EnforceConsBlock:
-	(req+=Constraint  ';')+
-;
+	(req+=Constraint ';')+;
 
+RequiresBlock:
+	(pred += ReqPred ';')+
+;
 
 EnsuresBlock:
-	(pred+=EnsPred ';')+
-;
+	(pred+=EnsPred ';')+;
 
 DestroysBlock:
-	(pred+=EnsPred ';')+
-;
+	(pred+=EnsPred ';')+;
 
 	////////////// OBJECTS
 ObjectDecl:
@@ -74,7 +71,7 @@ Par:
 
 	/// AGGS
 Aggregate returns SuperType:
-	{Aggregate} (name=ID ':=' (lab+=[Event] (',' lab+=[Event])*) ";");
+	{Aggregate} (name=ID ':=' (lab+=[Event] ('|' lab+=[Event])*) ";");
 
 	///////////// ORDER
 Order returns Expression:
@@ -163,19 +160,15 @@ UnaryPreExpression returns Constraint:
 Operand returns Constraint:
 	'(' Constraint ')'
 	|
-	Cons
-	|
-	ReqPred;
+	Cons;
 
 LiteralExpression returns LiteralExpression:
-	name=Literal | name=AggregateExpression | PreDefinedPredicates 
-	;
+	name=Literal | name=AggregateExpression | PreDefinedPredicates;
 
 PreDefinedPredicates:
-	predName= "neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" | 
-	predName= "noCallTo" + "(" obj+=[Event] ")" |
-	predName= "callTo" + "(" obj+=[Event] ")"
-;
+	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" |
+	predName="noCallTo"+ "(" obj+=[Event] ")" |
+	predName="callTo"+ "(" obj+=[Event] ")";
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;
@@ -199,7 +192,7 @@ Cons returns LiteralExpression:
 	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
 
 ConsPred returns LiteralExpression:
-	(part= "part(" ind = IntegerLiteral "," split=StringLiteral "," lit = LiteralExpression ")") | lit = LiteralExpression;
+	(part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")") | lit=LiteralExpression;
 
 terminal INT:
 	'0'..'9' ('0'..'9' | '_')*;
@@ -207,11 +200,14 @@ terminal INT:
 LitList:
 	(parameters+=Literal (',' (parameters+=Literal | '...'))*);
 
-ReqPred returns Constraint:
-	ret = SuPar '.' predName=ID (('[' (parList= SuParList) ']') | ("[]"));
+Pred:
+	predName=ID (('[' (parList=SuParList) ']') | ("[]"));
+
+ReqPred:
+	(cons=Constraint "=>")? (not='!')? pred=Pred;
 
 EnsPred returns Constraint:
-	ReqPred ('after' labelCond=[SuperType])?;
+	Pred ('after' labelCond=[SuperType])?;
 
 SuParList:
 	(parameters+=SuPar (',' parameters+=SuPar)*);

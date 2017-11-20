@@ -3,7 +3,10 @@
  */
 package de.darmstadt.tu.crossing.scoping;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -13,13 +16,16 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 
 import de.darmstadt.tu.crossing.cryptSL.Domainmodel;
 import de.darmstadt.tu.crossing.cryptSL.ForbMethod;
+import de.darmstadt.tu.crossing.cryptSL.LiteralExpression;
 import de.darmstadt.tu.crossing.cryptSL.Method;
 
 /**
@@ -30,7 +36,38 @@ import de.darmstadt.tu.crossing.cryptSL.Method;
  */
 public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 
-
+	@Override
+	public IScope getScope(final EObject context, final EReference reference) {
+		IScope scope = polymorphicFindScopeForReferenceName(context, reference);
+		if (scope == null) {
+			scope = polymorphicFindScopeForClassName(context, reference);
+			if (scope == null) {
+				scope = delegateGetScope(context, reference);
+				
+				if (scope instanceof SelectableBasedScope && context instanceof LiteralExpression) {
+					final List<IEObjectDescription> scopeElements = new ArrayList<>();
+					final List<IEObjectDescription> locals = new ArrayList<>();
+					scope.getAllElements().forEach(scopeElements::add);
+					for (IEObjectDescription desc : scopeElements) {
+						if (desc.toString().equals("void")) {
+							locals.clear();
+							break;
+						} else if (!desc.toString().contains(".")) {
+							locals.add(desc);
+						} else {
+							break;
+						}
+					}
+					if (!locals.isEmpty()) {
+						scope = new SimpleScope(locals);
+					}
+				}
+			}
+		}
+		return scope;
+	}
+	
+	
 	IScope scope_ForbMethod_javaMeth(ForbMethod fm , EReference reference) {
 		EObject cont = fm.eContainer().eContainer();
 		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();
@@ -89,8 +126,6 @@ public class CryptSLScopeProvider extends AbstractCryptSLScopeProvider {
 		}
 		return methods;
 	}
-	
-
 
 	private Set<IEObjectDescription> collectMethodsSimpleName(JvmGenericType gt) {
 		Set<IEObjectDescription> descriptions = new HashSet<IEObjectDescription>();

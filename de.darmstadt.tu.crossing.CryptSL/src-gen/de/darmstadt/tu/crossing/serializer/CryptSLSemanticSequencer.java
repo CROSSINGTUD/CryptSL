@@ -29,7 +29,10 @@ import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
+import de.darmstadt.tu.crossing.cryptSL.Pred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPred;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
@@ -105,35 +108,8 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				sequence_ComparisonExpression_ComparisonHigherOpExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
 			case CryptSLPackage.CONSTRAINT:
-				if (rule == grammarAccess.getEnsPredRule()) {
-					sequence_EnsPred_ReqPred(context, (Constraint) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getConstraintRule()
-						|| rule == grammarAccess.getLogicalImplyExpressionRule()
-						|| action == grammarAccess.getLogicalImplyExpressionAccess().getConstraintLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getConstraintLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getConstraintLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getComparisonExpressionRule()
-						|| action == grammarAccess.getComparisonExpressionAccess().getComparisonExpressionLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getComparisonHigherOpExpressionRule()
-						|| action == grammarAccess.getComparisonHigherOpExpressionAccess().getComparisonExpressionLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getArithmeticExpressionRule()
-						|| rule == grammarAccess.getAdditionExpressionRule()
-						|| action == grammarAccess.getAdditionExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_0()
-						|| rule == grammarAccess.getMultiplicationExpressionRule()
-						|| action == grammarAccess.getMultiplicationExpressionAccess().getArithmeticExpressionLeftExpressionAction_1_1_0()
-						|| rule == grammarAccess.getOperandRule()) {
-					sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_ReqPred(context, (Constraint) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getReqPredRule()) {
-					sequence_ReqPred(context, (Constraint) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression(context, (Constraint) semanticObject); 
+				return; 
 			case CryptSLPackage.DESTROYS_BLOCK:
 				sequence_DestroysBlock(context, (DestroysBlock) semanticObject); 
 				return; 
@@ -230,8 +206,24 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 			case CryptSLPackage.PRE_DEFINED_PREDICATES:
 				sequence_PreDefinedPredicates(context, (PreDefinedPredicates) semanticObject); 
 				return; 
+			case CryptSLPackage.PRED:
+				if (rule == grammarAccess.getEnsPredRule()) {
+					sequence_EnsPred_Pred(context, (Pred) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getPredRule()) {
+					sequence_Pred(context, (Pred) semanticObject); 
+					return; 
+				}
+				else break;
+			case CryptSLPackage.REQ_PRED:
+				sequence_ReqPred(context, (ReqPred) semanticObject); 
+				return; 
 			case CryptSLPackage.REQUIRED_BLOCK:
 				sequence_RequiredBlock(context, (RequiredBlock) semanticObject); 
+				return; 
+			case CryptSLPackage.REQUIRES_BLOCK:
+				sequence_RequiresBlock(context, (RequiresBlock) semanticObject); 
 				return; 
 			case CryptSLPackage.SIMPLE_ORDER:
 				sequence_Primary_SimpleOrder(context, (SimpleOrder) semanticObject); 
@@ -513,6 +505,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *         req_events=RequiredBlock 
 	 *         order=Order 
 	 *         reqConstraints=EnforceConsBlock? 
+	 *         require=RequiresBlock? 
 	 *         ensure=EnsuresBlock? 
 	 *         destroy=DestroysBlock?
 	 *     )
@@ -536,12 +529,12 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     EnsPred returns Constraint
+	 *     EnsPred returns Pred
 	 *
 	 * Constraint:
-	 *     (ret=SuPar predName=ID parList=SuParList? labelCond=[SuperType|ID]?)
+	 *     (predName=ID parList=SuParList? labelCond=[SuperType|ID]?)
 	 */
-	protected void sequence_EnsPred_ReqPred(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_EnsPred_Pred(ISerializationContext context, Pred semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -664,11 +657,10 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     (
 	 *         (leftExpression=LogicalImplyExpression_Constraint_1_0 operator=LogicalImply rightExpression=LogicalOrExpression) | 
 	 *         (leftExpression=LogicalOrExpression_Constraint_1_0 operator=LogicalOr rightExpression=LogicalAndExpression) | 
-	 *         (leftExpression=LogicalAndExpression_Constraint_1_0 operator=LogicalAnd rightExpression=ComparisonExpression) | 
-	 *         (ret=SuPar predName=ID parList=SuParList?)
+	 *         (leftExpression=LogicalAndExpression_Constraint_1_0 operator=LogicalAnd rightExpression=ComparisonExpression)
 	 *     )
 	 */
-	protected void sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression_ReqPred(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_LogicalAndExpression_LogicalImplyExpression_LogicalOrExpression(ISerializationContext context, Constraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -840,6 +832,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Pred returns Pred
+	 *
+	 * Constraint:
+	 *     (predName=ID parList=SuParList?)
+	 */
+	protected void sequence_Pred(ISerializationContext context, Pred semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Order returns Expression
 	 *     Order.Order_1_0 returns Expression
 	 *     SimpleOrder returns Expression
@@ -872,12 +876,12 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     ReqPred returns Constraint
+	 *     ReqPred returns ReqPred
 	 *
 	 * Constraint:
-	 *     (ret=SuPar predName=ID parList=SuParList?)
+	 *     (cons=Constraint? not='!'? pred=Pred)
 	 */
-	protected void sequence_ReqPred(ISerializationContext context, Constraint semanticObject) {
+	protected void sequence_ReqPred(ISerializationContext context, ReqPred semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -890,6 +894,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     req_event+=Event+
 	 */
 	protected void sequence_RequiredBlock(ISerializationContext context, RequiredBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RequiresBlock returns RequiresBlock
+	 *
+	 * Constraint:
+	 *     pred+=ReqPred+
+	 */
+	protected void sequence_RequiresBlock(ISerializationContext context, RequiresBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

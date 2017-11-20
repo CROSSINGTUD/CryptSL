@@ -69,6 +69,15 @@ public interface CryptSLFactory extends EFactory
   EnforceConsBlock createEnforceConsBlock();
 
   /**
+   * Returns a new object of class '<em>Requires Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Requires Block</em>'.
+   * @generated
+   */
+  RequiresBlock createRequiresBlock();
+
+  /**
    * Returns a new object of class '<em>Ensures Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -247,6 +256,24 @@ public interface CryptSLFactory extends EFactory
    * @generated
    */
   LitList createLitList();
+
+  /**
+   * Returns a new object of class '<em>Pred</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pred</em>'.
+   * @generated
+   */
+  Pred createPred();
+
+  /**
+   * Returns a new object of class '<em>Req Pred</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Req Pred</em>'.
+   * @generated
+   */
+  ReqPred createReqPred();
 
   /**
    * Returns a new object of class '<em>Su Par List</em>'.

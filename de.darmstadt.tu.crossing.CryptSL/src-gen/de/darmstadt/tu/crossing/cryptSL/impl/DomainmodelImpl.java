@@ -11,6 +11,7 @@ import de.darmstadt.tu.crossing.cryptSL.EnsuresBlock;
 import de.darmstadt.tu.crossing.cryptSL.Expression;
 import de.darmstadt.tu.crossing.cryptSL.ForbiddenBlock;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.UseBlock;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -38,6 +39,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReq_events <em>Req events</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getReqConstraints <em>Req Constraints</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getRequire <em>Require</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getEnsure <em>Ensure</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.DomainmodelImpl#getDestroy <em>Destroy</em>}</li>
  * </ul>
@@ -105,6 +107,16 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * @ordered
    */
   protected EnforceConsBlock reqConstraints;
+
+  /**
+   * The cached value of the '{@link #getRequire() <em>Require</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRequire()
+   * @generated
+   * @ordered
+   */
+  protected RequiresBlock require;
 
   /**
    * The cached value of the '{@link #getEnsure() <em>Ensure</em>}' containment reference.
@@ -435,6 +447,54 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
+  public RequiresBlock getRequire()
+  {
+    return require;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRequire(RequiresBlock newRequire, NotificationChain msgs)
+  {
+    RequiresBlock oldRequire = require;
+    require = newRequire;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQUIRE, oldRequire, newRequire);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRequire(RequiresBlock newRequire)
+  {
+    if (newRequire != require)
+    {
+      NotificationChain msgs = null;
+      if (require != null)
+        msgs = ((InternalEObject)require).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQUIRE, null, msgs);
+      if (newRequire != null)
+        msgs = ((InternalEObject)newRequire).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.DOMAINMODEL__REQUIRE, null, msgs);
+      msgs = basicSetRequire(newRequire, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.DOMAINMODEL__REQUIRE, newRequire, newRequire));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EnsuresBlock getEnsure()
   {
     return ensure;
@@ -546,6 +606,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return basicSetOrder(null, msgs);
       case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
         return basicSetReqConstraints(null, msgs);
+      case CryptSLPackage.DOMAINMODEL__REQUIRE:
+        return basicSetRequire(null, msgs);
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return basicSetEnsure(null, msgs);
       case CryptSLPackage.DOMAINMODEL__DESTROY:
@@ -577,6 +639,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return getOrder();
       case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
         return getReqConstraints();
+      case CryptSLPackage.DOMAINMODEL__REQUIRE:
+        return getRequire();
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return getEnsure();
       case CryptSLPackage.DOMAINMODEL__DESTROY:
@@ -612,6 +676,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return;
       case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
         setReqConstraints((EnforceConsBlock)newValue);
+        return;
+      case CryptSLPackage.DOMAINMODEL__REQUIRE:
+        setRequire((RequiresBlock)newValue);
         return;
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         setEnsure((EnsuresBlock)newValue);
@@ -651,6 +718,9 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
       case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
         setReqConstraints((EnforceConsBlock)null);
         return;
+      case CryptSLPackage.DOMAINMODEL__REQUIRE:
+        setRequire((RequiresBlock)null);
+        return;
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         setEnsure((EnsuresBlock)null);
         return;
@@ -683,6 +753,8 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
         return order != null;
       case CryptSLPackage.DOMAINMODEL__REQ_CONSTRAINTS:
         return reqConstraints != null;
+      case CryptSLPackage.DOMAINMODEL__REQUIRE:
+        return require != null;
       case CryptSLPackage.DOMAINMODEL__ENSURE:
         return ensure != null;
       case CryptSLPackage.DOMAINMODEL__DESTROY:

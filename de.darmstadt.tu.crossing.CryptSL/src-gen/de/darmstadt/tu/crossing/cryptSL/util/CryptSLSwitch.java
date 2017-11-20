@@ -29,7 +29,10 @@ import de.darmstadt.tu.crossing.cryptSL.Order;
 import de.darmstadt.tu.crossing.cryptSL.Par;
 import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
+import de.darmstadt.tu.crossing.cryptSL.Pred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPred;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
+import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
 import de.darmstadt.tu.crossing.cryptSL.SuPar;
 import de.darmstadt.tu.crossing.cryptSL.SuParList;
@@ -138,6 +141,13 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         EnforceConsBlock enforceConsBlock = (EnforceConsBlock)theEObject;
         T result = caseEnforceConsBlock(enforceConsBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.REQUIRES_BLOCK:
+      {
+        RequiresBlock requiresBlock = (RequiresBlock)theEObject;
+        T result = caseRequiresBlock(requiresBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -282,6 +292,21 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         LitList litList = (LitList)theEObject;
         T result = caseLitList(litList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.PRED:
+      {
+        Pred pred = (Pred)theEObject;
+        T result = casePred(pred);
+        if (result == null) result = caseConstraint(pred);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.REQ_PRED:
+      {
+        ReqPred reqPred = (ReqPred)theEObject;
+        T result = caseReqPred(reqPred);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -437,6 +462,22 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEnforceConsBlock(EnforceConsBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Requires Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Requires Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRequiresBlock(RequiresBlock object)
   {
     return null;
   }
@@ -757,6 +798,38 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLitList(LitList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pred</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pred</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePred(Pred object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Req Pred</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Req Pred</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReqPred(ReqPred object)
   {
     return null;
   }

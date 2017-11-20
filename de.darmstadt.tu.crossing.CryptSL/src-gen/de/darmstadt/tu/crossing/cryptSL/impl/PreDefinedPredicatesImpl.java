@@ -30,6 +30,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl#getPredName <em>Pred Name</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl#getObj <em>Obj</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.PreDefinedPredicatesImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -38,6 +39,26 @@ import org.eclipse.xtext.common.types.JvmType;
  */
 public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements PreDefinedPredicates
 {
+  /**
+   * The default value of the '{@link #getPredName() <em>Pred Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPredName()
+   * @generated
+   * @ordered
+   */
+  protected static final String PRED_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPredName() <em>Pred Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPredName()
+   * @generated
+   * @ordered
+   */
+  protected String predName = PRED_NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getObj() <em>Obj</em>}' reference list.
    * <!-- begin-user-doc -->
@@ -77,6 +98,29 @@ public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements P
   protected EClass eStaticClass()
   {
     return CryptSLPackage.Literals.PRE_DEFINED_PREDICATES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPredName()
+  {
+    return predName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPredName(String newPredName)
+  {
+    String oldPredName = predName;
+    predName = newPredName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.PRE_DEFINED_PREDICATES__PRED_NAME, oldPredName, predName));
   }
 
   /**
@@ -146,6 +190,8 @@ public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements P
   {
     switch (featureID)
     {
+      case CryptSLPackage.PRE_DEFINED_PREDICATES__PRED_NAME:
+        return getPredName();
       case CryptSLPackage.PRE_DEFINED_PREDICATES__OBJ:
         return getObj();
       case CryptSLPackage.PRE_DEFINED_PREDICATES__TYPE:
@@ -166,6 +212,9 @@ public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements P
   {
     switch (featureID)
     {
+      case CryptSLPackage.PRE_DEFINED_PREDICATES__PRED_NAME:
+        setPredName((String)newValue);
+        return;
       case CryptSLPackage.PRE_DEFINED_PREDICATES__OBJ:
         getObj().clear();
         getObj().addAll((Collection<? extends Event>)newValue);
@@ -187,6 +236,9 @@ public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements P
   {
     switch (featureID)
     {
+      case CryptSLPackage.PRE_DEFINED_PREDICATES__PRED_NAME:
+        setPredName(PRED_NAME_EDEFAULT);
+        return;
       case CryptSLPackage.PRE_DEFINED_PREDICATES__OBJ:
         getObj().clear();
         return;
@@ -207,12 +259,31 @@ public class PreDefinedPredicatesImpl extends LiteralExpressionImpl implements P
   {
     switch (featureID)
     {
+      case CryptSLPackage.PRE_DEFINED_PREDICATES__PRED_NAME:
+        return PRED_NAME_EDEFAULT == null ? predName != null : !PRED_NAME_EDEFAULT.equals(predName);
       case CryptSLPackage.PRE_DEFINED_PREDICATES__OBJ:
         return obj != null && !obj.isEmpty();
       case CryptSLPackage.PRE_DEFINED_PREDICATES__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (predName: ");
+    result.append(predName);
+    result.append(')');
+    return result.toString();
   }
 
 } //PreDefinedPredicatesImpl
