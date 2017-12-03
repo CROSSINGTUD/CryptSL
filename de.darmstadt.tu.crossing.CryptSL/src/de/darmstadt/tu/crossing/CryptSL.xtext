@@ -168,7 +168,8 @@ LiteralExpression returns LiteralExpression:
 PreDefinedPredicates:
 	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" |
 	predName="noCallTo"+ "(" obj+=[Event] ")" |
-	predName="callTo"+ "(" obj+=[Event] ")";
+	predName="callTo"+ "(" obj+=[Event] ")" |
+	predName="length"+ "(" obj+=[Object] ")";
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;
