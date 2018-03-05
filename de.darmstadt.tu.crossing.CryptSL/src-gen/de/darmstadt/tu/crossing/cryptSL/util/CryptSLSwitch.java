@@ -6,6 +6,7 @@ package de.darmstadt.tu.crossing.cryptSL.util;
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ArrayElements;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
@@ -285,6 +286,13 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         UnaryOperator unaryOperator = (UnaryOperator)theEObject;
         T result = caseUnaryOperator(unaryOperator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.ARRAY_ELEMENTS:
+      {
+        ArrayElements arrayElements = (ArrayElements)theEObject;
+        T result = caseArrayElements(arrayElements);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -782,6 +790,22 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUnaryOperator(UnaryOperator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Array Elements</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Array Elements</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArrayElements(ArrayElements object)
   {
     return null;
   }

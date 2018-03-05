@@ -1217,6 +1217,43 @@ public interface CryptSLPackage extends EPackage
   int UNARY_OPERATOR_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ArrayElementsImpl <em>Array Elements</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.ArrayElementsImpl
+   * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArrayElements()
+   * @generated
+   */
+  int ARRAY_ELEMENTS = 25;
+
+  /**
+   * The feature id for the '<em><b>El</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_ELEMENTS__EL = 0;
+
+  /**
+   * The feature id for the '<em><b>Cons</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_ELEMENTS__CONS = 1;
+
+  /**
+   * The number of structural features of the '<em>Array Elements</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_ELEMENTS_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LitListImpl <em>Lit List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1224,7 +1261,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getLitList()
    * @generated
    */
-  int LIT_LIST = 25;
+  int LIT_LIST = 26;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1252,7 +1289,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getPred()
    * @generated
    */
-  int PRED = 26;
+  int PRED = 27;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1325,7 +1362,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getReqPred()
    * @generated
    */
-  int REQ_PRED = 27;
+  int REQ_PRED = 28;
 
   /**
    * The feature id for the '<em><b>Cons</b></em>' containment reference.
@@ -1371,7 +1408,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuParList()
    * @generated
    */
-  int SU_PAR_LIST = 28;
+  int SU_PAR_LIST = 29;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1399,7 +1436,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSuPar()
    * @generated
    */
-  int SU_PAR = 29;
+  int SU_PAR = 30;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1427,7 +1464,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getAggregate()
    * @generated
    */
-  int AGGREGATE = 30;
+  int AGGREGATE = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1473,7 +1510,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getOrder()
    * @generated
    */
-  int ORDER = 31;
+  int ORDER = 32;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1537,7 +1574,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getSimpleOrder()
    * @generated
    */
-  int SIMPLE_ORDER = 32;
+  int SIMPLE_ORDER = 33;
 
   /**
    * The feature id for the '<em><b>Order Ev</b></em>' reference list.
@@ -1601,7 +1638,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 33;
+  int COMPARISON_EXPRESSION = 34;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1647,7 +1684,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArithmeticExpression()
    * @generated
    */
-  int ARITHMETIC_EXPRESSION = 34;
+  int ARITHMETIC_EXPRESSION = 35;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1693,7 +1730,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getUnaryPreExpression()
    * @generated
    */
-  int UNARY_PRE_EXPRESSION = 35;
+  int UNARY_PRE_EXPRESSION = 36;
 
   /**
    * The feature id for the '<em><b>Left Expression</b></em>' containment reference.
@@ -1748,7 +1785,7 @@ public interface CryptSLPackage extends EPackage
    * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 36;
+  int OBJECT = 37;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2709,6 +2746,38 @@ public interface CryptSLPackage extends EPackage
    * @generated
    */
   EAttribute getUnaryOperator_NOT();
+
+  /**
+   * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.ArrayElements <em>Array Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Array Elements</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ArrayElements
+   * @generated
+   */
+  EClass getArrayElements();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.ArrayElements#getEl <em>El</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>El</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ArrayElements#getEl()
+   * @see #getArrayElements()
+   * @generated
+   */
+  EAttribute getArrayElements_El();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.ArrayElements#getCons <em>Cons</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cons</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ArrayElements#getCons()
+   * @see #getArrayElements()
+   * @generated
+   */
+  EReference getArrayElements_Cons();
 
   /**
    * Returns the meta object for class '{@link de.darmstadt.tu.crossing.cryptSL.LitList <em>Lit List</em>}'.
@@ -3719,6 +3788,32 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EAttribute UNARY_OPERATOR__NOT = eINSTANCE.getUnaryOperator_NOT();
+
+    /**
+     * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ArrayElementsImpl <em>Array Elements</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.ArrayElementsImpl
+     * @see de.darmstadt.tu.crossing.cryptSL.impl.CryptSLPackageImpl#getArrayElements()
+     * @generated
+     */
+    EClass ARRAY_ELEMENTS = eINSTANCE.getArrayElements();
+
+    /**
+     * The meta object literal for the '<em><b>El</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ARRAY_ELEMENTS__EL = eINSTANCE.getArrayElements_El();
+
+    /**
+     * The meta object literal for the '<em><b>Cons</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ARRAY_ELEMENTS__CONS = eINSTANCE.getArrayElements_Cons();
 
     /**
      * The meta object literal for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.LitListImpl <em>Lit List</em>}' class.

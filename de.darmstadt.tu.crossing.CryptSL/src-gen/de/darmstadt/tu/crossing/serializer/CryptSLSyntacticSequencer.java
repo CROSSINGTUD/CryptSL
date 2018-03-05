@@ -146,7 +146,7 @@ public class CryptSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) cons=ConsPred
+	 *     (rule start) (ambiguity) cons=ArrayElements
 	 *     (rule start) (ambiguity) cons=LiteralExpression
 	 *     (rule start) (ambiguity) operator=UnaryPreOperator
 	 *     (rule start) (ambiguity) {ArithmeticExpression.leftExpression=}

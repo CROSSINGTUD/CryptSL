@@ -2921,9 +2921,9 @@ ruleCons returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getConsAccess().getConsConsPredParserRuleCall_0_0_0());
+						newCompositeNode(grammarAccess.getConsAccess().getConsArrayElementsParserRuleCall_0_0_0());
 					}
-					lv_cons_0_0=ruleConsPred
+					lv_cons_0_0=ruleArrayElements
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getConsRule());
@@ -2932,7 +2932,7 @@ ruleCons returns [EObject current=null]
 							$current,
 							"cons",
 							lv_cons_0_0,
-							"de.darmstadt.tu.crossing.CryptSL.ConsPred");
+							"de.darmstadt.tu.crossing.CryptSL.ArrayElements");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -2985,6 +2985,84 @@ ruleCons returns [EObject current=null]
 						"cons",
 						lv_cons_5_0,
 						"de.darmstadt.tu.crossing.CryptSL.LiteralExpression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleArrayElements
+entryRuleArrayElements returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getArrayElementsRule()); }
+	iv_ruleArrayElements=ruleArrayElements
+	{ $current=$iv_ruleArrayElements.current; }
+	EOF;
+
+// Rule ArrayElements
+ruleArrayElements returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				(
+					lv_el_0_0='elements('
+					{
+						newLeafNode(lv_el_0_0, grammarAccess.getArrayElementsAccess().getElElementsKeyword_0_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getArrayElementsRule());
+						}
+						setWithLastConsumed($current, "el", lv_el_0_0, "elements(");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getArrayElementsAccess().getConsConsPredParserRuleCall_0_1_0());
+					}
+					lv_cons_1_0=ruleConsPred
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getArrayElementsRule());
+						}
+						set(
+							$current,
+							"cons",
+							lv_cons_1_0,
+							"de.darmstadt.tu.crossing.CryptSL.ConsPred");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_2=')'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getArrayElementsAccess().getRightParenthesisKeyword_0_2());
+			}
+		)
+		    |
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getArrayElementsAccess().getConsConsPredParserRuleCall_1_0());
+				}
+				lv_cons_3_0=ruleConsPred
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getArrayElementsRule());
+					}
+					set(
+						$current,
+						"cons",
+						lv_cons_3_0,
+						"de.darmstadt.tu.crossing.CryptSL.ConsPred");
 					afterParserOrEnumRuleCall();
 				}
 			)

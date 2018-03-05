@@ -6,6 +6,7 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ArrayElements;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
@@ -233,6 +234,13 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * @generated
    */
   private EClass unaryOperatorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arrayElementsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1259,6 +1267,36 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getArrayElements()
+  {
+    return arrayElementsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getArrayElements_El()
+  {
+    return (EAttribute)arrayElementsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getArrayElements_Cons()
+  {
+    return (EReference)arrayElementsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLitList()
   {
     return litListEClass;
@@ -1626,6 +1664,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     unaryOperatorEClass = createEClass(UNARY_OPERATOR);
     createEAttribute(unaryOperatorEClass, UNARY_OPERATOR__NOT);
 
+    arrayElementsEClass = createEClass(ARRAY_ELEMENTS);
+    createEAttribute(arrayElementsEClass, ARRAY_ELEMENTS__EL);
+    createEReference(arrayElementsEClass, ARRAY_ELEMENTS__CONS);
+
     litListEClass = createEClass(LIT_LIST);
     createEReference(litListEClass, LIT_LIST__PARAMETERS);
 
@@ -1801,7 +1843,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEClass(literalExpressionEClass, LiteralExpression.class, "LiteralExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteralExpression_Name(), ecorePackage.getEObject(), null, "name", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Value(), this.getSuperType(), null, "value", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLiteralExpression_Cons(), this.getLiteralExpression(), null, "cons", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLiteralExpression_Cons(), ecorePackage.getEObject(), null, "cons", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralExpression_Litsleft(), this.getLitList(), null, "litsleft", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLiteralExpression_Part(), ecorePackage.getEString(), "part", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLiteralExpression_Ind(), ecorePackage.getEString(), "ind", null, 0, 1, LiteralExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1818,6 +1860,10 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
     initEClass(unaryOperatorEClass, UnaryOperator.class, "UnaryOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUnaryOperator_NOT(), ecorePackage.getEString(), "NOT", null, 0, 1, UnaryOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(arrayElementsEClass, ArrayElements.class, "ArrayElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getArrayElements_El(), ecorePackage.getEString(), "el", null, 0, 1, ArrayElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getArrayElements_Cons(), this.getLiteralExpression(), null, "cons", null, 0, 1, ArrayElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(litListEClass, LitList.class, "LitList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLitList_Parameters(), this.getLiteral(), null, "parameters", null, 0, -1, LitList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -91,12 +91,12 @@ public interface LiteralExpression extends Constraint
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Cons</em>' containment reference.
-   * @see #setCons(LiteralExpression)
+   * @see #setCons(EObject)
    * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getLiteralExpression_Cons()
    * @model containment="true"
    * @generated
    */
-  LiteralExpression getCons();
+  EObject getCons();
 
   /**
    * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.LiteralExpression#getCons <em>Cons</em>}' containment reference.
@@ -106,7 +106,7 @@ public interface LiteralExpression extends Constraint
    * @see #getCons()
    * @generated
    */
-  void setCons(LiteralExpression value);
+  void setCons(EObject value);
 
   /**
    * Returns the value of the '<em><b>Litsleft</b></em>' containment reference.

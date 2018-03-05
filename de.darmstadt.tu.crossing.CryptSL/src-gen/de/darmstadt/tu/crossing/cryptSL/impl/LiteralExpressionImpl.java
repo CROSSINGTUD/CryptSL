@@ -67,7 +67,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * @generated
    * @ordered
    */
-  protected LiteralExpression cons;
+  protected EObject cons;
 
   /**
    * The cached value of the '{@link #getLitsleft() <em>Litsleft</em>}' containment reference.
@@ -266,7 +266,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public LiteralExpression getCons()
+  public EObject getCons()
   {
     return cons;
   }
@@ -276,9 +276,9 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCons(LiteralExpression newCons, NotificationChain msgs)
+  public NotificationChain basicSetCons(EObject newCons, NotificationChain msgs)
   {
-    LiteralExpression oldCons = cons;
+    EObject oldCons = cons;
     cons = newCons;
     if (eNotificationRequired())
     {
@@ -293,7 +293,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCons(LiteralExpression newCons)
+  public void setCons(EObject newCons)
   {
     if (newCons != cons)
     {
@@ -544,7 +544,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         setValue((SuperType)newValue);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__CONS:
-        setCons((LiteralExpression)newValue);
+        setCons((EObject)newValue);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         setLitsleft((LitList)newValue);
@@ -582,7 +582,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
         setValue((SuperType)null);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__CONS:
-        setCons((LiteralExpression)null);
+        setCons((EObject)null);
         return;
       case CryptSLPackage.LITERAL_EXPRESSION__LITSLEFT:
         setLitsleft((LitList)null);

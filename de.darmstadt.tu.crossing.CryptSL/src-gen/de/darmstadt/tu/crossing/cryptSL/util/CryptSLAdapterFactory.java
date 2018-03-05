@@ -6,6 +6,7 @@ package de.darmstadt.tu.crossing.cryptSL.util;
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ArrayElements;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
@@ -235,6 +236,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseUnaryOperator(UnaryOperator object)
       {
         return createUnaryOperatorAdapter();
+      }
+      @Override
+      public Adapter caseArrayElements(ArrayElements object)
+      {
+        return createArrayElementsAdapter();
       }
       @Override
       public Adapter caseLitList(LitList object)
@@ -689,6 +695,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUnaryOperatorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ArrayElements <em>Array Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.ArrayElements
+   * @generated
+   */
+  public Adapter createArrayElementsAdapter()
   {
     return null;
   }

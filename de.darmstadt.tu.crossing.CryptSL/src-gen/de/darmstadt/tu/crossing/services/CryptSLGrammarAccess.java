@@ -1744,7 +1744,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cConsAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cConsConsPredParserRuleCall_0_0_0 = (RuleCall)cConsAssignment_0_0.eContents().get(0);
+		private final RuleCall cConsArrayElementsParserRuleCall_0_0_0 = (RuleCall)cConsAssignment_0_0.eContents().get(0);
 		private final Keyword cInKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Assignment cLitsleftAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
@@ -1754,20 +1754,20 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConsLiteralExpressionParserRuleCall_1_0 = (RuleCall)cConsAssignment_1.eContents().get(0);
 		
 		//Cons LiteralExpression:
-		//	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
+		//	cons=ArrayElements "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression
+		//cons=ArrayElements "in" "{" litsleft=LitList "}" | cons=LiteralExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//cons=ConsPred "in" "{" litsleft=LitList "}"
+		//cons=ArrayElements "in" "{" litsleft=LitList "}"
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//cons=ConsPred
+		//cons=ArrayElements
 		public Assignment getConsAssignment_0_0() { return cConsAssignment_0_0; }
 		
-		//ConsPred
-		public RuleCall getConsConsPredParserRuleCall_0_0_0() { return cConsConsPredParserRuleCall_0_0_0; }
+		//ArrayElements
+		public RuleCall getConsArrayElementsParserRuleCall_0_0_0() { return cConsArrayElementsParserRuleCall_0_0_0; }
 		
 		//"in"
 		public Keyword getInKeyword_0_1() { return cInKeyword_0_1; }
@@ -1789,6 +1789,49 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralExpression
 		public RuleCall getConsLiteralExpressionParserRuleCall_1_0() { return cConsLiteralExpressionParserRuleCall_1_0; }
+	}
+	public class ArrayElementsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ArrayElements");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cElAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final Keyword cElElementsKeyword_0_0_0 = (Keyword)cElAssignment_0_0.eContents().get(0);
+		private final Assignment cConsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cConsConsPredParserRuleCall_0_1_0 = (RuleCall)cConsAssignment_0_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cConsAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cConsConsPredParserRuleCall_1_0 = (RuleCall)cConsAssignment_1.eContents().get(0);
+		
+		//ArrayElements:
+		//	el="elements(" cons=ConsPred ")" | cons=ConsPred;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//el="elements(" cons=ConsPred ")" | cons=ConsPred
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//el="elements(" cons=ConsPred ")"
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//el="elements("
+		public Assignment getElAssignment_0_0() { return cElAssignment_0_0; }
+		
+		//"elements("
+		public Keyword getElElementsKeyword_0_0_0() { return cElElementsKeyword_0_0_0; }
+		
+		//cons=ConsPred
+		public Assignment getConsAssignment_0_1() { return cConsAssignment_0_1; }
+		
+		//ConsPred
+		public RuleCall getConsConsPredParserRuleCall_0_1_0() { return cConsConsPredParserRuleCall_0_1_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//cons=ConsPred
+		public Assignment getConsAssignment_1() { return cConsAssignment_1; }
+		
+		//ConsPred
+		public RuleCall getConsConsPredParserRuleCall_1_0() { return cConsConsPredParserRuleCall_1_0; }
 	}
 	public class ConsPredElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ConsPred");
@@ -2167,6 +2210,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final UnaryPreOperatorElements pUnaryPreOperator;
 	private final ComparingEQNEQOperatorElements pComparingEQNEQOperator;
 	private final ConsElements pCons;
+	private final ArrayElementsElements pArrayElements;
 	private final ConsPredElements pConsPred;
 	private final TerminalRule tINT;
 	private final LitListElements pLitList;
@@ -2233,6 +2277,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pUnaryPreOperator = new UnaryPreOperatorElements();
 		this.pComparingEQNEQOperator = new ComparingEQNEQOperatorElements();
 		this.pCons = new ConsElements();
+		this.pArrayElements = new ArrayElementsElements();
 		this.pConsPred = new ConsPredElements();
 		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.INT");
 		this.pLitList = new LitListElements();
@@ -2753,13 +2798,23 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Cons LiteralExpression:
-	//	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
+	//	cons=ArrayElements "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
 	public ConsElements getConsAccess() {
 		return pCons;
 	}
 	
 	public ParserRule getConsRule() {
 		return getConsAccess().getRule();
+	}
+	
+	//ArrayElements:
+	//	el="elements(" cons=ConsPred ")" | cons=ConsPred;
+	public ArrayElementsElements getArrayElementsAccess() {
+		return pArrayElements;
+	}
+	
+	public ParserRule getArrayElementsRule() {
+		return getArrayElementsAccess().getRule();
 	}
 	
 	//ConsPred LiteralExpression:

@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ArrayElements;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
@@ -94,6 +95,9 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 					return; 
 				}
 				else break;
+			case CryptSLPackage.ARRAY_ELEMENTS:
+				sequence_ArrayElements(context, (ArrayElements) semanticObject); 
+				return; 
 			case CryptSLPackage.COMPARING_OPERATOR:
 				if (rule == grammarAccess.getComparingEQNEQOperatorRule()) {
 					sequence_ComparingEQNEQOperator(context, (ComparingOperator) semanticObject); 
@@ -387,6 +391,18 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ArrayElements returns ArrayElements
+	 *
+	 * Constraint:
+	 *     ((el='elements(' cons=ConsPred) | cons=ConsPred)
+	 */
+	protected void sequence_ArrayElements(ISerializationContext context, ArrayElements semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ComparingEQNEQOperator returns ComparingOperator
 	 *
 	 * Constraint:
@@ -474,7 +490,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Cons returns LiteralExpression
 	 *
 	 * Constraint:
-	 *     ((cons=ConsPred litsleft=LitList) | cons=LiteralExpression)
+	 *     ((cons=ArrayElements litsleft=LitList) | cons=LiteralExpression)
 	 */
 	protected void sequence_Cons(ISerializationContext context, LiteralExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -852,7 +868,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='*'? ((elementop='+' | elementop='?')? elementop='*'?)*)
+	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='+'? ((elementop='?' | elementop='*')? elementop='+'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

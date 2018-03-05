@@ -6,6 +6,7 @@ package de.darmstadt.tu.crossing.cryptSL.impl;
 import de.darmstadt.tu.crossing.cryptSL.Aggregate;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticExpression;
 import de.darmstadt.tu.crossing.cryptSL.ArithmeticOperator;
+import de.darmstadt.tu.crossing.cryptSL.ArrayElements;
 import de.darmstadt.tu.crossing.cryptSL.ComparingOperator;
 import de.darmstadt.tu.crossing.cryptSL.ComparisonExpression;
 import de.darmstadt.tu.crossing.cryptSL.Constraint;
@@ -127,6 +128,7 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.PRE_DEFINED_PREDICATES: return createPreDefinedPredicates();
       case CryptSLPackage.LITERAL: return createLiteral();
       case CryptSLPackage.UNARY_OPERATOR: return createUnaryOperator();
+      case CryptSLPackage.ARRAY_ELEMENTS: return createArrayElements();
       case CryptSLPackage.LIT_LIST: return createLitList();
       case CryptSLPackage.PRED: return createPred();
       case CryptSLPackage.REQ_PRED: return createReqPred();
@@ -417,6 +419,17 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     UnaryOperatorImpl unaryOperator = new UnaryOperatorImpl();
     return unaryOperator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArrayElements createArrayElements()
+  {
+    ArrayElementsImpl arrayElements = new ArrayElementsImpl();
+    return arrayElements;
   }
 
   /**

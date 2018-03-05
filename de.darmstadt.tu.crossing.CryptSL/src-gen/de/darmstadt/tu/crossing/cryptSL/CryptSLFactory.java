@@ -249,6 +249,15 @@ public interface CryptSLFactory extends EFactory
   UnaryOperator createUnaryOperator();
 
   /**
+   * Returns a new object of class '<em>Array Elements</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Array Elements</em>'.
+   * @generated
+   */
+  ArrayElements createArrayElements();
+
+  /**
    * Returns a new object of class '<em>Lit List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

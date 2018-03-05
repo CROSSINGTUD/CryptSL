@@ -46,6 +46,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralAccess().getValAlternatives_1_0(), "rule__Literal__ValAlternatives_1_0");
 					put(grammarAccess.getComparingEQNEQOperatorAccess().getAlternatives(), "rule__ComparingEQNEQOperator__Alternatives");
 					put(grammarAccess.getConsAccess().getAlternatives(), "rule__Cons__Alternatives");
+					put(grammarAccess.getArrayElementsAccess().getAlternatives(), "rule__ArrayElements__Alternatives");
 					put(grammarAccess.getConsPredAccess().getAlternatives(), "rule__ConsPred__Alternatives");
 					put(grammarAccess.getLitListAccess().getAlternatives_1_1(), "rule__LitList__Alternatives_1_1");
 					put(grammarAccess.getPredAccess().getAlternatives_1(), "rule__Pred__Alternatives_1");
@@ -115,6 +116,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAggregateExpressionAccess().getGroup_1(), "rule__AggregateExpression__Group_1__0");
 					put(grammarAccess.getLiteralAccess().getGroup(), "rule__Literal__Group__0");
 					put(grammarAccess.getConsAccess().getGroup_0(), "rule__Cons__Group_0__0");
+					put(grammarAccess.getArrayElementsAccess().getGroup_0(), "rule__ArrayElements__Group_0__0");
 					put(grammarAccess.getConsPredAccess().getGroup_0(), "rule__ConsPred__Group_0__0");
 					put(grammarAccess.getLitListAccess().getGroup(), "rule__LitList__Group__0");
 					put(grammarAccess.getLitListAccess().getGroup_1(), "rule__LitList__Group_1__0");
@@ -244,6 +246,9 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConsAccess().getConsAssignment_0_0(), "rule__Cons__ConsAssignment_0_0");
 					put(grammarAccess.getConsAccess().getLitsleftAssignment_0_3(), "rule__Cons__LitsleftAssignment_0_3");
 					put(grammarAccess.getConsAccess().getConsAssignment_1(), "rule__Cons__ConsAssignment_1");
+					put(grammarAccess.getArrayElementsAccess().getElAssignment_0_0(), "rule__ArrayElements__ElAssignment_0_0");
+					put(grammarAccess.getArrayElementsAccess().getConsAssignment_0_1(), "rule__ArrayElements__ConsAssignment_0_1");
+					put(grammarAccess.getArrayElementsAccess().getConsAssignment_1(), "rule__ArrayElements__ConsAssignment_1");
 					put(grammarAccess.getConsPredAccess().getPartAssignment_0_0(), "rule__ConsPred__PartAssignment_0_0");
 					put(grammarAccess.getConsPredAccess().getIndAssignment_0_1(), "rule__ConsPred__IndAssignment_0_1");
 					put(grammarAccess.getConsPredAccess().getSplitAssignment_0_3(), "rule__ConsPred__SplitAssignment_0_3");

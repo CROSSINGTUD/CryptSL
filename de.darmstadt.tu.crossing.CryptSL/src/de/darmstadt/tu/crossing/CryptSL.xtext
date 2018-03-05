@@ -190,7 +190,11 @@ ComparingEQNEQOperator returns ComparingOperator:
 	EQUAL='==' | UNEQUAL='!=';
 
 Cons returns LiteralExpression:
-	cons=ConsPred "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
+	cons=ArrayElements "in" "{" litsleft=LitList "}" | cons=LiteralExpression;
+
+ArrayElements:
+	el ="elements(" cons=ConsPred ")" | cons=ConsPred 
+;
 
 ConsPred returns LiteralExpression:
 	(part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")") | lit=LiteralExpression;
