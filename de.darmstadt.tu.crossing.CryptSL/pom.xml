@@ -45,11 +45,22 @@
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
 						<version>${xtextVersion}</version>
+						<exclusions> <!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=484358 -->
+							<exclusion>
+								<groupId>org.eclipse.emf</groupId>
+								<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+							</exclusion>
+						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xbase</artifactId>
 						<version>${xtextVersion}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+						<version>2.9.0</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -57,7 +68,7 @@
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
-	
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
