@@ -12,7 +12,7 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(XtextRunner) 
+/*@RunWith(XtextRunner) 
 class CryptSLParsingTest{
 
 	@Inject
@@ -26,4 +26,4 @@ class CryptSLParsingTest{
 		Assert.assertNotNull(result)
 	}
 
-}
+}*/

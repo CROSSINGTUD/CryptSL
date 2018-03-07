@@ -21,8 +21,8 @@
 		<module>de.darmstadt.tu.crossing.CryptSL.target</module>
 		<module>de.darmstadt.tu.crossing.CryptSL.feature</module>
 		<module>de.darmstadt.tu.crossing.CryptSL.repository</module>
-		<!--<module>de.darmstadt.tu.crossing.CryptSL.tests</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.ui.tests</module>-->
+		<module>de.darmstadt.tu.crossing.CryptSL.tests</module>
+		<module>de.darmstadt.tu.crossing.CryptSL.ui.tests</module>
 	</modules>
 	<build>
 		<plugins>
