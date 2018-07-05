@@ -46,7 +46,12 @@ Workflow {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				generateXtendStub = false
 			}
+			generator = {
+				generateJavaMain = true
+			}
+			
 		}
+		
 	}
 
 }

@@ -32,3 +32,4 @@ Export-Package: de.darmstadt.tu.crossing.parser.antlr,
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core.dom,
  org.eclipse.xtext.common.types.xtext.ui
+Automatic-Module-Name: de.darmstadt.tu.crossing.CryptSL

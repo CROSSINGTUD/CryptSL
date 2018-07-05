@@ -2,7 +2,8 @@
 <feature
       id="de.darmstadt.tu.crossing.CryptSL.feature"
       label="de.darmstadt.tu.crossing.CryptSL.feature"
-      version="1.0.0.qualifier">
+      version="1.0.0.qualifier"
+      plugin="https://it.crossing.tu-darmstadt.de/cognicrypt/">
 
    <description>
       CrySL is a definition language that enables cryptography experts

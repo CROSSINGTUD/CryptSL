@@ -26,3 +26,4 @@ Export-Package: de.darmstadt.tu.crossing.CryptSL.ui.internal,
  de.darmstadt.tu.crossing.ui.contentassist,
  de.darmstadt.tu.crossing.ui.quickfix
 Bundle-Activator: de.darmstadt.tu.crossing.CryptSL.ui.internal.CryptSLActivator
+Automatic-Module-Name: de.darmstadt.tu.crossing.CryptSL.ui
