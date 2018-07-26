@@ -603,15 +603,44 @@ ruleObjectDecl returns [EObject current=null]
 		)
 		(
 			(
-				lv_array_1_0='[]'
-				{
-					newLeafNode(lv_array_1_0, grammarAccess.getObjectDeclAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getObjectDeclRule());
+				(
+					lv_array_1_0='[]'
+					{
+						newLeafNode(lv_array_1_0, grammarAccess.getObjectDeclAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_1_0_0());
 					}
-					setWithLastConsumed($current, "array", lv_array_1_0, "[]");
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getObjectDeclRule());
+						}
+						setWithLastConsumed($current, "array", lv_array_1_0, "[]");
+					}
+				)
+			)
+			    |
+			(
+				otherlv_2='<'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getObjectDeclAccess().getLessThanSignKeyword_1_1_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getObjectDeclRule());
+							}
+						}
+						{
+							newCompositeNode(grammarAccess.getObjectDeclAccess().getCollectionJvmGenericTypeCrossReference_1_1_1_0());
+						}
+						ruleQualifiedName
+						{
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_4='>'
+				{
+					newLeafNode(otherlv_4, grammarAccess.getObjectDeclAccess().getGreaterThanSignKeyword_1_1_2());
 				}
 			)
 		)?
@@ -620,7 +649,7 @@ ruleObjectDecl returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getObjectDeclAccess().getObjectNameObjectParserRuleCall_2_0());
 				}
-				lv_objectName_2_0=ruleObject
+				lv_objectName_5_0=ruleObject
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getObjectDeclRule());
@@ -628,15 +657,15 @@ ruleObjectDecl returns [EObject current=null]
 					set(
 						$current,
 						"objectName",
-						lv_objectName_2_0,
+						lv_objectName_5_0,
 						"de.darmstadt.tu.crossing.CryptSL.Object");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=';'
+		otherlv_6=';'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getObjectDeclAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_6, grammarAccess.getObjectDeclAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -2813,13 +2842,37 @@ ruleIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
 @after {
 	leaveRule();
 }:
-	this_INT_0=RULE_INT
-	{
-		$current.merge(this_INT_0);
-	}
-	{
-		newLeafNode(this_INT_0, grammarAccess.getIntegerLiteralAccess().getINTTerminalRuleCall());
-	}
+	(
+		this_INT_0=RULE_INT
+		{
+			$current.merge(this_INT_0);
+		}
+		{
+			newLeafNode(this_INT_0, grammarAccess.getIntegerLiteralAccess().getINTTerminalRuleCall_0());
+		}
+		    |
+		(
+			this_INT_1=RULE_INT
+			{
+				$current.merge(this_INT_1);
+			}
+			{
+				newLeafNode(this_INT_1, grammarAccess.getIntegerLiteralAccess().getINTTerminalRuleCall_1_0());
+			}
+			kw='^'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getIntegerLiteralAccess().getCircumflexAccentKeyword_1_1());
+			}
+			this_INT_3=RULE_INT
+			{
+				$current.merge(this_INT_3);
+			}
+			{
+				newLeafNode(this_INT_3, grammarAccess.getIntegerLiteralAccess().getINTTerminalRuleCall_1_2());
+			}
+		)
+	)
 ;
 
 // Entry rule entryRuleUnaryPreOperator

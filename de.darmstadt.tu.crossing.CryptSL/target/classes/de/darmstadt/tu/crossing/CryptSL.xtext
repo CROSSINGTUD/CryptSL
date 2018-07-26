@@ -40,7 +40,7 @@ DestroysBlock:
 
 	////////////// OBJECTS
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]")? objectName=Object ";";
+	objectType=[jvmTypes::JvmType|QualifiedName] ((array="[]") | ("<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"))? objectName=Object ";";
 
 	/////////// FORBIDDEN EVENTS
 ForbMethod:
@@ -181,7 +181,7 @@ StringLiteral:
 	STRING;
 
 IntegerLiteral:
-	INT;
+	INT | INT '^' INT;
 
 UnaryPreOperator returns UnaryOperator:
 	NOT='!';

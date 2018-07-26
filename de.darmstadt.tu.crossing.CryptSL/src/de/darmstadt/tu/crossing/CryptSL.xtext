@@ -181,7 +181,7 @@ StringLiteral:
 	STRING;
 
 IntegerLiteral:
-	INT;
+	INT | INT '^' INT;
 
 UnaryPreOperator returns UnaryOperator:
 	NOT='!';

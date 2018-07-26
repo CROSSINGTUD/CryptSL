@@ -315,18 +315,27 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cObjectTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cObjectTypeJvmTypeCrossReference_0_0 = (CrossReference)cObjectTypeAssignment_0.eContents().get(0);
 		private final RuleCall cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cObjectTypeJvmTypeCrossReference_0_0.eContents().get(1);
-		private final Assignment cArrayAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cArrayLeftSquareBracketRightSquareBracketKeyword_1_0 = (Keyword)cArrayAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cArrayAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final Keyword cArrayLeftSquareBracketRightSquareBracketKeyword_1_0_0 = (Keyword)cArrayAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cLessThanSignKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cCollectionAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final CrossReference cCollectionJvmGenericTypeCrossReference_1_1_1_0 = (CrossReference)cCollectionAssignment_1_1_1.eContents().get(0);
+		private final RuleCall cCollectionJvmGenericTypeQualifiedNameParserRuleCall_1_1_1_0_1 = (RuleCall)cCollectionJvmGenericTypeCrossReference_1_1_1_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
 		private final Assignment cObjectNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cObjectNameObjectParserRuleCall_2_0 = (RuleCall)cObjectNameAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//////////////// OBJECTS
 		//ObjectDecl:
-		//	objectType=[jvmTypes::JvmType|QualifiedName] array="[]"? objectName=Object ";";
+		//	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName]
+		//	">")? objectName=Object ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//objectType=[jvmTypes::JvmType|QualifiedName] array="[]"? objectName=Object ";"
+		//objectType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
+		//objectName=Object ";"
 		public Group getGroup() { return cGroup; }
 		
 		//objectType=[jvmTypes::JvmType|QualifiedName]
@@ -338,11 +347,32 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1() { return cObjectTypeJvmTypeQualifiedNameParserRuleCall_0_0_1; }
 		
-		//array="[]"?
-		public Assignment getArrayAssignment_1() { return cArrayAssignment_1; }
+		//(array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//array="[]"
+		public Assignment getArrayAssignment_1_0() { return cArrayAssignment_1_0; }
 		
 		//"[]"
-		public Keyword getArrayLeftSquareBracketRightSquareBracketKeyword_1_0() { return cArrayLeftSquareBracketRightSquareBracketKeyword_1_0; }
+		public Keyword getArrayLeftSquareBracketRightSquareBracketKeyword_1_0_0() { return cArrayLeftSquareBracketRightSquareBracketKeyword_1_0_0; }
+		
+		//"<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//"<"
+		public Keyword getLessThanSignKeyword_1_1_0() { return cLessThanSignKeyword_1_1_0; }
+		
+		//collection=[jvmTypes::JvmGenericType|QualifiedName]
+		public Assignment getCollectionAssignment_1_1_1() { return cCollectionAssignment_1_1_1; }
+		
+		//[jvmTypes::JvmGenericType|QualifiedName]
+		public CrossReference getCollectionJvmGenericTypeCrossReference_1_1_1_0() { return cCollectionJvmGenericTypeCrossReference_1_1_1_0; }
+		
+		//QualifiedName
+		public RuleCall getCollectionJvmGenericTypeQualifiedNameParserRuleCall_1_1_1_0_1() { return cCollectionJvmGenericTypeQualifiedNameParserRuleCall_1_1_1_0_1; }
+		
+		//">"
+		public Keyword getGreaterThanSignKeyword_1_1_2() { return cGreaterThanSignKeyword_1_1_2; }
 		
 		//objectName=Object
 		public Assignment getObjectNameAssignment_2() { return cObjectNameAssignment_2; }
@@ -1688,14 +1718,34 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class IntegerLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.IntegerLiteral");
-		private final RuleCall cINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Keyword cCircumflexAccentKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		
 		//IntegerLiteral:
-		//	INT;
+		//	INT | INT '^' INT;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//INT | INT '^' INT
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
 		//INT
-		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
+		
+		//INT '^' INT
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
+		
+		//'^'
+		public Keyword getCircumflexAccentKeyword_1_1() { return cCircumflexAccentKeyword_1_1; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_2() { return cINTTerminalRuleCall_1_2; }
 	}
 	public class UnaryPreOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.UnaryPreOperator");
@@ -2401,7 +2451,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//////////////// OBJECTS
 	//ObjectDecl:
-	//	objectType=[jvmTypes::JvmType|QualifiedName] array="[]"? objectName=Object ";";
+	//	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName]
+	//	">")? objectName=Object ";";
 	public ObjectDeclElements getObjectDeclAccess() {
 		return pObjectDecl;
 	}
@@ -2768,7 +2819,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IntegerLiteral:
-	//	INT;
+	//	INT | INT '^' INT;
 	public IntegerLiteralElements getIntegerLiteralAccess() {
 		return pIntegerLiteral;
 	}

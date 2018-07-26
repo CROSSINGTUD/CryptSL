@@ -764,7 +764,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     ObjectDecl returns ObjectDecl
 	 *
 	 * Constraint:
-	 *     (objectType=[JvmType|QualifiedName] array='[]'? objectName=Object)
+	 *     (objectType=[JvmType|QualifiedName] (array='[]' | collection=[JvmGenericType|QualifiedName])? objectName=Object)
 	 */
 	protected void sequence_ObjectDecl(ISerializationContext context, ObjectDecl semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

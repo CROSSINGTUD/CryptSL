@@ -382,13 +382,22 @@ public interface CryptSLPackage extends EPackage
   int OBJECT_DECL__ARRAY = 1;
 
   /**
+   * The feature id for the '<em><b>Collection</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT_DECL__COLLECTION = 2;
+
+  /**
    * The feature id for the '<em><b>Object Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT_DECL__OBJECT_NAME = 2;
+  int OBJECT_DECL__OBJECT_NAME = 3;
 
   /**
    * The number of structural features of the '<em>Object Decl</em>' class.
@@ -397,7 +406,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT_DECL_FEATURE_COUNT = 3;
+  int OBJECT_DECL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.ForbMethodImpl <em>Forb Method</em>}' class.
@@ -2104,6 +2113,17 @@ public interface CryptSLPackage extends EPackage
   EAttribute getObjectDecl_Array();
 
   /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Collection</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getCollection()
+   * @see #getObjectDecl()
+   * @generated
+   */
+  EReference getObjectDecl_Collection();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getObjectName <em>Object Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3276,6 +3296,14 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EAttribute OBJECT_DECL__ARRAY = eINSTANCE.getObjectDecl_Array();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OBJECT_DECL__COLLECTION = eINSTANCE.getObjectDecl_Collection();
 
     /**
      * The meta object literal for the '<em><b>Object Name</b></em>' containment reference feature.

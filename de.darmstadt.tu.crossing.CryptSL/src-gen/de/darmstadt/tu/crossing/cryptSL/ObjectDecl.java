@@ -5,6 +5,7 @@ package de.darmstadt.tu.crossing.cryptSL;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getObjectType <em>Object Type</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getArray <em>Array</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getCollection <em>Collection</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getObjectName <em>Object Name</em>}</li>
  * </ul>
  *
@@ -78,6 +80,32 @@ public interface ObjectDecl extends EObject
    * @generated
    */
   void setArray(String value);
+
+  /**
+   * Returns the value of the '<em><b>Collection</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Collection</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Collection</em>' reference.
+   * @see #setCollection(JvmGenericType)
+   * @see de.darmstadt.tu.crossing.cryptSL.CryptSLPackage#getObjectDecl_Collection()
+   * @model
+   * @generated
+   */
+  JvmGenericType getCollection();
+
+  /**
+   * Sets the value of the '{@link de.darmstadt.tu.crossing.cryptSL.ObjectDecl#getCollection <em>Collection</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Collection</em>' reference.
+   * @see #getCollection()
+   * @generated
+   */
+  void setCollection(JvmGenericType value);
 
   /**
    * Returns the value of the '<em><b>Object Name</b></em>' containment reference.

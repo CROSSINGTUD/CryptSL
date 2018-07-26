@@ -31,6 +31,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getObjectDeclAccess().getAlternatives_1(), "rule__ObjectDecl__Alternatives_1");
 					put(grammarAccess.getEventAccess().getAlternatives(), "rule__Event__Alternatives");
 					put(grammarAccess.getParAccess().getAlternatives_1(), "rule__Par__Alternatives_1");
 					put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
@@ -44,6 +45,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralExpressionAccess().getAlternatives(), "rule__LiteralExpression__Alternatives");
 					put(grammarAccess.getPreDefinedPredicatesAccess().getAlternatives(), "rule__PreDefinedPredicates__Alternatives");
 					put(grammarAccess.getLiteralAccess().getValAlternatives_1_0(), "rule__Literal__ValAlternatives_1_0");
+					put(grammarAccess.getIntegerLiteralAccess().getAlternatives(), "rule__IntegerLiteral__Alternatives");
 					put(grammarAccess.getComparingEQNEQOperatorAccess().getAlternatives(), "rule__ComparingEQNEQOperator__Alternatives");
 					put(grammarAccess.getConsAccess().getAlternatives(), "rule__Cons__Alternatives");
 					put(grammarAccess.getArrayElementsAccess().getAlternatives(), "rule__ArrayElements__Alternatives");
@@ -67,6 +69,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnsuresBlockAccess().getGroup(), "rule__EnsuresBlock__Group__0");
 					put(grammarAccess.getDestroysBlockAccess().getGroup(), "rule__DestroysBlock__Group__0");
 					put(grammarAccess.getObjectDeclAccess().getGroup(), "rule__ObjectDecl__Group__0");
+					put(grammarAccess.getObjectDeclAccess().getGroup_1_1(), "rule__ObjectDecl__Group_1_1__0");
 					put(grammarAccess.getForbMethodAccess().getGroup(), "rule__ForbMethod__Group__0");
 					put(grammarAccess.getForbMethodAccess().getGroup_0(), "rule__ForbMethod__Group_0__0");
 					put(grammarAccess.getForbMethodAccess().getGroup_0_1(), "rule__ForbMethod__Group_0_1__0");
@@ -115,6 +118,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAggregateExpressionAccess().getGroup(), "rule__AggregateExpression__Group__0");
 					put(grammarAccess.getAggregateExpressionAccess().getGroup_1(), "rule__AggregateExpression__Group_1__0");
 					put(grammarAccess.getLiteralAccess().getGroup(), "rule__Literal__Group__0");
+					put(grammarAccess.getIntegerLiteralAccess().getGroup_1(), "rule__IntegerLiteral__Group_1__0");
 					put(grammarAccess.getConsAccess().getGroup_0(), "rule__Cons__Group_0__0");
 					put(grammarAccess.getArrayElementsAccess().getGroup_0(), "rule__ArrayElements__Group_0__0");
 					put(grammarAccess.getConsPredAccess().getGroup_0(), "rule__ConsPred__Group_0__0");
@@ -178,7 +182,8 @@ public class CryptSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnsuresBlockAccess().getPredAssignment_0(), "rule__EnsuresBlock__PredAssignment_0");
 					put(grammarAccess.getDestroysBlockAccess().getPredAssignment_0(), "rule__DestroysBlock__PredAssignment_0");
 					put(grammarAccess.getObjectDeclAccess().getObjectTypeAssignment_0(), "rule__ObjectDecl__ObjectTypeAssignment_0");
-					put(grammarAccess.getObjectDeclAccess().getArrayAssignment_1(), "rule__ObjectDecl__ArrayAssignment_1");
+					put(grammarAccess.getObjectDeclAccess().getArrayAssignment_1_0(), "rule__ObjectDecl__ArrayAssignment_1_0");
+					put(grammarAccess.getObjectDeclAccess().getCollectionAssignment_1_1_1(), "rule__ObjectDecl__CollectionAssignment_1_1_1");
 					put(grammarAccess.getObjectDeclAccess().getObjectNameAssignment_2(), "rule__ObjectDecl__ObjectNameAssignment_2");
 					put(grammarAccess.getForbMethodAccess().getJavaMethAssignment_0_0(), "rule__ForbMethod__JavaMethAssignment_0_0");
 					put(grammarAccess.getForbMethodAccess().getRepAssignment_0_1_1(), "rule__ForbMethod__RepAssignment_0_1_1");

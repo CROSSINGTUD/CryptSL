@@ -667,9 +667,19 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getObjectDecl_ObjectName()
+  public EReference getObjectDecl_Collection()
   {
     return (EReference)objectDeclEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getObjectDecl_ObjectName()
+  {
+    return (EReference)objectDeclEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1587,6 +1597,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     objectDeclEClass = createEClass(OBJECT_DECL);
     createEReference(objectDeclEClass, OBJECT_DECL__OBJECT_TYPE);
     createEAttribute(objectDeclEClass, OBJECT_DECL__ARRAY);
+    createEReference(objectDeclEClass, OBJECT_DECL__COLLECTION);
     createEReference(objectDeclEClass, OBJECT_DECL__OBJECT_NAME);
 
     forbMethodEClass = createEClass(FORB_METHOD);
@@ -1784,6 +1795,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     initEClass(objectDeclEClass, ObjectDecl.class, "ObjectDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObjectDecl_ObjectType(), theTypesPackage.getJvmType(), null, "objectType", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObjectDecl_Array(), ecorePackage.getEString(), "array", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObjectDecl_Collection(), theTypesPackage.getJvmGenericType(), null, "collection", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getObjectDecl_ObjectName(), this.getSuperType(), null, "objectName", null, 0, 1, ObjectDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forbMethodEClass, ForbMethod.class, "ForbMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

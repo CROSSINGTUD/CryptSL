@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 
 /**
@@ -28,6 +29,7 @@ import org.eclipse.xtext.common.types.JvmType;
  * <ul>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl#getObjectType <em>Object Type</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl#getArray <em>Array</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl#getCollection <em>Collection</em>}</li>
  *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ObjectDeclImpl#getObjectName <em>Object Name</em>}</li>
  * </ul>
  *
@@ -64,6 +66,16 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * @ordered
    */
   protected String array = ARRAY_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getCollection() <em>Collection</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCollection()
+   * @generated
+   * @ordered
+   */
+  protected JvmGenericType collection;
 
   /**
    * The cached value of the '{@link #getObjectName() <em>Object Name</em>}' containment reference.
@@ -167,6 +179,49 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
    * <!-- end-user-doc -->
    * @generated
    */
+  public JvmGenericType getCollection()
+  {
+    if (collection != null && collection.eIsProxy())
+    {
+      InternalEObject oldCollection = (InternalEObject)collection;
+      collection = (JvmGenericType)eResolveProxy(oldCollection);
+      if (collection != oldCollection)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.OBJECT_DECL__COLLECTION, oldCollection, collection));
+      }
+    }
+    return collection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmGenericType basicGetCollection()
+  {
+    return collection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCollection(JvmGenericType newCollection)
+  {
+    JvmGenericType oldCollection = collection;
+    collection = newCollection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.OBJECT_DECL__COLLECTION, oldCollection, collection));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SuperType getObjectName()
   {
     return objectName;
@@ -241,6 +296,9 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
         return basicGetObjectType();
       case CryptSLPackage.OBJECT_DECL__ARRAY:
         return getArray();
+      case CryptSLPackage.OBJECT_DECL__COLLECTION:
+        if (resolve) return getCollection();
+        return basicGetCollection();
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
         return getObjectName();
     }
@@ -262,6 +320,9 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
         return;
       case CryptSLPackage.OBJECT_DECL__ARRAY:
         setArray((String)newValue);
+        return;
+      case CryptSLPackage.OBJECT_DECL__COLLECTION:
+        setCollection((JvmGenericType)newValue);
         return;
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
         setObjectName((SuperType)newValue);
@@ -286,6 +347,9 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
       case CryptSLPackage.OBJECT_DECL__ARRAY:
         setArray(ARRAY_EDEFAULT);
         return;
+      case CryptSLPackage.OBJECT_DECL__COLLECTION:
+        setCollection((JvmGenericType)null);
+        return;
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
         setObjectName((SuperType)null);
         return;
@@ -307,6 +371,8 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
         return objectType != null;
       case CryptSLPackage.OBJECT_DECL__ARRAY:
         return ARRAY_EDEFAULT == null ? array != null : !ARRAY_EDEFAULT.equals(array);
+      case CryptSLPackage.OBJECT_DECL__COLLECTION:
+        return collection != null;
       case CryptSLPackage.OBJECT_DECL__OBJECT_NAME:
         return objectName != null;
     }
