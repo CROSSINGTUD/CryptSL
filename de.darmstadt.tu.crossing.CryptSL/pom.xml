@@ -6,6 +6,7 @@
 		<artifactId>de.darmstadt.tu.crossing.CryptSL.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
+	<version>1.0.0-SNAPSHOT</version>
 	<artifactId>de.darmstadt.tu.crossing.CryptSL</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
@@ -72,6 +73,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>
