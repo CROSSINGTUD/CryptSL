@@ -428,31 +428,26 @@ public class ComparingOperatorImpl extends MinimalEObjectImpl.Container implemen
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (LESS: ");
-    result.append(less);
-    result.append(", LESS_OR_EQUAL: ");
-    result.append(lesS_OR_EQUAL);
-    result.append(", GREATER_OR_EQUAL: ");
-    result.append(greateR_OR_EQUAL);
-    result.append(", GREATER: ");
-    result.append(greater);
-    result.append(", EQUAL: ");
-    result.append(equal);
-    result.append(", UNEQUAL: ");
-    result.append(unequal);
-    result.append(')');
-    return result.toString();
-  }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (less != null && !less.isEmpty()) {
+			return less;
+		} else if (lesS_OR_EQUAL != null && !lesS_OR_EQUAL.isEmpty()) {
+			return lesS_OR_EQUAL;
+		} else if (greateR_OR_EQUAL != null && !greateR_OR_EQUAL.isEmpty()) {
+			return greateR_OR_EQUAL;
+		} else if (greater != null && !greater.isEmpty()) {
+			return greater;
+		} else if (equal != null && !equal.isEmpty()) {
+			return equal;
+		} else {
+			return unequal;
+		}
+	}
 
 } //ComparingOperatorImpl
