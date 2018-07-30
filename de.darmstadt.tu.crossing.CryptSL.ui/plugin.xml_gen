@@ -249,6 +249,15 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="de.darmstadt.tu.crossing.CryptSL"
+			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="de.darmstadt.tu.crossing.CryptSL.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="de.darmstadt.tu.crossing.ui.keyword_CryptSL"/>
+		</page>
+	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
@@ -397,12 +406,18 @@
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="cryptsl">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="de.darmstadt.tu.crossing.CryptSL.contenttype"
+			contentViewerId="de.darmstadt.tu.crossing.CryptSL.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="de.darmstadt.tu.crossing.CryptSL.compare.contentMergeViewers"
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="cryptsl" label="CryptSL Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="de.darmstadt.tu.crossing.CryptSL.contenttype"
+			contentMergeViewerId="de.darmstadt.tu.crossing.CryptSL.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="de.darmstadt.tu.crossing.CryptSL.editors.documentProviders"
