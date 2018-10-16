@@ -212,23 +212,18 @@ public class LogicalOperatorImpl extends MinimalEObjectImpl.Container implements
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (OR: ");
-    result.append(or);
-    result.append(", AND: ");
-    result.append(and);
-    result.append(')');
-    return result.toString();
-  }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (or != null && !or.isEmpty()) {
+			return or;
+		} else {
+			return and;
+		}
+	}
 
 } //LogicalOperatorImpl
