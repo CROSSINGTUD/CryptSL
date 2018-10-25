@@ -77,13 +77,31 @@ public interface CryptSLPackage extends EPackage
   int DOMAINMODEL__JAVA_TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Array</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOMAINMODEL__ARRAY = 1;
+
+  /**
+   * The feature id for the '<em><b>Collection</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOMAINMODEL__COLLECTION = 2;
+
+  /**
    * The feature id for the '<em><b>Usage</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__USAGE = 1;
+  int DOMAINMODEL__USAGE = 3;
 
   /**
    * The feature id for the '<em><b>Forb Event</b></em>' containment reference.
@@ -92,7 +110,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__FORB_EVENT = 2;
+  int DOMAINMODEL__FORB_EVENT = 4;
 
   /**
    * The feature id for the '<em><b>Req events</b></em>' containment reference.
@@ -101,7 +119,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__REQ_EVENTS = 3;
+  int DOMAINMODEL__REQ_EVENTS = 5;
 
   /**
    * The feature id for the '<em><b>Order</b></em>' containment reference.
@@ -110,7 +128,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__ORDER = 4;
+  int DOMAINMODEL__ORDER = 6;
 
   /**
    * The feature id for the '<em><b>Req Constraints</b></em>' containment reference.
@@ -119,7 +137,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__REQ_CONSTRAINTS = 5;
+  int DOMAINMODEL__REQ_CONSTRAINTS = 7;
 
   /**
    * The feature id for the '<em><b>Require</b></em>' containment reference.
@@ -128,7 +146,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__REQUIRE = 6;
+  int DOMAINMODEL__REQUIRE = 8;
 
   /**
    * The feature id for the '<em><b>Ensure</b></em>' containment reference.
@@ -137,7 +155,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__ENSURE = 7;
+  int DOMAINMODEL__ENSURE = 9;
 
   /**
    * The feature id for the '<em><b>Destroy</b></em>' containment reference.
@@ -146,7 +164,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__DESTROY = 8;
+  int DOMAINMODEL__DESTROY = 10;
 
   /**
    * The number of structural features of the '<em>Domainmodel</em>' class.
@@ -155,7 +173,7 @@ public interface CryptSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL_FEATURE_COUNT = 9;
+  int DOMAINMODEL_FEATURE_COUNT = 11;
 
   /**
    * The meta object id for the '{@link de.darmstadt.tu.crossing.cryptSL.impl.UseBlockImpl <em>Use Block</em>}' class.
@@ -1846,6 +1864,28 @@ public interface CryptSLPackage extends EPackage
   EReference getDomainmodel_JavaType();
 
   /**
+   * Returns the meta object for the attribute '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getArray <em>Array</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Array</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getArray()
+   * @see #getDomainmodel()
+   * @generated
+   */
+  EAttribute getDomainmodel_Array();
+
+  /**
+   * Returns the meta object for the reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Collection</em>'.
+   * @see de.darmstadt.tu.crossing.cryptSL.Domainmodel#getCollection()
+   * @see #getDomainmodel()
+   * @generated
+   */
+  EReference getDomainmodel_Collection();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.darmstadt.tu.crossing.cryptSL.Domainmodel#getUsage <em>Usage</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3080,6 +3120,22 @@ public interface CryptSLPackage extends EPackage
      * @generated
      */
     EReference DOMAINMODEL__JAVA_TYPE = eINSTANCE.getDomainmodel_JavaType();
+
+    /**
+     * The meta object literal for the '<em><b>Array</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DOMAINMODEL__ARRAY = eINSTANCE.getDomainmodel_Array();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAINMODEL__COLLECTION = eINSTANCE.getDomainmodel_Collection();
 
     /**
      * The meta object literal for the '<em><b>Usage</b></em>' containment reference feature.

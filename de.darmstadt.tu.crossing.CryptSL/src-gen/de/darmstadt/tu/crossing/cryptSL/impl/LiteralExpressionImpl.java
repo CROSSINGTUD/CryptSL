@@ -643,7 +643,7 @@ public class LiteralExpressionImpl extends ConstraintImpl implements LiteralExpr
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (part: ");
     result.append(part);
     result.append(", ind: ");

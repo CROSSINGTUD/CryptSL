@@ -31,6 +31,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, CryptSLGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getDomainmodelAccess().getAlternatives_2(), "rule__Domainmodel__Alternatives_2");
 			builder.put(grammarAccess.getObjectDeclAccess().getAlternatives_1(), "rule__ObjectDecl__Alternatives_1");
 			builder.put(grammarAccess.getEventAccess().getAlternatives(), "rule__Event__Alternatives");
 			builder.put(grammarAccess.getParAccess().getAlternatives_1(), "rule__Par__Alternatives_1");
@@ -59,11 +60,12 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 			builder.put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
 			builder.put(grammarAccess.getDomainmodelAccess().getGroup(), "rule__Domainmodel__Group__0");
-			builder.put(grammarAccess.getDomainmodelAccess().getGroup_4(), "rule__Domainmodel__Group_4__0");
-			builder.put(grammarAccess.getDomainmodelAccess().getGroup_9(), "rule__Domainmodel__Group_9__0");
+			builder.put(grammarAccess.getDomainmodelAccess().getGroup_2_1(), "rule__Domainmodel__Group_2_1__0");
+			builder.put(grammarAccess.getDomainmodelAccess().getGroup_5(), "rule__Domainmodel__Group_5__0");
 			builder.put(grammarAccess.getDomainmodelAccess().getGroup_10(), "rule__Domainmodel__Group_10__0");
 			builder.put(grammarAccess.getDomainmodelAccess().getGroup_11(), "rule__Domainmodel__Group_11__0");
 			builder.put(grammarAccess.getDomainmodelAccess().getGroup_12(), "rule__Domainmodel__Group_12__0");
+			builder.put(grammarAccess.getDomainmodelAccess().getGroup_13(), "rule__Domainmodel__Group_13__0");
 			builder.put(grammarAccess.getEnforceConsBlockAccess().getGroup(), "rule__EnforceConsBlock__Group__0");
 			builder.put(grammarAccess.getRequiresBlockAccess().getGroup(), "rule__RequiresBlock__Group__0");
 			builder.put(grammarAccess.getEnsuresBlockAccess().getGroup(), "rule__EnsuresBlock__Group__0");
@@ -166,14 +168,16 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 			builder.put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 			builder.put(grammarAccess.getDomainmodelAccess().getJavaTypeAssignment_1(), "rule__Domainmodel__JavaTypeAssignment_1");
-			builder.put(grammarAccess.getDomainmodelAccess().getUsageAssignment_3(), "rule__Domainmodel__UsageAssignment_3");
-			builder.put(grammarAccess.getDomainmodelAccess().getForbEventAssignment_4_1(), "rule__Domainmodel__ForbEventAssignment_4_1");
-			builder.put(grammarAccess.getDomainmodelAccess().getReq_eventsAssignment_6(), "rule__Domainmodel__Req_eventsAssignment_6");
-			builder.put(grammarAccess.getDomainmodelAccess().getOrderAssignment_8(), "rule__Domainmodel__OrderAssignment_8");
-			builder.put(grammarAccess.getDomainmodelAccess().getReqConstraintsAssignment_9_1(), "rule__Domainmodel__ReqConstraintsAssignment_9_1");
-			builder.put(grammarAccess.getDomainmodelAccess().getRequireAssignment_10_1(), "rule__Domainmodel__RequireAssignment_10_1");
-			builder.put(grammarAccess.getDomainmodelAccess().getEnsureAssignment_11_1(), "rule__Domainmodel__EnsureAssignment_11_1");
-			builder.put(grammarAccess.getDomainmodelAccess().getDestroyAssignment_12_1(), "rule__Domainmodel__DestroyAssignment_12_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getArrayAssignment_2_0(), "rule__Domainmodel__ArrayAssignment_2_0");
+			builder.put(grammarAccess.getDomainmodelAccess().getCollectionAssignment_2_1_1(), "rule__Domainmodel__CollectionAssignment_2_1_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getUsageAssignment_4(), "rule__Domainmodel__UsageAssignment_4");
+			builder.put(grammarAccess.getDomainmodelAccess().getForbEventAssignment_5_1(), "rule__Domainmodel__ForbEventAssignment_5_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getReq_eventsAssignment_7(), "rule__Domainmodel__Req_eventsAssignment_7");
+			builder.put(grammarAccess.getDomainmodelAccess().getOrderAssignment_9(), "rule__Domainmodel__OrderAssignment_9");
+			builder.put(grammarAccess.getDomainmodelAccess().getReqConstraintsAssignment_10_1(), "rule__Domainmodel__ReqConstraintsAssignment_10_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getRequireAssignment_11_1(), "rule__Domainmodel__RequireAssignment_11_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getEnsureAssignment_12_1(), "rule__Domainmodel__EnsureAssignment_12_1");
+			builder.put(grammarAccess.getDomainmodelAccess().getDestroyAssignment_13_1(), "rule__Domainmodel__DestroyAssignment_13_1");
 			builder.put(grammarAccess.getUseBlockAccess().getObjectsAssignment(), "rule__UseBlock__ObjectsAssignment");
 			builder.put(grammarAccess.getForbiddenBlockAccess().getForb_methodsAssignment(), "rule__ForbiddenBlock__Forb_methodsAssignment");
 			builder.put(grammarAccess.getRequiredBlockAccess().getReq_eventAssignment(), "rule__RequiredBlock__Req_eventAssignment");

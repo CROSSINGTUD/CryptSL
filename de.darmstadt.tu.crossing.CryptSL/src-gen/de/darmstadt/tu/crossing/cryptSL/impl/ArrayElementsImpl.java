@@ -256,7 +256,7 @@ public class ArrayElementsImpl extends MinimalEObjectImpl.Container implements A
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (el: ");
     result.append(el);
     result.append(')');

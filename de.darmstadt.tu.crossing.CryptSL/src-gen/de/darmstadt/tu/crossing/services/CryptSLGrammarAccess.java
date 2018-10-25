@@ -31,46 +31,57 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cJavaTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cJavaTypeJvmTypeCrossReference_1_0 = (CrossReference)cJavaTypeAssignment_1.eContents().get(0);
 		private final RuleCall cJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cJavaTypeJvmTypeCrossReference_1_0.eContents().get(1);
-		private final Keyword cOBJECTSKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cUsageAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cUsageUseBlockParserRuleCall_3_0 = (RuleCall)cUsageAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cFORBIDDENKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cForbEventAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cForbEventForbiddenBlockParserRuleCall_4_1_0 = (RuleCall)cForbEventAssignment_4_1.eContents().get(0);
-		private final Keyword cEVENTSKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cReq_eventsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cReq_eventsRequiredBlockParserRuleCall_6_0 = (RuleCall)cReq_eventsAssignment_6.eContents().get(0);
-		private final Keyword cORDERKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cOrderAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cOrderOrderParserRuleCall_8_0 = (RuleCall)cOrderAssignment_8.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cCONSTRAINTSKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cReqConstraintsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cReqConstraintsEnforceConsBlockParserRuleCall_9_1_0 = (RuleCall)cReqConstraintsAssignment_9_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cArrayAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cArrayLeftSquareBracketRightSquareBracketKeyword_2_0_0 = (Keyword)cArrayAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cLessThanSignKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cCollectionAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final CrossReference cCollectionJvmGenericTypeCrossReference_2_1_1_0 = (CrossReference)cCollectionAssignment_2_1_1.eContents().get(0);
+		private final RuleCall cCollectionJvmGenericTypeQualifiedNameParserRuleCall_2_1_1_0_1 = (RuleCall)cCollectionJvmGenericTypeCrossReference_2_1_1_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_2_1_2 = (Keyword)cGroup_2_1.eContents().get(2);
+		private final Keyword cOBJECTSKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cUsageAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cUsageUseBlockParserRuleCall_4_0 = (RuleCall)cUsageAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cFORBIDDENKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cForbEventAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cForbEventForbiddenBlockParserRuleCall_5_1_0 = (RuleCall)cForbEventAssignment_5_1.eContents().get(0);
+		private final Keyword cEVENTSKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cReq_eventsAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cReq_eventsRequiredBlockParserRuleCall_7_0 = (RuleCall)cReq_eventsAssignment_7.eContents().get(0);
+		private final Keyword cORDERKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cOrderAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cOrderOrderParserRuleCall_9_0 = (RuleCall)cOrderAssignment_9.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cREQUIRESKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cRequireAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final RuleCall cRequireRequiresBlockParserRuleCall_10_1_0 = (RuleCall)cRequireAssignment_10_1.eContents().get(0);
+		private final Keyword cCONSTRAINTSKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cReqConstraintsAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cReqConstraintsEnforceConsBlockParserRuleCall_10_1_0 = (RuleCall)cReqConstraintsAssignment_10_1.eContents().get(0);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cENSURESKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cEnsureAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final RuleCall cEnsureEnsuresBlockParserRuleCall_11_1_0 = (RuleCall)cEnsureAssignment_11_1.eContents().get(0);
+		private final Keyword cREQUIRESKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cRequireAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cRequireRequiresBlockParserRuleCall_11_1_0 = (RuleCall)cRequireAssignment_11_1.eContents().get(0);
 		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cNEGATESKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Assignment cDestroyAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
-		private final RuleCall cDestroyDestroysBlockParserRuleCall_12_1_0 = (RuleCall)cDestroyAssignment_12_1.eContents().get(0);
+		private final Keyword cENSURESKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cEnsureAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cEnsureEnsuresBlockParserRuleCall_12_1_0 = (RuleCall)cEnsureAssignment_12_1.eContents().get(0);
+		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
+		private final Keyword cNEGATESKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
+		private final Assignment cDestroyAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
+		private final RuleCall cDestroyDestroysBlockParserRuleCall_13_1_0 = (RuleCall)cDestroyAssignment_13_1.eContents().get(0);
 		
 		//Domainmodel:
-		//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
+		//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<"
+		//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
 		//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
 		//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES'
 		//	require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] 'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
-		//'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES'
-		//require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?
+		//'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName]
+		//">")? 'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)? 'EVENTS' req_events=RequiredBlock 'ORDER'
+		//order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES' require=RequiresBlock)? ('ENSURES'
+		//ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?
 		public Group getGroup() { return cGroup; }
 		
 		//'SPEC'
@@ -85,92 +96,119 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cJavaTypeJvmTypeQualifiedNameParserRuleCall_1_0_1; }
 		
+		//(array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//array="[]"
+		public Assignment getArrayAssignment_2_0() { return cArrayAssignment_2_0; }
+		
+		//"[]"
+		public Keyword getArrayLeftSquareBracketRightSquareBracketKeyword_2_0_0() { return cArrayLeftSquareBracketRightSquareBracketKeyword_2_0_0; }
+		
+		//"<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//"<"
+		public Keyword getLessThanSignKeyword_2_1_0() { return cLessThanSignKeyword_2_1_0; }
+		
+		//collection=[jvmTypes::JvmGenericType|QualifiedName]
+		public Assignment getCollectionAssignment_2_1_1() { return cCollectionAssignment_2_1_1; }
+		
+		//[jvmTypes::JvmGenericType|QualifiedName]
+		public CrossReference getCollectionJvmGenericTypeCrossReference_2_1_1_0() { return cCollectionJvmGenericTypeCrossReference_2_1_1_0; }
+		
+		//QualifiedName
+		public RuleCall getCollectionJvmGenericTypeQualifiedNameParserRuleCall_2_1_1_0_1() { return cCollectionJvmGenericTypeQualifiedNameParserRuleCall_2_1_1_0_1; }
+		
+		//">"
+		public Keyword getGreaterThanSignKeyword_2_1_2() { return cGreaterThanSignKeyword_2_1_2; }
+		
 		//'OBJECTS'
-		public Keyword getOBJECTSKeyword_2() { return cOBJECTSKeyword_2; }
+		public Keyword getOBJECTSKeyword_3() { return cOBJECTSKeyword_3; }
 		
 		//usage=UseBlock
-		public Assignment getUsageAssignment_3() { return cUsageAssignment_3; }
+		public Assignment getUsageAssignment_4() { return cUsageAssignment_4; }
 		
 		//UseBlock
-		public RuleCall getUsageUseBlockParserRuleCall_3_0() { return cUsageUseBlockParserRuleCall_3_0; }
+		public RuleCall getUsageUseBlockParserRuleCall_4_0() { return cUsageUseBlockParserRuleCall_4_0; }
 		
 		//('FORBIDDEN' forbEvent=ForbiddenBlock)?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_5() { return cGroup_5; }
 		
 		//'FORBIDDEN'
-		public Keyword getFORBIDDENKeyword_4_0() { return cFORBIDDENKeyword_4_0; }
+		public Keyword getFORBIDDENKeyword_5_0() { return cFORBIDDENKeyword_5_0; }
 		
 		//forbEvent=ForbiddenBlock
-		public Assignment getForbEventAssignment_4_1() { return cForbEventAssignment_4_1; }
+		public Assignment getForbEventAssignment_5_1() { return cForbEventAssignment_5_1; }
 		
 		//ForbiddenBlock
-		public RuleCall getForbEventForbiddenBlockParserRuleCall_4_1_0() { return cForbEventForbiddenBlockParserRuleCall_4_1_0; }
+		public RuleCall getForbEventForbiddenBlockParserRuleCall_5_1_0() { return cForbEventForbiddenBlockParserRuleCall_5_1_0; }
 		
 		//'EVENTS'
-		public Keyword getEVENTSKeyword_5() { return cEVENTSKeyword_5; }
+		public Keyword getEVENTSKeyword_6() { return cEVENTSKeyword_6; }
 		
 		//req_events=RequiredBlock
-		public Assignment getReq_eventsAssignment_6() { return cReq_eventsAssignment_6; }
+		public Assignment getReq_eventsAssignment_7() { return cReq_eventsAssignment_7; }
 		
 		//RequiredBlock
-		public RuleCall getReq_eventsRequiredBlockParserRuleCall_6_0() { return cReq_eventsRequiredBlockParserRuleCall_6_0; }
+		public RuleCall getReq_eventsRequiredBlockParserRuleCall_7_0() { return cReq_eventsRequiredBlockParserRuleCall_7_0; }
 		
 		//'ORDER'
-		public Keyword getORDERKeyword_7() { return cORDERKeyword_7; }
+		public Keyword getORDERKeyword_8() { return cORDERKeyword_8; }
 		
 		//order=Order
-		public Assignment getOrderAssignment_8() { return cOrderAssignment_8; }
+		public Assignment getOrderAssignment_9() { return cOrderAssignment_9; }
 		
 		//Order
-		public RuleCall getOrderOrderParserRuleCall_8_0() { return cOrderOrderParserRuleCall_8_0; }
+		public RuleCall getOrderOrderParserRuleCall_9_0() { return cOrderOrderParserRuleCall_9_0; }
 		
 		//('CONSTRAINTS' reqConstraints=EnforceConsBlock)?
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//'CONSTRAINTS'
-		public Keyword getCONSTRAINTSKeyword_9_0() { return cCONSTRAINTSKeyword_9_0; }
-		
-		//reqConstraints=EnforceConsBlock
-		public Assignment getReqConstraintsAssignment_9_1() { return cReqConstraintsAssignment_9_1; }
-		
-		//EnforceConsBlock
-		public RuleCall getReqConstraintsEnforceConsBlockParserRuleCall_9_1_0() { return cReqConstraintsEnforceConsBlockParserRuleCall_9_1_0; }
-		
-		//('REQUIRES' require=RequiresBlock)?
 		public Group getGroup_10() { return cGroup_10; }
 		
-		//'REQUIRES'
-		public Keyword getREQUIRESKeyword_10_0() { return cREQUIRESKeyword_10_0; }
+		//'CONSTRAINTS'
+		public Keyword getCONSTRAINTSKeyword_10_0() { return cCONSTRAINTSKeyword_10_0; }
 		
-		//require=RequiresBlock
-		public Assignment getRequireAssignment_10_1() { return cRequireAssignment_10_1; }
+		//reqConstraints=EnforceConsBlock
+		public Assignment getReqConstraintsAssignment_10_1() { return cReqConstraintsAssignment_10_1; }
 		
-		//RequiresBlock
-		public RuleCall getRequireRequiresBlockParserRuleCall_10_1_0() { return cRequireRequiresBlockParserRuleCall_10_1_0; }
+		//EnforceConsBlock
+		public RuleCall getReqConstraintsEnforceConsBlockParserRuleCall_10_1_0() { return cReqConstraintsEnforceConsBlockParserRuleCall_10_1_0; }
 		
-		//('ENSURES' ensure=EnsuresBlock)?
+		//('REQUIRES' require=RequiresBlock)?
 		public Group getGroup_11() { return cGroup_11; }
 		
-		//'ENSURES'
-		public Keyword getENSURESKeyword_11_0() { return cENSURESKeyword_11_0; }
+		//'REQUIRES'
+		public Keyword getREQUIRESKeyword_11_0() { return cREQUIRESKeyword_11_0; }
 		
-		//ensure=EnsuresBlock
-		public Assignment getEnsureAssignment_11_1() { return cEnsureAssignment_11_1; }
+		//require=RequiresBlock
+		public Assignment getRequireAssignment_11_1() { return cRequireAssignment_11_1; }
 		
-		//EnsuresBlock
-		public RuleCall getEnsureEnsuresBlockParserRuleCall_11_1_0() { return cEnsureEnsuresBlockParserRuleCall_11_1_0; }
+		//RequiresBlock
+		public RuleCall getRequireRequiresBlockParserRuleCall_11_1_0() { return cRequireRequiresBlockParserRuleCall_11_1_0; }
 		
-		//('NEGATES' destroy=DestroysBlock)?
+		//('ENSURES' ensure=EnsuresBlock)?
 		public Group getGroup_12() { return cGroup_12; }
 		
+		//'ENSURES'
+		public Keyword getENSURESKeyword_12_0() { return cENSURESKeyword_12_0; }
+		
+		//ensure=EnsuresBlock
+		public Assignment getEnsureAssignment_12_1() { return cEnsureAssignment_12_1; }
+		
+		//EnsuresBlock
+		public RuleCall getEnsureEnsuresBlockParserRuleCall_12_1_0() { return cEnsureEnsuresBlockParserRuleCall_12_1_0; }
+		
+		//('NEGATES' destroy=DestroysBlock)?
+		public Group getGroup_13() { return cGroup_13; }
+		
 		//'NEGATES'
-		public Keyword getNEGATESKeyword_12_0() { return cNEGATESKeyword_12_0; }
+		public Keyword getNEGATESKeyword_13_0() { return cNEGATESKeyword_13_0; }
 		
 		//destroy=DestroysBlock
-		public Assignment getDestroyAssignment_12_1() { return cDestroyAssignment_12_1; }
+		public Assignment getDestroyAssignment_13_1() { return cDestroyAssignment_13_1; }
 		
 		//DestroysBlock
-		public RuleCall getDestroyDestroysBlockParserRuleCall_12_1_0() { return cDestroyDestroysBlockParserRuleCall_12_1_0; }
+		public RuleCall getDestroyDestroysBlockParserRuleCall_13_1_0() { return cDestroyDestroysBlockParserRuleCall_13_1_0; }
 	}
 	public class UseBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.UseBlock");
@@ -2367,7 +2405,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Domainmodel:
-	//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
+	//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<"
+	//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
 	//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
 	//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES'
 	//	require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;

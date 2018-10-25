@@ -4,7 +4,7 @@ generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Domainmodel:
-	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
+	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] ((array="[]") | ("<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"))?
 	'OBJECTS' (usage=UseBlock)
 	('FORBIDDEN' forbEvent=ForbiddenBlock)?
 	'EVENTS' (req_events=RequiredBlock)

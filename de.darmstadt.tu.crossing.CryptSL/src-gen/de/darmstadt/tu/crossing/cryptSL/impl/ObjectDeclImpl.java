@@ -389,7 +389,7 @@ public class ObjectDeclImpl extends MinimalEObjectImpl.Container implements Obje
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (array: ");
     result.append(array);
     result.append(')');

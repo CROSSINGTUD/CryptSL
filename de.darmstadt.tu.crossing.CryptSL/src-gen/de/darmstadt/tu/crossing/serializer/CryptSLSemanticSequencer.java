@@ -516,6 +516,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         javaType=[JvmType|QualifiedName] 
+	 *         (array='[]' | collection=[JvmGenericType|QualifiedName])? 
 	 *         usage=UseBlock 
 	 *         forbEvent=ForbiddenBlock? 
 	 *         req_events=RequiredBlock 
@@ -868,7 +869,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='+'? ((elementop='?' | elementop='*')? elementop='+'?)*)
+	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='*'? ((elementop='+' | elementop='?')? elementop='*'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -355,7 +355,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   *
+   * 
    * <p>This method is used to initialize {@link CryptSLPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
@@ -370,8 +370,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     if (isInited) return (CryptSLPackage)EPackage.Registry.INSTANCE.getEPackage(CryptSLPackage.eNS_URI);
 
     // Obtain or create and register package
-    Object registeredCryptSLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-    CryptSLPackageImpl theCryptSLPackage = registeredCryptSLPackage instanceof CryptSLPackageImpl ? (CryptSLPackageImpl)registeredCryptSLPackage : new CryptSLPackageImpl();
+    CryptSLPackageImpl theCryptSLPackage = (CryptSLPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CryptSLPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CryptSLPackageImpl());
 
     isInited = true;
 
@@ -387,6 +386,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Mark meta-data to indicate it can't be changed
     theCryptSLPackage.freeze();
 
+  
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(CryptSLPackage.eNS_URI, theCryptSLPackage);
     return theCryptSLPackage;
@@ -417,9 +417,9 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Usage()
+  public EAttribute getDomainmodel_Array()
   {
-    return (EReference)domainmodelEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)domainmodelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -427,7 +427,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_ForbEvent()
+  public EReference getDomainmodel_Collection()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(2);
   }
@@ -437,7 +437,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Req_events()
+  public EReference getDomainmodel_Usage()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(3);
   }
@@ -447,7 +447,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Order()
+  public EReference getDomainmodel_ForbEvent()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(4);
   }
@@ -457,7 +457,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_ReqConstraints()
+  public EReference getDomainmodel_Req_events()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(5);
   }
@@ -467,7 +467,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Require()
+  public EReference getDomainmodel_Order()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(6);
   }
@@ -477,7 +477,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Ensure()
+  public EReference getDomainmodel_ReqConstraints()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(7);
   }
@@ -487,9 +487,29 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_Destroy()
+  public EReference getDomainmodel_Require()
   {
     return (EReference)domainmodelEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDomainmodel_Ensure()
+  {
+    return (EReference)domainmodelEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDomainmodel_Destroy()
+  {
+    return (EReference)domainmodelEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1564,6 +1584,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Create classes and their features
     domainmodelEClass = createEClass(DOMAINMODEL);
     createEReference(domainmodelEClass, DOMAINMODEL__JAVA_TYPE);
+    createEAttribute(domainmodelEClass, DOMAINMODEL__ARRAY);
+    createEReference(domainmodelEClass, DOMAINMODEL__COLLECTION);
     createEReference(domainmodelEClass, DOMAINMODEL__USAGE);
     createEReference(domainmodelEClass, DOMAINMODEL__FORB_EVENT);
     createEReference(domainmodelEClass, DOMAINMODEL__REQ_EVENTS);
@@ -1762,6 +1784,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDomainmodel_JavaType(), theTypesPackage.getJvmType(), null, "javaType", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDomainmodel_Array(), ecorePackage.getEString(), "array", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainmodel_Collection(), theTypesPackage.getJvmGenericType(), null, "collection", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDomainmodel_Usage(), this.getUseBlock(), null, "usage", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDomainmodel_ForbEvent(), this.getForbiddenBlock(), null, "forbEvent", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDomainmodel_Req_events(), this.getRequiredBlock(), null, "req_events", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

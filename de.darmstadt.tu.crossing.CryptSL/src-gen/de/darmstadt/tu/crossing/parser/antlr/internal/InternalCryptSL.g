@@ -96,16 +96,59 @@ ruleDomainmodel returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='OBJECTS'
+		(
+			(
+				(
+					lv_array_2_0='[]'
+					{
+						newLeafNode(lv_array_2_0, grammarAccess.getDomainmodelAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_2_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDomainmodelRule());
+						}
+						setWithLastConsumed($current, "array", lv_array_2_0, "[]");
+					}
+				)
+			)
+			    |
+			(
+				otherlv_3='<'
+				{
+					newLeafNode(otherlv_3, grammarAccess.getDomainmodelAccess().getLessThanSignKeyword_2_1_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getDomainmodelRule());
+							}
+						}
+						{
+							newCompositeNode(grammarAccess.getDomainmodelAccess().getCollectionJvmGenericTypeCrossReference_2_1_1_0());
+						}
+						ruleQualifiedName
+						{
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_5='>'
+				{
+					newLeafNode(otherlv_5, grammarAccess.getDomainmodelAccess().getGreaterThanSignKeyword_2_1_2());
+				}
+			)
+		)?
+		otherlv_6='OBJECTS'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_2());
+			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getOBJECTSKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDomainmodelAccess().getUsageUseBlockParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getDomainmodelAccess().getUsageUseBlockParserRuleCall_4_0());
 				}
-				lv_usage_3_0=ruleUseBlock
+				lv_usage_7_0=ruleUseBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -113,23 +156,23 @@ ruleDomainmodel returns [EObject current=null]
 					set(
 						$current,
 						"usage",
-						lv_usage_3_0,
+						lv_usage_7_0,
 						"de.darmstadt.tu.crossing.CryptSL.UseBlock");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_4='FORBIDDEN'
+			otherlv_8='FORBIDDEN'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_4_0());
+				newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getFORBIDDENKeyword_5_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDomainmodelAccess().getForbEventForbiddenBlockParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getForbEventForbiddenBlockParserRuleCall_5_1_0());
 					}
-					lv_forbEvent_5_0=ruleForbiddenBlock
+					lv_forbEvent_9_0=ruleForbiddenBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -137,23 +180,23 @@ ruleDomainmodel returns [EObject current=null]
 						set(
 							$current,
 							"forbEvent",
-							lv_forbEvent_5_0,
+							lv_forbEvent_9_0,
 							"de.darmstadt.tu.crossing.CryptSL.ForbiddenBlock");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_6='EVENTS'
+		otherlv_10='EVENTS'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getDomainmodelAccess().getEVENTSKeyword_5());
+			newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getEVENTSKeyword_6());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDomainmodelAccess().getReq_eventsRequiredBlockParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getDomainmodelAccess().getReq_eventsRequiredBlockParserRuleCall_7_0());
 				}
-				lv_req_events_7_0=ruleRequiredBlock
+				lv_req_events_11_0=ruleRequiredBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -161,22 +204,22 @@ ruleDomainmodel returns [EObject current=null]
 					set(
 						$current,
 						"req_events",
-						lv_req_events_7_0,
+						lv_req_events_11_0,
 						"de.darmstadt.tu.crossing.CryptSL.RequiredBlock");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_8='ORDER'
+		otherlv_12='ORDER'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getDomainmodelAccess().getORDERKeyword_7());
+			newLeafNode(otherlv_12, grammarAccess.getDomainmodelAccess().getORDERKeyword_8());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDomainmodelAccess().getOrderOrderParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getDomainmodelAccess().getOrderOrderParserRuleCall_9_0());
 				}
-				lv_order_9_0=ruleOrder
+				lv_order_13_0=ruleOrder
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -184,23 +227,23 @@ ruleDomainmodel returns [EObject current=null]
 					set(
 						$current,
 						"order",
-						lv_order_9_0,
+						lv_order_13_0,
 						"de.darmstadt.tu.crossing.CryptSL.Order");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_10='CONSTRAINTS'
+			otherlv_14='CONSTRAINTS'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_9_0());
+				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getCONSTRAINTSKeyword_10_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDomainmodelAccess().getReqConstraintsEnforceConsBlockParserRuleCall_9_1_0());
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getReqConstraintsEnforceConsBlockParserRuleCall_10_1_0());
 					}
-					lv_reqConstraints_11_0=ruleEnforceConsBlock
+					lv_reqConstraints_15_0=ruleEnforceConsBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -208,7 +251,7 @@ ruleDomainmodel returns [EObject current=null]
 						set(
 							$current,
 							"reqConstraints",
-							lv_reqConstraints_11_0,
+							lv_reqConstraints_15_0,
 							"de.darmstadt.tu.crossing.CryptSL.EnforceConsBlock");
 						afterParserOrEnumRuleCall();
 					}
@@ -216,16 +259,16 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_12='REQUIRES'
+			otherlv_16='REQUIRES'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getDomainmodelAccess().getREQUIRESKeyword_10_0());
+				newLeafNode(otherlv_16, grammarAccess.getDomainmodelAccess().getREQUIRESKeyword_11_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDomainmodelAccess().getRequireRequiresBlockParserRuleCall_10_1_0());
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getRequireRequiresBlockParserRuleCall_11_1_0());
 					}
-					lv_require_13_0=ruleRequiresBlock
+					lv_require_17_0=ruleRequiresBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -233,7 +276,7 @@ ruleDomainmodel returns [EObject current=null]
 						set(
 							$current,
 							"require",
-							lv_require_13_0,
+							lv_require_17_0,
 							"de.darmstadt.tu.crossing.CryptSL.RequiresBlock");
 						afterParserOrEnumRuleCall();
 					}
@@ -241,16 +284,16 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_14='ENSURES'
+			otherlv_18='ENSURES'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getDomainmodelAccess().getENSURESKeyword_11_0());
+				newLeafNode(otherlv_18, grammarAccess.getDomainmodelAccess().getENSURESKeyword_12_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDomainmodelAccess().getEnsureEnsuresBlockParserRuleCall_11_1_0());
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getEnsureEnsuresBlockParserRuleCall_12_1_0());
 					}
-					lv_ensure_15_0=ruleEnsuresBlock
+					lv_ensure_19_0=ruleEnsuresBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -258,7 +301,7 @@ ruleDomainmodel returns [EObject current=null]
 						set(
 							$current,
 							"ensure",
-							lv_ensure_15_0,
+							lv_ensure_19_0,
 							"de.darmstadt.tu.crossing.CryptSL.EnsuresBlock");
 						afterParserOrEnumRuleCall();
 					}
@@ -266,16 +309,16 @@ ruleDomainmodel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_16='NEGATES'
+			otherlv_20='NEGATES'
 			{
-				newLeafNode(otherlv_16, grammarAccess.getDomainmodelAccess().getNEGATESKeyword_12_0());
+				newLeafNode(otherlv_20, grammarAccess.getDomainmodelAccess().getNEGATESKeyword_13_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDomainmodelAccess().getDestroyDestroysBlockParserRuleCall_12_1_0());
+						newCompositeNode(grammarAccess.getDomainmodelAccess().getDestroyDestroysBlockParserRuleCall_13_1_0());
 					}
-					lv_destroy_17_0=ruleDestroysBlock
+					lv_destroy_21_0=ruleDestroysBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDomainmodelRule());
@@ -283,7 +326,7 @@ ruleDomainmodel returns [EObject current=null]
 						set(
 							$current,
 							"destroy",
-							lv_destroy_17_0,
+							lv_destroy_21_0,
 							"de.darmstadt.tu.crossing.CryptSL.DestroysBlock");
 						afterParserOrEnumRuleCall();
 					}
