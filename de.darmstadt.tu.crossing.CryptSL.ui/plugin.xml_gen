@@ -249,15 +249,6 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
-	<extension point="org.eclipse.ui.preferencePages">
-		<page
-			category="de.darmstadt.tu.crossing.CryptSL"
-			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="de.darmstadt.tu.crossing.CryptSL.validator.preferencePage"
-			name="Errors/Warnings">
-			<keywordReference id="de.darmstadt.tu.crossing.ui.keyword_CryptSL"/>
-		</page>
-	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
