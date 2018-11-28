@@ -166,7 +166,13 @@ public class UnaryOperatorImpl extends MinimalEObjectImpl.Container implements U
   @Override
   public String toString()
   {
-	  return not;
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (NOT: ");
+    result.append(not);
+    result.append(')');
+    return result.toString();
   }
 
 } //UnaryOperatorImpl

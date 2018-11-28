@@ -424,7 +424,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (elementop: ");
     result.append(elementop);
     result.append(", orderop: ");

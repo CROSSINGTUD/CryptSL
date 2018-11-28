@@ -166,7 +166,13 @@ public class LogicalImplyImpl extends MinimalEObjectImpl.Container implements Lo
   @Override
   public String toString()
   {
-    return implies;
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (IMPLIES: ");
+    result.append(implies);
+    result.append(')');
+    return result.toString();
   }
 
 } //LogicalImplyImpl

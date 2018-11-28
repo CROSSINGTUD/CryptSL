@@ -14,8 +14,6 @@ Domainmodel:
 	('ENSURES' ensure=EnsuresBlock)?
 	('NEGATES' destroy=DestroysBlock)?;
 
-
-
 UseBlock:
 	objects+=(ObjectDecl)+;
 

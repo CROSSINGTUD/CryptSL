@@ -320,22 +320,27 @@ public class ArithmeticOperatorImpl extends MinimalEObjectImpl.Container impleme
     return super.eIsSet(featureID);
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (plus != null && !plus.isEmpty()) {
-			return plus;
-		} else if (minus != null && !minus.isEmpty()) {
-			return minus;
-		} else if (times != null && !times.isEmpty()) {
-			return times;
-		} else {
-			return divide;
-		}
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (PLUS: ");
+    result.append(plus);
+    result.append(", MINUS: ");
+    result.append(minus);
+    result.append(", TIMES: ");
+    result.append(times);
+    result.append(", DIVIDE: ");
+    result.append(divide);
+    result.append(')');
+    return result.toString();
+  }
 
 } //ArithmeticOperatorImpl

@@ -355,7 +355,7 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
 
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * 
+   *
    * <p>This method is used to initialize {@link CryptSLPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
@@ -370,7 +370,8 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     if (isInited) return (CryptSLPackage)EPackage.Registry.INSTANCE.getEPackage(CryptSLPackage.eNS_URI);
 
     // Obtain or create and register package
-    CryptSLPackageImpl theCryptSLPackage = (CryptSLPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CryptSLPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CryptSLPackageImpl());
+    Object registeredCryptSLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    CryptSLPackageImpl theCryptSLPackage = registeredCryptSLPackage instanceof CryptSLPackageImpl ? (CryptSLPackageImpl)registeredCryptSLPackage : new CryptSLPackageImpl();
 
     isInited = true;
 
@@ -386,7 +387,6 @@ public class CryptSLPackageImpl extends EPackageImpl implements CryptSLPackage
     // Mark meta-data to indicate it can't be changed
     theCryptSLPackage.freeze();
 
-  
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(CryptSLPackage.eNS_URI, theCryptSLPackage);
     return theCryptSLPackage;
