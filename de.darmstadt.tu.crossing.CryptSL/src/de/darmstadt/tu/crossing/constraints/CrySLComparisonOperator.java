@@ -23,7 +23,7 @@ public class CrySLComparisonOperator extends ComparingOperatorImpl {
 		} else if (operator.getEQUAL() != null && !operator.getEQUAL().isEmpty()) {
 			return operator.getEQUAL();
 		} else {
-			return unequal;
+			return operator.getUNEQUAL();
 		}
 	}
 }
