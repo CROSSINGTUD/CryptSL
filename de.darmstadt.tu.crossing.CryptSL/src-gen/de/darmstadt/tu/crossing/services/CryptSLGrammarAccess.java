@@ -1233,14 +1233,12 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGREATER_OR_EQUALGreaterThanSignEqualsSignKeyword_2_0 = (Keyword)cGREATER_OR_EQUALAssignment_2.eContents().get(0);
 		private final Assignment cGREATERAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
 		private final Keyword cGREATERGreaterThanSignKeyword_3_0 = (Keyword)cGREATERAssignment_3.eContents().get(0);
-		private final Assignment cEQUALAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
-		private final Keyword cEQUALEqualsSignKeyword_4_0 = (Keyword)cEQUALAssignment_4.eContents().get(0);
 		
 		//ComparingRelOperator ComparingOperator:
-		//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>' | EQUAL='=';
+		//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>' | EQUAL='='
+		//LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//LESS='<'
@@ -1266,12 +1264,6 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'>'
 		public Keyword getGREATERGreaterThanSignKeyword_3_0() { return cGREATERGreaterThanSignKeyword_3_0; }
-		
-		//EQUAL='='
-		public Assignment getEQUALAssignment_4() { return cEQUALAssignment_4; }
-		
-		//'='
-		public Keyword getEQUALEqualsSignKeyword_4_0() { return cEQUALEqualsSignKeyword_4_0; }
 	}
 	public class ArithmeticExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ArithmeticExpression");
@@ -1564,8 +1556,8 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPredNameNotHardCodedKeyword_3_0_0 = (Keyword)cPredNameAssignment_3_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Assignment cObjAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cObjEventCrossReference_3_2_0 = (CrossReference)cObjAssignment_3_2.eContents().get(0);
-		private final RuleCall cObjEventIDTerminalRuleCall_3_2_0_1 = (RuleCall)cObjEventCrossReference_3_2_0.eContents().get(1);
+		private final CrossReference cObjObjectCrossReference_3_2_0 = (CrossReference)cObjAssignment_3_2.eContents().get(0);
+		private final RuleCall cObjObjectIDTerminalRuleCall_3_2_0_1 = (RuleCall)cObjObjectCrossReference_3_2_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Assignment cPredNameAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
@@ -1578,12 +1570,12 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//PreDefinedPredicates:
 		//	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" | predName="noCallTo"+ "("
-		//	obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Event] ")" |
+		//	obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Object] ")" |
 		//	predName="length"+ "(" obj+=[Object] ")";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" | predName="noCallTo"+ "("
-		//obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Event] ")" |
+		//obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Object] ")" |
 		//predName="length"+ "(" obj+=[Object] ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -1671,7 +1663,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
 		
-		//predName="notHardCoded"+ "(" obj+=[Event] ")"
+		//predName="notHardCoded"+ "(" obj+=[Object] ")"
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//predName="notHardCoded"+
@@ -1683,14 +1675,14 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
 		
-		//obj+=[Event]
+		//obj+=[Object]
 		public Assignment getObjAssignment_3_2() { return cObjAssignment_3_2; }
 		
-		//[Event]
-		public CrossReference getObjEventCrossReference_3_2_0() { return cObjEventCrossReference_3_2_0; }
+		//[Object]
+		public CrossReference getObjObjectCrossReference_3_2_0() { return cObjObjectCrossReference_3_2_0; }
 		
 		//ID
-		public RuleCall getObjEventIDTerminalRuleCall_3_2_0_1() { return cObjEventIDTerminalRuleCall_3_2_0_1; }
+		public RuleCall getObjObjectIDTerminalRuleCall_3_2_0_1() { return cObjObjectIDTerminalRuleCall_3_2_0_1; }
 		
 		//")"
 		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
@@ -2789,7 +2781,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComparingRelOperator ComparingOperator:
-	//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>' | EQUAL='=';
+	//	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>';
 	public ComparingRelOperatorElements getComparingRelOperatorAccess() {
 		return pComparingRelOperator;
 	}
@@ -2885,7 +2877,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//PreDefinedPredicates:
 	//	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" | predName="noCallTo"+ "("
-	//	obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Event] ")" |
+	//	obj+=[Event] ")" | predName="callTo"+ "(" obj+=[Event] ")" | predName="notHardCoded"+ "(" obj+=[Object] ")" |
 	//	predName="length"+ "(" obj+=[Object] ")";
 	public PreDefinedPredicatesElements getPreDefinedPredicatesAccess() {
 		return pPreDefinedPredicates;

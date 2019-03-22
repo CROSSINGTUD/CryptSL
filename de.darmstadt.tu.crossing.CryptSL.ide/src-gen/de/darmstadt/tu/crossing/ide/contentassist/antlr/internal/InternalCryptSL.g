@@ -2093,12 +2093,6 @@ rule__ComparingRelOperator__Alternatives
 		(rule__ComparingRelOperator__GREATERAssignment_3)
 		{ after(grammarAccess.getComparingRelOperatorAccess().getGREATERAssignment_3()); }
 	)
-	|
-	(
-		{ before(grammarAccess.getComparingRelOperatorAccess().getEQUALAssignment_4()); }
-		(rule__ComparingRelOperator__EQUALAssignment_4)
-		{ after(grammarAccess.getComparingRelOperatorAccess().getEQUALAssignment_4()); }
-	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -11321,25 +11315,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ComparingRelOperator__EQUALAssignment_4
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getComparingRelOperatorAccess().getEQUALEqualsSignKeyword_4_0()); }
-		(
-			{ before(grammarAccess.getComparingRelOperatorAccess().getEQUALEqualsSignKeyword_4_0()); }
-			'='
-			{ after(grammarAccess.getComparingRelOperatorAccess().getEQUALEqualsSignKeyword_4_0()); }
-		)
-		{ after(grammarAccess.getComparingRelOperatorAccess().getEQUALEqualsSignKeyword_4_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__AdditionExpression__OperatorAssignment_1_1
 	@init {
 		int stackSize = keepStackSize();
@@ -11694,13 +11669,13 @@ rule__PreDefinedPredicates__ObjAssignment_3_2
 	}
 :
 	(
-		{ before(grammarAccess.getPreDefinedPredicatesAccess().getObjEventCrossReference_3_2_0()); }
+		{ before(grammarAccess.getPreDefinedPredicatesAccess().getObjObjectCrossReference_3_2_0()); }
 		(
-			{ before(grammarAccess.getPreDefinedPredicatesAccess().getObjEventIDTerminalRuleCall_3_2_0_1()); }
+			{ before(grammarAccess.getPreDefinedPredicatesAccess().getObjObjectIDTerminalRuleCall_3_2_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getPreDefinedPredicatesAccess().getObjEventIDTerminalRuleCall_3_2_0_1()); }
+			{ after(grammarAccess.getPreDefinedPredicatesAccess().getObjObjectIDTerminalRuleCall_3_2_0_1()); }
 		)
-		{ after(grammarAccess.getPreDefinedPredicatesAccess().getObjEventCrossReference_3_2_0()); }
+		{ after(grammarAccess.getPreDefinedPredicatesAccess().getObjObjectCrossReference_3_2_0()); }
 	)
 ;
 finally {

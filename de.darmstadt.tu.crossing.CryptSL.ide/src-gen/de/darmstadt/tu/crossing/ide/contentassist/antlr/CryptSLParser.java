@@ -228,7 +228,6 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getComparingRelOperatorAccess().getLESS_OR_EQUALAssignment_1(), "rule__ComparingRelOperator__LESS_OR_EQUALAssignment_1");
 			builder.put(grammarAccess.getComparingRelOperatorAccess().getGREATER_OR_EQUALAssignment_2(), "rule__ComparingRelOperator__GREATER_OR_EQUALAssignment_2");
 			builder.put(grammarAccess.getComparingRelOperatorAccess().getGREATERAssignment_3(), "rule__ComparingRelOperator__GREATERAssignment_3");
-			builder.put(grammarAccess.getComparingRelOperatorAccess().getEQUALAssignment_4(), "rule__ComparingRelOperator__EQUALAssignment_4");
 			builder.put(grammarAccess.getAdditionExpressionAccess().getOperatorAssignment_1_1(), "rule__AdditionExpression__OperatorAssignment_1_1");
 			builder.put(grammarAccess.getAdditionExpressionAccess().getRightExpressionAssignment_1_2(), "rule__AdditionExpression__RightExpressionAssignment_1_2");
 			builder.put(grammarAccess.getAdditionOperatorAccess().getPLUSAssignment_0(), "rule__AdditionOperator__PLUSAssignment_0");

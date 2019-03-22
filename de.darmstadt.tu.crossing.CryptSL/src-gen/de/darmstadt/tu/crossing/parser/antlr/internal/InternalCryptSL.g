@@ -2089,21 +2089,6 @@ ruleComparingRelOperator returns [EObject current=null]
 				}
 			)
 		)
-		    |
-		(
-			(
-				lv_EQUAL_4_0='='
-				{
-					newLeafNode(lv_EQUAL_4_0, grammarAccess.getComparingRelOperatorAccess().getEQUALEqualsSignKeyword_4_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getComparingRelOperatorRule());
-					}
-					setWithLastConsumed($current, "EQUAL", lv_EQUAL_4_0, "=");
-				}
-			)
-		)
 	)
 ;
 
@@ -2744,7 +2729,7 @@ rulePreDefinedPredicates returns [EObject current=null]
 					}
 					otherlv_16=RULE_ID
 					{
-						newLeafNode(otherlv_16, grammarAccess.getPreDefinedPredicatesAccess().getObjEventCrossReference_3_2_0());
+						newLeafNode(otherlv_16, grammarAccess.getPreDefinedPredicatesAccess().getObjObjectCrossReference_3_2_0());
 					}
 				)
 			)

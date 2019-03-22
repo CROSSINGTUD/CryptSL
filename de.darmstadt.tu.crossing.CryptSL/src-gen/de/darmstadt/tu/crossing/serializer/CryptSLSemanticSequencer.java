@@ -418,7 +418,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     ComparingRelOperator returns ComparingOperator
 	 *
 	 * Constraint:
-	 *     (LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>' | EQUAL='=')
+	 *     (LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>')
 	 */
 	protected void sequence_ComparingRelOperator(ISerializationContext context, ComparingOperator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -840,7 +840,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *         (predName='neverTypeOf'+ obj+=[Object|ID] type=[JvmType|QualifiedName]) | 
 	 *         (predName='noCallTo'+ obj+=[Event|ID]) | 
 	 *         (predName='callTo'+ obj+=[Event|ID]) | 
-	 *         (predName='notHardCoded'+ obj+=[Event|ID]) | 
+	 *         (predName='notHardCoded'+ obj+=[Object|ID]) | 
 	 *         (predName='length'+ obj+=[Object|ID])
 	 *     )
 	 */
@@ -870,7 +870,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='?'? ((elementop='+' | elementop='*')? elementop='?'?)*)
+	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='*'? ((elementop='+' | elementop='?')? elementop='*'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
