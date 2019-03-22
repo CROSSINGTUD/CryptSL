@@ -125,7 +125,7 @@ ComparisonHigherOpExpression returns Constraint:
 	rightExpression=ArithmeticExpression)?;
 
 ComparingRelOperator returns ComparingOperator:
-	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>';
+	LESS='<' | LESS_OR_EQUAL='<=' | GREATER_OR_EQUAL='>=' | GREATER='>' | EQUAL='=';
 
 ArithmeticExpression returns Constraint:
 	AdditionExpression;
@@ -167,19 +167,23 @@ PreDefinedPredicates:
 	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" |
 	predName="noCallTo"+ "(" obj+=[Event] ")" |
 	predName="callTo"+ "(" obj+=[Event] ")" |
+	predName="notHardCoded"+ "(" obj+=[Event] ")" |
 	predName="length"+ "(" obj+=[Object] ")";
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;
 
 Literal:
-	{Literal} val=(StringLiteral | IntegerLiteral);
+	{Literal} val=(StringLiteral | IntegerLiteral | BooleanLiteral);
 
 StringLiteral:
 	STRING;
 
 IntegerLiteral:
 	INT | INT '^' INT;
+	
+BooleanLiteral:
+	'true' | 'false';
 
 UnaryPreOperator returns UnaryOperator:
 	NOT='!';
