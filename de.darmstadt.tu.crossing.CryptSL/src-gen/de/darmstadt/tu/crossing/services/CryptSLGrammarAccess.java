@@ -2138,6 +2138,46 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class ReqPredElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ReqPred");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cReqPredLitParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cReqPredLeftExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorLogicalOrParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpressionReqPredLitParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
+		
+		//ReqPred:
+		//	ReqPredLit ({ReqPred.leftExpression=current} operator=LogicalOr
+		//	rightExpression=ReqPredLit)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ReqPredLit ({ReqPred.leftExpression=current} operator=LogicalOr rightExpression=ReqPredLit)*
+		public Group getGroup() { return cGroup; }
+		
+		//ReqPredLit
+		public RuleCall getReqPredLitParserRuleCall_0() { return cReqPredLitParserRuleCall_0; }
+		
+		//({ReqPred.leftExpression=current} operator=LogicalOr rightExpression=ReqPredLit)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ReqPred.leftExpression=current}
+		public Action getReqPredLeftExpressionAction_1_0() { return cReqPredLeftExpressionAction_1_0; }
+		
+		//operator=LogicalOr
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//LogicalOr
+		public RuleCall getOperatorLogicalOrParserRuleCall_1_1_0() { return cOperatorLogicalOrParserRuleCall_1_1_0; }
+		
+		//rightExpression=ReqPredLit
+		public Assignment getRightExpressionAssignment_1_2() { return cRightExpressionAssignment_1_2; }
+		
+		//ReqPredLit
+		public RuleCall getRightExpressionReqPredLitParserRuleCall_1_2_0() { return cRightExpressionReqPredLitParserRuleCall_1_2_0; }
+	}
+	public class ReqPredLitElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.ReqPredLit");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Assignment cConsAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
 		private final RuleCall cConsConstraintParserRuleCall_0_0_0 = (RuleCall)cConsAssignment_0_0.eContents().get(0);
@@ -2147,7 +2187,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPredAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPredPredParserRuleCall_2_0 = (RuleCall)cPredAssignment_2.eContents().get(0);
 		
-		//ReqPred:
+		//ReqPredLit:
 		//	(cons=Constraint "=>")? not='!'? pred=Pred;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -2362,6 +2402,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final LitListElements pLitList;
 	private final PredElements pPred;
 	private final ReqPredElements pReqPred;
+	private final ReqPredLitElements pReqPredLit;
 	private final EnsPredElements pEnsPred;
 	private final SuParListElements pSuParList;
 	private final SuParElements pSuPar;
@@ -2430,6 +2471,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pLitList = new LitListElements();
 		this.pPred = new PredElements();
 		this.pReqPred = new ReqPredElements();
+		this.pReqPredLit = new ReqPredLitElements();
 		this.pEnsPred = new EnsPredElements();
 		this.pSuParList = new SuParListElements();
 		this.pSuPar = new SuParElements();
@@ -3014,13 +3056,24 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ReqPred:
-	//	(cons=Constraint "=>")? not='!'? pred=Pred;
+	//	ReqPredLit ({ReqPred.leftExpression=current} operator=LogicalOr
+	//	rightExpression=ReqPredLit)*;
 	public ReqPredElements getReqPredAccess() {
 		return pReqPred;
 	}
 	
 	public ParserRule getReqPredRule() {
 		return getReqPredAccess().getRule();
+	}
+	
+	//ReqPredLit:
+	//	(cons=Constraint "=>")? not='!'? pred=Pred;
+	public ReqPredLitElements getReqPredLitAccess() {
+		return pReqPredLit;
+	}
+	
+	public ParserRule getReqPredLitRule() {
+		return getReqPredLitAccess().getRule();
 	}
 	
 	//EnsPred Constraint:

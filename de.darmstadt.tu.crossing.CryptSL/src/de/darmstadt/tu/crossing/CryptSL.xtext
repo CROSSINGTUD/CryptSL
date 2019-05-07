@@ -211,7 +211,14 @@ Pred:
 	predName=ID (('[' (parList=SuParList) ']') | ("[]"));
 
 ReqPred:
-	(cons=Constraint "=>")? (not='!')? pred=Pred;
+	(ReqPredLit
+	({ReqPred.leftExpression=current}
+	operator=LogicalOr
+	rightExpression=ReqPredLit)*);
+	
+ReqPredLit: 
+	(cons=Constraint "=>")? (not='!')? pred=Pred
+;
 
 EnsPred returns Constraint:
 	Pred ('after' labelCond=[SuperType])?;

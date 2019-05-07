@@ -32,6 +32,7 @@ import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.Pred;
 import de.darmstadt.tu.crossing.cryptSL.ReqPred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPredLit;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
@@ -222,6 +223,9 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 				else break;
 			case CryptSLPackage.REQ_PRED:
 				sequence_ReqPred(context, (ReqPred) semanticObject); 
+				return; 
+			case CryptSLPackage.REQ_PRED_LIT:
+				sequence_ReqPredLit(context, (ReqPredLit) semanticObject); 
 				return; 
 			case CryptSLPackage.REQUIRED_BLOCK:
 				sequence_RequiredBlock(context, (RequiredBlock) semanticObject); 
@@ -870,7 +874,7 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='*'? ((elementop='+' | elementop='?')? elementop='*'?)*)
+	 *     (orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')? elementop='+'? ((elementop='?' | elementop='*')? elementop='+'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -895,13 +899,40 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     ReqPred returns ReqPred
+	 *     ReqPred returns ReqPredLit
+	 *     ReqPred.ReqPred_1_0 returns ReqPredLit
+	 *     ReqPredLit returns ReqPredLit
 	 *
 	 * Constraint:
 	 *     (cons=Constraint? not='!'? pred=Pred)
 	 */
-	protected void sequence_ReqPred(ISerializationContext context, ReqPred semanticObject) {
+	protected void sequence_ReqPredLit(ISerializationContext context, ReqPredLit semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReqPred returns ReqPred
+	 *     ReqPred.ReqPred_1_0 returns ReqPred
+	 *
+	 * Constraint:
+	 *     (leftExpression=ReqPred_ReqPred_1_0 operator=LogicalOr rightExpression=ReqPredLit)
+	 */
+	protected void sequence_ReqPred(ISerializationContext context, ReqPred semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.REQ_PRED__LEFT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.REQ_PRED__LEFT_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.REQ_PRED__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.REQ_PRED__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, CryptSLPackage.Literals.REQ_PRED__RIGHT_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CryptSLPackage.Literals.REQ_PRED__RIGHT_EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getReqPredAccess().getReqPredLeftExpressionAction_1_0(), semanticObject.getLeftExpression());
+		feeder.accept(grammarAccess.getReqPredAccess().getOperatorLogicalOrParserRuleCall_1_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getReqPredAccess().getRightExpressionReqPredLitParserRuleCall_1_2_0(), semanticObject.getRightExpression());
+		feeder.finish();
 	}
 	
 	

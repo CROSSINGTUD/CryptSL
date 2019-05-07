@@ -285,6 +285,15 @@ public interface CryptSLFactory extends EFactory
   ReqPred createReqPred();
 
   /**
+   * Returns a new object of class '<em>Req Pred Lit</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Req Pred Lit</em>'.
+   * @generated
+   */
+  ReqPredLit createReqPredLit();
+
+  /**
    * Returns a new object of class '<em>Su Par List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

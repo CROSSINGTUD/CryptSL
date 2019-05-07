@@ -133,9 +133,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CryptSL.ecore#//Pred/labelCond"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//ReqPred">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPred/cons"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ReqPred/not"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPred/pred"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPred/leftExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPred/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPred/rightExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="CryptSL.ecore#//ReqPredLit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPredLit/cons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CryptSL.ecore#//ReqPredLit/not"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//ReqPredLit/pred"/>
     </genClasses>
     <genClasses ecoreClass="CryptSL.ecore#//SuParList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CryptSL.ecore#//SuParList/parameters"/>

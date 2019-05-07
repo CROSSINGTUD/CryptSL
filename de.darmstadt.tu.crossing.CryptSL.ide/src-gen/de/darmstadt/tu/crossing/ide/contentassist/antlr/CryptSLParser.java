@@ -131,7 +131,9 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPredAccess().getGroup(), "rule__Pred__Group__0");
 			builder.put(grammarAccess.getPredAccess().getGroup_1_0(), "rule__Pred__Group_1_0__0");
 			builder.put(grammarAccess.getReqPredAccess().getGroup(), "rule__ReqPred__Group__0");
-			builder.put(grammarAccess.getReqPredAccess().getGroup_0(), "rule__ReqPred__Group_0__0");
+			builder.put(grammarAccess.getReqPredAccess().getGroup_1(), "rule__ReqPred__Group_1__0");
+			builder.put(grammarAccess.getReqPredLitAccess().getGroup(), "rule__ReqPredLit__Group__0");
+			builder.put(grammarAccess.getReqPredLitAccess().getGroup_0(), "rule__ReqPredLit__Group_0__0");
 			builder.put(grammarAccess.getEnsPredAccess().getGroup(), "rule__EnsPred__Group__0");
 			builder.put(grammarAccess.getEnsPredAccess().getGroup_1(), "rule__EnsPred__Group_1__0");
 			builder.put(grammarAccess.getSuParListAccess().getGroup(), "rule__SuParList__Group__0");
@@ -271,9 +273,11 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLitListAccess().getParametersAssignment_1_1_0(), "rule__LitList__ParametersAssignment_1_1_0");
 			builder.put(grammarAccess.getPredAccess().getPredNameAssignment_0(), "rule__Pred__PredNameAssignment_0");
 			builder.put(grammarAccess.getPredAccess().getParListAssignment_1_0_1(), "rule__Pred__ParListAssignment_1_0_1");
-			builder.put(grammarAccess.getReqPredAccess().getConsAssignment_0_0(), "rule__ReqPred__ConsAssignment_0_0");
-			builder.put(grammarAccess.getReqPredAccess().getNotAssignment_1(), "rule__ReqPred__NotAssignment_1");
-			builder.put(grammarAccess.getReqPredAccess().getPredAssignment_2(), "rule__ReqPred__PredAssignment_2");
+			builder.put(grammarAccess.getReqPredAccess().getOperatorAssignment_1_1(), "rule__ReqPred__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getReqPredAccess().getRightExpressionAssignment_1_2(), "rule__ReqPred__RightExpressionAssignment_1_2");
+			builder.put(grammarAccess.getReqPredLitAccess().getConsAssignment_0_0(), "rule__ReqPredLit__ConsAssignment_0_0");
+			builder.put(grammarAccess.getReqPredLitAccess().getNotAssignment_1(), "rule__ReqPredLit__NotAssignment_1");
+			builder.put(grammarAccess.getReqPredLitAccess().getPredAssignment_2(), "rule__ReqPredLit__PredAssignment_2");
 			builder.put(grammarAccess.getEnsPredAccess().getLabelCondAssignment_1_1(), "rule__EnsPred__LabelCondAssignment_1_1");
 			builder.put(grammarAccess.getSuParListAccess().getParametersAssignment_0(), "rule__SuParList__ParametersAssignment_0");
 			builder.put(grammarAccess.getSuParListAccess().getParametersAssignment_1_1(), "rule__SuParList__ParametersAssignment_1_1");

@@ -32,6 +32,7 @@ import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.Pred;
 import de.darmstadt.tu.crossing.cryptSL.ReqPred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPredLit;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
@@ -315,6 +316,14 @@ public class CryptSLSwitch<T> extends Switch<T>
       {
         ReqPred reqPred = (ReqPred)theEObject;
         T result = caseReqPred(reqPred);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CryptSLPackage.REQ_PRED_LIT:
+      {
+        ReqPredLit reqPredLit = (ReqPredLit)theEObject;
+        T result = caseReqPredLit(reqPredLit);
+        if (result == null) result = caseReqPred(reqPredLit);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -854,6 +863,22 @@ public class CryptSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReqPred(ReqPred object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Req Pred Lit</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Req Pred Lit</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReqPredLit(ReqPredLit object)
   {
     return null;
   }

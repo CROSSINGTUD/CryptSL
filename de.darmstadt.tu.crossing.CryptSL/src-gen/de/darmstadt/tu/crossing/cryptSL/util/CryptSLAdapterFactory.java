@@ -32,6 +32,7 @@ import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.Pred;
 import de.darmstadt.tu.crossing.cryptSL.ReqPred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPredLit;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
@@ -256,6 +257,11 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseReqPred(ReqPred object)
       {
         return createReqPredAdapter();
+      }
+      @Override
+      public Adapter caseReqPredLit(ReqPredLit object)
+      {
+        return createReqPredLitAdapter();
       }
       @Override
       public Adapter caseSuParList(SuParList object)
@@ -755,6 +761,21 @@ public class CryptSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReqPredAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.darmstadt.tu.crossing.cryptSL.ReqPredLit <em>Req Pred Lit</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.darmstadt.tu.crossing.cryptSL.ReqPredLit
+   * @generated
+   */
+  public Adapter createReqPredLitAdapter()
   {
     return null;
   }

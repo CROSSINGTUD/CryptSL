@@ -162,6 +162,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelCond" eType="#//SuperType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReqPred">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" eType="#//ReqPred"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//LogicalOperator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" eType="#//ReqPredLit"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReqPredLit" eSuperTypes="#//ReqPred">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//Constraint"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

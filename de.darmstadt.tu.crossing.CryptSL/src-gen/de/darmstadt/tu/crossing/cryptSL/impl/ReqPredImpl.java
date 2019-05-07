@@ -3,10 +3,10 @@
  */
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
-import de.darmstadt.tu.crossing.cryptSL.Constraint;
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.Pred;
+import de.darmstadt.tu.crossing.cryptSL.LogicalOperator;
 import de.darmstadt.tu.crossing.cryptSL.ReqPred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPredLit;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getCons <em>Cons</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getNot <em>Not</em>}</li>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getPred <em>Pred</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getLeftExpression <em>Left Expression</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ReqPredImpl#getRightExpression <em>Right Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,44 +35,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
 {
   /**
-   * The cached value of the '{@link #getCons() <em>Cons</em>}' containment reference.
+   * The cached value of the '{@link #getLeftExpression() <em>Left Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCons()
+   * @see #getLeftExpression()
    * @generated
    * @ordered
    */
-  protected Constraint cons;
+  protected ReqPred leftExpression;
 
   /**
-   * The default value of the '{@link #getNot() <em>Not</em>}' attribute.
+   * The cached value of the '{@link #getOperator() <em>Operator</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNot()
+   * @see #getOperator()
    * @generated
    * @ordered
    */
-  protected static final String NOT_EDEFAULT = null;
+  protected LogicalOperator operator;
 
   /**
-   * The cached value of the '{@link #getNot() <em>Not</em>}' attribute.
+   * The cached value of the '{@link #getRightExpression() <em>Right Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNot()
+   * @see #getRightExpression()
    * @generated
    * @ordered
    */
-  protected String not = NOT_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getPred() <em>Pred</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPred()
-   * @generated
-   * @ordered
-   */
-  protected Pred pred;
+  protected ReqPredLit rightExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -101,9 +91,9 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * @generated
    */
   @Override
-  public Constraint getCons()
+  public ReqPred getLeftExpression()
   {
-    return cons;
+    return leftExpression;
   }
 
   /**
@@ -111,13 +101,13 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCons(Constraint newCons, NotificationChain msgs)
+  public NotificationChain basicSetLeftExpression(ReqPred newLeftExpression, NotificationChain msgs)
   {
-    Constraint oldCons = cons;
-    cons = newCons;
+    ReqPred oldLeftExpression = leftExpression;
+    leftExpression = newLeftExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__CONS, oldCons, newCons);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__LEFT_EXPRESSION, oldLeftExpression, newLeftExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -129,20 +119,20 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * @generated
    */
   @Override
-  public void setCons(Constraint newCons)
+  public void setLeftExpression(ReqPred newLeftExpression)
   {
-    if (newCons != cons)
+    if (newLeftExpression != leftExpression)
     {
       NotificationChain msgs = null;
-      if (cons != null)
-        msgs = ((InternalEObject)cons).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__CONS, null, msgs);
-      if (newCons != null)
-        msgs = ((InternalEObject)newCons).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__CONS, null, msgs);
-      msgs = basicSetCons(newCons, msgs);
+      if (leftExpression != null)
+        msgs = ((InternalEObject)leftExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__LEFT_EXPRESSION, null, msgs);
+      if (newLeftExpression != null)
+        msgs = ((InternalEObject)newLeftExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__LEFT_EXPRESSION, null, msgs);
+      msgs = basicSetLeftExpression(newLeftExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__CONS, newCons, newCons));
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__LEFT_EXPRESSION, newLeftExpression, newLeftExpression));
   }
 
   /**
@@ -151,9 +141,9 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * @generated
    */
   @Override
-  public String getNot()
+  public LogicalOperator getOperator()
   {
-    return not;
+    return operator;
   }
 
   /**
@@ -161,38 +151,13 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setNot(String newNot)
+  public NotificationChain basicSetOperator(LogicalOperator newOperator, NotificationChain msgs)
   {
-    String oldNot = not;
-    not = newNot;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__NOT, oldNot, not));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Pred getPred()
-  {
-    return pred;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPred(Pred newPred, NotificationChain msgs)
-  {
-    Pred oldPred = pred;
-    pred = newPred;
+    LogicalOperator oldOperator = operator;
+    operator = newOperator;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__PRED, oldPred, newPred);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__OPERATOR, oldOperator, newOperator);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -204,20 +169,70 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
    * @generated
    */
   @Override
-  public void setPred(Pred newPred)
+  public void setOperator(LogicalOperator newOperator)
   {
-    if (newPred != pred)
+    if (newOperator != operator)
     {
       NotificationChain msgs = null;
-      if (pred != null)
-        msgs = ((InternalEObject)pred).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__PRED, null, msgs);
-      if (newPred != null)
-        msgs = ((InternalEObject)newPred).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__PRED, null, msgs);
-      msgs = basicSetPred(newPred, msgs);
+      if (operator != null)
+        msgs = ((InternalEObject)operator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__OPERATOR, null, msgs);
+      if (newOperator != null)
+        msgs = ((InternalEObject)newOperator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__OPERATOR, null, msgs);
+      msgs = basicSetOperator(newOperator, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__PRED, newPred, newPred));
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__OPERATOR, newOperator, newOperator));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReqPredLit getRightExpression()
+  {
+    return rightExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRightExpression(ReqPredLit newRightExpression, NotificationChain msgs)
+  {
+    ReqPredLit oldRightExpression = rightExpression;
+    rightExpression = newRightExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION, oldRightExpression, newRightExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRightExpression(ReqPredLit newRightExpression)
+  {
+    if (newRightExpression != rightExpression)
+    {
+      NotificationChain msgs = null;
+      if (rightExpression != null)
+        msgs = ((InternalEObject)rightExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION, null, msgs);
+      if (newRightExpression != null)
+        msgs = ((InternalEObject)newRightExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION, null, msgs);
+      msgs = basicSetRightExpression(newRightExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION, newRightExpression, newRightExpression));
   }
 
   /**
@@ -230,10 +245,12 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
   {
     switch (featureID)
     {
-      case CryptSLPackage.REQ_PRED__CONS:
-        return basicSetCons(null, msgs);
-      case CryptSLPackage.REQ_PRED__PRED:
-        return basicSetPred(null, msgs);
+      case CryptSLPackage.REQ_PRED__LEFT_EXPRESSION:
+        return basicSetLeftExpression(null, msgs);
+      case CryptSLPackage.REQ_PRED__OPERATOR:
+        return basicSetOperator(null, msgs);
+      case CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION:
+        return basicSetRightExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -248,12 +265,12 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
   {
     switch (featureID)
     {
-      case CryptSLPackage.REQ_PRED__CONS:
-        return getCons();
-      case CryptSLPackage.REQ_PRED__NOT:
-        return getNot();
-      case CryptSLPackage.REQ_PRED__PRED:
-        return getPred();
+      case CryptSLPackage.REQ_PRED__LEFT_EXPRESSION:
+        return getLeftExpression();
+      case CryptSLPackage.REQ_PRED__OPERATOR:
+        return getOperator();
+      case CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION:
+        return getRightExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -268,14 +285,14 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
   {
     switch (featureID)
     {
-      case CryptSLPackage.REQ_PRED__CONS:
-        setCons((Constraint)newValue);
+      case CryptSLPackage.REQ_PRED__LEFT_EXPRESSION:
+        setLeftExpression((ReqPred)newValue);
         return;
-      case CryptSLPackage.REQ_PRED__NOT:
-        setNot((String)newValue);
+      case CryptSLPackage.REQ_PRED__OPERATOR:
+        setOperator((LogicalOperator)newValue);
         return;
-      case CryptSLPackage.REQ_PRED__PRED:
-        setPred((Pred)newValue);
+      case CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION:
+        setRightExpression((ReqPredLit)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,14 +308,14 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
   {
     switch (featureID)
     {
-      case CryptSLPackage.REQ_PRED__CONS:
-        setCons((Constraint)null);
+      case CryptSLPackage.REQ_PRED__LEFT_EXPRESSION:
+        setLeftExpression((ReqPred)null);
         return;
-      case CryptSLPackage.REQ_PRED__NOT:
-        setNot(NOT_EDEFAULT);
+      case CryptSLPackage.REQ_PRED__OPERATOR:
+        setOperator((LogicalOperator)null);
         return;
-      case CryptSLPackage.REQ_PRED__PRED:
-        setPred((Pred)null);
+      case CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION:
+        setRightExpression((ReqPredLit)null);
         return;
     }
     super.eUnset(featureID);
@@ -314,31 +331,14 @@ public class ReqPredImpl extends MinimalEObjectImpl.Container implements ReqPred
   {
     switch (featureID)
     {
-      case CryptSLPackage.REQ_PRED__CONS:
-        return cons != null;
-      case CryptSLPackage.REQ_PRED__NOT:
-        return NOT_EDEFAULT == null ? not != null : !NOT_EDEFAULT.equals(not);
-      case CryptSLPackage.REQ_PRED__PRED:
-        return pred != null;
+      case CryptSLPackage.REQ_PRED__LEFT_EXPRESSION:
+        return leftExpression != null;
+      case CryptSLPackage.REQ_PRED__OPERATOR:
+        return operator != null;
+      case CryptSLPackage.REQ_PRED__RIGHT_EXPRESSION:
+        return rightExpression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (not: ");
-    result.append(not);
-    result.append(')');
-    return result.toString();
   }
 
 } //ReqPredImpl

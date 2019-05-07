@@ -33,6 +33,7 @@ import de.darmstadt.tu.crossing.cryptSL.ParList;
 import de.darmstadt.tu.crossing.cryptSL.PreDefinedPredicates;
 import de.darmstadt.tu.crossing.cryptSL.Pred;
 import de.darmstadt.tu.crossing.cryptSL.ReqPred;
+import de.darmstadt.tu.crossing.cryptSL.ReqPredLit;
 import de.darmstadt.tu.crossing.cryptSL.RequiredBlock;
 import de.darmstadt.tu.crossing.cryptSL.RequiresBlock;
 import de.darmstadt.tu.crossing.cryptSL.SimpleOrder;
@@ -132,6 +133,7 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
       case CryptSLPackage.LIT_LIST: return createLitList();
       case CryptSLPackage.PRED: return createPred();
       case CryptSLPackage.REQ_PRED: return createReqPred();
+      case CryptSLPackage.REQ_PRED_LIT: return createReqPredLit();
       case CryptSLPackage.SU_PAR_LIST: return createSuParList();
       case CryptSLPackage.SU_PAR: return createSuPar();
       case CryptSLPackage.AGGREGATE: return createAggregate();
@@ -492,6 +494,18 @@ public class CryptSLFactoryImpl extends EFactoryImpl implements CryptSLFactory
   {
     ReqPredImpl reqPred = new ReqPredImpl();
     return reqPred;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReqPredLit createReqPredLit()
+  {
+    ReqPredLitImpl reqPredLit = new ReqPredLitImpl();
+    return reqPredLit;
   }
 
   /**
