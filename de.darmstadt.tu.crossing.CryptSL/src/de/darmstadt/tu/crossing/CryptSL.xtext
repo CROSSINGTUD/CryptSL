@@ -131,13 +131,22 @@ ArithmeticExpression returns Constraint:
 	AdditionExpression;
 
 AdditionExpression returns Constraint:
-	MultiplicationExpression
+	ModularExpression
 	({ArithmeticExpression.leftExpression=current}
 	operator=AdditionOperator
-	rightExpression=MultiplicationExpression)*;
+	rightExpression=ModularExpression)*;
 
 AdditionOperator returns ArithmeticOperator:
 	PLUS='+' | MINUS='-';
+
+ModularExpression returns Constraint:
+	MultiplicationExpression
+	({ArithmeticExpression.leftExpression=current}
+	operator=ModularOperator
+	rightExpression=MultiplicationExpression)*;
+
+ModularOperator returns ArithmeticOperator:
+	MOD='%';
 
 MultiplicationExpression returns Constraint:
 	UnaryPreExpression

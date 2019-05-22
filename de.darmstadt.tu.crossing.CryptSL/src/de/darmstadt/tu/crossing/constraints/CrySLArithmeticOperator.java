@@ -16,7 +16,10 @@ public class CrySLArithmeticOperator extends ArithmeticOperatorImpl {
 			return operator.getPLUS();
 		} else if (operator.getMINUS() != null && !operator.getMINUS().isEmpty()) {
 			return operator.getMINUS();
-		} else if (operator.getTIMES() != null && !operator.getTIMES().isEmpty()) {
+		}else if (operator.getMOD() != null && !operator.getMOD().isEmpty()) {
+			return operator.getMOD();
+		} 
+		else if (operator.getTIMES() != null && !operator.getTIMES().isEmpty()) {
 			return operator.getTIMES();
 		} else {
 			return operator.getDIVIDE();
