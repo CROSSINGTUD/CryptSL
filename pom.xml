@@ -249,7 +249,7 @@
 		<repository>
 			<id>eclipse-photon</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/photon</url>
+			<url>http://download.eclipse.org/releases/2019-06</url>
 		</repository>
 
 		<repository>
@@ -275,8 +275,17 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-snapshots-repository</id>
+			<name>JBoss Snapshots Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+		</pluginRepository>
 	</pluginRepositories>
-
 
 	<dependencies>
 	</dependencies>
