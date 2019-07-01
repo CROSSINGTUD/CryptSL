@@ -173,11 +173,15 @@ LiteralExpression returns LiteralExpression:
 	name=Literal | name=AggregateExpression | PreDefinedPredicates;
 
 PreDefinedPredicates:
-	predName="neverTypeOf"+ "[" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] "]" |
+	predName="neverTypeOf"+ "[" obj+=[Object] "," type= JvmType"]" |
 	predName="noCallTo"+ "[" obj+=[Event] "]" |
 	predName="callTo"+ "[" obj+=[Event] "]" |
 	predName="notHardCoded"+ "[" obj+=[Object] "]" |
 	predName="length"+ "[" obj+=[Object] "]";
+	
+JvmType:
+	type=[jvmTypes::JvmType|QualifiedName]
+;
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;
