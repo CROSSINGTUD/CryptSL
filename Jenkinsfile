@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'apache-maven-latest'
-        jdk 'oracle-jdk8-latest'
+        jdk 'Oracle JDK 8'
     }
 
     stages {
