@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/de.darmstadt.tu.crossing.CryptSL.feature_1.0.0.qualifier.jar" id="de.darmstadt.tu.crossing.CryptSL.feature" version="1.0.0.qualifier"/>
+   <feature url="features/de.darmstadt.tu.crossing.CryptSL.feature_1.0.0.qualifier.jar" id="de.darmstadt.tu.crossing.CryptSL.feature" version="1.0.0.qualifier">
+      <category name="CrySL"/>
+   </feature>
+   <category-def name="CrySL" label="CrySL"/>
    <repository-reference location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" enabled="true" />
 </site>
