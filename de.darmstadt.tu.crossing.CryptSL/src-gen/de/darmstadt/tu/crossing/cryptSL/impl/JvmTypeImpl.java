@@ -4,54 +4,47 @@
 package de.darmstadt.tu.crossing.cryptSL.impl;
 
 import de.darmstadt.tu.crossing.cryptSL.CryptSLPackage;
-import de.darmstadt.tu.crossing.cryptSL.Par;
-import de.darmstadt.tu.crossing.cryptSL.ParList;
+import de.darmstadt.tu.crossing.cryptSL.JvmType;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Par List</b></em>'.
+ * An implementation of the model object '<em><b>Jvm Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.ParListImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.darmstadt.tu.crossing.cryptSL.impl.JvmTypeImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
+public class JvmTypeImpl extends MinimalEObjectImpl.Container implements JvmType
 {
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameters()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected EList<Par> parameters;
+  protected org.eclipse.xtext.common.types.JvmType type;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParListImpl()
+  protected JvmTypeImpl()
   {
     super();
   }
@@ -64,7 +57,7 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
   @Override
   protected EClass eStaticClass()
   {
-    return CryptSLPackage.Literals.PAR_LIST;
+    return CryptSLPackage.Literals.JVM_TYPE;
   }
 
   /**
@@ -72,13 +65,19 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Par> getParameters()
+  public org.eclipse.xtext.common.types.JvmType getType()
   {
-    if (parameters == null)
+    if (type != null && type.eIsProxy())
     {
-      parameters = new EObjectContainmentEList<Par>(Par.class, this, CryptSLPackage.PAR_LIST__PARAMETERS);
+      InternalEObject oldType = (InternalEObject)type;
+      type = (org.eclipse.xtext.common.types.JvmType)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptSLPackage.JVM_TYPE__TYPE, oldType, type));
+      }
     }
-    return parameters;
+    return type;
   }
 
   /**
@@ -86,15 +85,22 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public org.eclipse.xtext.common.types.JvmType basicGetType()
   {
-    switch (featureID)
-    {
-      case CryptSLPackage.PAR_LIST__PARAMETERS:
-        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(org.eclipse.xtext.common.types.JvmType newType)
+  {
+    org.eclipse.xtext.common.types.JvmType oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CryptSLPackage.JVM_TYPE__TYPE, oldType, type));
   }
 
   /**
@@ -107,8 +113,9 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
   {
     switch (featureID)
     {
-      case CryptSLPackage.PAR_LIST__PARAMETERS:
-        return getParameters();
+      case CryptSLPackage.JVM_TYPE__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,15 +125,13 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CryptSLPackage.PAR_LIST__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends Par>)newValue);
+      case CryptSLPackage.JVM_TYPE__TYPE:
+        setType((org.eclipse.xtext.common.types.JvmType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +147,8 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
   {
     switch (featureID)
     {
-      case CryptSLPackage.PAR_LIST__PARAMETERS:
-        getParameters().clear();
+      case CryptSLPackage.JVM_TYPE__TYPE:
+        setType((org.eclipse.xtext.common.types.JvmType)null);
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +164,10 @@ public class ParListImpl extends MinimalEObjectImpl.Container implements ParList
   {
     switch (featureID)
     {
-      case CryptSLPackage.PAR_LIST__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
+      case CryptSLPackage.JVM_TYPE__TYPE:
+        return type != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ParListImpl
+} //JvmTypeImpl
