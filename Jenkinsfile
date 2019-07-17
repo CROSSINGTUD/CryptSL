@@ -16,16 +16,13 @@ pipeline {
                 branch 'master';
             }
             steps {
-                configFileProvider(
-	        		[configFile(fileId: '4c86aa82-fbc3-409b-8ca3-9e9bfe0d2cfb', variable: 'update-site-cred')]) {
-	        			sshagent ( ['projects-storage.eclipse.org-bot-ssh']) {
-		      		  		 sh '''
-		                    sshpass -p ${update-site-cred} ssh cognicrypt@crossing.cdc.informatik.tu-darmstadt.de rm -rf /var/www/cognicrypt
-		                    sshpass -p ${update-site-cred} ssh cognicrypt@crossing.cdc.informatik.tu-darmstadt.de mkdir -p /var/www/cognicrypt
-		                    sshpass -p ${update-site-cred} scp -r repository/target/repository/* cognicrypt:@crossing.cdc.informatik.tu-darmstadt.de:/var/www/cognicrypt
-		                    '''
-	                   }
-					}
+                withCredentials([usernamePassword(credentialsId: 'cognicrypt', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+      		  		 sh '''
+                    sshpass -p $PASS ssh -o StrictHostKeyChecking=no $USER@crossing.cdc.informatik.tu-darmstadt.de rm -rf /var/www/cognicrypt
+                    sshpass -p $PASS ssh -o StrictHostKeyChecking=no $USER@crossing.cdc.informatik.tu-darmstadt.de mkdir -p /var/www/cognicrypt
+                    sshpass -p $PASS scp -r de.darmstadt.tu.crossing.CryptSL.repository/target/repository/* $USER@crossing.cdc.informatik.tu-darmstadt.de:/var/www/cognicrypt
+                    '''
+               }
 	        }
 		}
 	}
