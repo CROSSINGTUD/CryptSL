@@ -93,7 +93,7 @@ LogicalImplyExpression returns Constraint:
 
 LogicalImply:
 	IMPLIES="=>";
-	
+
 LogicalOrExpression returns Constraint:
 	LogicalAndExpression
 	({Constraint.leftExpression=current}
