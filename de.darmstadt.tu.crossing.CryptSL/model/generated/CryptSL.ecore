@@ -4,6 +4,8 @@
     nsPrefix="cryptSL">
   <eClassifiers xsi:type="ecore:EClass" name="Domainmodel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="javaType" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="array" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmGenericType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="usage" eType="#//UseBlock"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="forbEvent" eType="#//ForbiddenBlock"
@@ -115,6 +117,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ArithmeticOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PLUS" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MINUS" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MOD" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TIMES" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="DIVIDE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -136,6 +139,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="obj" unique="false" upperBound="-1"
         eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//JvmType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JvmType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal">
@@ -160,6 +167,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelCond" eType="#//SuperType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReqPred">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftExpression" eType="#//ReqPred"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//LogicalOperator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightExpression" eType="#//ReqPredLit"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReqPredLit" eSuperTypes="#//ReqPred">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//Constraint"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

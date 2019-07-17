@@ -4,7 +4,7 @@ generate cryptSL "http://www.darmstadt.de/tu/crossing/CryptSL"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Domainmodel:
-	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName]
+	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] ((array="[]") | ("<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"))?
 	'OBJECTS' (usage=UseBlock)
 	('FORBIDDEN' forbEvent=ForbiddenBlock)?
 	'EVENTS' (req_events=RequiredBlock)
@@ -13,8 +13,6 @@ Domainmodel:
 	('REQUIRES' require=RequiresBlock)?
 	('ENSURES' ensure=EnsuresBlock)?
 	('NEGATES' destroy=DestroysBlock)?;
-
-
 
 UseBlock:
 	objects+=(ObjectDecl)+;
@@ -95,7 +93,7 @@ LogicalImplyExpression returns Constraint:
 
 LogicalImply:
 	IMPLIES="=>";
-
+	
 LogicalOrExpression returns Constraint:
 	LogicalAndExpression
 	({Constraint.leftExpression=current}
@@ -133,13 +131,22 @@ ArithmeticExpression returns Constraint:
 	AdditionExpression;
 
 AdditionExpression returns Constraint:
-	MultiplicationExpression
+	ModularExpression
 	({ArithmeticExpression.leftExpression=current}
 	operator=AdditionOperator
-	rightExpression=MultiplicationExpression)*;
+	rightExpression=ModularExpression)*;
 
 AdditionOperator returns ArithmeticOperator:
 	PLUS='+' | MINUS='-';
+
+ModularExpression returns Constraint:
+	MultiplicationExpression
+	({ArithmeticExpression.leftExpression=current}
+	operator=ModularOperator
+	rightExpression=MultiplicationExpression)*;
+
+ModularOperator returns ArithmeticOperator:
+	MOD='%';
 
 MultiplicationExpression returns Constraint:
 	UnaryPreExpression
@@ -166,22 +173,30 @@ LiteralExpression returns LiteralExpression:
 	name=Literal | name=AggregateExpression | PreDefinedPredicates;
 
 PreDefinedPredicates:
-	predName="neverTypeOf"+ "(" obj+=[Object] "," type=[jvmTypes::JvmType|QualifiedName] ")" |
-	predName="noCallTo"+ "(" obj+=[Event] ")" |
-	predName="callTo"+ "(" obj+=[Event] ")" |
-	predName="length"+ "(" obj+=[Object] ")";
+	predName="neverTypeOf"+ "[" obj+=[Object] "," type= JvmType"]" |
+	predName="noCallTo"+ "[" obj+=[Event] "]" |
+	predName="callTo"+ "[" obj+=[Event] "]" |
+	predName="notHardCoded"+ "[" obj+=[Object] "]" |
+	predName="length"+ "[" obj+=[Object] "]";
+	
+JvmType:
+	type=[jvmTypes::JvmType|QualifiedName]
+;
 
 AggregateExpression returns LiteralExpression:
 	value=[SuperType] ("." ID)?;
 
 Literal:
-	{Literal} val=(StringLiteral | IntegerLiteral);
+	{Literal} val=(StringLiteral | IntegerLiteral | BooleanLiteral);
 
 StringLiteral:
 	STRING;
 
 IntegerLiteral:
 	INT | INT '^' INT;
+	
+BooleanLiteral:
+	'true' | 'false';
 
 UnaryPreOperator returns UnaryOperator:
 	NOT='!';
@@ -209,7 +224,14 @@ Pred:
 	predName=ID (('[' (parList=SuParList) ']') | ("[]"));
 
 ReqPred:
-	(cons=Constraint "=>")? (not='!')? pred=Pred;
+	(ReqPredLit
+	({ReqPred.leftExpression=current}
+	operator=LogicalOr
+	rightExpression=ReqPredLit)*);
+	
+ReqPredLit: 
+	(cons=Constraint "=>")? (not='!')? pred=Pred
+;
 
 EnsPred returns Constraint:
 	Pred ('after' labelCond=[SuperType])?;
