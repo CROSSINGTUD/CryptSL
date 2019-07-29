@@ -212,7 +212,8 @@ ArrayElements:
 ;
 
 ConsPred returns LiteralExpression:
-	(consPred = "alg("lit=LiteralExpression ")"| consPred = "mode("lit=LiteralExpression ")" |consPred = "pad("lit=LiteralExpression ")") | lit=LiteralExpression;
+	(consPred = "alg("lit=LiteralExpression ")"| consPred = "mode("lit=LiteralExpression ")" | consPred = "pad("lit=LiteralExpression ")") | part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")"
+	| lit=LiteralExpression ;
 
 terminal INT:
 	'0'..'9' ('0'..'9' | '_')*;
