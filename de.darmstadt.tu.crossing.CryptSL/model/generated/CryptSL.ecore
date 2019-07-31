@@ -129,11 +129,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="litsleft" eType="#//LitList"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consPred" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lit" eType="#//LiteralExpression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="part" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lit" eType="#//LiteralExpression"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PreDefinedPredicates" eSuperTypes="#//LiteralExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

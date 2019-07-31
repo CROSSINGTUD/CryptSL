@@ -4,10 +4,15 @@
 package de.darmstadt.tu.crossing;
 
 import de.darmstadt.tu.crossing.AbstractCryptSLRuntimeModule;
+import de.darmstadt.tu.crossing.scoping.SilencedImportedNamesAdapter;
+import org.eclipse.xtext.linking.impl.ImportedNamesAdapter;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
 public class CryptSLRuntimeModule extends AbstractCryptSLRuntimeModule {
+  public Class<? extends ImportedNamesAdapter> bindImportedNamesAdapter() {
+    return SilencedImportedNamesAdapter.class;
+  }
 }
