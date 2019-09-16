@@ -388,18 +388,12 @@
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="cryptsl">
 		</viewer>
-		<contentTypeBinding
-			contentTypeId="de.darmstadt.tu.crossing.CryptSL.contenttype"
-			contentViewerId="de.darmstadt.tu.crossing.CryptSL.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="de.darmstadt.tu.crossing.CryptSL.compare.contentMergeViewers"
 			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="cryptsl" label="CryptSL Compare">
 		</viewer>
-		<contentTypeBinding
-			contentTypeId="de.darmstadt.tu.crossing.CryptSL.contenttype"
-			contentMergeViewerId="de.darmstadt.tu.crossing.CryptSL.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="de.darmstadt.tu.crossing.CryptSL.editors.documentProviders"
@@ -412,33 +406,5 @@
 			extension="cryptsl"
 			type="text">
 		</fileTypes>
-	</extension>
-	<extension
-		point="org.eclipse.ui.newWizards">
-		<category id="de.darmstadt.tu.crossing.ui.category" name="CryptSL">
-		</category>
-		<wizard
-			category="de.darmstadt.tu.crossing.ui.category"
-			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard"
-			id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"
-			name="CryptSL File"
-			icon="icons/new_CryptSL_file.png">
-		</wizard>
-	</extension>
-	<extension
-		point="org.eclipse.xtext.ui.fileTemplate">
-		<fileTemplateProvider
-			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:de.darmstadt.tu.crossing.ui.wizard.CryptSLSprayFileTemplateProvider"
-			grammarName="de.darmstadt.tu.crossing.CryptSL">
-		</fileTemplateProvider>
-	</extension>
-	<extension
-		point="org.eclipse.ui.perspectiveExtensions">
-		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
-			<newWizardShortcut id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"/>
-		</perspectiveExtension>
-		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
-			<newWizardShortcut id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"/>
-		</perspectiveExtension>
 	</extension>
 </plugin>
