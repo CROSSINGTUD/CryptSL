@@ -38,7 +38,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 	StringTemplateVariable classNamefield= text("Class Name", "");
 	@Override
 	public void generateFiles(IFileGenerator generator) {
-		// TODO Auto-generated method stub
 		String content="";
 		if(generator instanceof WorkspaceFileGenerator) {
 			String javaClassName = classNamefield.getValue().replaceAll("\\s","");
@@ -46,7 +45,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 				Class claz = Class.forName(javaClassName);
 				content = generateContent(claz,javaClassName);
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				Collection<String> classpath = getProjectClassPath(getFolder());
 				if(classpath.size()>0) {
 					Class<?> claz =  getClassMethods(javaClassName,classpath);
@@ -88,7 +86,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 			}
 			
 		}else {
-			//objectName = objectType + " "+ objectType.substring(0,2)+objectType.substring(2,objectType.length()).replaceAll("[AEIOUaeiou]", "").replaceAll("[^a-zA-Z]", "");
 			boolean hasUppercase = !objectType.equals(objectType.toLowerCase());
 			if(!hasUppercase && objectType.matches("[a-zA-Z]+") && objectType.length()<5) {
 				objectName = objectType + " " + objectType;
@@ -163,8 +160,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 	}
 	public List<String> createReturnList (Map<String,String> returnsmap){
 		List <String> params = new ArrayList<String>();
-		String objectType = null;
-		String objectName= null;
 		returnsmap.entrySet().forEach(entry->{
 			params.add(createRetrunObject(entry.getKey(),entry.getValue()));
 		});
@@ -173,8 +168,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 	
 	public Map<String,String> createReturnMap (Map<String,String> returnsmap){
 		Map<String,String> newMap = new HashMap<>();
-		String objectType = null;
-		String objectName= null;
 		returnsmap.entrySet().forEach(entry->{
 			newMap.put(entry.getKey(), createRetrunObject(entry.getKey(),entry.getValue()));
 		});
@@ -252,50 +245,8 @@ public final class CryptSLFile extends AbstractFileTemplate{
 							abbrList.add(abbr);
 						}
 					}
-				}
-				
+				}	
 			}
-			//
-			/*abbr = Character.toString(methodName.charAt(0));
-			if(!abbrList.contains(abbr)) {
-				abbrList.add(abbr);
-			}else {
-				boolean hasUppercase = !methodName.equals(methodName.toLowerCase());
-				if(hasUppercase) {
-					if(methodName.contains("get")) {
-						abbr="get";
-						for(int i=0;i<methodName.length()-1; i++) {
-					        if(Character.isUpperCase(methodName.charAt(i))) {
-					        		abbr=abbr+methodName.substring(i,Math.min(i+3, methodName.length()));
-					        }
-					    }
-					}else {
-						abbr=Character.toString(methodName.charAt(0));
-						for(int i=0;i<methodName.length()-1; i++) {
-					        if(Character.isUpperCase(methodName.charAt(i))) {
-					        		if(Character.isUpperCase(methodName.charAt(i+1))) {
-					        			abbr=abbr+methodName.substring(i,Math.min(i+3,methodName.length()));
-					        			break;
-					        		}else {
-					        			abbr=abbr+methodName.substring(i,Math.min(i+3, methodName.length()));
-					        		}
-					        }
-					    }
-					}
-					if(!abbrList.contains(abbr)){
-						abbrList.add(abbr);
-					}else{
-						String randomalph = methodName.replaceAll("[AEIOUaeiou]", "");
-						abbr = abbr+ Character.toString(randomalph.charAt(r.nextInt(randomalph.length())));
-						abbrList.add(abbr);
-					}
-				}else {
-					String randomalph = methodName.replaceAll("[AEIOUaeiou]", "");
-					abbr = abbr+ Character.toString(randomalph.charAt(r.nextInt(randomalph.length())));
-					abbrList.add(abbr);
-				}
-				
-			}*/
 			
 			for(int i=0; i<parameters.size();i++) {
 				List<String> params = parameters.get(i);
@@ -342,8 +293,8 @@ public final class CryptSLFile extends AbstractFileTemplate{
 				eventList.add(" ");
 			}
 		 });
-	return eventList;
-		
+	
+	    return eventList;
 	}
 	
 	public List<String> getAbbrevation(List<String> parameters, List<String> objects) {
@@ -380,7 +331,6 @@ public final class CryptSLFile extends AbstractFileTemplate{
 			}
 			
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 		return null;
@@ -419,18 +369,12 @@ public final class CryptSLFile extends AbstractFileTemplate{
         	    	methodsmap.put(method.getName(), parameters);
         	    }
         	    if(!method.getReturnType().getName().contains("void")) {
-        	    	/*if(method.getReturnType().equals(byte[].class)) {
-        	    		returnsmap.put(method.getName(), "byte[]"); 
-        	    	}else */
         	    	if(method.getReturnType().getName().contains("String") ||
         	    			method.getReturnType().getName().contains("int") || 
         	    			method.getReturnType().getName().contains("byte") ||
         	    			method.getReturnType().getName().contains("long")){
         	    		returnsmap.put(method.getName(),method.getReturnType().getName());
-        	    	}/*else if(!method.getReturnType().getName().contains(".")) {
-        	    		returnsmap.put(method.getName(),method.getReturnType().getName());
-        	    	}*/
-        	    	
+        	    	}
         	    }
 	       }
 	    }
