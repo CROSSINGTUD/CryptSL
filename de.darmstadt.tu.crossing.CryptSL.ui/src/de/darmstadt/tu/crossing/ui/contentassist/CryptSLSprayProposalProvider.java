@@ -75,49 +75,31 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 
 	}
 	@Override
-	public void completeAggregateExpression_Value(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		if(context.getCurrentNode().hasPreviousSibling()) {
-			if(context.getCurrentNode().getPreviousSibling().hasPreviousSibling()) { 
-				if (context.getCurrentNode().getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
-						completeAggregateProposal(context,acceptor);
-				}else {
-					super.completeAggregateExpression_Value(model, assignment, context, acceptor);
-				}
-			}else {
-				super.completeAggregateExpression_Value(model, assignment, context, acceptor);
-			}
-		}else {
-				super.completeAggregateExpression_Value(model, assignment, context, acceptor);
+	public void completeAggregateExpression_Value(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		INode currNode = context.getCurrentNode();
+		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling()
+				&& currNode.getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
+			completeAggregateProposal(context, acceptor);
+		} else {
+			System.out.println("inconstraint");
+			super.completeAggregateExpression_Value(model, assignment, context, acceptor);
 		}
 	}
 	@Override
-	public void completeKeyword(Keyword keyword, ContentAssistContext contentAssistContext, ICompletionProposalAcceptor acceptor) {
-		if(contentAssistContext.getCurrentNode().hasPreviousSibling()) {
-			if(contentAssistContext.getCurrentNode().getPreviousSibling().hasPreviousSibling()) { 
-				if (contentAssistContext.getCurrentNode().getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
-					if(contentAssistContext.getCurrentNode().getPreviousSibling().getText().length()<=0) {
-						completeAggregateProposal(contentAssistContext,acceptor);
-						completeConstraintProposal(contentAssistContext,acceptor);
-					}else if(contentAssistContext.getCurrentNode().getPreviousSibling().getText().contains(";")) {
-						String text = contentAssistContext.getCurrentNode().getPreviousSibling().getText();
-						if(text.charAt(text.length()-1) == ';') {
-							completeAggregateProposal(contentAssistContext,acceptor);
-							completeConstraintProposal(contentAssistContext,acceptor);
-						}
-						else{
-							super.completeKeyword(keyword, contentAssistContext, acceptor);
-						}
-					}else {
-						super.completeKeyword(keyword, contentAssistContext, acceptor);
-					}	
-				}else {
-					super.completeKeyword(keyword, contentAssistContext, acceptor);
-				}
-			}else {
-				super.completeKeyword(keyword, contentAssistContext, acceptor);
+	public void completeKeyword(Keyword keyword, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		INode currNode = context.getCurrentNode();
+		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling()
+				&& currNode.getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
+			String prevNodeText = currNode.getPreviousSibling().getText();
+			if (prevNodeText.length() <= 0 || prevNodeText.charAt(prevNodeText.length() - 1) == ';') {
+				completeAggregateProposal(context, acceptor);
+				completeConstraintProposal(context, acceptor);
+			} else {
+				super.completeKeyword(keyword, context, acceptor);
 			}
-		}else {
-			super.completeKeyword(keyword, contentAssistContext, acceptor);
+		} else {
+			super.completeKeyword(keyword, context, acceptor);
 		}
 	}
 	public void completeConstraintProposal(ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -193,7 +175,6 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 				}
 				
 			} catch (CoreException e) {
-				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
 
