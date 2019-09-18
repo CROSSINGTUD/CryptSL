@@ -2884,6 +2884,67 @@ rulePreDefinedPredicates returns [EObject current=null]
 				newLeafNode(otherlv_21, grammarAccess.getPreDefinedPredicatesAccess().getRightSquareBracketKeyword_4_3());
 			}
 		)
+		    |
+		(
+			(
+				(
+					lv_predName_22_0='instanceOf'
+					{
+						newLeafNode(lv_predName_22_0, grammarAccess.getPreDefinedPredicatesAccess().getPredNameInstanceOfKeyword_5_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
+						}
+						setWithLastConsumed($current, "predName", lv_predName_22_0, "instanceOf");
+					}
+				)
+			)+
+			otherlv_23='['
+			{
+				newLeafNode(otherlv_23, grammarAccess.getPreDefinedPredicatesAccess().getLeftSquareBracketKeyword_5_1());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPreDefinedPredicatesRule());
+						}
+					}
+					otherlv_24=RULE_ID
+					{
+						newLeafNode(otherlv_24, grammarAccess.getPreDefinedPredicatesAccess().getObjObjectCrossReference_5_2_0());
+					}
+				)
+			)
+			otherlv_25=','
+			{
+				newLeafNode(otherlv_25, grammarAccess.getPreDefinedPredicatesAccess().getCommaKeyword_5_3());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPreDefinedPredicatesAccess().getTypeJvmTypeParserRuleCall_5_4_0());
+					}
+					lv_type_26_0=ruleJvmType
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPreDefinedPredicatesRule());
+						}
+						set(
+							$current,
+							"type",
+							lv_type_26_0,
+							"de.darmstadt.tu.crossing.CryptSL.JvmType");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_27=']'
+			{
+				newLeafNode(otherlv_27, grammarAccess.getPreDefinedPredicatesAccess().getRightSquareBracketKeyword_5_5());
+			}
+		)
 	)
 ;
 

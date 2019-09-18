@@ -4,7 +4,9 @@
 package de.darmstadt.tu.crossing.ui;
 
 import de.darmstadt.tu.crossing.ui.AbstractCryptSLUiModule;
+import de.darmstadt.tu.crossing.ui.contentassist.CryptSLSprayProposalProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -13,5 +15,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class CryptSLUiModule extends AbstractCryptSLUiModule {
   public CryptSLUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
+  }
+  
+  @Override
+  public Class<? extends IContentProposalProvider> bindIContentProposalProvider() {
+    return CryptSLSprayProposalProvider.class;
   }
 }

@@ -122,6 +122,7 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_2(), "rule__PreDefinedPredicates__Group_2__0");
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_3(), "rule__PreDefinedPredicates__Group_3__0");
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_4(), "rule__PreDefinedPredicates__Group_4__0");
+			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getGroup_5(), "rule__PreDefinedPredicates__Group_5__0");
 			builder.put(grammarAccess.getAggregateExpressionAccess().getGroup(), "rule__AggregateExpression__Group__0");
 			builder.put(grammarAccess.getAggregateExpressionAccess().getGroup_1(), "rule__AggregateExpression__Group_1__0");
 			builder.put(grammarAccess.getLiteralAccess().getGroup(), "rule__Literal__Group__0");
@@ -262,6 +263,9 @@ public class CryptSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_3_2(), "rule__PreDefinedPredicates__ObjAssignment_3_2");
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getPredNameAssignment_4_0(), "rule__PreDefinedPredicates__PredNameAssignment_4_0");
 			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_4_2(), "rule__PreDefinedPredicates__ObjAssignment_4_2");
+			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getPredNameAssignment_5_0(), "rule__PreDefinedPredicates__PredNameAssignment_5_0");
+			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getObjAssignment_5_2(), "rule__PreDefinedPredicates__ObjAssignment_5_2");
+			builder.put(grammarAccess.getPreDefinedPredicatesAccess().getTypeAssignment_5_4(), "rule__PreDefinedPredicates__TypeAssignment_5_4");
 			builder.put(grammarAccess.getJvmTypeAccess().getTypeAssignment(), "rule__JvmType__TypeAssignment");
 			builder.put(grammarAccess.getAggregateExpressionAccess().getValueAssignment_0(), "rule__AggregateExpression__ValueAssignment_0");
 			builder.put(grammarAccess.getLiteralAccess().getValAssignment_1(), "rule__Literal__ValAssignment_1");

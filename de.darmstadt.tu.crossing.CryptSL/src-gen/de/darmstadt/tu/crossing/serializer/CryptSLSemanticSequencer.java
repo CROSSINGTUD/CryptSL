@@ -906,7 +906,8 @@ public class CryptSLSemanticSequencer extends XtypeSemanticSequencer {
 	 *         (predName='noCallTo'+ obj+=[Event|ID]) | 
 	 *         (predName='callTo'+ obj+=[Event|ID]) | 
 	 *         (predName='notHardCoded'+ obj+=[Object|ID]) | 
-	 *         (predName='length'+ obj+=[Object|ID])
+	 *         (predName='length'+ obj+=[Object|ID]) | 
+	 *         (predName='instanceOf'+ obj+=[Object|ID] type=JvmType)
 	 *     )
 	 */
 	protected void sequence_PreDefinedPredicates(ISerializationContext context, PreDefinedPredicates semanticObject) {

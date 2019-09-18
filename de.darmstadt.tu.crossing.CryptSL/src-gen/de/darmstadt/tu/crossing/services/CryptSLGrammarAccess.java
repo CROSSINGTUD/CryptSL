@@ -1616,16 +1616,27 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cObjObjectCrossReference_4_2_0 = (CrossReference)cObjAssignment_4_2.eContents().get(0);
 		private final RuleCall cObjObjectIDTerminalRuleCall_4_2_0_1 = (RuleCall)cObjObjectCrossReference_4_2_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Assignment cPredNameAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
+		private final Keyword cPredNameInstanceOfKeyword_5_0_0 = (Keyword)cPredNameAssignment_5_0.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cObjAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final CrossReference cObjObjectCrossReference_5_2_0 = (CrossReference)cObjAssignment_5_2.eContents().get(0);
+		private final RuleCall cObjObjectIDTerminalRuleCall_5_2_0_1 = (RuleCall)cObjObjectCrossReference_5_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
+		private final Assignment cTypeAssignment_5_4 = (Assignment)cGroup_5.eContents().get(4);
+		private final RuleCall cTypeJvmTypeParserRuleCall_5_4_0 = (RuleCall)cTypeAssignment_5_4.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_5_5 = (Keyword)cGroup_5.eContents().get(5);
 		
 		//PreDefinedPredicates:
 		//	predName="neverTypeOf"+ "[" obj+=[Object] "," type=JvmType "]" | predName="noCallTo"+ "[" obj+=[Event] "]" |
 		//	predName="callTo"+ "[" obj+=[Event] "]" | predName="notHardCoded"+ "[" obj+=[Object] "]" | predName="length"+ "["
-		//	obj+=[Object] "]";
+		//	obj+=[Object] "]" | predName="instanceOf"+ "[" obj+=[Object] "," type=JvmType "]";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//predName="neverTypeOf"+ "[" obj+=[Object] "," type=JvmType "]" | predName="noCallTo"+ "[" obj+=[Event] "]" |
 		//predName="callTo"+ "[" obj+=[Event] "]" | predName="notHardCoded"+ "[" obj+=[Object] "]" | predName="length"+ "["
-		//obj+=[Object] "]"
+		//obj+=[Object] "]" | predName="instanceOf"+ "[" obj+=[Object] "," type=JvmType "]"
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//predName="neverTypeOf"+ "[" obj+=[Object] "," type=JvmType "]"
@@ -1756,6 +1767,39 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//"]"
 		public Keyword getRightSquareBracketKeyword_4_3() { return cRightSquareBracketKeyword_4_3; }
+		
+		//predName="instanceOf"+ "[" obj+=[Object] "," type=JvmType "]"
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//predName="instanceOf"+
+		public Assignment getPredNameAssignment_5_0() { return cPredNameAssignment_5_0; }
+		
+		//"instanceOf"
+		public Keyword getPredNameInstanceOfKeyword_5_0_0() { return cPredNameInstanceOfKeyword_5_0_0; }
+		
+		//"["
+		public Keyword getLeftSquareBracketKeyword_5_1() { return cLeftSquareBracketKeyword_5_1; }
+		
+		//obj+=[Object]
+		public Assignment getObjAssignment_5_2() { return cObjAssignment_5_2; }
+		
+		//[Object]
+		public CrossReference getObjObjectCrossReference_5_2_0() { return cObjObjectCrossReference_5_2_0; }
+		
+		//ID
+		public RuleCall getObjObjectIDTerminalRuleCall_5_2_0_1() { return cObjObjectIDTerminalRuleCall_5_2_0_1; }
+		
+		//","
+		public Keyword getCommaKeyword_5_3() { return cCommaKeyword_5_3; }
+		
+		//type=JvmType
+		public Assignment getTypeAssignment_5_4() { return cTypeAssignment_5_4; }
+		
+		//JvmType
+		public RuleCall getTypeJvmTypeParserRuleCall_5_4_0() { return cTypeJvmTypeParserRuleCall_5_4_0; }
+		
+		//"]"
+		public Keyword getRightSquareBracketKeyword_5_5() { return cRightSquareBracketKeyword_5_5; }
 	}
 	public class JvmTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.darmstadt.tu.crossing.CryptSL.JvmType");
@@ -3086,7 +3130,7 @@ public class CryptSLGrammarAccess extends AbstractGrammarElementFinder {
 	//PreDefinedPredicates:
 	//	predName="neverTypeOf"+ "[" obj+=[Object] "," type=JvmType "]" | predName="noCallTo"+ "[" obj+=[Event] "]" |
 	//	predName="callTo"+ "[" obj+=[Event] "]" | predName="notHardCoded"+ "[" obj+=[Object] "]" | predName="length"+ "["
-	//	obj+=[Object] "]";
+	//	obj+=[Object] "]" | predName="instanceOf"+ "[" obj+=[Object] "," type=JvmType "]";
 	public PreDefinedPredicatesElements getPreDefinedPredicatesAccess() {
 		return pPreDefinedPredicates;
 	}
