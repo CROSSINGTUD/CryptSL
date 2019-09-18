@@ -1,20 +1,16 @@
 package de.darmstadt.tu.crossing.ui.contentassist;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
@@ -26,8 +22,8 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import com.google.inject.Inject;
 import de.darmstadt.tu.crossing.services.CryptSLGrammarAccess;
-import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 import de.darmstadt.tu.crossing.ui.utils.ClassLoader;
+import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 
 public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvider {
 	@Inject
@@ -57,11 +53,12 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 	public void completeAggregate_Lab(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		keyword = grammarAccess.getAggregateAccess().getSemicolonKeyword_1_3();
 		context.getRootNode().getChildren().forEach(item -> {
-			if (item.getText().equals("EVENTS")) {
+			if ("EVENTS".equals(item.getText())) {
 				item.getNextSibling().getLeafNodes().forEach(item2 -> {
-					if (item2.getText().equals(":") || item2.getText().equals(":=")) {
+					String itemText = item2.getText();
+					if (":".equals(itemText) || ":=".equals(itemText)) {
 						String text = null;
-						while (item2.getPreviousSibling().getText().equals(" ")) {
+						while (item2.getPreviousSibling().getText().trim().isEmpty()) {
 							text = item2.getPreviousSibling().getText();
 							item2 = (ILeafNode) item2.getPreviousSibling();
 						}
@@ -71,13 +68,12 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 				});
 			}
 		});
-
 	}
 
 	@Override
 	public void completeAggregateExpression_Value(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		INode currNode = context.getCurrentNode();
-		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling() && currNode.getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
+		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling() && "CONSTRAINTS".equals(currNode.getPreviousSibling().getPreviousSibling().getText())) {
 			completeAggregateProposal(context, acceptor);
 		} else {
 			System.out.println("inconstraint");
@@ -88,7 +84,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		INode currNode = context.getCurrentNode();
-		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling() && currNode.getPreviousSibling().getPreviousSibling().getText().equals("CONSTRAINTS")) {
+		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling() && "CONSTRAINTS".equals(currNode.getPreviousSibling().getPreviousSibling().getText())) {
 			String prevNodeText = currNode.getPreviousSibling().getText();
 			if (prevNodeText.length() <= 0 || prevNodeText.charAt(prevNodeText.length() - 1) == ';') {
 				completeAggregateProposal(context, acceptor);
@@ -133,9 +129,9 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 
 	public void completeAggregateProposal(ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		context.getRootNode().getChildren().forEach(item -> {
-			if (item.getText().equals("OBJECTS")) {
+			if ("OBJECTS".equals(item.getText())) {
 				item.getNextSibling().getLeafNodes().forEach(item2 -> {
-					if (item2.getText().equals(";")) {
+					if (";".equals(item2.getText())) {
 						String text = null;
 						text = item2.getPreviousSibling().getText().substring(1);
 						completeproposal(text, context, acceptor);
@@ -149,7 +145,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 		String classname = null;
 		BidiIterable<INode> childrens = context.getRootNode().getChildren();
 		for (INode children : childrens) {
-			if (children.getText().equals("SPEC")) {
+			if ("SPEC".equals(children.getText())) {
 				classname = children.getNextSibling().getText().replaceAll("\\s+", "");
 			}
 		}
@@ -159,20 +155,11 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 	public Collection<String> getProjectClassPath(ContentAssistContext context) {
 		URI uri = context.getRootModel().eResource().getURI();
 		if (uri.isPlatform()) {
-			String platformString = uri.toPlatformString(true);
-			IWorkspace workspace = ResourcesPlugin.getWorkspace();
-			IWorkspaceRoot root = workspace.getRoot();
-
-			IFile file = root.getFile(new Path(platformString));
-			IProject project = file.getProject();
-			IJavaProject targetProject;
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true))).getProject();
 			try {
 				if (project.hasNature(JavaCore.NATURE_ID)) {
-					targetProject = JavaCore.create(project);
-					Collection<String> classpath = ClassPathSolver.getClasspath(targetProject);
-					return classpath;
+					return ClassPathSolver.getClasspath(JavaCore.create(project));
 				}
-
 			}
 			catch (CoreException e) {
 				System.out.println(e.getMessage());
