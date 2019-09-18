@@ -177,7 +177,8 @@ PreDefinedPredicates:
 	predName="noCallTo"+ "[" obj+=[Event] "]" |
 	predName="callTo"+ "[" obj+=[Event] "]" |
 	predName="notHardCoded"+ "[" obj+=[Object] "]" |
-	predName="length"+ "[" obj+=[Object] "]";
+	predName="length"+ "[" obj+=[Object] "]" |
+	predName="instanceOf"+ "[" obj+=[Object] "," type = JvmType"]";
 	
 JvmType:
 	type=[jvmTypes::JvmType|QualifiedName]
