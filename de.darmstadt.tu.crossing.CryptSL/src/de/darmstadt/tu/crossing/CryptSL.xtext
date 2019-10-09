@@ -73,7 +73,7 @@ Aggregate returns SuperType:
 
 	///////////// ORDER
 Order returns Expression:
-	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*;
+	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)* | '*';
 
 SimpleOrder returns Expression:
 	Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*;
