@@ -27,6 +27,7 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.darmstadt.tu.crossing.CryptSL.ui.internal,
  de.darmstadt.tu.crossing.ui.contentassist,
- de.darmstadt.tu.crossing.ui.quickfix
+ de.darmstadt.tu.crossing.ui.quickfix,
+ de.darmstadt.tu.crossing.ui.wizard
 Bundle-Activator: de.darmstadt.tu.crossing.CryptSL.ui.internal.CryptSLActivator
 Automatic-Module-Name: de.darmstadt.tu.crossing.CryptSL.ui

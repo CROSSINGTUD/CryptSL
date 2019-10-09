@@ -1,0 +1,469 @@
+package de.darmstadt.tu.crossing.ui.wizard;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import org.apache.log4j.Logger;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.bindings.keys.ParseException;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.fieldassist.ContentProposalAdapter;
+import org.eclipse.jface.fieldassist.SimpleContentProposalProvider;
+import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.xtext.ui.wizard.template.AbstractFileTemplate;
+import org.eclipse.xtext.ui.wizard.template.IFileGenerator;
+import org.eclipse.xtext.ui.wizard.template.IParameterPage;
+import org.eclipse.xtext.ui.wizard.template.Messages;
+import org.eclipse.xtext.ui.wizard.template.TemplateFileInfo;
+import org.eclipse.xtext.ui.wizard.template.TemplateLabelProvider;
+import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
+
+
+public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IParameterPage{
+	public static final String label_FileName  = "File Name:";
+	public static final String label_ClassName  = "Class Name:";
+	public static final String label_ProjectName = "Source Folder:";
+	private final AbstractFileTemplate[] templates;
+	private final IStructuredSelection selection;
+
+	private Text projectText;
+	private Text fileText;
+	private Text classText;
+	private CryptSLComposite parameterComposite;
+
+	private ComboViewer templateCombo;
+	private TemplateLabelProvider labelProvider;
+	protected CryptSLNewFileWizardPrimaryPage(String pageName, AbstractFileTemplate[] templates,
+			IStructuredSelection selection, TemplateLabelProvider labelProvider) {
+		super(pageName);
+		this.templates = templates;
+		this.selection = selection;
+		this.labelProvider = labelProvider;
+	}	
+	@Override
+	public void createControl(Composite parent) {
+		setTitle(de.darmstadt.tu.crossing.ui.wizard.Messages.Control_Page_Title);
+		if (hasExactlyOneTemplate()) {
+			setDescription(getSelectedTemplate().getDescription());
+		} else {
+			setDescription(de.darmstadt.tu.crossing.ui.wizard.Messages.PrimaryPage_Description);
+		}
+		Composite main = new Composite(parent, SWT.NONE);
+		main.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		main.setLayout(new GridLayout(2, false));
+		createHeader(main);
+		createTemplateWidgets(main);
+		setControl(main);
+		validateInitial();
+	}
+
+	private void createHeader(Composite parent) {
+		Composite main = new Composite(parent, SWT.NONE);
+		main.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		main.setLayout(new GridLayout(3, false));
+		
+		Label projectLabel = new Label(main, SWT.NONE);
+		projectLabel.setText(label_ProjectName);
+		projectLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
+		projectText = new Text(main, SWT.SINGLE | SWT.BORDER);
+		projectText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		Button projectBrowseButton = new Button(main, SWT.PUSH);
+		projectBrowseButton.setText(Messages.NewFileWizardPrimaryPage_browse_button);
+		projectBrowseButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
+		
+		Label classLabel = new Label(main, SWT.NONE);
+		classLabel.setText(label_ClassName);
+		classLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
+		classText = new Text(main, SWT.SINGLE | SWT.BORDER);
+		classText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+		classText.setFocus();
+		
+		Label fileLabel = new Label(main, SWT.NONE);
+		fileLabel.setText(label_FileName);
+		fileLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
+		fileText = new Text(main, SWT.SINGLE | SWT.BORDER);
+		fileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+		fileText.setFocus();
+		
+		if( getFolderFromSelection()!= null) {
+			projectText.setText(getFolderFromSelection());
+			if(!("".equals(projectText.getText().trim()))) {
+				getContentProposal();
+			}
+		}
+		projectText.addModifyListener(a -> validate());
+		projectBrowseButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				CryptSLContainerSelectionDialog dialog = new CryptSLContainerSelectionDialog(Display.getDefault().getActiveShell(),
+						ResourcesPlugin.getWorkspace().getRoot(), false, Messages.NewFileWizardPrimaryPage_selection_description);
+				if (dialog.open() == Window.OK) {
+					projectText.setText(getFolderFromPath((IPath) dialog.getResult()[0]));
+					getContentProposal();
+				}
+			}
+		});
+		
+		classText.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				classText.setToolTipText(de.darmstadt.tu.crossing.ui.wizard.Messages.ClassName_ToolTip_Message);
+			}
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setFileName();
+			}
+			
+		});
+		
+		projectText.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				projectText.setToolTipText(de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project);
+			}
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+			}
+			
+		});
+		
+		fileText.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				fileText.setToolTipText(de.darmstadt.tu.crossing.ui.wizard.Messages.FileName_ToolTip_Message);
+			}
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+			}
+			
+		});
+		
+		fileText.setText(classText.getText());
+		fileText.addModifyListener(e -> {
+			validate();
+		}
+		);
+		
+	}
+	
+	public String [] getClassses(Collection<String> classpath) {
+		List<String> classes = new ArrayList<String>();
+		for(String path:classpath) {
+			classes=ClassPathLoader.LoadClassListFromJar(path);
+		}
+		String[] classArr = new String[classes.size()];
+		classArr = classes.toArray(classArr);
+		return classArr;
+	}
+	
+	private String getFolderFromSelection() {
+		Object element = selection.getFirstElement();
+		IContainer container = null;
+		if (element instanceof IContainer) {
+			container = (IContainer) element;
+		} else if (element instanceof IResource) {
+			container = ((IResource) element).getParent();
+		} else if (element instanceof IAdaptable) {
+			IResource adapter = ((IAdaptable) element).getAdapter(IResource.class);
+			if (adapter instanceof IContainer) {
+				container = (IContainer) adapter;
+			} else if (adapter != null) {
+				container = adapter.getParent();
+			}
+		}
+		if (container != null) {
+			return getFolderStringFromContainer(container);
+		}
+		return ""; //$NON-NLS-1$
+	}
+	
+	private String getFolderStringFromContainer(IContainer container) {
+		IProject project = container.getProject();
+		IContainer src;
+		try {
+			if (project.hasNature(JavaCore.NATURE_ID)) {
+			    IResource[] members = project.members();
+			    for(IResource member: members) {
+			    	if (member instanceof IContainer) {
+			    		src = (IContainer) member;
+			    		if (member.getName().equals("src")) {
+			    			return getFolderFromPath(src.getFullPath());
+			    		}else {
+			        }
+			    }
+			 }
+			}
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private String getFolderFromPath(IPath path) {
+		String result = path.toOSString();
+		if (result.startsWith(File.separator)) {
+			return result.substring(File.separator.length());
+		}
+		return result;
+	}
+
+	private void createTemplateWidgets(Composite main) {
+		if (hasExactlyOneTemplateWithVariables()) {
+			Label seperator = new Label(main, SWT.SEPARATOR | SWT.HORIZONTAL);
+			seperator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+			parameterComposite =  new CryptSLComposite(main, SWT.NONE, templates[0], this);
+			parameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+		} else if (hasMoreThenOneTempalte()) {
+			Label seperator = new Label(main, SWT.SEPARATOR | SWT.HORIZONTAL);
+			seperator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+			Label templateLabel = new Label(main, SWT.NONE);
+			templateLabel.setText(Messages.NewFileWizardPrimaryPage_template_label);
+			templateLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
+			templateCombo = new ComboViewer(main);
+			templateCombo.setLabelProvider(labelProvider);
+			templateCombo.setContentProvider(new ArrayContentProvider());
+			templateCombo.setInput(templates);
+			templateCombo.setSelection(new StructuredSelection(templates[0]));
+			templateCombo.getCombo().setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+			templateCombo.getCombo().setToolTipText(getSelectedTemplate().getDescription());
+			templateCombo.addSelectionChangedListener(e -> {
+				templateCombo.getCombo().setToolTipText(getSelectedTemplate().getDescription());
+				validate();
+				getContainer().updateButtons();
+			});
+		}
+	}
+
+	private boolean hasExactlyOneTemplateWithVariables() {
+		return hasExactlyOneTemplate() && templates[0].getVariables().size() > 0;
+	}
+
+	private boolean hasExactlyOneTemplate() {
+		return templates.length == 1;
+	}
+
+	private boolean hasMoreThenOneTempalte() {
+		return templates.length > 1;
+	}
+
+	private void validateInitial() {
+		setStatus(null);
+		IContainer projectContainer = getFolder(projectText.getText());
+		if(projectText.getText().equals("")) {
+			setStatus(new Status(IStatus.INFO, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Directory));
+			return;
+		}
+		else if (projectContainer == null || !projectContainer.exists()) {
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
+			return;
+		}
+		if (parameterComposite != null) {
+			parameterComposite.validate();
+		}
+		setPageComplete(false);
+	}
+    
+	private void setFileName() {
+		if(classText.getText().contains(".")) {
+			  String tempFileName = classText.getText().substring(classText.getText().lastIndexOf(".")+1);
+			  String fileName = tempFileName.substring(0,1).toUpperCase()+tempFileName.substring(1).toLowerCase();
+	          fileText.setText(fileName);
+		 }
+	}
+	
+	private void validate() {
+		if(fileText.getText().equals("")) {
+			setFileName();
+		}
+		setStatus(null);
+		IContainer projectContainer = getFolder(projectText.getText());
+		
+		if (getProjectName().equals("")) {
+			setStatus(new Status(IStatus.INFO, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project));
+			return;
+		}
+		else if (projectContainer == null || !projectContainer.exists()) {
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard",  de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
+			return;
+		}
+		
+		if ("".equals(classText.getText().trim())) { //$NON-NLS-1$
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.ClassName_Empty)); //$NON-NLS-1$
+			return;
+		}
+		
+		if ("".equals(fileText.getText().trim())) { //$NON-NLS-1$
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.FileName_Empty)); //$NON-NLS-1$
+			return;
+		}
+		
+		if (parameterComposite != null) {
+			parameterComposite.validate();
+		}
+		if (getErrorMessage() == null) {
+			if ( getSelectedTemplate() instanceof CryptSLFile) {
+			   CryptSLFile template = (CryptSLFile) getSelectedTemplate();
+				template.setTemplateInfo(getFileInfo());
+				PathCollector fileCollector = new PathCollector();
+				template.generateFiles(fileCollector);
+				for (CharSequence path : fileCollector.getResult()) {
+					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path.toString()));
+					if (file.exists()) {
+						path = path.toString().replace("/", "\\");
+						setStatus(new Status(IStatus.ERROR, "NewFileWizard", Messages.NewFileWizardPrimaryPage_file_already_exist_pre + path //$NON-NLS-1$
+								+ Messages.NewFileWizardPrimaryPage_file_already_exist_post));
+						return;
+					}
+			
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void setStatus(IStatus status) {
+		if (status == null || status.getSeverity() == IStatus.OK) {
+			setErrorMessage(null);
+			setMessage(null);
+			setPageComplete(true);
+		} else if (status.getSeverity() == IStatus.ERROR) {
+			setErrorMessage(status.getMessage());
+			setPageComplete(false);
+		} else if (status.getSeverity() == IStatus.WARNING) {
+			setErrorMessage(null);
+			setMessage(status.getMessage(), IMessageProvider.WARNING);
+			setPageComplete(true);
+		} else {
+			setErrorMessage(null);
+			setMessage(status.getMessage(), IMessageProvider.INFORMATION);
+			setPageComplete(true);
+		}
+	}
+
+	private IContainer getFolder(String folderText) {
+		try {
+			return ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path("/" + folderText)); //$NON-NLS-1$
+		} catch (IllegalArgumentException e) {
+			try {
+				return ResourcesPlugin.getWorkspace().getRoot().getProject(folderText);
+			} catch (IllegalArgumentException e1) {
+				return null;
+			}
+		}
+	}
+
+
+	public CryptSLTemplateFileInfo getFileInfo() {
+		return new CryptSLTemplateFileInfo(getLocation(), getFileName(),getCryptoClassName(), getSelectedTemplate());
+	}
+
+	public String getLocation() {
+		return projectText.getText();
+	}
+
+	public String getFileName() {
+		return fileText.getText();
+	}
+	
+	public String getCryptoClassName() {
+		String className = classText.getText();
+		int index = className.lastIndexOf(".");
+		if(className.contains(".")) {
+			String temp = className.substring(0,index+1);
+			temp = temp + className.substring(index+1, index+2).toUpperCase();
+			className = temp + className.substring(index+2);
+			className.toString().trim();
+		}
+		return className;
+	}
+
+	public AbstractFileTemplate getSelectedTemplate() {
+		if (templates.length == 1) {
+			return templates[0];
+		}
+		ISelection selection = templateCombo.getSelection();
+		if (selection instanceof IStructuredSelection) {
+			return (AbstractFileTemplate) ((IStructuredSelection) selection).getFirstElement();
+		}
+		return null;
+	}
+
+	private final class PathCollector implements IFileGenerator {
+		private List<CharSequence> result = new ArrayList<>();
+
+		@Override
+		public void generate(CharSequence path, CharSequence content) {
+			result.add(path);
+		}
+
+		public List<CharSequence> getResult() {
+			return result;
+		}
+	}
+	
+	public void getContentProposal() {
+		char[] autoActivationCharacters = new char[] { '.', ' ' };
+		KeyStroke keyStroke;
+		try {
+		    keyStroke = KeyStroke.getInstance("Ctrl+Space");
+		    Collection<String> classpath = CryptSLFileUtil.getProjectClassPath(projectText.getText());
+		    if (classpath.size()>0) {
+		    	String[] classes = getClassses(classpath);
+			    SimpleContentProposalProvider contentProposalProvider = new SimpleContentProposalProvider(classes);
+			    contentProposalProvider.setFiltering(true);
+			    ContentProposalAdapter adapter =  new ContentProposalAdapter(classText, new TextContentAdapter(),
+			    contentProposalProvider,
+			    keyStroke, autoActivationCharacters);
+			    adapter.setPropagateKeys(true);
+			    adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+			    //new AutoCompleteField(classText, new TextContentAdapter(), classes);
+		    }
+		} catch (ParseException e1) {
+		    e1.printStackTrace();
+		
+		}
+	}
+	
+	public Object getProjectName() {
+		return projectText.getText();
+	}
+	
+}

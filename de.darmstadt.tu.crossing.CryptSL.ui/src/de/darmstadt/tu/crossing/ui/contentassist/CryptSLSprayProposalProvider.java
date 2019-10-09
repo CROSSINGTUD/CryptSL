@@ -22,7 +22,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import com.google.inject.Inject;
 import de.darmstadt.tu.crossing.services.CryptSLGrammarAccess;
-import de.darmstadt.tu.crossing.ui.utils.ClassLoader;
+import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 
 public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvider {
@@ -172,7 +172,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 	public Class<?> getClassMethods(String classname, Collection<String> classpath) {
 		Class<?> c;
 		for (String path : classpath) {
-			c = ClassLoader.LoadFromJar(classname, path);
+			c = ClassPathLoader.LoadClassFromJar(classname, path);
 			if (c != null) {
 				return c;
 			}
