@@ -19,7 +19,14 @@ import org.eclipse.jdt.core.JavaModelException;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
+/**
+ * mirrored from 
+ * { @see de.cognicrypt.staticanalyzer.sootbridge.SootRunner}
+ */
+
 public class ClassPathSolver {
+	
 	public static Collection<String> getClasspath(final IJavaProject javaProject) {
 		Collection<String> libraryClassPath = libraryClassPath(javaProject);
 		return libraryClassPath;
@@ -37,7 +44,7 @@ public class ClassPathSolver {
 			return Lists.newArrayList();
 		}
 	}
-	
+
 	private static Collection<String> libraryClassPath(IJavaProject project) {
 		Collection<String> libraryClassPath = Sets.newHashSet();
 		IClasspathEntry[] rentries;
@@ -54,14 +61,16 @@ public class ClassPathSolver {
 		return libraryClassPath;
 	}
 
-	private static void resolveClassPathEntry(IClasspathEntry entry, Collection<String> libraryClassPath, IJavaProject project) {
+	private static void resolveClassPathEntry(IClasspathEntry entry, Collection<String> libraryClassPath,
+			IJavaProject project) {
 		IClasspathEntry[] rentries;
 		switch (entry.getEntryKind()) {
 		case IClasspathEntry.CPE_SOURCE:
-			//libraryClassPath.addAll(applicationClassPath(project));
+			// libraryClassPath.addAll(applicationClassPath(project));
 			break;
 		case IClasspathEntry.CPE_PROJECT:
-            IJavaProject requiredProject = JavaCore.create((IProject) ResourcesPlugin.getWorkspace().getRoot().findMember(entry.getPath()));
+			IJavaProject requiredProject = JavaCore
+					.create((IProject) ResourcesPlugin.getWorkspace().getRoot().findMember(entry.getPath()));
 			try {
 				rentries = project.getRawClasspath();
 				for (IClasspathEntry e : rentries) {
@@ -73,7 +82,7 @@ public class ClassPathSolver {
 			break;
 		case IClasspathEntry.CPE_LIBRARY:
 			IPath path = entry.getPath();
-			if(path.toString().contains(".m2/repository")) {
+			if (path.toString().contains(".m2/repository")) {
 				libraryClassPath.add(path.toString());
 			}
 			break;
@@ -82,10 +91,9 @@ public class ClassPathSolver {
 			break;
 		case IClasspathEntry.CPE_CONTAINER:
 			try {
-				IClasspathContainer container = JavaCore.getClasspathContainer(
-				          entry.getPath(), project);
+				IClasspathContainer container = JavaCore.getClasspathContainer(entry.getPath(), project);
 				IClasspathEntry[] subEntries = container.getClasspathEntries();
-				for(IClasspathEntry subEntry : subEntries) {
+				for (IClasspathEntry subEntry : subEntries) {
 					resolveClassPathEntry(subEntry, libraryClassPath, project);
 				}
 			} catch (JavaModelException e) {

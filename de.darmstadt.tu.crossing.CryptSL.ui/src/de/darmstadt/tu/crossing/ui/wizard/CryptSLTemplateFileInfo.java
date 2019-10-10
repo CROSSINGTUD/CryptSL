@@ -9,9 +9,9 @@ public class CryptSLTemplateFileInfo extends TemplateFileInfo{
 	
 	public CryptSLTemplateFileInfo(String folder, String name, String cryptoClassName, AbstractFileTemplate template) {
 		super(folder, name, template);
-		// TODO Auto-generated constructor stub
 		this.cryptoClassName = cryptoClassName;
 	}
+	
 	public String getCryptoClassName() {
 		return cryptoClassName;
 	}

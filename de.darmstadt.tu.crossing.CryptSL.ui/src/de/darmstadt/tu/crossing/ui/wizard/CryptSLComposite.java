@@ -9,7 +9,6 @@ public class CryptSLComposite extends ParameterComposite {
 	
 	public CryptSLComposite(Composite parent, int style, AbstractTemplate template, IParameterPage parameterPage) {
 		super(parent, style, template, parameterPage);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

@@ -50,28 +50,42 @@ import org.eclipse.xtext.ui.wizard.template.TemplateFileInfo;
 import org.eclipse.xtext.ui.wizard.template.TemplateLabelProvider;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 
+/**
+ * mirrored from 
+ * { @see org.eclipse.xtext.ui.wizard.template.NewFileWizardPrimaryPage} to custimize
+ * first page of CryptSLNewFileWizard. 
+ * Allows user to select the source folder, and edit the text fields for className and fileName parameters. 
+ * Provides a content proposal for className based on the project's class path.
+ * 
+ */
 
-public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IParameterPage{
-	public static final String label_FileName  = "File Name:";
-	public static final String label_ClassName  = "Class Name:";
-	public static final String label_ProjectName = "Source Folder:";
+public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IParameterPage {
+	public static final String label_FileName = "File Name:";
+	public static final String label_ClassName = "Class Name:";
+	public static final String label_FolderName = "Source Folder:";
 	private final AbstractFileTemplate[] templates;
 	private final IStructuredSelection selection;
 
-	private Text projectText;
-	private Text fileText;
+	// Text field for source folder selection
+	private Text sourceFolder;
+	// Text field for crypto class name
 	private Text classText;
+	// Text field for naming new cryptsl file
+	private Text fileText;
+
 	private CryptSLComposite parameterComposite;
 
 	private ComboViewer templateCombo;
 	private TemplateLabelProvider labelProvider;
+
 	protected CryptSLNewFileWizardPrimaryPage(String pageName, AbstractFileTemplate[] templates,
 			IStructuredSelection selection, TemplateLabelProvider labelProvider) {
 		super(pageName);
 		this.templates = templates;
 		this.selection = selection;
 		this.labelProvider = labelProvider;
-	}	
+	}
+
 	@Override
 	public void createControl(Composite parent) {
 		setTitle(de.darmstadt.tu.crossing.ui.wizard.Messages.Control_Page_Title);
@@ -93,49 +107,50 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 		Composite main = new Composite(parent, SWT.NONE);
 		main.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		main.setLayout(new GridLayout(3, false));
-		
+
 		Label projectLabel = new Label(main, SWT.NONE);
-		projectLabel.setText(label_ProjectName);
+		projectLabel.setText(label_FolderName);
 		projectLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
-		projectText = new Text(main, SWT.SINGLE | SWT.BORDER);
-		projectText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		sourceFolder = new Text(main, SWT.SINGLE | SWT.BORDER);
+		sourceFolder.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		Button projectBrowseButton = new Button(main, SWT.PUSH);
 		projectBrowseButton.setText(Messages.NewFileWizardPrimaryPage_browse_button);
 		projectBrowseButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
-		
+
 		Label classLabel = new Label(main, SWT.NONE);
 		classLabel.setText(label_ClassName);
 		classLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		classText = new Text(main, SWT.SINGLE | SWT.BORDER);
 		classText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		classText.setFocus();
-		
+
 		Label fileLabel = new Label(main, SWT.NONE);
 		fileLabel.setText(label_FileName);
 		fileLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		fileText = new Text(main, SWT.SINGLE | SWT.BORDER);
 		fileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		fileText.setFocus();
-		
-		if( getFolderFromSelection()!= null) {
-			projectText.setText(getFolderFromSelection());
-			if(!("".equals(projectText.getText().trim()))) {
+
+		if (getFolderFromSelection() != null) {
+			sourceFolder.setText(getFolderFromSelection());
+			if (!sourceFolder.getText().trim().isEmpty()) {
 				getContentProposal();
 			}
 		}
-		projectText.addModifyListener(a -> validate());
+		sourceFolder.addModifyListener(a -> validate());
 		projectBrowseButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				CryptSLContainerSelectionDialog dialog = new CryptSLContainerSelectionDialog(Display.getDefault().getActiveShell(),
-						ResourcesPlugin.getWorkspace().getRoot(), false, Messages.NewFileWizardPrimaryPage_selection_description);
+				CryptSLContainerSelectionDialog dialog = new CryptSLContainerSelectionDialog(
+						Display.getDefault().getActiveShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
+						Messages.NewFileWizardPrimaryPage_selection_description);
 				if (dialog.open() == Window.OK) {
-					projectText.setText(getFolderFromPath((IPath) dialog.getResult()[0]));
+					sourceFolder.setText(getFolderFromPath((IPath) dialog.getResult()[0]));
 					getContentProposal();
 				}
 			}
 		});
-		
+
 		classText.addFocusListener(new FocusListener() {
 
 			@Override
@@ -147,22 +162,22 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 			public void focusLost(FocusEvent arg0) {
 				setFileName();
 			}
-			
+
 		});
-		
-		projectText.addFocusListener(new FocusListener() {
+
+		sourceFolder.addFocusListener(new FocusListener() {
 
 			@Override
 			public void focusGained(FocusEvent arg0) {
-				projectText.setToolTipText(de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project);
+				sourceFolder.setToolTipText(de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project);
 			}
 
 			@Override
 			public void focusLost(FocusEvent arg0) {
 			}
-			
+
 		});
-		
+
 		fileText.addFocusListener(new FocusListener() {
 
 			@Override
@@ -173,27 +188,26 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 			@Override
 			public void focusLost(FocusEvent arg0) {
 			}
-			
+
 		});
-		
+
 		fileText.setText(classText.getText());
 		fileText.addModifyListener(e -> {
 			validate();
-		}
-		);
-		
+		});
+
 	}
-	
-	public String [] getClassses(Collection<String> classpath) {
+
+	public String[] getClassses(Collection<String> classpath) {
 		List<String> classes = new ArrayList<String>();
-		for(String path:classpath) {
-			classes=ClassPathLoader.LoadClassListFromJar(path);
+		for (String path : classpath) {
+			classes = ClassPathLoader.LoadClassListFromJar(path);
 		}
 		String[] classArr = new String[classes.size()];
 		classArr = classes.toArray(classArr);
 		return classArr;
 	}
-	
+
 	private String getFolderFromSelection() {
 		Object element = selection.getFirstElement();
 		IContainer container = null;
@@ -214,22 +228,22 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 		}
 		return ""; //$NON-NLS-1$
 	}
-	
+
 	private String getFolderStringFromContainer(IContainer container) {
 		IProject project = container.getProject();
 		IContainer src;
 		try {
 			if (project.hasNature(JavaCore.NATURE_ID)) {
-			    IResource[] members = project.members();
-			    for(IResource member: members) {
-			    	if (member instanceof IContainer) {
-			    		src = (IContainer) member;
-			    		if (member.getName().equals("src")) {
-			    			return getFolderFromPath(src.getFullPath());
-			    		}else {
-			        }
-			    }
-			 }
+				IResource[] members = project.members();
+				for (IResource member : members) {
+					if (member instanceof IContainer) {
+						src = (IContainer) member;
+						// check whether container name is "src", if yes return.
+						if ("src".equals(member.getName())) {
+							return getFolderFromPath(src.getFullPath());
+						}
+					}
+				}
 			}
 		} catch (CoreException e) {
 			e.printStackTrace();
@@ -249,7 +263,7 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 		if (hasExactlyOneTemplateWithVariables()) {
 			Label seperator = new Label(main, SWT.SEPARATOR | SWT.HORIZONTAL);
 			seperator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-			parameterComposite =  new CryptSLComposite(main, SWT.NONE, templates[0], this);
+			parameterComposite = new CryptSLComposite(main, SWT.NONE, templates[0], this);
 			parameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 		} else if (hasMoreThenOneTempalte()) {
 			Label seperator = new Label(main, SWT.SEPARATOR | SWT.HORIZONTAL);
@@ -286,13 +300,14 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 
 	private void validateInitial() {
 		setStatus(null);
-		IContainer projectContainer = getFolder(projectText.getText());
-		if(projectText.getText().equals("")) {
-			setStatus(new Status(IStatus.INFO, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Directory));
+		IContainer projectContainer = getFolder(sourceFolder.getText());
+		if (sourceFolder.getText().isEmpty()) {
+			setStatus(new Status(IStatus.INFO, "NewFileWizard",
+					de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Directory));
 			return;
-		}
-		else if (projectContainer == null || !projectContainer.exists()) {
-			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
+		} else if (projectContainer == null || !projectContainer.exists()) {
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard",
+					de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
 			return;
 		}
 		if (parameterComposite != null) {
@@ -300,47 +315,50 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 		}
 		setPageComplete(false);
 	}
-    
+
 	private void setFileName() {
-		if(classText.getText().contains(".")) {
-			  String tempFileName = classText.getText().substring(classText.getText().lastIndexOf(".")+1);
-			  String fileName = tempFileName.substring(0,1).toUpperCase()+tempFileName.substring(1).toLowerCase();
-	          fileText.setText(fileName);
-		 }
+		if (classText.getText().contains(".")) {
+			String tempFileName = classText.getText().substring(classText.getText().lastIndexOf(".") + 1);
+			String fileName = tempFileName.substring(0, 1).toUpperCase() + tempFileName.substring(1).toLowerCase();
+			fileText.setText(fileName);
+		}
 	}
-	
+
 	private void validate() {
-		if(fileText.getText().equals("")) {
+		if (fileText.getText().isEmpty()) {
 			setFileName();
 		}
 		setStatus(null);
-		IContainer projectContainer = getFolder(projectText.getText());
-		
-		if (getProjectName().equals("")) {
-			setStatus(new Status(IStatus.INFO, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project));
+		IContainer projectContainer = getFolder(sourceFolder.getText());
+
+		if (getSourceFolder().isEmpty()) {
+			setStatus(new Status(IStatus.INFO, "NewFileWizard",
+					de.darmstadt.tu.crossing.ui.wizard.Messages.Select_Project));
+			return;
+		} else if (projectContainer == null || !projectContainer.exists()) {
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard",
+					de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
 			return;
 		}
-		else if (projectContainer == null || !projectContainer.exists()) {
-			setStatus(new Status(IStatus.ERROR, "NewFileWizard",  de.darmstadt.tu.crossing.ui.wizard.Messages.Project_NotExixst));
+
+		if (classText.getText().trim().isEmpty()) { //$NON-NLS-1$
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard", //$NON-NLS-1$
+					de.darmstadt.tu.crossing.ui.wizard.Messages.ClassName_Empty));
 			return;
 		}
-		
-		if ("".equals(classText.getText().trim())) { //$NON-NLS-1$
-			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.ClassName_Empty)); //$NON-NLS-1$
+
+		if (fileText.getText().trim().isEmpty()) { //$NON-NLS-1$
+			setStatus(new Status(IStatus.ERROR, "NewFileWizard", //$NON-NLS-1$
+					de.darmstadt.tu.crossing.ui.wizard.Messages.FileName_Empty));
 			return;
 		}
-		
-		if ("".equals(fileText.getText().trim())) { //$NON-NLS-1$
-			setStatus(new Status(IStatus.ERROR, "NewFileWizard", de.darmstadt.tu.crossing.ui.wizard.Messages.FileName_Empty)); //$NON-NLS-1$
-			return;
-		}
-		
+
 		if (parameterComposite != null) {
 			parameterComposite.validate();
 		}
 		if (getErrorMessage() == null) {
-			if ( getSelectedTemplate() instanceof CryptSLFile) {
-			   CryptSLFile template = (CryptSLFile) getSelectedTemplate();
+			if (getSelectedTemplate() instanceof CryptSLFile) {
+				CryptSLFile template = (CryptSLFile) getSelectedTemplate();
 				template.setTemplateInfo(getFileInfo());
 				PathCollector fileCollector = new PathCollector();
 				template.generateFiles(fileCollector);
@@ -348,16 +366,17 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path.toString()));
 					if (file.exists()) {
 						path = path.toString().replace("/", "\\");
-						setStatus(new Status(IStatus.ERROR, "NewFileWizard", Messages.NewFileWizardPrimaryPage_file_already_exist_pre + path //$NON-NLS-1$
-								+ Messages.NewFileWizardPrimaryPage_file_already_exist_post));
+						setStatus(new Status(IStatus.ERROR, "NewFileWizard", //$NON-NLS-1$
+								Messages.NewFileWizardPrimaryPage_file_already_exist_pre + path
+										+ Messages.NewFileWizardPrimaryPage_file_already_exist_post));
 						return;
 					}
-			
+
 				}
 			}
 		}
 	}
-	
+
 	@Override
 	public void setStatus(IStatus status) {
 		if (status == null || status.getSeverity() == IStatus.OK) {
@@ -390,26 +409,29 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 		}
 	}
 
-
 	public CryptSLTemplateFileInfo getFileInfo() {
-		return new CryptSLTemplateFileInfo(getLocation(), getFileName(),getCryptoClassName(), getSelectedTemplate());
+		return new CryptSLTemplateFileInfo(getLocation(), getFileName(), getCryptoClassName(), getSelectedTemplate());
 	}
 
 	public String getLocation() {
-		return projectText.getText();
+		return sourceFolder.getText();
 	}
 
 	public String getFileName() {
 		return fileText.getText();
 	}
-	
+    
+	/**
+	 * be sure in the given class name the first later after the last "." is upper case
+	 * 
+	 */
 	public String getCryptoClassName() {
 		String className = classText.getText();
 		int index = className.lastIndexOf(".");
-		if(className.contains(".")) {
-			String temp = className.substring(0,index+1);
-			temp = temp + className.substring(index+1, index+2).toUpperCase();
-			className = temp + className.substring(index+2);
+		if (className.contains(".")) {
+			String temp = className.substring(0, index + 1);
+			temp = temp + className.substring(index + 1, index + 2).toUpperCase();
+			className = temp + className.substring(index + 2);
 			className.toString().trim();
 		}
 		return className;
@@ -438,32 +460,34 @@ public class CryptSLNewFileWizardPrimaryPage  extends WizardPage implements IPar
 			return result;
 		}
 	}
-	
+
+	/**
+	 * provide a contentproposal based on project's claspath.
+	 * activated by "ctrl+space" and '.',' ' chars
+	 */
 	public void getContentProposal() {
 		char[] autoActivationCharacters = new char[] { '.', ' ' };
 		KeyStroke keyStroke;
 		try {
-		    keyStroke = KeyStroke.getInstance("Ctrl+Space");
-		    Collection<String> classpath = CryptSLFileUtil.getProjectClassPath(projectText.getText());
-		    if (classpath.size()>0) {
-		    	String[] classes = getClassses(classpath);
-			    SimpleContentProposalProvider contentProposalProvider = new SimpleContentProposalProvider(classes);
-			    contentProposalProvider.setFiltering(true);
-			    ContentProposalAdapter adapter =  new ContentProposalAdapter(classText, new TextContentAdapter(),
-			    contentProposalProvider,
-			    keyStroke, autoActivationCharacters);
-			    adapter.setPropagateKeys(true);
-			    adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-			    //new AutoCompleteField(classText, new TextContentAdapter(), classes);
-		    }
+			keyStroke = KeyStroke.getInstance("Ctrl+Space");
+			Collection<String> classpath = CryptSLFileUtil.getProjectClassPath(sourceFolder.getText());
+			if (classpath.size() > 0) {
+				String[] classes = getClassses(classpath);
+				SimpleContentProposalProvider contentProposalProvider = new SimpleContentProposalProvider(classes);
+				contentProposalProvider.setFiltering(true);
+				ContentProposalAdapter adapter = new ContentProposalAdapter(classText, new TextContentAdapter(),
+						contentProposalProvider, keyStroke, autoActivationCharacters);
+				adapter.setPropagateKeys(true);
+				adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+			}
 		} catch (ParseException e1) {
-		    e1.printStackTrace();
-		
+			e1.printStackTrace();
+
 		}
 	}
-	
-	public Object getProjectName() {
-		return projectText.getText();
+
+	public String getSourceFolder() {
+		return sourceFolder.getText();
 	}
-	
+
 }

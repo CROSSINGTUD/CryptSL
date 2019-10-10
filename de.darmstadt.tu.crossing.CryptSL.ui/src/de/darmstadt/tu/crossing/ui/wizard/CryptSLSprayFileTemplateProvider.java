@@ -8,7 +8,6 @@ public class CryptSLSprayFileTemplateProvider  implements IFileTemplateProvider 
 
 	@Override
 	public AbstractFileTemplate[] getFileTemplates() {
-		// TODO Auto-generated method stub
 		AbstractFileTemplate[] template = new AbstractFileTemplate[1];
 		CryptSLFile newFile = new CryptSLFile();
 		template[0]=newFile;

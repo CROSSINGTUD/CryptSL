@@ -19,9 +19,12 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 import org.eclipse.ui.internal.ide.misc.ContainerSelectionGroup;
 
-public class CryptSLContainerSelectionDialog extends SelectionDialog{
-	//mirrored from ContainerSelectionDialog Class to override createDialogArea
-	
+public class CryptSLContainerSelectionDialog extends SelectionDialog {
+	/**
+	 * mirrored from 
+	 * { @see org.eclipse.jface.dialogs.ContainerSelectionDialog}
+	 * 
+	 */
 	private static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
 	// the widget group;
@@ -41,6 +44,10 @@ public class CryptSLContainerSelectionDialog extends SelectionDialog{
 
 	// show closed projects by default
 	private boolean showClosedProjects = true;
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public CryptSLContainerSelectionDialog(Shell parentShell, IContainer initialRoot, boolean allowNewContainerName,
 			String message) {
 		super(parentShell);
@@ -61,25 +68,36 @@ public class CryptSLContainerSelectionDialog extends SelectionDialog{
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(shell, IIDEHelpContextIds.CONTAINER_SELECTION_DIALOG);
 	}
 
+	/**
+	 * {@see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.
+	 *      Composite)} 
+	 *      Creates and returns the contents of the upper part of this dialog.
+	 *      ContainerSelectionGroup is changed to CryptSLContainerSelectionGroup to restrict the user to just select "src"
+	 *      folder of project as container.
+	 * 
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		// create composite
 		Composite area = (Composite) super.createDialogArea(parent);
 
+		// check whether container selection is done by the user. If not disable "OK"
+		// button.
 		Listener listener = event -> {
-			if(group.getSelectedFolder() != null) {
-				if(getOkButton()!= null) {
+			if (group.getSelectedFolder() != null) {
+				if (getOkButton() != null) {
 					getOkButton().setEnabled(true);
 				}
-			}else {
-				if(getOkButton()!= null) {
+			} else {
+				if (getOkButton() != null) {
 					getOkButton().setEnabled(false);
 				}
 			}
 		};
 
 		// container selection group
-		group = new CryptSLContainerSelectionGroup(area, listener, allowNewContainerName, getMessage(), showClosedProjects);
+		group = new CryptSLContainerSelectionGroup(area, listener, allowNewContainerName, getMessage(),
+				showClosedProjects);
 		if (initialSelection != null) {
 			group.setSelectedContainer(initialSelection);
 		}
@@ -88,18 +106,14 @@ public class CryptSLContainerSelectionDialog extends SelectionDialog{
 		statusMessage.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		statusMessage.setText(" \n "); //$NON-NLS-1$
 		statusMessage.setFont(parent.getFont());
-
 		return dialogArea;
 	}
 
 	/**
-	 * The <code>ContainerSelectionDialog</code> implementation of this
-	 * <code>Dialog</code> method builds a list of the selected resource containers
-	 * for later retrieval by the client and closes this dialog.
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void okPressed() {
-
 		List chosenContainerPathList = new ArrayList();
 		IPath returnValue = group.getContainerFullPath();
 		if (returnValue != null) {
@@ -109,20 +123,10 @@ public class CryptSLContainerSelectionDialog extends SelectionDialog{
 		super.okPressed();
 	}
 
-	/**
-	 * Sets the validator to use.
-	 *
-	 * @param validator A selection validator
-	 */
 	public void setValidator(ISelectionValidator validator) {
 		this.validator = validator;
 	}
 
-	/**
-	 * Set whether or not closed projects should be shown in the selection dialog.
-	 *
-	 * @param show Whether or not to show closed projects.
-	 */
 	public void showClosedProjects(boolean show) {
 		this.showClosedProjects = show;
 	}

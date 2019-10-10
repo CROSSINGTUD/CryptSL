@@ -32,19 +32,24 @@ import org.eclipse.xtext.ui.wizard.template.WorkspaceFileGenerator;
 
 import com.google.inject.Inject;
 
-public class CryptSLNewFileWizard extends  Wizard implements INewWizard{
-	//mirorred from TemplateNewFileWizard class
+public class CryptSLNewFileWizard extends Wizard implements INewWizard {
+	/**
+	 * mirrored from { @see
+	 * org.eclipse.xtext.ui.wizard.template.TemplateNewFileWizard} to change new
+	 * file wizard primary page.
+	 * 
+	 */
 	private static final String FILE_TEMPLATE_PROVIDER_EXTENSION_POINT_ID = "org.eclipse.xtext.ui.fileTemplate"; //$NON-NLS-1$
 	private static final String FILE_TEMPLATE_PROVIDER_ID = "fileTemplateProvider"; //$NON-NLS-1$
 	private static final String FILE_TEMPLATE_PROVIDER_GRAMMAR_NAME_ATTRIBUTE = "grammarName"; //$NON-NLS-1$
 	private static final String FILE_TEMPLATE_PROVIDER_GRAMMAR_CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
 	private static final Logger logger = Logger.getLogger(TemplateNewFileWizard.class);
-	
+
 	protected IStructuredSelection selection;
 	protected CryptSLNewFileWizardPrimaryPage mainPage;
 	protected TemplateParameterPage templateParameterPage;
-	
+
 	@Inject
 	private TemplateLabelProvider labelProvider;
 	@Inject
@@ -60,7 +65,11 @@ public class CryptSLNewFileWizard extends  Wizard implements INewWizard{
 		setNeedsProgressMonitor(true);
 		setWindowTitle(de.darmstadt.tu.crossing.ui.wizard.Messages.CryptSL_Wizard_Title);
 	}
-	
+
+	/**
+	 * {@inheritDoc} 
+	 * createMainPage method is changed
+	 */
 	@Override
 	public void addPages() {
 		templates = loadTemplatesFromExtensionPoint();
@@ -68,12 +77,16 @@ public class CryptSLNewFileWizard extends  Wizard implements INewWizard{
 		addPage(mainPage);
 		setForcePreviousAndNextButtons(hasMoreThenOneTemplate());
 	}
-	
+
+	/**
+	 * creates and returns first page of file wizard
+	 */
 	protected CryptSLNewFileWizardPrimaryPage createMainPage(String pageName) {
-		CryptSLNewFileWizardPrimaryPage newpage = new CryptSLNewFileWizardPrimaryPage(pageName, templates, selection, labelProvider);
+		CryptSLNewFileWizardPrimaryPage newpage = new CryptSLNewFileWizardPrimaryPage(pageName, templates, selection,
+				labelProvider);
 		return newpage;
 	}
-	
+
 	protected String getGrammarName() {
 		return grammarAccess.getGrammar().getName();
 	}
@@ -185,7 +198,9 @@ public class CryptSLNewFileWizard extends  Wizard implements INewWizard{
 							.createExecutableExtension(FILE_TEMPLATE_PROVIDER_GRAMMAR_CLASS_ATTRIBUTE);
 					result.addAll(Arrays.asList(provider.getFileTemplates()));
 				} catch (CoreException e) {
-					logger.error("Can not instantiate '" + element.getAttribute(FILE_TEMPLATE_PROVIDER_GRAMMAR_CLASS_ATTRIBUTE) + "'", //$NON-NLS-1$ //$NON-NLS-2$
+					logger.error(
+							"Can not instantiate '" //$NON-NLS-1$
+									+ element.getAttribute(FILE_TEMPLATE_PROVIDER_GRAMMAR_CLASS_ATTRIBUTE) + "'", //$NON-NLS-1$
 							e);
 				}
 			}

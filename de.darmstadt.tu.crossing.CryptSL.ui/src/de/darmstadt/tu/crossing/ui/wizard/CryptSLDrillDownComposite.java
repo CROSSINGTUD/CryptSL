@@ -13,34 +13,31 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.DrillDownComposite;
 
-public class CryptSLDrillDownComposite extends DrillDownComposite  {
-
+public class CryptSLDrillDownComposite extends DrillDownComposite {
 	private ToolBarManager toolBarMgr;
 
-    private TreeViewer fChildTree;
+	private TreeViewer fChildTree;
 
-    private DrillDownAdapter adapter;
-    
-    public CryptSLDrillDownComposite(Composite parent, int style) {
+	private DrillDownAdapter adapter;
+
+	public CryptSLDrillDownComposite(Composite parent, int style) {
 		super(parent, style);
-		// TODO Auto-generated constructor stub
 	}
-    /**
-     * Sets the child viewer.  This method should only be called once, after the
-     * viewer has been created.
-     *
-     * @param aViewer the new child viewer
-     */
-    @Override
-    public void setChildTree(TreeViewer aViewer) {
-        // Save viewer.
-        fChildTree = aViewer;
 
-        // Create adapter.
-        adapter = new DrillDownAdapter(fChildTree);     
-        
-        // Set tree layout.
-        fChildTree.getTree().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        layout();
-    }
+	/**
+	 * { @see org.eclipse.ui.part.DrillDownComposite#setChildTree(TreeViewer)} 
+	 *      navigation buttons are removed
+	 */
+	@Override
+	public void setChildTree(TreeViewer aViewer) {
+		// Save viewer.
+		fChildTree = aViewer;
+
+		// Create adapter.
+		adapter = new DrillDownAdapter(fChildTree);
+
+		// Set tree layout.
+		fChildTree.getTree().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		layout();
+	}
 }

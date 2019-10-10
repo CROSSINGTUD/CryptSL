@@ -22,43 +22,53 @@ import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 
 public class CryptSLFileUtil {
-	
-	public static String createPath(String javaClassName) {
-		String dir ="";
-		if (null != javaClassName && javaClassName.length() > 0 )
-		{
-		    int endIndex = javaClassName.lastIndexOf(".");
-		    if (endIndex != -1)  
-		    {
-		        dir = javaClassName.substring(0, endIndex); 
-		    }
-		} 
-		dir = dir.replaceAll("\\.","\\\\");
-		return dir;
+
+	/**
+	 * for a given className returns a string by replacing '.' to '\\'
+	 */
+	public static String createPath(String className) {
+		String path = "";
+		if (!className.isEmpty()) {
+			int endIndex = className.lastIndexOf(".");
+			if (endIndex != -1) {
+				path = className.substring(0, endIndex);
+			}
+		}
+		path = path.replaceAll("\\.", "\\\\");
+		return path;
 	}
 	
-	public static String generateDirectory(String folder, String javaClassName) {	
-		String dir = createPath(javaClassName);
+	/**
+	 * for given folderName and className
+	 * to be appropriate to java project structure, generate all required directories 
+	 * @return absolute path of generated directory as a string
+	 */
+	public static String generateDirectory(String folderName, String className) {
+		String relativePath = createPath(className);
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
-		IFile file = root.getFile(new Path(folder));
+		IFile file = root.getFile(new Path(folderName));
 		IProject project = file.getProject();
 		IPath path = file.getRawLocation();
-		String folderpath2 = path.toString()+"/"+dir;
-		java.nio.file.Path folderpath= Paths.get(folderpath2);
-        //if directory exists?
-        if (!Files.exists(folderpath)) {
-            try {
-            	Files.createDirectories(folderpath);
-            	project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-            } catch (IOException | CoreException e) {
-                //fail to create directory
-                e.printStackTrace();
-            }
-        }
-        return folderpath2;
+		String absolutePath = path.toString() + System.getProperty("file.separator") + relativePath;
+		java.nio.file.Path folderpath = Paths.get(absolutePath);
+		// if directory exists?
+		if (!Files.exists(folderpath)) {
+			try {
+				Files.createDirectories(folderpath);
+				project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+			} catch (IOException | CoreException e) {
+				// fail to create directory
+				System.err.println("Fail to create directory: ' " + absolutePath+ "' " + e);
+			}
+		}
+		return absolutePath;
 	}
-	
+
+	/**
+	 * for a given folderName
+	 * @return the project's class path which it belongs
+	 */
 	public static Collection<String> getProjectClassPath(String folderName) {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
@@ -67,22 +77,25 @@ public class CryptSLFileUtil {
 		IJavaProject targetProject;
 		try {
 			if (project.hasNature(JavaCore.NATURE_ID)) {
-			    targetProject = JavaCore.create(project);
-			    Collection<String> classpath=ClassPathSolver.getClasspath(targetProject);
-			    return classpath;
+				targetProject = JavaCore.create(project);
+				Collection<String> classpath = ClassPathSolver.getClasspath(targetProject);
+				return classpath;
 			}
-			
+
 		} catch (CoreException e) {
-			e.printStackTrace();
+			System.err.println("Fail to check projects Nature : ' " + project.getName()+ "' " + e);
 		}
 		return null;
 	}
-	
-	public static Class<?> getClassMethods(String classname, Collection<String> classpath) {
+
+	/**
+	 * for a given className return class methods
+	 */
+	public static Class<?> getClassMethods(String className, Collection<String> classpath) {
 		Class<?> c;
-		for(String path:classpath) {
-			c=ClassPathLoader.LoadClassFromJar(classname, path);
-			if(c != null) {
+		for (String path : classpath) {
+			c = ClassPathLoader.LoadClassFromJar(className, path);
+			if (c != null) {
 				return c;
 			}
 		}
