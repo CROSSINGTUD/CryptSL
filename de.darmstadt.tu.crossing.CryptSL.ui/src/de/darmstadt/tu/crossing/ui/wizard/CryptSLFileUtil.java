@@ -37,10 +37,11 @@ public class CryptSLFileUtil {
 		path = path.replaceAll("\\.", "\\\\");
 		return path;
 	}
-	
+
 	/**
-	 * for given folderName and className
-	 * to be appropriate to java project structure, generate all required directories 
+	 * for given folderName and className to be appropriate to java project
+	 * structure, generate all required directories
+	 * 
 	 * @return absolute path of generated directory as a string
 	 */
 	public static String generateDirectory(String folderName, String className) {
@@ -59,7 +60,7 @@ public class CryptSLFileUtil {
 				project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			} catch (IOException | CoreException e) {
 				// fail to create directory
-				System.err.println("Fail to create directory: ' " + absolutePath+ "' " + e);
+				System.err.println("Fail to create directory: ' " + absolutePath + "' " + e);
 			}
 		}
 		return absolutePath;
@@ -67,6 +68,7 @@ public class CryptSLFileUtil {
 
 	/**
 	 * for a given folderName
+	 * 
 	 * @return the project's class path which it belongs
 	 */
 	public static Collection<String> getProjectClassPath(String folderName) {
@@ -83,7 +85,7 @@ public class CryptSLFileUtil {
 			}
 
 		} catch (CoreException e) {
-			System.err.println("Fail to check projects Nature : ' " + project.getName()+ "' " + e);
+			System.err.println("Fail to check projects Nature : ' " + project.getName() + "' " + e);
 		}
 		return null;
 	}
@@ -91,10 +93,10 @@ public class CryptSLFileUtil {
 	/**
 	 * for a given className return class methods
 	 */
-	public static Class<?> getClassMethods(String className, Collection<String> classpath) {
+	public static Class<?> getClass(String className, Collection<String> classpath) {
 		Class<?> c;
 		for (String path : classpath) {
-			c = ClassPathLoader.LoadClassFromJar(className, path);
+			c = ClassPathLoader.LoadClassFromPath(className, path);
 			if (c != null) {
 				return c;
 			}

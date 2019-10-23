@@ -29,13 +29,12 @@ public class CryptSLFileContentGenerator {
 
 	// the map for storing object types and object names of method and constructor
 	// parameters
-	private static Map<String, List<String>> parameterMap = new HashMap<String, List<String>>();
+	private Map<String, List<String>> parameterMap = new HashMap<String, List<String>>();
 
 	public CryptSLFileContentGenerator() {
 
-		// add predefined keywords of cryptsl grammar to abbreviation map in order to
+		// add predefined keywords of cryptsl grammar to abbreviation list in order to
 		// avoid further grammar errors.
-
 		abbrList = new ArrayList<String>();
 		abbrList.add("alg");
 		abbrList.add("mode");
@@ -43,6 +42,8 @@ public class CryptSLFileContentGenerator {
 		abbrList.add("in");
 		abbrList.add("this");
 		abbrList.add("length");
+		abbrList.add("T");
+		abbrList.add("E");
 	}
 
 	/**
@@ -52,70 +53,81 @@ public class CryptSLFileContentGenerator {
 	 */
 	protected String generateContent(Class<?> c, String className) {
 		String content = "SPEC " + className + "\n";
-		Method[] methods = c.getDeclaredMethods();
-		if (methods.length > 0) {
-			// put methods to classMethods map to use them later in "EVENTS" section.
-			createMethodMap(methods);
-			// if class does not have getInstance() method
-			// put class constructors to classConstructors map to use them in "EVENTS" later
-			// section.
-			if (!classMethods.containsKey("getInstance")) {
-				Constructor constructors[] = c.getDeclaredConstructors();
-				createConstructorMap(constructors);
+		if (c != null) {
+			Method[] methods = c.getDeclaredMethods();
+			if (methods.length > 0) {
+				// put methods to classMethods map to use them later in "EVENTS" section.
+				createMethodMap(methods);
+				// if class does not have getInstance() method
+				// put class constructors to classConstructors map to use them in "EVENTS" later
+				// section.
+				if (!classMethods.containsKey("getInstance")) {
+					Constructor constructors[] = c.getDeclaredConstructors();
+					createConstructorMap(constructors);
+				}
+
+				// create a map which stores method and their return variables.
+				Map<Method, String> returnMap = createReturnMap(methodReturnMap);
+
+				// store return methods parameters in a set to use for "OBJECTS" section of rule
+				// later
+				// file
+				Set<String> returnSet = new HashSet<>();
+				returnMap.entrySet().forEach(entry -> {
+					returnSet.add(entry.getValue());
+				});
+
+				// the list to store class methods and constructors appropriate to
+				// cryptsl grammar. It will be used for "EVENTS" section of rule file later .
+				List<String> eventList = createEventList(classMethods, returnMap);
+				if (classConstructors.size() > 0) {
+					eventList.addAll(createConstructorList(classConstructors));
+				}
+
+				// the list to store methods and constructors parameters.
+				// It will be used for "OBJECTS" section of the rule file. later
+				List<String> objectList = createparamObj(parameterMap);
+
+				// add objects to the content
+				content = content + "OBJECTS";
+
+				for (String ret : returnSet) {
+					content = content + "\n\t" + ret + ";";
+				}
+
+				for (String obj : objectList) {
+					content = content + "\n\t" + obj + ";";
+				}
+
+				// add events to the content
+				content = content + "\n\nEVENTS";
+
+				for (String event : eventList) {
+					content = content + "\n\t" + event;
+				}
+
+				content = content + "\nORDER\n*";
+				content = content + "\n\n//CONSTRAINTS//*";
+				content = content + "\n\n//REQUIRES//*";
+				content = content + "\n\n//ENSURES//*";
+
 			}
-
-			// create a map which stores method and their return variables.
-			Map<Method, String> returnMap = createReturnMap(methodReturnMap);
-
-			// store return methods parameters in a set to use for "OBJECTS" section of rule
-			// later
-			// file
-			Set<String> returnSet = new HashSet<>();
-			returnMap.entrySet().forEach(entry -> {
-				returnSet.add(entry.getValue());
-			});
-
-			// the list to store class methods and constructors appropriate to
-			// cryptsl grammar. It will be used for "EVENTS" section of rule file later .
-			List<String> eventList = createEventList(classMethods, returnMap);
-			if (classConstructors.size() > 0) {
-				eventList.addAll(createConstructorList(classConstructors));
-			}
-
-			// the list to store methods and constructors parameters.
-			// It will be used for "OBJECTS" section of the rule file. later
-			List<String> objectList = createparamObj(parameterMap);
-
-			// add objects to the content
-			content = content + "OBJECTS";
-
-			for (String ret : returnSet) {
-				content = content + "\n\t" + ret + ";";
-			}
-
-			for (String obj : objectList) {
-				content = content + "\n\t" + obj + ";";
-			}
-
-			// add events to the content
-			content = content + "\n\nEVENTS";
-
-			for (String event : eventList) {
-				content = content + "\n\t" + event;
-			}
-
-			content = content + "\nORDER\n*";
+		} else {
+			// classname is not found in project's class path, create a rule file template
+			content = content + "//'" + className + "' class is not found!";
+			content = content + "\n\nOBJECTS\n*";
+			content = content + "\n\nEVENTS\n*";
+			content = content + "\n\nORDER\n*";
 			content = content + "\n\n//CONSTRAINTS\n//*";
 			content = content + "\n\n//REQUIRES\n//*";
 			content = content + "\n\n//ENSURES\n//*";
-
 		}
 		return content;
 	}
 
 	/**
-	 * put names of methods and their parameters to classMethods map. 
-	 * For methods which have same name, maps them to the same parameterList and update the
+	 * put names of methods and their parameters to classMethods map. For methods
+	 * which have same name, maps them to the same parameterList and update the
 	 * parameter list with new added parameters.
 	 * 
 	 * If methods return type is string, int, byte or long add it to
@@ -147,8 +159,8 @@ public class CryptSLFileContentGenerator {
 	}
 
 	/**
-	 * add names of constructors and their parameters to classConstructors map. 
-	 * For constructors which have same name, maps them to the same parameterList and
+	 * add names of constructors and their parameters to classConstructors map. For
+	 * constructors which have same name, maps them to the same parameterList and
 	 * update the parameter list with new added parameters.
 	 */
 	private void createConstructorMap(Constructor[] constructors) {
@@ -434,8 +446,7 @@ public class CryptSLFileContentGenerator {
 
 	/**
 	 * for given object Map which stores object types and the list of the objects of
-	 * the that type. 
-	 * Returns an objectList which stores objectType + object Name as
+	 * the that type. Returns an objectList which stores objectType + object Name as
 	 * a string without checking if objectName is unique or not
 	 */
 	private List<String> createparamObj(Map<String, List<String>> objMap) {
@@ -458,12 +469,12 @@ public class CryptSLFileContentGenerator {
 	}
 
 	/**
-	 * for given method variances list which stores methods with same name,
-	 * process method parameters and maps parameter types to a list of unique parameter
+	 * for given method variances list which stores methods with same name, process
+	 * method parameters and maps parameter types to a list of unique parameter
 	 * names
 	 */
 	private Map<String, String> createMethodParameterMap(List<Method> methodvariances) {
-		Map<String, String> parameterMap = new HashMap<String, String>();
+		Map<String, String> methodParameterMap = new HashMap<String, String>();
 		Set<String> paramSet = new HashSet<String>();
 		for (Method m : methodvariances) {
 			Parameter[] params = m.getParameters();
@@ -473,32 +484,32 @@ public class CryptSLFileContentGenerator {
 		}
 		for (String p : paramSet) {
 			String param = p.toString();
-			String[] objectVariables = param.split("\\s+");
-			String objectType = objectVariables[0];
+			// String[] objectVariables = param.split("\\s+");
+			String objectType = param.substring(0, param.lastIndexOf(" "));
 			String parameter = createObject(p);
 			List<String> objectList = new ArrayList<String>();
-			if (this.parameterMap.containsKey(objectType)) {
-				objectList = this.parameterMap.get(objectType);
+			if (parameterMap.containsKey(objectType)) {
+				objectList = parameterMap.get(objectType);
 				int size = objectList.size() + 1;
 				parameter = (parameter + size).toString();
 				objectList.add(parameter);
-				this.parameterMap.put(objectType, objectList);
+				parameterMap.put(objectType, objectList);
 			} else {
 				int size = 1;
 				parameter = (parameter + size).toString();
 				objectList.add(parameter);
-				this.parameterMap.put(objectType, objectList);
+				parameterMap.put(objectType, objectList);
 			}
-			if (!parameterMap.containsKey(p)) {
-				parameterMap.put(p, parameter);
+			if (!methodParameterMap.containsKey(p)) {
+				methodParameterMap.put(p, parameter);
 			}
 		}
-		return parameterMap;
+		return methodParameterMap;
 	}
 
 	/**
-	 * for given constructor variances list which stores constructors, 
-	 * process method parameters and maps parameter types to a list of unique parameter
+	 * for given constructor variances list which stores constructors, process
+	 * method parameters and maps parameter types to a list of unique parameter
 	 * names
 	 */
 	private Map<String, String> createConstructorParameterMap(List<Constructor> constructorVariances) {
@@ -512,8 +523,8 @@ public class CryptSLFileContentGenerator {
 		}
 		for (String p : paramSet) {
 			String param = p.toString();
-			String[] objectVariables = param.split("\\s+");
-			String objectType = objectVariables[0];
+			// String[] objectVariables = param.split("\\s+");
+			String objectType = param.substring(0, param.lastIndexOf(" "));
 			String parameter = createObject(p);
 			List<String> objectList = new ArrayList<String>();
 			if (this.parameterMap.containsKey(objectType)) {
@@ -536,15 +547,13 @@ public class CryptSLFileContentGenerator {
 	}
 
 	/**
-	 * for a given parameter (string) p generates a string with objectType + objectName
-	 * to be used in "OBJECTS" section of the rule file.
-	 * e.g: given "java.lang.String" 
-	 * returns "java.lang.String string1"
+	 * for a given parameter (string) p generates a string with objectType +
+	 * objectName to be used in "OBJECTS" section of the rule file. e.g: given
+	 * "java.lang.String" returns "java.lang.String string1"
 	 */
 
 	private String createObject(String p) {
-		String[] objectVariables = p.split("\\s+");
-		String objectType = objectVariables[0];
+		String objectType = p.substring(0, p.lastIndexOf(" "));
 		String objectName;
 		int index = objectType.lastIndexOf(".");
 		if (index > 0) {
@@ -574,14 +583,20 @@ public class CryptSLFileContentGenerator {
 			if (!hasUppercase && objectType.matches("[a-zA-Z]+") && objectType.length() < 5) {
 				objectName = objectType;
 			} else {
-				objectName = objectType.substring(0, 2) + objectType.substring(2, objectType.length())
-						.replaceAll("[AEIOUaeiou]", "").replaceAll("[^a-zA-Z]", "");
+				objectName = objectType.substring(0, 2)
+						+ objectType.substring(2, objectType.length()).replaceAll("[AEIOUaeiou]", "");
 			}
 		}
 		// if object type is an array append "Array" to objectName
 		if (objectType.contains("[")) {
 			objectName = objectName + "Array";
+		} else if (objectType.contains("Map")) {
+			objectName = objectName + "Map";
+		} else if (objectType.contains("List")) {
+			objectName = objectName + "List";
+		} else if (objectType.contains("Set")) {
+			objectName = objectName + "Set";
 		}
-		return objectName;
+		return objectName.replaceAll("[^a-zA-Z]", "");
 	}
 }

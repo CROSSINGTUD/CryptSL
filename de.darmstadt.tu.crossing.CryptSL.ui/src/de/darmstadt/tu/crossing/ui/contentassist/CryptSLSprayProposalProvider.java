@@ -44,7 +44,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 				Class<?> c = getClassMethods(className, classpath);
 				addMethodstoProposal(c, context, acceptor);
 			} else {
-				System.out.println(className + " is not found");
+				System.err.println(className + " class not found" + e);
 			}
 		}
 	}
@@ -76,7 +76,6 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 		if (currNode.hasPreviousSibling() && currNode.getPreviousSibling().hasPreviousSibling() && "CONSTRAINTS".equals(currNode.getPreviousSibling().getPreviousSibling().getText())) {
 			completeAggregateProposal(context, acceptor);
 		} else {
-			System.out.println("inconstraint");
 			super.completeAggregateExpression_Value(model, assignment, context, acceptor);
 		}
 	}
@@ -162,7 +161,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 				}
 			}
 			catch (CoreException e) {
-				System.out.println(e.getMessage());
+				System.err.println(e);
 			}
 
 		}
@@ -172,7 +171,7 @@ public class CryptSLSprayProposalProvider extends AbstractCryptSLProposalProvide
 	public Class<?> getClassMethods(String classname, Collection<String> classpath) {
 		Class<?> c;
 		for (String path : classpath) {
-			c = ClassPathLoader.LoadClassFromJar(classname, path);
+			c = ClassPathLoader.LoadClassFromPath(classname, path);
 			if (c != null) {
 				return c;
 			}

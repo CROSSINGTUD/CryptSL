@@ -19,6 +19,8 @@ public class Messages extends NLS {
 	public static String ClassName_ToolTip_Message;
 	public static String FileName_ToolTip_Message;
 	public static String Control_Page_Title;
+	public static String NoteText1;
+	public static String NoteText2;
 	
 	static {
 	// initialize resource bundle

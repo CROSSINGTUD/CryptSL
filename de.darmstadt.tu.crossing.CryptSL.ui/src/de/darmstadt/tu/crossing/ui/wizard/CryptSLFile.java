@@ -37,24 +37,9 @@ public final class CryptSLFile extends AbstractFileTemplate {
 			} catch (ClassNotFoundException e) {
 				// if fail first check project's class path.
 				Collection<String> classpath = CryptSLFileUtil.getProjectClassPath(getFolder());
-				if (classpath != null && CryptSLFileUtil.getClassMethods(javaClassName, classpath) != null) {
-					Class<?> claz = CryptSLFileUtil.getClassMethods(javaClassName, classpath);
-					content = fileContentGenerator.generateContent(claz, javaClassName);
-					String dir = CryptSLFileUtil.generateDirectory(getFolder(), javaClassName);
-				} else {
-					// if class not found on project's class path display a messageBox.
-					Display.getDefault().asyncExec(new Runnable() {
-						public void run() {
-							MessageBox messageBox = new MessageBox(Display.getDefault().getActiveShell(),
-									SWT.ICON_ERROR);
-							messageBox.setMessage(javaClassName + " not found on project class path.");
-							int result = messageBox.open();
-						}
-					});
-					System.err.println("'" + javaClassName + "'" + " not found on project's class path." + e);
-					return;
-
-				}
+				Class<?> claz = CryptSLFileUtil.getClass(javaClassName, classpath);
+				content = fileContentGenerator.generateContent(claz, javaClassName);
+				CryptSLFileUtil.generateDirectory(getFolder(), javaClassName);
 			}
 		}
 		generator.generate(folderDir + "/" + getName() + ".cryptsl", content);
@@ -74,6 +59,9 @@ public final class CryptSLFile extends AbstractFileTemplate {
 	}
 
 	protected String getName() {
+		if (info.getName().endsWith(".cryptsl")) {
+			return info.getName().replace(".cryptsl", "");
+		}
 		return info.getName();
 	}
 

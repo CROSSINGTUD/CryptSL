@@ -31,6 +31,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.Bullet;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -41,6 +44,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.GlyphMetrics;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.ui.wizard.template.AbstractFileTemplate;
 import org.eclipse.xtext.ui.wizard.template.IFileGenerator;
@@ -51,11 +58,11 @@ import org.eclipse.xtext.ui.wizard.template.TemplateLabelProvider;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 
 /**
- * mirrored from 
- * { @see org.eclipse.xtext.ui.wizard.template.NewFileWizardPrimaryPage} to custimize
- * first page of CryptSLNewFileWizard. 
- * Allows user to select the source folder, and edit the text fields for className and fileName parameters. 
- * Provides a content proposal for className based on the project's class path.
+ * mirrored from { @see
+ * org.eclipse.xtext.ui.wizard.template.NewFileWizardPrimaryPage} to custimize
+ * first page of CryptSLNewFileWizard. Allows user to select the source folder,
+ * and edit the text fields for className and fileName parameters. Provides a
+ * content proposal for className based on the project's class path.
  * 
  */
 
@@ -131,6 +138,8 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 		fileText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		fileText.setFocus();
 
+		createNote(parent, true);
+
 		if (getFolderFromSelection() != null) {
 			sourceFolder.setText(getFolderFromSelection());
 			if (!sourceFolder.getText().trim().isEmpty()) {
@@ -201,11 +210,16 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 	public String[] getClassses(Collection<String> classpath) {
 		List<String> classes = new ArrayList<String>();
 		for (String path : classpath) {
-			classes = ClassPathLoader.LoadClassListFromJar(path);
+			if (!ClassPathLoader.LoadClassListFromPath(path).isEmpty()) {
+				classes.addAll(ClassPathLoader.LoadClassListFromPath(path));
+			}
 		}
-		String[] classArr = new String[classes.size()];
-		classArr = classes.toArray(classArr);
-		return classArr;
+		if (!classes.isEmpty()) {
+			String[] classArr = new String[classes.size()];
+			classArr = classes.toArray(classArr);
+			return classArr;
+		}
+		return null;
 	}
 
 	private String getFolderFromSelection() {
@@ -341,13 +355,13 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 			return;
 		}
 
-		if (classText.getText().trim().isEmpty()) { //$NON-NLS-1$
+		if (classText.getText().trim().isEmpty()) { // $NON-NLS-1$
 			setStatus(new Status(IStatus.ERROR, "NewFileWizard", //$NON-NLS-1$
 					de.darmstadt.tu.crossing.ui.wizard.Messages.ClassName_Empty));
 			return;
 		}
 
-		if (fileText.getText().trim().isEmpty()) { //$NON-NLS-1$
+		if (fileText.getText().trim().isEmpty()) { // $NON-NLS-1$
 			setStatus(new Status(IStatus.ERROR, "NewFileWizard", //$NON-NLS-1$
 					de.darmstadt.tu.crossing.ui.wizard.Messages.FileName_Empty));
 			return;
@@ -420,9 +434,10 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 	public String getFileName() {
 		return fileText.getText();
 	}
-    
+
 	/**
-	 * be sure in the given class name the first later after the last "." is upper case
+	 * be sure in the given class name the first later after the last "." is upper
+	 * case
 	 * 
 	 */
 	public String getCryptoClassName() {
@@ -462,8 +477,8 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 	}
 
 	/**
-	 * provide a contentproposal based on project's claspath.
-	 * activated by "ctrl+space" and '.',' ' chars
+	 * provide a contentproposal based on project's claspath. activated by
+	 * "ctrl+space" and '.',' ' chars
 	 */
 	public void getContentProposal() {
 		char[] autoActivationCharacters = new char[] { '.', ' ' };
@@ -471,19 +486,69 @@ public class CryptSLNewFileWizardPrimaryPage extends WizardPage implements IPara
 		try {
 			keyStroke = KeyStroke.getInstance("Ctrl+Space");
 			Collection<String> classpath = CryptSLFileUtil.getProjectClassPath(sourceFolder.getText());
-			if (classpath.size() > 0) {
+			if (!classpath.isEmpty()) {
 				String[] classes = getClassses(classpath);
-				SimpleContentProposalProvider contentProposalProvider = new SimpleContentProposalProvider(classes);
-				contentProposalProvider.setFiltering(true);
-				ContentProposalAdapter adapter = new ContentProposalAdapter(classText, new TextContentAdapter(),
-						contentProposalProvider, keyStroke, autoActivationCharacters);
-				adapter.setPropagateKeys(true);
-				adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+				if (classes != null) {
+					SimpleContentProposalProvider contentProposalProvider = new SimpleContentProposalProvider(classes);
+					contentProposalProvider.setFiltering(true);
+					ContentProposalAdapter adapter = new ContentProposalAdapter(classText, new TextContentAdapter(),
+							contentProposalProvider, keyStroke, autoActivationCharacters);
+					adapter.setPropagateKeys(true);
+					adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+				}
 			}
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 
 		}
+	}
+
+	private Group createNote(final Composite parent, boolean visible) {
+		final Group notePanel = new Group(parent, SWT.NONE);
+		notePanel.setText("Note:");
+		final GridLayout gridLayout = new GridLayout();
+		notePanel.setLayout(gridLayout);
+		final GridData gridData = new GridData(GridData.FILL, GridData.FILL, true, false);
+		gridData.horizontalSpan = 1;
+		notePanel.setLayoutData(gridData);
+		final Font boldFont = new Font(notePanel.getDisplay(), new FontData("Arial", 9, SWT.BOLD));
+		notePanel.setFont(boldFont);
+		notePanel.pack();
+		setControl(parent);
+
+		StyledText note = new StyledText(notePanel, SWT.MULTI | SWT.WRAP);
+		note.setLayoutData(new GridData(GridData.FILL_BOTH));
+		String noteText = de.darmstadt.tu.crossing.ui.wizard.Messages.NoteText1;
+		noteText = noteText + "\n" + de.darmstadt.tu.crossing.ui.wizard.Messages.NoteText2;
+		note.setText(noteText);
+
+		StyleRange style0 = new StyleRange();
+		style0.metrics = new GlyphMetrics(0, 0, 40);
+		style0.foreground = parent.getDisplay().getSystemColor(SWT.COLOR_BLACK);
+		Bullet bullet0 = new Bullet(style0);
+		note.setLineBullet(0, 2, bullet0);
+
+		StyleRange style1 = new StyleRange();
+		style1.start = 0;
+		style1.length = 11;
+		style1.font = boldFont;
+		note.setStyleRange(style1);
+
+		StyleRange style2 = new StyleRange();
+		style2.start = 98;
+		style2.length = 11;
+		style2.font = boldFont;
+		note.setStyleRange(style2);
+
+		note.setLineBackground(0, 2, parent.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		note.pack();
+		note.setBounds(10, 20, 585, 60);
+		note.setSize(note.computeSize(585, SWT.DEFAULT));
+		setControl(notePanel);
+		note.setEditable(false);
+		note.setEnabled(true);
+		notePanel.setVisible(visible);
+		return notePanel;
 	}
 
 	public String getSourceFolder() {

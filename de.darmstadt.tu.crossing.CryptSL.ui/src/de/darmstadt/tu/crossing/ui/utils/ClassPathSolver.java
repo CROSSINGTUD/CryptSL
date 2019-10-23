@@ -21,12 +21,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * mirrored from 
- * { @see de.cognicrypt.staticanalyzer.sootbridge.SootRunner}
+ * mirrored from { @see de.cognicrypt.staticanalyzer.sootbridge.SootRunner}
  */
 
 public class ClassPathSolver {
-	
+
 	public static Collection<String> getClasspath(final IJavaProject javaProject) {
 		Collection<String> libraryClassPath = libraryClassPath(javaProject);
 		return libraryClassPath;
@@ -66,7 +65,7 @@ public class ClassPathSolver {
 		IClasspathEntry[] rentries;
 		switch (entry.getEntryKind()) {
 		case IClasspathEntry.CPE_SOURCE:
-			// libraryClassPath.addAll(applicationClassPath(project));
+			libraryClassPath.addAll(applicationClassPath(project));
 			break;
 		case IClasspathEntry.CPE_PROJECT:
 			IJavaProject requiredProject = JavaCore

@@ -2,7 +2,6 @@ package de.darmstadt.tu.crossing.ui.wizard;
 
 import org.eclipse.xtext.ui.wizard.template.AbstractFileTemplate;
 import org.eclipse.xtext.ui.wizard.template.IFileTemplateProvider;
-import de.darmstadt.tu.crossing.ui.AbstractCryptSLUiModule;
 
 public class CryptSLSprayFileTemplateProvider  implements IFileTemplateProvider {
 
