@@ -49,6 +49,9 @@ Workflow {
 			generator = {
 				generateJavaMain = true
 			}
+			fileWizard = {
+		        generate = true
+		    }
 			
 		}
 		
