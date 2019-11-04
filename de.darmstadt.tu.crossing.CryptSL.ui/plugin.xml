@@ -413,4 +413,32 @@
 			type="text">
 		</fileTypes>
 	</extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category id="de.darmstadt.tu.crossing.ui.category" name="CrySL">
+		</category>
+		<wizard
+			category="de.darmstadt.tu.crossing.ui.category"
+			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"
+			id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"
+			name="CrySL File"
+			icon="icons/cognicrypt.png">
+		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.fileTemplate">
+		<fileTemplateProvider
+			class="de.darmstadt.tu.crossing.ui.CryptSLExecutableExtensionFactory:de.darmstadt.tu.crossing.ui.wizard.CryptSLSprayFileTemplateProvider"
+			grammarName="de.darmstadt.tu.crossing.CryptSL">
+		</fileTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="de.darmstadt.tu.crossing.ui.wizard.CryptSLNewFileWizard"/>
+		</perspectiveExtension>
+	</extension>
 </plugin>

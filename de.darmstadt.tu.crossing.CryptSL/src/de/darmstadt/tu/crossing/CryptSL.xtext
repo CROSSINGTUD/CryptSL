@@ -38,9 +38,19 @@ DestroysBlock:
 
 	////////////// OBJECTS
 ObjectDecl:
-	objectType=[jvmTypes::JvmType|QualifiedName] ((array="[]") | ("<" collection=[jvmTypes::JvmGenericType|QualifiedName] ">"))? objectName=Object ";";
+	(objectType=[jvmTypes::JvmType|QualifiedName] ((array="[]") | ("<"collection=JvmParameterizedTypeRef">"))? objectName=Object ";" )| '*';
 
-	/////////// FORBIDDEN EVENTS
+JvmParameterizedTypeRef:
+	(arguments+=JvmArgumentTypeRef (',' arguments+=JvmArgumentTypeRef)*('<' arguments+=JvmArgumentTypeRef (',' arguments+=JvmArgumentTypeRef)* '>')?)*;
+	
+JvmArgumentTypeRef returns  JvmTypeReference:
+	type= JvmTypeReference | type = JvmWildcardTypeRef
+;
+
+JvmWildcardTypeRef:
+	{JvmWildcardTypeReference} ('?'|'T' |'E');
+
+/////////// FORBIDDEN EVENTS
 ForbMethod:
 	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?) ';';
 
@@ -52,7 +62,7 @@ QN:
 
 	///////////// EVENTS
 Event:
-	LabelMethodCall | Aggregate;
+	LabelMethodCall | Aggregate | '*';
 
 	/// LABELMETHCALL
 LabelMethodCall returns SuperType:
@@ -73,7 +83,7 @@ Aggregate returns SuperType:
 
 	///////////// ORDER
 Order returns Expression:
-	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)*;
+	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)* | '*';
 
 SimpleOrder returns Expression:
 	Primary ({SimpleOrder.left=current} orderop='|' right=Primary)*;
