@@ -2,7 +2,7 @@
 <feature
       id="de.darmstadt.tu.crossing.CrySL.feature"
       label="de.darmstadt.tu.crossing.CrySL.feature"
-      version="1.0.0.qualifier"
+      version="2.0.0.qualifier"
       plugin="https://it.crossing.tu-darmstadt.de/cognicrypt/">
 
    <description>
