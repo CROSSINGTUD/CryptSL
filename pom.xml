@@ -2,9 +2,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.darmstadt.tu.crossing.CryptSL</groupId>
-	<version>1.0.0-SNAPSHOT</version>
-	<artifactId>de.darmstadt.tu.crossing.CryptSL.parent</artifactId>
+	<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
+	<version>2.0.0-SNAPSHOT</version>
+	<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -16,13 +16,13 @@
 	</properties>
 
 	<modules>
-		<module>de.darmstadt.tu.crossing.CryptSL</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.ide</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.ui</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.target</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.feature</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.repository</module>
-		<module>de.darmstadt.tu.crossing.CryptSL.tests</module>
+		<module>de.darmstadt.tu.crossing.CrySL</module>
+		<module>de.darmstadt.tu.crossing.CrySL.ide</module>
+		<module>de.darmstadt.tu.crossing.CrySL.ui</module>
+		<module>de.darmstadt.tu.crossing.CrySL.target</module>
+		<module>de.darmstadt.tu.crossing.CrySL.feature</module>
+		<module>de.darmstadt.tu.crossing.CrySL.repository</module>
+		<module>de.darmstadt.tu.crossing.CrySL.tests</module>
 	</modules>
 	<build>
 		<plugins>
@@ -39,8 +39,8 @@
 				<configuration>
 					<target>
 						<artifact>
-							<groupId>de.darmstadt.tu.crossing.CryptSL</groupId>
-							<artifactId>de.darmstadt.tu.crossing.CryptSL.target</artifactId>
+							<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
+							<artifactId>de.darmstadt.tu.crossing.CrySL.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
