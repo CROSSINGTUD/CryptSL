@@ -23,6 +23,7 @@
 		<module>de.darmstadt.tu.crossing.CrySL.feature</module>
 		<module>de.darmstadt.tu.crossing.CrySL.repository</module>
 		<module>de.darmstadt.tu.crossing.CrySL.tests</module>
+		<module>de.darmstadt.tu.crossing.CrySL.interface</module>
 	</modules>
 	<build>
 		<plugins>
