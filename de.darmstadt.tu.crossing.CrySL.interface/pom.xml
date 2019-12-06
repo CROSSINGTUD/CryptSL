@@ -14,8 +14,8 @@
   <dependencies>
   	<dependency>
 		<groupId>de.fraunhofer.iem</groupId>
-		<artifactId>idealPDS</artifactId>
-		<version>${spdsVersion}</version>
+		<artifactId>boomerangPDS</artifactId>
+		<version>2.4-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 	    <groupId>de.darmstadt.tu.crossing.CrySL</groupId>
@@ -26,7 +26,7 @@
 		<groupId>org.eclipse.xtext</groupId>
 		<artifactId>org.eclipse.xtext.xbase</artifactId>
 		<version>2.18.0</version>
-	</dependency>
+	</dependency>	
   </dependencies>
   <repositories>
 	<repository>

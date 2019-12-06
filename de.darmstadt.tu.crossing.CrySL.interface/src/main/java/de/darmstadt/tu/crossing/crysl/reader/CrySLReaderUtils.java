@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+
+import com.google.common.io.Files;
 
 import de.darmstadt.tu.crossing.crySL.Aggregate;
 import de.darmstadt.tu.crossing.crySL.Event;
@@ -19,7 +22,7 @@ import de.darmstadt.tu.crossing.crySL.SuperType;
 import de.darmstadt.tu.crossing.crysl.rules.CrySLMethod;
 import de.darmstadt.tu.crossing.crysl.rules.CrySLRule;
 
-public class CryslReaderUtils {
+public class CrySLReaderUtils {
 	public static final String outerFileSeparator = System.getProperty("file.separator");
 	public static final String innerFileSeparator = "/";
 	protected static List<CrySLMethod> resolveAggregateToMethodeNames(final Event leaf) {
@@ -35,6 +38,15 @@ public class CryslReaderUtils {
 			return statements;
 		}
 	}
+	
+	public static enum RuleFormat {
+		SOURCE() {
+			public String toString() {
+				return CrySLModelReader.cryslFileEnding;
+			}
+		},
+	}
+	
 	protected static List<CrySLMethod> dealWithAggregate(final Aggregate ev) {
 		final List<CrySLMethod> statements = new ArrayList<>();
 
@@ -88,6 +100,17 @@ public class CryslReaderUtils {
 	
 	public static File getResourceFromWithin(final String inputPath) {
 		return new File(inputPath);
+	}
+	
+	public static void storeRuletoFile(final CrySLRule rule, final String folderPath) throws IOException {
+		File written = new File(folderPath + innerFileSeparator + rule.getClassName().substring(rule.getClassName().lastIndexOf(".") + 1) + CrySLModelReader.cryslFileEnding);
+		Files.write(rule.toString(), written, StandardCharsets.UTF_8);
+	}
+
+	public static void storeRulesToFile(final List<CrySLRule> rules, final String folder) throws IOException {
+		for (CrySLRule rule : rules) {
+			storeRuletoFile(rule, folder);
+		}
 	}
 }
 

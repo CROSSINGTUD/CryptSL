@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +31,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.inject.Injector;
 
+import de.darmstadt.tu.crossing.crysl.reader.CrySLReaderUtils;
 import de.darmstadt.tu.crossing.CrySLStandaloneSetup;
 import de.darmstadt.tu.crossing.constraints.CrySLArithmeticOperator;
 import de.darmstadt.tu.crossing.constraints.CrySLComparisonOperator;
@@ -98,6 +101,7 @@ public class CrySLModelReader {
 	private static final String ANY_TYPE = "AnyType";
 	private static final String NULL = "null";
 	private static final String UNDERSCORE = "_";
+	private static final Logger logger = Logger.getLogger(CrySLModelReader.class);
 	
 	public CrySLModelReader() throws MalformedURLException {
 		CrySLStandaloneSetup crySLStandaloneSetup = new CrySLStandaloneSetup();
@@ -118,14 +122,15 @@ public class CrySLModelReader {
 		this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 
 	}
-
+	
 	public CrySLRule readRule(File ruleFile) {
 		final String fileName = ruleFile.getName();
 		final String extension = fileName.substring(fileName.lastIndexOf("."));
 		if (!cryslFileEnding.equals(extension)) {
 			return null;
 		}
-		final Resource resource = resourceSet.getResource(URI.createFileURI(ruleFile.getAbsolutePath()), true);// URI.createPlatformResourceURI(ruleFile.getFullPath().toPortableString(), // true), true);
+		final Resource resource = resourceSet.getResource(URI.createFileURI(ruleFile.getAbsolutePath()), true);// URI.createPlatformResourceURI(ruleFile.getFullPath().toPortableString(),
+																																																						// true), true);
 		EcoreUtil.resolveAll(resourceSet);
 		final EObject eObject = (EObject) resource.getContents().get(0);
 		final Domainmodel dm = (Domainmodel) eObject;
@@ -133,11 +138,18 @@ public class CrySLModelReader {
 		final EnsuresBlock ensure = dm.getEnsure();
 		final Map<ParEqualsPredicate, SuperType> pre_preds = Maps.newHashMap();
 		final DestroysBlock destroys = dm.getDestroy();
-		
+
 		Expression order = dm.getOrder();
-		if (order instanceof Order) {
+		try {
+			if (order instanceof Order) {
 				validateOrder((Order) order);
+			}
 		}
+		catch (ClassCastException ex) {
+			logger.error(ex.getMessage()+ "in rule" + curClass + ".");
+			return null;
+		}
+
 		if (destroys != null) {
 			pre_preds.putAll(getKills(destroys.getPred()));
 		}
@@ -152,6 +164,7 @@ public class CrySLModelReader {
 		final List<ISLConstraint> constraints = (dm.getReqConstraints() != null) ? buildUpConstraints(dm.getReqConstraints().getReq()) : Lists.newArrayList();
 		constraints.addAll(((dm.getRequire() != null) ? collectRequiredPredicates(dm.getRequire().getPred()) : Lists.newArrayList()));
 		final List<Entry<String, String>> objects = getObjects(dm.getUsage());
+
 		final List<CrySLPredicate> actPreds = Lists.newArrayList();
 
 		for (final ParEqualsPredicate pred : pre_preds.keySet()) {
@@ -160,11 +173,12 @@ public class CrySLModelReader {
 				actPreds.add(pred.tobasicPredicate());
 			} else {
 				actPreds.add(new CrySLCondPredicate(pred.getBaseObject(), pred.getPredName(), pred.getParameters(), pred.isNegated(),
-						getStatesForMethods(CryslReaderUtils.resolveAggregateToMethodeNames(cond))));
+						getStatesForMethods(CrySLReaderUtils.resolveAggregateToMethodeNames(cond))));
 			}
 		}
 		return new CrySLRule(curClass, objects, this.forbiddenMethods, this.smg, constraints, actPreds);
 	}
+	
 	private void validateOrder(Order order) {
 		List<String> collected = new ArrayList<String>();
 		collected.addAll(collectLabelsFromExpression(order.getLeft()));
@@ -451,7 +465,7 @@ public class CrySLModelReader {
 
 			final Event alternative = fm.getRep();
 			if (alternative != null) {
-				crysl.addAll(CryslReaderUtils.resolveAggregateToMethodeNames(alternative));
+				crysl.addAll(CrySLReaderUtils.resolveAggregateToMethodeNames(alternative));
 			}
 			methodSignatures.add(new CrySLForbiddenMethod(
 					new CrySLMethod(meth.getDeclaringType().getIdentifier() + "." + meth.getSimpleName(), pars, null, new SimpleEntry<>(UNDERSCORE, ANY_TYPE)), false, crysl));
@@ -519,12 +533,12 @@ public class CrySLModelReader {
 		switch (pred) {
 			case "callTo":
 				final List<ICrySLPredicateParameter> methodsToBeCalled = new ArrayList<>();
-				methodsToBeCalled.addAll(CryslReaderUtils.resolveAggregateToMethodeNames(((PreDefinedPredicates) lit.getCons()).getObj().get(0)));
+				methodsToBeCalled.addAll(CrySLReaderUtils.resolveAggregateToMethodeNames(((PreDefinedPredicates) lit.getCons()).getObj().get(0)));
 				slci = new CrySLPredicate(null, pred, methodsToBeCalled, false);
 				break;
 			case "noCallTo":
 				final List<ICrySLPredicateParameter> methodsNotToBeCalled = new ArrayList<>();
-				final List<CrySLMethod> resolvedMethodNames = CryslReaderUtils.resolveAggregateToMethodeNames(((PreDefinedPredicates) lit.getCons()).getObj().get(0));
+				final List<CrySLMethod> resolvedMethodNames = CrySLReaderUtils.resolveAggregateToMethodeNames(((PreDefinedPredicates) lit.getCons()).getObj().get(0));
 				for (final CrySLMethod csm : resolvedMethodNames) {
 					this.forbiddenMethods.add(new CrySLForbiddenMethod(csm, true));
 					methodsNotToBeCalled.add(csm);
@@ -690,5 +704,18 @@ public class CrySLModelReader {
 	}
 	private static String filterQuotes(final String dirty) {
 		return CharMatcher.anyOf("\"").removeFrom(dirty);
-	}	
+	}
+	public List<CrySLRule> readRulesOutside(String resourcesPath) throws CoreException {
+		List<CrySLRule> rules = new ArrayList<CrySLRule>();
+		for (File a : ((new File(resourcesPath)).listFiles())) {
+			if (!a.isDirectory() && a.exists() && a.canRead()) {
+				CrySLRule rule = readRule(a);
+				if (rule != null) {
+					rules.add(rule);
+				}
+			}
+		}
+
+		return rules;
+	}
 }

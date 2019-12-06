@@ -35,7 +35,7 @@ public class StateMachineGraphBuilder {
 	}
 
 	private StateNode addRegularEdge(final Expression leaf, final StateNode prevNode, final StateNode nextNode, final Boolean isStillAccepting) {
-		final List<CrySLMethod> label = CryslReaderUtils.resolveAggregateToMethodeNames(leaf.getOrderEv().get(0));
+		final List<CrySLMethod> label = CrySLReaderUtils.resolveAggregateToMethodeNames(leaf.getOrderEv().get(0));
 		return addRegularEdge(label, prevNode, nextNode, isStillAccepting);
 	}
 
@@ -160,7 +160,7 @@ public class StateMachineGraphBuilder {
 				List<TransitionEdge> orEdges = getOutgoingEdges(prevNode, null);
 				if (!orEdges.isEmpty()) {
 					Optional<TransitionEdge> edge = orEdges.stream().filter(e -> e.getRight().equals(p)).findFirst();
-					if (edge.isPresent() && edge.get().getLabel().equals(CryslReaderUtils.resolveAggregateToMethodeNames(getLeftMostChild(left).getOrderEv().get(0)))) {
+					if (edge.isPresent() && edge.get().getLabel().equals(CrySLReaderUtils.resolveAggregateToMethodeNames(getLeftMostChild(left).getOrderEv().get(0)))) {
 						leftOvers.put(level + 1, orLevel);
 					}
 				}
@@ -220,7 +220,7 @@ public class StateMachineGraphBuilder {
 				StateNode p = orLevel.getValue();
 				if (!orEdges.isEmpty()) {
 					Optional<TransitionEdge> edge = orEdges.stream().filter(e -> e.getRight().equals(p)).findFirst();
-					if (edge.isPresent() && edge.get().getLabel().equals(CryslReaderUtils.resolveAggregateToMethodeNames(getLeftMostChild(left).getOrderEv().get(0)))) {
+					if (edge.isPresent() && edge.get().getLabel().equals(CrySLReaderUtils.resolveAggregateToMethodeNames(getLeftMostChild(left).getOrderEv().get(0)))) {
 						sameName = true;
 						prevNode = p;
 						leftOvers.remove(level, orLevel);
