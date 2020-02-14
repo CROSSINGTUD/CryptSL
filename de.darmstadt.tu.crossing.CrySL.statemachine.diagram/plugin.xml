@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
 
-<extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+<!---<extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
       <fileTypes type="text" extension="statemachine_diagram"/>
    </extension>
@@ -499,7 +499,7 @@
       <super type="org.eclipse.core.resources.problemmarker"/>
       <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
       <persistent value="true"/>
-   </extension>
+   </extension> -->
    
    <!-- optionally, specify keybindings -->
   
