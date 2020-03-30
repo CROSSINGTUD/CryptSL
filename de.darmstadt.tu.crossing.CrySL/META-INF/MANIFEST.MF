@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
  org.eclipse.emf.common,
  org.eclipse.xtext.common.types,
- org.objectweb.asm;bundle-version="[7.2.0,7.3.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[7.2.0,7.3.0)";resolution:=optional,
+ org.eclipse.emf.mwe2.launch;bundle-version="2.11.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.darmstadt.tu.crossing,
  de.darmstadt.tu.crossing.constraints,
