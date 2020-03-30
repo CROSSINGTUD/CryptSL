@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
 	<extension point="org.eclipse.emf.ecore.generated_package">
-		<package 
+		<package
 			uri = "http://www.darmstadt.de/tu/crossing/CrySL"
 			class = "de.darmstadt.tu.crossing.crySL.CrySLPackage"
 			genModel = "model/generated/CrySL.genmodel" />
