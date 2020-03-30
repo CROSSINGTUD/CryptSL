@@ -6,7 +6,7 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-SymbolicName: de.darmstadt.tu.crossing.CrySL.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.darmstadt.tu.crossing.CrySL.ui,
- org.junit;bundle-version="4.7.0",
+ org.junit,
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.xbase.junit,
  org.eclipse.core.runtime,

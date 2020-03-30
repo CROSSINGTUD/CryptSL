@@ -5,20 +5,17 @@ Bundle-Vendor: My Company
 Bundle-Version: 2.0.0.qualifier
 Bundle-SymbolicName: de.darmstadt.tu.crossing.CrySL; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;bundle-version="2.20.0",
- org.eclipse.xtext.xbase;bundle-version="2.20.0",
- org.eclipse.equinox.common;bundle-version="3.10.0",
- org.eclipse.emf.ecore;bundle-version="2.20.0",
- org.eclipse.xtext.xbase.lib;bundle-version="2.20.0",
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.util;bundle-version="2.20.0",
- org.eclipse.xtend.lib;bundle-version="2.20.0",
- org.eclipse.emf.common;bundle-version="2.18.0",
- org.eclipse.xtext.common.types;bundle-version="2.20.0",
- org.objectweb.asm;bundle-version="7.1.0";resolution:=optional,
- org.eclipse.emf.mwe2.launch;bundle-version="2.11.2",
- org.eclipse.emf.mwe2.runtime;bundle-version="2.11.2",
- org.eclipse.emf.codegen;bundle-version="2.19.0"
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.eclipse.emf.common,
+ org.eclipse.xtext.common.types,
+ org.objectweb.asm;bundle-version="[7.2.0,7.3.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.darmstadt.tu.crossing,
  de.darmstadt.tu.crossing.constraints,

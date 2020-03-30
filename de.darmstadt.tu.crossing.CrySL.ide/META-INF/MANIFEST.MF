@@ -13,4 +13,3 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.darmstadt.tu.crossing.ide.contentassist.antlr.internal,
  de.darmstadt.tu.crossing.ide.contentassist.antlr
 Automatic-Module-Name: de.darmstadt.tu.crossing.CrySL.ide
-
