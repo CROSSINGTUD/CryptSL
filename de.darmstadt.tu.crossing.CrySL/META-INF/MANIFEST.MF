@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.darmstadt.tu.crossing.CrySL
-Bundle-Vendor: My Company
-Bundle-Version: 2.0.0.qualifier
+Bundle-Vendor: Technical University Darmstadt, Paderborn University
+Bundle-Version: 2.0.0
 Bundle-SymbolicName: de.darmstadt.tu.crossing.CrySL; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -36,5 +36,6 @@ Export-Package: de.darmstadt.tu.crossing,
  de.darmstadt.tu.crossing.serializer,
  de.darmstadt.tu.crossing.services,
  de.darmstadt.tu.crossing.validation
-Import-Package: org.eclipse.jdt.core.dom
+Import-Package: org.eclipse.jdt.core.dom,
+ org.apache.log4j
 Automatic-Module-Name: de.darmstadt.tu.crossing.CrySL
