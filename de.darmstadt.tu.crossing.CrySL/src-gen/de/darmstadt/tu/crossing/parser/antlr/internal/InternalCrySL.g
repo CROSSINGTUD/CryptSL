@@ -4173,21 +4173,39 @@ rulePredLit returns [EObject current=null]
 		(
 			(
 				(
-					{
-						newCompositeNode(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0());
-					}
-					lv_cons_0_0=ruleConstraint
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPredLitRule());
+					(
+						{
+							newCompositeNode(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0_0());
 						}
-						set(
-							$current,
-							"cons",
-							lv_cons_0_0,
-							"de.darmstadt.tu.crossing.CrySL.Constraint");
-						afterParserOrEnumRuleCall();
-					}
+						lv_cons_0_1=ruleConstraint
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getPredLitRule());
+							}
+							set(
+								$current,
+								"cons",
+								lv_cons_0_1,
+								"de.darmstadt.tu.crossing.CrySL.Constraint");
+							afterParserOrEnumRuleCall();
+						}
+						    |
+						{
+							newCompositeNode(grammarAccess.getPredLitAccess().getConsPredParserRuleCall_0_0_0_1());
+						}
+						lv_cons_0_2=rulePred
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getPredLitRule());
+							}
+							set(
+								$current,
+								"cons",
+								lv_cons_0_2,
+								"de.darmstadt.tu.crossing.CrySL.Pred");
+							afterParserOrEnumRuleCall();
+						}
+					)
 				)
 			)
 			otherlv_1='=>'

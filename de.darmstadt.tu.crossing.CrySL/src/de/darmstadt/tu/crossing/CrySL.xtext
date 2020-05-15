@@ -242,7 +242,7 @@ ReqPred:
 	rightExpression=PredLit)*);
 	
 PredLit: 
-	(cons=Constraint "=>")? (not='!')? pred=Pred;
+	(cons=(Constraint|Pred) "=>")? (not='!')? pred=Pred;
 
 EnsPred returns Constraint:
 	predLit=PredLit ('after' labelCond=[SuperType])?;

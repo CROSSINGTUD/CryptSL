@@ -3,7 +3,6 @@
  */
 package de.darmstadt.tu.crossing.crySL.impl;
 
-import de.darmstadt.tu.crossing.crySL.Constraint;
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
 import de.darmstadt.tu.crossing.crySL.Pred;
 import de.darmstadt.tu.crossing.crySL.PredLit;
@@ -12,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -41,7 +41,7 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
    * @generated
    * @ordered
    */
-  protected Constraint cons;
+  protected EObject cons;
 
   /**
    * The default value of the '{@link #getNot() <em>Not</em>}' attribute.
@@ -100,7 +100,7 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
    * @generated
    */
   @Override
-  public Constraint getCons()
+  public EObject getCons()
   {
     return cons;
   }
@@ -110,9 +110,9 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCons(Constraint newCons, NotificationChain msgs)
+  public NotificationChain basicSetCons(EObject newCons, NotificationChain msgs)
   {
-    Constraint oldCons = cons;
+    EObject oldCons = cons;
     cons = newCons;
     if (eNotificationRequired())
     {
@@ -128,7 +128,7 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
    * @generated
    */
   @Override
-  public void setCons(Constraint newCons)
+  public void setCons(EObject newCons)
   {
     if (newCons != cons)
     {
@@ -268,7 +268,7 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
     switch (featureID)
     {
       case CrySLPackage.PRED_LIT__CONS:
-        setCons((Constraint)newValue);
+        setCons((EObject)newValue);
         return;
       case CrySLPackage.PRED_LIT__NOT:
         setNot((String)newValue);
@@ -291,7 +291,7 @@ public class PredLitImpl extends ReqPredImpl implements PredLit
     switch (featureID)
     {
       case CrySLPackage.PRED_LIT__CONS:
-        setCons((Constraint)null);
+        setCons((EObject)null);
         return;
       case CrySLPackage.PRED_LIT__NOT:
         setNot(NOT_EDEFAULT);

@@ -1487,11 +1487,11 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5442:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // InternalCrySL.g:5442:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // InternalCrySL.g:5460:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // InternalCrySL.g:5460:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // InternalCrySL.g:5442:21: ( '0' .. '9' | '_' )*
+            // InternalCrySL.g:5460:21: ( '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1540,10 +1540,10 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5444:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // InternalCrySL.g:5444:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // InternalCrySL.g:5462:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // InternalCrySL.g:5462:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // InternalCrySL.g:5444:11: ( '^' )?
+            // InternalCrySL.g:5462:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1552,7 +1552,7 @@ public class InternalCrySLLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalCrySL.g:5444:11: '^'
+                    // InternalCrySL.g:5462:11: '^'
                     {
                     match('^'); 
 
@@ -1570,7 +1570,7 @@ public class InternalCrySLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalCrySL.g:5444:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // InternalCrySL.g:5462:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1619,10 +1619,10 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5446:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
-            // InternalCrySL.g:5446:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // InternalCrySL.g:5464:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
+            // InternalCrySL.g:5464:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             {
-            // InternalCrySL.g:5446:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // InternalCrySL.g:5464:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1640,10 +1640,10 @@ public class InternalCrySLLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalCrySL.g:5446:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
+                    // InternalCrySL.g:5464:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
                     {
                     match('\"'); 
-                    // InternalCrySL.g:5446:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalCrySL.g:5464:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1659,7 +1659,7 @@ public class InternalCrySLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalCrySL.g:5446:21: '\\\\' .
+                    	    // InternalCrySL.g:5464:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1667,7 +1667,7 @@ public class InternalCrySLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalCrySL.g:5446:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalCrySL.g:5464:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1687,7 +1687,7 @@ public class InternalCrySLLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalCrySL.g:5446:44: ( '\"' )?
+                    // InternalCrySL.g:5464:44: ( '\"' )?
                     int alt5=2;
                     int LA5_0 = input.LA(1);
 
@@ -1696,7 +1696,7 @@ public class InternalCrySLLexer extends Lexer {
                     }
                     switch (alt5) {
                         case 1 :
-                            // InternalCrySL.g:5446:44: '\"'
+                            // InternalCrySL.g:5464:44: '\"'
                             {
                             match('\"'); 
 
@@ -1709,10 +1709,10 @@ public class InternalCrySLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:5446:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
+                    // InternalCrySL.g:5464:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
                     {
                     match('\''); 
-                    // InternalCrySL.g:5446:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalCrySL.g:5464:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1728,7 +1728,7 @@ public class InternalCrySLLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalCrySL.g:5446:55: '\\\\' .
+                    	    // InternalCrySL.g:5464:55: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1736,7 +1736,7 @@ public class InternalCrySLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalCrySL.g:5446:62: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalCrySL.g:5464:62: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1756,7 +1756,7 @@ public class InternalCrySLLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalCrySL.g:5446:79: ( '\\'' )?
+                    // InternalCrySL.g:5464:79: ( '\\'' )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -1765,7 +1765,7 @@ public class InternalCrySLLexer extends Lexer {
                     }
                     switch (alt7) {
                         case 1 :
-                            // InternalCrySL.g:5446:79: '\\''
+                            // InternalCrySL.g:5464:79: '\\''
                             {
                             match('\''); 
 
@@ -1796,12 +1796,12 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5448:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalCrySL.g:5448:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalCrySL.g:5466:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalCrySL.g:5466:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalCrySL.g:5448:24: ( options {greedy=false; } : . )*
+            // InternalCrySL.g:5466:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -1826,7 +1826,7 @@ public class InternalCrySLLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalCrySL.g:5448:52: .
+            	    // InternalCrySL.g:5466:52: .
             	    {
             	    matchAny(); 
 
@@ -1856,12 +1856,12 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5450:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalCrySL.g:5450:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalCrySL.g:5468:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalCrySL.g:5468:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalCrySL.g:5450:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalCrySL.g:5468:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -1874,7 +1874,7 @@ public class InternalCrySLLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalCrySL.g:5450:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalCrySL.g:5468:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1894,7 +1894,7 @@ public class InternalCrySLLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalCrySL.g:5450:40: ( ( '\\r' )? '\\n' )?
+            // InternalCrySL.g:5468:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1903,9 +1903,9 @@ public class InternalCrySLLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalCrySL.g:5450:41: ( '\\r' )? '\\n'
+                    // InternalCrySL.g:5468:41: ( '\\r' )? '\\n'
                     {
-                    // InternalCrySL.g:5450:41: ( '\\r' )?
+                    // InternalCrySL.g:5468:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -1914,7 +1914,7 @@ public class InternalCrySLLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // InternalCrySL.g:5450:41: '\\r'
+                            // InternalCrySL.g:5468:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1946,10 +1946,10 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5452:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalCrySL.g:5452:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalCrySL.g:5470:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalCrySL.g:5470:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalCrySL.g:5452:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalCrySL.g:5470:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -2003,8 +2003,8 @@ public class InternalCrySLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalCrySL.g:5454:16: ( . )
-            // InternalCrySL.g:5454:18: .
+            // InternalCrySL.g:5472:16: ( . )
+            // InternalCrySL.g:5472:18: .
             {
             matchAny(); 
 

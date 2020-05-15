@@ -7,7 +7,6 @@
 		<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	<version>2.0.0-SNAPSHOT</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
