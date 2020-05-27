@@ -225,12 +225,13 @@
 	</build>
 
 	<distributionManagement>
-		<repository>
-			<uniqueVersion>true</uniqueVersion>
+		<snapshotRepository>
 			<id>soot-snapshot</id>
-			<name>Soot snapshot repository</name>
-			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot</url>
-			<layout>default</layout>
+			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot/</url>
+		</snapshotRepository>
+		<repository>
+			<id>soot-release</id>
+			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release/</url>
 		</repository>
 	</distributionManagement>
 
