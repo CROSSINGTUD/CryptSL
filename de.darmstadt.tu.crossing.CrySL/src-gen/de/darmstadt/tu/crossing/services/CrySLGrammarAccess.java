@@ -2517,7 +2517,9 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Assignment cConsAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cConsConstraintParserRuleCall_0_0_0 = (RuleCall)cConsAssignment_0_0.eContents().get(0);
+		private final Alternatives cConsAlternatives_0_0_0 = (Alternatives)cConsAssignment_0_0.eContents().get(0);
+		private final RuleCall cConsConstraintParserRuleCall_0_0_0_0 = (RuleCall)cConsAlternatives_0_0_0.eContents().get(0);
+		private final RuleCall cConsPredParserRuleCall_0_0_0_1 = (RuleCall)cConsAlternatives_0_0_0.eContents().get(1);
 		private final Keyword cEqualsSignGreaterThanSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cNotAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Keyword cNotExclamationMarkKeyword_1_0 = (Keyword)cNotAssignment_1.eContents().get(0);
@@ -2525,20 +2527,26 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPredPredParserRuleCall_2_0 = (RuleCall)cPredAssignment_2.eContents().get(0);
 		
 		//PredLit:
-		//	(cons=Constraint "=>")? not='!'? pred=Pred;
+		//	(cons=(Constraint | Pred) "=>")? not='!'? pred=Pred;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(cons=Constraint "=>")? not='!'? pred=Pred
+		//(cons=(Constraint | Pred) "=>")? not='!'? pred=Pred
 		public Group getGroup() { return cGroup; }
 		
-		//(cons=Constraint "=>")?
+		//(cons=(Constraint | Pred) "=>")?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//cons=Constraint
+		//cons=(Constraint | Pred)
 		public Assignment getConsAssignment_0_0() { return cConsAssignment_0_0; }
 		
+		//(Constraint | Pred)
+		public Alternatives getConsAlternatives_0_0_0() { return cConsAlternatives_0_0_0; }
+		
 		//Constraint
-		public RuleCall getConsConstraintParserRuleCall_0_0_0() { return cConsConstraintParserRuleCall_0_0_0; }
+		public RuleCall getConsConstraintParserRuleCall_0_0_0_0() { return cConsConstraintParserRuleCall_0_0_0_0; }
+		
+		//Pred
+		public RuleCall getConsPredParserRuleCall_0_0_0_1() { return cConsPredParserRuleCall_0_0_0_1; }
 		
 		//"=>"
 		public Keyword getEqualsSignGreaterThanSignKeyword_0_1() { return cEqualsSignGreaterThanSignKeyword_0_1; }
@@ -3477,7 +3485,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PredLit:
-	//	(cons=Constraint "=>")? not='!'? pred=Pred;
+	//	(cons=(Constraint | Pred) "=>")? not='!'? pred=Pred;
 	public PredLitElements getPredLitAccess() {
 		return pPredLit;
 	}

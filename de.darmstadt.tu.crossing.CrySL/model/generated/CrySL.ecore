@@ -187,7 +187,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PredLit" eSuperTypes="#//ReqPred">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="#//Constraint"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cons" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pred" eType="#//Pred" containment="true"/>

@@ -5490,7 +5490,10 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                         {
                         int LA41_3 = input.LA(3);
 
-                        if ( (LA41_3==RULE_ID) ) {
+                        if ( ((LA41_3>=RULE_STRING && LA41_3<=RULE_INT)||LA41_3==30||LA41_3==47||(LA41_3>=50 && LA41_3<=54)||(LA41_3>=56 && LA41_3<=57)||(LA41_3>=64 && LA41_3<=68)) ) {
+                            alt41=1;
+                        }
+                        else if ( (LA41_3==RULE_ID) ) {
                             int LA41_6 = input.LA(4);
 
                             if ( (LA41_6==EOF||(LA41_6>=13 && LA41_6<=14)||LA41_6==23||LA41_6==29||(LA41_6>=31 && LA41_6<=32)||(LA41_6>=39 && LA41_6<=45)||(LA41_6>=59 && LA41_6<=61)) ) {
@@ -5499,7 +5502,15 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
                         }
-                        else if ( ((LA41_3>=RULE_STRING && LA41_3<=RULE_INT)||LA41_3==30||LA41_3==47||(LA41_3>=50 && LA41_3<=54)||(LA41_3>=56 && LA41_3<=57)||(LA41_3>=64 && LA41_3<=68)) ) {
+
+
+                        }
+                        break;
+                    case RULE_ID:
+                        {
+                        int LA41_4 = input.LA(3);
+
+                        if ( (LA41_4==EOF||(LA41_4>=13 && LA41_4<=14)||(LA41_4>=23 && LA41_4<=24)||LA41_4==29||(LA41_4>=31 && LA41_4<=32)||(LA41_4>=39 && LA41_4<=46)||(LA41_4>=59 && LA41_4<=61)) ) {
                             alt41=1;
                         }
 
@@ -5524,17 +5535,6 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     case 68:
                         {
                         alt41=1;
-                        }
-                        break;
-                    case RULE_ID:
-                        {
-                        int LA41_5 = input.LA(3);
-
-                        if ( (LA41_5==EOF||(LA41_5>=13 && LA41_5<=14)||(LA41_5>=23 && LA41_5<=24)||LA41_5==29||(LA41_5>=31 && LA41_5<=32)||(LA41_5>=39 && LA41_5<=46)||(LA41_5>=59 && LA41_5<=61)) ) {
-                            alt41=1;
-                        }
-
-
                         }
                         break;
 
@@ -12466,13 +12466,15 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePredLit"
-    // InternalCrySL.g:4165:1: rulePredLit returns [EObject current=null] : ( ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) ) ;
+    // InternalCrySL.g:4165:1: rulePredLit returns [EObject current=null] : ( ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) ) ;
     public final EObject rulePredLit() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token lv_not_2_0=null;
-        EObject lv_cons_0_0 = null;
+        EObject lv_cons_0_1 = null;
+
+        EObject lv_cons_0_2 = null;
 
         EObject lv_pred_3_0 = null;
 
@@ -12481,95 +12483,118 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4171:2: ( ( ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) ) )
-            // InternalCrySL.g:4172:2: ( ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) )
+            // InternalCrySL.g:4171:2: ( ( ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) ) )
+            // InternalCrySL.g:4172:2: ( ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) )
             {
-            // InternalCrySL.g:4172:2: ( ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) )
-            // InternalCrySL.g:4173:3: ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) )
+            // InternalCrySL.g:4172:2: ( ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) ) )
+            // InternalCrySL.g:4173:3: ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )? ( (lv_not_2_0= '!' ) )? ( (lv_pred_3_0= rulePred ) )
             {
-            // InternalCrySL.g:4173:3: ( ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>' )?
-            int alt75=2;
-            switch ( input.LA(1) ) {
-                case 58:
+            // InternalCrySL.g:4173:3: ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )?
+            int alt76=2;
+            alt76 = dfa76.predict(input);
+            switch (alt76) {
+                case 1 :
+                    // InternalCrySL.g:4174:4: ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>'
                     {
-                    int LA75_1 = input.LA(2);
+                    // InternalCrySL.g:4174:4: ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) )
+                    // InternalCrySL.g:4175:5: ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) )
+                    {
+                    // InternalCrySL.g:4175:5: ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) )
+                    // InternalCrySL.g:4176:6: (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred )
+                    {
+                    // InternalCrySL.g:4176:6: (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred )
+                    int alt75=2;
+                    int LA75_0 = input.LA(1);
 
-                    if ( (LA75_1==RULE_ID) ) {
-                        int LA75_4 = input.LA(3);
+                    if ( ((LA75_0>=RULE_STRING && LA75_0<=RULE_INT)||LA75_0==30||LA75_0==47||(LA75_0>=50 && LA75_0<=54)||(LA75_0>=56 && LA75_0<=58)||(LA75_0>=64 && LA75_0<=68)) ) {
+                        alt75=1;
+                    }
+                    else if ( (LA75_0==RULE_ID) ) {
+                        int LA75_2 = input.LA(2);
 
-                        if ( ((LA75_4>=13 && LA75_4<=14)||LA75_4==29||LA75_4==32||(LA75_4>=39 && LA75_4<=45)||(LA75_4>=59 && LA75_4<=61)) ) {
+                        if ( ((LA75_2>=13 && LA75_2<=14)||LA75_2==24||LA75_2==29||LA75_2==32||(LA75_2>=39 && LA75_2<=46)||(LA75_2>=59 && LA75_2<=61)) ) {
                             alt75=1;
                         }
-                    }
-                    else if ( ((LA75_1>=RULE_STRING && LA75_1<=RULE_INT)||LA75_1==30||LA75_1==47||(LA75_1>=50 && LA75_1<=54)||(LA75_1>=56 && LA75_1<=57)||(LA75_1>=64 && LA75_1<=68)) ) {
-                        alt75=1;
-                    }
-                    }
-                    break;
-                case RULE_STRING:
-                case RULE_INT:
-                case 30:
-                case 47:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                case 54:
-                case 56:
-                case 57:
-                case 64:
-                case 65:
-                case 66:
-                case 67:
-                case 68:
-                    {
-                    alt75=1;
-                    }
-                    break;
-                case RULE_ID:
-                    {
-                    int LA75_3 = input.LA(2);
+                        else if ( (LA75_2==12||LA75_2==48) ) {
+                            alt75=2;
+                        }
+                        else {
+                            if (state.backtracking>0) {state.failed=true; return current;}
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 75, 2, input);
 
-                    if ( ((LA75_3>=13 && LA75_3<=14)||LA75_3==24||LA75_3==29||LA75_3==32||(LA75_3>=39 && LA75_3<=46)||(LA75_3>=59 && LA75_3<=61)) ) {
-                        alt75=1;
+                            throw nvae;
+                        }
                     }
+                    else {
+                        if (state.backtracking>0) {state.failed=true; return current;}
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 75, 0, input);
+
+                        throw nvae;
                     }
-                    break;
-            }
+                    switch (alt75) {
+                        case 1 :
+                            // InternalCrySL.g:4177:7: lv_cons_0_1= ruleConstraint
+                            {
+                            if ( state.backtracking==0 ) {
 
-            switch (alt75) {
-                case 1 :
-                    // InternalCrySL.g:4174:4: ( (lv_cons_0_0= ruleConstraint ) ) otherlv_1= '=>'
-                    {
-                    // InternalCrySL.g:4174:4: ( (lv_cons_0_0= ruleConstraint ) )
-                    // InternalCrySL.g:4175:5: (lv_cons_0_0= ruleConstraint )
-                    {
-                    // InternalCrySL.g:4175:5: (lv_cons_0_0= ruleConstraint )
-                    // InternalCrySL.g:4176:6: lv_cons_0_0= ruleConstraint
-                    {
-                    if ( state.backtracking==0 ) {
+                              							newCompositeNode(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0_0());
+                              						
+                            }
+                            pushFollow(FOLLOW_72);
+                            lv_cons_0_1=ruleConstraint();
 
-                      						newCompositeNode(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0());
-                      					
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getPredLitRule());
+                              							}
+                              							set(
+                              								current,
+                              								"cons",
+                              								lv_cons_0_1,
+                              								"de.darmstadt.tu.crossing.CrySL.Constraint");
+                              							afterParserOrEnumRuleCall();
+                              						
+                            }
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalCrySL.g:4193:7: lv_cons_0_2= rulePred
+                            {
+                            if ( state.backtracking==0 ) {
+
+                              							newCompositeNode(grammarAccess.getPredLitAccess().getConsPredParserRuleCall_0_0_0_1());
+                              						
+                            }
+                            pushFollow(FOLLOW_72);
+                            lv_cons_0_2=rulePred();
+
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getPredLitRule());
+                              							}
+                              							set(
+                              								current,
+                              								"cons",
+                              								lv_cons_0_2,
+                              								"de.darmstadt.tu.crossing.CrySL.Pred");
+                              							afterParserOrEnumRuleCall();
+                              						
+                            }
+
+                            }
+                            break;
+
                     }
-                    pushFollow(FOLLOW_72);
-                    lv_cons_0_0=ruleConstraint();
 
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						if (current==null) {
-                      							current = createModelElementForParent(grammarAccess.getPredLitRule());
-                      						}
-                      						set(
-                      							current,
-                      							"cons",
-                      							lv_cons_0_0,
-                      							"de.darmstadt.tu.crossing.CrySL.Constraint");
-                      						afterParserOrEnumRuleCall();
-                      					
-                    }
 
                     }
 
@@ -12588,19 +12613,19 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4198:3: ( (lv_not_2_0= '!' ) )?
-            int alt76=2;
-            int LA76_0 = input.LA(1);
+            // InternalCrySL.g:4216:3: ( (lv_not_2_0= '!' ) )?
+            int alt77=2;
+            int LA77_0 = input.LA(1);
 
-            if ( (LA76_0==58) ) {
-                alt76=1;
+            if ( (LA77_0==58) ) {
+                alt77=1;
             }
-            switch (alt76) {
+            switch (alt77) {
                 case 1 :
-                    // InternalCrySL.g:4199:4: (lv_not_2_0= '!' )
+                    // InternalCrySL.g:4217:4: (lv_not_2_0= '!' )
                     {
-                    // InternalCrySL.g:4199:4: (lv_not_2_0= '!' )
-                    // InternalCrySL.g:4200:5: lv_not_2_0= '!'
+                    // InternalCrySL.g:4217:4: (lv_not_2_0= '!' )
+                    // InternalCrySL.g:4218:5: lv_not_2_0= '!'
                     {
                     lv_not_2_0=(Token)match(input,58,FOLLOW_13); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -12625,11 +12650,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4212:3: ( (lv_pred_3_0= rulePred ) )
-            // InternalCrySL.g:4213:4: (lv_pred_3_0= rulePred )
+            // InternalCrySL.g:4230:3: ( (lv_pred_3_0= rulePred ) )
+            // InternalCrySL.g:4231:4: (lv_pred_3_0= rulePred )
             {
-            // InternalCrySL.g:4213:4: (lv_pred_3_0= rulePred )
-            // InternalCrySL.g:4214:5: lv_pred_3_0= rulePred
+            // InternalCrySL.g:4231:4: (lv_pred_3_0= rulePred )
+            // InternalCrySL.g:4232:5: lv_pred_3_0= rulePred
             {
             if ( state.backtracking==0 ) {
 
@@ -12685,7 +12710,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnsPred"
-    // InternalCrySL.g:4235:1: entryRuleEnsPred returns [EObject current=null] : iv_ruleEnsPred= ruleEnsPred EOF ;
+    // InternalCrySL.g:4253:1: entryRuleEnsPred returns [EObject current=null] : iv_ruleEnsPred= ruleEnsPred EOF ;
     public final EObject entryRuleEnsPred() throws RecognitionException {
         EObject current = null;
 
@@ -12693,8 +12718,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4235:48: (iv_ruleEnsPred= ruleEnsPred EOF )
-            // InternalCrySL.g:4236:2: iv_ruleEnsPred= ruleEnsPred EOF
+            // InternalCrySL.g:4253:48: (iv_ruleEnsPred= ruleEnsPred EOF )
+            // InternalCrySL.g:4254:2: iv_ruleEnsPred= ruleEnsPred EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getEnsPredRule()); 
@@ -12725,7 +12750,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnsPred"
-    // InternalCrySL.g:4242:1: ruleEnsPred returns [EObject current=null] : ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? ) ;
+    // InternalCrySL.g:4260:1: ruleEnsPred returns [EObject current=null] : ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? ) ;
     public final EObject ruleEnsPred() throws RecognitionException {
         EObject current = null;
 
@@ -12738,17 +12763,17 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4248:2: ( ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? ) )
-            // InternalCrySL.g:4249:2: ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? )
+            // InternalCrySL.g:4266:2: ( ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? ) )
+            // InternalCrySL.g:4267:2: ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? )
             {
-            // InternalCrySL.g:4249:2: ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? )
-            // InternalCrySL.g:4250:3: ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )?
+            // InternalCrySL.g:4267:2: ( ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )? )
+            // InternalCrySL.g:4268:3: ( (lv_predLit_0_0= rulePredLit ) ) (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )?
             {
-            // InternalCrySL.g:4250:3: ( (lv_predLit_0_0= rulePredLit ) )
-            // InternalCrySL.g:4251:4: (lv_predLit_0_0= rulePredLit )
+            // InternalCrySL.g:4268:3: ( (lv_predLit_0_0= rulePredLit ) )
+            // InternalCrySL.g:4269:4: (lv_predLit_0_0= rulePredLit )
             {
-            // InternalCrySL.g:4251:4: (lv_predLit_0_0= rulePredLit )
-            // InternalCrySL.g:4252:5: lv_predLit_0_0= rulePredLit
+            // InternalCrySL.g:4269:4: (lv_predLit_0_0= rulePredLit )
+            // InternalCrySL.g:4270:5: lv_predLit_0_0= rulePredLit
             {
             if ( state.backtracking==0 ) {
 
@@ -12779,16 +12804,16 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4269:3: (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            // InternalCrySL.g:4287:3: (otherlv_1= 'after' ( (otherlv_2= RULE_ID ) ) )?
+            int alt78=2;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA77_0==70) ) {
-                alt77=1;
+            if ( (LA78_0==70) ) {
+                alt78=1;
             }
-            switch (alt77) {
+            switch (alt78) {
                 case 1 :
-                    // InternalCrySL.g:4270:4: otherlv_1= 'after' ( (otherlv_2= RULE_ID ) )
+                    // InternalCrySL.g:4288:4: otherlv_1= 'after' ( (otherlv_2= RULE_ID ) )
                     {
                     otherlv_1=(Token)match(input,70,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -12796,11 +12821,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_1, grammarAccess.getEnsPredAccess().getAfterKeyword_1_0());
                       			
                     }
-                    // InternalCrySL.g:4274:4: ( (otherlv_2= RULE_ID ) )
-                    // InternalCrySL.g:4275:5: (otherlv_2= RULE_ID )
+                    // InternalCrySL.g:4292:4: ( (otherlv_2= RULE_ID ) )
+                    // InternalCrySL.g:4293:5: (otherlv_2= RULE_ID )
                     {
-                    // InternalCrySL.g:4275:5: (otherlv_2= RULE_ID )
-                    // InternalCrySL.g:4276:6: otherlv_2= RULE_ID
+                    // InternalCrySL.g:4293:5: (otherlv_2= RULE_ID )
+                    // InternalCrySL.g:4294:6: otherlv_2= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12852,7 +12877,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSuParList"
-    // InternalCrySL.g:4292:1: entryRuleSuParList returns [EObject current=null] : iv_ruleSuParList= ruleSuParList EOF ;
+    // InternalCrySL.g:4310:1: entryRuleSuParList returns [EObject current=null] : iv_ruleSuParList= ruleSuParList EOF ;
     public final EObject entryRuleSuParList() throws RecognitionException {
         EObject current = null;
 
@@ -12860,8 +12885,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4292:50: (iv_ruleSuParList= ruleSuParList EOF )
-            // InternalCrySL.g:4293:2: iv_ruleSuParList= ruleSuParList EOF
+            // InternalCrySL.g:4310:50: (iv_ruleSuParList= ruleSuParList EOF )
+            // InternalCrySL.g:4311:2: iv_ruleSuParList= ruleSuParList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSuParListRule()); 
@@ -12892,7 +12917,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSuParList"
-    // InternalCrySL.g:4299:1: ruleSuParList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) ;
+    // InternalCrySL.g:4317:1: ruleSuParList returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) ;
     public final EObject ruleSuParList() throws RecognitionException {
         EObject current = null;
 
@@ -12906,17 +12931,17 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4305:2: ( ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) )
-            // InternalCrySL.g:4306:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
+            // InternalCrySL.g:4323:2: ( ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* ) )
+            // InternalCrySL.g:4324:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
             {
-            // InternalCrySL.g:4306:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
-            // InternalCrySL.g:4307:3: ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
+            // InternalCrySL.g:4324:2: ( ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )* )
+            // InternalCrySL.g:4325:3: ( (lv_parameters_0_0= ruleSuPar ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
             {
-            // InternalCrySL.g:4307:3: ( (lv_parameters_0_0= ruleSuPar ) )
-            // InternalCrySL.g:4308:4: (lv_parameters_0_0= ruleSuPar )
+            // InternalCrySL.g:4325:3: ( (lv_parameters_0_0= ruleSuPar ) )
+            // InternalCrySL.g:4326:4: (lv_parameters_0_0= ruleSuPar )
             {
-            // InternalCrySL.g:4308:4: (lv_parameters_0_0= ruleSuPar )
-            // InternalCrySL.g:4309:5: lv_parameters_0_0= ruleSuPar
+            // InternalCrySL.g:4326:4: (lv_parameters_0_0= ruleSuPar )
+            // InternalCrySL.g:4327:5: lv_parameters_0_0= ruleSuPar
             {
             if ( state.backtracking==0 ) {
 
@@ -12947,20 +12972,20 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4326:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
-            loop78:
+            // InternalCrySL.g:4344:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) ) )*
+            loop79:
             do {
-                int alt78=2;
-                int LA78_0 = input.LA(1);
+                int alt79=2;
+                int LA79_0 = input.LA(1);
 
-                if ( (LA78_0==25) ) {
-                    alt78=1;
+                if ( (LA79_0==25) ) {
+                    alt79=1;
                 }
 
 
-                switch (alt78) {
+                switch (alt79) {
             	case 1 :
-            	    // InternalCrySL.g:4327:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) )
+            	    // InternalCrySL.g:4345:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleSuPar ) )
             	    {
             	    otherlv_1=(Token)match(input,25,FOLLOW_71); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -12968,11 +12993,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             	      				newLeafNode(otherlv_1, grammarAccess.getSuParListAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalCrySL.g:4331:4: ( (lv_parameters_2_0= ruleSuPar ) )
-            	    // InternalCrySL.g:4332:5: (lv_parameters_2_0= ruleSuPar )
+            	    // InternalCrySL.g:4349:4: ( (lv_parameters_2_0= ruleSuPar ) )
+            	    // InternalCrySL.g:4350:5: (lv_parameters_2_0= ruleSuPar )
             	    {
-            	    // InternalCrySL.g:4332:5: (lv_parameters_2_0= ruleSuPar )
-            	    // InternalCrySL.g:4333:6: lv_parameters_2_0= ruleSuPar
+            	    // InternalCrySL.g:4350:5: (lv_parameters_2_0= ruleSuPar )
+            	    // InternalCrySL.g:4351:6: lv_parameters_2_0= ruleSuPar
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -13008,7 +13033,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop78;
+            	    break loop79;
                 }
             } while (true);
 
@@ -13037,7 +13062,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSuPar"
-    // InternalCrySL.g:4355:1: entryRuleSuPar returns [EObject current=null] : iv_ruleSuPar= ruleSuPar EOF ;
+    // InternalCrySL.g:4373:1: entryRuleSuPar returns [EObject current=null] : iv_ruleSuPar= ruleSuPar EOF ;
     public final EObject entryRuleSuPar() throws RecognitionException {
         EObject current = null;
 
@@ -13045,8 +13070,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4355:46: (iv_ruleSuPar= ruleSuPar EOF )
-            // InternalCrySL.g:4356:2: iv_ruleSuPar= ruleSuPar EOF
+            // InternalCrySL.g:4373:46: (iv_ruleSuPar= ruleSuPar EOF )
+            // InternalCrySL.g:4374:2: iv_ruleSuPar= ruleSuPar EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSuParRule()); 
@@ -13077,7 +13102,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSuPar"
-    // InternalCrySL.g:4362:1: ruleSuPar returns [EObject current=null] : ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) ) ;
+    // InternalCrySL.g:4380:1: ruleSuPar returns [EObject current=null] : ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) ) ;
     public final EObject ruleSuPar() throws RecognitionException {
         EObject current = null;
 
@@ -13090,14 +13115,14 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4368:2: ( ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) ) )
-            // InternalCrySL.g:4369:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) )
+            // InternalCrySL.g:4386:2: ( ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) ) )
+            // InternalCrySL.g:4387:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) )
             {
-            // InternalCrySL.g:4369:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) )
-            // InternalCrySL.g:4370:3: () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' )
+            // InternalCrySL.g:4387:2: ( () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' ) )
+            // InternalCrySL.g:4388:3: () ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' )
             {
-            // InternalCrySL.g:4370:3: ()
-            // InternalCrySL.g:4371:4: 
+            // InternalCrySL.g:4388:3: ()
+            // InternalCrySL.g:4389:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13109,8 +13134,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4377:3: ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' )
-            int alt79=3;
+            // InternalCrySL.g:4395:3: ( ( (lv_val_1_0= ruleConsPred ) ) | otherlv_2= '_' | otherlv_3= 'this' )
+            int alt80=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
             case RULE_STRING:
@@ -13128,36 +13153,36 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             case 67:
             case 68:
                 {
-                alt79=1;
+                alt80=1;
                 }
                 break;
             case 36:
                 {
-                alt79=2;
+                alt80=2;
                 }
                 break;
             case 71:
                 {
-                alt79=3;
+                alt80=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 79, 0, input);
+                    new NoViableAltException("", 80, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt79) {
+            switch (alt80) {
                 case 1 :
-                    // InternalCrySL.g:4378:4: ( (lv_val_1_0= ruleConsPred ) )
+                    // InternalCrySL.g:4396:4: ( (lv_val_1_0= ruleConsPred ) )
                     {
-                    // InternalCrySL.g:4378:4: ( (lv_val_1_0= ruleConsPred ) )
-                    // InternalCrySL.g:4379:5: (lv_val_1_0= ruleConsPred )
+                    // InternalCrySL.g:4396:4: ( (lv_val_1_0= ruleConsPred ) )
+                    // InternalCrySL.g:4397:5: (lv_val_1_0= ruleConsPred )
                     {
-                    // InternalCrySL.g:4379:5: (lv_val_1_0= ruleConsPred )
-                    // InternalCrySL.g:4380:6: lv_val_1_0= ruleConsPred
+                    // InternalCrySL.g:4397:5: (lv_val_1_0= ruleConsPred )
+                    // InternalCrySL.g:4398:6: lv_val_1_0= ruleConsPred
                     {
                     if ( state.backtracking==0 ) {
 
@@ -13192,7 +13217,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:4398:4: otherlv_2= '_'
+                    // InternalCrySL.g:4416:4: otherlv_2= '_'
                     {
                     otherlv_2=(Token)match(input,36,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -13204,7 +13229,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalCrySL.g:4403:4: otherlv_3= 'this'
+                    // InternalCrySL.g:4421:4: otherlv_3= 'this'
                     {
                     otherlv_3=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -13243,7 +13268,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleObject"
-    // InternalCrySL.g:4412:1: entryRuleObject returns [EObject current=null] : iv_ruleObject= ruleObject EOF ;
+    // InternalCrySL.g:4430:1: entryRuleObject returns [EObject current=null] : iv_ruleObject= ruleObject EOF ;
     public final EObject entryRuleObject() throws RecognitionException {
         EObject current = null;
 
@@ -13251,8 +13276,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4412:47: (iv_ruleObject= ruleObject EOF )
-            // InternalCrySL.g:4413:2: iv_ruleObject= ruleObject EOF
+            // InternalCrySL.g:4430:47: (iv_ruleObject= ruleObject EOF )
+            // InternalCrySL.g:4431:2: iv_ruleObject= ruleObject EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getObjectRule()); 
@@ -13283,7 +13308,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleObject"
-    // InternalCrySL.g:4419:1: ruleObject returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
+    // InternalCrySL.g:4437:1: ruleObject returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
     public final EObject ruleObject() throws RecognitionException {
         EObject current = null;
 
@@ -13293,14 +13318,14 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4425:2: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
-            // InternalCrySL.g:4426:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalCrySL.g:4443:2: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
+            // InternalCrySL.g:4444:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
             {
-            // InternalCrySL.g:4426:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
-            // InternalCrySL.g:4427:3: () ( (lv_name_1_0= RULE_ID ) )
+            // InternalCrySL.g:4444:2: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalCrySL.g:4445:3: () ( (lv_name_1_0= RULE_ID ) )
             {
-            // InternalCrySL.g:4427:3: ()
-            // InternalCrySL.g:4428:4: 
+            // InternalCrySL.g:4445:3: ()
+            // InternalCrySL.g:4446:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13312,11 +13337,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4434:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalCrySL.g:4435:4: (lv_name_1_0= RULE_ID )
+            // InternalCrySL.g:4452:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalCrySL.g:4453:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalCrySL.g:4435:4: (lv_name_1_0= RULE_ID )
-            // InternalCrySL.g:4436:5: lv_name_1_0= RULE_ID
+            // InternalCrySL.g:4453:4: (lv_name_1_0= RULE_ID )
+            // InternalCrySL.g:4454:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -13367,7 +13392,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmTypeReference"
-    // InternalCrySL.g:4456:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
+    // InternalCrySL.g:4474:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
     public final EObject entryRuleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -13375,8 +13400,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4456:57: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
-            // InternalCrySL.g:4457:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
+            // InternalCrySL.g:4474:57: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
+            // InternalCrySL.g:4475:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeReferenceRule()); 
@@ -13407,7 +13432,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmTypeReference"
-    // InternalCrySL.g:4463:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) ;
+    // InternalCrySL.g:4481:1: ruleJvmTypeReference returns [EObject current=null] : ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) ;
     public final EObject ruleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -13420,32 +13445,32 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4469:2: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) )
-            // InternalCrySL.g:4470:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
+            // InternalCrySL.g:4487:2: ( ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef ) )
+            // InternalCrySL.g:4488:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
             {
-            // InternalCrySL.g:4470:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
-            int alt81=2;
-            int LA81_0 = input.LA(1);
+            // InternalCrySL.g:4488:2: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( (LA81_0==RULE_ID) ) {
-                alt81=1;
+            if ( (LA82_0==RULE_ID) ) {
+                alt82=1;
             }
-            else if ( ((LA81_0>=29 && LA81_0<=30)) ) {
-                alt81=2;
+            else if ( ((LA82_0>=29 && LA82_0<=30)) ) {
+                alt82=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 81, 0, input);
+                    new NoViableAltException("", 82, 0, input);
 
                 throw nvae;
             }
-            switch (alt81) {
+            switch (alt82) {
                 case 1 :
-                    // InternalCrySL.g:4471:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+                    // InternalCrySL.g:4489:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
                     {
-                    // InternalCrySL.g:4471:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
-                    // InternalCrySL.g:4472:4: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+                    // InternalCrySL.g:4489:3: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+                    // InternalCrySL.g:4490:4: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
                     {
                     if ( state.backtracking==0 ) {
 
@@ -13463,26 +13488,26 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                       				afterParserOrEnumRuleCall();
                       			
                     }
-                    // InternalCrySL.g:4480:4: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
-                    loop80:
+                    // InternalCrySL.g:4498:4: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+                    loop81:
                     do {
-                        int alt80=2;
-                        int LA80_0 = input.LA(1);
+                        int alt81=2;
+                        int LA81_0 = input.LA(1);
 
-                        if ( (LA80_0==48) && (synpred1_InternalCrySL())) {
-                            alt80=1;
+                        if ( (LA81_0==48) && (synpred1_InternalCrySL())) {
+                            alt81=1;
                         }
 
 
-                        switch (alt80) {
+                        switch (alt81) {
                     	case 1 :
-                    	    // InternalCrySL.g:4481:5: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
+                    	    // InternalCrySL.g:4499:5: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
                     	    {
-                    	    // InternalCrySL.g:4487:5: ( () ruleArrayBrackets )
-                    	    // InternalCrySL.g:4488:6: () ruleArrayBrackets
+                    	    // InternalCrySL.g:4505:5: ( () ruleArrayBrackets )
+                    	    // InternalCrySL.g:4506:6: () ruleArrayBrackets
                     	    {
-                    	    // InternalCrySL.g:4488:6: ()
-                    	    // InternalCrySL.g:4489:7: 
+                    	    // InternalCrySL.g:4506:6: ()
+                    	    // InternalCrySL.g:4507:7: 
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -13517,7 +13542,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop80;
+                    	    break loop81;
                         }
                     } while (true);
 
@@ -13528,7 +13553,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:4506:3: this_XFunctionTypeRef_3= ruleXFunctionTypeRef
+                    // InternalCrySL.g:4524:3: this_XFunctionTypeRef_3= ruleXFunctionTypeRef
                     {
                     if ( state.backtracking==0 ) {
 
@@ -13574,7 +13599,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArrayBrackets"
-    // InternalCrySL.g:4518:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
+    // InternalCrySL.g:4536:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
     public final String entryRuleArrayBrackets() throws RecognitionException {
         String current = null;
 
@@ -13582,8 +13607,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4518:53: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
-            // InternalCrySL.g:4519:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
+            // InternalCrySL.g:4536:53: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
+            // InternalCrySL.g:4537:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayBracketsRule()); 
@@ -13614,7 +13639,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArrayBrackets"
-    // InternalCrySL.g:4525:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
+    // InternalCrySL.g:4543:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
     public final AntlrDatatypeRuleToken ruleArrayBrackets() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -13624,11 +13649,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4531:2: ( (kw= '[' kw= ']' ) )
-            // InternalCrySL.g:4532:2: (kw= '[' kw= ']' )
+            // InternalCrySL.g:4549:2: ( (kw= '[' kw= ']' ) )
+            // InternalCrySL.g:4550:2: (kw= '[' kw= ']' )
             {
-            // InternalCrySL.g:4532:2: (kw= '[' kw= ']' )
-            // InternalCrySL.g:4533:3: kw= '[' kw= ']'
+            // InternalCrySL.g:4550:2: (kw= '[' kw= ']' )
+            // InternalCrySL.g:4551:3: kw= '[' kw= ']'
             {
             kw=(Token)match(input,48,FOLLOW_54); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -13669,7 +13694,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXFunctionTypeRef"
-    // InternalCrySL.g:4547:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
+    // InternalCrySL.g:4565:1: entryRuleXFunctionTypeRef returns [EObject current=null] : iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF ;
     public final EObject entryRuleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -13677,8 +13702,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4547:57: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
-            // InternalCrySL.g:4548:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
+            // InternalCrySL.g:4565:57: (iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF )
+            // InternalCrySL.g:4566:2: iv_ruleXFunctionTypeRef= ruleXFunctionTypeRef EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFunctionTypeRefRule()); 
@@ -13709,7 +13734,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXFunctionTypeRef"
-    // InternalCrySL.g:4554:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCrySL.g:4572:1: ruleXFunctionTypeRef returns [EObject current=null] : ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleXFunctionTypeRef() throws RecognitionException {
         EObject current = null;
 
@@ -13728,22 +13753,22 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4560:2: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
-            // InternalCrySL.g:4561:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:4578:2: ( ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) ) )
+            // InternalCrySL.g:4579:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCrySL.g:4561:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
-            // InternalCrySL.g:4562:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:4579:2: ( (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:4580:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
             {
-            // InternalCrySL.g:4562:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
-            int alt84=2;
-            int LA84_0 = input.LA(1);
+            // InternalCrySL.g:4580:3: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
+            int alt85=2;
+            int LA85_0 = input.LA(1);
 
-            if ( (LA84_0==30) ) {
-                alt84=1;
+            if ( (LA85_0==30) ) {
+                alt85=1;
             }
-            switch (alt84) {
+            switch (alt85) {
                 case 1 :
-                    // InternalCrySL.g:4563:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
+                    // InternalCrySL.g:4581:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
                     {
                     otherlv_0=(Token)match(input,30,FOLLOW_75); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -13751,22 +13776,22 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_0, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0());
                       			
                     }
-                    // InternalCrySL.g:4567:4: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
-                    int alt83=2;
-                    int LA83_0 = input.LA(1);
+                    // InternalCrySL.g:4585:4: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
+                    int alt84=2;
+                    int LA84_0 = input.LA(1);
 
-                    if ( (LA83_0==RULE_ID||(LA83_0>=29 && LA83_0<=30)) ) {
-                        alt83=1;
+                    if ( (LA84_0==RULE_ID||(LA84_0>=29 && LA84_0<=30)) ) {
+                        alt84=1;
                     }
-                    switch (alt83) {
+                    switch (alt84) {
                         case 1 :
-                            // InternalCrySL.g:4568:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            // InternalCrySL.g:4586:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
                             {
-                            // InternalCrySL.g:4568:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
-                            // InternalCrySL.g:4569:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // InternalCrySL.g:4586:5: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) )
+                            // InternalCrySL.g:4587:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
                             {
-                            // InternalCrySL.g:4569:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
-                            // InternalCrySL.g:4570:7: lv_paramTypes_1_0= ruleJvmTypeReference
+                            // InternalCrySL.g:4587:6: (lv_paramTypes_1_0= ruleJvmTypeReference )
+                            // InternalCrySL.g:4588:7: lv_paramTypes_1_0= ruleJvmTypeReference
                             {
                             if ( state.backtracking==0 ) {
 
@@ -13797,20 +13822,20 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // InternalCrySL.g:4587:5: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
-                            loop82:
+                            // InternalCrySL.g:4605:5: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
+                            loop83:
                             do {
-                                int alt82=2;
-                                int LA82_0 = input.LA(1);
+                                int alt83=2;
+                                int LA83_0 = input.LA(1);
 
-                                if ( (LA82_0==25) ) {
-                                    alt82=1;
+                                if ( (LA83_0==25) ) {
+                                    alt83=1;
                                 }
 
 
-                                switch (alt82) {
+                                switch (alt83) {
                             	case 1 :
-                            	    // InternalCrySL.g:4588:6: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // InternalCrySL.g:4606:6: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
                             	    {
                             	    otherlv_2=(Token)match(input,25,FOLLOW_76); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
@@ -13818,11 +13843,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                             	      						newLeafNode(otherlv_2, grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0());
                             	      					
                             	    }
-                            	    // InternalCrySL.g:4592:6: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
-                            	    // InternalCrySL.g:4593:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // InternalCrySL.g:4610:6: ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
+                            	    // InternalCrySL.g:4611:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
                             	    {
-                            	    // InternalCrySL.g:4593:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
-                            	    // InternalCrySL.g:4594:8: lv_paramTypes_3_0= ruleJvmTypeReference
+                            	    // InternalCrySL.g:4611:7: (lv_paramTypes_3_0= ruleJvmTypeReference )
+                            	    // InternalCrySL.g:4612:8: lv_paramTypes_3_0= ruleJvmTypeReference
                             	    {
                             	    if ( state.backtracking==0 ) {
 
@@ -13858,7 +13883,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop82;
+                            	    break loop83;
                                 }
                             } while (true);
 
@@ -13886,11 +13911,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_5, grammarAccess.getXFunctionTypeRefAccess().getEqualsSignGreaterThanSignKeyword_1());
               		
             }
-            // InternalCrySL.g:4622:3: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
-            // InternalCrySL.g:4623:4: (lv_returnType_6_0= ruleJvmTypeReference )
+            // InternalCrySL.g:4640:3: ( (lv_returnType_6_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:4641:4: (lv_returnType_6_0= ruleJvmTypeReference )
             {
-            // InternalCrySL.g:4623:4: (lv_returnType_6_0= ruleJvmTypeReference )
-            // InternalCrySL.g:4624:5: lv_returnType_6_0= ruleJvmTypeReference
+            // InternalCrySL.g:4641:4: (lv_returnType_6_0= ruleJvmTypeReference )
+            // InternalCrySL.g:4642:5: lv_returnType_6_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -13946,7 +13971,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmParameterizedTypeReference"
-    // InternalCrySL.g:4645:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
+    // InternalCrySL.g:4663:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
     public final EObject entryRuleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -13954,8 +13979,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4645:70: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
-            // InternalCrySL.g:4646:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
+            // InternalCrySL.g:4663:70: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
+            // InternalCrySL.g:4664:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceRule()); 
@@ -13986,7 +14011,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmParameterizedTypeReference"
-    // InternalCrySL.g:4652:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) ;
+    // InternalCrySL.g:4670:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) ;
     public final EObject ruleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -14010,17 +14035,17 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4658:2: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) )
-            // InternalCrySL.g:4659:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
+            // InternalCrySL.g:4676:2: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? ) )
+            // InternalCrySL.g:4677:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
             {
-            // InternalCrySL.g:4659:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
-            // InternalCrySL.g:4660:3: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
+            // InternalCrySL.g:4677:2: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )? )
+            // InternalCrySL.g:4678:3: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
             {
-            // InternalCrySL.g:4660:3: ( ( ruleQualifiedName ) )
-            // InternalCrySL.g:4661:4: ( ruleQualifiedName )
+            // InternalCrySL.g:4678:3: ( ( ruleQualifiedName ) )
+            // InternalCrySL.g:4679:4: ( ruleQualifiedName )
             {
-            // InternalCrySL.g:4661:4: ( ruleQualifiedName )
-            // InternalCrySL.g:4662:5: ruleQualifiedName
+            // InternalCrySL.g:4679:4: ( ruleQualifiedName )
+            // InternalCrySL.g:4680:5: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -14050,15 +14075,15 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:4676:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
-            int alt89=2;
-            alt89 = dfa89.predict(input);
-            switch (alt89) {
+            // InternalCrySL.g:4694:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?
+            int alt90=2;
+            alt90 = dfa90.predict(input);
+            switch (alt90) {
                 case 1 :
-                    // InternalCrySL.g:4677:4: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
+                    // InternalCrySL.g:4695:4: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
                     {
-                    // InternalCrySL.g:4677:4: ( ( '<' )=>otherlv_1= '<' )
-                    // InternalCrySL.g:4678:5: ( '<' )=>otherlv_1= '<'
+                    // InternalCrySL.g:4695:4: ( ( '<' )=>otherlv_1= '<' )
+                    // InternalCrySL.g:4696:5: ( '<' )=>otherlv_1= '<'
                     {
                     otherlv_1=(Token)match(input,13,FOLLOW_78); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -14069,11 +14094,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:4684:4: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
-                    // InternalCrySL.g:4685:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // InternalCrySL.g:4702:4: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
+                    // InternalCrySL.g:4703:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
                     {
-                    // InternalCrySL.g:4685:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
-                    // InternalCrySL.g:4686:6: lv_arguments_2_0= ruleJvmArgumentTypeReference
+                    // InternalCrySL.g:4703:5: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // InternalCrySL.g:4704:6: lv_arguments_2_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -14104,20 +14129,20 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:4703:4: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop85:
+                    // InternalCrySL.g:4721:4: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
+                    loop86:
                     do {
-                        int alt85=2;
-                        int LA85_0 = input.LA(1);
+                        int alt86=2;
+                        int LA86_0 = input.LA(1);
 
-                        if ( (LA85_0==25) ) {
-                            alt85=1;
+                        if ( (LA86_0==25) ) {
+                            alt86=1;
                         }
 
 
-                        switch (alt85) {
+                        switch (alt86) {
                     	case 1 :
-                    	    // InternalCrySL.g:4704:5: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // InternalCrySL.g:4722:5: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
                     	    otherlv_3=(Token)match(input,25,FOLLOW_78); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
@@ -14125,11 +14150,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	      					newLeafNode(otherlv_3, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0());
                     	      				
                     	    }
-                    	    // InternalCrySL.g:4708:5: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
-                    	    // InternalCrySL.g:4709:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // InternalCrySL.g:4726:5: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // InternalCrySL.g:4727:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // InternalCrySL.g:4709:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
-                    	    // InternalCrySL.g:4710:7: lv_arguments_4_0= ruleJvmArgumentTypeReference
+                    	    // InternalCrySL.g:4727:6: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // InternalCrySL.g:4728:7: lv_arguments_4_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -14165,7 +14190,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop85;
+                    	    break loop86;
                         }
                     } while (true);
 
@@ -14175,29 +14200,29 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_5, grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3());
                       			
                     }
-                    // InternalCrySL.g:4732:4: ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
-                    loop88:
+                    // InternalCrySL.g:4750:4: ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )*
+                    loop89:
                     do {
-                        int alt88=2;
-                        int LA88_0 = input.LA(1);
+                        int alt89=2;
+                        int LA89_0 = input.LA(1);
 
-                        if ( (LA88_0==32) && (synpred3_InternalCrySL())) {
-                            alt88=1;
+                        if ( (LA89_0==32) && (synpred3_InternalCrySL())) {
+                            alt89=1;
                         }
 
 
-                        switch (alt88) {
+                        switch (alt89) {
                     	case 1 :
-                    	    // InternalCrySL.g:4733:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
+                    	    // InternalCrySL.g:4751:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
                     	    {
-                    	    // InternalCrySL.g:4733:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) )
-                    	    // InternalCrySL.g:4734:6: ( ( () '.' ) )=> ( () otherlv_7= '.' )
+                    	    // InternalCrySL.g:4751:5: ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) )
+                    	    // InternalCrySL.g:4752:6: ( ( () '.' ) )=> ( () otherlv_7= '.' )
                     	    {
-                    	    // InternalCrySL.g:4740:6: ( () otherlv_7= '.' )
-                    	    // InternalCrySL.g:4741:7: () otherlv_7= '.'
+                    	    // InternalCrySL.g:4758:6: ( () otherlv_7= '.' )
+                    	    // InternalCrySL.g:4759:7: () otherlv_7= '.'
                     	    {
-                    	    // InternalCrySL.g:4741:7: ()
-                    	    // InternalCrySL.g:4742:8: 
+                    	    // InternalCrySL.g:4759:7: ()
+                    	    // InternalCrySL.g:4760:8: 
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -14221,11 +14246,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalCrySL.g:4754:5: ( ( ruleValidID ) )
-                    	    // InternalCrySL.g:4755:6: ( ruleValidID )
+                    	    // InternalCrySL.g:4772:5: ( ( ruleValidID ) )
+                    	    // InternalCrySL.g:4773:6: ( ruleValidID )
                     	    {
-                    	    // InternalCrySL.g:4755:6: ( ruleValidID )
-                    	    // InternalCrySL.g:4756:7: ruleValidID
+                    	    // InternalCrySL.g:4773:6: ( ruleValidID )
+                    	    // InternalCrySL.g:4774:7: ruleValidID
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -14255,15 +14280,15 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalCrySL.g:4770:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
-                    	    int alt87=2;
-                    	    alt87 = dfa87.predict(input);
-                    	    switch (alt87) {
+                    	    // InternalCrySL.g:4788:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?
+                    	    int alt88=2;
+                    	    alt88 = dfa88.predict(input);
+                    	    switch (alt88) {
                     	        case 1 :
-                    	            // InternalCrySL.g:4771:6: ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>'
+                    	            // InternalCrySL.g:4789:6: ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>'
                     	            {
-                    	            // InternalCrySL.g:4771:6: ( ( '<' )=>otherlv_9= '<' )
-                    	            // InternalCrySL.g:4772:7: ( '<' )=>otherlv_9= '<'
+                    	            // InternalCrySL.g:4789:6: ( ( '<' )=>otherlv_9= '<' )
+                    	            // InternalCrySL.g:4790:7: ( '<' )=>otherlv_9= '<'
                     	            {
                     	            otherlv_9=(Token)match(input,13,FOLLOW_78); if (state.failed) return current;
                     	            if ( state.backtracking==0 ) {
@@ -14274,11 +14299,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     	            }
 
-                    	            // InternalCrySL.g:4778:6: ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) )
-                    	            // InternalCrySL.g:4779:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
+                    	            // InternalCrySL.g:4796:6: ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) )
+                    	            // InternalCrySL.g:4797:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
                     	            {
-                    	            // InternalCrySL.g:4779:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
-                    	            // InternalCrySL.g:4780:8: lv_arguments_10_0= ruleJvmArgumentTypeReference
+                    	            // InternalCrySL.g:4797:7: (lv_arguments_10_0= ruleJvmArgumentTypeReference )
+                    	            // InternalCrySL.g:4798:8: lv_arguments_10_0= ruleJvmArgumentTypeReference
                     	            {
                     	            if ( state.backtracking==0 ) {
 
@@ -14309,20 +14334,20 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     	            }
 
-                    	            // InternalCrySL.g:4797:6: (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )*
-                    	            loop86:
+                    	            // InternalCrySL.g:4815:6: (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )*
+                    	            loop87:
                     	            do {
-                    	                int alt86=2;
-                    	                int LA86_0 = input.LA(1);
+                    	                int alt87=2;
+                    	                int LA87_0 = input.LA(1);
 
-                    	                if ( (LA86_0==25) ) {
-                    	                    alt86=1;
+                    	                if ( (LA87_0==25) ) {
+                    	                    alt87=1;
                     	                }
 
 
-                    	                switch (alt86) {
+                    	                switch (alt87) {
                     	            	case 1 :
-                    	            	    // InternalCrySL.g:4798:7: otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
+                    	            	    // InternalCrySL.g:4816:7: otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
                     	            	    {
                     	            	    otherlv_11=(Token)match(input,25,FOLLOW_78); if (state.failed) return current;
                     	            	    if ( state.backtracking==0 ) {
@@ -14330,11 +14355,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	            	      							newLeafNode(otherlv_11, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_4_2_2_0());
                     	            	      						
                     	            	    }
-                    	            	    // InternalCrySL.g:4802:7: ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
-                    	            	    // InternalCrySL.g:4803:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
+                    	            	    // InternalCrySL.g:4820:7: ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) )
+                    	            	    // InternalCrySL.g:4821:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
                     	            	    {
-                    	            	    // InternalCrySL.g:4803:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
-                    	            	    // InternalCrySL.g:4804:9: lv_arguments_12_0= ruleJvmArgumentTypeReference
+                    	            	    // InternalCrySL.g:4821:8: (lv_arguments_12_0= ruleJvmArgumentTypeReference )
+                    	            	    // InternalCrySL.g:4822:9: lv_arguments_12_0= ruleJvmArgumentTypeReference
                     	            	    {
                     	            	    if ( state.backtracking==0 ) {
 
@@ -14370,7 +14395,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	            	    break;
 
                     	            	default :
-                    	            	    break loop86;
+                    	            	    break loop87;
                     	                }
                     	            } while (true);
 
@@ -14391,7 +14416,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop88;
+                    	    break loop89;
                         }
                     } while (true);
 
@@ -14426,7 +14451,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmArgumentTypeReference"
-    // InternalCrySL.g:4833:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
+    // InternalCrySL.g:4851:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
     public final EObject entryRuleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -14434,8 +14459,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4833:65: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
-            // InternalCrySL.g:4834:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
+            // InternalCrySL.g:4851:65: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
+            // InternalCrySL.g:4852:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceRule()); 
@@ -14466,7 +14491,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmArgumentTypeReference"
-    // InternalCrySL.g:4840:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
+    // InternalCrySL.g:4858:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
     public final EObject ruleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -14479,29 +14504,29 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4846:2: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
-            // InternalCrySL.g:4847:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            // InternalCrySL.g:4864:2: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
+            // InternalCrySL.g:4865:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             {
-            // InternalCrySL.g:4847:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
-            int alt90=2;
-            int LA90_0 = input.LA(1);
+            // InternalCrySL.g:4865:2: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            int alt91=2;
+            int LA91_0 = input.LA(1);
 
-            if ( (LA90_0==RULE_ID||(LA90_0>=29 && LA90_0<=30)) ) {
-                alt90=1;
+            if ( (LA91_0==RULE_ID||(LA91_0>=29 && LA91_0<=30)) ) {
+                alt91=1;
             }
-            else if ( (LA90_0==26) ) {
-                alt90=2;
+            else if ( (LA91_0==26) ) {
+                alt91=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 91, 0, input);
 
                 throw nvae;
             }
-            switch (alt90) {
+            switch (alt91) {
                 case 1 :
-                    // InternalCrySL.g:4848:3: this_JvmTypeReference_0= ruleJvmTypeReference
+                    // InternalCrySL.g:4866:3: this_JvmTypeReference_0= ruleJvmTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -14523,7 +14548,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:4857:3: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
+                    // InternalCrySL.g:4875:3: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
                     {
                     if ( state.backtracking==0 ) {
 
@@ -14569,7 +14594,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmWildcardTypeReference"
-    // InternalCrySL.g:4869:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
+    // InternalCrySL.g:4887:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
     public final EObject entryRuleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -14577,8 +14602,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4869:65: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
-            // InternalCrySL.g:4870:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
+            // InternalCrySL.g:4887:65: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
+            // InternalCrySL.g:4888:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceRule()); 
@@ -14609,7 +14634,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmWildcardTypeReference"
-    // InternalCrySL.g:4876:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) ;
+    // InternalCrySL.g:4894:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) ;
     public final EObject ruleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -14627,14 +14652,14 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4882:2: ( ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) )
-            // InternalCrySL.g:4883:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
+            // InternalCrySL.g:4900:2: ( ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? ) )
+            // InternalCrySL.g:4901:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
             {
-            // InternalCrySL.g:4883:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
-            // InternalCrySL.g:4884:3: () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
+            // InternalCrySL.g:4901:2: ( () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )? )
+            // InternalCrySL.g:4902:3: () otherlv_1= '?' ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
             {
-            // InternalCrySL.g:4884:3: ()
-            // InternalCrySL.g:4885:4: 
+            // InternalCrySL.g:4902:3: ()
+            // InternalCrySL.g:4903:4: 
             {
             if ( state.backtracking==0 ) {
 
@@ -14652,28 +14677,28 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_1, grammarAccess.getJvmWildcardTypeReferenceAccess().getQuestionMarkKeyword_1());
               		
             }
-            // InternalCrySL.g:4895:3: ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
-            int alt93=3;
-            int LA93_0 = input.LA(1);
+            // InternalCrySL.g:4913:3: ( ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* ) | ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* ) )?
+            int alt94=3;
+            int LA94_0 = input.LA(1);
 
-            if ( (LA93_0==72) ) {
-                alt93=1;
+            if ( (LA94_0==72) ) {
+                alt94=1;
             }
-            else if ( (LA93_0==74) ) {
-                alt93=2;
+            else if ( (LA94_0==74) ) {
+                alt94=2;
             }
-            switch (alt93) {
+            switch (alt94) {
                 case 1 :
-                    // InternalCrySL.g:4896:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
+                    // InternalCrySL.g:4914:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
                     {
-                    // InternalCrySL.g:4896:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
-                    // InternalCrySL.g:4897:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
+                    // InternalCrySL.g:4914:4: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )* )
+                    // InternalCrySL.g:4915:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) ) ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
                     {
-                    // InternalCrySL.g:4897:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
-                    // InternalCrySL.g:4898:6: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // InternalCrySL.g:4915:5: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // InternalCrySL.g:4916:6: (lv_constraints_2_0= ruleJvmUpperBound )
                     {
-                    // InternalCrySL.g:4898:6: (lv_constraints_2_0= ruleJvmUpperBound )
-                    // InternalCrySL.g:4899:7: lv_constraints_2_0= ruleJvmUpperBound
+                    // InternalCrySL.g:4916:6: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // InternalCrySL.g:4917:7: lv_constraints_2_0= ruleJvmUpperBound
                     {
                     if ( state.backtracking==0 ) {
 
@@ -14704,23 +14729,23 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:4916:5: ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
-                    loop91:
+                    // InternalCrySL.g:4934:5: ( (lv_constraints_3_0= ruleJvmUpperBoundAnded ) )*
+                    loop92:
                     do {
-                        int alt91=2;
-                        int LA91_0 = input.LA(1);
+                        int alt92=2;
+                        int LA92_0 = input.LA(1);
 
-                        if ( (LA91_0==73) ) {
-                            alt91=1;
+                        if ( (LA92_0==73) ) {
+                            alt92=1;
                         }
 
 
-                        switch (alt91) {
+                        switch (alt92) {
                     	case 1 :
-                    	    // InternalCrySL.g:4917:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
+                    	    // InternalCrySL.g:4935:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
                     	    {
-                    	    // InternalCrySL.g:4917:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
-                    	    // InternalCrySL.g:4918:7: lv_constraints_3_0= ruleJvmUpperBoundAnded
+                    	    // InternalCrySL.g:4935:6: (lv_constraints_3_0= ruleJvmUpperBoundAnded )
+                    	    // InternalCrySL.g:4936:7: lv_constraints_3_0= ruleJvmUpperBoundAnded
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -14753,7 +14778,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop91;
+                    	    break loop92;
                         }
                     } while (true);
 
@@ -14764,16 +14789,16 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:4937:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
+                    // InternalCrySL.g:4955:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
                     {
-                    // InternalCrySL.g:4937:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
-                    // InternalCrySL.g:4938:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
+                    // InternalCrySL.g:4955:4: ( ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )* )
+                    // InternalCrySL.g:4956:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) ) ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
                     {
-                    // InternalCrySL.g:4938:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) )
-                    // InternalCrySL.g:4939:6: (lv_constraints_4_0= ruleJvmLowerBound )
+                    // InternalCrySL.g:4956:5: ( (lv_constraints_4_0= ruleJvmLowerBound ) )
+                    // InternalCrySL.g:4957:6: (lv_constraints_4_0= ruleJvmLowerBound )
                     {
-                    // InternalCrySL.g:4939:6: (lv_constraints_4_0= ruleJvmLowerBound )
-                    // InternalCrySL.g:4940:7: lv_constraints_4_0= ruleJvmLowerBound
+                    // InternalCrySL.g:4957:6: (lv_constraints_4_0= ruleJvmLowerBound )
+                    // InternalCrySL.g:4958:7: lv_constraints_4_0= ruleJvmLowerBound
                     {
                     if ( state.backtracking==0 ) {
 
@@ -14804,23 +14829,23 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:4957:5: ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
-                    loop92:
+                    // InternalCrySL.g:4975:5: ( (lv_constraints_5_0= ruleJvmLowerBoundAnded ) )*
+                    loop93:
                     do {
-                        int alt92=2;
-                        int LA92_0 = input.LA(1);
+                        int alt93=2;
+                        int LA93_0 = input.LA(1);
 
-                        if ( (LA92_0==73) ) {
-                            alt92=1;
+                        if ( (LA93_0==73) ) {
+                            alt93=1;
                         }
 
 
-                        switch (alt92) {
+                        switch (alt93) {
                     	case 1 :
-                    	    // InternalCrySL.g:4958:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
+                    	    // InternalCrySL.g:4976:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
                     	    {
-                    	    // InternalCrySL.g:4958:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
-                    	    // InternalCrySL.g:4959:7: lv_constraints_5_0= ruleJvmLowerBoundAnded
+                    	    // InternalCrySL.g:4976:6: (lv_constraints_5_0= ruleJvmLowerBoundAnded )
+                    	    // InternalCrySL.g:4977:7: lv_constraints_5_0= ruleJvmLowerBoundAnded
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -14853,7 +14878,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop92;
+                    	    break loop93;
                         }
                     } while (true);
 
@@ -14891,7 +14916,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBound"
-    // InternalCrySL.g:4982:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
+    // InternalCrySL.g:5000:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
     public final EObject entryRuleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -14899,8 +14924,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:4982:54: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
-            // InternalCrySL.g:4983:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
+            // InternalCrySL.g:5000:54: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
+            // InternalCrySL.g:5001:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundRule()); 
@@ -14931,7 +14956,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBound"
-    // InternalCrySL.g:4989:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCrySL.g:5007:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -14943,11 +14968,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:4995:2: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCrySL.g:4996:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5013:2: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCrySL.g:5014:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCrySL.g:4996:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCrySL.g:4997:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5014:2: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5015:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
             otherlv_0=(Token)match(input,72,FOLLOW_76); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -14955,11 +14980,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0());
               		
             }
-            // InternalCrySL.g:5001:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCrySL.g:5002:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5019:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5020:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCrySL.g:5002:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCrySL.g:5003:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCrySL.g:5020:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5021:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -15015,7 +15040,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBoundAnded"
-    // InternalCrySL.g:5024:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
+    // InternalCrySL.g:5042:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
     public final EObject entryRuleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -15023,8 +15048,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5024:59: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
-            // InternalCrySL.g:5025:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
+            // InternalCrySL.g:5042:59: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
+            // InternalCrySL.g:5043:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundAndedRule()); 
@@ -15055,7 +15080,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBoundAnded"
-    // InternalCrySL.g:5031:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCrySL.g:5049:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -15067,11 +15092,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5037:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCrySL.g:5038:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5055:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCrySL.g:5056:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCrySL.g:5038:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCrySL.g:5039:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5056:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5057:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
             otherlv_0=(Token)match(input,73,FOLLOW_76); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15079,11 +15104,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0());
               		
             }
-            // InternalCrySL.g:5043:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCrySL.g:5044:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5061:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5062:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCrySL.g:5044:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCrySL.g:5045:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCrySL.g:5062:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5063:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -15139,7 +15164,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBound"
-    // InternalCrySL.g:5066:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
+    // InternalCrySL.g:5084:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
     public final EObject entryRuleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -15147,8 +15172,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5066:54: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
-            // InternalCrySL.g:5067:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
+            // InternalCrySL.g:5084:54: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
+            // InternalCrySL.g:5085:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundRule()); 
@@ -15179,7 +15204,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBound"
-    // InternalCrySL.g:5073:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCrySL.g:5091:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -15191,11 +15216,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5079:2: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCrySL.g:5080:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5097:2: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCrySL.g:5098:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCrySL.g:5080:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCrySL.g:5081:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5098:2: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5099:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
             otherlv_0=(Token)match(input,74,FOLLOW_76); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15203,11 +15228,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0());
               		
             }
-            // InternalCrySL.g:5085:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCrySL.g:5086:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5103:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5104:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCrySL.g:5086:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCrySL.g:5087:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCrySL.g:5104:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5105:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -15263,7 +15288,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBoundAnded"
-    // InternalCrySL.g:5108:1: entryRuleJvmLowerBoundAnded returns [EObject current=null] : iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF ;
+    // InternalCrySL.g:5126:1: entryRuleJvmLowerBoundAnded returns [EObject current=null] : iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF ;
     public final EObject entryRuleJvmLowerBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -15271,8 +15296,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5108:59: (iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF )
-            // InternalCrySL.g:5109:2: iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF
+            // InternalCrySL.g:5126:59: (iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF )
+            // InternalCrySL.g:5127:2: iv_ruleJvmLowerBoundAnded= ruleJvmLowerBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundAndedRule()); 
@@ -15303,7 +15328,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBoundAnded"
-    // InternalCrySL.g:5115:1: ruleJvmLowerBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // InternalCrySL.g:5133:1: ruleJvmLowerBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -15315,11 +15340,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5121:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // InternalCrySL.g:5122:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5139:2: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // InternalCrySL.g:5140:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // InternalCrySL.g:5122:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // InternalCrySL.g:5123:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5140:2: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // InternalCrySL.g:5141:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
             otherlv_0=(Token)match(input,73,FOLLOW_76); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15327,11 +15352,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAndedAccess().getAmpersandKeyword_0());
               		
             }
-            // InternalCrySL.g:5127:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // InternalCrySL.g:5128:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5145:3: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // InternalCrySL.g:5146:4: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // InternalCrySL.g:5128:4: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // InternalCrySL.g:5129:5: lv_typeReference_1_0= ruleJvmTypeReference
+            // InternalCrySL.g:5146:4: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // InternalCrySL.g:5147:5: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
 
@@ -15387,7 +15412,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // InternalCrySL.g:5150:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // InternalCrySL.g:5168:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -15395,8 +15420,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5150:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // InternalCrySL.g:5151:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // InternalCrySL.g:5168:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // InternalCrySL.g:5169:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
@@ -15427,7 +15452,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // InternalCrySL.g:5157:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) ;
+    // InternalCrySL.g:5175:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15441,11 +15466,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5163:2: ( (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) )
-            // InternalCrySL.g:5164:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
+            // InternalCrySL.g:5181:2: ( (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* ) )
+            // InternalCrySL.g:5182:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
             {
-            // InternalCrySL.g:5164:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
-            // InternalCrySL.g:5165:3: this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )*
+            // InternalCrySL.g:5182:2: (this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )* )
+            // InternalCrySL.g:5183:3: this_ValidID_0= ruleValidID (kw= '.' this_ValidID_2= ruleValidID )*
             {
             if ( state.backtracking==0 ) {
 
@@ -15467,26 +15492,26 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalCrySL.g:5175:3: (kw= '.' this_ValidID_2= ruleValidID )*
-            loop94:
+            // InternalCrySL.g:5193:3: (kw= '.' this_ValidID_2= ruleValidID )*
+            loop95:
             do {
-                int alt94=2;
-                int LA94_0 = input.LA(1);
+                int alt95=2;
+                int LA95_0 = input.LA(1);
 
-                if ( (LA94_0==32) ) {
-                    int LA94_2 = input.LA(2);
+                if ( (LA95_0==32) ) {
+                    int LA95_2 = input.LA(2);
 
-                    if ( (LA94_2==RULE_ID) ) {
-                        alt94=1;
+                    if ( (LA95_2==RULE_ID) ) {
+                        alt95=1;
                     }
 
 
                 }
 
 
-                switch (alt94) {
+                switch (alt95) {
             	case 1 :
-            	    // InternalCrySL.g:5176:4: kw= '.' this_ValidID_2= ruleValidID
+            	    // InternalCrySL.g:5194:4: kw= '.' this_ValidID_2= ruleValidID
             	    {
             	    kw=(Token)match(input,32,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -15520,7 +15545,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop94;
+            	    break loop95;
                 }
             } while (true);
 
@@ -15549,7 +15574,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // InternalCrySL.g:5196:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
+    // InternalCrySL.g:5214:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
     public final String entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         String current = null;
 
@@ -15557,8 +15582,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5196:65: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
-            // InternalCrySL.g:5197:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
+            // InternalCrySL.g:5214:65: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
+            // InternalCrySL.g:5215:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
@@ -15589,7 +15614,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // InternalCrySL.g:5203:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) ;
+    // InternalCrySL.g:5221:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameWithWildcard() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15601,11 +15626,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5209:2: ( (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) )
-            // InternalCrySL.g:5210:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
+            // InternalCrySL.g:5227:2: ( (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) )
+            // InternalCrySL.g:5228:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
             {
-            // InternalCrySL.g:5210:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
-            // InternalCrySL.g:5211:3: this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*'
+            // InternalCrySL.g:5228:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
+            // InternalCrySL.g:5229:3: this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*'
             {
             if ( state.backtracking==0 ) {
 
@@ -15666,7 +15691,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValidID"
-    // InternalCrySL.g:5235:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
+    // InternalCrySL.g:5253:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
     public final String entryRuleValidID() throws RecognitionException {
         String current = null;
 
@@ -15674,8 +15699,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5235:47: (iv_ruleValidID= ruleValidID EOF )
-            // InternalCrySL.g:5236:2: iv_ruleValidID= ruleValidID EOF
+            // InternalCrySL.g:5253:47: (iv_ruleValidID= ruleValidID EOF )
+            // InternalCrySL.g:5254:2: iv_ruleValidID= ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
@@ -15706,7 +15731,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValidID"
-    // InternalCrySL.g:5242:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
+    // InternalCrySL.g:5260:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
     public final AntlrDatatypeRuleToken ruleValidID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15716,8 +15741,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5248:2: (this_ID_0= RULE_ID )
-            // InternalCrySL.g:5249:2: this_ID_0= RULE_ID
+            // InternalCrySL.g:5266:2: (this_ID_0= RULE_ID )
+            // InternalCrySL.g:5267:2: this_ID_0= RULE_ID
             {
             this_ID_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15752,7 +15777,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXImportDeclaration"
-    // InternalCrySL.g:5259:1: entryRuleXImportDeclaration returns [EObject current=null] : iv_ruleXImportDeclaration= ruleXImportDeclaration EOF ;
+    // InternalCrySL.g:5277:1: entryRuleXImportDeclaration returns [EObject current=null] : iv_ruleXImportDeclaration= ruleXImportDeclaration EOF ;
     public final EObject entryRuleXImportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -15760,8 +15785,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5259:59: (iv_ruleXImportDeclaration= ruleXImportDeclaration EOF )
-            // InternalCrySL.g:5260:2: iv_ruleXImportDeclaration= ruleXImportDeclaration EOF
+            // InternalCrySL.g:5277:59: (iv_ruleXImportDeclaration= ruleXImportDeclaration EOF )
+            // InternalCrySL.g:5278:2: iv_ruleXImportDeclaration= ruleXImportDeclaration EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXImportDeclarationRule()); 
@@ -15792,7 +15817,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXImportDeclaration"
-    // InternalCrySL.g:5266:1: ruleXImportDeclaration returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) ;
+    // InternalCrySL.g:5284:1: ruleXImportDeclaration returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) ;
     public final EObject ruleXImportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -15810,11 +15835,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5272:2: ( (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) )
-            // InternalCrySL.g:5273:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
+            // InternalCrySL.g:5290:2: ( (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) )
+            // InternalCrySL.g:5291:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
             {
-            // InternalCrySL.g:5273:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
-            // InternalCrySL.g:5274:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
+            // InternalCrySL.g:5291:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
+            // InternalCrySL.g:5292:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
             {
             otherlv_0=(Token)match(input,75,FOLLOW_84); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15822,21 +15847,21 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getXImportDeclarationAccess().getImportKeyword_0());
               		
             }
-            // InternalCrySL.g:5278:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
-            int alt97=3;
-            alt97 = dfa97.predict(input);
-            switch (alt97) {
+            // InternalCrySL.g:5296:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
+            int alt98=3;
+            alt98 = dfa98.predict(input);
+            switch (alt98) {
                 case 1 :
-                    // InternalCrySL.g:5279:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
+                    // InternalCrySL.g:5297:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
                     {
-                    // InternalCrySL.g:5279:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
-                    // InternalCrySL.g:5280:5: ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
+                    // InternalCrySL.g:5297:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
+                    // InternalCrySL.g:5298:5: ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
                     {
-                    // InternalCrySL.g:5280:5: ( (lv_static_1_0= 'static' ) )
-                    // InternalCrySL.g:5281:6: (lv_static_1_0= 'static' )
+                    // InternalCrySL.g:5298:5: ( (lv_static_1_0= 'static' ) )
+                    // InternalCrySL.g:5299:6: (lv_static_1_0= 'static' )
                     {
-                    // InternalCrySL.g:5281:6: (lv_static_1_0= 'static' )
-                    // InternalCrySL.g:5282:7: lv_static_1_0= 'static'
+                    // InternalCrySL.g:5299:6: (lv_static_1_0= 'static' )
+                    // InternalCrySL.g:5300:7: lv_static_1_0= 'static'
                     {
                     lv_static_1_0=(Token)match(input,76,FOLLOW_85); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -15858,19 +15883,19 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:5294:5: ( (lv_extension_2_0= 'extension' ) )?
-                    int alt95=2;
-                    int LA95_0 = input.LA(1);
+                    // InternalCrySL.g:5312:5: ( (lv_extension_2_0= 'extension' ) )?
+                    int alt96=2;
+                    int LA96_0 = input.LA(1);
 
-                    if ( (LA95_0==77) ) {
-                        alt95=1;
+                    if ( (LA96_0==77) ) {
+                        alt96=1;
                     }
-                    switch (alt95) {
+                    switch (alt96) {
                         case 1 :
-                            // InternalCrySL.g:5295:6: (lv_extension_2_0= 'extension' )
+                            // InternalCrySL.g:5313:6: (lv_extension_2_0= 'extension' )
                             {
-                            // InternalCrySL.g:5295:6: (lv_extension_2_0= 'extension' )
-                            // InternalCrySL.g:5296:7: lv_extension_2_0= 'extension'
+                            // InternalCrySL.g:5313:6: (lv_extension_2_0= 'extension' )
+                            // InternalCrySL.g:5314:7: lv_extension_2_0= 'extension'
                             {
                             lv_extension_2_0=(Token)match(input,77,FOLLOW_85); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -15895,11 +15920,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:5308:5: ( ( ruleQualifiedNameInStaticImport ) )
-                    // InternalCrySL.g:5309:6: ( ruleQualifiedNameInStaticImport )
+                    // InternalCrySL.g:5326:5: ( ( ruleQualifiedNameInStaticImport ) )
+                    // InternalCrySL.g:5327:6: ( ruleQualifiedNameInStaticImport )
                     {
-                    // InternalCrySL.g:5309:6: ( ruleQualifiedNameInStaticImport )
-                    // InternalCrySL.g:5310:7: ruleQualifiedNameInStaticImport
+                    // InternalCrySL.g:5327:6: ( ruleQualifiedNameInStaticImport )
+                    // InternalCrySL.g:5328:7: ruleQualifiedNameInStaticImport
                     {
                     if ( state.backtracking==0 ) {
 
@@ -15929,32 +15954,32 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalCrySL.g:5324:5: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
-                    int alt96=2;
-                    int LA96_0 = input.LA(1);
+                    // InternalCrySL.g:5342:5: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
+                    int alt97=2;
+                    int LA97_0 = input.LA(1);
 
-                    if ( (LA96_0==24) ) {
-                        alt96=1;
+                    if ( (LA97_0==24) ) {
+                        alt97=1;
                     }
-                    else if ( (LA96_0==RULE_ID) ) {
-                        alt96=2;
+                    else if ( (LA97_0==RULE_ID) ) {
+                        alt97=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 96, 0, input);
+                            new NoViableAltException("", 97, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt96) {
+                    switch (alt97) {
                         case 1 :
-                            // InternalCrySL.g:5325:6: ( (lv_wildcard_4_0= '*' ) )
+                            // InternalCrySL.g:5343:6: ( (lv_wildcard_4_0= '*' ) )
                             {
-                            // InternalCrySL.g:5325:6: ( (lv_wildcard_4_0= '*' ) )
-                            // InternalCrySL.g:5326:7: (lv_wildcard_4_0= '*' )
+                            // InternalCrySL.g:5343:6: ( (lv_wildcard_4_0= '*' ) )
+                            // InternalCrySL.g:5344:7: (lv_wildcard_4_0= '*' )
                             {
-                            // InternalCrySL.g:5326:7: (lv_wildcard_4_0= '*' )
-                            // InternalCrySL.g:5327:8: lv_wildcard_4_0= '*'
+                            // InternalCrySL.g:5344:7: (lv_wildcard_4_0= '*' )
+                            // InternalCrySL.g:5345:8: lv_wildcard_4_0= '*'
                             {
                             lv_wildcard_4_0=(Token)match(input,24,FOLLOW_86); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -15980,13 +16005,13 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalCrySL.g:5340:6: ( (lv_memberName_5_0= ruleValidID ) )
+                            // InternalCrySL.g:5358:6: ( (lv_memberName_5_0= ruleValidID ) )
                             {
-                            // InternalCrySL.g:5340:6: ( (lv_memberName_5_0= ruleValidID ) )
-                            // InternalCrySL.g:5341:7: (lv_memberName_5_0= ruleValidID )
+                            // InternalCrySL.g:5358:6: ( (lv_memberName_5_0= ruleValidID ) )
+                            // InternalCrySL.g:5359:7: (lv_memberName_5_0= ruleValidID )
                             {
-                            // InternalCrySL.g:5341:7: (lv_memberName_5_0= ruleValidID )
-                            // InternalCrySL.g:5342:8: lv_memberName_5_0= ruleValidID
+                            // InternalCrySL.g:5359:7: (lv_memberName_5_0= ruleValidID )
+                            // InternalCrySL.g:5360:8: lv_memberName_5_0= ruleValidID
                             {
                             if ( state.backtracking==0 ) {
 
@@ -16030,13 +16055,13 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalCrySL.g:5362:4: ( ( ruleQualifiedName ) )
+                    // InternalCrySL.g:5380:4: ( ( ruleQualifiedName ) )
                     {
-                    // InternalCrySL.g:5362:4: ( ( ruleQualifiedName ) )
-                    // InternalCrySL.g:5363:5: ( ruleQualifiedName )
+                    // InternalCrySL.g:5380:4: ( ( ruleQualifiedName ) )
+                    // InternalCrySL.g:5381:5: ( ruleQualifiedName )
                     {
-                    // InternalCrySL.g:5363:5: ( ruleQualifiedName )
-                    // InternalCrySL.g:5364:6: ruleQualifiedName
+                    // InternalCrySL.g:5381:5: ( ruleQualifiedName )
+                    // InternalCrySL.g:5382:6: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
 
@@ -16070,13 +16095,13 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalCrySL.g:5379:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
+                    // InternalCrySL.g:5397:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
                     {
-                    // InternalCrySL.g:5379:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
-                    // InternalCrySL.g:5380:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
+                    // InternalCrySL.g:5397:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
+                    // InternalCrySL.g:5398:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
                     {
-                    // InternalCrySL.g:5380:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
-                    // InternalCrySL.g:5381:6: lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard
+                    // InternalCrySL.g:5398:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
+                    // InternalCrySL.g:5399:6: lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard
                     {
                     if ( state.backtracking==0 ) {
 
@@ -16113,16 +16138,16 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalCrySL.g:5399:3: (otherlv_8= ';' )?
-            int alt98=2;
-            int LA98_0 = input.LA(1);
+            // InternalCrySL.g:5417:3: (otherlv_8= ';' )?
+            int alt99=2;
+            int LA99_0 = input.LA(1);
 
-            if ( (LA98_0==23) ) {
-                alt98=1;
+            if ( (LA99_0==23) ) {
+                alt99=1;
             }
-            switch (alt98) {
+            switch (alt99) {
                 case 1 :
-                    // InternalCrySL.g:5400:4: otherlv_8= ';'
+                    // InternalCrySL.g:5418:4: otherlv_8= ';'
                     {
                     otherlv_8=(Token)match(input,23,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -16161,7 +16186,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameInStaticImport"
-    // InternalCrySL.g:5409:1: entryRuleQualifiedNameInStaticImport returns [String current=null] : iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF ;
+    // InternalCrySL.g:5427:1: entryRuleQualifiedNameInStaticImport returns [String current=null] : iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF ;
     public final String entryRuleQualifiedNameInStaticImport() throws RecognitionException {
         String current = null;
 
@@ -16169,8 +16194,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalCrySL.g:5409:67: (iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF )
-            // InternalCrySL.g:5410:2: iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF
+            // InternalCrySL.g:5427:67: (iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF )
+            // InternalCrySL.g:5428:2: iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameInStaticImportRule()); 
@@ -16201,7 +16226,7 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameInStaticImport"
-    // InternalCrySL.g:5416:1: ruleQualifiedNameInStaticImport returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID kw= '.' )+ ;
+    // InternalCrySL.g:5434:1: ruleQualifiedNameInStaticImport returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID kw= '.' )+ ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameInStaticImport() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -16213,30 +16238,30 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalCrySL.g:5422:2: ( (this_ValidID_0= ruleValidID kw= '.' )+ )
-            // InternalCrySL.g:5423:2: (this_ValidID_0= ruleValidID kw= '.' )+
+            // InternalCrySL.g:5440:2: ( (this_ValidID_0= ruleValidID kw= '.' )+ )
+            // InternalCrySL.g:5441:2: (this_ValidID_0= ruleValidID kw= '.' )+
             {
-            // InternalCrySL.g:5423:2: (this_ValidID_0= ruleValidID kw= '.' )+
-            int cnt99=0;
-            loop99:
+            // InternalCrySL.g:5441:2: (this_ValidID_0= ruleValidID kw= '.' )+
+            int cnt100=0;
+            loop100:
             do {
-                int alt99=2;
-                int LA99_0 = input.LA(1);
+                int alt100=2;
+                int LA100_0 = input.LA(1);
 
-                if ( (LA99_0==RULE_ID) ) {
-                    int LA99_2 = input.LA(2);
+                if ( (LA100_0==RULE_ID) ) {
+                    int LA100_2 = input.LA(2);
 
-                    if ( (LA99_2==32) ) {
-                        alt99=1;
+                    if ( (LA100_2==32) ) {
+                        alt100=1;
                     }
 
 
                 }
 
 
-                switch (alt99) {
+                switch (alt100) {
             	case 1 :
-            	    // InternalCrySL.g:5424:3: this_ValidID_0= ruleValidID kw= '.'
+            	    // InternalCrySL.g:5442:3: this_ValidID_0= ruleValidID kw= '.'
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -16270,13 +16295,13 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt99 >= 1 ) break loop99;
+            	    if ( cnt100 >= 1 ) break loop100;
             	    if (state.backtracking>0) {state.failed=true; return current;}
                         EarlyExitException eee =
-                            new EarlyExitException(99, input);
+                            new EarlyExitException(100, input);
                         throw eee;
                 }
-                cnt99++;
+                cnt100++;
             } while (true);
 
 
@@ -16301,14 +16326,14 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred1_InternalCrySL
     public final void synpred1_InternalCrySL_fragment() throws RecognitionException {   
-        // InternalCrySL.g:4481:5: ( ( () ruleArrayBrackets ) )
-        // InternalCrySL.g:4481:6: ( () ruleArrayBrackets )
+        // InternalCrySL.g:4499:5: ( ( () ruleArrayBrackets ) )
+        // InternalCrySL.g:4499:6: ( () ruleArrayBrackets )
         {
-        // InternalCrySL.g:4481:6: ( () ruleArrayBrackets )
-        // InternalCrySL.g:4482:6: () ruleArrayBrackets
+        // InternalCrySL.g:4499:6: ( () ruleArrayBrackets )
+        // InternalCrySL.g:4500:6: () ruleArrayBrackets
         {
-        // InternalCrySL.g:4482:6: ()
-        // InternalCrySL.g:4483:6: 
+        // InternalCrySL.g:4500:6: ()
+        // InternalCrySL.g:4501:6: 
         {
         }
 
@@ -16327,8 +16352,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred2_InternalCrySL
     public final void synpred2_InternalCrySL_fragment() throws RecognitionException {   
-        // InternalCrySL.g:4678:5: ( '<' )
-        // InternalCrySL.g:4678:6: '<'
+        // InternalCrySL.g:4696:5: ( '<' )
+        // InternalCrySL.g:4696:6: '<'
         {
         match(input,13,FOLLOW_2); if (state.failed) return ;
 
@@ -16338,14 +16363,14 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred3_InternalCrySL
     public final void synpred3_InternalCrySL_fragment() throws RecognitionException {   
-        // InternalCrySL.g:4734:6: ( ( () '.' ) )
-        // InternalCrySL.g:4734:7: ( () '.' )
+        // InternalCrySL.g:4752:6: ( ( () '.' ) )
+        // InternalCrySL.g:4752:7: ( () '.' )
         {
-        // InternalCrySL.g:4734:7: ( () '.' )
-        // InternalCrySL.g:4735:7: () '.'
+        // InternalCrySL.g:4752:7: ( () '.' )
+        // InternalCrySL.g:4753:7: () '.'
         {
-        // InternalCrySL.g:4735:7: ()
-        // InternalCrySL.g:4736:7: 
+        // InternalCrySL.g:4753:7: ()
+        // InternalCrySL.g:4754:7: 
         {
         }
 
@@ -16360,8 +16385,8 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred4_InternalCrySL
     public final void synpred4_InternalCrySL_fragment() throws RecognitionException {   
-        // InternalCrySL.g:4772:7: ( '<' )
-        // InternalCrySL.g:4772:8: '<'
+        // InternalCrySL.g:4790:7: ( '<' )
+        // InternalCrySL.g:4790:8: '<'
         {
         match(input,13,FOLLOW_2); if (state.failed) return ;
 
@@ -16430,9 +16455,10 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
 
 
     protected DFA67 dfa67 = new DFA67(this);
-    protected DFA89 dfa89 = new DFA89(this);
-    protected DFA87 dfa87 = new DFA87(this);
-    protected DFA97 dfa97 = new DFA97(this);
+    protected DFA76 dfa76 = new DFA76(this);
+    protected DFA90 dfa90 = new DFA90(this);
+    protected DFA88 dfa88 = new DFA88(this);
+    protected DFA98 dfa98 = new DFA98(this);
     static final String dfa_1s = "\54\uffff";
     static final String dfa_2s = "\2\uffff\5\15\17\uffff\2\15\7\uffff\4\15\4\uffff\1\15\1\uffff\1\15\2\uffff";
     static final String dfa_3s = "\1\4\1\uffff\5\15\1\57\5\60\1\uffff\1\6\7\4\2\15\1\31\4\61\1\31\1\4\4\15\1\4\2\40\1\4\1\15\1\4\1\15\2\40";
@@ -16511,28 +16537,465 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             return "3540:2: ( ( ( (lv_cons_0_0= ruleArrayElements ) ) otherlv_1= 'in' otherlv_2= '{' ( (lv_litsleft_3_0= ruleLitList ) ) otherlv_4= '}' ) | ( (lv_cons_5_0= ruleLiteralExpression ) ) )";
         }
     }
-    static final String dfa_8s = "\17\uffff";
-    static final String dfa_9s = "\1\2\16\uffff";
-    static final String dfa_10s = "\1\4\1\0\15\uffff";
-    static final String dfa_11s = "\1\111\1\0\15\uffff";
-    static final String dfa_12s = "\2\uffff\1\2\13\uffff\1\1";
-    static final String dfa_13s = "\1\uffff\1\0\15\uffff}>";
+    static final String dfa_8s = "\u01c4\uffff";
+    static final String dfa_9s = "\6\uffff\1\7\65\uffff\1\7\u0187\uffff";
+    static final String dfa_10s = "\2\4\1\uffff\2\14\1\4\1\27\1\uffff\3\4\1\6\5\31\1\57\5\60\2\31\5\37\1\57\5\60\5\37\1\57\5\60\5\37\1\57\5\60\1\31\1\4\1\27\1\6\7\4\1\31\1\6\7\4\1\31\1\6\7\4\1\31\1\6\7\4\1\6\1\5\3\4\1\6\5\31\1\57\5\60\5\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\3\31\5\37\1\57\5\60\5\37\1\57\5\60\5\37\1\57\5\60\1\31\1\6\10\4\4\31\2\4\4\37\2\4\4\37\2\4\4\37\2\4\1\31\1\6\7\4\1\31\1\6\7\4\1\31\1\6\7\4\1\5\1\6\3\31\4\61\1\31\10\40\5\37\1\57\5\60\2\37\1\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\3\31\1\4\4\31\2\4\1\31\1\4\1\31\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\31\1\6\10\4\4\37\2\4\4\37\2\4\4\37\2\4\12\40\2\37\1\31\4\61\1\31\6\40\5\37\1\57\5\60\1\4\1\31\1\4\1\31\1\4\4\37\2\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\31\1\6\7\4\12\40\2\37\1\31\4\61\1\31\1\4\1\37\1\4\1\37\1\4\4\37\1\4\4\40\1\4\1\37\1\4\1\37\2\40";
+    static final String dfa_11s = "\2\104\1\uffff\2\75\1\107\1\106\1\uffff\3\71\1\6\1\61\1\67\3\61\1\60\1\62\1\63\1\64\1\65\1\66\2\61\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\67\1\107\1\106\1\6\7\4\1\61\1\6\7\4\1\61\1\6\7\4\1\61\1\6\7\4\1\6\1\5\3\71\1\6\1\61\1\67\3\61\1\60\1\62\1\63\1\64\1\65\1\66\4\61\1\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\3\31\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\67\1\6\10\4\4\61\2\4\4\37\2\4\4\37\2\4\4\37\1\4\1\71\1\61\1\6\7\4\1\61\1\6\7\4\1\61\1\6\7\4\1\5\1\6\2\61\1\31\4\61\1\31\10\61\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\2\37\1\31\4\61\1\31\2\37\1\31\4\61\1\31\2\37\1\31\4\61\3\31\1\4\4\61\2\4\1\61\1\4\1\61\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\61\1\6\10\4\4\37\2\4\4\37\2\4\4\37\1\4\1\71\12\61\2\37\1\31\4\61\1\31\6\61\1\37\1\67\2\37\1\40\1\60\1\62\1\63\1\64\1\65\1\66\1\4\1\61\1\4\1\61\1\4\4\37\2\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\4\1\37\1\61\1\6\7\4\12\61\2\37\1\31\4\61\1\31\1\4\1\37\1\4\1\37\1\4\4\37\1\4\4\61\1\4\1\37\1\4\1\37\2\61";
+    static final String dfa_12s = "\2\uffff\1\1\4\uffff\1\2\u01bc\uffff";
+    static final String dfa_13s = "\u01c4\uffff}>";
     static final String[] dfa_14s = {
-            "\1\2\10\uffff\1\1\1\2\12\uffff\7\2\20\uffff\1\2\30\uffff\1\2",
-            "\1\uffff",
+            "\1\3\2\2\27\uffff\1\2\20\uffff\1\2\2\uffff\5\2\1\uffff\2\2\1\1\5\uffff\5\2",
+            "\1\4\2\2\27\uffff\1\2\20\uffff\1\2\2\uffff\5\2\1\uffff\2\2\6\uffff\5\2",
             "",
+            "\1\6\2\2\11\uffff\1\2\4\uffff\1\2\2\uffff\1\2\6\uffff\10\2\1\uffff\1\5\12\uffff\3\2",
+            "\1\7\2\2\16\uffff\1\2\2\uffff\1\2\6\uffff\7\2\2\uffff\1\7\12\uffff\3\2",
+            "\1\20\1\14\1\15\35\uffff\1\27\12\uffff\1\21\2\uffff\1\22\1\23\1\24\1\25\1\26\1\uffff\1\16\1\17\7\uffff\1\10\1\11\1\12\1\13\2\uffff\1\30",
+            "\1\7\5\uffff\1\2\12\uffff\1\7\35\uffff\1\7",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "\1\35\1\31\1\32\50\uffff\1\36\2\uffff\1\37\1\40\1\41\1\42\1\43\1\uffff\1\33\1\34",
+            "\1\50\1\44\1\45\50\uffff\1\51\2\uffff\1\52\1\53\1\54\1\55\1\56\1\uffff\1\46\1\47",
+            "\1\63\1\57\1\60\50\uffff\1\64\2\uffff\1\65\1\66\1\67\1\70\1\71\1\uffff\1\61\1\62",
+            "\1\72",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74\5\uffff\1\75",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\6\uffff\1\76\20\uffff\1\74",
+            "\1\21\1\77",
+            "\1\100\1\uffff\1\22",
+            "\1\101\2\uffff\1\23",
+            "\1\102\3\uffff\1\24",
+            "\1\103\4\uffff\1\25",
+            "\1\104\5\uffff\1\26",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\105",
+            "\1\105\27\uffff\1\106",
+            "\1\105",
+            "\1\105",
+            "\1\105\1\107",
+            "\1\36\1\110",
+            "\1\111\1\uffff\1\37",
+            "\1\112\2\uffff\1\40",
+            "\1\113\3\uffff\1\41",
+            "\1\114\4\uffff\1\42",
+            "\1\115\5\uffff\1\43",
+            "\1\116",
+            "\1\116\27\uffff\1\117",
+            "\1\116",
+            "\1\116",
+            "\1\116\1\120",
+            "\1\51\1\121",
+            "\1\122\1\uffff\1\52",
+            "\1\123\2\uffff\1\53",
+            "\1\124\3\uffff\1\54",
+            "\1\125\4\uffff\1\55",
+            "\1\126\5\uffff\1\56",
+            "\1\127",
+            "\1\127\27\uffff\1\130",
+            "\1\127",
+            "\1\127",
+            "\1\127\1\131",
+            "\1\64\1\132",
+            "\1\133\1\uffff\1\65",
+            "\1\134\2\uffff\1\66",
+            "\1\135\3\uffff\1\67",
+            "\1\136\4\uffff\1\70",
+            "\1\137\5\uffff\1\71",
+            "\1\141\35\uffff\1\140",
+            "\1\152\1\146\1\147\35\uffff\1\161\12\uffff\1\153\2\uffff\1\154\1\155\1\156\1\157\1\160\1\uffff\1\150\1\151\7\uffff\1\142\1\143\1\144\1\145\2\uffff\1\162",
+            "\1\7\5\uffff\1\2\12\uffff\1\7\35\uffff\1\7",
+            "\1\163",
+            "\1\164",
+            "\1\165",
+            "\1\166",
+            "\1\167",
+            "\1\170",
+            "\1\171",
+            "\1\172",
+            "\1\73\27\uffff\1\74",
+            "\1\173",
+            "\1\174",
+            "\1\175",
+            "\1\176",
+            "\1\177",
+            "\1\u0080",
+            "\1\u0081",
+            "\1\u0082",
+            "\1\73\27\uffff\1\74",
+            "\1\u0083",
+            "\1\u0084",
+            "\1\u0085",
+            "\1\u0086",
+            "\1\u0087",
+            "\1\u0088",
+            "\1\u0089",
+            "\1\u008a",
+            "\1\73\27\uffff\1\74",
+            "\1\u008b",
+            "\1\u008c",
+            "\1\u008d",
+            "\1\u008e",
+            "\1\u008f",
+            "\1\u0090",
+            "\1\u0091",
+            "\1\u0092",
+            "\1\u0093",
+            "\1\u0094",
+            "\1\u0099\1\u0095\1\u0096\50\uffff\1\u009a\2\uffff\1\u009b\1\u009c\1\u009d\1\u009e\1\u009f\1\uffff\1\u0097\1\u0098",
+            "\1\u00a4\1\u00a0\1\u00a1\50\uffff\1\u00a5\2\uffff\1\u00a6\1\u00a7\1\u00a8\1\u00a9\1\u00aa\1\uffff\1\u00a2\1\u00a3",
+            "\1\u00af\1\u00ab\1\u00ac\50\uffff\1\u00b0\2\uffff\1\u00b1\1\u00b2\1\u00b3\1\u00b4\1\u00b5\1\uffff\1\u00ad\1\u00ae",
+            "\1\u00b6",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74\5\uffff\1\u00b7",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\6\uffff\1\u00b8\20\uffff\1\74",
+            "\1\153\1\u00b9",
+            "\1\u00ba\1\uffff\1\154",
+            "\1\u00bb\2\uffff\1\155",
+            "\1\u00bc\3\uffff\1\156",
+            "\1\u00bd\4\uffff\1\157",
+            "\1\u00be\5\uffff\1\160",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\u00bf",
+            "\1\u00c0",
+            "\1\u00c1",
+            "\1\u00c2",
+            "\1\u00c3",
+            "\1\u00c4",
+            "\1\105",
+            "\1\105",
+            "\1\u00c5",
+            "\1\u00c6",
+            "\1\u00c7",
+            "\1\u00c8",
+            "\1\u00c9",
+            "\1\u00ca",
+            "\1\116",
+            "\1\116",
+            "\1\u00cb",
+            "\1\u00cc",
+            "\1\u00cd",
+            "\1\u00ce",
+            "\1\u00cf",
+            "\1\u00d0",
+            "\1\127",
+            "\1\127",
+            "\1\u00d1",
+            "\1\u00d2",
+            "\1\u00d3",
+            "\1\u00d4",
+            "\1\u00d5",
+            "\1\u00d6",
+            "\1\141",
+            "\1\u00d7",
+            "\1\u00d8",
+            "\1\u00d8\27\uffff\1\u00d9",
+            "\1\u00d8",
+            "\1\u00d8",
+            "\1\u00d8\1\u00da",
+            "\1\u009a\1\u00db",
+            "\1\u00dc\1\uffff\1\u009b",
+            "\1\u00dd\2\uffff\1\u009c",
+            "\1\u00de\3\uffff\1\u009d",
+            "\1\u00df\4\uffff\1\u009e",
+            "\1\u00e0\5\uffff\1\u009f",
+            "\1\u00e1",
+            "\1\u00e1\27\uffff\1\u00e2",
+            "\1\u00e1",
+            "\1\u00e1",
+            "\1\u00e1\1\u00e3",
+            "\1\u00a5\1\u00e4",
+            "\1\u00e5\1\uffff\1\u00a6",
+            "\1\u00e6\2\uffff\1\u00a7",
+            "\1\u00e7\3\uffff\1\u00a8",
+            "\1\u00e8\4\uffff\1\u00a9",
+            "\1\u00e9\5\uffff\1\u00aa",
+            "\1\u00ea",
+            "\1\u00ea\27\uffff\1\u00eb",
+            "\1\u00ea",
+            "\1\u00ea",
+            "\1\u00ea\1\u00ec",
+            "\1\u00b0\1\u00ed",
+            "\1\u00ee\1\uffff\1\u00b1",
+            "\1\u00ef\2\uffff\1\u00b2",
+            "\1\u00f0\3\uffff\1\u00b3",
+            "\1\u00f1\4\uffff\1\u00b4",
+            "\1\u00f2\5\uffff\1\u00b5",
+            "\1\u00f3\35\uffff\1\u00f4",
+            "\1\u00f5",
+            "\1\u00f6",
+            "\1\u00f7",
+            "\1\u00f8",
+            "\1\u00f9",
+            "\1\u00fa",
+            "\1\u00fb",
+            "\1\u00fc",
+            "\1\u00fd",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\u00fe",
+            "\1\u00ff",
+            "\1\105",
+            "\1\105",
+            "\1\105",
+            "\1\105",
+            "\1\u0100",
+            "\1\u0101",
+            "\1\116",
+            "\1\116",
+            "\1\116",
+            "\1\116",
+            "\1\u0102",
+            "\1\u0103",
+            "\1\127",
+            "\1\127",
+            "\1\127",
+            "\1\127",
+            "\1\u0104",
+            "\1\u0109\1\u0105\1\u0106\50\uffff\1\u010a\2\uffff\1\u010b\1\u010c\1\u010d\1\u010e\1\u010f\1\uffff\1\u0107\1\u0108",
+            "\1\73\27\uffff\1\74",
+            "\1\u0110",
+            "\1\u0111",
+            "\1\u0112",
+            "\1\u0113",
+            "\1\u0114",
+            "\1\u0115",
+            "\1\u0116",
+            "\1\u0117",
+            "\1\73\27\uffff\1\74",
+            "\1\u0118",
+            "\1\u0119",
+            "\1\u011a",
+            "\1\u011b",
+            "\1\u011c",
+            "\1\u011d",
+            "\1\u011e",
+            "\1\u011f",
+            "\1\73\27\uffff\1\74",
+            "\1\u0120",
+            "\1\u0121",
+            "\1\u0122",
+            "\1\u0123",
+            "\1\u0124",
+            "\1\u0125",
+            "\1\u0126",
+            "\1\u0127",
+            "\1\u0128",
+            "\1\u0129",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\u012a",
+            "\1\u012b",
+            "\1\u012c",
+            "\1\u012d",
+            "\1\u012e",
+            "\1\u012f",
+            "\1\u0130\20\uffff\1\u0131",
+            "\1\u0132\20\uffff\1\u0133",
+            "\1\u0134\20\uffff\1\u0135",
+            "\1\u0136\20\uffff\1\u0137",
+            "\1\u0138\20\uffff\1\u0139",
+            "\1\u013a\20\uffff\1\u013b",
+            "\1\u013c\20\uffff\1\u013d",
+            "\1\u013e\20\uffff\1\u013f",
+            "\1\u0140",
+            "\1\u0140\27\uffff\1\u0141",
+            "\1\u0140",
+            "\1\u0140",
+            "\1\u0140\1\u0142",
+            "\1\u010a\1\u0143",
+            "\1\u0144\1\uffff\1\u010b",
+            "\1\u0145\2\uffff\1\u010c",
+            "\1\u0146\3\uffff\1\u010d",
+            "\1\u0147\4\uffff\1\u010e",
+            "\1\u0148\5\uffff\1\u010f",
+            "\1\u00d8",
+            "\1\u00d8",
+            "\1\u0149",
+            "\1\u014a",
+            "\1\u014b",
+            "\1\u014c",
+            "\1\u014d",
+            "\1\u014e",
+            "\1\u00e1",
+            "\1\u00e1",
+            "\1\u014f",
+            "\1\u0150",
+            "\1\u0151",
+            "\1\u0152",
+            "\1\u0153",
+            "\1\u0154",
+            "\1\u00ea",
+            "\1\u00ea",
+            "\1\u0155",
+            "\1\u0156",
+            "\1\u0157",
+            "\1\u0158",
+            "\1\u0159",
+            "\1\u015a",
+            "\1\u015b",
+            "\1\u00f3",
+            "\1\u015c",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\73\27\uffff\1\74",
+            "\1\u015d",
+            "\1\u015e",
+            "\1\73\27\uffff\1\74",
+            "\1\u015f",
+            "\1\73\27\uffff\1\74",
+            "\1\u0160",
+            "\1\105",
+            "\1\u0161",
+            "\1\105",
+            "\1\u0162",
+            "\1\116",
+            "\1\u0163",
+            "\1\116",
+            "\1\u0164",
+            "\1\127",
+            "\1\u0165",
+            "\1\127",
+            "\1\73\27\uffff\1\74",
+            "\1\u0166",
+            "\1\u0167",
+            "\1\u0168",
+            "\1\u0169",
+            "\1\u016a",
+            "\1\u016b",
+            "\1\u016c",
+            "\1\u016d",
+            "\1\u016e",
+            "\1\u00d8",
+            "\1\u00d8",
+            "\1\u00d8",
+            "\1\u00d8",
+            "\1\u016f",
+            "\1\u0170",
+            "\1\u00e1",
+            "\1\u00e1",
+            "\1\u00e1",
+            "\1\u00e1",
+            "\1\u0171",
+            "\1\u0172",
+            "\1\u00ea",
+            "\1\u00ea",
+            "\1\u00ea",
+            "\1\u00ea",
+            "\1\u0173",
+            "\1\u0178\1\u0174\1\u0175\50\uffff\1\u0179\2\uffff\1\u017a\1\u017b\1\u017c\1\u017d\1\u017e\1\uffff\1\u0176\1\u0177",
+            "\1\u017f\20\uffff\1\u0180",
+            "\1\u0181\20\uffff\1\u0182",
+            "\1\u0130\20\uffff\1\u0131",
+            "\1\u0132\20\uffff\1\u0133",
+            "\1\u0134\20\uffff\1\u0135",
+            "\1\u0136\20\uffff\1\u0137",
+            "\1\u0138\20\uffff\1\u0139",
+            "\1\u013a\20\uffff\1\u013b",
+            "\1\u013c\20\uffff\1\u013d",
+            "\1\u013e\20\uffff\1\u013f",
+            "\1\u0140",
+            "\1\u0140",
+            "\1\u0183",
+            "\1\u0184",
+            "\1\u0185",
+            "\1\u0186",
+            "\1\u0187",
+            "\1\u0188",
+            "\1\u0189\20\uffff\1\u018a",
+            "\1\u018b\20\uffff\1\u018c",
+            "\1\u018d\20\uffff\1\u018e",
+            "\1\u018f\20\uffff\1\u0190",
+            "\1\u0191\20\uffff\1\u0192",
+            "\1\u0193\20\uffff\1\u0194",
+            "\1\u0195",
+            "\1\u0195\27\uffff\1\u0196",
+            "\1\u0195",
+            "\1\u0195",
+            "\1\u0195\1\u0197",
+            "\1\u0179\1\u0198",
+            "\1\u0199\1\uffff\1\u017a",
+            "\1\u019a\2\uffff\1\u017b",
+            "\1\u019b\3\uffff\1\u017c",
+            "\1\u019c\4\uffff\1\u017d",
+            "\1\u019d\5\uffff\1\u017e",
+            "\1\u019e",
+            "\1\73\27\uffff\1\74",
+            "\1\u019f",
+            "\1\73\27\uffff\1\74",
+            "\1\u01a0",
+            "\1\u0140",
+            "\1\u0140",
+            "\1\u0140",
+            "\1\u0140",
+            "\1\u01a1",
+            "\1\u01a2",
+            "\1\u00d8",
+            "\1\u01a3",
+            "\1\u00d8",
+            "\1\u01a4",
+            "\1\u00e1",
+            "\1\u01a5",
+            "\1\u00e1",
+            "\1\u01a6",
+            "\1\u00ea",
+            "\1\u01a7",
+            "\1\u00ea",
+            "\1\73\27\uffff\1\74",
+            "\1\u01a8",
+            "\1\u01a9",
+            "\1\u01aa",
+            "\1\u01ab",
+            "\1\u01ac",
+            "\1\u01ad",
+            "\1\u01ae",
+            "\1\u01af",
+            "\1\u017f\20\uffff\1\u0180",
+            "\1\u0181\20\uffff\1\u0182",
+            "\1\u01b0\20\uffff\1\u01b1",
+            "\1\u01b2\20\uffff\1\u01b3",
+            "\1\u0189\20\uffff\1\u018a",
+            "\1\u018b\20\uffff\1\u018c",
+            "\1\u018d\20\uffff\1\u018e",
+            "\1\u018f\20\uffff\1\u0190",
+            "\1\u0191\20\uffff\1\u0192",
+            "\1\u0193\20\uffff\1\u0194",
+            "\1\u0195",
+            "\1\u0195",
+            "\1\u01b4",
+            "\1\u01b5",
+            "\1\u01b6",
+            "\1\u01b7",
+            "\1\u01b8",
+            "\1\u01b9",
+            "\1\u01ba",
+            "\1\u0140",
+            "\1\u01bb",
+            "\1\u0140",
+            "\1\u01bc",
+            "\1\u0195",
+            "\1\u0195",
+            "\1\u0195",
+            "\1\u0195",
+            "\1\u01bd",
+            "\1\u01b0\20\uffff\1\u01b1",
+            "\1\u01b2\20\uffff\1\u01b3",
+            "\1\u01be\20\uffff\1\u01bf",
+            "\1\u01c0\20\uffff\1\u01c1",
+            "\1\u01c2",
+            "\1\u0195",
+            "\1\u01c3",
+            "\1\u0195",
+            "\1\u01be\20\uffff\1\u01bf",
+            "\1\u01c0\20\uffff\1\u01c1"
     };
 
     static final short[] dfa_8 = DFA.unpackEncodedString(dfa_8s);
@@ -16543,11 +17006,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
     static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
     static final short[][] dfa_14 = unpackEncodedStringArray(dfa_14s);
 
-    class DFA89 extends DFA {
+    class DFA76 extends DFA {
 
-        public DFA89(BaseRecognizer recognizer) {
+        public DFA76(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 89;
+            this.decisionNumber = 76;
             this.eot = dfa_8;
             this.eof = dfa_9;
             this.min = dfa_10;
@@ -16557,45 +17020,18 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             this.transition = dfa_14;
         }
         public String getDescription() {
-            return "4676:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA89_1 = input.LA(1);
-
-                         
-                        int index89_1 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalCrySL()) ) {s = 14;}
-
-                        else if ( (true) ) {s = 2;}
-
-                         
-                        input.seek(index89_1);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            if (state.backtracking>0) {state.failed=true; return -1;}
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 89, _s, input);
-            error(nvae);
-            throw nvae;
+            return "4173:3: ( ( ( (lv_cons_0_1= ruleConstraint | lv_cons_0_2= rulePred ) ) ) otherlv_1= '=>' )?";
         }
     }
-    static final String dfa_15s = "\20\uffff";
-    static final String dfa_16s = "\1\2\17\uffff";
-    static final String dfa_17s = "\1\4\1\0\16\uffff";
-    static final String dfa_18s = "\1\111\1\0\16\uffff";
-    static final String dfa_19s = "\2\uffff\1\2\14\uffff\1\1";
-    static final String dfa_20s = "\1\uffff\1\0\16\uffff}>";
+    static final String dfa_15s = "\17\uffff";
+    static final String dfa_16s = "\1\2\16\uffff";
+    static final String dfa_17s = "\1\4\1\0\15\uffff";
+    static final String dfa_18s = "\1\111\1\0\15\uffff";
+    static final String dfa_19s = "\2\uffff\1\2\13\uffff\1\1";
+    static final String dfa_20s = "\1\uffff\1\0\15\uffff}>";
     static final String[] dfa_21s = {
-            "\1\2\10\uffff\1\1\1\2\12\uffff\10\2\17\uffff\1\2\30\uffff\1\2",
+            "\1\2\10\uffff\1\1\1\2\12\uffff\7\2\20\uffff\1\2\30\uffff\1\2",
             "\1\uffff",
-            "",
             "",
             "",
             "",
@@ -16619,11 +17055,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
     static final short[] dfa_20 = DFA.unpackEncodedString(dfa_20s);
     static final short[][] dfa_21 = unpackEncodedStringArray(dfa_21s);
 
-    class DFA87 extends DFA {
+    class DFA90 extends DFA {
 
-        public DFA87(BaseRecognizer recognizer) {
+        public DFA90(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 87;
+            this.decisionNumber = 90;
             this.eot = dfa_15;
             this.eof = dfa_16;
             this.min = dfa_17;
@@ -16633,49 +17069,58 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             this.transition = dfa_21;
         }
         public String getDescription() {
-            return "4770:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?";
+            return "4694:3: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' ( ( ( ( () '.' ) )=> ( () otherlv_7= '.' ) ) ( ( ruleValidID ) ) ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )? )* )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA87_1 = input.LA(1);
+                        int LA90_1 = input.LA(1);
 
                          
-                        int index87_1 = input.index();
+                        int index90_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred4_InternalCrySL()) ) {s = 15;}
+                        if ( (synpred2_InternalCrySL()) ) {s = 14;}
 
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index87_1);
+                        input.seek(index90_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 87, _s, input);
+                new NoViableAltException(getDescription(), 90, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_22s = "\7\uffff";
-    static final String dfa_23s = "\2\uffff\1\4\3\uffff\1\4";
-    static final String dfa_24s = "\1\4\1\uffff\1\27\1\4\2\uffff\1\27";
-    static final String dfa_25s = "\1\114\1\uffff\1\40\1\30\2\uffff\1\40";
-    static final String dfa_26s = "\1\uffff\1\1\2\uffff\1\2\1\3\1\uffff";
-    static final String dfa_27s = "\7\uffff}>";
+    static final String dfa_22s = "\20\uffff";
+    static final String dfa_23s = "\1\2\17\uffff";
+    static final String dfa_24s = "\1\4\1\0\16\uffff";
+    static final String dfa_25s = "\1\111\1\0\16\uffff";
+    static final String dfa_26s = "\2\uffff\1\2\14\uffff\1\1";
+    static final String dfa_27s = "\1\uffff\1\0\16\uffff}>";
     static final String[] dfa_28s = {
-            "\1\2\107\uffff\1\1",
-            "",
-            "\1\4\10\uffff\1\3",
-            "\1\6\23\uffff\1\5",
+            "\1\2\10\uffff\1\1\1\2\12\uffff\10\2\17\uffff\1\2\30\uffff\1\2",
+            "\1\uffff",
             "",
             "",
-            "\1\4\10\uffff\1\3"
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
     };
 
     static final short[] dfa_22 = DFA.unpackEncodedString(dfa_22s);
@@ -16686,11 +17131,11 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
     static final short[] dfa_27 = DFA.unpackEncodedString(dfa_27s);
     static final short[][] dfa_28 = unpackEncodedStringArray(dfa_28s);
 
-    class DFA97 extends DFA {
+    class DFA88 extends DFA {
 
-        public DFA97(BaseRecognizer recognizer) {
+        public DFA88(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 97;
+            this.decisionNumber = 88;
             this.eot = dfa_22;
             this.eof = dfa_23;
             this.min = dfa_24;
@@ -16700,7 +17145,74 @@ public class InternalCrySLParser extends AbstractInternalAntlrParser {
             this.transition = dfa_28;
         }
         public String getDescription() {
-            return "5278:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
+            return "4788:5: ( ( ( '<' )=>otherlv_9= '<' ) ( (lv_arguments_10_0= ruleJvmArgumentTypeReference ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleJvmArgumentTypeReference ) ) )* otherlv_13= '>' )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA88_1 = input.LA(1);
+
+                         
+                        int index88_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred4_InternalCrySL()) ) {s = 15;}
+
+                        else if ( (true) ) {s = 2;}
+
+                         
+                        input.seek(index88_1);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 88, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String dfa_29s = "\7\uffff";
+    static final String dfa_30s = "\2\uffff\1\4\2\uffff\1\4\1\uffff";
+    static final String dfa_31s = "\1\4\1\uffff\1\27\1\4\1\uffff\1\27\1\uffff";
+    static final String dfa_32s = "\1\114\1\uffff\1\40\1\30\1\uffff\1\40\1\uffff";
+    static final String dfa_33s = "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
+    static final String dfa_34s = "\7\uffff}>";
+    static final String[] dfa_35s = {
+            "\1\2\107\uffff\1\1",
+            "",
+            "\1\4\10\uffff\1\3",
+            "\1\5\23\uffff\1\6",
+            "",
+            "\1\4\10\uffff\1\3",
+            ""
+    };
+
+    static final short[] dfa_29 = DFA.unpackEncodedString(dfa_29s);
+    static final short[] dfa_30 = DFA.unpackEncodedString(dfa_30s);
+    static final char[] dfa_31 = DFA.unpackEncodedStringToUnsignedChars(dfa_31s);
+    static final char[] dfa_32 = DFA.unpackEncodedStringToUnsignedChars(dfa_32s);
+    static final short[] dfa_33 = DFA.unpackEncodedString(dfa_33s);
+    static final short[] dfa_34 = DFA.unpackEncodedString(dfa_34s);
+    static final short[][] dfa_35 = unpackEncodedStringArray(dfa_35s);
+
+    class DFA98 extends DFA {
+
+        public DFA98(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 98;
+            this.eot = dfa_29;
+            this.eof = dfa_30;
+            this.min = dfa_31;
+            this.max = dfa_32;
+            this.accept = dfa_33;
+            this.special = dfa_34;
+            this.transition = dfa_35;
+        }
+        public String getDescription() {
+            return "5296:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
         }
     }
  

@@ -3,6 +3,7 @@
  */
 package de.darmstadt.tu.crossing.crySL;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +30,12 @@ public interface PredLit extends ReqPred
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Cons</em>' containment reference.
-   * @see #setCons(Constraint)
+   * @see #setCons(EObject)
    * @see de.darmstadt.tu.crossing.crySL.CrySLPackage#getPredLit_Cons()
    * @model containment="true"
    * @generated
    */
-  Constraint getCons();
+  EObject getCons();
 
   /**
    * Sets the value of the '{@link de.darmstadt.tu.crossing.crySL.PredLit#getCons <em>Cons</em>}' containment reference.
@@ -44,7 +45,7 @@ public interface PredLit extends ReqPred
    * @see #getCons()
    * @generated
    */
-  void setCons(Constraint value);
+  void setCons(EObject value);
 
   /**
    * Returns the value of the '<em><b>Not</b></em>' attribute.

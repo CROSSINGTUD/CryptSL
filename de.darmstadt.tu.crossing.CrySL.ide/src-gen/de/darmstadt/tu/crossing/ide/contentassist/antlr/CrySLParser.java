@@ -59,6 +59,7 @@ public class CrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getConsPredAccess().getAlternatives_0(), "rule__ConsPred__Alternatives_0");
 			builder.put(grammarAccess.getLitListAccess().getAlternatives_1_1(), "rule__LitList__Alternatives_1_1");
 			builder.put(grammarAccess.getPredAccess().getAlternatives_1(), "rule__Pred__Alternatives_1");
+			builder.put(grammarAccess.getPredLitAccess().getConsAlternatives_0_0_0(), "rule__PredLit__ConsAlternatives_0_0_0");
 			builder.put(grammarAccess.getSuParAccess().getAlternatives_1(), "rule__SuPar__Alternatives_1");
 			builder.put(grammarAccess.getJvmTypeReferenceAccess().getAlternatives(), "rule__JvmTypeReference__Alternatives");
 			builder.put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");

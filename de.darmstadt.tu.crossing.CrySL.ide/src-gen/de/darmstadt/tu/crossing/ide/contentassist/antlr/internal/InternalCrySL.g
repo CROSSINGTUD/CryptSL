@@ -2753,6 +2753,27 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__PredLit__ConsAlternatives_0_0_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0_0()); }
+		ruleConstraint
+		{ after(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getPredLitAccess().getConsPredParserRuleCall_0_0_0_1()); }
+		rulePred
+		{ after(grammarAccess.getPredLitAccess().getConsPredParserRuleCall_0_0_0_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__SuPar__Alternatives_1
 	@init {
 		int stackSize = keepStackSize();
@@ -13728,9 +13749,9 @@ rule__PredLit__ConsAssignment_0_0
 	}
 :
 	(
-		{ before(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0()); }
-		ruleConstraint
-		{ after(grammarAccess.getPredLitAccess().getConsConstraintParserRuleCall_0_0_0()); }
+		{ before(grammarAccess.getPredLitAccess().getConsAlternatives_0_0_0()); }
+		(rule__PredLit__ConsAlternatives_0_0_0)
+		{ after(grammarAccess.getPredLitAccess().getConsAlternatives_0_0_0()); }
 	)
 ;
 finally {

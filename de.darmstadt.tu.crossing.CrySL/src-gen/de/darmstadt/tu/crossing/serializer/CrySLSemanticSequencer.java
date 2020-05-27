@@ -987,7 +987,7 @@ public class CrySLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     PredLit returns PredLit
 	 *
 	 * Constraint:
-	 *     (cons=Constraint? not='!'? pred=Pred)
+	 *     ((cons=Constraint | cons=Pred)? not='!'? pred=Pred)
 	 */
 	protected void sequence_PredLit(ISerializationContext context, PredLit semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
