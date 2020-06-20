@@ -19,7 +19,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 
 	@Check
 	public void checkGreetingStartsWithCapital(ForbMethod greeting) {
-
+		System.out.println("bla bla");
 	}
 	
 	
