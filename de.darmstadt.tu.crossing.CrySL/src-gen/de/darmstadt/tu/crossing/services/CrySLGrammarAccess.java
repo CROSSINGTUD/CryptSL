@@ -72,10 +72,10 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Domainmodel:
 		//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<"
-		//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")? 'OBJECTS' usage=UseBlock ('FORBIDDEN'
-		//	forbEvent=ForbiddenBlock)? 'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS'
-		//	reqConstraints=EnforceConsBlock)? ('REQUIRES' require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES'
-		//	destroy=DestroysBlock)?;
+		//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
+		//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
+		//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES'
+		//	require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=[jvmTypes::JvmGenericType|QualifiedName]
@@ -368,7 +368,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//////////////// OBJECTS
-		// ObjectDecl:
+		//ObjectDecl:
 		//	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=JvmParameterizedTypeRef ">")?
 		//	objectName=Object ";" | '*';
 		@Override public ParserRule getRule() { return rule; }
@@ -572,7 +572,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		///////////// FORBIDDEN EVENTS
-		// ForbMethod:
+		//ForbMethod:
 		//	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?) ';';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -691,7 +691,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		/////////////// EVENTS
-		// Event:
+		//Event:
 		//	LabelMethodCall | Aggregate | '*';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -717,7 +717,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMethMethodParserRuleCall_2_0 = (RuleCall)cMethAssignment_2.eContents().get(0);
 		
 		///// LABELMETHCALL
-		// LabelMethodCall SuperType:
+		//LabelMethodCall SuperType:
 		//	name=ID ":" meth=Method;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -888,7 +888,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		
 		///// AGGS
-		// Aggregate SuperType:
+		//Aggregate SuperType:
 		//	{Aggregate} (name=ID ':=' (lab+=[Event] ('|' lab+=[Event])*) ";");
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -954,7 +954,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		/////////////// ORDER
-		// Order Expression:
+		//Order Expression:
 		//	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)* | '*';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -1115,7 +1115,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLogicalImplyExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		/////////////// CONSTRAINTS
-		// Constraint:
+		//Constraint:
 		//	LogicalImplyExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -1134,7 +1134,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightExpressionLogicalOrExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
 		//LogicalImplyExpression Constraint:
-		//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply rightExpression=LogicalOrExpression)*;
+		//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply
+		//	rightExpression=LogicalOrExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply rightExpression=LogicalOrExpression)*
@@ -1188,7 +1189,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightExpressionLogicalAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
 		//LogicalOrExpression Constraint:
-		//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr rightExpression=LogicalAndExpression)*;
+		//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr
+		//	rightExpression=LogicalAndExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr rightExpression=LogicalAndExpression)*
@@ -1242,7 +1244,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightExpressionComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
 		//LogicalAndExpression Constraint:
-		//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd rightExpression=ComparisonExpression)*;
+		//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd
+		//	rightExpression=ComparisonExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd rightExpression=ComparisonExpression)*
@@ -1559,7 +1562,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightExpressionOperandParserRuleCall_1_1_2_0 = (RuleCall)cRightExpressionAssignment_1_1_2.eContents().get(0);
 		
 		//MultiplicationExpression Constraint:
-		//	UnaryPreExpression | Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
+		//	UnaryPreExpression
+		//	| Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
 		//	rightExpression=Operand)*;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -1632,7 +1636,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnclosedExpressionOperandParserRuleCall_1_1_0 = (RuleCall)cEnclosedExpressionAssignment_1_1.eContents().get(0);
 		
 		//UnaryPreExpression Constraint:
-		//	{UnaryPreExpression} (operator=UnaryPreOperator enclosedExpression=Operand);
+		//	{UnaryPreExpression} (operator=UnaryPreOperator
+		//	enclosedExpression=Operand);
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{UnaryPreExpression} (operator=UnaryPreOperator enclosedExpression=Operand)
@@ -1666,7 +1671,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Operand Constraint:
-		//	'(' Constraint ')' | Cons;
+		//	'(' Constraint ')'
+		//	| Cons;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'(' Constraint ')' | Cons
@@ -2274,8 +2280,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ConsPred LiteralExpression:
 		//	(consPred="alg(" lit=LiteralExpression ")" | consPred="mode(" lit=LiteralExpression ")" | consPred="pad("
-		//	lit=LiteralExpression ")") | part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")" |
-		//	lit=LiteralExpression;
+		//	lit=LiteralExpression ")") | part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")"
+		//	| lit=LiteralExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(consPred="alg(" lit=LiteralExpression ")" | consPred="mode(" lit=LiteralExpression ")" | consPred="pad("
@@ -2485,7 +2491,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightExpressionPredLitParserRuleCall_1_2_0 = (RuleCall)cRightExpressionAssignment_1_2.eContents().get(0);
 		
 		//ReqPred:
-		//	PredLit ({ReqPred.leftExpression=current} operator=LogicalOr rightExpression=PredLit)*;
+		//	PredLit ({ReqPred.leftExpression=current} operator=LogicalOr
+		//	rightExpression=PredLit)*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//PredLit ({ReqPred.leftExpression=current} operator=LogicalOr rightExpression=PredLit)*
@@ -2868,10 +2875,10 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Domainmodel:
 	//	'SPEC' javaType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<"
-	//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")? 'OBJECTS' usage=UseBlock ('FORBIDDEN'
-	//	forbEvent=ForbiddenBlock)? 'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS'
-	//	reqConstraints=EnforceConsBlock)? ('REQUIRES' require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES'
-	//	destroy=DestroysBlock)?;
+	//	collection=[jvmTypes::JvmGenericType|QualifiedName] ">")?
+	//	'OBJECTS' usage=UseBlock ('FORBIDDEN' forbEvent=ForbiddenBlock)?
+	//	'EVENTS' req_events=RequiredBlock 'ORDER' order=Order ('CONSTRAINTS' reqConstraints=EnforceConsBlock)? ('REQUIRES'
+	//	require=RequiresBlock)? ('ENSURES' ensure=EnsuresBlock)? ('NEGATES' destroy=DestroysBlock)?;
 	public DomainmodelElements getDomainmodelAccess() {
 		return pDomainmodel;
 	}
@@ -2951,7 +2958,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//////////////// OBJECTS
-	// ObjectDecl:
+	//ObjectDecl:
 	//	objectType=[jvmTypes::JvmType|QualifiedName] (array="[]" | "<" collection=JvmParameterizedTypeRef ">")?
 	//	objectName=Object ";" | '*';
 	public ObjectDeclElements getObjectDeclAccess() {
@@ -2994,7 +3001,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	///////////// FORBIDDEN EVENTS
-	// ForbMethod:
+	//ForbMethod:
 	//	(javaMeth=[jvmTypes::JvmExecutable|FQN] ("=>" rep=[Event])?) ';';
 	public ForbMethodElements getForbMethodAccess() {
 		return pForbMethod;
@@ -3025,7 +3032,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	/////////////// EVENTS
-	// Event:
+	//Event:
 	//	LabelMethodCall | Aggregate | '*';
 	public EventElements getEventAccess() {
 		return pEvent;
@@ -3036,7 +3043,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	///// LABELMETHCALL
-	// LabelMethodCall SuperType:
+	//LabelMethodCall SuperType:
 	//	name=ID ":" meth=Method;
 	public LabelMethodCallElements getLabelMethodCallAccess() {
 		return pLabelMethodCall;
@@ -3077,7 +3084,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	///// AGGS
-	// Aggregate SuperType:
+	//Aggregate SuperType:
 	//	{Aggregate} (name=ID ':=' (lab+=[Event] ('|' lab+=[Event])*) ";");
 	public AggregateElements getAggregateAccess() {
 		return pAggregate;
@@ -3088,7 +3095,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	/////////////// ORDER
-	// Order Expression:
+	//Order Expression:
 	//	SimpleOrder ({Order.left=current} orderop=',' right=SimpleOrder)* | '*';
 	public OrderElements getOrderAccess() {
 		return pOrder;
@@ -3119,7 +3126,7 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	/////////////// CONSTRAINTS
-	// Constraint:
+	//Constraint:
 	//	LogicalImplyExpression;
 	public ConstraintElements getConstraintAccess() {
 		return pConstraint;
@@ -3130,7 +3137,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LogicalImplyExpression Constraint:
-	//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply rightExpression=LogicalOrExpression)*;
+	//	LogicalOrExpression ({Constraint.leftExpression=current} operator=LogicalImply
+	//	rightExpression=LogicalOrExpression)*;
 	public LogicalImplyExpressionElements getLogicalImplyExpressionAccess() {
 		return pLogicalImplyExpression;
 	}
@@ -3150,7 +3158,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LogicalOrExpression Constraint:
-	//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr rightExpression=LogicalAndExpression)*;
+	//	LogicalAndExpression ({Constraint.leftExpression=current} operator=LogicalOr
+	//	rightExpression=LogicalAndExpression)*;
 	public LogicalOrExpressionElements getLogicalOrExpressionAccess() {
 		return pLogicalOrExpression;
 	}
@@ -3170,7 +3179,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LogicalAndExpression Constraint:
-	//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd rightExpression=ComparisonExpression)*;
+	//	ComparisonExpression ({Constraint.leftExpression=current} operator=LogicalAnd
+	//	rightExpression=ComparisonExpression)*;
 	public LogicalAndExpressionElements getLogicalAndExpressionAccess() {
 		return pLogicalAndExpression;
 	}
@@ -3274,7 +3284,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MultiplicationExpression Constraint:
-	//	UnaryPreExpression | Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
+	//	UnaryPreExpression
+	//	| Operand ({ArithmeticExpression.leftExpression=current} operator=MultiplicationOperator
 	//	rightExpression=Operand)*;
 	public MultiplicationExpressionElements getMultiplicationExpressionAccess() {
 		return pMultiplicationExpression;
@@ -3295,7 +3306,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//UnaryPreExpression Constraint:
-	//	{UnaryPreExpression} (operator=UnaryPreOperator enclosedExpression=Operand);
+	//	{UnaryPreExpression} (operator=UnaryPreOperator
+	//	enclosedExpression=Operand);
 	public UnaryPreExpressionElements getUnaryPreExpressionAccess() {
 		return pUnaryPreExpression;
 	}
@@ -3305,7 +3317,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Operand Constraint:
-	//	'(' Constraint ')' | Cons;
+	//	'(' Constraint ')'
+	//	| Cons;
 	public OperandElements getOperandAccess() {
 		return pOperand;
 	}
@@ -3438,8 +3451,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//ConsPred LiteralExpression:
 	//	(consPred="alg(" lit=LiteralExpression ")" | consPred="mode(" lit=LiteralExpression ")" | consPred="pad("
-	//	lit=LiteralExpression ")") | part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")" |
-	//	lit=LiteralExpression;
+	//	lit=LiteralExpression ")") | part="part(" ind=IntegerLiteral "," split=StringLiteral "," lit=LiteralExpression ")"
+	//	| lit=LiteralExpression;
 	public ConsPredElements getConsPredAccess() {
 		return pConsPred;
 	}
@@ -3475,7 +3488,8 @@ public class CrySLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ReqPred:
-	//	PredLit ({ReqPred.leftExpression=current} operator=LogicalOr rightExpression=PredLit)*;
+	//	PredLit ({ReqPred.leftExpression=current} operator=LogicalOr
+	//	rightExpression=PredLit)*;
 	public ReqPredElements getReqPredAccess() {
 		return pReqPred;
 	}
