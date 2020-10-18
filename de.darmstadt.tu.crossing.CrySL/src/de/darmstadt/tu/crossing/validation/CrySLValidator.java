@@ -49,7 +49,8 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		System.out.println("event info7: " + e.toString().trim());// same as info
 		System.out.println("event info8: " + e.eResource()); //prints the linked rule KeyGenerator which was open in runtime and validated
 		*/
-		System.out.println("event info9: " + s.getName()); //works, gives name
+		System.out.println("event info9: " + s.getName()); //works, gives name // each name equally required for check? check that
+		System.out.println("event info10: " + s.eClass().getEAllAttributes());
 		if(s instanceof SuperType) {
 			System.out.println("mimi");
 			// from here, nothing is executed
