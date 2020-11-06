@@ -11,8 +11,14 @@ import org.eclipse.xtext.validation.Check;
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
 import de.darmstadt.tu.crossing.crySL.Event;
 import de.darmstadt.tu.crossing.crySL.ForbMethod;
+import de.darmstadt.tu.crossing.crySL.ObjectDecl;
+import de.darmstadt.tu.crossing.crySL.RequiredBlock;
 import de.darmstadt.tu.crossing.crySL.SuperType;
+import de.darmstadt.tu.crossing.crySL.impl.AggregateImpl;
 import de.darmstadt.tu.crossing.crySL.impl.EventImpl;
+import de.darmstadt.tu.crossing.crySL.impl.ObjectImpl;
+import de.darmstadt.tu.crossing.crySL.impl.SuperTypeImpl;
+import de.darmstadt.tu.crossing.services.CrySLGrammarAccess.LabelMethodCallElements;
 
 /**
  * This class contains custom validation rules. 
@@ -49,13 +55,18 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		System.out.println("event info7: " + e.toString().trim());// same as info
 		System.out.println("event info8: " + e.eResource()); //prints the linked rule KeyGenerator which was open in runtime and validated
 		*/
-		System.out.println("event info9: " + s.getName()); //works, gives name // each name equally required for check? check that
-		System.out.println("event info10: " + s.eClass().getEAllAttributes());
+		
 		if(s instanceof SuperType) {
+			if(!((this.getCurrentObject() instanceof AggregateImpl)||(this.getCurrentObject() instanceof ObjectImpl))) {
 			System.out.println("mimi");
 			// from here, nothing is executed
-			eventNames.add(s);
-			System.out.println("Added " + s + " to arraylist.");
+			//eventNames.add(s);
+			//System.out.println("Added " + s + " to arraylist.");
+			
+			System.out.println("event info9: " + s.getName()); //works, gives name // each name equally required for check? check that
+			System.out.println("event info10: " + s.eClass().getEAllAttributes());
+			System.out.println("event info11: " + s.getClass());
+			}
 		}
 		System.out.println("Check mode is: " + this.getCheckMode());
 		System.out.println("current object is: " + this.getCurrentObject());
@@ -68,7 +79,8 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		for(SuperType i: eventNames) {
 			if(i.getName().equals(s.getName())) {
 				System.out.println("ERROR");
-				error("Label occurs twice.", INVALID_NAME);
+				//error("Label occurs twice.", INVALID_NAME);
+				error("Label occurs twice.", s.eContainingFeature());
 			}
 		}
 
