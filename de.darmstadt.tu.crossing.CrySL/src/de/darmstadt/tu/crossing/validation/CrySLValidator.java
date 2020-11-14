@@ -4,17 +4,22 @@
 package de.darmstadt.tu.crossing.validation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.XtextPackage;
 import org.eclipse.xtext.validation.Check;
 
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
+import de.darmstadt.tu.crossing.crySL.Domainmodel;
 import de.darmstadt.tu.crossing.crySL.Event;
 import de.darmstadt.tu.crossing.crySL.ForbMethod;
 import de.darmstadt.tu.crossing.crySL.ObjectDecl;
 import de.darmstadt.tu.crossing.crySL.RequiredBlock;
 import de.darmstadt.tu.crossing.crySL.SuperType;
 import de.darmstadt.tu.crossing.crySL.impl.AggregateImpl;
+import de.darmstadt.tu.crossing.crySL.impl.CrySLPackageImpl;
 import de.darmstadt.tu.crossing.crySL.impl.EventImpl;
 import de.darmstadt.tu.crossing.crySL.impl.ObjectImpl;
 import de.darmstadt.tu.crossing.crySL.impl.SuperTypeImpl;
@@ -31,6 +36,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	
 	public static final EStructuralFeature INVALID_NAME = null;
 	private ArrayList<SuperType> eventNames = null;
+	private CrySLPackageImpl cpi;
 
 	@Check
 	public void checkGreetingStartsWithCapital(ForbMethod greeting) {
@@ -56,6 +62,20 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		System.out.println("event info8: " + e.eResource()); //prints the linked rule KeyGenerator which was open in runtime and validated
 		*/
 		
+		System.out.println("bef");
+		// stops executing here
+		cpi.getRequiredBlock_Req_event();
+		System.out.println("after");
+		
+		for(EObject x : s.eContents()) {
+			if(s instanceof SuperType) {
+				if(!((this.getCurrentObject() instanceof AggregateImpl)||(this.getCurrentObject() instanceof ObjectImpl))) {
+					System.out.println("OOpsie");
+					System.out.println("fdf "+ s.eContents().contains(s.getName().contentEquals("i1"))); // s.eContents() ist hier das falsche
+				}
+			}
+		}
+		
 		if(s instanceof SuperType) {
 			if(!((this.getCurrentObject() instanceof AggregateImpl)||(this.getCurrentObject() instanceof ObjectImpl))) {
 			System.out.println("mimi");
@@ -63,24 +83,52 @@ public class CrySLValidator extends AbstractCrySLValidator {
 			//eventNames.add(s);
 			//System.out.println("Added " + s + " to arraylist.");
 			
+			if(s.eContainingFeature().equals(CrySLPackage.Literals.REQUIRED_BLOCK__REQ_EVENT)) {
+				System.out.println("Hurray");
+				//warning("Label occurs twice.", INVALID_NAME);
+				//warning("Label occurs twice.", cpi.getRequiredBlock_Req_event());
+				
+				System.out.println("cpi has: " + cpi.getRequiredBlock_Req_event());
+				//stops execution here
+			}
+			
+			
+			
 			System.out.println("event info9: " + s.getName()); //works, gives name // each name equally required for check? check that
-			System.out.println("event info10: " + s.eClass().getEAllAttributes());
+			System.out.println("event info10: " + s.eClass().getEAllAttributes()); //attribute name?
 			System.out.println("event info11: " + s.getClass());
+			System.out.println("event info12: " + s.eContainingFeature());
+			System.out.println("event info13: " + CrySLPackage.CONSTRAINT__LEFT_EXPRESSION); // type int, can this be traversed like a list?
+			System.out.println("event info14: " + s.eClass().getEAllAttributes().contains(s.getName()));
+			System.out.println("event info15: " + CrySLPackage.class);
+			System.out.println("event info16: " + CrySLPackage.METHOD__LEFT_SIDE);
+			System.out.println("event info17: " + CrySLPackage.DOMAINMODEL__REQ_EVENTS);
+			System.out.println("event info18: " + this.getEPackages());
+			System.out.println("event info19: " + this.getChain());
 			}
 		}
 		System.out.println("Check mode is: " + this.getCheckMode());
-		System.out.println("current object is: " + this.getCurrentObject());
+		System.out.println("current object's eAdapters: " + this.getCurrentObject().eAdapters());
 		System.out.println("current method is: " + this.getCurrentMethod());
+		
+		
 		if(s.getName().contentEquals("i4")) {
 			//System.out.println("ERROR");
-			//error("Label occurs twice.", INVALID_NAME);
+			
+			System.out.println("event info20: " + this + " " + this.getContext()); // this is CrySLValidator
+			/*if(s.eContainingFeature().equals(CrySLPackage.Literals.REQUIRED_BLOCK__REQ_EVENT)) {
+				System.out.println("Hurray");
+				warning("Label occurs twice.", INVALID_NAME);
+				//error("Label occurs twice.", CrySLPackage.Literals.DOMAINMODEL__REQ_EVENTS); // no direct difference to INVALID_NAME visible; der scope ist auch der EStructuralFeature Parameter, welcher hier null ist; EAttribut und EReference sind subclasses von EStructuralFeature
+			}*/
+			System.out.println("-------i4--------");
 			
 		}
 		for(SuperType i: eventNames) {
 			if(i.getName().equals(s.getName())) {
 				System.out.println("ERROR");
 				//error("Label occurs twice.", INVALID_NAME);
-				error("Label occurs twice.", s.eContainingFeature());
+				//error("Label occurs twice.", CrySLPackage.CONSTRAINT__LEFT_EXPRESSION); //2nd parameter tells where in the document the parameter is, the scope of the error
 			}
 		}
 
@@ -95,6 +143,15 @@ public class CrySLValidator extends AbstractCrySLValidator {
 				DUPLICATE_OPEN_NAME)
 		}*/
 	}
+	
+	@Check
+	public void check2(Domainmodel model) {
+		HashSet<String> names = new HashSet<String>();
+		Domainmodel.class.
+		for(
+	}
+	
+
 	
 	// invoke getEPackages
 	//addIssue, error
