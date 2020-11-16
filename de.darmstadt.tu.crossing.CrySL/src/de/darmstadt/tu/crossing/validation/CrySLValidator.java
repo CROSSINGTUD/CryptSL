@@ -5,11 +5,21 @@ package de.darmstadt.tu.crossing.validation;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.XtextPackage;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.model.XtextDocumentUtil;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.IResourceValidator;
+
+import com.google.inject.Inject;
 
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
 import de.darmstadt.tu.crossing.crySL.Domainmodel;
@@ -19,10 +29,12 @@ import de.darmstadt.tu.crossing.crySL.ObjectDecl;
 import de.darmstadt.tu.crossing.crySL.RequiredBlock;
 import de.darmstadt.tu.crossing.crySL.SuperType;
 import de.darmstadt.tu.crossing.crySL.impl.AggregateImpl;
+import de.darmstadt.tu.crossing.crySL.impl.ArithmeticExpressionImpl;
 import de.darmstadt.tu.crossing.crySL.impl.CrySLPackageImpl;
 import de.darmstadt.tu.crossing.crySL.impl.EventImpl;
 import de.darmstadt.tu.crossing.crySL.impl.ObjectImpl;
 import de.darmstadt.tu.crossing.crySL.impl.SuperTypeImpl;
+import de.darmstadt.tu.crossing.services.CrySLGrammarAccess;
 import de.darmstadt.tu.crossing.services.CrySLGrammarAccess.LabelMethodCallElements;
 
 /**
@@ -37,10 +49,77 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	public static final EStructuralFeature INVALID_NAME = null;
 	private ArrayList<SuperType> eventNames = null;
 	private CrySLPackageImpl cpi;
+	private ArithmeticExpressionImpl aei;
+	private LabelMethodCallElements lm;
+	private CrySLGrammarAccess cga;
+	//private SuperType s;
 
 	@Check
 	public void checkGreetingStartsWithCapital(ForbMethod greeting) {
 		System.out.println("bla bla");
+	}
+	
+	/*@Inject IResourceValidator resourceValidator;
+	
+	public void checkResource(Resource resource) {
+		resourceValidator.validate(resource, getCheckMode(), null);
+	}*/
+	
+	@Check //need fast parameter to run check whenever a file is modified, default is fast
+	public void checkDuplicateEventName2(Domainmodel m) {
+		System.out.println("model");
+		System.out.println(m.getRequire().getPred());
+		System.out.println(m.getReq_events());
+		
+		System.out.println(m.getReq_events().eContents());//hier!
+		System.out.println(m.getReq_events().eContents().size());	
+		System.out.println(m.getReq_events().eContents());	
+		for(int i = 0; i < m.getReq_events().eContents().size(); i++) {
+			System.out.println("i is "+ i);
+			System.out.println("hj " + m.getReq_events().getReq_event());
+		}
+		for(Event e : m.getReq_events().getReq_event()) {
+			for(Event ef : m.getReq_events().getReq_event()) {
+				System.out.println("ef is " + ef);
+				System.out.println("nested ");
+			}
+			System.out.println("e is " + e);
+			if(e instanceof SuperType) {
+				SuperType ef = (SuperType) e;
+				System.out.println("e2 is " + ef.getName());
+				//if(ef.getName().contentEquals(m.getReq_events().getReq_event().get(e-1).getName())) {
+					
+				//}
+				// Liste anlegen geht nicht!
+				//ArrayList<String> names = null;
+				//names.add(ef.getName());
+				// if ef.getName equals one before...
+				//System.out.println("after list");
+			}
+			
+		}
+		// while loop schlechte Idee
+		/*while(m.getReq_events().eAllContents().hasNext()) { 
+			System.out.println("this is " + m.getReq_events().eAllContents().);
+		}*/
+		/*while(m.getReq_events().eContents().iterator().hasNext()) {
+			System.out.println("here");
+			if(this.getCurrentObject() instanceof SuperType && 
+					!((this.getCurrentObject() instanceof AggregateImpl)
+							||(this.getCurrentObject() instanceof ObjectImpl))) {
+			System.out.println(this.getCurrentObject());
+			SuperType s = (SuperType) this.getCurrentObject();
+			System.out.println(this.getCurrentObject());
+			}
+		}*/
+		//System.out.println(m.getReq_events().getEKeys());
+		//System.out.println(this.getDomainmodel_Req_events());
+		//List<EPackage> cp = super.getEPackages();
+		//System.out.println("fdkk " + ((CrySLPackage) cp.get(2)).getDomainmodel_Req_events().getEKeys());//leer
+		System.out.println(m.getReq_events().eContainer());
+		
+		System.out.println(m.getReq_events().toString());
+		System.out.println(m.getReq_events().hashCode());
 	}
 	
 	// write constraints in a declarative way
@@ -62,10 +141,44 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		System.out.println("event info8: " + e.eResource()); //prints the linked rule KeyGenerator which was open in runtime and validated
 		*/
 		
+		//CrySL model =
+		
+		
+		
+		//must be able to get EPackage from parent class
+		List<EPackage> cp = super.getEPackages();
+		System.out.println("fdk " + cp.get(0));
+		System.out.println("fdk " + cp.get(1));
+		System.out.println("fdk " + cp.get(2).eResource().getAllContents());
+		System.out.println("fdk " + cp.get(2).eResource().getContents());
+		System.out.println("fdk " + cp.get(3));
+		System.out.println("fdk " + cp.get(4));
+		System.out.println("fdk " + cp.size());
+		System.out.println("Woke");
+		
+		//XtextEditor myxtext = org.eclipse.xtext.ui.editor.utils.EditorUtils.getActiveXtextEditor();
+		//IXtextDocument hlmdoc = myxtext.getDocument();
+		//HLMModel model = hlmdoc.readOnly(new IUnitOfWork<HLMModel, XtextResource>());
+		
 		System.out.println("bef");
 		// stops executing here
-		cpi.getRequiredBlock_Req_event();
-		System.out.println("after");
+		/*System.out.println("cga aggragte expre " + cga.getAggregateExpressionRule());
+		cga.getEventRule();
+		cga.getEventRule();
+		cga.getLabelMethodCallRule();
+		cga.getObjectRule();
+		cga.getRequiredBlockRule();
+		cga.getReqPredRule();
+		aei.basicGetLabelCond(); // geht nicht
+		System.out.println("after aei");
+		cpi.getRequiredBlock_Req_event(); // geht nicht
+		System.out.println("after");*/
+		
+		//System.out.println("Lm "+ lm.findRuleCalls(rules))
+		System.out.println("s eallcontent " + s.eAllContents());
+		//s.eAllContents().toString();
+		if(s.eAllContents().equals(null))
+			System.out.println("true");
 		
 		for(EObject x : s.eContents()) {
 			if(s instanceof SuperType) {
@@ -81,6 +194,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 			System.out.println("mimi");
 			// from here, nothing is executed
 			//eventNames.add(s);
+			System.out.println("ev nemes " + eventNames.size());
 			//System.out.println("Added " + s + " to arraylist.");
 			
 			if(s.eContainingFeature().equals(CrySLPackage.Literals.REQUIRED_BLOCK__REQ_EVENT)) {
@@ -88,7 +202,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 				//warning("Label occurs twice.", INVALID_NAME);
 				//warning("Label occurs twice.", cpi.getRequiredBlock_Req_event());
 				
-				System.out.println("cpi has: " + cpi.getRequiredBlock_Req_event());
+				//System.out.println("cpi has: " + cpi.getRequiredBlock_Req_event());
 				//stops execution here
 			}
 			
@@ -132,6 +246,8 @@ public class CrySLValidator extends AbstractCrySLValidator {
 			}
 		}
 
+		//if(getContainerOfType(s, SuperType).actions.filter(SuperType))
+		
 		
 		//for()
 		/*if(e.)) {
@@ -147,8 +263,8 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	@Check
 	public void check2(Domainmodel model) {
 		HashSet<String> names = new HashSet<String>();
-		Domainmodel.class.
-		for(
+		//Domainmodel.class.
+		//for(
 	}
 	
 
