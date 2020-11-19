@@ -3,39 +3,13 @@
  */
 package de.darmstadt.tu.crossing.validation;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.XtextPackage;
-import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.editor.model.XtextDocumentUtil;
-import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.validation.IResourceValidator;
 
-import com.google.inject.Inject;
-
-import de.darmstadt.tu.crossing.crySL.CrySLPackage;
-import de.darmstadt.tu.crossing.crySL.Domainmodel;
 import de.darmstadt.tu.crossing.crySL.Event;
 import de.darmstadt.tu.crossing.crySL.ForbMethod;
-import de.darmstadt.tu.crossing.crySL.ObjectDecl;
 import de.darmstadt.tu.crossing.crySL.RequiredBlock;
 import de.darmstadt.tu.crossing.crySL.SuperType;
-import de.darmstadt.tu.crossing.crySL.impl.AggregateImpl;
-import de.darmstadt.tu.crossing.crySL.impl.ArithmeticExpressionImpl;
-import de.darmstadt.tu.crossing.crySL.impl.CrySLPackageImpl;
-import de.darmstadt.tu.crossing.crySL.impl.EventImpl;
-import de.darmstadt.tu.crossing.crySL.impl.ObjectImpl;
-import de.darmstadt.tu.crossing.crySL.impl.SuperTypeImpl;
-import de.darmstadt.tu.crossing.services.CrySLGrammarAccess;
-import de.darmstadt.tu.crossing.services.CrySLGrammarAccess.LabelMethodCallElements;
 
 /**
  * This class contains custom validation rules. 
@@ -44,231 +18,30 @@ import de.darmstadt.tu.crossing.services.CrySLGrammarAccess.LabelMethodCallEleme
  */
 public class CrySLValidator extends AbstractCrySLValidator {
 	
-	// AbstractCrySLValidator registers the EPackages for which this validator introduces constraints
-	
 	public static final EStructuralFeature INVALID_NAME = null;
-	private ArrayList<SuperType> eventNames = null;
-	private CrySLPackageImpl cpi;
-	private ArithmeticExpressionImpl aei;
-	private LabelMethodCallElements lm;
-	private CrySLGrammarAccess cga;
-	//private SuperType s;
 
 	@Check
 	public void checkGreetingStartsWithCapital(ForbMethod greeting) {
 		System.out.println("bla bla");
 	}
 	
-	/*@Inject IResourceValidator resourceValidator;
-	
-	public void checkResource(Resource resource) {
-		resourceValidator.validate(resource, getCheckMode(), null);
-	}*/
-	
-	@Check //need fast parameter to run check whenever a file is modified, default is fast
-	public void checkDuplicateEventName2(Domainmodel m) {
-		System.out.println("model");
-		System.out.println(m.getRequire().getPred());
-		System.out.println(m.getReq_events());
+	@Check
+	public void checkDuplicateEventLabel(SuperType s) {
 		
-		System.out.println(m.getReq_events().eContents());//hier!
-		System.out.println(m.getReq_events().eContents().size());	
-		System.out.println(m.getReq_events().eContents());	
-		for(int i = 0; i < m.getReq_events().eContents().size(); i++) {
-			System.out.println("i is "+ i);
-			System.out.println("hj " + m.getReq_events().getReq_event());
-		}
-		for(Event e : m.getReq_events().getReq_event()) {
-			for(Event ef : m.getReq_events().getReq_event()) {
-				System.out.println("ef is " + ef);
-				System.out.println("nested ");
-			}
-			System.out.println("e is " + e);
-			if(e instanceof SuperType) {
-				SuperType ef = (SuperType) e;
-				System.out.println("e2 is " + ef.getName());
-				//if(ef.getName().contentEquals(m.getReq_events().getReq_event().get(e-1).getName())) {
-					
-				//}
-				// Liste anlegen geht nicht!
-				//ArrayList<String> names = null;
-				//names.add(ef.getName());
-				// if ef.getName equals one before...
-				//System.out.println("after list");
-			}
-			
-		}
-		// while loop schlechte Idee
-		/*while(m.getReq_events().eAllContents().hasNext()) { 
-			System.out.println("this is " + m.getReq_events().eAllContents().);
-		}*/
-		/*while(m.getReq_events().eContents().iterator().hasNext()) {
-			System.out.println("here");
-			if(this.getCurrentObject() instanceof SuperType && 
-					!((this.getCurrentObject() instanceof AggregateImpl)
-							||(this.getCurrentObject() instanceof ObjectImpl))) {
-			System.out.println(this.getCurrentObject());
-			SuperType s = (SuperType) this.getCurrentObject();
-			System.out.println(this.getCurrentObject());
-			}
-		}*/
-		//System.out.println(m.getReq_events().getEKeys());
-		//System.out.println(this.getDomainmodel_Req_events());
-		//List<EPackage> cp = super.getEPackages();
-		//System.out.println("fdkk " + ((CrySLPackage) cp.get(2)).getDomainmodel_Req_events().getEKeys());//leer
-		System.out.println(m.getReq_events().eContainer());
-		
-		System.out.println(m.getReq_events().toString());
-		System.out.println(m.getReq_events().hashCode());
-	}
-	
-	// write constraints in a declarative way
-	// just have to add the Check annotation to any method and it will be invoked automatically when validation takes place
-	
-	// unique name validator
-	@Check //need fast parameter to run check whenever a file is modified, default is fast
-	public void checkDuplicateEventName(/*Event e,*/ SuperType s) {
-		System.out.println("-------blub---------");
-		/*String m = e.eContainer().toString();
-		System.out.println("container content is: " + m);
-		System.out.println("event info: " + e.toString());
-		System.out.println("event info2: " + e.eContainingFeature().getName());
-		System.out.println("event info3: " + e.eClass().getName()); //prints the type
-		System.out.println("event info4: " + e.eContents().toString());
-		System.out.println("event info5: " + e.eContents());// same as info4
-		System.out.println("event info6: " + e.toString().intern());// same as info
-		System.out.println("event info7: " + e.toString().trim());// same as info
-		System.out.println("event info8: " + e.eResource()); //prints the linked rule KeyGenerator which was open in runtime and validated
-		*/
-		
-		//CrySL model =
-		
-		
-		
-		//must be able to get EPackage from parent class
-		List<EPackage> cp = super.getEPackages();
-		System.out.println("fdk " + cp.get(0));
-		System.out.println("fdk " + cp.get(1));
-		System.out.println("fdk " + cp.get(2).eResource().getAllContents());
-		System.out.println("fdk " + cp.get(2).eResource().getContents());
-		System.out.println("fdk " + cp.get(3));
-		System.out.println("fdk " + cp.get(4));
-		System.out.println("fdk " + cp.size());
-		System.out.println("Woke");
-		
-		//XtextEditor myxtext = org.eclipse.xtext.ui.editor.utils.EditorUtils.getActiveXtextEditor();
-		//IXtextDocument hlmdoc = myxtext.getDocument();
-		//HLMModel model = hlmdoc.readOnly(new IUnitOfWork<HLMModel, XtextResource>());
-		
-		System.out.println("bef");
-		// stops executing here
-		/*System.out.println("cga aggragte expre " + cga.getAggregateExpressionRule());
-		cga.getEventRule();
-		cga.getEventRule();
-		cga.getLabelMethodCallRule();
-		cga.getObjectRule();
-		cga.getRequiredBlockRule();
-		cga.getReqPredRule();
-		aei.basicGetLabelCond(); // geht nicht
-		System.out.println("after aei");
-		cpi.getRequiredBlock_Req_event(); // geht nicht
-		System.out.println("after");*/
-		
-		//System.out.println("Lm "+ lm.findRuleCalls(rules))
-		System.out.println("s eallcontent " + s.eAllContents());
-		//s.eAllContents().toString();
-		if(s.eAllContents().equals(null))
-			System.out.println("true");
-		
-		for(EObject x : s.eContents()) {
-			if(s instanceof SuperType) {
-				if(!((this.getCurrentObject() instanceof AggregateImpl)||(this.getCurrentObject() instanceof ObjectImpl))) {
-					System.out.println("OOpsie");
-					System.out.println("fdf "+ s.eContents().contains(s.getName().contentEquals("i1"))); // s.eContents() ist hier das falsche
+		for(Event e : ((RequiredBlock) s.eContainer()).getReq_event()) {
+			for(Event ev : ((RequiredBlock) s.eContainer()).getReq_event()) {
+				if(e instanceof SuperType && ev instanceof SuperType) {
+					SuperType es = (SuperType) e;
+					SuperType evs = (SuperType) ev;
+					if(es != evs && es.getName().equals(evs.getName())) {
+						if(s.getName().contentEquals(es.getName()) 
+								&& s.getName().contentEquals(evs.getName())) {
+							error("Duplicate label", INVALID_NAME);
+						}
+					}
 				}
 			}
 		}
-		
-		if(s instanceof SuperType) {
-			if(!((this.getCurrentObject() instanceof AggregateImpl)||(this.getCurrentObject() instanceof ObjectImpl))) {
-			System.out.println("mimi");
-			// from here, nothing is executed
-			//eventNames.add(s);
-			System.out.println("ev nemes " + eventNames.size());
-			//System.out.println("Added " + s + " to arraylist.");
-			
-			if(s.eContainingFeature().equals(CrySLPackage.Literals.REQUIRED_BLOCK__REQ_EVENT)) {
-				System.out.println("Hurray");
-				//warning("Label occurs twice.", INVALID_NAME);
-				//warning("Label occurs twice.", cpi.getRequiredBlock_Req_event());
-				
-				//System.out.println("cpi has: " + cpi.getRequiredBlock_Req_event());
-				//stops execution here
-			}
-			
-			
-			
-			System.out.println("event info9: " + s.getName()); //works, gives name // each name equally required for check? check that
-			System.out.println("event info10: " + s.eClass().getEAllAttributes()); //attribute name?
-			System.out.println("event info11: " + s.getClass());
-			System.out.println("event info12: " + s.eContainingFeature());
-			System.out.println("event info13: " + CrySLPackage.CONSTRAINT__LEFT_EXPRESSION); // type int, can this be traversed like a list?
-			System.out.println("event info14: " + s.eClass().getEAllAttributes().contains(s.getName()));
-			System.out.println("event info15: " + CrySLPackage.class);
-			System.out.println("event info16: " + CrySLPackage.METHOD__LEFT_SIDE);
-			System.out.println("event info17: " + CrySLPackage.DOMAINMODEL__REQ_EVENTS);
-			System.out.println("event info18: " + this.getEPackages());
-			System.out.println("event info19: " + this.getChain());
-			}
-		}
-		System.out.println("Check mode is: " + this.getCheckMode());
-		System.out.println("current object's eAdapters: " + this.getCurrentObject().eAdapters());
-		System.out.println("current method is: " + this.getCurrentMethod());
-		
-		
-		if(s.getName().contentEquals("i4")) {
-			//System.out.println("ERROR");
-			
-			System.out.println("event info20: " + this + " " + this.getContext()); // this is CrySLValidator
-			/*if(s.eContainingFeature().equals(CrySLPackage.Literals.REQUIRED_BLOCK__REQ_EVENT)) {
-				System.out.println("Hurray");
-				warning("Label occurs twice.", INVALID_NAME);
-				//error("Label occurs twice.", CrySLPackage.Literals.DOMAINMODEL__REQ_EVENTS); // no direct difference to INVALID_NAME visible; der scope ist auch der EStructuralFeature Parameter, welcher hier null ist; EAttribut und EReference sind subclasses von EStructuralFeature
-			}*/
-			System.out.println("-------i4--------");
-			
-		}
-		for(SuperType i: eventNames) {
-			if(i.getName().equals(s.getName())) {
-				System.out.println("ERROR");
-				//error("Label occurs twice.", INVALID_NAME);
-				//error("Label occurs twice.", CrySLPackage.CONSTRAINT__LEFT_EXPRESSION); //2nd parameter tells where in the document the parameter is, the scope of the error
-			}
-		}
-
-		//if(getContainerOfType(s, SuperType).actions.filter(SuperType))
-		
-		
-		//for()
-		/*if(e.)) {
-			
-		}*/
-		/*if (getContainerOfType(openCSV, Model).actions.filter(OpenCSV).
-			exists[it != openCSV && it.name == openCSV.name]) {
-			error("Duplicate csv identifier '" + openCSV.name + "'", CsvPackage::eINSTANCE.openCSV_Name,
-				DUPLICATE_OPEN_NAME)
-		}*/
 	}
 	
-	@Check
-	public void check2(Domainmodel model) {
-		HashSet<String> names = new HashSet<String>();
-		//Domainmodel.class.
-		//for(
-	}
-	
-
-	
-	// invoke getEPackages
-	//addIssue, error
 }
