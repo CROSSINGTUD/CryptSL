@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 	<packaging>pom</packaging>
 
@@ -169,8 +169,8 @@
 											[0.23.1,)
 										</versionRange>
 										<goals>
-											<goal>build-qualifier</goal>
-											<goal>build-qualifier-aggregator</goal>
+											<goal>build</goal>
+											<goal>build-aggregator</goal>
 											<goal>validate-id</goal>
 											<goal>validate-version</goal>
 										</goals>
