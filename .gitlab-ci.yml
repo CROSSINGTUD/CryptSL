@@ -1,0 +1,11 @@
+maven-deploy:
+  image: maven:3-eclipse-temurin-11-alpine
+  tags:
+    - shared
+  stage: deploy
+  script:
+    - mvn -B -ntp -s .gitlab-ci-settings.xml -DskipTests=true deploy
+  artifacts:
+    paths:
+      - de.darmstadt.tu.crossing.CrySL.repository/target/repository/ # Eclipse Update Site
+      - de.darmstadt.tu.crossing.CrySL.ide/target/de.darmstadt.tu.crossing.CrySL.ide-2.0.1-ls.jar # Language Server

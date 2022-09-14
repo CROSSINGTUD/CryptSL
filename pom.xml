@@ -226,12 +226,13 @@
 
 	<distributionManagement>
 		<repository>
-			<uniqueVersion>true</uniqueVersion>
-			<id>soot-snapshot</id>
-			<name>Soot snapshot repository</name>
-			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot</url>
-			<layout>default</layout>
+			<id>irb-gitlab-maven</id>
+			<url>https://git.cs.uni-paderborn.de/api/v4/projects/8862/packages/maven</url>
 		</repository>
+		<snapshotRepository>
+			<id>irb-gitlab-maven</id>
+			<url>https://git.cs.uni-paderborn.de/api/v4/projects/8862/packages/maven</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<repositories>
