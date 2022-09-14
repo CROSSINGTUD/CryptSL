@@ -53,7 +53,7 @@ class CrySLJvmModelInferrer extends AbstractModelInferrer {
 // 			for (greeting : element.greetings) {
 // 				members += greeting.toMethod("hello" + greeting.name, typeRef(String)) [
 // 					body = '''
-//						return "Hello «greeting.name»";
+//						return "Hello Â«greeting.nameÂ»";
 //					'''
 //				]
 //			}

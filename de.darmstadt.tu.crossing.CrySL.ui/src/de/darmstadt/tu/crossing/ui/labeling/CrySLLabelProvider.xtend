@@ -7,11 +7,11 @@ import com.google.inject.Inject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
-/**
- * Provides labels for EObjects.
- * 
- * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#label-provider
- */
+import de.darmstadt.tu.crossing.crySL.Object;
+import de.darmstadt.tu.crossing.crySL.*;
+import org.eclipse.xtext.common.types.JvmExecutable;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 class CrySLLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
@@ -19,13 +19,118 @@ class CrySLLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-	// Labels and icons can be computed like this:
-	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
+	def text(Domainmodel e) {
+		"CrySL Rule"
+	}
+
+	def text(ObjectsBlock e) {
+		"OBJECTS"
+	}
+
+	def text(ForbiddenBlock e) {
+		"FORBIDDEN"
+	}
+
+	def text(EventsBlock e) {
+		"EVENTS"
+	}
+
+	def text(OrderBlock e) {
+		"ORDER"
+	}
+
+	def text(ConstraintsBlock e) {
+		"CONSTRAINTS"
+	}
+
+	def text(RequiresBlock e) {
+		"REQUIRES"
+	}
+
+	def text(EnsuresBlock e) {
+		"ENSURES"
+	}
+
+	def text(NegatesBlock e) {
+		"NEGATES"
+	}
+
+	def text(Object e) {
+		e.getName()
+	}
+
+	def text(JvmTypeReference e) {
+		e.getType().getIdentifier()
+	}
+
+	def text(JvmExecutable e) {
+		e.getSimpleName()
+	}
+
+	def text(ForbiddenMethod e) {
+		e.getMethod().getIdentifier()
+	}
+
+	def text(LabeledMethodCall e) {
+		e.getName()
+	}
+
+	def text(Aggregate e) {
+		e.getName()
+	}
+
+	def text(Method e) {
+		e.getMethod().getSimpleName()
+	}
+
+	def text(Primary e) {
+		e.getEvent().getName()
+	}
+
+	def text(Order e) {
+		"`" + e.getOp().getName() + "` Expression"
+	}
+
+	def text(Constraint e) {
+		"`" + e.getOp().getName() + "` Expression"
+	}
+
+	def text(LiteralExpression e) {
+		switch(e) {
+			ObjectReference : text(e.getObject())
+			Literal : e.getValue()
+			BuiltinPredicates : e.getName()
+			BuiltinOperations : e.getName()
+			default : "LiteralExpression"
+		}
+	}
+
+
+	def text(LiteralList e) {
+		"List"
+	}
+
+	def text(AlternativeRequiredPredicates e) {
+		"Alternatives"
+	}
+
+	def text(RequiredPredicate e) {
+		e.getPredicate().getName()
+	}
+
+	def text(NegatedPredicate e) {
+		e.getPredicate().getName()
+	}
+
+	def text(EnsuredPredicate e) {
+		e.getPredicate().getName()
+	}
+
+	def text(PredicateParameter e) {
+		switch(e) {
+			WildcardPredicateParameter : "_"
+			ThisPredicateParameter : "this"
+			default : "Parameter"
+		}
+	}
 }

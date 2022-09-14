@@ -1,3 +1,10 @@
 **/target/
 .settings/
+.metals/
 **/*.class
+**/*.jar
+*_gen
+*-gen/
+generated/
+.classpath
+.project

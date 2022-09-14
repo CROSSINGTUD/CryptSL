@@ -6,49 +6,113 @@ package de.darmstadt.tu.crossing.validation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.validation.Check;
 
-import de.darmstadt.tu.crossing.crySL.Event;
-import de.darmstadt.tu.crossing.crySL.ForbMethod;
-import de.darmstadt.tu.crossing.crySL.RequiredBlock;
-import de.darmstadt.tu.crossing.crySL.SuperType;
-import de.darmstadt.tu.crossing.crySL.impl.ObjectImpl;
+import java.nio.ByteOrder;
+import java.util.List;
 
-/**
- * This class contains custom validation rules. 
+import de.darmstadt.tu.crossing.crySL.CrySLPackage;
+import de.darmstadt.tu.crossing.crySL.Aggregate;
+import de.darmstadt.tu.crossing.crySL.BOElems;
+import de.darmstadt.tu.crossing.crySL.Constraint;
+import de.darmstadt.tu.crossing.crySL.Event;
+import de.darmstadt.tu.crossing.crySL.EventsBlock;
+import de.darmstadt.tu.crossing.crySL.Object;
+import de.darmstadt.tu.crossing.crySL.ObjectsBlock;
+import de.darmstadt.tu.crossing.crySL.Operator;
+import de.darmstadt.tu.crossing.crySL.LiteralList;
+import de.darmstadt.tu.crossing.crySL.Literal;
+import de.darmstadt.tu.crossing.crySL.IntLiteral;
+import de.darmstadt.tu.crossing.crySL.StringLiteral;
+import de.darmstadt.tu.crossing.crySL.BooleanLiteral;
+
+/** This class contains custom validation rules. 
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class CrySLValidator extends AbstractCrySLValidator {
-	
-	public static final EStructuralFeature INVALID_NAME = null;
 
-	@Check
-	public void checkGreetingStartsWithCapital(ForbMethod greeting) {
-		
+	/**
+	 * Check wether all elements in a list have the same type
+	 * */
+	@Check public void checkList(LiteralList list) {
+		List<Literal> literals = list.getElements();
+		if(literals.isEmpty()) return;
+		Type expected = typeFromLiteral(literals.get(0));
+		for(Literal l : literals)
+			if(typeFromLiteral(l) != expected) {
+				error("All elements of a list must have the same type", list.eContainer(), CrySLPackage.Literals.CONSTRAINT__RIGHT );
+			}
 	}
-	
+
+	private enum Type { INT, STRING, BOOL }
+	private Type typeFromLiteral(Literal l) {
+		if(l instanceof IntLiteral) return Type.INT;
+		if(l instanceof StringLiteral) return Type.STRING;
+		if(l instanceof BooleanLiteral) return Type.BOOL;
+		return null;
+	}
+
+	/**
+	 * Check wether the builtin operation `elements(..)` is used as the lhs of an
+	 * in Expression.
+	 * */
+	@Check
+	public void checkElements(BOElems e) {
+		Constraint parent = (Constraint) e.eContainer();
+		if(parent.getOp() == Operator.IN
+				&& parent.getLeft() instanceof BOElems
+				&& !(parent.getRight() instanceof BOElems))
+			return; // Ok
+		EStructuralFeature side = parent.getLeft() instanceof BOElems ?
+			CrySLPackage.Literals.CONSTRAINT__LEFT : CrySLPackage.Literals.CONSTRAINT__RIGHT;
+		error("elements(...) must only be used as the left-hand-side of an 'in' expression", e.eContainer(), side);
+	}
+
+	/**
+	 * Check wether an aggregate contains aggregates.
+	 * */
+	@Check
+	public void checkAggregate(Aggregate a) {
+		List<Event> events = a.getEvents();
+		for(int i = 0; i < events.size(); i++)
+			if(events.get(i) instanceof Aggregate)
+				error("Aggregates must not contain Aggregates", a, CrySLPackage.Literals.AGGREGATE__EVENTS, i);
+	}
+
+	/**
+	 * Add error markers for duplicate object labels.
+	 * 
+	 * @param o ObjectsBlock in which to check for duplicity
+	 */
+	@Check
+	public void checkDuplicateEventLabel(ObjectsBlock o) {
+		List<Object> objects = o.getDeclarations();
+		for(int i = 0; i < objects.size(); i++)
+			for(int j = i + 1; j < objects.size(); j++) {
+				Object a = objects.get(i);
+				Object b = objects.get(j);
+				if(a.getName().equals(b.getName()))
+					error(duplicityError("Object", b.getName()), b, CrySLPackage.Literals.OBJECT__NAME);
+			}
+	}
+
 	/**
 	 * Add error markers for duplicate event labels.
 	 * 
-	 * @param s of type supertype being checked for duplicity 
+	 * @param e EventsBlock in which to check for duplicity
 	 */
 	@Check
-	public void checkDuplicateEventLabel(SuperType s) {
-		
-		if(!(s instanceof ObjectImpl)) {
-			for(Event e : ((RequiredBlock) s.eContainer()).getReq_event()) {
-				for(Event ev : ((RequiredBlock) s.eContainer()).getReq_event()) {
-					if(e instanceof SuperType && ev instanceof SuperType) {
-						SuperType es = (SuperType) e;
-						SuperType evs = (SuperType) ev;
-						if(es != evs && es.getName().equals(evs.getName())) {
-							if(s.getName().contentEquals(es.getName()) 
-									&& s.getName().contentEquals(evs.getName())) {
-								error("Duplicate label", INVALID_NAME);
-							}
-						}
-					}
-				}
+	public void checkDuplicateEventLabel(EventsBlock e) {
+		List<Event> events = e.getEvents();
+		for(int i = 0; i < events.size(); i++)
+			for(int j = i + 1; j < events.size(); j++) {
+				Event a = events.get(i);
+				Event b = events.get(j);
+				if(a.getName().equals(b.getName()))
+					error(duplicityError("Event", b.getName()), b, CrySLPackage.Literals.EVENT__NAME);
 			}
-		}
+	}
+
+	private static String duplicityError( String type, String name ) {
+		return type + " name '" + name +"' already defined";
 	}
 }

@@ -15,9 +15,5 @@ class CrySLUiModule extends AbstractCrySLUiModule {
 	new(AbstractUIPlugin plugin) {
 		super(plugin)
 	}
-	override
-	public  bindIContentProposalProvider() {
-		return CrySLSprayProposalProvider;
-	}
 	
 }
