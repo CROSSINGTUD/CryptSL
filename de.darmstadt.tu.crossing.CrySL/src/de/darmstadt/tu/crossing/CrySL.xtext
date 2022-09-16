@@ -309,6 +309,10 @@ PredicateCondition:
 	Constraint | Predicate
 ;
 
+TimedPredicate:
+	EnsuredPredicate | NegatedPredicate
+;
+
 ConditionalPredicate:
 	EnsuredPredicate | NegatedPredicate | RequiredPredicate
 ;
