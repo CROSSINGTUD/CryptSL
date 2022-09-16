@@ -314,7 +314,7 @@ TimedPredicate:
 ;
 
 ConditionalPredicate:
-	EnsuredPredicate | NegatedPredicate | RequiredPredicate
+	RequiredPredicate | TimedPredicate
 ;
 
 PredicateParameter:
