@@ -220,8 +220,8 @@ enum InOp returns Operator:
  IN = 'in'
 ;
 
-LiteralList:
-	{LiteralList} '{' elements+=Literal (',' elements += Literal)* '}'
+LiteralList returns Constraint:
+	{LiteralList} '{' elements += Literal (',' elements += Literal)* '}'
 ;
 
 LiteralExpression:
@@ -289,27 +289,16 @@ AlternativeRequiredPredicates:
 	alternatives += RequiredPredicate ('||' alternatives += RequiredPredicate)*
 ;
 
-/*
-	Left-Factorization of:
-	(condition = PredicateCondition '=>') (not ?= '!')? predicate = Predicate
-*/
 RequiredPredicate:
-	condition = Constraint '=>' (not ?= '!')? predicate = Predicate
-	| predicate = Predicate ({RequiredPredicate.condition=current} '=>' (not ?= '!')? predicate = Predicate)?
+	(condition = PredicateCondition '=>')? (negated ?= '!')? predicate = Predicate
 ;
 
-/*
-	Left-Factorization of:
-	(condition = PredicateCondition '=>') predicate = Predicate ('after' after = [ Event])
-*/
 EnsuredPredicate:
-	( condition = Constraint '=>' predicate = Predicate
-	| predicate = Predicate ({EnsuredPredicate.condition=current} '=>' predicate = Predicate)?
-	) ('after' after=[Event])?
+	(condition = PredicateCondition '=>')? predicate = Predicate ('after' after = [Event])?
 ;
 
 NegatedPredicate:
-	predicate = Predicate ('after' after=[Event])?
+	(condition = PredicateCondition '=>')? predicate = Predicate ('after' after = [Event])?
 ;
 
 Predicate:
@@ -321,7 +310,7 @@ PredicateCondition:
 ;
 
 ConditionalPredicate:
-	NegatedPredicate | RequiredPredicate
+	EnsuredPredicate | NegatedPredicate | RequiredPredicate
 ;
 
 PredicateParameter:
