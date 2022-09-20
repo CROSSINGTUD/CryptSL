@@ -225,15 +225,14 @@ LiteralList returns Constraint:
 ;
 
 LiteralExpression:
-	Literal
-	| ObjectReference
-	| BuiltinPredicates
-	| BuiltinOperations
+	  BuiltinPredicate
+	| Literal
+	| ObjectOperation
 ;
 
-BuiltinPredicates:
+BuiltinPredicate:
 	  predicate = NeverTypeOfPredicate  '[' object = [Object] ',' type = JvmTypeReference ']'
-	| predicate = InstaceOfPredicate   '[' object = [Object] ',' type = JvmTypeReference ']'
+	| predicate = InstaceOfPredicate    '[' object = [Object] ',' type = JvmTypeReference ']'
 	| predicate = NoCallToPredicate     '[' event  = [Event]  ']'
 	| predicate = CallToPredicate       '[' event  = [Event]  ']'
 	| predicate = NotHardCodedPredicate '[' object = [Object] ']'
@@ -251,22 +250,29 @@ enum NoCallToPredicate returns BuiltinPredicates:
 	NO_CALL_TO = 'noCallTo'
 ;
 
-CallToPredicate returns BuiltinPredicates:
+enum CallToPredicate returns BuiltinPredicates:
 	CALL_TO = 'callTo'
 ;
 
-NotHardCodedPredicate returns BuiltinPredicates:
+enum NotHardCodedPredicate returns BuiltinPredicates:
 	NOT_HARD_CODED = 'notHardCoded'
 ;
 
+ObjectExpression:
+	ObjectReference | ObjectOperation
+;
+
+ObjectReference:
+	object = [Object]
+;
+
 ObjectOperation:
-	{ObjectReference} object = [Object]
-	| op = PartOperator     '(' index = INTEGER ',' split = STRING ',' object = [Object] ')'
-	| op = AlgOperator '(' object = [Object] ')'
-	| op = ModeOperator '(' object = [Object] ')'
-	| op = PadOperator '(' object = [Object] ')'
-	| op = ElementsOperator '(' object = [Object] ')'
-	| op = LengthOperator       '[' object = [Object] ']'
+	  fn = PartOperator     '(' index = INTEGER ',' split = STRING ',' object = [Object] ')'
+	| fn = AlgOperator      '(' object = [Object] ')'
+	| fn = ModeOperator     '(' object = [Object] ')'
+	| fn = PadOperator      '(' object = [Object] ')'
+	| fn = ElementsOperator '(' object = [Object] ')'
+	| fn = LengthOperator   '[' object = [Object] ']'
 ;
 
 enum PartOperator returns ObjectOp:
@@ -278,23 +284,19 @@ enum AlgOperator returns ObjectOp:
 ;
 
 enum ModeOperator returns ObjectOp:
-	MODE = 'Mode'
+	MODE = 'mode'
 ;
 
 enum PadOperator returns ObjectOp:
-	PAD = 'Pad'
+	PAD = 'pad'
 ;
 
 enum ElementsOperator returns ObjectOp:
-	ELEMENTS = 'Elements'
+	ELEMENTS = 'elements'
 ;
 
-enum ElementsOperator returns ObjectOp:
+enum LengthOperator returns ObjectOp:
 	LENGTH = 'length'
-;
-
-ObjectReference:
-	{ObjectReference}   object = [Object]
 ;
 
 Literal:
@@ -354,16 +356,16 @@ PredicateCondition:
 	Constraint | Predicate
 ;
 
-TimedPredicate:
-	EnsuredPredicate | NegatedPredicate
+TimedPredicate: // Artificial super-type
+	=> EnsuredPredicate | NegatedPredicate
 ;
 
-ConditionalPredicate:
-	RequiredPredicate | TimedPredicate
+ConditionalPredicate: // Artificial super-type
+	=> RequiredPredicate | TimedPredicate
 ;
 
 PredicateParameter:
-	value = LiteralExpression
+	value = ObjectExpression
 	| {WildcardPredicateParameter} '_'
 	| {ThisPredicateParameter}     'this'
 ;
