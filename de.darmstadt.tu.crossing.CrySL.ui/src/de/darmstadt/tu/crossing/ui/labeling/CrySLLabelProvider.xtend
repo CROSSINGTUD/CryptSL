@@ -95,19 +95,20 @@ class CrySLLabelProvider extends DefaultEObjectLabelProvider {
 		"`" + e.getOp().getName() + "` Expression"
 	}
 
-	def text(LiteralExpression e) {
-		switch(e) {
-			ObjectReference : text(e.getObject())
-			Literal : e.getValue()
-			BuiltinPredicates : e.getName()
-			BuiltinOperations : e.getName()
-			default : "LiteralExpression"
-		}
+	def text(Literal e) {
+		e.getValue()
 	}
 
+	def text(ObjectReference e) {
+		e.getObject().getName()
+	}
 
-	def text(LiteralList e) {
-		"List"
+	def text(BuiltinPredicate e) {
+		e.getPredicate().getLiteral()
+	}
+
+	def text(ObjectOperation e) {
+		e.getFn().getLiteral()
 	}
 
 	def text(AlternativeRequiredPredicates e) {

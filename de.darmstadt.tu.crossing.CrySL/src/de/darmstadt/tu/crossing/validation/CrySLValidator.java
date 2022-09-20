@@ -11,7 +11,8 @@ import java.util.List;
 
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
 import de.darmstadt.tu.crossing.crySL.Aggregate;
-import de.darmstadt.tu.crossing.crySL.BOElems;
+import de.darmstadt.tu.crossing.crySL.ObjectOperation;
+import de.darmstadt.tu.crossing.crySL.ObjectOp;
 import de.darmstadt.tu.crossing.crySL.Constraint;
 import de.darmstadt.tu.crossing.crySL.Event;
 import de.darmstadt.tu.crossing.crySL.EventsBlock;
@@ -53,18 +54,15 @@ public class CrySLValidator extends AbstractCrySLValidator {
 
 	/**
 	 * Check wether the builtin operation `elements(..)` is used as the lhs of an
-	 * in Expression.
+	 * `in` Expression.
 	 * */
 	@Check
-	public void checkElements(BOElems e) {
+	public void checkElements(ObjectOperation e) {
+		if(e.getFn() != ObjectOp.ELEMENTS) return;
 		Constraint parent = (Constraint) e.eContainer();
-		if(parent.getOp() == Operator.IN
-				&& parent.getLeft() instanceof BOElems
-				&& !(parent.getRight() instanceof BOElems))
-			return; // Ok
-		EStructuralFeature side = parent.getLeft() instanceof BOElems ?
-			CrySLPackage.Literals.CONSTRAINT__LEFT : CrySLPackage.Literals.CONSTRAINT__RIGHT;
-		error("elements(...) must only be used as the left-hand-side of an 'in' expression", e.eContainer(), side);
+		if(parent.getOp() == Operator.IN) return;
+		EStructuralFeature side = CrySLPackage.Literals.CONSTRAINT__LEFT;
+		error("elements(...) must only be used as the left-hand-side of an 'in' expression", parent, side);
 	}
 
 	/**
