@@ -240,12 +240,33 @@ BuiltinPredicates:
 	| {BPLenght}      name = 'length'       '[' object = [Object] ']'
 ;
 
-BuiltinOperations:
-	  {BOAlgo}        name = 'alg'          '(' object = [Object] ')'
-	| {BOMode}        name = 'mode'         '(' object = [Object] ')'
-	| {BOPadding}     name = 'pad'          '(' object = [Object] ')'
-	| {BOElems}       name = 'elements'     '(' object = [Object] ')'
-	| {BOPart}        name = 'part'         '(' index = INTEGER ',' split = STRING ',' object = [Object] ')'
+ObjectOperation:
+	{ObjectReference} object = [Object]
+	| op = PartOperator     '(' index = INTEGER ',' split = STRING ',' object = [Object] ')'
+	| op = AlgOperator '(' object = [Object] ')'
+	| op = ModeOperator '(' object = [Object] ')'
+	| op = PadOperator '(' object = [Object] ')'
+	| op = ElementsOperator '(' object = [Object] ')'
+;
+
+enum PartOperator returns ObjectOp:
+	PART = 'part'
+;
+
+enum AlgOperator returns ObjectOp:
+	ALG = 'alg'
+;
+
+enum ModeOperator returns ObjectOp:
+	MODE = 'Mode'
+;
+
+enum PadOperator returns ObjectOp:
+	PAD = 'Pad'
+;
+
+enum ElementsOperator returns ObjectOp:
+	ELEMENTS = 'Elements'
 ;
 
 ObjectReference:
