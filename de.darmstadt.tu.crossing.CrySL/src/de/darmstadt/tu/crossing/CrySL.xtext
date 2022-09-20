@@ -232,12 +232,31 @@ LiteralExpression:
 ;
 
 BuiltinPredicates:
-	  {BPNeverTypeOf} name = 'neverTypeOf'  '[' object = [Object] ',' type = JvmTypeReference ']'
-	| {BPInstanceOf}  name = 'instanceOf'   '[' object = [Object] ',' type = JvmTypeReference ']'
-	| {BPNoCallTo}    name = 'noCallTo'     '[' event  = [Event]  ']'
-	| {BPCallTo}      name = 'callTo'       '[' event  = [Event]  ']'
-	| {BPNoHCoded}    name = 'notHardCoded' '[' object = [Object] ']'
-	| {BPLenght}      name = 'length'       '[' object = [Object] ']'
+	  predicate = NeverTypeOfPredicate  '[' object = [Object] ',' type = JvmTypeReference ']'
+	| predicate = InstaceOfPredicate   '[' object = [Object] ',' type = JvmTypeReference ']'
+	| predicate = NoCallToPredicate     '[' event  = [Event]  ']'
+	| predicate = CallToPredicate       '[' event  = [Event]  ']'
+	| predicate = NotHardCodedPredicate '[' object = [Object] ']'
+;
+
+enum NeverTypeOfPredicate returns BuiltinPredicates:
+	NEVER_TYPE_OF = 'neverTypeOf'
+;
+
+enum InstaceOfPredicate returns BuiltinPredicates:
+	INSTANCE_OF = 'instanceOf'
+;
+
+enum NoCallToPredicate returns BuiltinPredicates:
+	NO_CALL_TO = 'noCallTo'
+;
+
+CallToPredicate returns BuiltinPredicates:
+	CALL_TO = 'callTo'
+;
+
+NotHardCodedPredicate returns BuiltinPredicates:
+	NOT_HARD_CODED = 'notHardCoded'
 ;
 
 ObjectOperation:
@@ -247,6 +266,7 @@ ObjectOperation:
 	| op = ModeOperator '(' object = [Object] ')'
 	| op = PadOperator '(' object = [Object] ')'
 	| op = ElementsOperator '(' object = [Object] ')'
+	| op = LengthOperator       '[' object = [Object] ']'
 ;
 
 enum PartOperator returns ObjectOp:
@@ -267,6 +287,10 @@ enum PadOperator returns ObjectOp:
 
 enum ElementsOperator returns ObjectOp:
 	ELEMENTS = 'Elements'
+;
+
+enum ElementsOperator returns ObjectOp:
+	LENGTH = 'length'
 ;
 
 ObjectReference:
