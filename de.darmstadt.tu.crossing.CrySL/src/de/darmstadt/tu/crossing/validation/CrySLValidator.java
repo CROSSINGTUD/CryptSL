@@ -8,6 +8,9 @@ import org.eclipse.xtext.validation.Check;
 
 import java.nio.ByteOrder;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet;
 
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
 import de.darmstadt.tu.crossing.crySL.Aggregate;
@@ -66,14 +69,25 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	}
 
 	/**
-	 * Check wether an aggregate contains aggregates.
+	 * Check wether aggregate inclusion contains circles.
 	 * */
 	@Check
 	public void checkAggregate(Aggregate a) {
-		List<Event> events = a.getEvents();
-		for(int i = 0; i < events.size(); i++)
-			if(events.get(i) instanceof Aggregate)
-				error("Aggregates must not contain Aggregates", a, CrySLPackage.Literals.AGGREGATE__EVENTS, i);
+		Set<Aggregate> visited = new HashSet<>();
+		LinkedList<Aggregate> toVisit = new LinkedList<>();
+		toVisit.add(a);
+		while(!toVisit.isEmpty()) {
+			Aggregate current = toVisit.pop();
+			if(visited.contains(current)) {
+				error("Infinite recursion in aggregate inclusion found.", a, CrySLPackage.Literals.EVENT__NAME);
+				return;
+			}
+			visited.add(current);
+			current.getEvents().stream()
+				.filter(event -> event instanceof Aggregate)
+				.map(event -> (Aggregate) event)
+				.forEach(toVisit::push);
+		}
 	}
 
 	/**
