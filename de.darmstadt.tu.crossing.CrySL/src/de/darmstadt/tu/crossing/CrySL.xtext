@@ -236,6 +236,7 @@ BuiltinPredicate:
 	| predicate = NoCallToPredicate     '[' event  = [Event]  ']'
 	| predicate = CallToPredicate       '[' event  = [Event]  ']'
 	| predicate = NotHardCodedPredicate '[' object = [Object] ']'
+	| predicate = LengthPredicate       '[' object = [Object] ']'
 ;
 
 enum NeverTypeOfPredicate returns BuiltinPredicates:
@@ -258,6 +259,10 @@ enum NotHardCodedPredicate returns BuiltinPredicates:
 	NOT_HARD_CODED = 'notHardCoded'
 ;
 
+enum LengthPredicate returns BuiltinPredicates:
+	LENGTH = 'length'
+;
+
 ObjectExpression:
 	ObjectReference
 	| ObjectOperation
@@ -273,7 +278,6 @@ ObjectOperation:
 	| fn = ModeOperator     '(' object = [Object] ')'
 	| fn = PadOperator      '(' object = [Object] ')'
 	| fn = ElementsOperator '(' object = [Object] ')'
-	| fn = LengthOperator   '[' object = [Object] ']'
 ;
 
 enum PartOperator returns ObjectOp:
@@ -294,10 +298,6 @@ enum PadOperator returns ObjectOp:
 
 enum ElementsOperator returns ObjectOp:
 	ELEMENTS = 'elements'
-;
-
-enum LengthOperator returns ObjectOp:
-	LENGTH = 'length'
 ;
 
 Literal:
