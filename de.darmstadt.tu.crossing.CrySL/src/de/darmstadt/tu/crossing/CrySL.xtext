@@ -227,7 +227,7 @@ LiteralList returns Constraint:
 LiteralExpression:
 	  BuiltinPredicate
 	| Literal
-	| ObjectOperation
+	| ObjectExpression
 ;
 
 BuiltinPredicate:
@@ -259,7 +259,8 @@ enum NotHardCodedPredicate returns BuiltinPredicates:
 ;
 
 ObjectExpression:
-	ObjectReference | ObjectOperation
+	ObjectReference
+	| ObjectOperation
 ;
 
 ObjectReference:
@@ -325,7 +326,7 @@ RequiresBlock:
 ;
 
 EnsuresBlock:
-	(ensuredPRedicates += EnsuredPredicate ';')+
+	(ensuredPredicates += EnsuredPredicate ';')+
 ;
 
 NegatesBlock:
