@@ -14,4 +14,8 @@ public class CrySLRuntimeModule extends AbstractCrySLRuntimeModule {
 		return SilencedImportedNamesAdapter.class;
 	}
 
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return CrySLValueConverter.class;
+	}
+
 }
