@@ -25,7 +25,8 @@ import de.darmstadt.tu.crossing.services.CrySLGrammarAccess;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 
-public class CrySLSprayProposalProvider extends AbstractCrySLProposalProvider {
+public class CrySLProposalProvider extends AbstractCrySLProposalProvider {
+
 	@Inject
 	CrySLGrammarAccess grammarAccess;
 	private static Keyword keyword;
