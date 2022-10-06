@@ -4,9 +4,7 @@
 package de.darmstadt.tu.crossing.scoping;
 
 import java.util.List;
-import java.util.LinkedList;
-// Most lists are expected to be rather short and mostly insertions and
-// simple iterations are requiered, thus use LinkedList with low constant costs
+import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -17,6 +15,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmAnyTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.impl.TypesFactoryImpl;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -28,6 +27,9 @@ import de.darmstadt.tu.crossing.crySL.ForbiddenMethod;
 import de.darmstadt.tu.crossing.crySL.Method;
 import de.darmstadt.tu.crossing.crySL.Parameter;
 import de.darmstadt.tu.crossing.crySL.AnyParameterType;
+
+import de.darmstadt.tu.crossing.crySL.CrySLPackage;
+import org.eclipse.xtext.common.types.TypesPackage;
 
 /**
  * This class contains custom scoping description.
@@ -42,10 +44,55 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 		IScope scope = polymorphicFindScopeForReferenceName(context, reference);
 		if (scope == null)
 			scope = delegateGetScope(context, reference);
-		return scope;
+		if (scope == null)
+			scope = IScope.NULLSCOPE;
+		return handleGenericTypes(context, reference, scope);
 	}
-	
-	
+
+
+	/**
+	 * A *class under specification* (SPEC, hereafter) can be generic and thus
+	 * require Specification of type parameter, which should be available as
+	 * types for objects and forbidden methods.
+	 * The SPEC is represented by Xtype's `JvmTypeReference` and thus the type
+	 * parameters as `JvmArgumentTypeReference`, which may produce an
+	 * `JvmParameterizedTypeReference` with a type field of type `JvmType`,
+	 * according to its parser rule[1].
+	 * If the class, that SPEC refers to, is found on the classpath and is
+	 * actually an generic type,
+	 * then SPEC.javaType.type will be an instance of `JvmGenericType`.
+	 * This class provides the methods `getTypeParameters()`, returning each
+	 * `JvmTypeParameter`, which are subtypes of JvmType [2].
+	 * We can therefore bring those into Scope for each `JvmTypeReference`'s
+	 * `type` field.
+	 *
+	 *
+	 * [1]: https://github.com/eclipse/xtext-extras/raw/master/org.eclipse.xtext.xbase/src/org/eclipse/xtext/xbase/Xtype.xtext
+	 * [2]: https://www.javadoc.io/doc/org.eclipse.xtext/org.eclipse.xtext.common.types/latest/index.html
+	* */
+	IScope handleGenericTypes(EObject context, EReference reference, IScope scope) {
+		if(reference != TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE)
+			return scope;
+
+		// Scope for Domainmodel.javaType
+		if(context.eContainer() instanceof Domainmodel)
+			return scope;
+
+		Domainmodel model =
+			(Domainmodel) (EcoreUtil.getRootContainer(context));
+		// SPEC class is not generic
+		if(!(model.getJavaType().getType() instanceof JvmGenericType))
+			return scope;
+		// Add all JvmTypeParameter's to the scope
+		JvmGenericType clazz =
+			(JvmGenericType) model.getJavaType().getType();
+		List<IEObjectDescription> scopeElements =
+			new ArrayList<>(clazz.getTypeParameters().size());
+		for(JvmTypeParameter parameter : clazz.getTypeParameters())
+			scopeElements.add(EObjectDescription.create(parameter.getName(), parameter));
+		return new SimpleScope(scope, scopeElements);
+	}
+
 	/**
 	 * Returns Scope of a ForbiddenMethod.
 	 *
@@ -61,8 +108,8 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 			return new SimpleScope(
 				getDescriptionForMatchingMethods(jvmType, parameters));
 		}
-		catch(ClassCastException e) { debug(e.toString()); }
-		catch(Exception e) { debug(e.toString()); }
+		catch(ClassCastException e) { debug(e); }
+		catch(Exception e) { debug(e); }
 		return IScope.NULLSCOPE;
 	}
 
@@ -87,8 +134,8 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 			return new SimpleScope(
 				getDescriptionForMatchingMethods(jvmType, parameters));
 		}
-		catch(ClassCastException e) { debug(e.toString()); }
-		catch(Exception e) { debug(e.toString()); }
+		catch(ClassCastException e) { debug(e); }
+		catch(Exception e) { debug(e); }
 		return IScope.NULLSCOPE;
 	}
 
@@ -98,7 +145,7 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 	 * */
 	public List<IEObjectDescription> getDescriptionForMatchingMethods( JvmGenericType type, List<JvmTypeReference> parameters )
 	{
-		List<IEObjectDescription> d = new LinkedList<IEObjectDescription>();
+		List<IEObjectDescription> d = new ArrayList<IEObjectDescription>(2);
 		for( JvmExecutable method : getMethods(type) ) {
 			if(!matchingParameters(method, parameters)) continue;
 			d.add(EObjectDescription.create(method.getSimpleName(), method));
@@ -112,7 +159,7 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 
 	protected List<JvmTypeReference> resolveTypeFromObject(List<Parameter> parameters)
 	{
-		List<JvmTypeReference> ret = new LinkedList<>();
+		List<JvmTypeReference> ret = new ArrayList<>(parameters.size());
 		for( Parameter p : parameters )
 			if(p instanceof AnyParameterType)
 				ret.add( TypesFactoryImpl.init().createJvmAnyTypeReference());
@@ -125,7 +172,7 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 	{
 		List<JvmFormalParameter> params = a.getParameters();
 		if(params.size() != b.size()) return false;
-		List _a = new LinkedList<>();
+		List _a = new ArrayList<>(params.size());
 		for(JvmFormalParameter fp : params)
 			_a.add(fp.getParameterType());
 		return matchingParameters(_a, b);
@@ -145,7 +192,7 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 
 	protected List<JvmExecutable> getMethods(JvmGenericType type)
 	{
-		List<JvmExecutable> methods = new LinkedList<>();
+		List<JvmExecutable> methods = new ArrayList<>();
 		for( JvmExecutable e : type.getDeclaredOperations() )
 			methods.add(e);
 		if(type.getExtendedClass() != null)
@@ -155,10 +202,11 @@ public class CrySLScopeProvider extends AbstractCrySLScopeProvider {
 		return methods;
 	}
 
-	private static void debug(String msg)
+	private static void debug(Object o)
 	{
+		// String msg = o == null ? "null" : o.toString();
 		// try {
-		// 	(new java.io.FileWriter("/var/log/crysl-scoping.log", true))
+		// 	(new java.io.FileWriter("/var/log/crysl-ls.log", true))
 		// 		.append(msg)
 		// 		.append('\n')
 		// 		.close();
