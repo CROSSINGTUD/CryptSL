@@ -8,11 +8,19 @@ import org.eclipse.xtext.validation.Check;
 
 import java.nio.ByteOrder;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.TypesPackage;
+
 import de.darmstadt.tu.crossing.crySL.CrySLPackage;
+import de.darmstadt.tu.crossing.crySL.Domainmodel;
 import de.darmstadt.tu.crossing.crySL.Aggregate;
 import de.darmstadt.tu.crossing.crySL.ObjectOperation;
 import de.darmstadt.tu.crossing.crySL.ObjectOp;
@@ -34,6 +42,25 @@ import de.darmstadt.tu.crossing.crySL.BooleanLiteral;
  */
 public class CrySLValidator extends AbstractCrySLValidator {
 
+	public static final String ERR_LIST_HAS_DIFFERENT_TYPES =
+		"List elements must have the same type";
+	public static final String WRN_TYPE_PARAMETERS_NOT_SPECIFIED =
+		"Type under specification is generic, type parameters should be specified: <%s>";
+	public static final String ERR_TYPE_NOT_GENERIC =
+		"Type under specification is not generic, but type parameters were specified";
+	public static final String ERR_TYPE_PARAMETERS_MISMATCH =
+		"Specfied parameters do not match expected parameters: <%s>";
+	public static final String ERR_TYPE_PARAMETER_MISMATCH =
+		"Specfied parameter does not match expected parameter: %s";
+	public static final String ERR_ELEMENTS_OUTSIDE_IN =
+		"elements(..) must only be used with an in-Expression";
+	public static final String AGGREGATE_INFINITE_RECURSION =
+		"Aggregate must not recursively include itself";
+	public static final String ERR_DUPLICATE_EVENT =
+		"Event already defined";
+	public static final String ERR_DUPLICATE_OBJECT =
+		"Object already defined";
+
 	/**
 	 * Check wether all elements in a list have the same type
 	 * */
@@ -43,7 +70,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		Type expected = typeFromLiteral(literals.get(0));
 		for(Literal l : literals)
 			if(typeFromLiteral(l) != expected) {
-				error("All elements of a list must have the same type", list.eContainer(), CrySLPackage.Literals.CONSTRAINT__RIGHT );
+				error(ERR_LIST_HAS_DIFFERENT_TYPES, list.eContainer(), CrySLPackage.Literals.CONSTRAINT__RIGHT );
 			}
 	}
 
@@ -56,6 +83,47 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	}
 
 	/**
+	 * Check wether the specified type parameters match those of the class
+	 * under specification.
+	 * */
+	@Check
+	public void checkGenericType(Domainmodel model) {
+		if(!(model.getJavaType() instanceof JvmParameterizedTypeReference))
+			return;
+		if(!(model.getJavaType().getType() instanceof JvmGenericType))
+			return;
+		JvmGenericType clazz =
+			(JvmGenericType) model.getJavaType().getType();
+		JvmParameterizedTypeReference spec =
+			(JvmParameterizedTypeReference) model.getJavaType();
+		List<JvmTypeParameter> expected =
+			clazz.getTypeParameters();
+		List<JvmTypeReference> actual =
+			spec.getArguments();
+		String suggestion = expected.stream()
+			.map(JvmTypeParameter::getName)
+			.collect(Collectors.joining(", "));
+		if(actual.size() == 0 && expected.size() != 0)
+			warning(String.format(WRN_TYPE_PARAMETERS_NOT_SPECIFIED, suggestion)
+					, model
+					, CrySLPackage.Literals.DOMAINMODEL__JAVA_TYPE);
+		else if(actual.size() != 0 && expected.size() == 0)
+			error(ERR_TYPE_NOT_GENERIC
+					, model
+					, CrySLPackage.Literals.DOMAINMODEL__JAVA_TYPE);
+		else if(actual.size() != expected.size())
+			error(String.format(ERR_TYPE_PARAMETERS_MISMATCH, suggestion)
+					, model
+					, CrySLPackage.Literals.DOMAINMODEL__JAVA_TYPE);
+		else for(int i = 0; i < expected.size(); i++)
+			if(!expected.get(i).equals(actual.get(i).getType()))
+				error(String.format(ERR_TYPE_PARAMETER_MISMATCH, expected.get(i).getName())
+						, model.getJavaType()
+						, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__ARGUMENTS
+						, i);
+	}
+
+	/**
 	 * Check wether the builtin operation `elements(..)` is used as the lhs of an
 	 * `in` Expression.
 	 * */
@@ -65,7 +133,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		Constraint parent = (Constraint) e.eContainer();
 		if(parent.getOp() == Operator.IN) return;
 		EStructuralFeature side = CrySLPackage.Literals.CONSTRAINT__LEFT;
-		error("elements(...) must only be used as the left-hand-side of an 'in' expression", parent, side);
+		error(ERR_ELEMENTS_OUTSIDE_IN, parent, side);
 	}
 
 	/**
@@ -79,7 +147,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 		while(!toVisit.isEmpty()) {
 			Aggregate current = toVisit.pop();
 			if(visited.contains(current)) {
-				error("Infinite recursion in aggregate inclusion found.", a, CrySLPackage.Literals.EVENT__NAME);
+				error(AGGREGATE_INFINITE_RECURSION, a, CrySLPackage.Literals.EVENT__NAME);
 				return;
 			}
 			visited.add(current);
@@ -103,7 +171,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 				Object a = objects.get(i);
 				Object b = objects.get(j);
 				if(a.getName().equals(b.getName()))
-					error(duplicityError("Object", b.getName()), b, CrySLPackage.Literals.OBJECT__NAME);
+					error(ERR_DUPLICATE_OBJECT, b, CrySLPackage.Literals.OBJECT__NAME);
 			}
 	}
 
@@ -120,11 +188,7 @@ public class CrySLValidator extends AbstractCrySLValidator {
 				Event a = events.get(i);
 				Event b = events.get(j);
 				if(a.getName().equals(b.getName()))
-					error(duplicityError("Event", b.getName()), b, CrySLPackage.Literals.EVENT__NAME);
+					error(ERR_DUPLICATE_EVENT, b, CrySLPackage.Literals.EVENT__NAME);
 			}
-	}
-
-	private static String duplicityError( String type, String name ) {
-		return type + " name '" + name +"' already defined";
 	}
 }
