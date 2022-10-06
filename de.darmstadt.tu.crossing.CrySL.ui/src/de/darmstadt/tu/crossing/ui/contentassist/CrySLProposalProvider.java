@@ -37,7 +37,7 @@ import de.darmstadt.tu.crossing.ui.utils.ClassPathLoader;
 import de.darmstadt.tu.crossing.ui.utils.ClassPathSolver;
 
 
-public class CrySLSprayProposalProvider extends AbstractCrySLProposalProvider {
+public class CrySLProposalProvider extends AbstractCrySLProposalProvider {
 
 	private static JvmExecutable jvmExecutable;
 
