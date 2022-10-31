@@ -19,7 +19,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-package: jdk
-          java-version: '8'
+          java-version: '11'
       # Sets up Maven version
       - name: Set up Maven
         uses: stCarolas/setup-maven@v4.2
