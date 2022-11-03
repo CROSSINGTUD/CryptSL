@@ -9,6 +9,7 @@ Domainmodel:
 	'SPEC'          javaType    = JvmTypeReference
 	( 'OBJECTS'     objects     = ObjectsBlock     ) ?
 	( 'FORBIDDEN'   forbidden   = ForbiddenBlock   ) ?
+	( 'EXCEPTIONS'  exceptions  = ExceptionsBlock  ) ?
 	( 'EVENTS'      events      = EventsBlock      ) ?
 	( 'ORDER'       order       = OrderBlock       ) ?
 	( 'CONSTRAINTS' constraints = ConstraintsBlock ) ?
@@ -41,6 +42,24 @@ ForbiddenMethod:
 		('=>' replacement = [Event])?
 ;
 
+/* Exception Declarations */
+
+ExceptionsBlock:
+	(exceptions += Exception ';')+
+;
+
+Exception:
+	ExceptionDeclaration | ExceptionAggregate
+;
+
+ExceptionDeclaration:
+	name = ID ':' exception = JvmTypeReference
+;
+
+ExceptionAggregate:
+	name = ID ':=' exceptions += [Exception] ('|' exceptions += [Exception])*
+;
+
 /* Event Declarations */
 
 EventsBlock:
@@ -53,7 +72,7 @@ Event:
 ;
 
 LabeledMethodCall:
-	name = ID ':' method = Method
+	name = ID ':' method = Method ('throws' exception = [Exception])?
 ;
 
 Method:
