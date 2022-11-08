@@ -30,7 +30,6 @@ import de.darmstadt.tu.crossing.crySL.EventsBlock;
 import de.darmstadt.tu.crossing.crySL.Object;
 import de.darmstadt.tu.crossing.crySL.ObjectsBlock;
 import de.darmstadt.tu.crossing.crySL.Operator;
-import de.darmstadt.tu.crossing.crySL.LiteralList;
 import de.darmstadt.tu.crossing.crySL.Literal;
 import de.darmstadt.tu.crossing.crySL.IntLiteral;
 import de.darmstadt.tu.crossing.crySL.StringLiteral;
@@ -42,8 +41,6 @@ import de.darmstadt.tu.crossing.crySL.BooleanLiteral;
  */
 public class CrySLValidator extends AbstractCrySLValidator {
 
-	public static final String ERR_LIST_HAS_DIFFERENT_TYPES =
-		"List elements must have the same type";
 	public static final String WRN_TYPE_PARAMETERS_NOT_SPECIFIED =
 		"Type under specification is generic, type parameters should be specified: <%s>";
 	public static final String ERR_TYPE_NOT_GENERIC =
@@ -61,26 +58,6 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	public static final String ERR_DUPLICATE_OBJECT =
 		"Object already defined";
 
-	/**
-	 * Check wether all elements in a list have the same type
-	 * */
-	@Check public void checkList(LiteralList list) {
-		List<Literal> literals = list.getElements();
-		if(literals.isEmpty()) return;
-		Type expected = typeFromLiteral(literals.get(0));
-		for(Literal l : literals)
-			if(typeFromLiteral(l) != expected) {
-				error(ERR_LIST_HAS_DIFFERENT_TYPES, list.eContainer(), CrySLPackage.Literals.CONSTRAINT__RIGHT );
-			}
-	}
-
-	private enum Type { INT, STRING, BOOL }
-	private Type typeFromLiteral(Literal l) {
-		if(l instanceof IntLiteral) return Type.INT;
-		if(l instanceof StringLiteral) return Type.STRING;
-		if(l instanceof BooleanLiteral) return Type.BOOL;
-		return null;
-	}
 
 	/**
 	 * Check wether the specified type parameters match those of the class
