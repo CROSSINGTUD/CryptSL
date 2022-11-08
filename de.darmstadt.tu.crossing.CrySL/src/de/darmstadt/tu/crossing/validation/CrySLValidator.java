@@ -30,6 +30,8 @@ import de.darmstadt.tu.crossing.crySL.EventsBlock;
 import de.darmstadt.tu.crossing.crySL.Object;
 import de.darmstadt.tu.crossing.crySL.ObjectsBlock;
 import de.darmstadt.tu.crossing.crySL.Operator;
+import de.darmstadt.tu.crossing.crySL.ExceptionDeclaration;
+import de.darmstadt.tu.crossing.crySL.ExceptionAggregate;
 import de.darmstadt.tu.crossing.crySL.Literal;
 import de.darmstadt.tu.crossing.crySL.IntLiteral;
 import de.darmstadt.tu.crossing.crySL.StringLiteral;
@@ -43,6 +45,8 @@ public class CrySLValidator extends AbstractCrySLValidator {
 
 	public static final String WRN_TYPE_PARAMETERS_NOT_SPECIFIED =
 		"Type under specification is generic, type parameters should be specified: <%s>";
+	public static final String ERR_EXCEPTION_NOT_THROWABLE =
+		"%s does not implement java.lang.Throwable";
 	public static final String ERR_TYPE_NOT_GENERIC =
 		"Type under specification is not generic, but type parameters were specified";
 	public static final String ERR_TYPE_PARAMETERS_MISMATCH =
@@ -58,6 +62,40 @@ public class CrySLValidator extends AbstractCrySLValidator {
 	public static final String ERR_DUPLICATE_OBJECT =
 		"Object already defined";
 
+	/**
+	 * Check wether all Exceptions implement {@link java.lang.Throwable}.
+	 * */
+	@Check
+	public void checkExceptions(ExceptionDeclaration exc) {
+	try {
+			Class<?> e = Class.forName(exc.getException().getType().getIdentifier());
+			if(!java.lang.Throwable.class.isAssignableFrom(e))
+			warning(String.format(ERR_EXCEPTION_NOT_THROWABLE, e.getName())
+					, exc
+					, CrySLPackage.Literals.EXCEPTION_DECLARATION__EXCEPTION);
+		} catch(ClassNotFoundException e) {}
+	}
+	/**
+	 * Check wether exception aggregate inclusion contains circles.
+	 * */
+	@Check
+	public void checkExceptionAggregate(ExceptionAggregate a) {
+		Set<ExceptionAggregate> visited = new HashSet<>();
+		LinkedList<ExceptionAggregate> toVisit = new LinkedList<>();
+		toVisit.add(a);
+		while(!toVisit.isEmpty()) {
+			ExceptionAggregate current = toVisit.pop();
+			if(visited.contains(current)) {
+				error(AGGREGATE_INFINITE_RECURSION, a, CrySLPackage.Literals.EXCEPTION__NAME);
+				return;
+			}
+			visited.add(current);
+			current.getExceptions().stream()
+				.filter(exception -> exception instanceof ExceptionAggregate)
+				.map(exception -> (ExceptionAggregate) exception)
+				.forEach(toVisit::push);
+		}
+	}
 
 	/**
 	 * Check wether the specified type parameters match those of the class
