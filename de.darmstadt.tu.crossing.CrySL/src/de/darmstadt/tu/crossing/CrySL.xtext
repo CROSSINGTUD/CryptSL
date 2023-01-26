@@ -169,7 +169,7 @@ enum AndOp returns Operator:
 
 EqualityExpression returns Constraint:
 	ComparisonExpression
-	({Constraint.left = current} op = EualityOp right=ComparisonExpression)?
+	({Constraint.left = current} op = EualityOp right=ComparisonExpression)*
 ;
 
 enum EualityOp returns Operator:
@@ -178,7 +178,7 @@ enum EualityOp returns Operator:
 
 ComparisonExpression returns Constraint:
 	ArithmeticExpression
-	({Constraint.left = current} op = OrderOp right = ArithmeticExpression)?
+	({Constraint.left = current} op = OrderOp right = ArithmeticExpression)*
 ;
 
 enum OrderOp returns Operator:
