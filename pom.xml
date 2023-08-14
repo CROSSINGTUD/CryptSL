@@ -6,6 +6,27 @@
 	<version>2.0.1</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 	<packaging>pom</packaging>
+	<name>CrySL</name>
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v2.0</name>
+			<url>https://www.eclipse.org/legal/epl-2.0/</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>CogniCrypt</id>
+			<name>CogniCrypt</name>
+			<email>cognicrypt@eim.upb.de</email>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:CROSSINGTUD/CryptSL.git</connection>
+		<developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
+		<url>https://github.com/CROSSINGTUD/CryptSL</url>
+	</scm>
+	<description>CrySL domain-specific language</description>
+	<url>https://github.com/CROSSINGTUD/CryptSL</url>
 
 	<properties>
 		<tycho-version>1.6.0</tycho-version>
@@ -220,18 +241,80 @@
 						<outputDirectory>build</outputDirectory>
 					</configuration>
 				</plugin>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.13</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>soot-snapshot</id>
-			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot/</url>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>soot-release</id>
-			<url>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release/</url>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
 
