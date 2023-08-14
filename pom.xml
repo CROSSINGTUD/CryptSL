@@ -203,6 +203,59 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.core</artifactId>
+							<version>3.12.2</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.compiler.apt</artifactId>
+							<version>1.2.100</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.compiler.tool</artifactId>
+							<version>1.2.51</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.codegen</artifactId>
+							<version>2.11.0</version>
+						</dependency>
+						
+					</dependencies>
 				</plugin>
 				<plugin>
 					<!-- Can be removed after first generator execution https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097 -->
