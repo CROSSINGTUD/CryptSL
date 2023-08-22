@@ -30,7 +30,7 @@ jobs:
         id: versioning
         uses: paulhatch/semantic-version@v5.1.0
         with:
-          tag_prefix: "v"
+          tag_prefix: ""
         # A string which, if present in a git commit, indicates that a change represents a
         # major (breaking) change, supports regular expressions wrapped with '/'
           major_pattern: "(MAJOR)"
@@ -52,4 +52,4 @@ jobs:
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/smeyer198/CryptSL.git
       # push version bump after test
       - name: push
-        run: git push origin "v${{ steps.versioning.outputs.version }}"
+        run: git push origin "${{ steps.versioning.outputs.version }}"
