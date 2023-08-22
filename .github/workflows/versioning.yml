@@ -47,8 +47,8 @@ jobs:
           git ls-files | grep 'pom.xml$' | xargs git add
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
-          git commit -am "Release CryptSL ${{ steps.versioning.outputs.version }}"
-          git tag "v${{ steps.versioning.outputs.version }}"
+          git commit -am "Update CryptSL to ${{ steps.versioning.outputs.version }}"
+          git tag "${{ steps.versioning.outputs.version }}"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/smeyer198/CryptSL.git
       # push version bump after test
       - name: push
