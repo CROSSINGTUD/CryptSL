@@ -1,0 +1,52 @@
+name: Versioning
+
+on: [push]
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # Sets up Java version
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-package: jdk
+          java-version: '11'
+      # Sets up Maven version
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.2
+        with:
+          maven-version: 3.6.3
+      # Semantic versioning
+      - name: Semantic versioning
+        id: versioning
+        uses: paulhatch/semantic-version@v5.1.0
+        with:
+          tag_prefix: "v"
+        # A string which, if present in a git commit, indicates that a change represents a
+        # major (breaking) change, supports regular expressions wrapped with '/'
+          major_pattern: "(MAJOR)"
+        # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          minor_pattern: "(MINOR)"
+        # A string to determine the format of the version output
+          format: "${major}.${minor}.${patch}"
+          bump_each_commit: false
+      # Bumping version
+      - name: bump version
+        run: |
+          mvn build-helper:parse-version versions:set -DnewVersion=\${{ steps.versioning.outputs.version}} versions:commit
+          mvn tycho-versions:update-eclipse-metadata
+          git ls-files | grep 'pom.xml$' | xargs git add
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git commit -am "Release CryptSL ${{ steps.versioning.outputs.version }}"
+          git tag "v${{ steps.versioning.outputs.version }}"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/smeyer198/CryptSL.git
+      # push version bump after test
+      - name: push
+        run: git push origin "v${{ steps.versioning.outputs.version }}"
