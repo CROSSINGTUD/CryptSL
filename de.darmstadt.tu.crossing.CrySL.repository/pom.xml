@@ -9,7 +9,6 @@
 		<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 		<version>3.0.1</version>
 	</parent>
-	<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
 	<build>
 		<plugins>
 			<plugin>
