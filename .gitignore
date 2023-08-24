@@ -208,5 +208,3 @@ buildNumber.properties
 *_gen
 *-gen/
 generated/
-.classpath
-.project
