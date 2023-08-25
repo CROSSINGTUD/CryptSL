@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
-	<version>3.0.1</version>
+	<version>2.0.1</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 	<packaging>pom</packaging>
 
@@ -13,6 +13,7 @@
 		<emfVersion>2.13.0</emfVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<modules>
 		<module>de.darmstadt.tu.crossing.CrySL</module>
 		<module>de.darmstadt.tu.crossing.CrySL.ide</module>
@@ -22,6 +23,7 @@
 		<module>de.darmstadt.tu.crossing.CrySL.repository</module>
 		<module>de.darmstadt.tu.crossing.CrySL.tests</module>
 	</modules>
+
 	<build>
 		<plugins>
 			<plugin>

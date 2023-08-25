@@ -2,7 +2,7 @@
 <feature
       id="de.darmstadt.tu.crossing.CrySL.feature"
       label="de.darmstadt.tu.crossing.CrySL.feature"
-      version="3.0.1"
+      version="2.0.1"
       provider-name="Technical University Darmstadt, Paderborn University"
       plugin="https://it.crossing.tu-darmstadt.de/cognicrypt/">
 
@@ -139,21 +139,21 @@ Exhibit A – Form of Secondary Licenses Notice
          id="de.darmstadt.tu.crossing.CrySL"
          download-size="0"
          install-size="0"
-         version="3.0.1"
+         version="2.0.1"
          unpack="false"/>
 
    <plugin
          id="de.darmstadt.tu.crossing.CrySL.ide"
          download-size="0"
          install-size="0"
-         version="3.0.1"
+         version="2.0.1"
          unpack="false"/>
 
    <plugin
          id="de.darmstadt.tu.crossing.CrySL.ui"
          download-size="0"
          install-size="0"
-         version="3.0.1"
+         version="2.0.1"
          unpack="false"/>
 
 </feature>

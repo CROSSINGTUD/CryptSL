@@ -7,6 +7,6 @@
 	<parent>
 		<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
 		<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
-		<version>3.0.1</version>
+		<version>2.0.1</version>
 	</parent>
 </project>
