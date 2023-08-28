@@ -6,6 +6,27 @@
 	<version>2.0.1</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 	<packaging>pom</packaging>
+	<name>CrySL</name>
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v2.0</name>
+			<url>https://www.eclipse.org/legal/epl-2.0/</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>CogniCrypt</id>
+			<name>CogniCrypt</name>
+			<email>cognicrypt@eim.upb.de</email>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:CROSSINGTUD/CryptSL.git</connection>
+		<developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
+		<url>https://github.com/CROSSINGTUD/CryptSL</url>
+	</scm>
+	<description>CrySL domain-specific language</description>
+	<url>https://github.com/CROSSINGTUD/CryptSL</url>
 
 	<properties>
 		<tycho-version>2.7.5</tycho-version>
@@ -185,6 +206,59 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.core</artifactId>
+							<version>3.12.2</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.compiler.apt</artifactId>
+							<version>1.2.100</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.compiler.tool</artifactId>
+							<version>1.2.51</version>
+							<exclusions>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.equinox.common</artifactId>
+								</exclusion>
+								<exclusion>
+									<groupId>org.eclipse.platform</groupId>
+									<artifactId>org.eclipse.core.runtime</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>org.eclipse.emf.codegen</artifactId>
+							<version>2.11.0</version>
+						</dependency>
+						
+					</dependencies>
 				</plugin>
 				<plugin>
 					<!-- Can be removed after first generator execution https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097 -->
@@ -223,17 +297,79 @@
 						<outputDirectory>build</outputDirectory>
 					</configuration>
 				</plugin>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.13</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 	<distributionManagement>
-		<repository>
-			<id>irb-gitlab-maven</id>
-			<url>https://git.cs.uni-paderborn.de/api/v4/projects/8862/packages/maven</url>
-		</repository>
 		<snapshotRepository>
-			<id>irb-gitlab-maven</id>
-			<url>https://git.cs.uni-paderborn.de/api/v4/projects/8862/packages/maven</url>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
 </project>
