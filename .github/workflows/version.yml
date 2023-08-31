@@ -1,0 +1,54 @@
+name: Update CrySL version
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  Version-Update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # Sets up Java version
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-package: jdk
+          java-version: '11'
+      # Sets up Maven version
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.2
+        with:
+          maven-version: 3.6.3
+      # Semantic versioning
+      - name: Semantic versioning
+        id: versioning
+        uses: paulhatch/semantic-version@v5.1.0
+        with:
+          tag_prefix: ""
+        # A string which, if present in a git commit, indicates that a change represents a
+        # major (breaking) change, supports regular expressions wrapped with '/'
+          major_pattern: "(MAJOR)"
+        # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          minor_pattern: "(MINOR)"
+        # A string to determine the format of the version output
+          version_format: "${major}.${minor}.${patch}"
+      # Bumping version
+      - name: Update version and create tag
+        run: |
+          mvn build-helper:parse-version versions:set -DnewVersion=\${{ steps.versioning.outputs.version }} versions:commit
+          mvn tycho-versions:update-eclipse-metadata
+          git ls-files | grep 'pom.xml$' | xargs git add
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git commit -am "Update CrySL version to ${{ steps.versioning.outputs.version }}"
+          git tag ${{ steps.versioning.outputs.version }}
+          git push --atomic origin master ${{ steps.versioning.outputs.version }}
