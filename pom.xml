@@ -29,12 +29,10 @@
 	<url>https://github.com/CROSSINGTUD/CryptSL</url>
 
 	<properties>
-		<tycho-version>1.6.0</tycho-version>
-		<xtextVersion>2.21.0</xtextVersion>
-		<emfVersion>2.11.2</emfVersion>
-		<project.build.sourceEncoding>windows-1252</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<tycho-version>2.7.5</tycho-version>
+		<xtextVersion>2.28.0</xtextVersion>
+		<emfVersion>2.13.0</emfVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<modules>
@@ -46,6 +44,7 @@
 		<module>de.darmstadt.tu.crossing.CrySL.repository</module>
 		<module>de.darmstadt.tu.crossing.CrySL.tests</module>
 	</modules>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -53,6 +52,11 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
+				<version>${tycho-version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -91,7 +95,6 @@
 				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
 					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
 					we can list it after. -->
-
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
@@ -190,8 +193,8 @@
 											[0.23.1,)
 										</versionRange>
 										<goals>
-											<goal>build-qualifier</goal>
-											<goal>build-qualifier-aggregator</goal>
+											<goal>build</goal>
+											<goal>build-aggregator</goal>
 											<goal>validate-id</goal>
 											<goal>validate-version</goal>
 										</goals>
@@ -349,7 +352,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -360,46 +362,4 @@
 			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>eclipse</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/2020-03</url>
-		</repository>
-		<repository>
-			<id>xtext</id>
-			<layout>p2</layout>
-			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtextVersion}/</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		
-	</pluginRepositories>
-
-	<dependencies>
-	</dependencies>
 </project>

@@ -7,7 +7,6 @@
 		<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
 		<version>2.0.1</version>
 	</parent>
-	<version>2.0.1</version>
 	<artifactId>de.darmstadt.tu.crossing.CrySL</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
@@ -16,7 +15,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
@@ -99,7 +98,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>

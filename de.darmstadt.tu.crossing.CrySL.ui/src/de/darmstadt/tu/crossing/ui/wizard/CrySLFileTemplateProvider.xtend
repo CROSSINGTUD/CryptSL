@@ -24,11 +24,11 @@ final class HelloWorldFile {
 	val helloName = combo("Hello Name:", #["Xtext", "World", "Foo", "Bar"], "The name to say 'Hello' to")
 
 	override generateFiles(IFileGenerator generator) {
-		generator.generate('''«folder»/«name».crysl''', '''
+		generator.generate('''Â«folderÂ»/Â«nameÂ».crysl''', '''
 			/*
 			 * This is an example model
 			 */
-			Hello «helloName»!
+			Hello Â«helloNameÂ»!
 		''')
 	}
 }

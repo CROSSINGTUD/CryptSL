@@ -8,8 +8,4 @@
 	</parent>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.target</artifactId>
 	<packaging>eclipse-target-definition</packaging>
-
-
-	<dependencies>
-	</dependencies>
 </project>
