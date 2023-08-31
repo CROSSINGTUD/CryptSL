@@ -267,16 +267,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.8</version>
-					<extensions>true</extensions>
-					<configuration>
-						<serverId>soot-snapshot</serverId>
-						<nexusUrl>https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot</nexusUrl>
-					</configuration>
-				</plugin>
-				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<executions>
 						<execution>
