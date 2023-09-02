@@ -9,12 +9,12 @@ on:
       - completed
 
 jobs:
-  build:
+  deployment:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
-    name: Project build in ${{ matrix.os }}
+    name: Deployment in ${{ matrix.os }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3

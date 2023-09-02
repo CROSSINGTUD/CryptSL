@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  Version-Update:
+  version-update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
