@@ -1,7 +1,6 @@
 name: Deploy CrySL
 
 # This workflow runs after the version has been updated
-# If there are any problems with the updates, CrySL will not be deployed
 # This action only runs on the default branch
 on:
   workflow_run:
@@ -10,13 +9,12 @@ on:
       - completed
 
 jobs:
-  build:
+  deployment:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    name: Project build in ${{ matrix.os }}
+    name: Deployment in ${{ matrix.os }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -26,12 +24,17 @@ jobs:
         with:
           distribution: 'adopt'
           java-package: 'jdk'
-          java-version: '8'
+          java-version: '11'
           server-id: 'ossrh' # must match the serverId configured for the nexus-staging-maven-plugin
           server-username: OSSRH_USERNAME # Env var that holds your OSSRH user name
           server-password: OSSRH_PASSWORD # Env var that holds your OSSRH user pw
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Substituted with the value stored in the referenced secret
           gpg-passphrase: SIGN_KEY_PASS # Env var that holds the key's passphrase
+      # Sets up Maven version
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.2
+        with:
+          maven-version: 3.6.3
       - name: Build & Deploy CrySL
         run: mvn -B -U clean deploy
         env:

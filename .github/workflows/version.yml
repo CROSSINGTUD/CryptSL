@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  Version-Update:
+  version-update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -51,4 +51,5 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git commit -am "Update CrySL version to ${{ steps.versioning.outputs.version }}"
           git tag ${{ steps.versioning.outputs.version }}
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/CROSSINGTUD/CryptSL.git
           git push --atomic origin master ${{ steps.versioning.outputs.version }}
