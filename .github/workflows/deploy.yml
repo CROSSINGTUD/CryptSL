@@ -33,7 +33,7 @@ jobs:
         with:
           maven-version: 3.6.3
       - name: Build & Deploy CrySL
-        run: mvn -B -U clean deploy
+        run: mvn -B -U clean deploy -Pdeployment
         env:
           SIGN_KEY_PASS: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
           OSSRH_USERNAME: ${{ secrets.SONATYPE_USER }}
