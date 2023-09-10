@@ -1,12 +1,9 @@
 name: Deploy CrySL
 
-# This workflow runs after the version has been updated
-# This action only runs on the default branch
 on:
-  workflow_run:
-    workflows: ["Update CrySL version"]
-    types:
-      - completed
+  push:
+    branches:
+      - master
 
 jobs:
   deployment:
@@ -32,7 +29,7 @@ jobs:
           gpg-passphrase: SIGN_KEY_PASS # Env var that holds the key's passphrase
       # Sets up Maven version
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.2
+        uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.6.3
       - name: Build & Deploy CrySL
