@@ -62,12 +62,12 @@ jobs:
       - name: Create branch and update CrySL version
         if:  ${{ env.VERSION_BRANCH_EXISTS == '0' }}
         run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
           git checkout -b version_${{ steps.versioning.outputs.version }}
           mvn build-helper:parse-version versions:set -DnewVersion=\${{ steps.versioning.outputs.version }} versions:commit
           mvn tycho-versions:update-eclipse-metadata
           git ls-files | grep 'pom.xml$' | xargs git add
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
           git commit --allow-empty -am "Update CrySL version to ${{ steps.versioning.outputs.version }}"
           git push origin version_${{ steps.versioning.outputs.version }}
       # If a PR "version_<version>" -> "master" does not exist, create the PR
