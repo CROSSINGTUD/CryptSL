@@ -110,6 +110,8 @@ jobs:
           git push origin ${{ steps.versioning.outputs.version }}
 
   deployment:
+    # Sonatype allows the deployment of one version exactly once. If the version gets updated, the new version will be
+    # deployed automatically
     needs: version-release
     strategy:
       matrix:
