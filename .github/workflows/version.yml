@@ -62,8 +62,8 @@ jobs:
       - name: Create branch and update CrySL version
         if:  ${{ env.VERSION_BRANCH_EXISTS == '0' }}
         run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git checkout -b version_${{ steps.versioning.outputs.version }}
           mvn build-helper:parse-version versions:set -DnewVersion=\${{ steps.versioning.outputs.version }} versions:commit
           mvn tycho-versions:update-eclipse-metadata
@@ -108,3 +108,37 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git tag -a ${{ steps.versioning.outputs.version }} -m "CrySL version ${{ steps.versioning.outputs.version }}"
           git push origin ${{ steps.versioning.outputs.version }}
+
+  deployment:
+    needs: version-release
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    name: Deployment in ${{ matrix.os }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      # Sets up Java version
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-package: 'jdk'
+          java-version: '11'
+          server-id: 'ossrh' # must match the serverId configured for the nexus-staging-maven-plugin
+          server-username: OSSRH_USERNAME # Env var that holds your OSSRH user name
+          server-password: OSSRH_PASSWORD # Env var that holds your OSSRH user pw
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Substituted with the value stored in the referenced secret
+          gpg-passphrase: SIGN_KEY_PASS # Env var that holds the key's passphrase
+      # Sets up Maven version
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.6.3
+      - name: Build & Deploy CrySL
+        run: mvn -B -U clean deploy -Pdeployment
+        env:
+          SIGN_KEY_PASS: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
+          OSSRH_USERNAME: ${{ secrets.SONATYPE_USER }}
+          OSSRH_PASSWORD: ${{ secrets.SONATYPE_PW }}
