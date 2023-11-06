@@ -20,6 +20,18 @@
 					<includeAllDependencies>true</includeAllDependencies>
 				</configuration>
 			</plugin>
+			<plugin>
+				<!-- Skip this plugin because there are no source files to build from -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<phase/>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
