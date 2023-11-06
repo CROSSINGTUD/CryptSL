@@ -1015,7 +1015,7 @@ public class CrySLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Primary returns Expression
 	 *
 	 * Constraint:
-	 *     ((orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')?)? elementop='?'? ((elementop='+' | elementop='*')? elementop='?'?)*)
+	 *     ((orderEv+=[Event|ID] (elementop='+' | elementop='?' | elementop='*')?)? elementop='*'? ((elementop='+' | elementop='?')? elementop='*'?)*)
 	 */
 	protected void sequence_Primary(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
