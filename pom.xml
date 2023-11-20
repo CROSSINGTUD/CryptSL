@@ -31,7 +31,7 @@
 	<properties>
 		<tycho-version>2.7.5</tycho-version>
 		<xtextVersion>2.32.0</xtextVersion>
-		<emfVersion>2.15.0</emfVersion>
+		<emfVersion>2.16.0</emfVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
