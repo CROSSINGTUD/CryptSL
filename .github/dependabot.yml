@@ -6,3 +6,7 @@ updates:
     interval: weekly
     time: "04:00"
   open-pull-requests-limit: 10
+  # tycho 3 and tycho 4 requires Java version 17 to be built
+  ignore:
+    - dependency-name: "org.eclipse.tycho:tycho-maven-plugin"
+      versions: ["3.x.x", "4.x.x"]
