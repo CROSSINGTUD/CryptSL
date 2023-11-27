@@ -8,4 +8,27 @@
 	</parent>
 	<artifactId>de.darmstadt.tu.crossing.CrySL.target</artifactId>
 	<packaging>eclipse-target-definition</packaging>
+
+	<name>CrySL-Target</name>
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v2.0</name>
+			<url>https://www.eclipse.org/legal/epl-2.0/</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>CogniCrypt</id>
+			<name>CogniCrypt</name>
+			<email>cognicrypt@eim.upb.de</email>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:CROSSINGTUD/CryptSL.git</connection>
+		<developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
+		<url>https://github.com/CROSSINGTUD/CryptSL</url>
+	</scm>
+	<description>CrySL domain-specific language</description>
+	<url>https://github.com/CROSSINGTUD/CryptSL</url>
+
 </project>
