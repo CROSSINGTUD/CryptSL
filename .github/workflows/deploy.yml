@@ -8,6 +8,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
+    environment: Deploy
     name: Deployment in ${{ matrix.os }}
     steps:
       - name: Checkout source code
