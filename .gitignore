@@ -121,6 +121,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.idea/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -193,6 +194,8 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+.flattened-pom.xml
+**.iml
 
 # Eclipse m2e generated files
 # Eclipse Core

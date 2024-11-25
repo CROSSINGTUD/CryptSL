@@ -1,73 +1,75 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>de.darmstadt.tu.crossing.CrySL</groupId>
-		<artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
-		<version>3.0.2</version>
-	</parent>
-	<artifactId>de.darmstadt.tu.crossing.CrySL.ide</artifactId>
-	<packaging>eclipse-plugin</packaging>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.darmstadt.tu.crossing.CrySL</groupId>
+        <artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
+        <version>3.0.2</version>
+    </parent>
+    <artifactId>de.darmstadt.tu.crossing.CrySL.ide</artifactId>
+    <packaging>eclipse-plugin</packaging>
 
-	<name>CrySL-IDE</name>
-	<licenses>
-		<license>
-			<name>Eclipse Public License - v2.0</name>
-			<url>https://www.eclipse.org/legal/epl-2.0/</url>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<id>CogniCrypt</id>
-			<name>CogniCrypt</name>
-			<email>cognicrypt@eim.upb.de</email>
-		</developer>
-	</developers>
-	<scm>
-		<connection>scm:git:git@github.com:CROSSINGTUD/CryptSL.git</connection>
-		<developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
-		<url>https://github.com/CROSSINGTUD/CryptSL</url>
-	</scm>
-	<description>CrySL domain-specific language</description>
-	<url>https://github.com/CROSSINGTUD/CryptSL</url>
+    <name>CrySL-IDE</name>
+    <description>CrySL domain-specific language</description>
+    <url>https://github.com/CROSSINGTUD/CryptSL</url>
+    <licenses>
+        <license>
+            <name>Eclipse Public License - v2.0</name>
+            <url>https://www.eclipse.org/legal/epl-2.0/</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>CogniCrypt</id>
+            <name>CogniCrypt</name>
+            <email>cognicrypt@eim.upb.de</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com:CROSSINGTUD/CryptSL.git</connection>
+        <developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
+        <url>https://github.com/CROSSINGTUD/CryptSL</url>
+    </scm>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.4.0</version>
-				<executions>
-					<execution>
-						<id>gen-clean</id>
-						<phase>clean</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>make-assembly</id> <!-- this is used for inheritance merges -->
-						<phase>package</phase> <!-- bind to the packaging phase -->
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<outputDirectory>build</outputDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>gen-clean</id>
+                        <phase>clean</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.xtend</groupId>
+                <artifactId>xtend-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <outputDirectory>build</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <!-- this is used for inheritance merges -->
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
