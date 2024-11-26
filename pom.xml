@@ -354,6 +354,7 @@
                             <include>de.darmstadt.tu.crossing.CrySL.tests/pom.xml</include>
                             <include>de.darmstadt.tu.crossing.CrySL.ui/pom.xml</include>
                             <include>de.darmstadt.tu.crossing.CrySL/pom.xml</include>
+                            <include>CrySLParser/pom.xml</include>
                         </includes>
                         <sortPom>
                             <encoding>UTF-8</encoding>
