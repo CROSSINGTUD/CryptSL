@@ -1,0 +1,11 @@
+SPEC statemachine.StateMachineTester
+
+EVENTS
+    Con: StateMachineTester();
+    Op1: operation1();
+    Op2: operation2();
+    Op3: operation3();
+    Op4: operation4();
+
+ORDER
+    Con, (Op1?, Op2, Op3)*

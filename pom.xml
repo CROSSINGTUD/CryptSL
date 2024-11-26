@@ -25,6 +25,7 @@
     </developers>
 
     <modules>
+        <module>CrySLParser</module>
         <module>de.darmstadt.tu.crossing.CrySL</module>
         <module>de.darmstadt.tu.crossing.CrySL.ide</module>
         <module>de.darmstadt.tu.crossing.CrySL.ui</module>
@@ -55,12 +56,10 @@
         <xtextVersion>2.35.0</xtextVersion>
         <emfVersion>2.19.0</emfVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>11</java.version>
     </properties>
 
     <build>
-
         <pluginManagement>
             <plugins>
                 <!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
@@ -204,7 +203,6 @@
                             <artifactId>org.eclipse.emf.codegen</artifactId>
                             <version>2.24.0</version>
                         </dependency>
-
                     </dependencies>
                 </plugin>
                 <plugin>
@@ -236,9 +234,23 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.5.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
