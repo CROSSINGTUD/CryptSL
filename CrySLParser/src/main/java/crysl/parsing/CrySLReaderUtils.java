@@ -1,5 +1,12 @@
 package crysl.parsing;
 
+import crysl.rule.CrySLArithmeticConstraint;
+import crysl.rule.CrySLComparisonConstraint;
+import crysl.rule.CrySLConstraint;
+import crysl.rule.CrySLException;
+import crysl.rule.CrySLMethod;
+import crysl.rule.CrySLObject;
+import crysl.rule.ICrySLPredicateParameter;
 import de.darmstadt.tu.crossing.crySL.Aggregate;
 import de.darmstadt.tu.crossing.crySL.AnyParameterType;
 import de.darmstadt.tu.crossing.crySL.BooleanLiteral;
@@ -16,13 +23,6 @@ import de.darmstadt.tu.crossing.crySL.Method;
 import de.darmstadt.tu.crossing.crySL.Object;
 import de.darmstadt.tu.crossing.crySL.Operator;
 import de.darmstadt.tu.crossing.crySL.StringLiteral;
-import crysl.rule.CrySLArithmeticConstraint;
-import crysl.rule.CrySLComparisonConstraint;
-import crysl.rule.CrySLConstraint;
-import crysl.rule.CrySLException;
-import crysl.rule.CrySLMethod;
-import crysl.rule.CrySLObject;
-import crysl.rule.ICrySLPredicateParameter;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Collection;
 import java.util.List;

@@ -1,7 +1,7 @@
 package crysl;
 
-import crysl.parsing.CrySLParserException;
 import crysl.parsing.CrySLModelReader;
+import crysl.parsing.CrySLParserException;
 import crysl.rule.CrySLRule;
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,9 +1,9 @@
 package crysl.parsing;
 
-import de.darmstadt.tu.crossing.crySL.EventsBlock;
-import de.darmstadt.tu.crossing.crySL.LabeledMethodCall;
 import crysl.rule.CrySLExceptionConstraint;
 import crysl.rule.CrySLMethod;
+import de.darmstadt.tu.crossing.crySL.EventsBlock;
+import de.darmstadt.tu.crossing.crySL.LabeledMethodCall;
 import java.util.Collection;
 import java.util.stream.Collectors;
 

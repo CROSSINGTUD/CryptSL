@@ -1,13 +1,13 @@
 package crysl.parsing;
 
-import de.darmstadt.tu.crossing.crySL.Event;
-import de.darmstadt.tu.crossing.crySL.Order;
-import de.darmstadt.tu.crossing.crySL.OrderOperator;
-import de.darmstadt.tu.crossing.crySL.Primary;
 import crysl.rule.CrySLMethod;
 import crysl.rule.FiniteStateMachine;
 import crysl.rule.StateMachineGraph;
 import crysl.rule.StateNode;
+import de.darmstadt.tu.crossing.crySL.Event;
+import de.darmstadt.tu.crossing.crySL.Order;
+import de.darmstadt.tu.crossing.crySL.OrderOperator;
+import de.darmstadt.tu.crossing.crySL.Primary;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
