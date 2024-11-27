@@ -1,4 +1,4 @@
-SPEC statemachine.StateMachineTester
+SPEC rules.statemachine.StateMachineTester
 
 EVENTS
     Con: StateMachineTester();

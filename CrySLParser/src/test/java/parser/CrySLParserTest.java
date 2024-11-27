@@ -1,7 +1,7 @@
 package parser;
 
-import de.darmstadt.tu.crossing.CrySLParser;
-import de.darmstadt.tu.crossing.rule.CrySLRule;
+import crysl.CrySLParser;
+import crysl.rule.CrySLRule;
 import java.io.IOException;
 import java.util.Collection;
 import org.junit.Assert;
