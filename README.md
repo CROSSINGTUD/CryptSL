@@ -19,7 +19,7 @@ In your program, you can import the `crysl.CrySLParser` and read a set of `.crys
 CrySLParser parser = new CrySLParser();
 Collection<CrySLRule> rules = parser.parseRulesFromPath("path/to/directory_or_zip_file");
 
-System.out.println("Found " + rules.size() + " for classes:");
+System.out.println("Found " + rules.size() + " rules for classes:");
 for (CrySLRule rule : rules) {
     System.out.println(rule.getClassName());
 }
