@@ -25,7 +25,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-package: jdk
-          java-version: '11'
+          java-version: '17'
       # Restores Maven dependecies
       - name: Restore local Maven repository
         uses: actions/cache@v3
