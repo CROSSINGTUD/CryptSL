@@ -3,9 +3,6 @@ description: Check the formatting. Use "mvn spotless:apply" to format the code.
 
 on:
   push:
-    branches-ignore:
-      - master
-      - develop
 
 jobs:
   check-formatting:
@@ -14,6 +11,18 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
+      # Sets up Java version
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-package: jdk
+          java-version: '17'
+      # Tycho requires at least Maven 3.9.0
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.0
       # Restores Maven dependecies
       - name: Restore local Maven repository
         uses: actions/cache@v4

@@ -2,6 +2,13 @@
 
 CrySL is a domain-specific language that allows to specify the correct usage of APIs. Example specifications for the JavaCryptographicArchitecture (JCA), BouncyCastle and Tink can be found [here](https://github.com/CROSSINGTUD/Crypto-API-Rules).
 
+## Build
+CrySL uses Maven as build tool. You can install this project via
+
+```mvn clean install -DskipTests```
+
+Installing requires at least Java 17 and Maven 3.9.0.
+
 ## Parsing CrySL files
 We implemented a parser that reads a set of `.crysl` files and parses them into Java objects. Include the following dependency in your project (replace `x.y.z` with the latest version):
 

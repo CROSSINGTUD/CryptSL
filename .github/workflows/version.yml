@@ -25,6 +25,11 @@ jobs:
           distribution: 'adopt'
           java-package: jdk
           java-version: '17'
+      # Tycho requires at least Maven 3.9.0
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.0
       # Semantic versioning
       - name: Semantic versioning
         id: versioning
@@ -83,6 +88,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      # Tycho requires at least Maven 3.9.0
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.0
       # Semantic versioning
       - name: Semantic versioning
         id: versioning
