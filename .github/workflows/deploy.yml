@@ -22,6 +22,11 @@ jobs:
           server-password: OSSRH_PASSWORD # Env var that holds your OSSRH user pw
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Substituted with the value stored in the referenced secret
           gpg-passphrase: SIGN_KEY_PASS # Env var that holds the key's passphrase
+      # Tycho requires at least Maven 3.9.0
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.0
       - name: Build & Deploy CrySL
         run: mvn -B -U clean deploy -Pdeployment
         env:

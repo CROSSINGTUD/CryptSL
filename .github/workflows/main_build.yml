@@ -2,9 +2,6 @@ name: CrySL build
 
 on:
   push:
-    branches-ignore:
-      - master
-      - develop
   pull_request:
     types: [opened, reopened]
 
@@ -26,6 +23,11 @@ jobs:
           distribution: 'adopt'
           java-package: jdk
           java-version: '17'
+      # Tycho requires at least Maven 3.9.0
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.0
       # Restores Maven dependecies
       - name: Restore local Maven repository
         uses: actions/cache@v3
