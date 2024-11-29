@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.darmstadt.tu.crossing.CrySL.ui
 Bundle-Vendor: Technical University Darmstadt, Paderborn University
-Bundle-Version: 3.0.2
+Bundle-Version: 4.0.0
 Bundle-SymbolicName: de.darmstadt.tu.crossing.CrySL.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.darmstadt.tu.crossing.CrySL,
