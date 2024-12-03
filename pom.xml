@@ -63,8 +63,8 @@
         <pluginManagement>
             <plugins>
                 <!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
-					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
-					we can list it after. -->
+                    so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
+                    we can list it after. -->
                 <plugin>
                     <groupId>org.eclipse.xtend</groupId>
                     <artifactId>xtend-maven-plugin</artifactId>
@@ -387,13 +387,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <!-- This plugin is required for releases to Maven Central. If Javadoc is used, it has to be correct. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <profiles>
         <!-- This profile is used to avoid running the deployment in non-deployment
-			contexts because they require specific keys from the Github remote. Include
-			this profile by setting the -Pdeployment flag. -->
+            contexts because they require specific keys from the Github remote. Include
+            this profile by setting the -Pdeployment flag. -->
         <profile>
             <id>deployment</id>
             <build>
