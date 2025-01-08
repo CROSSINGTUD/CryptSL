@@ -235,9 +235,8 @@ public class CrySLModelReader {
         final Order order = orderBlock == null ? null : orderBlock.getOrder();
         this.smg = StateMachineGraphBuilder.buildSMG(order, events);
 
-        final Collection<ISLConstraint> constraints = new ArrayList<>();
-        constraints.addAll(getConstraints(model.getConstraints()));
-        constraints.addAll(getRequiredPredicates(model.getRequires()));
+        Collection<ISLConstraint> constraints = getConstraints(model.getConstraints());
+        Collection<ISLConstraint> requiredPredicates = getRequiredPredicates(model.getRequires());
 
         // Since 3.0.0: All sections are optional
         final Collection<CrySLMethod> eventMethods = new HashSet<>();
@@ -261,6 +260,7 @@ public class CrySLModelReader {
                 eventMethods,
                 this.smg,
                 constraints,
+                requiredPredicates,
                 predicates,
                 negatedPredicates);
     }
