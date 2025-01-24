@@ -1,7 +1,6 @@
 package crysl.rule;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Map;
 
 public class CrySLRule {
@@ -18,6 +17,8 @@ public class CrySLRule {
 
     private final Collection<ISLConstraint> constraints;
 
+    private final Collection<ISLConstraint> requiredPredicates;
+
     private final Collection<CrySLPredicate> predicates;
 
     private final Collection<CrySLPredicate> negatedPredicates;
@@ -29,6 +30,7 @@ public class CrySLRule {
             Collection<CrySLMethod> events,
             StateMachineGraph usagePattern,
             Collection<ISLConstraint> constraints,
+            Collection<ISLConstraint> requiredPredicates,
             Collection<CrySLPredicate> predicates,
             Collection<CrySLPredicate> negatedPredicates) {
         this.className = className;
@@ -37,6 +39,7 @@ public class CrySLRule {
         this.events = events;
         this.usagePattern = usagePattern;
         this.constraints = constraints;
+        this.requiredPredicates = requiredPredicates;
         this.predicates = predicates;
         this.negatedPredicates = negatedPredicates;
     }
@@ -113,14 +116,8 @@ public class CrySLRule {
     /**
      * @return the constraints
      */
-    public Collection<CrySLPredicate> getRequiredPredicates() {
-        Collection<CrySLPredicate> requires = new LinkedList<>();
-        for (ISLConstraint con : constraints) {
-            if (con instanceof CrySLPredicate) {
-                requires.add((CrySLPredicate) con);
-            }
-        }
-        return requires;
+    public Collection<ISLConstraint> getRequiredPredicates() {
+        return requiredPredicates;
     }
 
     @Override
