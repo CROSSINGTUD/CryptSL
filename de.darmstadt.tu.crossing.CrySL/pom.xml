@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.darmstadt.tu.crossing.CrySL</groupId>
         <artifactId>de.darmstadt.tu.crossing.CrySL.parent</artifactId>
-        <version>4.0.1</version>
+        <version>4.0.2</version>
     </parent>
     <artifactId>de.darmstadt.tu.crossing.CrySL</artifactId>
     <packaging>eclipse-plugin</packaging>
