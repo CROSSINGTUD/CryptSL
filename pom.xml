@@ -54,7 +54,7 @@
     <properties>
         <tycho-version>4.0.10</tycho-version>
         <xtextVersion>2.37.0</xtextVersion>
-        <emfVersion>2.20.0</emfVersion>
+        <emfVersion>2.21.0</emfVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
     </properties>
