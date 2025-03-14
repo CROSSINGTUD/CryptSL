@@ -1,0 +1,10 @@
+SPEC example.Example
+
+EVENTS
+    Con: Example();
+    C1: call1();
+    C2: call2();
+    C := C1 | C2;
+
+ORDER
+    Con, C
