@@ -32,6 +32,18 @@ for (CrySLRule rule : rules) {
 }
 ```
 
+By default, the CrySLParser takes the current classpath into account when resolving classes and method calls. However, you may want to read rules from classes that are not on the classpath. In this case, you can use a constructor that adds additional classes to the existing classpath s.t. the model reader can resolve them, too:
+
+```java
+// Create a path that is appended to the existing classpath
+Path path = Path.of("path/to/other/classes.jar");
+
+CrySLParser parser = new CrySLParser(Set.of(path));
+Collection<CrySLRule> rules = parser.parseRulesFromPath("path/to/directory_or_zip_file");
+
+System.out.println("Found " + rules.size() + " rules for classes:");
+```
+
 ## Publications
  Paper: https://ieeexplore.ieee.org/document/8880510
 
