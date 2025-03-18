@@ -27,11 +27,11 @@ public class CrySLParser {
     private static final Logger LOGGER = LoggerFactory.getLogger(CrySLParser.class);
     private static final String CRYSL_FILE_ENDING = ".crysl";
 
-    private final CrySLModelReader modelReader;
+    private final CrySLModelReaderClassPath classPath;
 
     /** Creates a parser for CrySL rules where the rule objects are on the current class path */
     public CrySLParser() {
-        this.modelReader = new CrySLModelReader();
+        this.classPath = CrySLModelReaderClassPath.JAVA_CLASS_PATH;
     }
 
     /**
@@ -41,9 +41,7 @@ public class CrySLParser {
      * @param virtualClassPath the additional virtual class path
      */
     public CrySLParser(Collection<Path> virtualClassPath) {
-        CrySLModelReaderClassPath classPath =
-                CrySLModelReaderClassPath.createFromPaths(virtualClassPath);
-        this.modelReader = new CrySLModelReader(classPath);
+        this.classPath = CrySLModelReaderClassPath.createFromPaths(virtualClassPath);
     }
 
     /**
@@ -124,6 +122,7 @@ public class CrySLParser {
                     "The extension of " + fileName + " does not match " + CRYSL_FILE_ENDING);
         }
 
+        CrySLModelReader modelReader = new CrySLModelReader(classPath);
         return modelReader.readRule(file);
     }
 
@@ -186,6 +185,7 @@ public class CrySLParser {
 
         try {
             String name = createUniqueZipEntryName(file, entry);
+            CrySLModelReader modelReader = new CrySLModelReader(classPath);
 
             InputStream inputStream = zipFile.getInputStream(entry);
             CrySLRule rule = modelReader.readRule(inputStream, name);

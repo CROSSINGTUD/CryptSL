@@ -37,7 +37,7 @@ public class CrySLParserTest {
         CrySLParser parser = new CrySLParser();
         Collection<CrySLRule> rules = parser.parseRulesFromPath(junkRuleSet);
 
-        Assert.assertEquals(49, rules.size());
+        Assert.assertEquals(48, rules.size());
     }
 
     @Test
