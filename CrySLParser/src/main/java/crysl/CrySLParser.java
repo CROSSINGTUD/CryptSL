@@ -1,6 +1,7 @@
 package crysl;
 
 import crysl.parsing.CrySLModelReader;
+import crysl.parsing.CrySLModelReaderClassPath;
 import crysl.parsing.CrySLParserException;
 import crysl.rule.CrySLRule;
 import java.io.File;
@@ -8,12 +9,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import org.slf4j.Logger;
@@ -23,6 +26,23 @@ public class CrySLParser {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CrySLParser.class);
     private static final String CRYSL_FILE_ENDING = ".crysl";
+
+    private final CrySLModelReaderClassPath classPath;
+
+    /** Creates a parser for CrySL rules where the rule objects are on the current class path */
+    public CrySLParser() {
+        this.classPath = CrySLModelReaderClassPath.JAVA_CLASS_PATH;
+    }
+
+    /**
+     * Creates parser for CrySL rules where the rule objects are on the current class path or on an
+     * additional virtual class path. The virtual class path is added to the current class path.
+     *
+     * @param virtualClassPath the additional virtual class path
+     */
+    public CrySLParser(Collection<Path> virtualClassPath) {
+        this.classPath = CrySLModelReaderClassPath.createFromPaths(virtualClassPath);
+    }
 
     /**
      * Reads the rules from a specific path. The path can either direct to a directory containing
@@ -40,6 +60,14 @@ public class CrySLParser {
         return parseRulesFromDirectory(path);
     }
 
+    /**
+     * Reads the rules from a directory. The path is expected to lead to a directory that contains
+     * files with the file ending '.crysl'. Any other file is ignored.
+     *
+     * @param path the path to the directory containing the crysl files
+     * @return the {@link CrySLRule} objects from the directory
+     * @throws IOException if the directory does not exist or the path does not lead to a directoy
+     */
     public Collection<CrySLRule> parseRulesFromDirectory(String path) throws IOException {
         File directory = new File(path);
         if (!directory.exists()) {
@@ -50,10 +78,16 @@ public class CrySLParser {
             throw new IOException(path + " is not a directory");
         }
 
-        Collection<File> files = Arrays.asList(directory.listFiles());
+        Collection<File> files = Arrays.asList(Objects.requireNonNull(directory.listFiles()));
         return parseRulesFromFiles(files);
     }
 
+    /**
+     * Reads the rules from a set of files. Each file is expected to represent a crysl file.
+     *
+     * @param files the set of files to read
+     * @return the {@link CrySLRule} objects from the files
+     */
     public Collection<CrySLRule> parseRulesFromFiles(Collection<File> files) {
         Collection<CrySLRule> result = new HashSet<>();
 
@@ -74,6 +108,13 @@ public class CrySLParser {
         return result;
     }
 
+    /**
+     * Reads a rule from a single file. The file is expected to lead represent a crysl file.
+     *
+     * @param file the crysl file
+     * @return the {@link CrySLRule} object from the file
+     * @throws CrySLParserException if the file is not a crysl file
+     */
     public CrySLRule parseRuleFromFile(File file) throws CrySLParserException {
         String fileName = file.getName();
         if (!fileName.endsWith(CRYSL_FILE_ENDING)) {
@@ -81,7 +122,7 @@ public class CrySLParser {
                     "The extension of " + fileName + " does not match " + CRYSL_FILE_ENDING);
         }
 
-        CrySLModelReader modelReader = new CrySLModelReader();
+        CrySLModelReader modelReader = new CrySLModelReader(classPath);
         return modelReader.readRule(file);
     }
 
@@ -102,6 +143,14 @@ public class CrySLParser {
                 || fileSignature == 0x504B0708;
     }
 
+    /**
+     * Reads the rules from a zip archive. The path is expected to lead to a file with the file
+     * ending '.zip'
+     *
+     * @param path the path to the zip archive
+     * @return the {@link CrySLRule} objects from the zip archive
+     * @throws IOException if the zip archive cannot be read
+     */
     public Collection<CrySLRule> parseRulesFromZipArchive(String path) throws IOException {
         Collection<CrySLRule> result = new HashSet<>();
         File file = new File(path);
@@ -136,10 +185,10 @@ public class CrySLParser {
 
         try {
             String name = createUniqueZipEntryName(file, entry);
-            CrySLModelReader reader = new CrySLModelReader();
+            CrySLModelReader modelReader = new CrySLModelReader(classPath);
 
             InputStream inputStream = zipFile.getInputStream(entry);
-            CrySLRule rule = reader.readRule(inputStream, name);
+            CrySLRule rule = modelReader.readRule(inputStream, name);
             inputStream.close();
 
             return rule;
