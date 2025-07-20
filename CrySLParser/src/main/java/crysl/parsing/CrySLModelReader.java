@@ -1,22 +1,7 @@
 package crysl.parsing;
 
 import com.google.inject.Injector;
-import crysl.rule.CrySLArithmeticConstraint;
-import crysl.rule.CrySLComparisonConstraint;
-import crysl.rule.CrySLCondPredicate;
-import crysl.rule.CrySLConstraint;
-import crysl.rule.CrySLForbiddenMethod;
-import crysl.rule.CrySLMethod;
-import crysl.rule.CrySLObject;
-import crysl.rule.CrySLPredicate;
-import crysl.rule.CrySLRule;
-import crysl.rule.CrySLSplitter;
-import crysl.rule.CrySLValueConstraint;
-import crysl.rule.ICrySLPredicateParameter;
-import crysl.rule.ISLConstraint;
-import crysl.rule.StateMachineGraph;
-import crysl.rule.StateNode;
-import crysl.rule.TransitionEdge;
+import crysl.rule.*;
 import de.darmstadt.tu.crossing.CrySLStandaloneSetup;
 import de.darmstadt.tu.crossing.crySL.AlternativeRequiredPredicates;
 import de.darmstadt.tu.crossing.crySL.BuiltinPredicate;
@@ -47,7 +32,11 @@ import de.darmstadt.tu.crossing.crySL.RequiredPredicate;
 import de.darmstadt.tu.crossing.crySL.RequiresBlock;
 import de.darmstadt.tu.crossing.crySL.ThisPredicateParameter;
 import de.darmstadt.tu.crossing.crySL.TimedPredicate;
+import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
+import de.darmstadt.tu.crossing.crySL.VulnerabilitiesBlock;
 import de.darmstadt.tu.crossing.crySL.WildcardPredicateParameter;
+import de.darmstadt.tu.crossing.crySL.ReferencesBlock;
+import de.darmstadt.tu.crossing.crySL.ReferenceEntry;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,6 +49,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -231,8 +221,12 @@ public class CrySLModelReader {
 
         final EventsBlock eventsBlock = model.getEvents();
         final OrderBlock orderBlock = model.getOrder();
+        final WeaknessesBlock weaknessesBlock = model.getWeaknesses();
+        final VulnerabilitiesBlock vulnerabilitiesBlock = model.getVulnerabilities();
         final Collection<Event> events = changeDeclaringClass(this.currentClass, eventsBlock);
         final Order order = orderBlock == null ? null : orderBlock.getOrder();
+        final EList<String> cwes = weaknessesBlock == null ? null : weaknessesBlock.getCwEs();
+        final EList<String> cves = vulnerabilitiesBlock == null ? null : vulnerabilitiesBlock.getCvEs();
         this.smg = StateMachineGraphBuilder.buildSMG(order, events);
 
         Collection<ISLConstraint> constraints = getConstraints(model.getConstraints());
@@ -247,6 +241,18 @@ public class CrySLModelReader {
 
         final EnsuresBlock ensuresBlock = model.getEnsures();
         final NegatesBlock negatesBlock = model.getNegates();
+        final ReferencesBlock referencesBlock = model.getReferences();
+
+        final Collection<CrySLReferenceEntry> references = new ArrayList<>();
+        if (referencesBlock != null && referencesBlock.getReferences() != null) {
+            for (ReferenceEntry ref : referencesBlock.getReferences()) {
+                references.add(new CrySLReferenceEntry(
+                        ref.getName(),
+                        ref.getAuthor(),
+                        ref.getLink()
+                ));
+            }
+        }
 
         final Collection<CrySLPredicate> predicates =
                 new ArrayList<>(getEnsuredPredicates(ensuresBlock));
@@ -262,7 +268,11 @@ public class CrySLModelReader {
                 constraints,
                 requiredPredicates,
                 predicates,
-                negatedPredicates);
+                negatedPredicates,
+                cwes,
+                cves,
+                references
+                );
     }
 
     private Collection<Event> changeDeclaringClass(

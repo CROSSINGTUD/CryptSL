@@ -16,6 +16,9 @@ Domainmodel:
 	( 'REQUIRES'    requires    = RequiresBlock    ) ?
 	( 'ENSURES'     ensures     = EnsuresBlock     ) ?
 	( 'NEGATES'     negates     = NegatesBlock     ) ?
+	( 'WEAKNESSES'  weaknesses  = WeaknessesBlock  ) ?
+	( 'VULNERABILITIES' vulnerabilities = VulnerabilitiesBlock ) ?
+	( 'REFERENCES'  references  = ReferencesBlock  ) ?
 ;
 
 
@@ -350,6 +353,26 @@ EnsuresBlock:
 
 NegatesBlock:
 	(negatedPredicates += NegatedPredicate ';')+
+;
+
+WeaknessesBlock:
+    (cwEs += CWE_ID ';')+
+;
+
+terminal CWE_ID: 'CWE-' INT;
+
+VulnerabilitiesBlock:
+    (cvEs += CVE_ID ';')+
+;
+
+terminal CVE_ID: 'CVE-' INT;
+
+ReferencesBlock:
+    (references+=ReferenceEntry ';')+
+;
+
+ReferenceEntry:
+    name=ID ',' author=ID ',' link=STRING
 ;
 
 AlternativeRequiredPredicates:

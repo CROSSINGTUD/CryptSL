@@ -23,6 +23,12 @@ public class CrySLRule {
 
     private final Collection<CrySLPredicate> negatedPredicates;
 
+    private Collection<String> cwes;
+
+    private Collection<String> cves;
+
+    private final Collection<CrySLReferenceEntry> references;
+
     public CrySLRule(
             String className,
             Collection<Map.Entry<String, String>> objects,
@@ -32,7 +38,10 @@ public class CrySLRule {
             Collection<ISLConstraint> constraints,
             Collection<ISLConstraint> requiredPredicates,
             Collection<CrySLPredicate> predicates,
-            Collection<CrySLPredicate> negatedPredicates) {
+            Collection<CrySLPredicate> negatedPredicates,
+            Collection<String> cwes,
+            Collection<String> cves,
+            Collection<CrySLReferenceEntry> references) {
         this.className = className;
         this.objects = objects;
         this.forbiddenMethods = forbiddenMethods;
@@ -42,6 +51,9 @@ public class CrySLRule {
         this.requiredPredicates = requiredPredicates;
         this.predicates = predicates;
         this.negatedPredicates = negatedPredicates;
+        this.cwes = cwes;
+        this.cves = cves;
+        this.references = references;
     }
 
     @Override
@@ -120,6 +132,26 @@ public class CrySLRule {
         return requiredPredicates;
     }
 
+    public Collection<String> getCwes() {
+        return cwes;
+    }
+
+    public void setCwes(Collection<String> cwes) {
+        this.cwes = cwes;
+    }
+
+    public Collection<String> getCves() {
+        return cves;
+    }
+
+    public void setCves(Collection<String> cves) {
+        this.cves = cves;
+    }
+
+    public Collection<CrySLReferenceEntry> getReferences() {
+        return references;
+    }
+
     @Override
     public String toString() {
         StringBuilder outputSB = new StringBuilder();
@@ -162,6 +194,31 @@ public class CrySLRule {
                 outputSB.append(", ");
             }
         }
+
+        if (this.cwes != null) {
+            outputSB.append("\nCWEs:");
+            for (String cwe : this.cwes) {
+                outputSB.append(cwe);
+                outputSB.append(", ");
+            }
+        }
+
+        if (this.cves != null) {
+            outputSB.append("\nCVEs:");
+            for (String cve : this.cves) {
+                outputSB.append(cve);
+                outputSB.append(", ");
+            }
+        }
+
+        if (this.references != null && !this.references.isEmpty()) {
+            outputSB.append("\nReferences:");
+            for (CrySLReferenceEntry reference : this.references) {
+                outputSB.append(reference);
+                outputSB.append(", ");
+            }
+        }
+
 
         return outputSB.toString();
     }
