@@ -14,8 +14,7 @@ WEAKNESSES
     CWE-200;
 
 VULNERABILITIES
-    CVE-25;
-    CVE-179;
+    CVE-2025-8269;
 
 REFERENCES
     CWE123, MITRE, "https://cwe.mitre.org/data/definitions/123.html";

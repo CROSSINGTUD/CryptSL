@@ -206,6 +206,34 @@ public class CrySLModelReader {
         }
     }
 
+    public static Collection<CrySLWeaknessEntry> toWeaknessEntries(EList<String> cwes) {
+        if (cwes == null) {
+            return Collections.emptyList();
+        }
+        return cwes.stream()
+                .map(cw -> {
+                    // cw is like "CWE-17"
+                    String number = cw.substring(cw.indexOf('-') + 1);
+                    String link = "https://cwe.mitre.org/data/definitions/" + number + ".html";
+                    return new CrySLWeaknessEntry(cw, link);
+                })
+                .collect(Collectors.toList());
+    }
+
+    public static Collection<CrySLVulnerabilityEntry> toVulnerabilityEntries(EList<String> cves) {
+        if (cves == null) {
+            return Collections.emptyList();
+        }
+        return cves.stream()
+                .map(cv -> {
+                    // cw is like "CWE-17"
+                    String id = cv;
+                    String link = "https://www.cve.org/CVERecord?id=" + id;
+                    return new CrySLVulnerabilityEntry(cv, link);
+                })
+                .collect(Collectors.toList());
+    }
+
     private CrySLRule createRuleFromDomainModel(Domainmodel model) throws CrySLParserException {
         this.currentClass = model.getJavaType();
         String currentClass = this.currentClass.getQualifiedName();
@@ -226,7 +254,9 @@ public class CrySLModelReader {
         final Collection<Event> events = changeDeclaringClass(this.currentClass, eventsBlock);
         final Order order = orderBlock == null ? null : orderBlock.getOrder();
         final EList<String> cwes = weaknessesBlock == null ? null : weaknessesBlock.getCwEs();
+        final Collection<CrySLWeaknessEntry> weaknesses = toWeaknessEntries(cwes);
         final EList<String> cves = vulnerabilitiesBlock == null ? null : vulnerabilitiesBlock.getCvEs();
+        Collection<CrySLVulnerabilityEntry> vulnerabilities = toVulnerabilityEntries(cves);
         this.smg = StateMachineGraphBuilder.buildSMG(order, events);
 
         Collection<ISLConstraint> constraints = getConstraints(model.getConstraints());
@@ -269,8 +299,8 @@ public class CrySLModelReader {
                 requiredPredicates,
                 predicates,
                 negatedPredicates,
-                cwes,
-                cves,
+                weaknesses,
+                vulnerabilities,
                 references
                 );
     }

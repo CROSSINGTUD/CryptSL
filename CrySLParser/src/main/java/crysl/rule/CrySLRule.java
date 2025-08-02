@@ -23,9 +23,9 @@ public class CrySLRule {
 
     private final Collection<CrySLPredicate> negatedPredicates;
 
-    private Collection<String> cwes;
+    private Collection<CrySLWeaknessEntry> cwes;
 
-    private Collection<String> cves;
+    private Collection<CrySLVulnerabilityEntry> cves;
 
     private final Collection<CrySLReferenceEntry> references;
 
@@ -39,8 +39,8 @@ public class CrySLRule {
             Collection<ISLConstraint> requiredPredicates,
             Collection<CrySLPredicate> predicates,
             Collection<CrySLPredicate> negatedPredicates,
-            Collection<String> cwes,
-            Collection<String> cves,
+            Collection<CrySLWeaknessEntry> cwes,
+            Collection<CrySLVulnerabilityEntry> cves,
             Collection<CrySLReferenceEntry> references) {
         this.className = className;
         this.objects = objects;
@@ -132,19 +132,19 @@ public class CrySLRule {
         return requiredPredicates;
     }
 
-    public Collection<String> getCwes() {
+    public Collection<CrySLWeaknessEntry> getCwes() {
         return cwes;
     }
 
-    public void setCwes(Collection<String> cwes) {
+    public void setCwes(Collection<CrySLWeaknessEntry> cwes) {
         this.cwes = cwes;
     }
 
-    public Collection<String> getCves() {
+    public Collection<CrySLVulnerabilityEntry> getCves() {
         return cves;
     }
 
-    public void setCves(Collection<String> cves) {
+    public void setCves(Collection<CrySLVulnerabilityEntry> cves) {
         this.cves = cves;
     }
 
@@ -197,7 +197,7 @@ public class CrySLRule {
 
         if (this.cwes != null) {
             outputSB.append("\nCWEs:");
-            for (String cwe : this.cwes) {
+            for (CrySLWeaknessEntry cwe : this.cwes) {
                 outputSB.append(cwe);
                 outputSB.append(", ");
             }
@@ -205,7 +205,7 @@ public class CrySLRule {
 
         if (this.cves != null) {
             outputSB.append("\nCVEs:");
-            for (String cve : this.cves) {
+            for (CrySLVulnerabilityEntry cve : this.cves) {
                 outputSB.append(cve);
                 outputSB.append(", ");
             }

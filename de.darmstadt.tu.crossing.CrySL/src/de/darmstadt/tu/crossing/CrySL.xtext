@@ -365,7 +365,7 @@ VulnerabilitiesBlock:
     (cvEs += CVE_ID ';')+
 ;
 
-terminal CVE_ID: 'CVE-' INT;
+terminal CVE_ID: 'CVE-' INT '-' INT;
 
 ReferencesBlock:
     (references+=ReferenceEntry ';')+
