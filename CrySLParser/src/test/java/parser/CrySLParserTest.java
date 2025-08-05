@@ -9,9 +9,6 @@ import java.util.Collection;
 import java.util.Collections;
 import org.junit.Assert;
 import org.junit.Test;
-import de.darmstadt.tu.crossing.crySL.Domainmodel;
-import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
-
 
 public class CrySLParserTest {
 
@@ -115,7 +112,16 @@ public class CrySLParserTest {
         for (CrySLRule rule : rules) {
             System.out.println("Found References for " + rules.size() + " rules for classes:");
             for (CrySLReferenceEntry ref : rule.getReferences()) {
-                System.out.println("  [" + ref.getName() + ", " + ref.getAuthor() + ", " + ref.getLink() +  ", " + ref.getPageNumbers() + "]");
+                System.out.println(
+                        "  ["
+                                + ref.getName()
+                                + ", "
+                                + ref.getAuthor()
+                                + ", "
+                                + ref.getLink()
+                                + ", "
+                                + ref.getPageNumbers()
+                                + "]");
             }
         }
     }

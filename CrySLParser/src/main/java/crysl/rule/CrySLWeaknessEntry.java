@@ -5,7 +5,7 @@ public class CrySLWeaknessEntry {
     private final String link;
 
     public CrySLWeaknessEntry(String id, String link) {
-        this.id  = id;
+        this.id = id;
         this.link = link;
     }
 

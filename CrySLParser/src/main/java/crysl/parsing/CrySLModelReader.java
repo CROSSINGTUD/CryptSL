@@ -28,15 +28,15 @@ import de.darmstadt.tu.crossing.crySL.Order;
 import de.darmstadt.tu.crossing.crySL.OrderBlock;
 import de.darmstadt.tu.crossing.crySL.Predicate;
 import de.darmstadt.tu.crossing.crySL.PredicateParameter;
+import de.darmstadt.tu.crossing.crySL.ReferenceEntry;
+import de.darmstadt.tu.crossing.crySL.ReferencesBlock;
 import de.darmstadt.tu.crossing.crySL.RequiredPredicate;
 import de.darmstadt.tu.crossing.crySL.RequiresBlock;
 import de.darmstadt.tu.crossing.crySL.ThisPredicateParameter;
 import de.darmstadt.tu.crossing.crySL.TimedPredicate;
-import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
 import de.darmstadt.tu.crossing.crySL.VulnerabilitiesBlock;
+import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
 import de.darmstadt.tu.crossing.crySL.WildcardPredicateParameter;
-import de.darmstadt.tu.crossing.crySL.ReferencesBlock;
-import de.darmstadt.tu.crossing.crySL.ReferenceEntry;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -211,12 +211,14 @@ public class CrySLModelReader {
             return Collections.emptyList();
         }
         return cwes.stream()
-                .map(cw -> {
-                    // cw is like "CWE-17"
-                    String number = cw.substring(cw.indexOf('-') + 1);
-                    String link = "https://cwe.mitre.org/data/definitions/" + number + ".html";
-                    return new CrySLWeaknessEntry(cw, link);
-                })
+                .map(
+                        cw -> {
+                            // cw is like "CWE-17"
+                            String number = cw.substring(cw.indexOf('-') + 1);
+                            String link =
+                                    "https://cwe.mitre.org/data/definitions/" + number + ".html";
+                            return new CrySLWeaknessEntry(cw, link);
+                        })
                 .collect(Collectors.toList());
     }
 
@@ -225,12 +227,13 @@ public class CrySLModelReader {
             return Collections.emptyList();
         }
         return cves.stream()
-                .map(cv -> {
-                    // cw is like "CWE-17"
-                    String id = cv;
-                    String link = "https://www.cve.org/CVERecord?id=" + id;
-                    return new CrySLVulnerabilityEntry(cv, link);
-                })
+                .map(
+                        cv -> {
+                            // cw is like "CWE-17"
+                            String id = cv;
+                            String link = "https://www.cve.org/CVERecord?id=" + id;
+                            return new CrySLVulnerabilityEntry(cv, link);
+                        })
                 .collect(Collectors.toList());
     }
 
@@ -294,7 +297,8 @@ public class CrySLModelReader {
         final Order order = orderBlock == null ? null : orderBlock.getOrder();
         final EList<String> cwes = weaknessesBlock == null ? null : weaknessesBlock.getCwEs();
         final Collection<CrySLWeaknessEntry> weaknesses = toWeaknessEntries(cwes);
-        final EList<String> cves = vulnerabilitiesBlock == null ? null : vulnerabilitiesBlock.getCvEs();
+        final EList<String> cves =
+                vulnerabilitiesBlock == null ? null : vulnerabilitiesBlock.getCvEs();
         Collection<CrySLVulnerabilityEntry> vulnerabilities = toVulnerabilityEntries(cves);
         this.smg = StateMachineGraphBuilder.buildSMG(order, events);
 
@@ -315,12 +319,12 @@ public class CrySLModelReader {
         final Collection<CrySLReferenceEntry> references = new ArrayList<>();
         if (referencesBlock != null && referencesBlock.getReferences() != null) {
             for (ReferenceEntry ref : referencesBlock.getReferences()) {
-                references.add(new CrySLReferenceEntry(
-                        ref.getName(),
-                        ref.getAuthor(),
-                        ref.getLink(),
-                        expandPageRange(ref.getPageNumbers())
-                ));
+                references.add(
+                        new CrySLReferenceEntry(
+                                ref.getName(),
+                                ref.getAuthor(),
+                                ref.getLink(),
+                                expandPageRange(ref.getPageNumbers())));
             }
         }
 
@@ -341,8 +345,7 @@ public class CrySLModelReader {
                 negatedPredicates,
                 weaknesses,
                 vulnerabilities,
-                references
-                );
+                references);
     }
 
     private Collection<Event> changeDeclaringClass(
