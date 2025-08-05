@@ -115,7 +115,7 @@ public class CrySLParserTest {
         for (CrySLRule rule : rules) {
             System.out.println("Found References for " + rules.size() + " rules for classes:");
             for (CrySLReferenceEntry ref : rule.getReferences()) {
-                System.out.println("  [" + ref.getName() + ", " + ref.getAuthor() + ", " + ref.getLink() + "]");
+                System.out.println("  [" + ref.getName() + ", " + ref.getAuthor() + ", " + ref.getLink() +  ", " + ref.getPageNumbers() + "]");
             }
         }
     }

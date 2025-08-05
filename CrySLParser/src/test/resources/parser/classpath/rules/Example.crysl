@@ -17,6 +17,4 @@ VULNERABILITIES
     CVE-2025-8269;
 
 REFERENCES
-    CWE123, MITRE, "https://cwe.mitre.org/data/definitions/123.html";
-    OWASP2023, OWASP, "https://owasp.org/Top10/";
-    NIST80063B, NIST, "https://pages.nist.gov/800-63-3/sp800-63b.html";
+    CWE123, MITRE, "https://cwe.mitre.org/data/definitions/123.html", {2-4,6,8-10};

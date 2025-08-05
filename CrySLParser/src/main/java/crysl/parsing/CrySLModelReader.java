@@ -234,6 +234,45 @@ public class CrySLModelReader {
                 .collect(Collectors.toList());
     }
 
+    public static List<Integer> expandPageRange(String pageRange) {
+        List<Integer> result = new ArrayList<>();
+
+        if (pageRange == null || pageRange.isEmpty()) {
+            return result;
+        }
+
+        String[] parts = pageRange.split(",");
+
+        for (String part : parts) {
+            part = part.trim();
+            if (part.contains("-")) {
+                String[] bounds = part.split("-");
+                if (bounds.length == 2) {
+                    try {
+                        int start = Integer.parseInt(bounds[0].replaceAll("_", ""));
+                        int end = Integer.parseInt(bounds[1].replaceAll("_", ""));
+                        if (start <= end) {
+                            for (int i = start; i <= end; i++) {
+                                result.add(i);
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        // log or handle invalid input
+                    }
+                }
+            } else {
+                try {
+                    int page = Integer.parseInt(part.replaceAll("_", ""));
+                    result.add(page);
+                } catch (NumberFormatException e) {
+                    // log or handle invalid input
+                }
+            }
+        }
+
+        return result;
+    }
+
     private CrySLRule createRuleFromDomainModel(Domainmodel model) throws CrySLParserException {
         this.currentClass = model.getJavaType();
         String currentClass = this.currentClass.getQualifiedName();
@@ -279,7 +318,8 @@ public class CrySLModelReader {
                 references.add(new CrySLReferenceEntry(
                         ref.getName(),
                         ref.getAuthor(),
-                        ref.getLink()
+                        ref.getLink(),
+                        expandPageRange(ref.getPageNumbers())
                 ));
             }
         }

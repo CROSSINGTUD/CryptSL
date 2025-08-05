@@ -372,8 +372,10 @@ ReferencesBlock:
 ;
 
 ReferenceEntry:
-    name=ID ',' author=ID ',' link=STRING
+    name=ID ',' author=ID ',' link=STRING ( ',' '{' pageNumbers=PAGES '}' )?
 ;
+
+terminal PAGES:  INT ('-' INT)? (',' INT ('-' INT)?)*;
 
 AlternativeRequiredPredicates:
 	alternatives += RequiredPredicate ('||' alternatives += RequiredPredicate)*
