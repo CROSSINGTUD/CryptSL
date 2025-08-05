@@ -8,3 +8,13 @@ EVENTS
 
 ORDER
     Con, C
+
+WEAKNESSES
+    CWE-17;
+    CWE-200;
+
+VULNERABILITIES
+    CVE-2025-8269;
+
+REFERENCES
+    CWE123, MITRE, "https://cwe.mitre.org/data/definitions/123.html", {2-4,6,8-10};

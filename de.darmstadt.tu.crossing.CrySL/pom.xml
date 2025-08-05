@@ -31,6 +31,26 @@
         <developerConnection>scm:git:ssh://github.com:CROSSINGTUD/CryptSL.git</developerConnection>
         <url>https://github.com/CROSSINGTUD/CryptSL</url>
     </scm>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.xtext</groupId>
+            <artifactId>org.eclipse.xtext</artifactId>
+            <version>2.39.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.xtext</groupId>
+            <artifactId>org.eclipse.xtext.common.types</artifactId>
+            <version>2.39.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.xtext</groupId>
+            <artifactId>org.eclipse.xtext.xbase</artifactId>
+            <version>2.39.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>
