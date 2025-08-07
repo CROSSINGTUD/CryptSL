@@ -375,7 +375,7 @@ ReferenceEntry:
     name=STRING ',' author=STRING ',' link=STRING ( ',' '{' pageNumbers=PAGES '}' )?
 ;
 
-terminal PAGES:  INT ('-' INT)? (',' INT ('-' INT)?)*;
+terminal PAGES:  INT ('-' INT)? (',' WS? INT ('-' INT?)?)*;
 
 AlternativeRequiredPredicates:
 	alternatives += RequiredPredicate ('||' alternatives += RequiredPredicate)*
