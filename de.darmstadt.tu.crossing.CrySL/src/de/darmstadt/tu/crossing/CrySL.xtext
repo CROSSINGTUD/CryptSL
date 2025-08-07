@@ -372,7 +372,7 @@ ReferencesBlock:
 ;
 
 ReferenceEntry:
-    name=ID ',' author=ID ',' link=STRING ( ',' '{' pageNumbers=PAGES '}' )?
+    name=STRING ',' author=STRING ',' link=STRING ( ',' '{' pageNumbers=PAGES '}' )?
 ;
 
 terminal PAGES:  INT ('-' INT)? (',' INT ('-' INT)?)*;

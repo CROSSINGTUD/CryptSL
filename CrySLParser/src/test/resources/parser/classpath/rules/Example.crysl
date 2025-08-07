@@ -17,4 +17,4 @@ VULNERABILITIES
     CVE-2025-8269;
 
 REFERENCES
-    CWE123, MITRE, "https://cwe.mitre.org/data/definitions/123.html", {2-4,6,8-10};
+    "Name of the Paper", "Author", "https://example/pages/123.html", {3072,4096};
