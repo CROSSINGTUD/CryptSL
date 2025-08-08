@@ -37,6 +37,8 @@ import de.darmstadt.tu.crossing.crySL.TimedPredicate;
 import de.darmstadt.tu.crossing.crySL.VulnerabilitiesBlock;
 import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
 import de.darmstadt.tu.crossing.crySL.WildcardPredicateParameter;
+import de.darmstadt.tu.crossing.crySL.PageList;
+import de.darmstadt.tu.crossing.crySL.PageRange;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -237,42 +239,39 @@ public class CrySLModelReader {
                 .collect(Collectors.toList());
     }
 
-    public static List<Integer> expandPageRange(String pageRange) {
+    private static int parseIntUnderscore(String s) {
+        return Integer.parseInt(s.replace("_", "").trim());
+    }
+
+    public static List<Integer> expandPageRange(PageList list) {
         List<Integer> result = new ArrayList<>();
 
-        if (pageRange == null || pageRange.isEmpty()) {
+        if (list == null || list.getRanges() == null) {
             return result;
         }
 
-        String[] parts = pageRange.split(",");
+        for (PageRange r : list.getRanges()) {
+            String startStr = r.getStart();
+            if (startStr == null || startStr.isBlank()) continue;
 
-        for (String part : parts) {
-            part = part.trim();
-            if (part.contains("-")) {
-                String[] bounds = part.split("-");
-                if (bounds.length == 2) {
-                    try {
-                        int start = Integer.parseInt(bounds[0].replaceAll("_", ""));
-                        int end = Integer.parseInt(bounds[1].replaceAll("_", ""));
-                        if (start <= end) {
-                            for (int i = start; i <= end; i++) {
-                                result.add(i);
-                            }
-                        }
-                    } catch (NumberFormatException e) {
-                        // log or handle invalid input
+            try {
+                int start = parseIntUnderscore(startStr);
+                String endStr = r.getEnd();
+
+                if (endStr == null || endStr.isBlank()) {
+                    // single page
+                    result.add(start);
+                } else {
+                    int end = parseIntUnderscore(endStr);
+                    if (end >= start) {
+                        for (int i = start; i <= end; i++) result.add(i);
                     }
+                    // else: ignore or log; matches your current "log or handle" behavior
                 }
-            } else {
-                try {
-                    int page = Integer.parseInt(part.replaceAll("_", ""));
-                    result.add(page);
-                } catch (NumberFormatException e) {
-                    // log or handle invalid input
-                }
+            } catch (NumberFormatException e) {
+                // ignore or log invalid INTs, consistent with your current code
             }
         }
-
         return result;
     }
 
