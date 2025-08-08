@@ -22,7 +22,7 @@ public class CrySLParserTest {
         CrySLParser parser = new CrySLParser();
         Collection<CrySLRule> rules = parser.parseRulesFromPath(jcaRulesetZipFilePath);
 
-        Assert.assertEquals(43, rules.size());
+        Assert.assertEquals(49, rules.size());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class CrySLParserTest {
         CrySLParser parser = new CrySLParser();
         Collection<CrySLRule> rules = parser.parseRulesFromZipArchive(jcaRulesetZipFilePath);
 
-        Assert.assertEquals(43, rules.size());
+        Assert.assertEquals(49, rules.size());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class CrySLParserTest {
         CrySLParser parser = new CrySLParser();
         Collection<CrySLRule> rules = parser.parseRulesFromPath(junkRuleSet);
 
-        Assert.assertEquals(41, rules.size());
+        Assert.assertEquals(48, rules.size());
     }
 
     @Test
@@ -60,10 +60,10 @@ public class CrySLParserTest {
     public void testRunTwiceSameResult() throws IOException {
         CrySLParser parser = new CrySLParser();
         Collection<CrySLRule> rules = parser.parseRulesFromPath(jcaRulesetZipFilePath);
-        Assert.assertEquals(43, rules.size());
+        Assert.assertEquals(49, rules.size());
 
         rules = parser.parseRulesFromPath(jcaRulesetZipFilePath);
-        Assert.assertEquals(43, rules.size());
+        Assert.assertEquals(49, rules.size());
     }
 
     @Test

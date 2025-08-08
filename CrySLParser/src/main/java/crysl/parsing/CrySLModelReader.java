@@ -251,7 +251,7 @@ public class CrySLModelReader {
         }
 
         for (PageRange r : list.getRanges()) {
-            String startStr = r.getStart();
+            /*String startStr = r.getStart();
             if (startStr == null || startStr.isBlank()) continue;
 
             try {
@@ -270,7 +270,7 @@ public class CrySLModelReader {
                 }
             } catch (NumberFormatException e) {
                 // ignore or log invalid INTs, consistent with your current code
-            }
+            }*/
         }
         return result;
     }
