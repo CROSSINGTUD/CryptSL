@@ -1,22 +1,7 @@
 package crysl.parsing;
 
 import com.google.inject.Injector;
-import crysl.rule.CrySLArithmeticConstraint;
-import crysl.rule.CrySLComparisonConstraint;
-import crysl.rule.CrySLCondPredicate;
-import crysl.rule.CrySLConstraint;
-import crysl.rule.CrySLForbiddenMethod;
-import crysl.rule.CrySLMethod;
-import crysl.rule.CrySLObject;
-import crysl.rule.CrySLPredicate;
-import crysl.rule.CrySLRule;
-import crysl.rule.CrySLSplitter;
-import crysl.rule.CrySLValueConstraint;
-import crysl.rule.ICrySLPredicateParameter;
-import crysl.rule.ISLConstraint;
-import crysl.rule.StateMachineGraph;
-import crysl.rule.StateNode;
-import crysl.rule.TransitionEdge;
+import crysl.rule.*;
 import de.darmstadt.tu.crossing.CrySLStandaloneSetup;
 import de.darmstadt.tu.crossing.crySL.AlternativeRequiredPredicates;
 import de.darmstadt.tu.crossing.crySL.BuiltinPredicate;
@@ -41,12 +26,18 @@ import de.darmstadt.tu.crossing.crySL.ObjectsBlock;
 import de.darmstadt.tu.crossing.crySL.Operator;
 import de.darmstadt.tu.crossing.crySL.Order;
 import de.darmstadt.tu.crossing.crySL.OrderBlock;
+import de.darmstadt.tu.crossing.crySL.PageList;
+import de.darmstadt.tu.crossing.crySL.PageRange;
 import de.darmstadt.tu.crossing.crySL.Predicate;
 import de.darmstadt.tu.crossing.crySL.PredicateParameter;
+import de.darmstadt.tu.crossing.crySL.ReferenceEntry;
+import de.darmstadt.tu.crossing.crySL.ReferencesBlock;
 import de.darmstadt.tu.crossing.crySL.RequiredPredicate;
 import de.darmstadt.tu.crossing.crySL.RequiresBlock;
 import de.darmstadt.tu.crossing.crySL.ThisPredicateParameter;
 import de.darmstadt.tu.crossing.crySL.TimedPredicate;
+import de.darmstadt.tu.crossing.crySL.VulnerabilitiesBlock;
+import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
 import de.darmstadt.tu.crossing.crySL.WildcardPredicateParameter;
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +51,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -216,6 +208,59 @@ public class CrySLModelReader {
         }
     }
 
+    public static Collection<CrySLWeaknessEntry> toWeaknessEntries(EList<String> cwes) {
+        if (cwes == null) {
+            return Collections.emptyList();
+        }
+        return cwes.stream()
+                .map(
+                        cw -> {
+                            // cw is like "CWE-17"
+                            String number = cw.substring(cw.indexOf('-') + 1);
+                            String link =
+                                    "https://cwe.mitre.org/data/definitions/" + number + ".html";
+                            return new CrySLWeaknessEntry(cw, link);
+                        })
+                .collect(Collectors.toList());
+    }
+
+    public static Collection<CrySLVulnerabilityEntry> toVulnerabilityEntries(EList<String> cves) {
+        if (cves == null) {
+            return Collections.emptyList();
+        }
+        return cves.stream()
+                .map(
+                        cv -> {
+                            // cw is like "CWE-17"
+                            String id = cv;
+                            String link = "https://www.cve.org/CVERecord?id=" + id;
+                            return new CrySLVulnerabilityEntry(cv, link);
+                        })
+                .collect(Collectors.toList());
+    }
+
+    public static List<Integer> expandPageRange(PageList list) {
+        List<Integer> result = new ArrayList<>();
+
+        if (list == null || list.getRanges() == null) {
+            return result;
+        }
+
+        for (PageRange r : list.getRanges()) {
+            int start = r.getStart();
+            if (start <= 0) continue;
+
+            int end = r.getEnd();
+            if (end <= 0) {
+                // single page
+                result.add(start);
+            } else if (end >= start) {
+                for (int i = start; i <= end; i++) result.add(i);
+            }
+        }
+        return result;
+    }
+
     private CrySLRule createRuleFromDomainModel(Domainmodel model) throws CrySLParserException {
         this.currentClass = model.getJavaType();
         String currentClass = this.currentClass.getQualifiedName();
@@ -231,8 +276,15 @@ public class CrySLModelReader {
 
         final EventsBlock eventsBlock = model.getEvents();
         final OrderBlock orderBlock = model.getOrder();
+        final WeaknessesBlock weaknessesBlock = model.getWeaknesses();
+        final VulnerabilitiesBlock vulnerabilitiesBlock = model.getVulnerabilities();
         final Collection<Event> events = changeDeclaringClass(this.currentClass, eventsBlock);
         final Order order = orderBlock == null ? null : orderBlock.getOrder();
+        final EList<String> cwes = weaknessesBlock == null ? null : weaknessesBlock.getCwEs();
+        final Collection<CrySLWeaknessEntry> weaknesses = toWeaknessEntries(cwes);
+        final EList<String> cves =
+                vulnerabilitiesBlock == null ? null : vulnerabilitiesBlock.getCvEs();
+        Collection<CrySLVulnerabilityEntry> vulnerabilities = toVulnerabilityEntries(cves);
         this.smg = StateMachineGraphBuilder.buildSMG(order, events);
 
         Collection<ISLConstraint> constraints = getConstraints(model.getConstraints());
@@ -247,6 +299,19 @@ public class CrySLModelReader {
 
         final EnsuresBlock ensuresBlock = model.getEnsures();
         final NegatesBlock negatesBlock = model.getNegates();
+        final ReferencesBlock referencesBlock = model.getReferences();
+
+        final Collection<CrySLReferenceEntry> references = new ArrayList<>();
+        if (referencesBlock != null && referencesBlock.getReferences() != null) {
+            for (ReferenceEntry ref : referencesBlock.getReferences()) {
+                references.add(
+                        new CrySLReferenceEntry(
+                                ref.getName(),
+                                ref.getAuthor(),
+                                ref.getLink(),
+                                expandPageRange(ref.getPageNumbers())));
+            }
+        }
 
         final Collection<CrySLPredicate> predicates =
                 new ArrayList<>(getEnsuredPredicates(ensuresBlock));
@@ -262,7 +327,10 @@ public class CrySLModelReader {
                 constraints,
                 requiredPredicates,
                 predicates,
-                negatedPredicates);
+                negatedPredicates,
+                weaknesses,
+                vulnerabilities,
+                references);
     }
 
     private Collection<Event> changeDeclaringClass(

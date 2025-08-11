@@ -8,3 +8,13 @@ EVENTS
 
 ORDER
     Con, C
+
+WEAKNESSES
+    CWE-17;
+    CWE-200;
+
+VULNERABILITIES
+    CVE-2025-8269;
+
+REFERENCES
+    "Name of the Paper", "Author", "https://example/pages/123.html", {1-5,7,9-11,15};

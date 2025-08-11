@@ -1,5 +1,6 @@
 package rules.statemachine;
 
+@SuppressWarnings("unused")
 public class StateMachineTester {
 
     public void operation1() {}

@@ -1,0 +1,7 @@
+SPEC rules.weaknesses.ClassWithWeaknesses
+
+EVENTS
+    Op: operation();
+
+WEAKNESSES
+    CWE-17;

@@ -23,6 +23,12 @@ public class CrySLRule {
 
     private final Collection<CrySLPredicate> negatedPredicates;
 
+    private Collection<CrySLWeaknessEntry> cwes;
+
+    private Collection<CrySLVulnerabilityEntry> cves;
+
+    private final Collection<CrySLReferenceEntry> references;
+
     public CrySLRule(
             String className,
             Collection<Map.Entry<String, String>> objects,
@@ -32,7 +38,10 @@ public class CrySLRule {
             Collection<ISLConstraint> constraints,
             Collection<ISLConstraint> requiredPredicates,
             Collection<CrySLPredicate> predicates,
-            Collection<CrySLPredicate> negatedPredicates) {
+            Collection<CrySLPredicate> negatedPredicates,
+            Collection<CrySLWeaknessEntry> cwes,
+            Collection<CrySLVulnerabilityEntry> cves,
+            Collection<CrySLReferenceEntry> references) {
         this.className = className;
         this.objects = objects;
         this.forbiddenMethods = forbiddenMethods;
@@ -42,6 +51,9 @@ public class CrySLRule {
         this.requiredPredicates = requiredPredicates;
         this.predicates = predicates;
         this.negatedPredicates = negatedPredicates;
+        this.cwes = cwes;
+        this.cves = cves;
+        this.references = references;
     }
 
     @Override
@@ -120,6 +132,26 @@ public class CrySLRule {
         return requiredPredicates;
     }
 
+    public Collection<CrySLWeaknessEntry> getCwes() {
+        return cwes;
+    }
+
+    public void setCwes(Collection<CrySLWeaknessEntry> cwes) {
+        this.cwes = cwes;
+    }
+
+    public Collection<CrySLVulnerabilityEntry> getCves() {
+        return cves;
+    }
+
+    public void setCves(Collection<CrySLVulnerabilityEntry> cves) {
+        this.cves = cves;
+    }
+
+    public Collection<CrySLReferenceEntry> getReferences() {
+        return references;
+    }
+
     @Override
     public String toString() {
         StringBuilder outputSB = new StringBuilder();
@@ -159,6 +191,30 @@ public class CrySLRule {
             outputSB.append("\nNegated predicates:");
             for (CrySLPredicate predicate : this.negatedPredicates) {
                 outputSB.append(predicate);
+                outputSB.append(", ");
+            }
+        }
+
+        if (this.cwes != null) {
+            outputSB.append("\nCWEs:");
+            for (CrySLWeaknessEntry cwe : this.cwes) {
+                outputSB.append(cwe);
+                outputSB.append(", ");
+            }
+        }
+
+        if (this.cves != null) {
+            outputSB.append("\nCVEs:");
+            for (CrySLVulnerabilityEntry cve : this.cves) {
+                outputSB.append(cve);
+                outputSB.append(", ");
+            }
+        }
+
+        if (this.references != null && !this.references.isEmpty()) {
+            outputSB.append("\nReferences:");
+            for (CrySLReferenceEntry reference : this.references) {
+                outputSB.append(reference);
                 outputSB.append(", ");
             }
         }
