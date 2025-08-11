@@ -26,6 +26,8 @@ import de.darmstadt.tu.crossing.crySL.ObjectsBlock;
 import de.darmstadt.tu.crossing.crySL.Operator;
 import de.darmstadt.tu.crossing.crySL.Order;
 import de.darmstadt.tu.crossing.crySL.OrderBlock;
+import de.darmstadt.tu.crossing.crySL.PageList;
+import de.darmstadt.tu.crossing.crySL.PageRange;
 import de.darmstadt.tu.crossing.crySL.Predicate;
 import de.darmstadt.tu.crossing.crySL.PredicateParameter;
 import de.darmstadt.tu.crossing.crySL.ReferenceEntry;
@@ -37,8 +39,6 @@ import de.darmstadt.tu.crossing.crySL.TimedPredicate;
 import de.darmstadt.tu.crossing.crySL.VulnerabilitiesBlock;
 import de.darmstadt.tu.crossing.crySL.WeaknessesBlock;
 import de.darmstadt.tu.crossing.crySL.WildcardPredicateParameter;
-import de.darmstadt.tu.crossing.crySL.PageList;
-import de.darmstadt.tu.crossing.crySL.PageRange;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -239,9 +239,9 @@ public class CrySLModelReader {
                 .collect(Collectors.toList());
     }
 
-//    private static int parseIntUnderscore(String s) {
-//        return Integer.parseInt(s.replace("_", "").trim());
-//    }
+    //    private static int parseIntUnderscore(String s) {
+    //        return Integer.parseInt(s.replace("_", "").trim());
+    //    }
 
     public static List<Integer> expandPageRange(PageList list) {
         List<Integer> result = new ArrayList<>();
@@ -259,7 +259,7 @@ public class CrySLModelReader {
                 if (end <= 0) {
                     // single page
                     result.add(start);
-                } else if (end >= start){
+                } else if (end >= start) {
                     for (int i = start; i <= end; i++) result.add(i);
                     // else: ignore or log; matches your current "log or handle" behavior
                 }
