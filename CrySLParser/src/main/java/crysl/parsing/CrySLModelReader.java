@@ -239,9 +239,9 @@ public class CrySLModelReader {
                 .collect(Collectors.toList());
     }
 
-    private static int parseIntUnderscore(String s) {
-        return Integer.parseInt(s.replace("_", "").trim());
-    }
+//    private static int parseIntUnderscore(String s) {
+//        return Integer.parseInt(s.replace("_", "").trim());
+//    }
 
     public static List<Integer> expandPageRange(PageList list) {
         List<Integer> result = new ArrayList<>();
@@ -251,26 +251,21 @@ public class CrySLModelReader {
         }
 
         for (PageRange r : list.getRanges()) {
-            /*String startStr = r.getStart();
-            if (startStr == null || startStr.isBlank()) continue;
+            int start = r.getStart();
+            if (start <= 0) continue;
 
             try {
-                int start = parseIntUnderscore(startStr);
-                String endStr = r.getEnd();
-
-                if (endStr == null || endStr.isBlank()) {
+                int end = r.getEnd();
+                if (end <= 0) {
                     // single page
                     result.add(start);
-                } else {
-                    int end = parseIntUnderscore(endStr);
-                    if (end >= start) {
-                        for (int i = start; i <= end; i++) result.add(i);
-                    }
+                } else if (end >= start){
+                    for (int i = start; i <= end; i++) result.add(i);
                     // else: ignore or log; matches your current "log or handle" behavior
                 }
             } catch (NumberFormatException e) {
                 // ignore or log invalid INTs, consistent with your current code
-            }*/
+            }
         }
         return result;
     }
