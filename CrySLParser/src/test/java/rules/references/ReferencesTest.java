@@ -26,8 +26,8 @@ public class ReferencesTest {
                     + File.separator;
 
     @Test
-    public void testVulnerabilities() {
-        CrySLRule rule = getRule("ClassWithVulnerabilities.crysl");
+    public void testReferences() {
+        CrySLRule rule = getRule("ClassWithReferences.crysl");
         Collection<CrySLReferenceEntry> references = rule.getReferences();
 
         // Test if there is a weakness
@@ -39,7 +39,6 @@ public class ReferencesTest {
         Assert.assertEquals("https://example/pages/123.html", entry.getLink());
         List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7, 9, 10, 11, 15));
         Assert.assertEquals(numbers, entry.getPageNumbers());
-        Assert.assertEquals("https://www.cve.org/CVERecord?id=CVE-2025-8269", entry.getLink());
     }
 
     private CrySLRule getRule(String fileName) {
