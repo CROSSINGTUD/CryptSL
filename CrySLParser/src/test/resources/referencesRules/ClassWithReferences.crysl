@@ -1,0 +1,7 @@
+SPEC rules.references.ClassWithReferences
+
+EVENTS
+    Op: operation();
+
+REFERENCES
+    "Name of the Paper", "Author", "https://example/pages/123.html", {1-5,7,9-11,15};

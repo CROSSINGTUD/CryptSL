@@ -1,0 +1,7 @@
+SPEC rules.vulnerabilities.ClassWithVulnerabilities
+
+EVENTS
+    Op: operation();
+
+VULNERABILITIES
+    CVE-2025-8269;
