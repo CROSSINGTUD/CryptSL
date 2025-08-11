@@ -1,7 +1,6 @@
 package parser;
 
 import crysl.CrySLParser;
-import crysl.rule.CrySLReferenceEntry;
 import crysl.rule.CrySLRule;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -89,40 +88,5 @@ public class CrySLParserTest {
         // Example is not on the classpath, so the model reader should not be able to resolve the
         // class
         Assert.assertEquals(0, rules.size());
-    }
-
-    @Test
-    public void testParseWeaknessesAndVulnerabiltiesSection() throws IOException {
-        Path path = Path.of("src/test/resources/parser/classpath/ClassPathExample.jar");
-
-        CrySLParser parser = new CrySLParser(Collections.singleton(path));
-        Collection<CrySLRule> rules =
-                parser.parseRulesFromPath("src/test/resources/parser/classpath/rules/");
-        System.out.println("Found CWEs " + rules.size() + " rules for classes:");
-        for (CrySLRule rule : rules) {
-            System.out.println(rule.getCwes());
-        }
-
-        System.out.println("Found CVEs " + rules.size() + " rules for classes:");
-        for (CrySLRule rule : rules) {
-            System.out.println(rule.getCves());
-        }
-
-        // ---- Print References as Nested List ----
-        for (CrySLRule rule : rules) {
-            System.out.println("Found References for " + rules.size() + " rules for classes:");
-            for (CrySLReferenceEntry ref : rule.getReferences()) {
-                System.out.println(
-                        "  ["
-                                + ref.getName()
-                                + ", "
-                                + ref.getAuthor()
-                                + ", "
-                                + ref.getLink()
-                                + ", "
-                                + ref.getPageNumbers()
-                                + "]");
-            }
-        }
     }
 }
