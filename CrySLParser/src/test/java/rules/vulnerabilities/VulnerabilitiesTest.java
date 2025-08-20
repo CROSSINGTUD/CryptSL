@@ -31,7 +31,7 @@ public class VulnerabilitiesTest {
         Assert.assertEquals(1, vulnerabilities.size());
 
         CrySLVulnerabilityEntry entry = vulnerabilities.iterator().next();
-        Assert.assertEquals("CVE-2025-8269", entry.getId());
+        Assert.assertEquals("CVE-2025-8269", entry.id());
         Assert.assertEquals("https://www.cve.org/CVERecord?id=CVE-2025-8269", entry.getUrl());
     }
 

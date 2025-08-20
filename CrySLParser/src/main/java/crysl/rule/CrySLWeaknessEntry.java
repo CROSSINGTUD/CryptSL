@@ -1,24 +1,11 @@
 package crysl.rule;
 
-public class CrySLWeaknessEntry {
-    private final String id;
-    private final String link;
+public interface CrySLWeaknessEntry {
+    String getId();
 
-    public CrySLWeaknessEntry(String id, String link) {
-        this.id = id;
-        this.link = link;
-    }
+    String getUrl();
 
-    public String getId() {
-        return id;
-    }
-
-    public String getUrl() {
-        return link;
-    }
-
-    @Override
-    public String toString() {
-        return id + " -> " + link;
+    default String getType() {
+        return "CWE";
     }
 }
