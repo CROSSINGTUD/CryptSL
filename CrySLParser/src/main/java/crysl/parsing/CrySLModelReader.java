@@ -212,32 +212,19 @@ public class CrySLModelReader {
         if (cwes == null) {
             return Collections.emptyList();
         }
-        return cwes.stream()
-                .map(
-                        cw -> {
-                            // cw is like "CWE-17"
-                            String number = cw.substring(cw.indexOf('-') + 1);
-                            String link =
-                                    "https://cwe.mitre.org/data/definitions/" + number + ".html";
-                            return new CrySLWeaknessEntry(cw, link);
-                        })
-                .collect(Collectors.toList());
+        return cwes.stream().map(CrySLCweEntry::new).collect(Collectors.toList());
     }
 
     public static Collection<CrySLVulnerabilityEntry> toVulnerabilityEntries(EList<String> cves) {
         if (cves == null) {
             return Collections.emptyList();
         }
-        return cves.stream()
-                .map(
-                        cv -> {
-                            // cw is like "CWE-17"
-                            String id = cv;
-                            String link = "https://www.cve.org/CVERecord?id=" + id;
-                            return new CrySLVulnerabilityEntry(cv, link);
-                        })
-                .collect(Collectors.toList());
+        return cves.stream().map(CrySLCveEntry::new).collect(Collectors.toList());
     }
+
+    //    private static int parseIntUnderscore(String s) {
+    //        return Integer.parseInt(s.replace("_", "").trim());
+    //    }
 
     public static List<Integer> expandPageRange(PageList list) {
         List<Integer> result = new ArrayList<>();
@@ -250,12 +237,15 @@ public class CrySLModelReader {
             int start = r.getStart();
             if (start <= 0) continue;
 
-            int end = r.getEnd();
-            if (end <= 0) {
-                // single page
-                result.add(start);
-            } else if (end >= start) {
-                for (int i = start; i <= end; i++) result.add(i);
+            try {
+                int end = r.getEnd();
+                if (end <= 0) {
+                    result.add(start);
+                } else if (end >= start) {
+                    for (int i = start; i <= end; i++) result.add(i);
+                }
+            } catch (NumberFormatException e) {
+                // ignore or log invalid INTs, consistent with your current code
             }
         }
         return result;
