@@ -42,7 +42,7 @@
 
     <properties>
         <tycho-version>4.0.10</tycho-version>
-        <xtextVersion>2.39.0</xtextVersion>
+        <xtextVersion>2.40.0</xtextVersion>
         <emfVersion>2.22.0</emfVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
