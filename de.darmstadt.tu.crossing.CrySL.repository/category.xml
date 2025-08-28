@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/de.darmstadt.tu.crossing.CrySL.feature_4.0.5.jar" id="de.darmstadt.tu.crossing.CrySL.feature" version="4.0.5">
+   <feature url="features/de.darmstadt.tu.crossing.CrySL.feature_4.0.6.jar" id="de.darmstadt.tu.crossing.CrySL.feature" version="4.0.6">
       <category name="CrySL"/>
    </feature>
    <category-def name="CrySL" label="CrySL"/>
