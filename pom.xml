@@ -43,7 +43,7 @@
     <properties>
         <tycho-version>4.0.10</tycho-version>
         <xtextVersion>2.39.0</xtextVersion>
-        <emfVersion>2.22.0</emfVersion>
+        <emfVersion>2.23.0</emfVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
     </properties>
@@ -380,7 +380,7 @@
                 <!-- This plugin is required for releases to Maven Central. If Javadoc is used, it has to be correct. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.11.2</version>
+                <version>3.11.3</version>
                 <configuration>
                     <additionalOptions>
                         <additionalOption>-Xdoclint:none</additionalOption>
