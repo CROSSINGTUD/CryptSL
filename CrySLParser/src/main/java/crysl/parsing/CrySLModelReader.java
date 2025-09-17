@@ -222,10 +222,6 @@ public class CrySLModelReader {
         return cves.stream().map(CrySLCveEntry::new).collect(Collectors.toList());
     }
 
-    //    private static int parseIntUnderscore(String s) {
-    //        return Integer.parseInt(s.replace("_", "").trim());
-    //    }
-
     public static List<Integer> expandPageRange(PageList list) {
         List<Integer> result = new ArrayList<>();
 
@@ -237,15 +233,13 @@ public class CrySLModelReader {
             int start = r.getStart();
             if (start <= 0) continue;
 
-            try {
-                int end = r.getEnd();
-                if (end <= 0) {
-                    result.add(start);
-                } else if (end >= start) {
-                    for (int i = start; i <= end; i++) result.add(i);
+            int end = r.getEnd();
+            if (end <= 0) {
+                result.add(start);
+            } else if (end >= start) {
+                for (int i = start; i <= end; i++) {
+                    result.add(i);
                 }
-            } catch (NumberFormatException e) {
-                // ignore or log invalid INTs, consistent with your current code
             }
         }
         return result;
@@ -397,11 +391,12 @@ public class CrySLModelReader {
             if (timed.getAfter() == null) {
                 predicates.add(new CrySLPredicate(null, name, parameters, negate, constraint));
             } else {
-                Collection<StateNode> nodes =
-                        getStatesForMethods(
-                                CrySLReaderUtils.resolveEventToCryslMethods(timed.getAfter()));
+                Collection<CrySLMethod> afterEvents =
+                        CrySLReaderUtils.resolveEventToCryslMethods(timed.getAfter());
+                Collection<StateNode> nodes = getStatesForMethods(afterEvents);
                 predicates.add(
-                        new CrySLCondPredicate(null, name, parameters, negate, nodes, constraint));
+                        new CrySLCondPredicate(
+                                null, name, parameters, negate, afterEvents, nodes, constraint));
             }
         }
         return predicates;
