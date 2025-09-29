@@ -1,0 +1,44 @@
+name: Deploy CrySL
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-and-release:
+    runs-on: ubuntu-latest
+    name: Deploy CrySL (Release)
+    environment: Deploy
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Deploy release version
+        uses: secure-software-engineering/actions/deployment/maven-deployment@develop
+        with:
+          java-distribution: adopt
+          java-version: 17
+          server-id: central
+          server-username: ${{ secrets.SONATYPE_USER }}
+          server-password: ${{ secrets.SONATYPE_PW }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
+          mvn-cli-args: '-DskipTests -Pdeployment'
+          deploy-mode: release
+
+      - name: Bump to next SNAPSHOT version
+        uses: secure-software-engineering/actions/deployment/update-snapshot-version@develop
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: master
+          target-branch: master
+          snapshot-branch: snapshot-update
+
+      # Steps for GitHub release based on latest tag
+      - name: Get latest tag
+        run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - name: Create GitHub release
+        run: |
+          gh release create ${{ env.tag }} --title ${{ env.tag }} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
