@@ -23,7 +23,7 @@ jobs:
           server-password: ${{ secrets.SONATYPE_PW }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
-          mvn-cli-args: '-DskipTests -Pdeployment'
+          mvn-cli-args: '-DskipTests -Pdeployment -X'
           deploy-mode: release
 
       - name: Bump to next SNAPSHOT version
