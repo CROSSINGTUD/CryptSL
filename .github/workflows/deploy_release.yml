@@ -18,17 +18,13 @@ jobs:
         with:
           java-distribution: adopt
           java-version: 17
-          server-id: central                              # must match the serverId configured for the nexus-staging-maven-plugin
-          server-username: MAVEN_USERNAME                 # Env var that holds the central publisher user name
-          server-password: MAVEN_CENTRAL_TOKEN            # Env var that holds the central publisher user token
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Substituted with the value stored in the referenced secret
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE            # Env var that holds the key's passphrase
-          mvn-cli-args: '-DskipTests -Pdeployment'
+          server-id: central
+          server-username: ${{ secrets.SONATYPE_USER }}
+          server-password: ${{ secrets.SONATYPE_PW }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
+          mvn-cli-args: '-DskipTests -Pdeployment -X'
           deploy-mode: release
-        env:
-          MAVEN_USERNAME: ${{ secrets.SONATYPE_USER }}
-          MAVEN_CENTRAL_TOKEN: ${{ secrets.SONATYPE_PW }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PRIVATE_KEY_PASSPHRASE }}
 
       - name: Bump to next SNAPSHOT version
         uses: secure-software-engineering/actions/deployment/update-snapshot-version@develop
