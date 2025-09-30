@@ -1,9 +1,13 @@
 name: CrySL build
 
 on:
-  push:
   pull_request:
-    types: [opened, reopened]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  workflow_dispatch:
 
 jobs:
   # Builds the project in windows, ubuntu and macos

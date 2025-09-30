@@ -36,6 +36,16 @@ jobs:
           target-branch: master
           snapshot-branch: snapshot-update
 
+      - name: Update Eclipse Metadata
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout snapshot-update
+          mvn tycho-versions:update-eclipse-metadata
+          git add .
+          git commit --allow-empty -am "Update Eclipse Metadata"
+          git push origin snapshot-update
+
       # Steps for GitHub release based on latest tag
       - name: Get latest tag
         run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
