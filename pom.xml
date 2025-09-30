@@ -415,7 +415,7 @@
                             <publishingServerId>central</publishingServerId>
                             <autoPublish>true</autoPublish>
                             <waitUntil>validated</waitUntil>
-                            <deploymentName>CrySL-Deployment</deploymentName>
+                            <deploymentName>${project.name} ${project.version}</deploymentName>
                         </configuration>
                     </plugin>
                     <plugin>
