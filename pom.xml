@@ -413,8 +413,9 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
-                            <waitUntil>published</waitUntil>
                             <autoPublish>true</autoPublish>
+                            <waitUntil>validated</waitUntil>
+                            <deploymentName>${project.name} ${project.version}</deploymentName>
                         </configuration>
                     </plugin>
                     <plugin>
