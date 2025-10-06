@@ -41,7 +41,7 @@
     </scm>
 
     <properties>
-        <tycho-version>4.0.10</tycho-version>
+        <tycho-version>5.0.0</tycho-version>
         <xtextVersion>2.39.0</xtextVersion>
         <emfVersion>2.23.0</emfVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
