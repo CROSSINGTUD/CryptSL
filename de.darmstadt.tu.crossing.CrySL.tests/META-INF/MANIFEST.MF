@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.darmstadt.tu.crossing.CrySL.tests
 Bundle-Vendor: Technical University Darmstadt, Paderborn University
-Bundle-Version: 4.0.7.qualifier
+Bundle-Version: 4.0.8
 Bundle-SymbolicName: de.darmstadt.tu.crossing.CrySL.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.darmstadt.tu.crossing.CrySL,
